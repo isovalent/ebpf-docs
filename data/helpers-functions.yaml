@@ -1,0 +1,916 @@
+# Data file to record relations between programs and helper function
+# used for the generation of related documentation sections.
+
+# Groups of helper calls which are often allowed together. To be referenced
+# in the `programs` and `maps` section.
+groups:
+  # Basic functions allowed by most if not all program functions
+  # Source `bpf_base_func_proto` in `kernel/bpf/helpers.c`
+  base:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_push_elem
+  - name: bpf_map_pop_elem
+  - name: bpf_map_peek_elem
+  - name: bpf_get_prandom_u32
+  - name: bpf_get_smp_processor_id
+  - name: bpf_get_numa_node_id
+  - name: bpf_tail_call
+  - name: bpf_ktime_get_ns
+  - name: bpf_ktime_get_boot_ns
+  - name: bpf_ringbuf_output
+  - name: bpf_ringbuf_reserve
+  - name: bpf_ringbuf_submit
+  - name: bpf_ringbuf_discard
+  - name: bpf_ringbuf_query
+  - name: bpf_for_each_map_elem
+  - name: bpf_loop
+  - name: bpf_strncmp
+  - name: bpf_spin_lock
+    cap: [CAP_BPF]
+  - name: bpf_spin_unlock
+    cap: [CAP_BPF]
+  - name: bpf_jiffies64
+    cap: [CAP_BPF]
+  - name: bpf_per_cpu_ptr
+    cap: [CAP_BPF]
+  - name: bpf_this_cpu_ptr
+    cap: [CAP_BPF]
+  - name: bpf_timer_init
+    cap: [CAP_BPF]
+  - name: bpf_timer_set_callback
+    cap: [CAP_BPF]
+  - name: bpf_timer_start
+    cap: [CAP_BPF]
+  - name: bpf_timer_cancel
+    cap: [CAP_BPF]
+  - name: bpf_trace_printk
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_get_current_task
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_get_current_task_btf
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_probe_read_user
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_probe_read_kernel
+    cap: [CAP_BPF, CAP_PERFMON]
+    no_security_lockdown: true
+  - name: bpf_probe_read_user_str
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_probe_read_kernel_str
+    cap: [CAP_BPF, CAP_PERFMON]
+    no_security_lockdown: true
+  - name: bpf_snprintf_btf
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_snprintf
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_task_pt_regs
+    cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_trace_vprintk
+    cap: [CAP_BPF, CAP_PERFMON]
+
+  # `tracing_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  tracing_prog:
+  - name: bpf_skb_output
+    kconfig: [CONFIG_NET]
+  - name: bpf_xdp_output
+    kconfig: [CONFIG_NET]
+  - name: bpf_skc_to_tcp6_sock
+    kconfig: [CONFIG_NET]
+  - name: bpf_skc_to_tcp_sock
+    kconfig: [CONFIG_NET]
+  - name: bpf_skc_to_tcp_timewait_sock
+    kconfig: [CONFIG_NET]
+  - name: bpf_skc_to_tcp_request_sock
+    kconfig: [CONFIG_NET]
+  - name: bpf_skc_to_udp6_sock
+    kconfig: [CONFIG_NET]
+  - name: bpf_skc_to_unix_sock
+    kconfig: [CONFIG_NET]
+  - name: bpf_sk_storage_get
+    kconfig: [CONFIG_NET]
+  - name: bpf_sk_storage_delete
+    kconfig: [CONFIG_NET]
+  - name: bpf_sock_from_file
+    kconfig: [CONFIG_NET]
+  - name: bpf_get_socket_cookie
+    kconfig: [CONFIG_NET]
+  - name: bpf_xdp_get_buff_len
+    kconfig: [CONFIG_NET]
+  - name: bpf_seq_printf
+    attach_type: [BPF_TRACE_ITER]
+  - name: bpf_seq_write
+    attach_type: [BPF_TRACE_ITER]
+  - name: bpf_seq_printf_btf
+    attach_type: [BPF_TRACE_ITER]
+  - name: bpf_d_path
+  - name: bpf_get_func_arg
+    prog_trampoline: true
+  - name: bpf_get_func_ret
+    prog_trampoline: true
+  - name: bpf_get_func_arg_cnt
+    prog_trampoline: true
+  - group: raw_tp
+  - group: bpf_iter
+    attach_type: [BPF_TRACE_ITER]
+
+  # 'bpf_tracing_func_proto' in `kernel/tracing/bpf_trace.c`
+  tracing:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_push_elem
+  - name: bpf_map_pop_elem
+  - name: bpf_map_peek_elem
+  - name: bpf_ktime_get_ns
+  - name: bpf_ktime_get_boot_ns
+  - name: bpf_tail_call
+  - name: bpf_get_current_pid_tgid
+  - name: bpf_get_current_task
+  - name: bpf_get_current_task_btf
+  - name: bpf_task_pt_regs
+  - name: bpf_get_current_uid_gid
+  - name: bpf_get_current_comm
+  - name: bpf_trace_printk
+  - name: bpf_get_smp_processor_id
+  - name: bpf_get_numa_node_id
+  - name: bpf_perf_event_read
+  - name: bpf_current_task_under_cgroup
+  - name: bpf_get_prandom_u32
+  - name: bpf_probe_write_user
+    no_security_lockdown: true
+  - name: bpf_probe_read_user
+  - name: bpf_probe_read_kernel
+    no_security_lockdown: true
+  - name: bpf_probe_read_user_str
+  - name: bpf_probe_read_kernel_str
+    no_security_lockdown: true
+  - name: bpf_probe_read
+    no_security_lockdown: true
+    kconfig: [CONFIG_ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE]
+  - name: bpf_probe_read_str
+    no_security_lockdown: true
+    kconfig: [CONFIG_ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE]
+  - name: bpf_get_current_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_get_current_ancestor_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_send_signal
+  - name: bpf_send_signal_thread
+  - name: bpf_perf_event_read_value
+  - name: bpf_get_ns_current_pid_tgid
+  - name: bpf_ringbuf_output
+  - name: bpf_ringbuf_reserve
+  - name: bpf_ringbuf_submit
+  - name: bpf_ringbuf_discard
+  - name: bpf_ringbuf_query
+  - name: bpf_jiffies64
+  - name: bpf_get_task_stack
+  - name: bpf_copy_from_user
+    sleepable: true
+  - name: bpf_copy_from_user_task
+    sleepable: true
+  - name: bpf_snprintf_btf
+  - name: bpf_per_cpu_ptr
+  - name: bpf_this_cpu_ptr
+  - name: bpf_task_storage_get
+  - name: bpf_task_storage_delete
+  - name: bpf_for_each_map_elem
+  - name: bpf_snprintf
+  - name: bpf_get_func_ip
+  - name: bpf_get_branch_snapshot
+  - name: bpf_find_vma
+  - name: bpf_trace_vprintk
+  - group: base
+
+  # `raw_tp_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  raw_tp:
+  - name: bpf_perf_event_output
+  - name: bpf_get_stackid
+  - name: bpf_get_stack
+  - group: tracing
+
+  # TODO bpf iter
+
+  # 
+  cgroup_base:
+  - name: bpf_get_current_uid_gid
+  - name: bpf_get_local_storage
+  - name: bpf_get_current_cgroup_id
+  - name: bpf_perf_event_output
+  - name: bpf_get_retval
+  - name: bpf_set_retval
+  - group: base
+
+  # `sk_filter_func_proto` in `net/core/filter.c`
+  sk_filter:
+  - name: bpf_skb_load_bytes
+  - name: bpf_skb_load_bytes_relative
+  - name: bpf_get_socket_cookie
+  - name: bpf_get_socket_uid
+  - name: bpf_perf_event_output
+  - group: base
+
+  # `lwt_out_func_proto` in `net/core/filter.c`
+  lwt_out:
+  - name: bpf_skb_load_bytes
+  - name: bpf_skb_pull_data
+  - name: bpf_csum_diff
+  - name: bpf_get_cgroup_classid
+  - name: bpf_get_route_realm
+  - name: bpf_get_hash_recalc
+  - name: bpf_perf_event_output
+  - name: bpf_get_smp_processor_id
+  - name: bpf_skb_under_cgroup
+  - group: base
+
+  # `bpf_sk_base_func_proto` in `net/core/filter.c`
+  sk_base:
+  - name: bpf_skc_to_tcp6_sock
+    cap: [CAP_PERFMON]
+  - name: bpf_skc_to_tcp_sock
+    cap: [CAP_PERFMON]
+  - name: bpf_skc_to_tcp_timewait_sock
+    cap: [CAP_PERFMON]
+  - name: bpf_skc_to_tcp_request_sock
+    cap: [CAP_PERFMON]
+  - name: bpf_skc_to_udp6_sock
+    cap: [CAP_PERFMON]
+  - name: bpf_skc_to_unix_sock
+    cap: [CAP_PERFMON]
+  - name: bpf_ktime_get_coarse_ns
+  - group: base
+
+# Track which helper functions can be used for a given program type
+programs:
+  # `sk_filter_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SOCKET_FILTER:
+  - group: sk_filter
+
+  # `kprobe_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  BPF_PROG_KRPOBE:
+  - name: bpf_perf_event_output
+  - name: bpf_get_stackid
+  - name: bpf_get_stack
+  - name: bpf_override_return
+    kconfig: [CONFIG_BPF_KPROBE_OVERRIDE]
+  - name: bpf_get_func_ip
+  - name: bpf_get_attach_cookie
+  - group: tracing
+
+  # `tc_cls_act_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SCHED_CLS:
+  - name: bpf_skb_store_bytes
+  - name: bpf_skb_load_bytes
+  - name: bpf_skb_load_bytes_relative
+  - name: bpf_skb_pull_data
+  - name: bpf_csum_diff
+  - name: bpf_csum_update
+  - name: bpf_csum_level
+  - name: bpf_l3_csum_replace
+  - name: bpf_l4_csum_replace
+  - name: bpf_clone_redirect
+  - name: bpf_get_cgroup_classid
+  - name: bpf_skb_vlan_push
+  - name: bpf_skb_vlan_pop
+  - name: bpf_skb_change_proto
+  - name: bpf_skb_change_type
+  - name: bpf_skb_adjust_room
+  - name: bpf_skb_change_tail
+  - name: bpf_skb_change_head
+  - name: bpf_skb_get_tunnel_key
+  - name: bpf_skb_set_tunnel_key
+  - name: bpf_skb_get_tunnel_opt
+  - name: bpf_skb_set_tunnel_opt
+  - name: bpf_redirect
+  - name: bpf_redirect_neigh
+  - name: bpf_redirect_peer
+  - name: bpf_get_route_realm
+  - name: bpf_get_hash_recalc
+  - name: bpf_set_hash_invalid
+  - name: bpf_set_hash
+  - name: bpf_perf_event_output
+  - name: bpf_get_smp_processor_id
+  - name: bpf_skb_under_cgroup
+  - name: bpf_get_socket_cookie
+  - name: bpf_get_socket_uid
+  - name: bpf_fib_lookup
+  - name: bpf_check_mtu
+  - name: bpf_sk_fullsock
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  - name: bpf_skb_get_xfrm_state
+    kconfig: [CONFIG_XFRM]
+  - name: bpf_skb_cgroup_classid
+    kconfig: [CONFIG_CGROUP_NET_CLASSID]
+  - name: bpf_skb_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_skb_ancestor_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_sk_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_lookup_udp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_release
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_sock
+    kconfig: [CONFIG_INET]
+  - name: bpf_get_listener_sock
+    kconfig: [CONFIG_INET]
+  - name: bpf_skc_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_check_syncookie
+    kconfig: [CONFIG_INET]
+  - name: bpf_skb_ecn_set_ce
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_gen_syncookie
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_assign
+    kconfig: [CONFIG_INET]
+  - name: bpf_skb_set_tstamp
+    kconfig: [CONFIG_INET]
+  - group: base
+
+  # `tc_cls_act_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SCHED_ACT:
+  - name: bpf_skb_store_bytes
+  - name: bpf_skb_load_bytes
+  - name: bpf_skb_load_bytes_relative
+  - name: bpf_skb_pull_data
+  - name: bpf_csum_diff
+  - name: bpf_csum_update
+  - name: bpf_csum_level
+  - name: bpf_l3_csum_replace
+  - name: bpf_l4_csum_replace
+  - name: bpf_clone_redirect
+  - name: bpf_get_cgroup_classid
+  - name: bpf_skb_vlan_push
+  - name: bpf_skb_vlan_pop
+  - name: bpf_skb_change_proto
+  - name: bpf_skb_change_type
+  - name: bpf_skb_adjust_room
+  - name: bpf_skb_change_tail
+  - name: bpf_skb_change_head
+  - name: bpf_skb_get_tunnel_key
+  - name: bpf_skb_set_tunnel_key
+  - name: bpf_skb_get_tunnel_opt
+  - name: bpf_skb_set_tunnel_opt
+  - name: bpf_redirect
+  - name: bpf_redirect_neigh
+  - name: bpf_redirect_peer
+  - name: bpf_get_route_realm
+  - name: bpf_get_hash_recalc
+  - name: bpf_set_hash_invalid
+  - name: bpf_set_hash
+  - name: bpf_perf_event_output
+  - name: bpf_get_smp_processor_id
+  - name: bpf_skb_under_cgroup
+  - name: bpf_get_socket_cookie
+  - name: bpf_get_socket_uid
+  - name: bpf_fib_lookup
+  - name: bpf_check_mtu
+  - name: bpf_sk_fullsock
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  - name: bpf_skb_get_xfrm_state
+    kconfig: [CONFIG_XFRM]
+  - name: bpf_skb_cgroup_classid
+    kconfig: [CONFIG_CGROUP_NET_CLASSID]
+  - name: bpf_skb_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_skb_ancestor_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_sk_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_lookup_udp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_release
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_sock
+    kconfig: [CONFIG_INET]
+  - name: bpf_get_listener_sock
+    kconfig: [CONFIG_INET]
+  - name: bpf_skc_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_check_syncookie
+    kconfig: [CONFIG_INET]
+  - name: bpf_skb_ecn_set_ce
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_gen_syncookie
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_assign
+    kconfig: [CONFIG_INET]
+  - name: bpf_skb_set_tstamp
+    kconfig: [CONFIG_INET]
+  - group: base
+
+  # `tp_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  BPF_PROG_TYPE_TRACEPOINT:
+  - name: bpf_perf_event_output
+  - name: bpf_get_stackid
+  - name: bpf_get_stack
+  - name: bpf_get_attach_cookie
+  - group: tracing
+
+  # `xdp_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_XDP:
+  - name: bpf_perf_event_output
+  - name: bpf_get_smp_processor_id
+  - name: bpf_csum_diff
+  - name: bpf_xdp_adjust_head
+  - name: bpf_xdp_adjust_meta
+  - name: bpf_redirect
+  - name: bpf_redirect_map
+  - name: bpf_xdp_adjust_tail
+  - name: bpf_xdp_get_buff_len
+  - name: bpf_xdp_load_bytes
+  - name: bpf_xdp_store_bytes
+  - name: bpf_fib_lookup
+  - name: bpf_check_mtu
+  - name: bpf_sk_lookup_udp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_release
+    kconfig: [CONFIG_INET]
+  - name: bpf_skc_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_check_syncookie
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_gen_syncookie
+    kconfig: [CONFIG_INET]
+  - group: base
+
+  # `pe_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  BPF_PROG_TYPE_PERF_EVENT:
+  - name: bpf_perf_event_output
+  - name: bpf_get_stackid
+  - name: bpf_get_stack
+  - name: bpf_perf_prog_read_value
+  - name: bpf_read_branch_records
+  - name: bpf_get_attach_cookie
+  - group: tracing
+
+  # `cg_skb_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_CGROUP_SKB:
+  - name: bpf_get_local_storage
+  - name: bpf_sk_fullsock
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  - name: bpf_perf_event_output
+  - name: bpf_skb_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_skb_ancestor_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_sk_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_sk_ancestor_cgroup_id
+    kconfig: [CONFIG_SOCK_CGROUP_DATA]
+  - name: bpf_sk_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_lookup_udp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_release
+    kconfig: [CONFIG_INET]
+  - name: bpf_skc_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_sock
+    kconfig: [CONFIG_INET]
+  - name: bpf_get_listener_sock
+    kconfig: [CONFIG_INET]
+  - name: bpf_skb_ecn_set_ce
+    kconfig: [CONFIG_INET]
+  - group: sk_filter
+
+  # `sock_filter_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_CGROUP_SOCK:
+  - name: bpf_get_current_uid_gid
+  - name: bpf_get_local_storage
+  - name: bpf_get_socket_cookie
+  - name: bpf_get_netns_cookie
+  - name: bpf_perf_event_output
+  - name: bpf_get_current_pid_tgid
+  - name: bpf_get_current_comm
+  - name: bpf_get_current_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_get_current_ancestor_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_get_cgroup_classid
+    kconfig: [CONFIG_CGROUP_NET_CLASSID]
+  - name: bpf_sk_storage_get
+  - name: bpf_ktime_get_coarse_ns
+  - group: base
+
+  # `lwt_in_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_LWT_IN:
+  - name: bpf_lwt_in_push_encap
+  - group: lwt_out
+
+  # `lwt_out_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_LWT_OUT:
+  - group: lwt_out
+
+  # `lwt_xmit_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_LWT_XMIT:
+  - name: bpf_skb_get_tunnel_key
+  - name: bpf_skb_set_tunnel_key
+  - name: bpf_skb_get_tunnel_opt
+  - name: bpf_skb_set_tunnel_opt
+  - name: bpf_redirect
+  - name: bpf_clone_redirect
+  - name: bpf_skb_change_tail
+  - name: bpf_skb_change_head
+  - name: bpf_skb_store_bytes
+  - name: bpf_csum_update
+  - name: bpf_csum_level
+  - name: bpf_l3_csum_replace
+  - name: bpf_l4_csum_replace
+  - name: bpf_set_hash_invalid
+  - name: bpf_lwt_push_encap
+  - group: lwt_out
+
+  # `sock_ops_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SOCK_OPS:
+  - name: bpf_setsockopt
+  - name: bpf_getsockopt
+  - name: bpf_sock_ops_cb_flags_set
+  - name: bpf_sock_map_update
+  - name: bpf_sock_hash_update
+  - name: bpf_get_socket_cookie
+  - name: bpf_get_local_storage
+  - name: bpf_perf_event_output
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  - name: bpf_get_netns_cookie
+  - name: bpf_load_hdr_opt
+    kconfig: [CONFIG_INET]
+  - name: bpf_store_hdr_opt
+    kconfig: [CONFIG_INET]
+  - name: bpf_reserve_hdr_opt
+    kconfig: [CONFIG_INET]
+  - name: bpf_tcp_sock
+    kconfig: [CONFIG_INET]
+  - group: sk_base
+
+  # `sk_skb_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SK_SKB:
+  - name: bpf_skb_store_bytes
+  - name: bpf_skb_load_bytes
+  - name: bpf_skb_pull_data
+  - name: bpf_skb_change_tail
+  - name: bpf_skb_change_head
+  - name: bpf_skb_adjust_room
+  - name: bpf_get_socket_cookie
+  - name: bpf_get_socket_uid
+  - name: bpf_sk_redirect_map
+  - name: bpf_sk_redirect_hash
+  - name: bpf_perf_event_output
+  - name: bpf_sk_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_lookup_udp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_release
+    kconfig: [CONFIG_INET]
+  - name: bpf_skc_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - group: sk_base
+
+  # `cgroup_dev_func_proto` in `kernel/bpf/cgroup.c`
+  BPF_PROG_TYPE_CGROUP_DEVICE:
+  - group: cgroup_base
+
+  # `sk_msg_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SK_MSG:
+  - name: bpf_msg_redirect_map
+  - name: bpf_msg_redirect_hash
+  - name: bpf_msg_apply_bytes
+  - name: bpf_msg_cork_bytes
+  - name: bpf_msg_pull_data
+  - name: bpf_msg_push_data
+  - name: bpf_msg_pop_data
+  - name: bpf_perf_event_output
+  - name: bpf_get_current_uid_gid
+  - name: bpf_get_current_pid_tgid
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  - name: bpf_get_netns_cookie
+  - name: bpf_get_current_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_get_current_ancestor_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_get_cgroup_classid
+    kconfig: [CONFIG_CGROUP_NET_CLASSID]
+  - group: sk_base
+
+  # `raw_tp_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  BPF_PROG_TYPE_RAW_TRACEPOINT:
+  - group: raw_tp
+
+  # `sock_addr_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_CGROUP_SOCK_ADDR:
+  - name: bpf_get_current_uid_gid
+  - name: bpf_bind
+    attach_type: [BPF_CGROUP_INET4_CONNECT, BPF_CGROUP_INET6_CONNECT]
+  - name: bpf_get_socket_cookie
+  - name: bpf_get_netns_cookie
+  - name: bpf_get_local_storage
+  - name: bpf_perf_event_output
+  - name: bpf_get_current_pid_tgid
+  - name: bpf_get_current_comm
+  - name: bpf_get_current_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_get_current_ancestor_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_get_cgroup_classid
+    kconfig: [CONFIG_CGROUP_NET_CLASSID]
+  - name: bpf_sk_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_lookup_udp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_release
+    kconfig: [CONFIG_INET]
+  - name: bpf_skc_lookup_tcp
+    kconfig: [CONFIG_INET]
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  - name: bpf_setsockopt
+    attach_type:
+    - BPF_CGROUP_INET4_BIND
+    - BPF_CGROUP_INET6_BIND
+    - BPF_CGROUP_INET4_CONNECT
+    - BPF_CGROUP_INET6_CONNECT
+    - BPF_CGROUP_UDP4_RECVMSG
+    - BPF_CGROUP_UDP6_RECVMSG
+    - BPF_CGROUP_UDP4_SENDMSG
+    - BPF_CGROUP_UDP6_SENDMSG
+    - BPF_CGROUP_INET4_GETPEERNAME
+    - BPF_CGROUP_INET6_GETPEERNAME
+    - BPF_CGROUP_INET4_GETSOCKNAME
+    - BPF_CGROUP_INET6_GETSOCKNAME
+  - name: bpf_getsockopt
+    attach_type:
+    - BPF_CGROUP_INET4_BIND
+    - BPF_CGROUP_INET6_BIND
+    - BPF_CGROUP_INET4_CONNECT
+    - BPF_CGROUP_INET6_CONNECT
+    - BPF_CGROUP_UDP4_RECVMSG
+    - BPF_CGROUP_UDP6_RECVMSG
+    - BPF_CGROUP_UDP4_SENDMSG
+    - BPF_CGROUP_UDP6_SENDMSG
+    - BPF_CGROUP_INET4_GETPEERNAME
+    - BPF_CGROUP_INET6_GETPEERNAME
+    - BPF_CGROUP_INET4_GETSOCKNAME
+    - BPF_CGROUP_INET6_GETSOCKNAME
+  - group: base
+
+  # `lwt_seg6local_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_LWT_SEG6LOCAL:
+  - name: bpf_lwt_seg6_store_bytes
+  - name: bpf_lwt_seg6_action
+  - name: bpf_lwt_seg6_adjust_srh
+  - group: lwt_out
+
+  # `lirc_mode2_func_proto` in `drivers/media/rc/bpf-lric.c`
+  BPF_PROG_TYPE_LIRC_MODE2:
+  - name: bpf_rc_repeat
+  - name: bpf_rc_keydown
+  - name: bpf_rc_pointer_rel
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_push_elem
+  - name: bpf_map_pop_elem
+  - name: bpf_map_peek_elem
+  - name: bpf_ktime_get_ns
+  - name: bpf_ktime_get_boot_ns
+  - name: bpf_tail_call
+  - name: bpf_get_prandom_u32
+  - name: bpf_trace_printk
+    cap: [CAP_PERFMON]
+
+  # `sk_reuseport_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SK_REUSEPORT:
+  - name: bpf_sk_select_reuseport
+  - name: bpf_skb_load_bytes
+  - name: bpf_skb_load_bytes_relative
+  - name: bpf_get_socket_cookie
+  - name: bpf_ktime_get_coarse_ns
+  - group: base
+
+  # `flow_dissector_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_FLOW_DISSECTOR:
+  - name: bpf_skb_load_bytes
+  - group: sk_base
+
+  # `sysctl_func_proto` in `kernel/bpf/cgroup.c`
+  BPF_PROG_TYPE_CGROUP_SYSCTL:
+  - name: bpf_strtol
+  - name: bpf_strtoul
+  - name: bpf_sysctl_get_name
+  - name: bpf_sysctl_get_current_value
+  - name: bpf_sysctl_get_new_value
+  - name: bpf_sysctl_set_new_value
+  - name: bpf_ktime_get_coarse_ns
+  - group: cgroup_base
+
+  # `raw_tp_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE:
+  - group: raw_tp
+
+  # `cg_sockopt_func_proto` in `kernel/bpf/cgroup.c`
+  BPF_PROG_TYPE_CGROUP_SOCKOPT:
+  - name: bpf_get_netns_cookie
+    kconfig: [CONFIG_NET]
+  - name: bpf_sk_storage_get
+    kconfig: [CONFIG_NET]
+  - name: bpf_sk_storage_delete
+    kconfig: [CONFIG_NET]
+  - name: bpf_setsockopt
+    kconfig: [CONFIG_NET]
+    attach_type: [BPF_CGROUP_SETSOCKOPT]
+  - name: bpf_getsockopt
+    kconfig: [CONFIG_NET]
+    attach_type: [BPF_CGROUP_SETSOCKOPT]
+  - name: bpf_tcp_sock
+    kconfig: [CONFIG_INET]
+  - group: cgroup_base
+
+  # `tracing_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  BPF_PROG_TYPE_TRACING:
+  - group: tracing
+
+  # TODO struct ops has allowed helpers per struct type, currently only TCP Congestion Algo
+  # but it doesn't fit neatly with the rest :( 
+  # BPF_PROG_TYPE_STRUCT_OPS:
+
+  # `bpf_lsm_func_proto` in `kernel/bpf/bpf_lsm.c`
+  BPF_PROG_TYPE_LSM:
+  - name: bpf_inode_storage_get
+  - name: bpf_inode_storage_delete
+  - name: bpf_sk_storage_get
+    kconfig: [CONFIG_NET]
+  - name: bpf_sk_storage_delete
+    kconfig: [CONFIG_NET]
+  - name: bpf_spin_lock
+  - name: bpf_spin_unlock
+  - name: bpf_bprm_opts_set
+  - name: bpf_ima_inode_hash
+    sleepable: true
+  - name: bpf_ima_file_hash
+    sleepable: true
+  - group: tracing
+
+  # TODO
+  # BPF_PROG_TYPE_EXT is special since the allowed helpers dependens on the program
+  # we are extending
+
+  # `sk_lookup_func_proto` in `net/core/filter.c`
+  BPF_PROG_TYPE_SK_LOOKUP:
+  - name: bpf_perf_event_output
+  - name: bpf_sk_assign
+  - name: bpf_sk_release
+  - group: sk_base
+
+  # `syscall_prog_func_proto` in `kernel/bpf/syscall.c`
+  BPF_PROG_TYPE_SYSCALL:
+  - name: bpf_sys_bpf
+  - name: bpf_btf_find_by_name_kind
+  - name: bpf_sys_close
+  - name: bpf_kallsyms_lookup_name
+  - group: tracing
+  
+
+# Track which helper functions can be used with a given map type
+# 'check_map_func_compatibility' in 'kernel/bpf/verifier.c'
+maps:
+  BPF_MAP_TYPE_HASH:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_for_each_callback
+  BPF_MAP_TYPE_ARRAY:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_for_each_callback
+  BPF_MAP_TYPE_PROG_ARRAY:
+  - name: bpf_tail_call
+  BPF_MAP_TYPE_PERF_EVENT_ARRAY:
+  - name: bpf_perf_event_read
+  - name: bpf_perf_event_output
+  - name: bpf_skb_output
+  - name: bpf_perf_event_read_value
+  - name: bpf_xdp_output
+  BPF_MAP_TYPE_PERCPU_HASH:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_for_each_callback
+  - name: bpf_map_lookup_percpu_elem
+  BPF_MAP_TYPE_PERCPU_ARRAY:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_for_each_callback
+  - name: bpf_map_lookup_percpu_elem
+  BPF_MAP_TYPE_STACK_TRACE:
+  - name: bpf_get_stackid
+  BPF_MAP_TYPE_CGROUP_ARRAY:
+  - name: bpf_skb_under_cgroup
+  - name: bpf_current_task_under_cgroup
+  BPF_MAP_TYPE_LRU_HASH:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  BPF_MAP_TYPE_LRU_PERCPU_HASH:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  - name: bpf_map_for_each_callback
+  - name: bpf_map_lookup_percpu_elem
+  BPF_MAP_TYPE_LPM_TRIE:
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+  - name: bpf_map_delete_elem
+  BPF_MAP_TYPE_ARRAY_OF_MAPS:
+  - name: bpf_map_lookup_elem
+  BPF_MAP_TYPE_HASH_OF_MAPS:
+  - name: bpf_map_lookup_elem
+  BPF_MAP_TYPE_DEVMAP:
+  - name: bpf_redirect_map
+  BPF_MAP_TYPE_SOCKMAP:
+  - name: bpf_sk_redirect_map
+  - name: bpf_sock_map_update
+  - name: bpf_map_delete_elem
+  - name: bpf_msg_redirect_map
+  - name: bpf_sk_select_reuseport
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+    prog:
+    - BPF_PROG_TYPE_TRACING # Only with attach type BPF_TRACE_ITER
+    - BPF_PROG_TYPE_SOCKET_FILTER
+    - BPF_PROG_TYPE_SCHED_CLS
+    - BPF_PROG_TYPE_SCHED_ACT
+    - BPF_PROG_TYPE_XDP
+    - BPF_PROG_TYPE_SK_REUSEPORT
+    - BPF_PROG_TYPE_FLOW_DISSECTOR
+    - BPF_PROG_TYPE_SK_LOOKUP
+  BPF_MAP_TYPE_CPUMAP:
+  - name: bpf_redirect_map
+  BPF_MAP_TYPE_XSKMAP:
+  - name: bpf_map_lookup_elem
+  - name: bpf_redirect_map
+  BPF_MAP_TYPE_SOCKHASH:
+  - name: bpf_sk_redirect_map
+  - name: bpf_sock_map_update
+  - name: bpf_map_delete_elem
+  - name: bpf_msg_redirect_map
+  - name: bpf_sk_select_reuseport
+  - name: bpf_map_lookup_elem
+  - name: bpf_map_update_elem
+    prog:
+    - BPF_PROG_TYPE_TRACING # Only with attach type BPF_TRACE_ITER
+    - BPF_PROG_TYPE_SOCKET_FILTER
+    - BPF_PROG_TYPE_SCHED_CLS
+    - BPF_PROG_TYPE_SCHED_ACT
+    - BPF_PROG_TYPE_XDP
+    - BPF_PROG_TYPE_SK_REUSEPORT
+    - BPF_PROG_TYPE_FLOW_DISSECTOR
+    - BPF_PROG_TYPE_SK_LOOKUP
+  BPF_MAP_TYPE_CGROUP_STORAGE:
+  - name: bpf_get_local_storage
+  BPF_MAP_TYPE_REUSEPORT_SOCKARRAY:
+  - name: bpf_sk_select_reuseport
+  BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE:
+  - name: bpf_get_local_storage
+  BPF_MAP_TYPE_QUEUE:
+  - name: bpf_map_peek_elem
+  - name: bpf_map_pop_elem
+  - name: bpf_map_push_elem
+  BPF_MAP_TYPE_STACK:
+  - name: bpf_map_peek_elem
+  - name: bpf_map_pop_elem
+  - name: bpf_map_push_elem
+  BPF_MAP_TYPE_SK_STORAGE:
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  BPF_MAP_TYPE_DEVMAP_HASH:
+  - name: bpf_redirect_map
+  BPF_MAP_TYPE_STRUCT_OPS:
+  BPF_MAP_TYPE_RINGBUF:
+  - name: ringbuf_output
+  - name: ringbuf_reserve
+  - name: ringbuf_query
+  BPF_MAP_TYPE_INODE_STORAGE:
+  - name: bpf_inode_storage_get
+  - name: bpf_inode_storage_delete
+  BPF_MAP_TYPE_TASK_STORAGE:
+  - name: bpf_task_storage_get
+  - name: bpf_task_storage_delete
+  BPF_MAP_TYPE_BLOOM_FILTER:
+  - name: bpf_map_peek_elem
+  - name: bpf_map_push_elem
+  BPF_MAP_TYPE_USER_RINGBUF:
+  - name: bpf_user_ringbuf_drain
+  BPF_MAP_TYPE_CGRP_STORAGE:
