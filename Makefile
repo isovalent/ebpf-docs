@@ -33,7 +33,7 @@ clear-html:
 .PHONY: serve
 serve: build-container
 	${CONTAINER_ENGINE} run --rm -it -p 8000:8000 -v "${REPODIR}:/docs" \
-	-w /docs --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs serve -a 0.0.0.0:8000 --watch /docs"
+	-w /docs --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs serve -a 0.0.0.0:8000 --watch /docs/docs"
 
 .PHONY: generate-docs
 generate-docs:

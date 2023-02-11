@@ -27,10 +27,14 @@ const (
 )
 
 const (
-	progRefMarkerStart = "<!-- [PROG_HELPER_FUNC_REF] -->\n"
-	progRefMarkerStop  = "<!-- [/PROG_HELPER_FUNC_REF] -->\n"
-	mapRefMarkerStart  = "<!-- [MAP_HELPER_FUNC_REF] -->\n"
-	mapRefMarkerStop   = "<!-- [/MAP_HELPER_FUNC_REF] -->\n"
+	progRefMarkerStart       = "<!-- [PROG_HELPER_FUNC_REF] -->\n"
+	progRefMarkerStop        = "<!-- [/PROG_HELPER_FUNC_REF] -->\n"
+	mapRefMarkerStart        = "<!-- [MAP_HELPER_FUNC_REF] -->\n"
+	mapRefMarkerStop         = "<!-- [/MAP_HELPER_FUNC_REF] -->\n"
+	helperProgRefMarkerStart = "<!-- [HELPER_FUNC_PROG_REF] -->\n"
+	helperProgRefMarkerStop  = "<!-- [/HELPER_FUNC_PROG_REF] -->\n"
+	helperMapRefMarkerStart  = "<!-- [HELPER_FUNC_MAP_REF] -->\n"
+	helperMapRefMarkerStop   = "<!-- [/HELPER_FUNC_MAP_REF] -->\n"
 )
 
 type helperFuncGroup []helperDef
@@ -99,6 +103,11 @@ func mainE() error {
 		return err
 	}
 
+	err = renderHelperFuncPages(dataFile)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -131,7 +140,7 @@ func renderProgramPages(dataFile *helperFuncDataFile) error {
 			}
 
 			stopIdx := strings.Index(fileStr, progRefMarkerStop)
-			if startIdx == -1 {
+			if stopIdx == -1 {
 				fmt.Printf("Skipping '%s', missing ref stop marker\n", programType)
 				return
 			}
@@ -198,7 +207,7 @@ func renderMapPages(dataFile *helperFuncDataFile) error {
 			}
 
 			stopIdx := strings.Index(fileStr, mapRefMarkerStop)
-			if startIdx == -1 {
+			if stopIdx == -1 {
 				fmt.Printf("Skipping '%s', missing ref stop marker\n", mapType)
 				return
 			}
@@ -228,6 +237,152 @@ func renderMapPages(dataFile *helperFuncDataFile) error {
 			_, err = io.Copy(mapFile, strings.NewReader(newFile.String()))
 			if err != nil {
 				fmt.Printf("Skipping '%s', copy error\n", mapType)
+				return
+			}
+		}()
+	}
+
+	return nil
+}
+
+func renderHelperFuncPages(dataFile *helperFuncDataFile) error {
+	progTypesPerFunc := make(map[string][]string)
+	for progType := range dataFile.Programs {
+		group := dataFile.flatten(dataFile.Programs[progType])
+		for _, helperDef := range group {
+			progTypesPerFunc[helperDef.Name] = append(progTypesPerFunc[helperDef.Name], progType)
+		}
+	}
+
+	for helper, programTypes := range progTypesPerFunc {
+		fmt.Printf("Helper func '%s'\n", helper)
+		func() {
+			mapPath := path.Join(*projectroot, helperDir, helper+".md")
+			fmt.Printf("Opening '%s'\n", mapPath)
+
+			mapFile, err := os.OpenFile(mapPath, os.O_RDWR, 0644)
+			if err != nil {
+				fmt.Printf("Skipping '%s' due to error: %s\n", helper, err.Error())
+				return
+			}
+
+			defer mapFile.Close()
+
+			fileContents, err := io.ReadAll(mapFile)
+			if err != nil {
+				fmt.Printf("Skipping '%s' due to error: %s\n", helper, err.Error())
+				return
+			}
+			fileStr := string(fileContents)
+
+			startIdx := strings.Index(fileStr, helperProgRefMarkerStart)
+			if startIdx == -1 {
+				fmt.Printf("Skipping '%s', missing ref start marker\n", helper)
+				return
+			}
+
+			stopIdx := strings.Index(fileStr, helperProgRefMarkerStop)
+			if stopIdx == -1 {
+				fmt.Printf("Skipping '%s', missing ref stop marker\n", helper)
+				return
+			}
+
+			var newFile strings.Builder
+			// Write everything before the marker
+			newFile.WriteString(fileStr[:startIdx])
+			newFile.WriteString(helperProgRefMarkerStart)
+
+			newFile.WriteString(renderHelperFuncProgReference(programTypes))
+
+			newFile.WriteString(helperProgRefMarkerStop)
+			newFile.WriteString(fileStr[stopIdx+len(helperProgRefMarkerStop):])
+
+			_, err = mapFile.Seek(0, 0)
+			if err != nil {
+				fmt.Printf("Skipping '%s', seek error\n", helper)
+				return
+			}
+
+			err = mapFile.Truncate(0)
+			if err != nil {
+				fmt.Printf("Skipping '%s', truncate error\n", helper)
+				return
+			}
+
+			_, err = io.Copy(mapFile, strings.NewReader(newFile.String()))
+			if err != nil {
+				fmt.Printf("Skipping '%s', copy error\n", helper)
+				return
+			}
+		}()
+	}
+
+	mapTypesPerFunc := make(map[string][]string)
+	for mapType := range dataFile.Maps {
+		group := dataFile.flatten(dataFile.Maps[mapType])
+		for _, helperDef := range group {
+			mapTypesPerFunc[helperDef.Name] = append(mapTypesPerFunc[helperDef.Name], mapType)
+		}
+	}
+
+	for helper, mapTypes := range mapTypesPerFunc {
+		fmt.Printf("Helper func '%s'\n", helper)
+		func() {
+			mapPath := path.Join(*projectroot, helperDir, helper+".md")
+			fmt.Printf("Opening '%s'\n", mapPath)
+
+			mapFile, err := os.OpenFile(mapPath, os.O_RDWR, 0644)
+			if err != nil {
+				fmt.Printf("Skipping '%s' due to error: %s\n", helper, err.Error())
+				return
+			}
+
+			defer mapFile.Close()
+
+			fileContents, err := io.ReadAll(mapFile)
+			if err != nil {
+				fmt.Printf("Skipping '%s' due to error: %s\n", helper, err.Error())
+				return
+			}
+			fileStr := string(fileContents)
+
+			startIdx := strings.Index(fileStr, helperMapRefMarkerStart)
+			if startIdx == -1 {
+				fmt.Printf("Skipping '%s', missing ref start marker\n", helper)
+				return
+			}
+
+			stopIdx := strings.Index(fileStr, helperMapRefMarkerStop)
+			if stopIdx == -1 {
+				fmt.Printf("Skipping '%s', missing ref stop marker\n", helper)
+				return
+			}
+
+			var newFile strings.Builder
+			// Write everything before the marker
+			newFile.WriteString(fileStr[:startIdx])
+			newFile.WriteString(helperMapRefMarkerStart)
+
+			newFile.WriteString(renderHelperFuncMapReference(mapTypes))
+
+			newFile.WriteString(helperMapRefMarkerStop)
+			newFile.WriteString(fileStr[stopIdx+len(helperMapRefMarkerStop):])
+
+			_, err = mapFile.Seek(0, 0)
+			if err != nil {
+				fmt.Printf("Skipping '%s', seek error\n", helper)
+				return
+			}
+
+			err = mapFile.Truncate(0)
+			if err != nil {
+				fmt.Printf("Skipping '%s', truncate error\n", helper)
+				return
+			}
+
+			_, err = io.Copy(mapFile, strings.NewReader(newFile.String()))
+			if err != nil {
+				fmt.Printf("Skipping '%s', copy error\n", helper)
 				return
 			}
 		}()
@@ -274,6 +429,26 @@ func renderMapHelperFuncReference(file *helperFuncDataFile, progType string) str
 
 	for _, item := range group {
 		sb.WriteString(fmt.Sprintf(" * [%s](../helper-function/%s.md)\n", item.Name, item.Name))
+	}
+
+	return sb.String()
+}
+
+func renderHelperFuncProgReference(programTypes []string) string {
+	var sb strings.Builder
+
+	for _, item := range programTypes {
+		sb.WriteString(fmt.Sprintf(" * [%s](../program-type/%s.md)\n", item, item))
+	}
+
+	return sb.String()
+}
+
+func renderHelperFuncMapReference(mapTypes []string) string {
+	var sb strings.Builder
+
+	for _, item := range mapTypes {
+		sb.WriteString(fmt.Sprintf(" * [%s](../map-type/%s.md)\n", item, item))
 	}
 
 	return sb.String()
