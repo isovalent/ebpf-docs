@@ -5,12 +5,20 @@ The lookup map element helper call is used to read values from [maps](../index.m
 !!! note
     Not all [map types](../map-type/index.md) support this helper call due to their implementation, check the map type page for details.
 
+## Definition
+
+<!-- [HELPER_FUNC_DEF] -->
+Delete entry with *key* from *map*.
+
+**Returns**
+0 on success, or a negative error in case of failure.
+
+`#!c static long (*bpf_map_delete_elem)(void *map, const void *key) = (void *) 3;`
+<!-- [/HELPER_FUNC_DEF] -->
+
 ## Usage
 
-`#!c static void *(*bpf_map_lookup_elem)(void *map, const void *key) = 1;`
-<!-- TODO rust signature? -->
-
-Argument to this helper are `map` which is a pointer to a map definition and `key` which is a pointer to they key you
+The `map` argument must be a pointer to a map definition and `key` must be a pointer to the key you
 wish to lookup.
 
 The return value will be a pointer to the map value or `NULL`. The value is a direct reference to the kernel memory where this map value is stored, not a copy. Therefor any modifications made to the value are automatically persisted without the need to call any additional helpers.

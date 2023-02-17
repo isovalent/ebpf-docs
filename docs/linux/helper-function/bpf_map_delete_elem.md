@@ -5,12 +5,21 @@ The delete map element helper call is used to delete values from [maps](../index
 !!! note
     Not all [map types](../map-type/index.md) support this helper call due to their implementation, check the map type page for details.
 
-## Usage
+## Definition
+
+<!-- [HELPER_FUNC_DEF] -->
+Delete entry with `key` from `map`.
+
+
+**Returns**
+0 on success, or a negative error in case of failure.
 
 `#!c static long (*bpf_map_delete_elem)(void *map, const void *key) = (void *) 3;`
-<!-- TODO rust signature? -->
+<!-- [/HELPER_FUNC_DEF] -->
 
-Arguments of this helper are `map` which is a pointer to a map definition and `key` which is a pointer to the key you
+## Usage
+
+The `map` argument must be a pointer to a map definition and `key` must be a pointer to the key you
 wish to delete.
 
 The return value will be `0` on success or a negative valued error number indicating a failure.

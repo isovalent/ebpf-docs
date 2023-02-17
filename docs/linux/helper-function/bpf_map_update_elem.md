@@ -5,10 +5,11 @@ The update map element helper call is used to write values from [maps](../index.
 !!! note
     Not all [map types](../map-type/index.md) support this helper call due to their implementation, check the map type page for details.
 
-## Usage
+## Definition
 
 `#!c static long (*bpf_map_update_elem)(void *map, const void *key, const void *value, __u64 flags) = (void *) 2;`
-<!-- TODO rust signature? -->
+
+## Usage
 
 Arguments of this helper are `map` which is a pointer to a map definition, `key` which is a pointer to the key you
 wish to write to, `value` which is a pointer to the value you wish to write to the map, and `flags` which are described below.
