@@ -2,8 +2,7 @@
 * [Concepts](concepts/index.md)
 * [Linux Reference](linux/index.md)
   * [Concepts](linux/ebpf-concepts/index.md)
-  * [Syscall commands](linux/syscall/index.md)
-    * linux/syscall/BPF_*.md
+  * [Syscall commands](linux/syscall/)
   * [Program types](linux/program-type/index.md)
     * linux/program-type/BPF_*.md
   * [Map types](linux/map-type/index.md)

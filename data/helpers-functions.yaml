@@ -117,6 +117,7 @@ groups:
     attach_type: [BPF_TRACE_ITER]
 
   # 'bpf_tracing_func_proto' in `kernel/tracing/bpf_trace.c`
+  # TODO tracing program are not allowed to use `bpf_spin_lock`, limited in the verifier
   tracing:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
