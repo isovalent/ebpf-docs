@@ -1,5 +1,9 @@
 # BPF Syscall `BPF_MAP_CREATE` command
 
+<!-- [FEATURE_TAG](BPF_MAP_CREATE) -->
+[:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/99c55f7d47c0dc6fc64729f37bf435abf43f4c60)
+<!-- [/FEATURE_TAG] -->
+
 The `BPF_MAP_CREATE` command is used to create a new BPF map.
 
 ## Return value

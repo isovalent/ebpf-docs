@@ -1,5 +1,8 @@
 # Map type `BPF_MAP_TYPE_ARRAY`
+
+<!-- [FEATURE_TAG](BPF_MAP_TYPE_ARRAY) -->
 [:octicons-tag-24: v3.19](https://github.com/torvalds/linux/commit/28fbcfa08d8ed7c5a50d41a0433aad222835e8e3)
+<!-- [/FEATURE_TAG] -->
 
 The array map type is a generic map type with no restrictions on the structure of the value. Like a normal array, the array map has a numeric key starting at 0 and incrementing.
 

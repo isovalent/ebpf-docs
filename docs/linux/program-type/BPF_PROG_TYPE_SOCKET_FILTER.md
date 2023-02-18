@@ -1,5 +1,9 @@
 # Program type `BPF_PROG_TYPE_SOCKET_FILTER`
 
+<!-- [FEATURE_TAG](BPF_PROG_TYPE_SOCKET_FILTER) -->
+[:octicons-tag-24: v3.19](https://github.com/torvalds/linux/commit/ddd872bc3098f9d9abe1680a6b2013e59e3337f7)
+<!-- [/FEATURE_TAG] -->
+
 Socket filter programs can be added to network sockets and are designed to filter or modify packets received by
 that socket (the program isn't called for egress/outgoing packets). 
 

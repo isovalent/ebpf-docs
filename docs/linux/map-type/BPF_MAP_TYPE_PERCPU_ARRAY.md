@@ -1,6 +1,8 @@
 # Map type `BPF_MAP_TYPE_PERCPU_ARRAY`
 
+<!-- [FEATURE_TAG](BPF_MAP_TYPE_PERCPU_ARRAY) -->
 [:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/a10423b87a7eae75da79ce80a8d9475047a674ee)
+<!-- [/FEATURE_TAG] -->
 
 This is the per-CPU variant of the [`BPF_MAP_TYPE_ARRAY`](BPF_MAP_TYPE_ARRAY.md) map type. 
 

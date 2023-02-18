@@ -1,5 +1,9 @@
 # Helper call `bpf_map_update_elem`
 
+<!-- [FEATURE_TAG](bpf_map_update_elem) -->
+[:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/0a542a86d73b1577e7d4f55fc95dcffd3fe62643)
+<!-- [/FEATURE_TAG] -->
+
 The update map element helper call is used to write values from [maps](../index.md#maps).
 
 !!! note

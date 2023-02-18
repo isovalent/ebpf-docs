@@ -1,6 +1,8 @@
 # BPF Syscall `BPF_MAP_LOOKUP_BATCH` command
 
+<!-- [FEATURE_TAG](BPF_MAP_LOOKUP_BATCH) -->
 [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/cb4d03ab499d4c040f4ab6fd4389d2b49f42b5a5)
+<!-- [/FEATURE_TAG] -->
 
 The `BPF_MAP_LOOKUP_BATCH` command is used to iterate over maps in batches. This can be significantly faster than doing [`BPF_MAP_GET_NEXT_KEY`](BPF_MAP_GET_NEXT_KEY.md) and [`BPF_MAP_LOOKUP_ELEM`](BPF_MAP_LOOKUP_ELEM.md)  calls.
 

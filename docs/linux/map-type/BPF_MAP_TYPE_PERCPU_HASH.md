@@ -1,7 +1,8 @@
 # Map type `BPF_MAP_TYPE_PERCPU_HASH`
 
+<!-- [FEATURE_TAG](BPF_MAP_TYPE_PERCPU_HASH) -->
 [:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/824bd0ce6c7c43a9e1e210abf124958e54d88342)
-
+<!-- [/FEATURE_TAG] -->
 
 This is the per-CPU variant of the [`BPF_MAP_TYPE_HASH`](BPF_MAP_TYPE_HASH.md) map type. 
 

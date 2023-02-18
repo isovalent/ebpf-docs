@@ -38,3 +38,4 @@ serve: build-container
 .PHONY: generate-docs
 generate-docs:
 	cd ${REPODIR}/tools/helper-ref-gen; go run main.go --project-root "${REPODIR}"
+	cd ${REPODIR}/tools/feature-tag-gen; go run main.go--project-root "${REPODIR}"

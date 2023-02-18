@@ -1,8 +1,8 @@
 # Map type `BPF_MAP_TYPE_STRUCT_OPS`
 
+<!-- [FEATURE_TAG](BPF_MAP_TYPE_STRUCT_OPS) -->
 [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/85d33df357b634649ddbe0a20fd2d0fc5732c3cb)
-
-<!-- TODO -->
+<!-- [/FEATURE_TAG] -->
 
 ## Helper functions
 

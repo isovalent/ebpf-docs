@@ -1,5 +1,9 @@
 # Helper call `bpf_map_delete_elem`
 
+<!-- [FEATURE_TAG](bpf_map_delete_elem) -->
+[:octicons-tag-24: v3.19](https://github.com/torvalds/linux/commit/d0003ec01c667b731c139e23de3306a8b328ccf5)
+<!-- [/FEATURE_TAG] -->
+
 The delete map element helper call is used to delete values from [maps](../index.md#maps).
 
 !!! note
