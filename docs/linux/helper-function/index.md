@@ -1,3 +1,6 @@
+---
+hide: toc
+---
 # Helper functions
 
 Helper functions are functions defined by the kernel which can be invoked from eBPF programs. These helper functions allow eBPF programs to interact with the kernel as if calling a function. The kernel places restrictions on the usage of these helper functions to prevent misuse. Check the pages of the individual calls for details on its usage.
@@ -371,7 +374,7 @@ These helpers are specific to `BPF_PROG_TYPE_SYSCALL` programs.
 * bpf_sys_close
 * bpf_kallsyms_lookup_name
 
-### LSM helpers
+## LSM helpers
 
 These helpers are specific to `BPF_PROG_TYPE_LSM` programs.
 

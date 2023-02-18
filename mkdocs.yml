@@ -6,6 +6,7 @@ theme:
   favicon: assets/image/favicon-32x32.png
   features:
     - navigation.indexes
+    - navigation.top
   font:
     text: Inter
     code: Inter
@@ -43,16 +44,6 @@ plugins:
   - search:
       lang: en
       separator: '[\s\-\_\.]+'
-
-nav:
-  - Home: index.md
-  - Concepts: concepts/index.md
-  - Linux Reference: 
-    - linux/index.md
-    - Concepts: linux/ebpf-concepts/index.md
-    - Syscall commands: linux/syscall/index.md
-    - Program types: linux/program-type/index.md
-    - Map types: linux/map-type/index.md
-    - Helper functions: linux/helper-function/index.md
-  - Libraries: ebpf-library/index.md
-    
+  - literate-nav:
+      nav-file: SUMMARY.md
+      tab_length: 2
