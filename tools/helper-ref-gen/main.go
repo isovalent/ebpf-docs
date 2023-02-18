@@ -11,6 +11,7 @@ import (
 	"io"
 	"os"
 	"path"
+	"sort"
 	"strings"
 
 	"golang.org/x/exp/slices"
@@ -254,6 +255,12 @@ func renderHelperFuncPages(dataFile *helperFuncDataFile) error {
 		}
 	}
 
+	for idx, progTypes := range progTypesPerFunc {
+		sort.Strings(progTypes)
+		progTypes = slices.Compact(progTypes)
+		progTypesPerFunc[idx] = progTypes
+	}
+
 	for helper, programTypes := range progTypesPerFunc {
 		fmt.Printf("Helper func '%s'\n", helper)
 		func() {
@@ -323,6 +330,10 @@ func renderHelperFuncPages(dataFile *helperFuncDataFile) error {
 		for _, helperDef := range group {
 			mapTypesPerFunc[helperDef.Name] = append(mapTypesPerFunc[helperDef.Name], mapType)
 		}
+	}
+
+	for _, mapTypes := range mapTypesPerFunc {
+		sort.Strings(mapTypes)
 	}
 
 	for helper, mapTypes := range mapTypesPerFunc {

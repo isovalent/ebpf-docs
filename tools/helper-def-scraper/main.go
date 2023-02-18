@@ -19,7 +19,7 @@ var (
 	filePath       = flag.String("file-path", "", "If set, use a file path instead of fetching from the interwebs")
 	helperFuncPath = flag.String("helper-path", "", "The path the the helper function pages")
 
-	helperRegex = regexp.MustCompile(`static [^\(]+ \(\*([^\)]+)\)[^\n]+;`)
+	helperRegex = regexp.MustCompile(`static [^\(]+ \*?\(\*([^\)]+)\)[^\n]+;`)
 )
 
 const (

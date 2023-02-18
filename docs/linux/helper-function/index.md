@@ -15,10 +15,10 @@ These helpers can be used on a lot of different maps, especially the generic map
 * [bpf_map_lookup_elem](bpf_map_lookup_elem.md)
 * [bpf_map_update_elem](bpf_map_update_elem.md)
 * [bpf_map_delete_elem](bpf_map_delete_elem.md)
-* bpf_for_each_map_elem
-* bpf_map_lookup_percpu_elem
-* bpf_spin_lock
-* bpf_spin_unlock
+* [bpf_for_each_map_elem](bpf_for_each_map_elem.md)
+* [bpf_map_lookup_percpu_elem](bpf_map_lookup_percpu_elem.md)
+* [bpf_spin_lock](bpf_spin_lock.md)
+* [bpf_spin_unlock](bpf_spin_unlock.md)
   
 ### Perf event array helpers
 
@@ -44,7 +44,7 @@ These helpers are used to manage timers.
 * bpf_timer_start
 * bpf_timer_cancel
 
-## Queue and stack helpers
+### Queue and stack helpers
 
 These helpers are used with `BPF_MAP_TYPE_QUEUE` and `BPF_MAP_TYPE_STACK` maps.
 
@@ -63,6 +63,9 @@ These helpers are used with `BPF_MAP_TYPE_RINGBUF` maps.
 * bpf_ringbuf_submit
 * bpf_ringbuf_discard
 * bpf_ringbuf_query
+* bpf_ringbuf_reserve_dynptr
+* bpf_ringbuf_submit_dynptr
+* bpf_ringbuf_discard_dynptr
 
 ### Task storage helpers
 
@@ -390,9 +393,6 @@ These helpers are specific to `BPF_PROG_TYPE_CGROUP_SYSCTL` programs.
 These helpers are related to dynamic pointers
 
 * bpf_dynptr_from_mem
-* bpf_ringbuf_reserve_dynptr
-* bpf_ringbuf_submit_dynptr
-* bpf_ringbuf_discard_dynptr
 * bpf_dynptr_read
 * bpf_dynptr_write
 * bpf_dynptr_data

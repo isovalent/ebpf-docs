@@ -81,6 +81,7 @@ Not all helper functions are available in all program types. These are the helpe
     * [bpf_map_push_elem](../helper-function/bpf_map_push_elem.md)
     * [bpf_map_pop_elem](../helper-function/bpf_map_pop_elem.md)
     * [bpf_map_peek_elem](../helper-function/bpf_map_peek_elem.md)
+    * [bpf_map_lookup_percpu_elem](../helper-function/bpf_map_lookup_percpu_elem.md)
     * [bpf_get_prandom_u32](../helper-function/bpf_get_prandom_u32.md)
     * [bpf_get_smp_processor_id](../helper-function/bpf_get_smp_processor_id.md)
     * [bpf_get_numa_node_id](../helper-function/bpf_get_numa_node_id.md)

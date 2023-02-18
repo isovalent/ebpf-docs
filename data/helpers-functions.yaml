@@ -13,6 +13,7 @@ groups:
   - name: bpf_map_push_elem
   - name: bpf_map_pop_elem
   - name: bpf_map_peek_elem
+  - name: bpf_map_lookup_percpu_elem
   - name: bpf_get_prandom_u32
   - name: bpf_get_smp_processor_id
   - name: bpf_get_numa_node_id
@@ -123,6 +124,7 @@ groups:
   - name: bpf_map_push_elem
   - name: bpf_map_pop_elem
   - name: bpf_map_peek_elem
+  - name: bpf_map_lookup_percpu_elem
   - name: bpf_ktime_get_ns
   - name: bpf_ktime_get_boot_ns
   - name: bpf_tail_call
@@ -249,7 +251,7 @@ programs:
   - group: sk_filter
 
   # `kprobe_prog_func_proto` in `kernel/tracing/bpf_trace.c`
-  BPF_PROG_KRPOBE:
+  BPF_PROG_TYPE_KRPOBE:
   - name: bpf_perf_event_output
   - name: bpf_get_stackid
   - name: bpf_get_stack
@@ -788,12 +790,12 @@ maps:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
   - name: bpf_map_delete_elem
-  - name: bpf_map_for_each_callback
+  - name: bpf_for_each_map_elem
   BPF_MAP_TYPE_ARRAY:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
   - name: bpf_map_delete_elem
-  - name: bpf_map_for_each_callback
+  - name: bpf_for_each_map_elem
   BPF_MAP_TYPE_PROG_ARRAY:
   - name: bpf_tail_call
   BPF_MAP_TYPE_PERF_EVENT_ARRAY:
@@ -806,13 +808,13 @@ maps:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
   - name: bpf_map_delete_elem
-  - name: bpf_map_for_each_callback
+  - name: bpf_for_each_map_elem
   - name: bpf_map_lookup_percpu_elem
   BPF_MAP_TYPE_PERCPU_ARRAY:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
   - name: bpf_map_delete_elem
-  - name: bpf_map_for_each_callback
+  - name: bpf_for_each_map_elem
   - name: bpf_map_lookup_percpu_elem
   BPF_MAP_TYPE_STACK_TRACE:
   - name: bpf_get_stackid
@@ -823,11 +825,12 @@ maps:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
   - name: bpf_map_delete_elem
+  - name: bpf_for_each_map_elem
   BPF_MAP_TYPE_LRU_PERCPU_HASH:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
   - name: bpf_map_delete_elem
-  - name: bpf_map_for_each_callback
+  - name: bpf_for_each_map_elem
   - name: bpf_map_lookup_percpu_elem
   BPF_MAP_TYPE_LPM_TRIE:
   - name: bpf_map_lookup_elem
