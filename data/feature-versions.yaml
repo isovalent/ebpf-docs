@@ -1087,3 +1087,488 @@
     - name: bpf_cgrp_storage_delete
       version: ""
       commit: ""
+- name: flags
+  features:
+    - name: BPF_F_ALLOW_OVERRIDE
+      version: v4.10
+      commit: 7f677633379b4abb3281cdbe7e7006f049305c03
+    - name: BPF_F_ALLOW_MULTI
+      version: v4.15
+      commit: 324bda9e6c5add86ba2e1066476481c48132aca0
+    - name: BPF_F_REPLACE
+      version: v5.6
+      commit: 7dd68b3279f1792103d12e69933db3128c6d416e
+    - name: BPF_F_STRICT_ALIGNMENT
+      version: v4.12
+      commit: e07b98d9bffe410019dfcf62c3428d4a96c56a2c
+    - name: BPF_F_ANY_ALIGNMENT
+      version: v5.0
+      commit: e9ee9efc0d176512cdce9d27ff8549d7ffa2bfcd
+    - name: BPF_F_TEST_RND_HI32
+      version: v5.3
+      commit: c240eff63a1cf1c4edc768e0cfc374811c02f069
+    - name: BPF_F_TEST_STATE_FREQ
+      version: v5.4
+      commit: 10d274e880eb208ec6a76261a9f8f8155020f771
+    - name: BPF_F_SLEEPABLE
+      version: v5.10
+      commit: 1e6c62a8821557720a9b2ea9617359b264f2f67c
+    - name: BPF_F_XDP_HAS_FRAGS
+      version: v5.18
+      commit: c2f2cdbeffda7b153c19e0f3d73149c41026c0db
+    - name: BPF_F_KPROBE_MULTI_RETURN
+      version: v5.18
+      commit: 0dcac272540613d41c05e89679e4ddb978b612f1
+    - name: BPF_F_LOCK
+      version: v5.1
+      commit: 96049f3afd50fe8db69fa0068cdca822e747b1e4
+    - name: BPF_F_NO_PREALLOC
+      version: v4.6
+      commit: 6c90598174322b8888029e40dd84a4eb01f56afe
+    - name: BPF_F_NO_COMMON_LRU
+      version: v4.10
+      commit: 29ba732acbeece1e34c68483d1ec1f3720fa1bb3
+    - name: BPF_F_NUMA_NODE
+      version: v4.14
+      commit: 96eabe7a40aa17e613cf3db2c742ee8b1fc764d0
+    - name: BPF_F_RDONLY
+      version: v4.15
+      commit: 6e71b04a82248ccf13a94b85cbc674a9fefe53f5
+    - name: BPF_F_WRONLY
+      version: v4.15
+      commit: 6e71b04a82248ccf13a94b85cbc674a9fefe53f5
+    - name: BPF_F_STACK_BUILD_ID
+      version: v4.17
+      commit: 615755a77b2461ed78dfafb8a6649456201949c7
+    - name: BPF_F_ZERO_SEED
+      version: v5.0
+      commit: 96b3b6c9091d23289721350e32c63cc8749686be
+    - name: BPF_F_RDONLY_PROG
+      version: v5.2
+      commit: 591fe9888d7809d9ee5c828020b6c6ae27c37229
+    - name: BPF_F_WRONLY_PROG
+      version: v5.2
+      commit: 591fe9888d7809d9ee5c828020b6c6ae27c37229
+    - name: BPF_F_CLONE
+      version: v5.4
+      commit: 8f51dfc73bf181f2304e1498f55d5f452e060cbe
+    - name: BPF_F_MMAPABLE
+      version: v5.5
+      commit: fc9702273e2edb90400a34b3be76f7b08fa3344b
+    - name: BPF_F_PRESERVE_ELEMS
+      version: v5.10
+      commit: 792caccc4526bb489e054f9ab61d7c024b15dea2
+    - name: BPF_F_INNER_MAP
+      version: v5.10
+      commit: 4a8f87e60f6db40e640f1db555d063b2c4dea5f1
+    - name: BPF_F_QUERY_EFFECTIVE
+      version: v4.15
+      commit: 468e2f64d220fe2dc11caa2bcb9b3a1e50fc7321
+    - name: BPF_F_TEST_RUN_ON_CPU
+      version: v5.10
+      commit: 1b4d60ec162f82ea29a2e7a907b5c6cc9f926321
+    - name: BPF_F_TEST_XDP_LIVE_FRAMES
+      version: v5.18
+      commit: b530e9e1063ed2b817eae7eec6ed2daa8be11608
+    - name: BPF_F_RECOMPUTE_CSUM
+      version: v4.5
+      commit: 781c53bc5d5628065a46c70f02f5a0450f5842f4
+    - name: BPF_F_INVALIDATE_HASH
+      version: v4.6
+      commit: 8afd54c87ad7089734ef0527937a256586ba828a
+    - name: BPF_F_HDR_FIELD_MASK
+      version: v4.5
+      commit: 781c53bc5d5628065a46c70f02f5a0450f5842f4
+    - name: BPF_F_PSEUDO_HDR
+      version: v4.5
+      commit: 781c53bc5d5628065a46c70f02f5a0450f5842f4
+    - name: BPF_F_MARK_MANGLED_0
+      version: v4.6
+      commit: 2f72959a9c1260ade234f353ccca91118151af66
+    - name: BPF_F_MARK_ENFORCE
+      version: v4.11
+      commit: d1b662adcdb87944b7f6f7bd2f95cbb1404dbf18
+    - name: BPF_F_INGRESS
+      version: v4.5
+      commit: 781c53bc5d5628065a46c70f02f5a0450f5842f4
+    - name: BPF_F_TUNINFO_IPV6
+      version: v4.5
+      commit: c6c33454072fc9fe961e2b25f22a619e4fa98838
+    - name: BPF_F_SKIP_FIELD_MASK
+      version: v4.6
+      commit: d5a3b1f691865be576c2bffa708549b8cdccda19
+    - name: BPF_F_USER_STACK
+      version: v4.6
+      commit: d5a3b1f691865be576c2bffa708549b8cdccda19
+    - name: BPF_F_FAST_STACK_CMP
+      version: v4.6
+      commit: d5a3b1f691865be576c2bffa708549b8cdccda19
+    - name: BPF_F_REUSE_STACKID
+      version: v4.6
+      commit: d5a3b1f691865be576c2bffa708549b8cdccda19
+    - name: BPF_F_USER_BUILD_ID
+      version: v4.18
+      commit: c195651e565ae7f41a68acb7d4aa7390ad215de1
+    - name: BPF_F_ZERO_CSUM_TX
+      version: v4.5
+      commit: 2da897e51d7f23f872224218b9a4314503b0d360
+    - name: BPF_F_DONT_FRAGMENT
+      version: v4.6
+      commit: 2208087061c4ad88de188911367effc550144836
+    - name: BPF_F_SEQ_NUMBER
+      version: v4.17
+      commit: 77a5196a804e34ce5e215ef84d5e1de332e9c529
+    - name: BPF_F_TUNINFO_FLAGS
+      version: v6.1
+      commit: 44c51472bef83bb70b43e2f4b7a592096f32a855
+    - name: BPF_F_INDEX_MASK
+      version: v4.7
+      commit: 1e33759c788c78f31d4d6f65bac647b23624734c
+    - name: BPF_F_CURRENT_CPU
+      version: v4.7
+      commit: 1e33759c788c78f31d4d6f65bac647b23624734c
+    - name: BPF_F_CTXLEN_MASK
+      version: v4.8
+      commit: 555c8a8623a3a87b3c990ba30b7fd2e5914e41d2
+    - name: BPF_F_CURRENT_NETNS
+      version: v4.20
+      commit: f71c6143c2038df1cb43a4b9c90740d14f77467c
+    - name: BPF_F_ADJ_ROOM_FIXED_GSO
+      version: v5.2
+      commit: 2278f6cc151a8bef6ba0b3fe3009d14dc3c51c4a
+    - name: BPF_F_ADJ_ROOM_ENCAP_L3_IPV4
+      version: v5.2
+      commit: 868d523535c2d00b696753ece606e641a816e91e
+    - name: BPF_F_ADJ_ROOM_ENCAP_L3_IPV6
+      version: v5.2
+      commit: 868d523535c2d00b696753ece606e641a816e91e
+    - name: BPF_F_ADJ_ROOM_ENCAP_L4_GRE
+      version: v5.2
+      commit: 868d523535c2d00b696753ece606e641a816e91e
+    - name: BPF_F_ADJ_ROOM_ENCAP_L4_UDP
+      version: v5.2
+      commit: 868d523535c2d00b696753ece606e641a816e91e
+    - name: BPF_F_ADJ_ROOM_NO_CSUM_RESET
+      version: v5.8
+      commit: 836e66c218f355ec01ba57671c85abf32961dcea
+    - name: BPF_F_ADJ_ROOM_ENCAP_L2_ETH
+      version: v5.13
+      commit: d01b59c9ae94560fbcceaafeef39784d72765033
+    - name: BPF_F_SYSCTL_BASE_NAME
+      version: v5.2
+      commit: 808649fb787d918a48a360a668ee4ee9023f0c11
+    - name: BPF_LOCAL_STORAGE_GET_F_CREATE
+      version: v5.10
+      commit: f836a56e84ffc9f1a1cd73f77e10404ca46a4616
+    - name: BPF_SK_STORAGE_GET_F_CREATE
+      version: v5.2
+      commit: 6ac99e8f23d4b10258406ca0dd7bffca5f31da9d
+    - name: BPF_F_GET_BRANCH_RECORDS_SIZE
+      version: v5.7
+      commit: fff7b64355eac6e29b50229ad1512315bc04b44e
+    - name: BPF_F_BPRM_SECUREEXEC
+      version: v5.11
+      commit: 3f6719c7b62f0327c9091e26d0da10e65668229e
+    - name: BPF_F_BROADCAST
+      version: v5.14
+      commit: e624d4ed4aa8cc3c69d1359b0aaea539203ed266
+    - name: BPF_F_EXCLUDE_INGRESS
+      version: v5.14
+      commit: e624d4ed4aa8cc3c69d1359b0aaea539203ed266
+    - name: BPF_SK_LOOKUP_F_REPLACE
+      version: v5.9
+      commit: e9ddbb7707ff5891616240026062b8c1e29864ca
+    - name: BPF_SK_LOOKUP_F_NO_REUSEPORT
+      version: v5.9
+      commit: e9ddbb7707ff5891616240026062b8c1e29864ca
+    - name: BPF_SOCK_OPS_RTO_CB_FLAG
+      version: v4.16
+      commit: f89013f66d0f1a0dad44c513318efb706399a36b
+    - name: BPF_SOCK_OPS_RETRANS_CB_FLAG
+      version: v4.16
+      commit: a31ad29e6a30cb0b9084a9425b819cdcd97273ce
+    - name: BPF_SOCK_OPS_STATE_CB_FLAG
+      version: v4.16
+      commit: d44874910a26f3a8f81edf873a2473363f07f660
+    - name: BPF_SOCK_OPS_RTT_CB_FLAG
+      version: v5.3
+      commit: 23729ff23186424e54b4d6678fcd526cdacef4d3
+    - name: BPF_SOCK_OPS_PARSE_ALL_HDR_OPT_CB_FLAG
+      version: v5.10
+      commit: 00d211a4ea6f48e8e3b758813fe23ad28193d3bf
+    - name: BPF_SOCK_OPS_PARSE_UNKNOWN_HDR_OPT_CB_FLAG
+      version: v5.10
+      commit: 00d211a4ea6f48e8e3b758813fe23ad28193d3bf
+    - name: BPF_SOCK_OPS_WRITE_HDR_OPT_CB_FLAG
+      version: v5.10
+      commit: 331fca4315efa3bbd258fbdf8209d59d253c0480
+    - name: BPF_SOCK_OPS_ALL_CB_FLAGS
+      version: v4.16
+      commit: b13d880721729384757f235166068c315326f4a1
+    - name: BTF_F_COMPACT
+      version: v5.10
+      commit: c4d0bfb45068d853a478b9067a95969b1886a30f
+    - name: BTF_F_NONAME
+      version: v5.10
+      commit: c4d0bfb45068d853a478b9067a95969b1886a30f
+    - name: BTF_F_PTR_RAW
+      version: v5.10
+      commit: c4d0bfb45068d853a478b9067a95969b1886a30f
+    - name: BTF_F_ZERO
+      version: v5.10
+      commit: c4d0bfb45068d853a478b9067a95969b1886a30f
+- name: argument_constants
+  features:
+    - name: BPF_CGROUP_ITER_ORDER_UNSPEC
+      version: v6.1
+      commit: d4ffb6f39f1a1b260966b43a4ffdb64779c650dd
+    - name: BPF_CGROUP_ITER_SELF_ONLY
+      version: v6.1
+      commit: d4ffb6f39f1a1b260966b43a4ffdb64779c650dd
+    - name: BPF_CGROUP_ITER_DESCENDANTS_PRE
+      version: v6.1
+      commit: d4ffb6f39f1a1b260966b43a4ffdb64779c650dd
+    - name: BPF_CGROUP_ITER_DESCENDANTS_POST
+      version: v6.1
+      commit: d4ffb6f39f1a1b260966b43a4ffdb64779c650dd
+    - name: BPF_CGROUP_ITER_ANCESTORS_UP
+      version: v6.1
+      commit: d4ffb6f39f1a1b260966b43a4ffdb64779c650dd
+    - name: BPF_STATS_RUN_TIME
+      version: v5.8
+      commit: d46edd671a147032e22cfeb271a5734703093649
+    - name: BPF_STACK_BUILD_ID_EMPTY
+      version: v4.17
+      commit: 615755a77b2461ed78dfafb8a6649456201949c7
+    - name: BPF_STACK_BUILD_ID_VALID
+      version: v4.17
+      commit: 615755a77b2461ed78dfafb8a6649456201949c7
+    - name: BPF_STACK_BUILD_ID_IP
+      version: v4.17
+      commit: 615755a77b2461ed78dfafb8a6649456201949c7
+    - name: BPF_CSUM_LEVEL_QUERY
+      version: v5.8
+      commit: 7cdec54f9713256bb170873a1fc5c75c9127c9d2
+    - name: BPF_CSUM_LEVEL_INC
+      version: v5.8
+      commit: 7cdec54f9713256bb170873a1fc5c75c9127c9d2
+    - name: BPF_CSUM_LEVEL_DEC
+      version: v5.8
+      commit: 7cdec54f9713256bb170873a1fc5c75c9127c9d2
+    - name: BPF_CSUM_LEVEL_RESET
+      version: v5.8
+      commit: 7cdec54f9713256bb170873a1fc5c75c9127c9d2
+    - name: BPF_ADJ_ROOM_ENCAP_L2_MASK
+      version: v5.2
+      commit: 58dfc900faff6db7eb9bf01555622e0b6c74c262
+    - name: BPF_ADJ_ROOM_ENCAP_L2_SHIFT
+      version: v5.2
+      commit: 58dfc900faff6db7eb9bf01555622e0b6c74c262
+    - name: BPF_RB_NO_WAKEUP
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RB_FORCE_WAKEUP
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RB_AVAIL_DATA
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RB_RING_SIZE
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RB_CONS_POS
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RB_PROD_POS
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RINGBUF_BUSY_BIT
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RINGBUF_DISCARD_BIT
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_RINGBUF_HDR_SZ
+      version: v5.8
+      commit: 457f44363a8894135c85b7a9afd2bd8196db24ab
+    - name: BPF_ADJ_ROOM_NET
+      version: v4.13
+      commit: 2be7e212d5419a400d051c84ca9fdd083e5aacac
+    - name: BPF_ADJ_ROOM_MAC
+      version: v5.2
+      commit: 14aa31929b724b70fb63a9b0e7877da325b25cfe
+    - name: BPF_HDR_START_MAC
+      version: v4.18
+      commit: 4e1ec56cdc59746943b2acfab3c171b930187bbe
+    - name: BPF_HDR_START_NET
+      version: v4.18
+      commit: 4e1ec56cdc59746943b2acfab3c171b930187bbe
+    - name: BPF_LWT_ENCAP_SEG6
+      version: v4.18
+      commit: fe94cc290f535709d3c5ebd1e472dfd0aec7ee79
+    - name: BPF_LWT_ENCAP_SEG6_INLINE
+      version: v4.18
+      commit: fe94cc290f535709d3c5ebd1e472dfd0aec7ee79
+    - name: BPF_LWT_ENCAP_IP
+      version: v5.1
+      commit: 3e0bd37ce0e4a574df6d87a901e13bcb46e10301
+    - name: BPF_SKB_TSTAMP_UNSPEC
+      version: v5.18
+      commit: 9bb984f28d5bcb917d35d930fcfb89f90f9449fd
+    - name: BPF_SKB_TSTAMP_DELIVERY_MONO
+      version: v5.18
+      commit: 9bb984f28d5bcb917d35d930fcfb89f90f9449fd
+    - name: BPF_FIB_LOOKUP_DIRECT
+      version: v4.18
+      commit: 87f5fc7e48dd3175b30dd03b41564e1a8e136323
+    - name: BPF_FIB_LOOKUP_OUTPUT
+      version: v4.18
+      commit: 87f5fc7e48dd3175b30dd03b41564e1a8e136323
+    - name: BPF_FIB_LKUP_RET_SUCCESS
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_BLACKHOLE
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_UNREACHABLE
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_PROHIBIT
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_NOT_FWDED
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_FWD_DISABLED
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_UNSUPP_LWT
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_NO_NEIGH
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_FIB_LKUP_RET_FRAG_NEEDED
+      version: v4.18
+      commit: 4c79579b44b1876444f4d04de31c1a37098a0350
+    - name: BPF_MTU_CHK_SEGS
+      version: v5.12
+      commit: 34b2021cc61642d61c3cf943d9e71925b827941b
+    - name: BPF_MTU_CHK_RET_SUCCESS
+      version: v5.12
+      commit: 34b2021cc61642d61c3cf943d9e71925b827941b
+    - name: BPF_MTU_CHK_RET_FRAG_NEEDED
+      version: v5.12
+      commit: 34b2021cc61642d61c3cf943d9e71925b827941b
+    - name: BPF_MTU_CHK_RET_SEGS_TOOBIG
+      version: v5.12
+      commit: 34b2021cc61642d61c3cf943d9e71925b827941b
+    - name: BPF_FD_TYPE_RAW_TRACEPOINT
+      version: v4.18
+      commit: 41bdc4b40ed6fb26c6acc655ed9a243a348709c9
+    - name: BPF_FD_TYPE_TRACEPOINT
+      version: v4.18
+      commit: 41bdc4b40ed6fb26c6acc655ed9a243a348709c9
+    - name: BPF_FD_TYPE_KPROBE
+      version: v4.18
+      commit: 41bdc4b40ed6fb26c6acc655ed9a243a348709c9
+    - name: BPF_FD_TYPE_KRETPROBE
+      version: v4.18
+      commit: 41bdc4b40ed6fb26c6acc655ed9a243a348709c9
+    - name: BPF_FD_TYPE_UPROBE
+      version: v4.18
+      commit: 41bdc4b40ed6fb26c6acc655ed9a243a348709c9
+    - name: BPF_FD_TYPE_URETPROBE
+      version: v4.18
+      commit: 41bdc4b40ed6fb26c6acc655ed9a243a348709c9
+    - name: BPF_FLOW_DISSECTOR_F_PARSE_1ST_FRAG
+      version: v5.4
+      commit: 086f95682114fd2d1790bd3226e76cbae9a2d192
+    - name: BPF_FLOW_DISSECTOR_F_STOP_AT_FLOW_LABEL
+      version: v5.4
+      commit: 086f95682114fd2d1790bd3226e76cbae9a2d192
+    - name: BPF_FLOW_DISSECTOR_F_STOP_AT_ENCAP
+      version: v5.4
+      commit: 086f95682114fd2d1790bd3226e76cbae9a2d192
+- name: sock_ops
+  features:
+    - name: BPF_SOCK_OPS_VOID
+      version: v4.13
+      commit: 40304b2a1567fecc321f640ee4239556dd0f3ee0
+    - name: BPF_SOCK_OPS_TIMEOUT_INIT
+      version: v4.13
+      commit: 8550f328f45db6d37981eb2041bc465810245c03
+    - name: BPF_SOCK_OPS_RWND_INIT
+      version: v4.13
+      commit: 13d3b1ebe28762c79e981931a41914fae5d04386
+    - name: BPF_SOCK_OPS_TCP_CONNECT_CB
+      version: v4.13
+      commit: 9872a4bde31b0b055448e9ac1f4c9ee62d978766
+    - name: BPF_SOCK_OPS_ACTIVE_ESTABLISHED_CB
+      version: v4.13
+      commit: 9872a4bde31b0b055448e9ac1f4c9ee62d978766
+    - name: BPF_SOCK_OPS_PASSIVE_ESTABLISHED_CB
+      version: v4.13
+      commit: 9872a4bde31b0b055448e9ac1f4c9ee62d978766
+    - name: BPF_SOCK_OPS_NEEDS_ECN
+      version: v4.13
+      commit: 91b5b21c7c16899abb37f4a9e4388b4e9aae0b9d
+    - name: BPF_SOCK_OPS_BASE_RTT
+      version: v4.15
+      commit: e6546ef6d86d0fc38e0e84ccae80e641f3fc0087
+    - name: BPF_SOCK_OPS_RTO_CB
+      version: v4.16
+      commit: f89013f66d0f1a0dad44c513318efb706399a36b
+    - name: BPF_SOCK_OPS_RETRANS_CB
+      version: v4.16
+      commit: a31ad29e6a30cb0b9084a9425b819cdcd97273ce
+    - name: BPF_SOCK_OPS_STATE_CB
+      version: v4.16
+      commit: d44874910a26f3a8f81edf873a2473363f07f660
+    - name: BPF_SOCK_OPS_TCP_LISTEN_CB
+      version: v4.19
+      commit: f333ee0cdb27ba201e6cc0c99c76b1364aa29b86
+    - name: BPF_SOCK_OPS_RTT_CB
+      version: v5.3
+      commit: 23729ff23186424e54b4d6678fcd526cdacef4d3
+    - name: BPF_SOCK_OPS_PARSE_HDR_OPT_CB
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
+    - name: BPF_SOCK_OPS_HDR_OPT_LEN_CB
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
+    - name: BPF_SOCK_OPS_WRITE_HDR_OPT_CB
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
+- name: sock_opt_types
+  features:
+    - name: TCP_BPF_IW
+      version: v4.13
+      commit: fc7478103c84af437ca3bfae71a82631f770bf7e
+    - name: TCP_BPF_SNDCWND_CLAMP
+      version: v4.13
+      commit: 13bf96411ad2bd162a4f9470d58c6bb579c96e21
+    - name: TCP_BPF_DELACK_MAX
+      version: v5.10
+      commit: 2b8ee4f05d4f6a6c427ad30dd6c1bb49eb2efd3b
+    - name: TCP_BPF_RTO_MIN
+      version: v5.10
+      commit: ca584ba070864c606f3a54faaafe774726d5b4a1
+    - name: TCP_BPF_SYN
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
+    - name: TCP_BPF_SYN_IP
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
+    - name: TCP_BPF_SYN_MAC
+      version: v5.10
+      commit: 267cf9fa43d1c9d525d5d818a8651f2900e3aa9e
+    - name: BPF_LOAD_HDR_OPT_TCP_SYN
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
+    - name: BPF_WRITE_HDR_TCP_CURRENT_MSS
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
+    - name: BPF_WRITE_HDR_TCP_SYNACK_COOKIE
+      version: v5.10
+      commit: 0813a841566f0962a5551be7749b43c45f0022a0
