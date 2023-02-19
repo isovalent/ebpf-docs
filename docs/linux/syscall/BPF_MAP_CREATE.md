@@ -108,13 +108,17 @@ It has the following meanings per map type:
 
 ### `BPF_F_NO_PREALLOC`
 
+<!-- [FEATURE_TAG](BPF_F_NO_PREALLOC) -->
 [:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/6c90598174322b8888029e40dd84a4eb01f56afe)
+<!-- [/FEATURE_TAG] -->
 
 <!-- TODO list map types with support and link to specific pages -->
 
 ### `BPF_F_NO_COMMON_LRU`
 
+<!-- [FEATURE_TAG](BPF_F_NO_COMMON_LRU) -->
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/29ba732acbeece1e34c68483d1ec1f3720fa1bb3)
+<!-- [/FEATURE_TAG] -->
 
 By default, LRU maps have a single LRU list (even per-CPU LRU maps). When set, the an LRU map will use a percpu LRU list
 which can scale and perform better.
@@ -124,14 +128,18 @@ which can scale and perform better.
 
 ### `BPF_F_NUMA_NODE`
 
+<!-- [FEATURE_TAG](BPF_F_NUMA_NODE) -->
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/96eabe7a40aa17e613cf3db2c742ee8b1fc764d0)
+<!-- [/FEATURE_TAG] -->
 
 When set, the [`numa_node`](#numa_node) attribute is respected during map creation.
 
 
 ### `BPF_F_RDONLY`
 
+<!-- [FEATURE_TAG](BPF_F_RDONLY) -->
 [:octicons-tag-24: v4.15](https://github.com/torvalds/linux/commit/6e71b04a82248ccf13a94b85cbc674a9fefe53f5)
+<!-- [/FEATURE_TAG] -->
 
 Setting this flag will make it so the map can only be read via the [syscall](../syscall/index.md) interface, but not written to.
 
@@ -139,7 +147,9 @@ This flag is mutually exclusive with `BPF_F_WRONLY`, one of them can be used, no
 
 ### `BPF_F_WRONLY`
 
+<!-- [FEATURE_TAG](BPF_F_WRONLY) -->
 [:octicons-tag-24: v4.15](https://github.com/torvalds/linux/commit/6e71b04a82248ccf13a94b85cbc674a9fefe53f5)
+<!-- [/FEATURE_TAG] -->
 
 Setting this flag will make it so the map can only be written to via the [syscall](../syscall/index.md) interface, but not read from.
 
@@ -147,7 +157,9 @@ This flag is mutually exclusive with `BPF_F_RDONLY`, one of them can be used, no
 
 ### `BPF_F_STACK_BUILD_ID`
 
+<!-- [FEATURE_TAG](BPF_F_STACK_BUILD_ID) -->
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/615755a77b2461ed78dfafb8a6649456201949c7)
+<!-- [/FEATURE_TAG] -->
 
 By default, `BPF_MAP_TYPE_STACK_TRACE` maps store address for each entry in the call trace. To map these addresses to user space files, it is necessary to maintain the mapping from these virtual address to symbols in the binary.
 
@@ -157,7 +169,9 @@ For more details, check the [stack trace map](../map-type/BPF_MAP_TYPE_STACK_TRA
 
 ### `BPF_F_ZERO_SEED`
 
+<!-- [FEATURE_TAG](BPF_F_ZERO_SEED) -->
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/96b3b6c9091d23289721350e32c63cc8749686be)
+<!-- [/FEATURE_TAG] -->
 
 This flag can be used in the following map types:
 
@@ -169,7 +183,9 @@ This flag can be used in the following map types:
 
 ### `BPF_F_RDONLY_PROG`
 
+<!-- [FEATURE_TAG](BPF_F_RDONLY_PROG) -->
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/591fe9888d7809d9ee5c828020b6c6ae27c37229)
+<!-- [/FEATURE_TAG] -->
 
 Setting this flag will make it so the map can only be read via [helper functions](../helper-function/index.md), but not written to.
 
@@ -177,7 +193,9 @@ This flag is mutually exclusive with `BPF_F_WRONLY_PROG`, one of them can be use
 
 ### `BPF_F_WRONLY_PROG`
 
+<!-- [FEATURE_TAG](BPF_F_WRONLY_PROG) -->
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/591fe9888d7809d9ee5c828020b6c6ae27c37229)
+<!-- [/FEATURE_TAG] -->
 
 Setting this flag will make it so the map can only be written to via [helper functions](../helper-function/index.md), but not read from.
 
@@ -185,13 +203,17 @@ This flag is mutually exclusive with `BPF_F_RDONLY_PROG`, one of them can be use
 
 ### `BPF_F_CLONE`
 
+<!-- [FEATURE_TAG](BPF_F_CLONE) -->
 [:octicons-tag-24: v5.4](https://github.com/torvalds/linux/commit/8f51dfc73bf181f2304e1498f55d5f452e060cbe)
+<!-- [/FEATURE_TAG] -->
 
 This flag specifically applies to `BPF_MAP_TYPE_SK_STORAGE` maps. Sockets can be cloned. Setting this flag on the socket storage allows it to be cloned along with the socket itself when this happens. By default the storage is not cloned and the socket storage on the cloned socket will stay empty.
 
 ### `BPF_F_MMAPABLE`
 
+<!-- [FEATURE_TAG](BPF_F_MMAPABLE) -->
 [:octicons-tag-24: v5.5](https://github.com/torvalds/linux/commit/fc9702273e2edb90400a34b3be76f7b08fa3344b)
+<!-- [/FEATURE_TAG] -->
 
 Setting this flag on a `BPF_MAP_TYPE_ARRAY` will allow userspace programs to [mmap](https://man7.org/linux/man-pages/man2/mmap.2.html) the array values into the userspace process, effectively making a shared memory region between eBPF programs and a userspace program.
 
@@ -201,13 +223,17 @@ Using this flag is only supported on `BPF_MAP_TYPE_ARRAY` maps, for more details
 
 ### `BPF_F_PRESERVE_ELEMS`
 
+<!-- [FEATURE_TAG](BPF_F_PRESERVE_ELEMS) -->
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/792caccc4526bb489e054f9ab61d7c024b15dea2)
+<!-- [/FEATURE_TAG] -->
 
 Maps of type `BPF_MAP_TYPE_PERF_EVENT_ARRAY` by default will clear all unread perf events when the original map file descriptor is closed, even if the map still exists. Setting this flag will make it so any pending elements will stay until explicitly removed or the map is freed. This makes sharing the perf event array between userspace programs easier.
 
 ### `BPF_F_INNER_MAP`
 
+<!-- [FEATURE_TAG](BPF_F_INNER_MAP) -->
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/4a8f87e60f6db40e640f1db555d063b2c4dea5f1)
+<!-- [/FEATURE_TAG] -->
 
 [Map-in-Map](../map-type/index.md#map-in-map) maps normally require that all inner maps have the same [`max_entries`](#max_entries) value and that this value matches the `max_entries` of the map specified by [`inner_map_fd`](#inner_map_fd). Setting this flag on the inner map value when loading will allow you to assign that map to the outer map even if it has a different `max_entries` value. This is at the cost of a slight hit to performance during lookups.
 
