@@ -1,4 +1,5 @@
 ---
+title: Helper functions
 hide: toc
 ---
 # Helper functions

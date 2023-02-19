@@ -1,3 +1,7 @@
+---
+title: Syscall commands
+hide: toc
+---
 # Syscall commands
 
 ## Object creation commands

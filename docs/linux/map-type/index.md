@@ -1,3 +1,8 @@
+---
+title: Map types (Linux)
+hide: toc
+---
+
 # Map types (Linux)
 
 ## Index of map types

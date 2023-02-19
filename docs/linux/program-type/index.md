@@ -1,3 +1,7 @@
+---
+title: Program types (Linux)
+hide: toc
+---
 # Program types (Linux)
 
 eBPF programs can be used for large and ever growing variety of different purposes. Different types of eBPF programs exist to accommodate these different use-cases. The Linux kernel may restrict or allow certain features depending on the program type, not all types of programs can do the same things because of where they are executed in the kernel. The verifier will enforce such restrictions.

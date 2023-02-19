@@ -1,3 +1,6 @@
+---
+title: eBPF on Linux
+---
 # eBPF on Linux
 
 <!-- TODO(dylandreimerink): linux is the first platform but not the only one -->
