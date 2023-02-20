@@ -4,7 +4,7 @@
 [:octicons-tag-24: v3.19](https://github.com/torvalds/linux/commit/ddd872bc3098f9d9abe1680a6b2013e59e3337f7)
 <!-- [/FEATURE_TAG] -->
 
-Socket filter programs can be added to network sockets and are designed to filter or modify packets received by
+Socket filter programs can hook into network sockets and are designed to filter or modify packets received by
 that socket (the program isn't called for egress/outgoing packets). 
 
 A noticeable use-case for this program type is [tcpdump](https://www.tcpdump.org/) which uses a [raw](https://man7.org/linux/man-pages/man7/raw.7.html) sockets in combination with a socket filter generated from the filter query to efficiently filter packets and only pay the kernel-userspace barrier cost for packets of interest.

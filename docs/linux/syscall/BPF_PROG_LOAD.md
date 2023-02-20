@@ -116,8 +116,8 @@ The expected attach type is known to be important in the following cases:
 * For `BPF_PROG_TYPE_CGROUP_SOCK_ADDR` programs the verifier restricts valid return values depending on attach type
 * For `BPF_PROG_TYPE_CGROUP_SKB` programs the verifier restricts valid return values depending on attach type
 * For `BPF_PROG_TYPE_CGROUP_SOCKOPT` programs the attach type determines accessability for certain context fields and helper functions.
-* Only `BPF_PROG_TYPE_XDP` programs with `BPF_XDP_CPUMAP` attach type can use `BPF_MAP_TYPE_CPUMAP` maps
-* Only `BPF_PROG_TYPE_XDP` programs with `BPF_XDP_DEVMAP` attach type can use `BPF_MAP_TYPE_DEVMAP` maps
+* Only `BPF_PROG_TYPE_XDP` programs with `BPF_XDP_CPUMAP` attach type can be added to the values of `BPF_MAP_TYPE_CPUMAP` maps
+* Only `BPF_PROG_TYPE_XDP` programs with `BPF_XDP_DEVMAP` attach type can be added to the values of `BPF_MAP_TYPE_DEVMAP` maps
 
 !!! note
     For `BPF_PROG_TYPE_STRUCT_OPS` program types the `expected_attach_type` doesn't contain a constant or enum value but rater the member index of the [BTF](../../concepts/btf.md) struct specified by `attach_btf_id` which is to be replaced by this eBPF program
@@ -286,4 +286,4 @@ If `BPF_F_SLEEPABLE` is used in `BPF_PROG_LOAD` command, the verifier will restr
 
 This flag notifies the kernel that the XDP program supports XDP fragments. If set, the XDP program may be called with a context that doesn't include the full packet in a single linear piece of memory, which breaks assumptions most XDP programs have, hence the flag.
 
-"XDP fragment aware" programs can detect this by comparing the length between the `data` and `data_end` pointer and the output of [`bpf_xdp_get_buff_len`](../helper-function/bpf_xdp_get_buff_len.md). If the XDP program needs to work with data beyond the linear portion it should use the [`bpf_xdp_load_bytes`](../helper-function/bpf_xdp_load_bytes.md) and [`bpf_xdp_store_bytes`](../helper-function/bpf_xdp_store_bytes.md) helpers.
+For more details, check out the [XDP program type page](../program-type/BPF_PROG_TYPE_XDP.md#xdp-fragments)
