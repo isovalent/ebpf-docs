@@ -115,7 +115,7 @@ These helpers are related to `BPF_MAP_TYPE_USER_RINGBUF` maps.
 
 These helpers are used in probing and tracing functions like kprobes, tracepoints and uprobes.
 
-* bpf_get_attach_cookie
+* [bpf_get_attach_cookie](bpf_get_attach_cookie.md)
 
 ### Memory helpers
 
