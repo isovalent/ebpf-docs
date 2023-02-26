@@ -6,7 +6,7 @@ hide: toc
 
 eBPF programs can be used for large and ever growing variety of different purposes. Different types of eBPF programs exist to accommodate these different use-cases. The Linux kernel may restrict or allow certain features depending on the program type, not all types of programs can do the same things because of where they are executed in the kernel. The verifier will enforce such restrictions.
 
-## Network programs types
+## Network program types
 
 These program types are triggered by network events
 
@@ -21,7 +21,7 @@ These program types are triggered by network events
 * BPF_PROG_TYPE_SK_REUSEPORT
 * BPF_PROG_TYPE_FLOW_DISSECTOR
 
-### Light weight tunnel programs types
+### Light weight tunnel program types
 
 These program types are used to implement custom light weight tunneling protocols
 
@@ -45,7 +45,7 @@ These program types are triggered by events of cGroups to which the program is a
 
 These program types are triggered by tracing events from the kernel or userspace
 
-* BPF_PROG_TYPE_KPROBE
+* [BPF_PROG_TYPE_KPROBE](BPF_PROG_TYPE_KPROBE.md)
 * BPF_PROG_TYPE_TRACEPOINT
 * BPF_PROG_TYPE_PERF_EVENT
 * BPF_PROG_TYPE_RAW_TRACEPOINT

@@ -252,7 +252,7 @@ programs:
   - group: sk_filter
 
   # `kprobe_prog_func_proto` in `kernel/tracing/bpf_trace.c`
-  BPF_PROG_TYPE_KRPOBE:
+  BPF_PROG_TYPE_KPROBE:
   - name: bpf_perf_event_output
   - name: bpf_get_stackid
   - name: bpf_get_stack
