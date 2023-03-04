@@ -316,6 +316,9 @@
     - name: BPF_TRACE_KPROBE_MULTI
       version: v5.18
       commit: 0dcac272540613d41c05e89679e4ddb978b612f1
+    - name: BPF_LSM_CGROUP
+      version: v6.0
+      commit: 69fd337a975c7e690dfe49d9cb4fe5ba1e6db44e
 - name: syscall_commands
   features:
     - name: BPF_MAP_CREATE
