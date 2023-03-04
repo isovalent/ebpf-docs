@@ -7,7 +7,9 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Get bpf_cookie value provided (optionally) during the program attachment. It might be different for each individual attachment, even if BPF program itself is the same.
+Get bpf_cookie value provided (optionally) during the program
+attachment. It might be different for each individual
+attachment, even if BPF program itself is the same.
 Expects BPF program context `ctx` as a first argument.
 
 Supported for the following program types:
