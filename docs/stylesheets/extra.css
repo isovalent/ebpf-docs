@@ -1,0 +1,34 @@
+/***
+ * The following changes increase the size of the navigation sidebar to accommodate the nesting and size
+ * of our navigation items better. All rem values are linked and should be adjusted up and down together
+ * with the same relative offsets for best result.
+ ***/
+
+.md-grid {
+    /* was 61rem  */
+    max-width: 70rem;
+}
+
+.md-sidebar--primary {
+    /* was 12.1rem */
+    width: 16.1rem;
+}
+
+@supports selector(::-webkit-scrollbar) {
+    [dir=ltr] .md-sidebar__inner {
+        /* was 11.5rem */
+        padding-right: calc(100% - 16.5rem);
+    }
+}
+
+@media screen and (max-width: 76.1875em) {
+    [dir=ltr] .md-sidebar--primary {
+        /* was 12.1rem */
+        left: -16.1rem
+    }
+
+    [data-md-toggle=drawer]:checked~.md-container .md-sidebar--primary {
+        /* was 11.1rem */
+        transform: translateX(16.1rem);
+    }
+}

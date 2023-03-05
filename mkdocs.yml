@@ -47,3 +47,6 @@ plugins:
   - literate-nav:
       nav-file: SUMMARY.md
       tab_length: 2
+
+extra_css:
+  - stylesheets/extra.css
