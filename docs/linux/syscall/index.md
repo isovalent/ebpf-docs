@@ -43,8 +43,8 @@ Commands related to BPF programs.
 
 * BPF_PROG_ATTACH
 * BPF_PROG_DETACH
-* BPF_PROG_TEST_RUN
-* BPF_PROG_RUN
+* [BPF_PROG_TEST_RUN](BPF_PROG_TEST_RUN.md)
+* [BPF_PROG_RUN](BPF_PROG_TEST_RUN.md)
 * BPF_PROG_BIND_MAP
 
 ## Object discovery commands
