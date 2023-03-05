@@ -90,4 +90,12 @@ This helper call can be used with the following map types:
 
 ### Example
 
-<!-- TODO add C / Rust example -->
+```c
+int key, value;
+key = 1;
+value = bpf_map_lookup_elem(&my_map, &key);
+if (value)
+	bpf_printk("Value read from the map: '%d'\n", value);
+else
+	bpf_printk("Failed to read value from the map\n");
+```

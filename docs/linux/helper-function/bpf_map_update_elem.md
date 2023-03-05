@@ -84,4 +84,15 @@ This helper call can be used with the following map types:
 
 ### Example
 
-<!-- TODO add C / Rust example -->
+```c
+int key, value, result;
+
+key = 1, value = 5678;
+
+result = bpf_map_update_elem(&my_map, &key, &value, BPF_NOEXIST);
+if (result == 0)
+	bpf_printk("Map updated with new element\n");
+else
+	bpf_printk("Failed to update map with new value: %d\n", result);
+```
+
