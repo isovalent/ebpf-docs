@@ -72,4 +72,4 @@ Commands related to links.
 
 ## Statistics commands
 
-* BPF_ENABLE_STATS
+* [BPF_ENABLE_STATS](BPF_ENABLE_STATS.md)
