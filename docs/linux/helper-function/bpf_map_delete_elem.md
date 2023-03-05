@@ -81,4 +81,12 @@ This helper call can be used with the following map types:
 
 ### Example
 
-<!-- TODO add C / Rust example -->
+```c
+int key, result;
+key = 1;
+result = bpf_map_delete_element(&my_map, &key);
+if (result == 0)
+	bpf_printk("Element deleted from the map\n");
+else
+	bpf_printk("Failed to delete element from the map: %d\n",result);
+```

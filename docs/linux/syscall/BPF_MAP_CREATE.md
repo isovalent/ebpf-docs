@@ -241,3 +241,16 @@ Maps of type `BPF_MAP_TYPE_PERF_EVENT_ARRAY` by default will clear all unread pe
 
 *[BTF]: BPF Type Format 
 *[FD]: File Descriptor
+
+## Example
+
+```c
+union bpf_attr my_map {
+    .map_type = BPF_MAP_TYPE_HASH,
+    .key_size = sizeof(int),
+    .value_size = sizeof(int),
+    .max_entries = 100,
+    .map_flags = BPF_F_NO_PREALLOC,
+};
+int fd = bpf(BPF_MAP_CREATE, &my_map, sizeof(my_map));
+```
