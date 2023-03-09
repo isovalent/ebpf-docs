@@ -1,54 +1,60 @@
-# Program type `BPF_PROG_TYPE_KPROBE`
+# Program type `BPF_PROG_TYPE_TRACEPOINT`
 
-<!-- [FEATURE_TAG](BPF_PROG_TYPE_KPROBE) -->
-[:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/2541517c32be2531e0da59dfd7efc1ce844644f5)
+<!-- [FEATURE_TAG](BPF_PROG_TYPE_TRACEPOINT) -->
+[:octicons-tag-24: v4.7](https://github.com/torvalds/linux/commit/98b5c2c65c2951772a8fc661f50d675e450e8bce)
 <!-- [/FEATURE_TAG] -->
 
-`BPF_PROG_TYPE_KPROBE` are eBPF programs that can attach to [kprobes](https://docs.kernel.org/trace/kprobes.html). KProbes are not a eBPF specific feature, but they do work very well together. Traditionally, one would have to write a custom kernel module which could be invoked from a kprobe or be content with just the trace log output. eBPF makes this process easier.
+`BPF_PROG_TYPE_TRACEPOINT` programs are eBPF programs that attach to pre-defined trace points in the linux kernel. These tracepoint are often placed in locations which are interesting or common locations to measure performance.
 
 ## Usage
 
-Probes come in 4 different flavors: `kprobe`, `kretprobe`, `uprobe`, and `uretprobe`. `kprobe` and `kretprobe` are used to probe the kernel, `uprobe` and `uretprobe` are used to probe userspace. The normal probes are invoked when the probed location is executed. The `ret` variants will execute once the function returns, allowing for the capture of the return value.
+Tracepoint programs can attach to trace events. These events are declared with the [`TRACE_EVENT`](https://elixir.bootlin.com/linux/v6.2.2/source/include/linux/tracepoint.h#L436) macro. Take for example the [`xdp_exception`](https://elixir.bootlin.com/linux/v6.2.2/source/include/trace/events/xdp.h#L28) trace event. With a combination of `TP_*` macros a function prototype for the tracepoint is defined, a structure which will be passed to any handlers and a conversion method for going from the arguments to the structure. 
 
-<!-- TODO explain ELF section conventions -->
+The `TRACE_EVENT` macro will make a tracepoint available via a function with the `trace_` prefix followed by the name. So `trace_xdp_exception` will fire the `xdp_exception` event, which can happen from any number of locations in the code. The attached eBPF program will be called for all invocations of the trace program.
 
-All of these probe types work with the kprobe program type, it is the attach method which determines how the program is executed.
-
-The return value of kprobes programs doesn't do anything.
+We can use the [tracefs](https://www.kernel.org/doc/Documentation/trace/ftrace.txt) to list all of these available trace events. For the sake of this page we will assume the tracefs is mounted at `/sys/kernel/tracing` (which is usual for most distros). The `/sys/kernel/tracing/events/` directory contains a number of yet more directories. The events are grouped by the first word in their name, so all `kvm_*` events reside in `/sys/kernel/tracing/events/kvm`. So `xdp_exception` is located in `/sys/kernel/tracing/events/xdp/xdp_exception`. We will refer to this directory as the "event directory".
 
 ## Context
 
-The context passed to kprobe programs is `struct pt_regs`. This structure is different for each CPU architecture since it contains a copy of the CPU registers at the time the kprobe was invoked.
+The context for a tracepoint program is a pointer to a structure, the type of which is different for each trace event. The event directory contains a pseudo-file called `format` so for `xdp_exception` that would be `/sys/kernel/tracing/events/xdp/xdp_exception/format`. We can read this file to get the layout of the struct type:
 
-It is common for kprobe programs to use the macros from libbpf's `bpf_tracing.h` header file which defines `PT_REGS_PARM1` ... `PT_REGS_PARM5` as well as a number of others. These macros will translate to the correct field in `struct pt_regs` depending on the current architecture. Communicating the architecture you are compiling the BPF program for is done by defining one of the `__TARGET_ARCH_*` values in your program or via the command line while compiling.
+`#!bash $ cat /sys/kernel/tracing/events/xdp/xdp_exception/format`
+```
+name: xdp_exception
+ID: 488
+format:
+	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
+	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
+	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
+	field:int common_pid;	offset:4;	size:4;	signed:1;
 
-The same header file also provides the `BPF_KPROBE(name, args...)` macro which allows program authors to define the function signatures in the same fashion as the functions they are tracing with type info and all. The macro will cast the correct argument numbers to the given argument names. For example:
+	field:int prog_id;	offset:8;	size:4;	signed:1;
+	field:u32 act;	offset:12;	size:4;	signed:0;
+	field:int ifindex;	offset:16;	size:4;	signed:1;
 
-```c
-SEC("kprobe/proc_sys_write")
-int BPF_KPROBE(my_kprobe_example,
-		   struct file* filp, const char* buf,
-		   size_t count, loff_t* ppos) {
-    ...
-}
+print fmt: "prog_id=%d action=%s ifindex=%d", REC->prog_id, __print_symbolic(REC->act, { 0, "ABORTED" }, { 1, "DROP" }, { 2, "PASS" }, { 3, "TX" }, { 4, "REDIRECT" }, { -1, ((void *)0) }), REC->ifindex
 ```
 
-Similar macros also exists for kprobes intended to attach to syscalls: `BPF_KSYSCALL(name, args...)` and kretprobes: `BPF_KRETPROBE(name, args...)`
+From this output we can reconstruct the context, which as C struct would look like:
+
+```c
+struct xdp_exception_ctx {
+    __u16 common_type;
+    __u8 flags;
+    __u8 common_preempt_count;
+    __s32 common_pid;
+
+    __s32 prog_int;
+    __u32 act;
+    __s32 ifindex;
+};
+```
 
 ## Attachment
 
-There are two methods of attaching probe programs with variations for uprobes. The "legacy" way involves the manual creation of a k{ret}probe or u{ret}probe event via the [DebugFS](https://www.kernel.org/doc/html/next/filesystems/debugfs.html) and then attaching a BPF program to that event via the `perf_event_open` syscall.
+There are three methods of attaching tracepoint programs, from oldest and least recommended to newest and most recommended, however, all methods have this first part in common. 
 
-The newer method uses BPF links to do both the probe event creation and attaching in one.
-
-### Legacy kprobe attaching
-
-First step is to create a kprobe or kretprobe trace event. To do so we can use the DebugFS, which we will assume is mounted at `/sys/kernel/debug` for the purposes of this document.
-
-Existing kprobe events can be listed by printing `/sys/kernel/debug/tracing/kprobe_events`. And we can create new events by writing to this pseudo-file. For example executing `echo 'p:myprobe do_sys_open' > /sys/kernel/debug/tracing/kprobe_events`
-will make a new kprobe (`p:`) called `myprobe` at the `do_sys_open` function in the kernel. For details on the full syntax, checkout [this link](https://docs.kernel.org/trace/kprobetrace.html). kretprobes are created by specifying a `r:` prefix.
-
-After the probe has been created, a new directory will appear in `/sys/kernel/debug/tracing/events/kprobes/` with the same name as we have given our probe, `/sys/kernel/debug/tracing/events/kprobes/myprobe` in this case. This directory contains a few pseudo-files, for us `id` is important. The contents of `/sys/kernel/debug/tracing/events/kprobes/myprobe/id` contains a unique identifier we will need in the next step.
+We start by looking up the event ID in the tracefs. Inside the event directory is located a pseudo-file called `id`, so for `xdp_exception` that would be `/sys/kernel/tracing/events/xdp/xdp_exception/id`. When reading the file a decimal number is returned.
 
 Next step is to open a new perf event using the [`perf_event_open`](https://man7.org/linux/man-pages/man2/perf_event_open.2.html) syscall:
 
@@ -56,7 +62,7 @@ Next step is to open a new perf event using the [`perf_event_open`](https://man7
 struct perf_event_attr attr = {
     .type = PERF_TYPE_TRACEPOINT,
     .size = sizeof(struct perf_event_attr),
-    .config = kprobe_id, /* The ID of your kprobe */
+    .config = event_id, /* The ID of your trace event */
     .sample_period = 1,
     .sample_type = PERF_SAMPLE_RAW,
     .wakeup_events = 1,
@@ -71,28 +77,31 @@ syscall(SYS_perf_event_open,
 );
 ```
 
-This syscall will return a file descriptor on success. The final step are two [`ioctl`](https://man7.org/linux/man-pages/man2/ioctl.2.html) syscalls to attach our BPF program to the kprobe event and to enable the kprobe.
+This syscall will return a file descriptor on success. 
+
+### ioctl method
+
+This is the oldest and least recommended method. After we have the perf event file descriptor we execute two [`ioctl`](https://man7.org/linux/man-pages/man2/ioctl.2.html) syscalls to attach our BPF program to the trace event and to enable the trace.
 
 `#!c ioctl(perf_event_fd, PERF_EVENT_IOC_SET_BPF, bpf_prog_fd);` to attach.
 
 `#!c ioctl(perf_event_fd, PERF_EVENT_IOC_ENABLE, 0);` to enable.
 
-The kprobe can be temporality disabled with the `PERF_EVENT_IOC_DISABLE` ioctl option. Otherwise the kprobe stays attached until the perf_event goes away due to the closing of the perf_event FD or the program exiting. The perf event holds a reference to the BPF program so it will stay loaded until no more kprobes reference it.
+The tracepoint can be temporality disabled with the `PERF_EVENT_IOC_DISABLE` ioctl option. Otherwise the tracepoint stays attached until the perf_event goes away due to the closing of the perf_event FD or the program exiting. The perf event holds a reference to the BPF program so it will stay loaded until no more tracepoint reference it.
 
-<!-- TODO uprobe variation -->
+### `perf_event_open` PMU
 
-### Link kprobe attaching
+<!-- TODO -->
 
-The more modern and preferred way of attaching is using the [link create command](../syscall/BPF_LINK_CREATE.md) of the BPF syscall.  
+### BPF link
 
-<!-- TODO First use PMU instead of DebugFS -->
-<!-- TODO then use Link instead of perf_event -->
+This is the newest and most recommended method of attaching tracepoint programs. 
 
-<!-- TODO upbrobe variation -->
+After we have gotten the perf event file descriptor we attach the program by making a bpf link via the [link create syscall command](../syscall/BPF_LINK_CREATE.md).
+
+We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREATE.md#bpf_perf_event) [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type), [`target_fd`](../syscall/BPF_LINK_CREATE.md#target_fd) set to the perf event fd, [`prog_fd`](../syscall/BPF_LINK_CREATE.md#prog_fd) to the file descriptor of the tracepoint program, and optionally a [`cookie`](../syscall/BPF_LINK_CREATE.md#cookie)
 
 ## Helper functions
-
-Not all helper functions are available in all program types. These are the helper calls available for socket filter programs:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [PROG_HELPER_FUNC_REF] -->
@@ -100,8 +109,6 @@ Not all helper functions are available in all program types. These are the helpe
     * [bpf_perf_event_output](../helper-function/bpf_perf_event_output.md)
     * [bpf_get_stackid](../helper-function/bpf_get_stackid.md)
     * [bpf_get_stack](../helper-function/bpf_get_stack.md)
-    * [bpf_override_return](../helper-function/bpf_override_return.md)
-    * [bpf_get_func_ip](../helper-function/bpf_get_func_ip.md)
     * [bpf_get_attach_cookie](../helper-function/bpf_get_attach_cookie.md)
     * [bpf_map_lookup_elem](../helper-function/bpf_map_lookup_elem.md)
     * [bpf_map_update_elem](../helper-function/bpf_map_update_elem.md)

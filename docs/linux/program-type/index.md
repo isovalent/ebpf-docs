@@ -46,7 +46,7 @@ These program types are triggered by events of cGroups to which the program is a
 These program types are triggered by tracing events from the kernel or userspace
 
 * [BPF_PROG_TYPE_KPROBE](BPF_PROG_TYPE_KPROBE.md)
-* BPF_PROG_TYPE_TRACEPOINT
+* [BPF_PROG_TYPE_TRACEPOINT](BPF_PROG_TYPE_TRACEPOINT.md)
 * BPF_PROG_TYPE_PERF_EVENT
 * BPF_PROG_TYPE_RAW_TRACEPOINT
 * BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
