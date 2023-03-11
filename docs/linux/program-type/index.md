@@ -11,7 +11,7 @@ eBPF programs can be used for large and ever growing variety of different purpos
 These program types are triggered by network events
 
 * [BPF_PROG_TYPE_SOCKET_FILTER](BPF_PROG_TYPE_SOCKET_FILTER.md)
-* BPF_PROG_TYPE_SCHED_CLS
+* [BPF_PROG_TYPE_SCHED_CLS](BPF_PROG_TYPE_SCHED_CLS.md)
 * BPF_PROG_TYPE_SCHED_ACT
 * [BPF_PROG_TYPE_XDP](BPF_PROG_TYPE_XDP.md)
 * [BPF_PROG_TYPE_SOCK_OPS](BPF_PROG_TYPE_SOCK_OPS.md)

@@ -72,19 +72,23 @@ This only effects egress traffic since ingress traffic is never queued.
 ### `ingress_ifindex`
 [:octicons-tag-24: v4.2](https://github.com/torvalds/linux/commit/37e82c2f974b72c9ab49c787ef7b5bb1aec12768)
 
-This field contains the interface index of the network devices this packet arrived on.
+This field contains the interface index of the network devices this packet arrived on. It may be `0` if a process on the host originated the packet.
 
 ### `ifindex`
 [:octicons-tag-24: v4.2](https://github.com/torvalds/linux/commit/37e82c2f974b72c9ab49c787ef7b5bb1aec12768)
 
-This field contains the interface index of the network devices the packet arrived on if this is an ingress packet or the device it will leave on if this is an egress packet.
+This field contains the interface index of the network device the packet is currently "on", so if a packet has been redirected to another device and a eBPF program is invoked on it again, this field should be updated to the new device.
 
-On ingress packets `ingress_ifindex` and `ifindex` should be the same.
+On egress this will be the device picked for sending the packet.
 
 ### `tc_index`
 [:octicons-tag-24: v4.2](https://github.com/torvalds/linux/commit/d691f9e8d4405c334aa10d556e73c8bf44cb0e01)
 
-<!-- TODO -->
+This field is used to carry Type of Service (TOS) information. This field is populated by the `dsmark` qdisc and can subsequently be used with [`tcindex`](https://man7.org/linux/man-pages/man8/tc-tcindex.8.html) filters to classify packets based on their TOS value.
+
+The `dsmark` uses the differentiated services (DS) fields in IPv4 (aka DSCP) and IPv6 (aka traffic class) headers.
+
+[`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md) programs can also modify this value to implement a custom TOS value extraction from packets.
 
 ### `cb`
 [:octicons-tag-24: v4.2](https://github.com/torvalds/linux/commit/d691f9e8d4405c334aa10d556e73c8bf44cb0e01)
@@ -99,7 +103,7 @@ This field contains the calculated from the flow information of the packet. The 
 ### `tc_classid`
 [:octicons-tag-24: v4.4](https://github.com/torvalds/linux/commit/045efa82ff563cd4e656ca1c2e354fa5bf6bbda4)
 
-<!-- TODO -->
+This field can be used by [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md) in direct action mode to set the class id. This value is only useful if the program returns a `TC_ACT_OK` and the qdisc has classes.
 
 ### `data`
 [:octicons-tag-24: v4.4](https://github.com/torvalds/linux/commit/969bf05eb3cedd5a8d4b7c346a85c2ede87a6d6d)
@@ -169,7 +173,10 @@ This field is only accessible from within `BPF_PROG_TYPE_FLOW_DISSECTOR` program
 ### `tstamp`
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/f11216b24219ab26d8d159fbfa12dff886b16e32)
 
-<!-- TODO -->
+This field indicates the time when this packet should be transmitted in nanoseconds since boot. [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md) programs can set this time to some time in the future to add delay to packets for the purposes of bandwidth limiting or simulating latency. Setting this value only works on egress if the `fq` (Fair Queue) qdisc is used.
+
+!!! note
+    The `fq` qdisc has a "drop horizon" if packets are set to transmit to far into the future they will be dropped to avoid queueing to many packets.
 
 ### `wire_len`
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/e3da08d057002f9d0831949d51666c3e15dc6b29)
