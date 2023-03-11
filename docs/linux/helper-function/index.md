@@ -35,9 +35,9 @@ These helpers are used with `BPF_MAP_TYPE_PERF_EVENT_ARRAY` maps.
 
 ### Tail call helpers
 
-These helpers are used with `BPF_MAP_TYPE_PROG_ARRAY` maps.
+These helpers are used with [`BPF_MAP_TYPE_PROG_ARRAY`](../map-type/BPF_MAP_TYPE_PROG_ARRAY.md) maps.
 
-* bpf_tail_call
+* [bpf_tail_call](bpf_tail_call.md)
 
 ### Timer helpers
 

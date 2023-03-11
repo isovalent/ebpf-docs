@@ -93,6 +93,10 @@ Setting this flag will make it so the map can only be written to via [helper fun
 
 For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#bpf_f_wronly_prog).
 
+### `BPF_F_INNER_MAP`
+
+<!-- TODO -->
+
 ## Global data
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/d8eca5bbb2be9bc7546f9e733786fa2f1a594c67)
 
