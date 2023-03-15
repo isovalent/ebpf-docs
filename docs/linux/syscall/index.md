@@ -35,8 +35,8 @@ Commands related to BPF maps.
 
 Commands related to the pinning of BPF objects.
 
-* BPF_OBJ_PIN
-* BPF_OBJ_GET
+* [BPF_OBJ_PIN](BPF_OBJ_PIN.md)
+* [BPF_OBJ_GET](BPF_OBJ_GET.md)
 
 ## Program commands
 
