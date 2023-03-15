@@ -1,4 +1,4 @@
-# Helper call `bpf_spin_unlock`
+# Helper function `bpf_spin_unlock`
 
 <!-- [FEATURE_TAG](bpf_spin_unlock) -->
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/d83525ca62cf8ebe3271d14c36fb900c294274a2)

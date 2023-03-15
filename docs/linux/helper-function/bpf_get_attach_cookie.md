@@ -1,4 +1,4 @@
-# Helper call `bpf_get_attach_cookie`
+# Helper function `bpf_get_attach_cookie`
 
 <!-- [FEATURE_TAG](bpf_get_attach_cookie) -->
 [:octicons-tag-24: v5.15](https://github.com/torvalds/linux/commit/82e6b1eee6a8875ef4eacfd60711cce6965c6b04)

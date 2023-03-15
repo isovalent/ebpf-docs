@@ -1,4 +1,4 @@
-# Helper call `bpf_for_each_map_elem`
+# Helper function `bpf_for_each_map_elem`
 
 <!-- [FEATURE_TAG](bpf_for_each_map_elem) -->
 [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/69c087ba6225b574afb6e505b72cb75242a3d844)

@@ -1,4 +1,4 @@
-# Helper call `bpf_tail_call`
+# Helper function `bpf_tail_call`
 
 <!-- [FEATURE_TAG](bpf_tail_call) -->
 [:octicons-tag-24: v4.2](https://github.com/torvalds/linux/commit/04fd61ab36ec065e194ab5e74ae34a5240d992bb)

@@ -1,4 +1,4 @@
-# Helper call `bpf_map_lookup_percpu_elem`
+# Helper function `bpf_map_lookup_percpu_elem`
 
 <!-- [FEATURE_TAG](bpf_map_lookup_percpu_elem) -->
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/07343110b293456d30393e89b86c4dee1ac051c8)
