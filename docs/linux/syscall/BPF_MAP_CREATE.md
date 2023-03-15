@@ -112,6 +112,10 @@ It has the following meanings per map type:
 [:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/6c90598174322b8888029e40dd84a4eb01f56afe)
 <!-- [/FEATURE_TAG] -->
 
+Before kernel version v4.6, [`BPF_MAP_TYPE_HASH`](../map-type/BPF_MAP_TYPE_HASH.md) and [`BPF_MAP_TYPE_PERCPU_HASH`](../map-type/BPF_MAP_TYPE_PERCPU_HASH.md) hash maps were lazily allocated. To improve performance, the default has been switched to pre-allocation of such map types. However, this means that for large `max_entries` values a lot of unused memory is kept in reserve. Setting this flag will not pre-allocate these maps.
+
+Some map types require the loader to set this flag when creating maps to explicitly make clear that memory for such map types is always lazily allocated (also to guarantee stable behavior in case pre-allocation for those maps is ever added).
+
 <!-- TODO list map types with support and link to specific pages -->
 
 ### `BPF_F_NO_COMMON_LRU`
