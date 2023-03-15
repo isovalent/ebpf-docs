@@ -26,13 +26,14 @@ These helpers can be used on a lot of different maps, especially the generic map
   
 ### Perf event array helpers
 
-These helpers are used with `BPF_MAP_TYPE_PERF_EVENT_ARRAY` maps.
+These helpers are used with [`BPF_MAP_TYPE_PERF_EVENT_ARRAY`](../map-type/BPF_MAP_TYPE_PERF_EVENT_ARRAY.md) maps.
 
-* bpf_perf_event_read
-* bpf_perf_event_output
-* bpf_perf_event_read_value
-* bpf_perf_prog_read_value
-
+* [bpf_perf_event_read](bpf_perf_event_read.md)
+* [bpf_perf_event_output](bpf_perf_event_output.md)
+* [bpf_perf_event_read_value](bpf_perf_event_read_value.md)
+* [bpf_skb_output](bpf_skb_output.md)
+* [bpf_xdp_output](bpf_xdp_output.md)
+  
 ### Tail call helpers
 
 These helpers are used with [`BPF_MAP_TYPE_PROG_ARRAY`](../map-type/BPF_MAP_TYPE_PROG_ARRAY.md) maps.
@@ -153,7 +154,13 @@ These helpers return information specific to `BPF_PROG_TYPE_TRACING` programs.
 * bpf_get_func_ret
 * bpf_get_func_arg_cnt
 * bpf_sock_from_file
-  
+
+### Perf event helpers
+
+These helpers return information specific to `BPF_PROG_TYPE_PERF_EVENT` programs.
+
+* [bpf_perf_prog_read_value](bpf_perf_prog_read_value.md)
+
 ## Information helpers
 
 These helpers return information from the kernel which is otherwise not available to eBPF programs.
@@ -249,7 +256,6 @@ These helpers read from, write to, or modify socket buffers in some way.
 * bpf_skb_ecn_set_ce
 * bpf_skb_cgroup_classid
 * bpf_skb_set_tstamp
-* bpf_skb_output
 * bpf_set_hash
 * bpf_get_hash_recalc
 * bpf_set_hash_invalid
@@ -285,7 +291,6 @@ These helpers are specific to `BPF_PROG_TYPE_XDP` programs.
 * bpf_xdp_adjust_head
 * bpf_xdp_adjust_tail
 * bpf_xdp_adjust_meta
-* bpf_xdp_output
 * bpf_xdp_get_buff_len
 * bpf_xdp_load_bytes
 * bpf_xdp_store_bytes
