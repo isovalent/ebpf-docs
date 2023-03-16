@@ -44,10 +44,10 @@ These helpers are used with [`BPF_MAP_TYPE_PROG_ARRAY`](../map-type/BPF_MAP_TYPE
 
 These helpers are used to manage timers.
 
-* bpf_timer_init
-* bpf_timer_set_callback
-* bpf_timer_start
-* bpf_timer_cancel
+* [bpf_timer_init](bpf_timer_init.md)
+* [bpf_timer_set_callback](bpf_timer_set_callback.md)
+* [bpf_timer_start](bpf_timer_start.md)
+* [bpf_timer_cancel](bpf_timer_cancel.md)
 
 ### Queue and stack helpers
 
