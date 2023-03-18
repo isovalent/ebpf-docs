@@ -51,13 +51,11 @@ These helpers are used to manage timers.
 
 ### Queue and stack helpers
 
-These helpers are used with `BPF_MAP_TYPE_QUEUE` and `BPF_MAP_TYPE_STACK` maps.
+These helpers are used with [`BPF_MAP_TYPE_QUEUE`](../map-type/BPF_MAP_TYPE_QUEUE.md) and [`BPF_MAP_TYPE_STACK`](../map-type/BPF_MAP_TYPE_STACK.md) maps.
 
-* bpf_map_push_elem
-* bpf_map_pop_elem
-* bpf_map_peek_elem
-* bpf_msg_push_data
-* bpf_msg_pop_data
+* [bpf_map_push_elem](bpf_map_push_elem.md)
+* [bpf_map_pop_elem](bpf_map_pop_elem.md)
+* [bpf_map_peek_elem](bpf_map_peek_elem.md)
 
 ### Ringbuffer helper
 
@@ -302,6 +300,8 @@ These helpers are specific to `BPF_PROG_TYPE_SK_MSG` programs.
 * bpf_msg_apply_bytes
 * bpf_msg_cork_bytes
 * bpf_msg_pull_data
+* bpf_msg_push_data
+* bpf_msg_pop_data
 
 ### LWT helpers
 

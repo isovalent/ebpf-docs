@@ -31,9 +31,11 @@ The [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries) attribute indicate
 The following syscall commands work with this map type:
 
 * [`BPF_MAP_LOOKUP_ELEM`](../syscall/BPF_MAP_LOOKUP_ELEM.md)
+* [`BPF_MAP_LOOKUP_AND_DELETE_ELEM`](../syscall/BPF_MAP_LOOKUP_AND_DELETE_ELEM.md)
 * [`BPF_MAP_UPDATE_ELEM`](../syscall/BPF_MAP_UPDATE_ELEM.md)
 * [`BPF_MAP_GET_NEXT_KEY`](../syscall/BPF_MAP_GET_NEXT_KEY.md)
 * [`BPF_MAP_LOOKUP_BATCH`](../syscall/BPF_MAP_LOOKUP_BATCH.md)
+* [`BPF_MAP_LOOKUP_AND_DELETE_BATCH`](../syscall/BPF_MAP_LOOKUP_AND_DELETE_BATCH.md)
 
 ## Helper functions
 

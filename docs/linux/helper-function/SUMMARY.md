@@ -12,7 +12,8 @@
     * [bpf_perf_event_read](bpf_perf_event_read.md)
     * [bpf_perf_event_output](bpf_perf_event_output.md)
     * [bpf_perf_event_read_value](bpf_perf_event_read_value.md)
-    * [bpf_perf_prog_read_value](bpf_perf_prog_read_value.md)
+    * [bpf_skb_output](bpf_skb_output.md)
+    * [bpf_xdp_output](bpf_xdp_output.md)
   * Tail call helpers
     * [bpf_tail_call](bpf_tail_call.md)
   * Timer helpers
@@ -24,8 +25,6 @@
     * [bpf_map_push_elem](bpf_map_push_elem.md)
     * [bpf_map_pop_elem](bpf_map_pop_elem.md)
     * [bpf_map_peek_elem](bpf_map_peek_elem.md)
-    * [bpf_msg_push_data](bpf_msg_push_data.md)
-    * [bpf_msg_pop_data](bpf_msg_pop_data.md)
   * Ringbuffer helper
     * [bpf_ringbuf_output](bpf_ringbuf_output.md)
     * [bpf_ringbuf_reserve](bpf_ringbuf_reserve.md)
@@ -78,6 +77,8 @@
     * [bpf_get_func_ret](bpf_get_func_ret.md)
     * [bpf_get_func_arg_cnt](bpf_get_func_arg_cnt.md)
     * [bpf_sock_from_file](bpf_sock_from_file.md)
+  * Perf event program helpers
+    * [bpf_perf_prog_read_value](bpf_perf_prog_read_value.md)
 * Information helpers
   * Time helpers
     * [bpf_ktime_get_ns](bpf_ktime_get_ns.md)
@@ -143,7 +144,6 @@
     * [bpf_skb_ecn_set_ce](bpf_skb_ecn_set_ce.md)
     * [bpf_skb_cgroup_classid](bpf_skb_cgroup_classid.md)
     * [bpf_skb_set_tstamp](bpf_skb_set_tstamp.md)
-    * [bpf_skb_output](bpf_skb_output.md)
     * [bpf_set_hash](bpf_set_hash.md)
     * [bpf_get_hash_recalc](bpf_get_hash_recalc.md)
     * [bpf_set_hash_invalid](bpf_set_hash_invalid.md)
@@ -167,7 +167,6 @@
     * [bpf_xdp_adjust_head](bpf_xdp_adjust_head.md)
     * [bpf_xdp_adjust_tail](bpf_xdp_adjust_tail.md)
     * [bpf_xdp_adjust_meta](bpf_xdp_adjust_meta.md)
-    * [bpf_xdp_output](bpf_xdp_output.md)
     * [bpf_xdp_get_buff_len](bpf_xdp_get_buff_len.md)
     * [bpf_xdp_load_bytes](bpf_xdp_load_bytes.md)
     * [bpf_xdp_store_bytes](bpf_xdp_store_bytes.md)
@@ -175,6 +174,8 @@
     * [bpf_msg_apply_bytes](bpf_msg_apply_bytes.md)
     * [bpf_msg_cork_bytes](bpf_msg_cork_bytes.md)
     * [bpf_msg_pull_data](bpf_msg_pull_data.md)
+    * [bpf_msg_push_data](bpf_msg_push_data.md)
+    * [bpf_msg_pop_data](bpf_msg_pop_data.md)
   * LWT helpers
     * [bpf_lwt_push_encap](bpf_lwt_push_encap.md)
     * [bpf_lwt_seg6_store_bytes](bpf_lwt_seg6_store_bytes.md)
