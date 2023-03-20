@@ -43,12 +43,4 @@ Applications can transfer copies of these file descriptors to other processes vi
 
 <!-- TODO explain CAP_BPF and others -->
 
-## Tail calls
-
-## BPF-to-BPF calls
-
-## Subsystems
-
-### TC
-
 

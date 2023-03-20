@@ -1,5 +1,8 @@
 site_name: eBPF Docs
 
+repo_url: https://github.com/isovalent/ebpf-docs
+edit_uri: blob/master/docs/
+
 theme:
   name: material
   logo: assets/image/logo.png
@@ -7,6 +10,8 @@ theme:
   features:
     - navigation.indexes
     - navigation.top
+    - content.action.view
+    - content.action.edit
   font:
     text: Inter
     code: Inter
@@ -18,7 +23,6 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: yellow
@@ -26,6 +30,10 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil 
+    view: material/eye
 
 markdown_extensions:
   - admonition
