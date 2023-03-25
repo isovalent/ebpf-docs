@@ -10,3 +10,4 @@ Until kernel version v5.11 this mechanism was used for BPF resources, so you com
 
 After v5.11, cgroup-based memory accounting is used for BPF resources which eliminates the need for the rlimit raising/disabling
 
+https://hechao.li/2019/09/16/Lock-Lock-Whos-Locked-Kernel-Memory/
