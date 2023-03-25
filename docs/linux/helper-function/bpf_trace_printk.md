@@ -115,26 +115,6 @@ This helper call can be used in the following program types:
  * [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
-### Map types
-
-This helper call can be used with the following map types:
-
-<!-- DO NOT EDIT MANUALLY -->
-<!-- [HELPER_FUNC_MAP_REF] -->
- * [BPF_MAP_TYPE_ARRAY](../map-type/BPF_MAP_TYPE_ARRAY.md)
- * [BPF_MAP_TYPE_ARRAY_OF_MAPS](../map-type/BPF_MAP_TYPE_ARRAY_OF_MAPS.md)
- * [BPF_MAP_TYPE_HASH](../map-type/BPF_MAP_TYPE_HASH.md)
- * [BPF_MAP_TYPE_HASH_OF_MAPS](../map-type/BPF_MAP_TYPE_HASH_OF_MAPS.md)
- * [BPF_MAP_TYPE_LPM_TRIE](../map-type/BPF_MAP_TYPE_LPM_TRIE.md)
- * [BPF_MAP_TYPE_LRU_HASH](../map-type/BPF_MAP_TYPE_LRU_HASH.md)
- * [BPF_MAP_TYPE_LRU_PERCPU_HASH](../map-type/BPF_MAP_TYPE_LRU_PERCPU_HASH.md)
- * [BPF_MAP_TYPE_PERCPU_ARRAY](../map-type/BPF_MAP_TYPE_PERCPU_ARRAY.md)
- * [BPF_MAP_TYPE_PERCPU_HASH](../map-type/BPF_MAP_TYPE_PERCPU_HASH.md)
- * [BPF_MAP_TYPE_SOCKHASH](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
- * [BPF_MAP_TYPE_SOCKMAP](../map-type/BPF_MAP_TYPE_SOCKMAP.md)
- * [BPF_MAP_TYPE_XSKMAP](../map-type/BPF_MAP_TYPE_XSKMAP.md)
-<!-- [/HELPER_FUNC_MAP_REF] -->
-
 ### Example
 
 ```c
