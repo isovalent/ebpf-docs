@@ -70,7 +70,7 @@ This field specifies the file descriptor for the BPF program to be linked.
 This field specifies the file descriptor of the target you wish to attach the program to. The kind of file descriptor varies per program type.
 
 For cGroup programs (`BPF_PROG_TYPE_CGROUP_SKB`, `BPF_PROG_TYPE_CGROUP_SOCK`,
-`BPF_PROG_TYPE_CGROUP_SOCK_ADDR`,`BPF_PROG_TYPE_SOCK_OPS`,`BPF_PROG_TYPE_CGROUP_DEVICE`,`BPF_PROG_TYPE_CGROUP_SYSCTL`,`BPF_PROG_TYPE_CGROUP_SOCKOPT`) the file descriptor should be a cGroup directory in the cGroup FS, commonly mounted at `/sys/fs/cgroup`, for example `/sys/fs/cgroup/test.slice/`. Such an fd can be obtains by using the [`open`](https://man7.org/linux/man-pages/man2/open.2.html) syscall on the desired path.
+`BPF_PROG_TYPE_CGROUP_SOCK_ADDR`,`BPF_PROG_TYPE_SOCK_OPS`,`BPF_PROG_TYPE_CGROUP_DEVICE`,`BPF_PROG_TYPE_CGROUP_SYSCTL`,`BPF_PROG_TYPE_CGROUP_SOCKOPT`) the file descriptor should be a cGroup directory in the cGroup FS, commonly mounted at `/sys/fs/cgroup`, for example `/sys/fs/cgroup/test.slice/`. Such a fd can be obtained by using the [`open`](https://man7.org/linux/man-pages/man2/open.2.html) syscall on the desired path.
 
 For `BPF_PROG_TYPE_EXT` programs this should be a file descriptor to another BPF program.
 
@@ -79,6 +79,8 @@ For `BPF_PROG_TYPE_TRACING` programs with the attach type `BPF_LSM_CGROUP` it sh
 For `BPF_PROG_TYPE_TRACING` programs with the attach type `BPF_TRACE_FENTRY`, `BPF_TRACE_FEXIT` or `BPF_MODIFY_RETURN` this should be a file descriptor to an existing BPF program.
 
 For `BPF_PROG_TYPE_LIRC2` programs this should be a file descriptor to a infrared device in `/dev`.
+
+For `BPF_PROG_TYPE_FLOW_DISSECTOR` and `BPF_PROG_TYPE_SK_LOOKUP` programs this should be a file descriptor to a network namespace. Named network namespaces are represented as objects in `/var/run/netns`, a file descriptor to a namespace can be obtained [`open`](https://man7.org/linux/man-pages/man2/open.2.html) syscall on one of these objects (`/var/run/netns/{name}`).
 
 ### `target_ifindex`
 
