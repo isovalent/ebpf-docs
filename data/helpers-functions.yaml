@@ -866,10 +866,10 @@ maps:
   - name: bpf_map_lookup_elem
   - name: bpf_redirect_map
   BPF_MAP_TYPE_SOCKHASH:
-  - name: bpf_sk_redirect_map
-  - name: bpf_sock_map_update
+  - name: bpf_sk_redirect_hash
+  - name: bpf_sock_hash_update
   - name: bpf_map_delete_elem
-  - name: bpf_msg_redirect_map
+  - name: bpf_msg_redirect_hash
   - name: bpf_sk_select_reuseport
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem

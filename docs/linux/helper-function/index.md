@@ -70,6 +70,18 @@ These helpers are used with `BPF_MAP_TYPE_RINGBUF` maps.
 * bpf_ringbuf_submit_dynptr
 * bpf_ringbuf_discard_dynptr
 
+### Socket map helpers
+
+These helpers are used with `BPF_MAP_TYPE_SOCKMAP`
+
+* [bpf_sock_map_update](bpf_sock_map_update.md)
+
+### Socket hash helpers
+
+These helpers are used with `BPF_MAP_TYPE_SOCKHASH`
+
+* [bpf_sock_hash_update](bpf_sock_hash_update.md)
+
 ### Task storage helpers
 
 These helpers are used with `BPF_MAP_TYPE_TASK_STORAGE` maps.
@@ -275,13 +287,15 @@ These helpers redirect the flow of packets in some way.
 * bpf_clone_redirect
 * bpf_redirect
 * bpf_redirect_map
-* bpf_sk_redirect_map
-* bpf_msg_redirect_map
+* [bpf_sk_redirect_map](bpf_sk_redirect_map.md)
+* [bpf_msg_redirect_map](bpf_msg_redirect_map.md)
 * bpf_redirect_peer
-* bpf_sk_redirect_hash
-* bpf_msg_redirect_hash
+* [bpf_sk_redirect_hash](bpf_sk_redirect_hash.md)
+* [bpf_msg_redirect_hash](bpf_msg_redirect_hash.md)
 * bpf_redirect_neigh
-  
+* [bpf_sk_assign](bpf_sk_assign.md)
+* [bpf_sk_select_reuseport](bpf_sk_select_reuseport.md)
+
 ### XDP helpers
 
 These helpers are specific to `BPF_PROG_TYPE_XDP` programs.
@@ -327,21 +341,17 @@ These helpers are related to syn cookies.
 
 These helpers are related to socket.
 
-* bpf_sk_select_reuseport
 * bpf_sk_lookup_tcp
 * bpf_sk_lookup_udp
 * bpf_sk_release
 * bpf_sk_fullsock
-* bpf_sk_assign
 * bpf_sk_cgroup_id
 * bpf_sk_ancestor_cgroup_id
 * bpf_get_socket_cookie
 * bpf_get_socket_uid
 * bpf_setsockopt
-* bpf_sock_map_update
 * bpf_getsockopt
 * bpf_sock_ops_cb_flags_set
-* bpf_sock_hash_update
 * bpf_tcp_sock
 * bpf_get_listener_sock
 * bpf_tcp_send_ack

@@ -1,0 +1,47 @@
+# Helper function `bpf_sock_hash_update`
+
+<!-- [FEATURE_TAG](bpf_sock_hash_update) -->
+[:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/81110384441a59cff47430f20f049e69b98c17f4)
+<!-- [/FEATURE_TAG] -->
+
+Add an entry to, or update a `map` referencing sockets.
+
+## Definition
+
+**Returns**
+0 on success, or a negative error in case of failure.
+
+`#!c static long (*bpf_sock_hash_update)(struct bpf_sock_ops *skops, void *map, void *key, __u64 flags) = (void *) 70;`
+
+## Usage
+
+The `skops` is used as a new value for the entry associated to `key`. `flags` is one of:
+
+ * `BPF_NOEXIST` - The entry for `key` must not exist in the map.
+ * `BPF_EXIST` - The entry for `key` must already exist in the map.
+ * `BPF_ANY` - No condition on the existence of the entry for `key`.
+
+If the `map` has eBPF programs (parser and verdict), those will be inherited by the socket being added. If the socket is already attached to eBPF programs, this results in an error.
+
+### Program types
+
+This helper call can be used in the following program types:
+
+<!-- DO NOT EDIT MANUALLY -->
+<!-- [HELPER_FUNC_PROG_REF] -->
+ * [BPF_PROG_TYPE_SOCK_OPS](../program-type/BPF_PROG_TYPE_SOCK_OPS.md)
+<!-- [/HELPER_FUNC_PROG_REF] -->
+
+### Map types
+
+This helper call can be used with the following map types:
+
+<!-- DO NOT EDIT MANUALLY -->
+<!-- [HELPER_FUNC_MAP_REF] -->
+ * [BPF_MAP_TYPE_SOCKHASH](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
+<!-- [/HELPER_FUNC_MAP_REF] -->
+
+### Example
+
+```c
+```
