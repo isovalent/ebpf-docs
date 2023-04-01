@@ -9,6 +9,7 @@ XDP (Express Data Path) programs can attach to network devices and are called fo
 Notable use cases for XDP programs are for DDoS protection, Load Balancing, and high-throughput packet filtering. If loaded with native driver support, XDP programs will be called just after receiving the packet but before allocating memory for a socket buffer. This callsite makes XDP programs extremely performant, especially in use cases where traffic is forwarded or dropped a lot in comparison to other eBPF program types or techniques which run after the relatively expensive socket buffer allocation process has taken place, only to discard it.
 
 ## Usage
+
 XDP programs are typically put into an [ELF](../../elf.md) section prefixed with `xdp`. The XDP program is called by the kernel with a [xdp_md](../program-context/xdp_md.md) context. The return value indicates what action the kernel should take with the packet, the following values are permitted:
 
 * `XDP_ABORTED` - Signals that a unrecoverable error has taken place. Returning this action will cause the kernel to trigger the `xdp_exception` tracepoint and print a line to the trace log. This allows for debugging of such occurrences. It is also expensive, so should not be used without consideration in production.
@@ -149,7 +150,7 @@ Program authors can indicate to loaders like libbpf that a given program should 
 
 ## Helper functions
 
-Not all helper functions are available in all program types. These are the helper calls available for socket filter programs:
+Not all helper functions are available in all program types. These are the helper calls available for XDP programs:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [PROG_HELPER_FUNC_REF] -->
