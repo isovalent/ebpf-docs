@@ -72,13 +72,13 @@ These helpers are used with `BPF_MAP_TYPE_RINGBUF` maps.
 
 ### Socket map helpers
 
-These helpers are used with `BPF_MAP_TYPE_SOCKMAP`
+These helpers are used with [`BPF_MAP_TYPE_SOCKMAP`](../map-type/BPF_MAP_TYPE_SOCKMAP.md)
 
 * [bpf_sock_map_update](bpf_sock_map_update.md)
 
 ### Socket hash helpers
 
-These helpers are used with `BPF_MAP_TYPE_SOCKHASH`
+These helpers are used with [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
 
 * [bpf_sock_hash_update](bpf_sock_hash_update.md)
 

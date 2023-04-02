@@ -46,27 +46,74 @@ struct {
 The `__uint` and `__type` macros used in the above example are typically used to make the type definition easier to read.
 They are defined in [`tools/lib/bpf/bpf_helpers.h`](https://elixir.bootlin.com/linux/v6.2.2/source/tools/lib/bpf/bpf_helpers.h).
 
-```
+```c
 #define __uint(name, val) int (*name)[val]
 #define __type(name, val) typeof(val) *name
 #define __array(name, val) typeof(val) *name[]
 ```
 
-Valid fields:
+The `name` part of these macros refer to field names of the to be created structure. Not all names are recognized by libbpf and compatible libraries. However, the following are:
 
-* `type` - enum, one of `enum bpf_map_type` located in `include/uapi/linux/bpf.h`.
-* `max_entries` - 
-* `map_flags` -
-* `numa_node` -
-* `key_size` -
-* `key` -
-* `value_size` - 
-* `value` -
-* `values` -
-* `pinning` -
+* `type` (`__uint`) - enum, see the [map types](../map-type/index.md) index for all valid options.
+* `max_entries` (`__uint`) - int indicating the maximum amount of entries.
+* `map_flags` (`__uint`) - a bitfield of flags, see [flags section](../syscall/BPF_MAP_CREATE.md#flags) in map load syscall command for valid options. 
+* `numa_node` (`__uint`) - the ID of the NUMA node on which to place the map.
+* `key_size` (`__uint`) - the size of the key in bytes. This field is mutually exclusive with the `key` field.
+* `key` (`__type`) - the type of the key. This field is mutually exclusive with the `key_size` field.
+* `value_size` (`__uint`) - the size of the value in bytes. This field is mutually exclusive with the `value` and `values` fields.
+* `value` (`__type`) - the type of the value. This field is mutually exclusive with the `value` and `value_size` fields.
+* `values` (`__array`) - see [static values section](#static-values). This field is mutually exclusive with the `value` and `value_size` field.
+* `pinning` (`__uint`) - `LIBBPF_PIN_BY_NAME` or `LIBBPF_PIN_NONE` see [pinning page](pinning.md) for details.
+* `map_extra` (`__uint`) - Addition settings, currently only used by bloom filters which use the lowest 4 bits to indicate the amount of hashes used in the bloom filter.
 
-!!! note
-    With BTF style maps its possible to use either `key_size` or `key` as long as the structure defined in `key` has size information in the resulting eBPF object file's BTF.
+Typically, only the `type`, `key`/`key_size`, `value`/`values`/`value_size`, and `max_entries` fields are required.
+
+#### Static values
+
+The `values` map field has a syntax when used, it is the only field to use the `__array` macro and requires us to initialize our map constant with a value. Its purpose is to populate the contents of the map during loading without having to do so manually via a userspace application. This is especially handy for users who use `ip`, `tc`, or `bpftool` to load their programs.
+
+The `val` part of the `__array` parameter should contain a type describing the individual array elements. The values we would like to pre-populate should go into the value part of the struct initialization.
+
+The following examples shows how to pre-populate a map-in-map:
+
+```c
+struct inner_map {
+	__uint(type, BPF_MAP_TYPE_ARRAY);
+	__uint(max_entries, INNER_MAX_ENTRIES);
+	__type(key, __u32);
+	__type(value, __u32);
+} inner_map SEC(".maps");
+
+struct {
+	__uint(type, BPF_MAP_TYPE_ARRAY_OF_MAPS);
+	__uint(max_entries, MAX_ENTRIES);
+	__type(key, __u32);
+	__type(value, __u32);
+	__array(values, struct {
+		__uint(type, BPF_MAP_TYPE_ARRAY);
+		__uint(max_entries, INNER_MAX_ENTRIES);
+		__type(key, __u32);
+		__type(value, __u32);
+	});
+} m_array_of_maps SEC(".maps") = {
+	.values = { (void *)&inner_map, 0, 0, 0, 0, 0, 0, 0, 0 },
+};
+```
+
+Another common use is to pre-populate a tail-call map:
+
+```c
+struct {
+	__uint(type, BPF_MAP_TYPE_PROG_ARRAY);
+	__uint(max_entries, 2);
+	__uint(key_size, sizeof(__u32));
+	__array(values, int (void *));
+} prog_array_init SEC(".maps") = {
+	.values = {
+		[1] = (void *)&tailcall_1,
+	},
+};
+```
 
 ## Creating BPF Maps
 
@@ -80,34 +127,31 @@ LibBPF is such a library, it provide the `bpf_map_create` function to allow for 
 
 [`/tools/lib/bpf/bpf.h`](https://elixir.bootlin.com/linux/v6.2.2/source/tools/lib/bpf/bpf.h#L40)
 ```c
-LIBBPF_API int bpf_map_create(enum bpf_map_type map_type,                           
-│   │   │   │     const char *map_name,                                                                                                                                                                                                                        
-│   │   │   │     __u32 key_size,                                                                                                                                                                                                                              
-│   │   │   │     __u32 value_size,                                                                                                                                                                                                                            
-│   │   │   │     __u32 max_entries,                                                                                                                                                                                                                           
-│   │   │   │     const struct bpf_map_create_opts *opts);                                                                                                                                                                                                     
+LIBBPF_API int bpf_map_create(enum bpf_map_type map_type,
+			      const char *map_name,
+			      __u32 key_size,
+			      __u32 value_size,
+			      __u32 max_entries,
+			      const struct bpf_map_create_opts *opts);                                                                                                                                                                                                   
                                                                                     
-struct bpf_create_map_attr {                                                        
-│   const char *name;                                                                                                                                                                                                                                          
-│   enum bpf_map_type map_type;                                                                                                                                                                                                                                
-│   __u32 map_flags;                                                                                                                                                                                                                                           
-│   __u32 key_size;                                                                                                                                                                                                                                            
-│   __u32 value_size;                                                                                                                                                                                                                                          
-│   __u32 max_entries;                                                                                                                                                                                                                                         
-│   __u32 numa_node;                                                                                                                                                                                                                                           
-│   __u32 btf_fd;                                                                                                                                                                                                                                              
-│   __u32 btf_key_type_id;                                                                                                                                                                                                                                     
-│   __u32 btf_value_type_id;                                                                                                                                                                                                                                   
-│   __u32 map_ifindex;                                                                                                                                                                                                                                         
-│   union {                                                                                                                                                                                                                                                    
-│   │   __u32 inner_map_fd;                                                                                                                                                                                                                                    
-│   │   __u32 btf_vmlinux_value_type_id;                                                                                                                                                                                                                       
-│   };                                                                                                                                                                                                                                                         
-};  
+struct bpf_map_create_opts {
+	size_t sz; /* size of this struct for forward/backward compatibility */
+
+	__u32 btf_fd;
+	__u32 btf_key_type_id;
+	__u32 btf_value_type_id;
+	__u32 btf_vmlinux_value_type_id;
+
+	__u32 inner_map_fd;
+	__u32 map_flags;
+	__u64 map_extra;
+
+	__u32 numa_node;
+	__u32 map_ifindex;
+};
 ```
 
 The `bpf_map_create` function in `libbpf` can be used to create maps during runtime. 
-
 
 ## Using maps
 
@@ -132,140 +176,3 @@ Besides the single key versions, there are also batch variants of those syscall 
 Most map types support iterating over keys using the [`BPF_MAP_GET_NEXT_KEY`](../syscall/BPF_MAP_GET_NEXT_KEY.md) syscall command.
 
 Some map types like the [`BPF_MAP_TYPE_PERF_EVENT_ARRAY`](../map-type/BPF_MAP_TYPE_PERF_EVENT_ARRAY.md) require the usage of additional mechanisms like perf_event and ring buffers to read the actual data sent via the [`bpf_perf_event_output`](../helper-function/bpf_perf_event_output.md) helper from the kernel side.
-
-## BPF Virtual Filesystem
-When a program which creates an eBPF map exits its maps are removed from the kernel as well. 
-
-To prevent this you can "pin" a map to the eBPF virtual filesystem. 
-
-Two new syscalls exist to support this. 
-
-Default `bpf` file-system is located at `sys/fs/bpf`. 
-
-```
-# mount -t bpf /sys/fs/bpf /sys/fs/bpf
-```
-
-This directory can be organized as the user sees fit. Example: `sys/fs/bpf/shared/ips` can hold IP information maps.
-
-These maps can hold eBPF maps and other eBPF programs. They are referenced as file descriptors. 
-
-`BPF_PIN_FD` - command to pin an  eBPF map via `bpf` syscall.
-`BPF_OBJ_GET` - command to get a `fd` of a pin map.
-
-Helpers exist to abstract the syscalls:
-`tools/lib/bpf/bpf.h`
-```c
-LIBBPF_API int bpf_obj_pin(int fd, const char *pathname);                           
-LIBBPF_API int bpf_obj_get(const char *pathname);    
-```
-
-`libbpf` is used to load a eBPF object file with this signature:
-
-```c
-struct bpf_object *
-bpf_object__open_file(const char *path, const struct bpf_object_open_opts *opts)
-{
-```
-
-The option struct provides this option:
-
-```c
-(abbreviated)
-struct bpf_object_open_opts {
-	...
-	/* maps that set the 'pinning' attribute in their definition will have
-	 * their pin_path attribute set to a file in this directory, and be
-	 * auto-pinned to that path on load; defaults to "/sys/fs/bpf".
-	 */
-	const char *pin_root_path;
-```
-
-Alternatively you can overwrite this by defining a map value specifically. 
-
-## Example pinning program
-`Makefile`
-```
-all: loader printer 
-
-loader: loader.o
-	gcc -lbpf -g -o $@ loader.o
-
-loader.o: loader.c
-	gcc -g -c -o $@ loader.c
-	
-printer: printer.o
-	gcc -lbpf -g -o $@ printer.o
-
-printer.o: printer.c
-	gcc -g -c -o $@ printer.c
-
-```
-
-`loader.c`
-```c
-#include <stdio.h>
-#include <errno.h>
-#include <bpf/bpf.h>
-
-static const char * file_path = "/sys/fs/bpf/my_array";
-
-int main(int argc, char *argv[]) {
-    int key, value, fd, added, pinned;
-
-    fd = bpf_map_create(
-            BPF_MAP_TYPE_ARRAY, "my_array", sizeof(int), sizeof(int), 100, 0
-    );
-
-    if (fd < 0) {
-        printf("Failed to create map: %d (%s)\n", fd, strerror(errno));
-        return -1;
-    }
-
-    key = 1, value = 1;  
-    added = bpf_map_update_elem(fd, &key, &value, BPF_ANY);
-    if (added < 0) {
-        printf("Failed to update map: %d (%s) \n", added, strerror(errno));
-        return -1;
-    }
-
-    pinned = bpf_obj_pin(fd, file_path);
-    if (pinned < 0) {
-        printf("Failed to pin map: %d (%s) \n", pinned, strerror(errno));
-        return -1;
-    }
-
-    return 0;
-};
-```
-
-`printer.c`
-```c
-#include <stdio.h>
-#include <errno.h>
-#include <bpf/bpf.h>
-
-static const char *file_path = "/sys/fs/bpf/my_array";
-
-int main (int argc, char *argv[]) {
-    int fd, key, value, result;
-
-
-    fd = bpf_obj_get(file_path);
-    if (fd < 0) {
-        printf("Failed to fetch map: %d (%s)", fd, strerror(fd));
-        return -1;
-    }
-
-    key = 1;
-    result = bpf_map_lookup_elem(fd, &key, &value);
-    if (result < 0){
-        printf("Failed to fetch map: %d (%s)", result, strerror(fd));
-        return -1;
-    }
-
-    printf("Value read from the map: '%d'\n", value);
-    return 0;
-}
-```
-

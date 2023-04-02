@@ -33,6 +33,8 @@ eBPF maps are datastructures that live in the kernel. Both eBPF programs and use
 
 Examples of these maps are [`BPF_MAP_TYPE_ARRAY`](./map-type/BPF_MAP_TYPE_ARRAY.md) which is an array of arbitrary values or a [`BPF_MAP_TYPE_HASH`](./map-type/BPF_MAP_TYPE_HASH.md) which is a hash map with arbitrary key and value types. For more details check out the [map type overview](./map-type/index.md).
 
+For more details on how to use maps, see the [maps concept page](./concepts/maps.md).
+
 ## Objects
 
 eBPF programs and maps are BPF objects along with some others we didn't mention yet. All of these objects managed in roughly the same way. Such BPF objects are created by a loader which gets a file descriptor to that object. The file descriptor is used to interact with the object further, but it also is a reference that keeps the object "alive". Objects are free-ed as soon as there exist no more references to that object.

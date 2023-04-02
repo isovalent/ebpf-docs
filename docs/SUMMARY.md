@@ -1,6 +1,6 @@
 * [Home](index.md)
 * [Linux Reference](linux/index.md)
-  * [Concepts](linux/ebpf-concepts/index.md)
+  * [Concepts](linux/concepts/)
   * [Program types](linux/program-type/)
   * [Map types](linux/map-type/)
   * [Helper functions](linux/helper-function/)
