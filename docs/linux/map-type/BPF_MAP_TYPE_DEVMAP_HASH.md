@@ -4,7 +4,7 @@
 [:octicons-tag-24: v5.4](https://github.com/torvalds/linux/commit/6f9d451ab1a33728adb72d7ff66a7b374d665176)
 <!-- [/FEATURE_TAG] -->
 
-The device map is a specialized map type which holds references to network devices.
+The device hash map is a specialized map type which holds references to network devices.
 
 ## Usage
 
