@@ -39,12 +39,12 @@ These map types allow for the streaming of large amounts of data across the kern
 
 These map types facilitate the steering or redirection of packets, between network devices, logical CPUs, or sockets.
 
-  * BPF_MAP_TYPE_DEVMAP
+  * [BPF_MAP_TYPE_DEVMAP](BPF_MAP_TYPE_DEVMAP.md)
   * [BPF_MAP_TYPE_SOCKMAP](BPF_MAP_TYPE_SOCKMAP.md)
   * BPF_MAP_TYPE_CPUMAP
   * BPF_MAP_TYPE_XSKMAP
   * [BPF_MAP_TYPE_SOCKHASH](BPF_MAP_TYPE_SOCKHASH.md)
-  * BPF_MAP_TYPE_DEVMAP_HASH
+  * [BPF_MAP_TYPE_DEVMAP_HASH](BPF_MAP_TYPE_DEVMAP_HASH.md)
   * [BPF_MAP_TYPE_REUSEPORT_SOCKARRAY](BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md)
 
 ## Tail call map
