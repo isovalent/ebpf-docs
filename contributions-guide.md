@@ -14,5 +14,5 @@ These docs are meant for the community as a whole and we do not want to promote 
 
 The primary goal of the project is to document eBPF to such an extent that developers do not have to go the the eBPF kernel sources to find out how to use eBPF. This will inevitably include mentioning the APIs of loader projects and eBPF kernel side libraries, and showing examples. Having that said, we do not want to document these projects.
 
-The exception to this rule are tools and libraries which originate in the Linux kernel or are maintained by kernel developers alongside the kernel such as: `libbpf`, `bpftool` and `iproute2`.
+The exception to this rule are tools and libraries which originate in the Linux kernel or are maintained by kernel developers alongside the kernel such as: `libbpf`, `libxdp`, `bpftool` and `iproute2`.
 

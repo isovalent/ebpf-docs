@@ -15,6 +15,7 @@ This site aims to provide technical documentation for eBPF. If you are looking f
     * [Map types](./linux/map-type/index.md)
     * [Helper functions](./linux/helper-function/index.md)
     * [Syscall commands](./linux/syscall/index.md)
+* [FAQ](./faq.md)
 
 ## Contributions
 
