@@ -32,3 +32,10 @@
         transform: translateX(16.1rem);
     }
 }
+
+/* The following CSS is for additional styling of the content */
+
+img.image-bg-white {
+    background-color: white;
+    padding: 10px;
+}
