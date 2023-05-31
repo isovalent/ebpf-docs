@@ -9,12 +9,11 @@ The lookup map element helper call is used to read values from [maps](../index.m
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Perform a lookup in `map` for an entry associated to `key`.
+Perform a lookup in _map_ for an entry associated to _key_.
 
+### Returns
 
-**Returns**
-Map value associated to `key`, or `NULL` if no entry was
-found.
+Map value associated to _key_, or **NULL** if no entry was found.
 
 `#!c static void *(*bpf_map_lookup_elem)(void *map, const void *key) = (void *) 1;`
 <!-- [/HELPER_FUNC_DEF] -->

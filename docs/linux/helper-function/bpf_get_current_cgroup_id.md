@@ -7,13 +7,11 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Get the current cgroup id based on the cgroup within which
-the current task is running.
+Get the current cgroup id based on the cgroup within which the current task is running.
 
+### Returns
 
-**Returns**
-A 64-bit integer containing the current cgroup id based
-on the cgroup within which the current task is running.
+A 64-bit integer containing the current cgroup id based on the cgroup within which the current task is running.
 
 `#!c static __u64 (*bpf_get_current_cgroup_id)(void) = (void *) 80;`
 <!-- [/HELPER_FUNC_DEF] -->

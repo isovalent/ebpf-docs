@@ -7,22 +7,14 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Return id of cgroup v2 that is ancestor of the cgroup associated
-with the current task at the `ancestor_level`. The root cgroup
-is at `ancestor_level` zero and each step down the hierarchy
-increments the level. If `ancestor_level` == level of cgroup
-associated with the current task, then return value will be the
-same as that of `bpf_get_current_cgroup_id`\ ().
+Return id of cgroup v2 that is ancestor of the cgroup associated with the current task at the _ancestor_level_. The root cgroup is at _ancestor_level_ zero and each step down the hierarchy increments the level. If _ancestor_level_ == level of cgroup associated with the current task, then return value will be the same as that of **bpf_get_current_cgroup_id**().
 
-The helper is useful to implement policies based on cgroups
-that are upper in hierarchy than immediate cgroup associated
-with the current task.
+The helper is useful to implement policies based on cgroups that are upper in hierarchy than immediate cgroup associated with the current task.
 
-The format of returned id and helper limitations are same as in
-`bpf_get_current_cgroup_id`\ ().
+The format of returned id and helper limitations are same as in **bpf_get_current_cgroup_id**().
 
+### Returns
 
-**Returns**
 The id is returned or 0 in case the id could not be retrieved.
 
 `#!c static __u64 (*bpf_get_current_ancestor_cgroup_id)(int ancestor_level) = (void *) 123;`

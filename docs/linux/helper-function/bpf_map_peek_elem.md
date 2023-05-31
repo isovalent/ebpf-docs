@@ -7,10 +7,10 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Get an element from `map` without removing it.
+Get an element from _map_ without removing it.
 
+### Returns
 
-**Returns**
 0 on success, or a negative error in case of failure.
 
 `#!c static long (*bpf_map_peek_elem)(void *map, void *value) = (void *) 89;`

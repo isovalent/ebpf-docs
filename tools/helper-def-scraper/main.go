@@ -3,6 +3,7 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"io"
@@ -168,35 +169,183 @@ type helperDef struct {
 func renderHelperFuncDef(def helperDef) string {
 	var sb strings.Builder
 
-	lines := strings.Split(def.Description, "\n")
-	for i := 0; i < len(lines); i++ {
-		line := lines[i]
+	// sb.WriteString("<!-- src\n")
+	// sb.WriteString(def.Description)
+	// sb.WriteString("\n-->")
 
-		line = strings.Replace(line, "**", "`", -1)
-		line = strings.Replace(line, "*", "`", -1)
-
-		if strings.HasPrefix(line, " \t") {
-			sb.WriteString(strings.TrimSpace(line) + "\n")
-			continue
-		} else if strings.TrimSpace(line) == "" {
-			sb.WriteString("\n")
-			continue
-		}
-
-		// Ignore the header of the same name as the function.
-		if strings.TrimSpace(line) == def.Name {
-			// Skip the blank line following the first header
-			i++
-			continue
-		}
-
-		// Format header
-		sb.WriteString("\n**" + strings.TrimSpace(line) + "**\n")
-	}
-
+	sb.WriteString(manpageToMarkdown(def.Description))
+	sb.WriteString("\n")
 	sb.WriteString("`#!c ")
 	sb.WriteString(def.Definition)
 	sb.WriteString("`\n")
+
+	return sb.String()
+}
+
+func manpageToMarkdown(manpage string) string {
+	var sb strings.Builder
+	scan := bufio.NewScanner(strings.NewReader(manpage))
+
+	type block struct {
+		content []string
+		indent  int
+		code    bool
+		header  bool
+	}
+
+	titleSeen := false
+	var blocks []block
+	curBlock := block{
+		indent: 1,
+	}
+
+	for scan.Scan() {
+		line := scan.Text()
+
+		if !strings.HasPrefix(line, " \t") {
+			// Lines that start with a single space an no tab are headers
+			if strings.HasPrefix(line, " ") {
+				// We always skip the title and the next line
+				if !titleSeen {
+					titleSeen = true
+					scan.Scan()
+					continue
+				}
+
+				// Write a H3
+				if len(curBlock.content) > 0 {
+					blocks = append(blocks, curBlock)
+					curBlock = block{}
+				}
+
+				curBlock.header = true
+				curBlock.content = []string{line}
+
+				blocks = append(blocks, curBlock)
+				curBlock = block{
+					indent: 1,
+				}
+
+				continue
+			}
+
+			// Ignore blank lines
+			if line == "" {
+				blocks = append(blocks, curBlock)
+				curBlock = block{
+					indent: curBlock.indent,
+				}
+				continue
+			}
+
+			panic("unknown line format")
+		}
+
+		level := strings.Count(line, "\t")
+
+		if curBlock.indent != level {
+			if len(curBlock.content) > 0 {
+				blocks = append(blocks, curBlock)
+			}
+			curBlock = block{
+				indent:  level,
+				content: nil,
+			}
+		}
+
+		line = strings.TrimPrefix(line, " ")
+		line = strings.ReplaceAll(line, "\t", "")
+
+		if line == "::" {
+			curBlock.code = true
+			curBlock.indent++
+			scan.Scan()
+			continue
+		}
+
+		curBlock.content = append(curBlock.content, line)
+	}
+	if len(curBlock.content) > 0 {
+		blocks = append(blocks, curBlock)
+	}
+
+	for i, block := range blocks {
+		if i != 0 {
+			sb.WriteString("\n")
+		}
+
+		if block.code {
+			sb.WriteString("```\n")
+		}
+
+		if block.header {
+			sb.WriteString("###")
+		}
+
+		if !block.code && !block.header {
+			sb.WriteString(strings.Repeat("&nbsp;", (block.indent-1)*4))
+		}
+
+		for ii, line := range block.content {
+			var lb strings.Builder
+			isListItem := false
+			for i := 0; i < len(line); i++ {
+				// "* " at the beginning of the line, is a list
+				if i == 0 && line[i] == '*' && i+1 < len(line) && line[i+1] == ' ' {
+					lb.WriteByte(line[i])
+					lb.WriteByte(line[i+1])
+					i++
+					isListItem = true
+					continue
+				}
+
+				// "- " at the beginning of the line, is a list
+				if i == 0 && line[i] == '-' && i+1 < len(line) && line[i+1] == ' ' {
+					lb.WriteByte(line[i])
+					lb.WriteByte(line[i+1])
+					i++
+					isListItem = true
+					continue
+				}
+
+				// Cut escaped spaces
+				if line[i] == '\\' && i+1 < len(line) && line[i+1] == ' ' {
+					i++
+					continue
+				}
+
+				nextIsAsterisk := i+1 < len(line) && line[i+1] == '*'
+				prevIsAsterisk := i > 0 && line[i-1] == '*'
+
+				// Only replace single *, not **
+				if line[i] == '*' && (!nextIsAsterisk && !prevIsAsterisk) {
+					lb.WriteByte('_')
+					continue
+				}
+
+				lb.WriteByte(line[i])
+			}
+
+			sb.WriteString(lb.String())
+
+			if isListItem {
+				sb.WriteString("\n")
+				if ii+1 < len(block.content) {
+					sb.WriteString(strings.Repeat("&nbsp;", block.indent-1))
+				}
+			} else {
+				if ii+1 < len(block.content) {
+					sb.WriteString(" ")
+				}
+			}
+		}
+
+		sb.WriteString("\n")
+
+		if block.code {
+			sb.WriteString("```\n")
+		}
+	}
 
 	return sb.String()
 }

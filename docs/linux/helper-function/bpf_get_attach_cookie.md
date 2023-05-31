@@ -7,20 +7,18 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Get bpf_cookie value provided (optionally) during the program
-attachment. It might be different for each individual
-attachment, even if BPF program itself is the same.
-Expects BPF program context `ctx` as a first argument.
+Get bpf_cookie value provided (optionally) during the program attachment. It might be different for each individual attachment, even if BPF program itself is the same. Expects BPF program context _ctx_ as a first argument.
 
 Supported for the following program types:
-- kprobe/uprobe;
-- tracepoint;
-- perf_event.
+
+&nbsp;&nbsp;&nbsp;&nbsp;- kprobe/uprobe;
+&nbsp;- tracepoint;
+&nbsp;- perf_event.
 
 
-**Returns**
-Value specified by user at BPF link creation/attachment time
-or 0, if it was not specified.
+### Returns
+
+Value specified by user at BPF link creation/attachment time or 0, if it was not specified.
 
 `#!c static __u64 (*bpf_get_attach_cookie)(void *ctx) = (void *) 174;`
 <!-- [/HELPER_FUNC_DEF] -->

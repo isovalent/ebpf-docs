@@ -7,17 +7,15 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Returns 0 on success, values for `pid` and `tgid` as seen from the current
-`namespace` will be returned in `nsdata`.
+Returns 0 on success, values for _pid_ and _tgid_ as seen from the current _namespace_ will be returned in _nsdata_.
 
+### Returns
 
-**Returns**
 0 on success, or one of the following in case of failure:
 
-`-EINVAL` if dev and inum supplied don't match dev_t and inode number
-with nsfs of current task, or if dev conversion to dev_t lost high bits.
+**-EINVAL** if dev and inum supplied don't match dev_t and inode number with nsfs of current task, or if dev conversion to dev_t lost high bits.
 
-`-ENOENT` if pidns does not exists for the current task.
+**-ENOENT** if pidns does not exists for the current task.
 
 `#!c static long (*bpf_get_ns_current_pid_tgid)(__u64 dev, __u64 ino, struct bpf_pidns_info *nsdata, __u32 size) = (void *) 120;`
 <!-- [/HELPER_FUNC_DEF] -->

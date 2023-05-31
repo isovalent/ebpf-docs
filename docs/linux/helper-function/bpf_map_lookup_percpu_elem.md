@@ -7,13 +7,11 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Perform a lookup in `percpu map` for an entry associated to
-`key` on `cpu`.
+Perform a lookup in _percpu map_ for an entry associated to _key_ on _cpu_.
 
+### Returns
 
-**Returns**
-Map value associated to `key` on `cpu`, or `NULL` if no entry
-was found or `cpu` is invalid.
+Map value associated to _key_ on _cpu_, or **NULL** if no entry was found or _cpu_ is invalid.
 
 `#!c static void *(*bpf_map_lookup_percpu_elem)(void *map, const void *key, __u32 cpu) = (void *) 195;`
 <!-- [/HELPER_FUNC_DEF] -->

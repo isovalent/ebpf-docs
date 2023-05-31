@@ -9,12 +9,9 @@
 <!-- [HELPER_FUNC_DEF] -->
 Get the current pid and tgid.
 
+### Returns
 
-**Returns**
-A 64-bit integer containing the current tgid and pid, and
-created as such:
-`current_task`\ `->tgid << 32 \|`
-`current_task`\ `->pid`.
+A 64-bit integer containing the current tgid and pid, and created as such: _current_task_**->tgid << 32 \|** _current_task_**->pid**.
 
 `#!c static __u64 (*bpf_get_current_pid_tgid)(void) = (void *) 14;`
 <!-- [/HELPER_FUNC_DEF] -->

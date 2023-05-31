@@ -8,14 +8,14 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Push an element `value` in `map`. `flags` is one of:
+Push an element _value_ in _map_. _flags_ is one of:
 
-`BPF_EXIST`
-If the queue/stack is full, the oldest element is
-removed to make room for this.
+**BPF_EXIST**
 
+&nbsp;&nbsp;&nbsp;&nbsp;If the queue/stack is full, the oldest element is removed to make room for this.
 
-**Returns**
+### Returns
+
 0 on success, or a negative error in case of failure.
 
 `#!c static long (*bpf_map_push_elem)(void *map, const void *value, __u64 flags) = (void *) 87;`

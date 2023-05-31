@@ -7,10 +7,10 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Get the struct pt_regs associated with `task`.
+Get the struct pt_regs associated with **task**.
 
+### Returns
 
-**Returns**
 A pointer to struct pt_regs.
 
 `#!c static long (*bpf_task_pt_regs)(struct task_struct *task) = (void *) 175;`

@@ -7,30 +7,18 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Retrieve the classid for the current task, i.e. for the net_cls
-cgroup to which `skb` belongs.
+Retrieve the classid for the current task, i.e. for the net_cls cgroup to which _skb_ belongs.
 
 This helper can be used on TC egress path, but not on ingress.
 
-The net_cls cgroup provides an interface to tag network packets
-based on a user-provided identifier for all traffic coming from
-the tasks belonging to the related cgroup. See also the related
-kernel documentation, available from the Linux sources in file
-`Documentation/admin-guide/cgroup-v1/net_cls.rst`.
+The net_cls cgroup provides an interface to tag network packets based on a user-provided identifier for all traffic coming from the tasks belonging to the related cgroup. See also the related kernel documentation, available from the Linux sources in file _Documentation/admin-guide/cgroup-v1/net_cls.rst_.
 
-The Linux kernel has two versions for cgroups: there are
-cgroups v1 and cgroups v2. Both are available to users, who can
-use a mixture of them, but note that the net_cls cgroup is for
-cgroup v1 only. This makes it incompatible with BPF programs
-run on cgroups, which is a cgroup-v2-only feature (a socket can
-only hold data for one version of cgroups at a time).
+The Linux kernel has two versions for cgroups: there are cgroups v1 and cgroups v2. Both are available to users, who can use a mixture of them, but note that the net_cls cgroup is for cgroup v1 only. This makes it incompatible with BPF programs run on cgroups, which is a cgroup-v2-only feature (a socket can only hold data for one version of cgroups at a time).
 
-This helper is only available is the kernel was compiled with
-the `CONFIG_CGROUP_NET_CLASSID` configuration option set to
-"`y`" or to "`m`".
+This helper is only available is the kernel was compiled with the **CONFIG_CGROUP_NET_CLASSID** configuration option set to "**y**" or to "**m**".
 
+### Returns
 
-**Returns**
 The classid, or 0 for the default unconfigured classid.
 
 `#!c static __u32 (*bpf_get_cgroup_classid)(struct __sk_buff *skb) = (void *) 17;`

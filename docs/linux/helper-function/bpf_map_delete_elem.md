@@ -9,10 +9,10 @@ The delete map element helper call is used to delete values from [maps](../index
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Delete entry with `key` from `map`.
+Delete entry with _key_ from _map_.
 
+### Returns
 
-**Returns**
 0 on success, or a negative error in case of failure.
 
 `#!c static long (*bpf_map_delete_elem)(void *map, const void *key) = (void *) 3;`

@@ -7,17 +7,16 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Check whether the probe is being run is the context of a given
-subset of the cgroup2 hierarchy. The cgroup2 to test is held by
-`map` of type `BPF_MAP_TYPE_CGROUP_ARRAY`, at `index`.
+Check whether the probe is being run is the context of a given subset of the cgroup2 hierarchy. The cgroup2 to test is held by _map_ of type **BPF_MAP_TYPE_CGROUP_ARRAY**, at _index_.
 
+### Returns
 
-**Returns**
 The return value depends on the result of the test, and can be:
 
-` 1, if current task belongs to the cgroup2.
-` 0, if current task does not belong to the cgroup2.
-` A negative error code, if an error occurred.
+* 1, if current task belongs to the cgroup2.
+* 0, if current task does not belong to the cgroup2.
+* A negative error code, if an error occurred.
+
 
 `#!c static long (*bpf_current_task_under_cgroup)(void *map, __u32 index) = (void *) 37;`
 <!-- [/HELPER_FUNC_DEF] -->

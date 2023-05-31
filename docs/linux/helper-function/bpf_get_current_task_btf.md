@@ -7,12 +7,10 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Return a BTF pointer to the "current" task.
-This pointer can also be used in helpers that accept an
-`ARG_PTR_TO_BTF_ID` of type `task_struct`.
+Return a BTF pointer to the "current" task. This pointer can also be used in helpers that accept an _ARG_PTR_TO_BTF_ID_ of type _task_struct_.
 
+### Returns
 
-**Returns**
 Pointer to the current task.
 
 `#!c static struct task_struct *(*bpf_get_current_task_btf)(void) = (void *) 158;`

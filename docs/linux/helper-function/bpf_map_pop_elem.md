@@ -8,10 +8,10 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Pop an element from `map`.
+Pop an element from _map_.
 
+### Returns
 
-**Returns**
 0 on success, or a negative error in case of failure.
 
 `#!c static long (*bpf_map_pop_elem)(void *map, void *value) = (void *) 88;`

@@ -9,8 +9,8 @@
 <!-- [HELPER_FUNC_DEF] -->
 Get the current task.
 
+### Returns
 
-**Returns**
 A pointer to the current task struct.
 
 `#!c static __u64 (*bpf_get_current_task)(void) = (void *) 35;`

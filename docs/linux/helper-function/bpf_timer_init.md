@@ -9,22 +9,11 @@ This helper initializes a [timer](../ebpf-concepts/timers.md).
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Initialize the timer.
-First 4 bits of `flags` specify clockid.
-Only CLOCK_MONOTONIC, CLOCK_REALTIME, CLOCK_BOOTTIME are allowed.
-All other bits of `flags` are reserved.
-The verifier will reject the program if `timer` is not from
-the same `map`.
+Initialize the timer. First 4 bits of _flags_ specify clockid. Only CLOCK_MONOTONIC, CLOCK_REALTIME, CLOCK_BOOTTIME are allowed. All other bits of _flags_ are reserved. The verifier will reject the program if _timer_ is not from the same _map_.
 
+### Returns
 
-**Returns**
-0 on success.
-`-EBUSY` if `timer` is already initialized.
-`-EINVAL` if invalid `flags` are passed.
-`-EPERM` if `timer` is in a map that doesn't have any user references.
-The user space should either hold a file descriptor to a map with timers
-or pin such map in bpffs. When map is unpinned or file descriptor is
-closed all timers in the map will be cancelled and freed.
+0 on success. **-EBUSY** if _timer_ is already initialized. **-EINVAL** if invalid _flags_ are passed. **-EPERM** if _timer_ is in a map that doesn't have any user references. The user space should either hold a file descriptor to a map with timers or pin such map in bpffs. When map is unpinned or file descriptor is closed all timers in the map will be cancelled and freed.
 
 `#!c static long (*bpf_timer_init)(struct bpf_timer *timer, void *map, __u64 flags) = (void *) 169;`
 <!-- [/HELPER_FUNC_DEF] -->

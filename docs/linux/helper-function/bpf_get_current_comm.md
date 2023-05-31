@@ -7,15 +7,10 @@
 ## Definition
 
 <!-- [HELPER_FUNC_DEF] -->
-Copy the `comm` attribute of the current task into `buf` of
-`size_of_buf`. The `comm` attribute contains the name of
-the executable (excluding the path) for the current task. The
-`size_of_buf` must be strictly positive. On success, the
-helper makes sure that the `buf` is NUL-terminated. On failure,
-it is filled with zeroes.
+Copy the **comm** attribute of the current task into _buf_ of _size_of_buf_. The **comm** attribute contains the name of the executable (excluding the path) for the current task. The _size_of_buf_ must be strictly positive. On success, the helper makes sure that the _buf_ is NUL-terminated. On failure, it is filled with zeroes.
 
+### Returns
 
-**Returns**
 0 on success, or a negative error in case of failure.
 
 `#!c static long (*bpf_get_current_comm)(void *buf, __u32 size_of_buf) = (void *) 16;`
