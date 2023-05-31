@@ -23,6 +23,8 @@ removed to make room for this.
 
 ## Usage
 
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### Program types
 
@@ -73,3 +75,6 @@ This helper call can be used with the following map types:
 <!-- [/HELPER_FUNC_MAP_REF] -->
 
 ### Example
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome

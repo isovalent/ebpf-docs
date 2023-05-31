@@ -31,6 +31,9 @@ closed all timers in the map will be cancelled and freed.
 
 ## Usage
 
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
 ### Program types
 
 This helper call can be used in the following program types:
@@ -62,3 +65,6 @@ This helper call can be used in the following program types:
  * [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
 
 ### Example
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome

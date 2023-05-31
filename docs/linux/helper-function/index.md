@@ -189,19 +189,19 @@ These helpers return time information.
 
 These helpers return information about processes, particularly the one for which the current eBPF program is invoked.
 
-* bpf_get_current_pid_tgid
-* bpf_get_current_uid_gid
-* bpf_get_current_comm
-* bpf_get_cgroup_classid
-* bpf_get_ns_current_pid_tgid
-* bpf_get_current_task
-* bpf_get_stackid
-* bpf_current_task_under_cgroup
-* bpf_get_current_cgroup_id
-* bpf_get_current_ancestor_cgroup_id
-* bpf_get_task_stack
-* bpf_get_current_task_btf
-* bpf_task_pt_regs
+* [bpf_get_current_pid_tgid](bpf_get_current_pid_tgid.md)
+* [bpf_get_current_uid_gid](bpf_get_current_uid_gid.md)
+* [bpf_get_current_comm](bpf_get_current_comm.md)
+* [bpf_get_cgroup_classid](bpf_get_cgroup_classid.md)
+* [bpf_get_ns_current_pid_tgid](bpf_get_ns_current_pid_tgid.md)
+* [bpf_get_current_task](bpf_get_current_task.md)
+* [bpf_get_stackid](bpf_get_stackid.md)
+* [bpf_current_task_under_cgroup](bpf_current_task_under_cgroup.md)
+* [bpf_get_current_cgroup_id](bpf_get_current_cgroup_id.md)
+* [bpf_get_current_ancestor_cgroup_id](bpf_get_current_ancestor_cgroup_id.md)
+* [bpf_get_task_stack](bpf_get_task_stack.md)
+* [bpf_get_current_task_btf](bpf_get_current_task_btf.md)
+* [bpf_task_pt_regs](bpf_task_pt_regs.md)
 
 ### CPU info helpers
 

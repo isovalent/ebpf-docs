@@ -44,4 +44,5 @@ This helper call can be used with the following map types:
 
 ### Example
 
-<!-- TODO add C / Rust example -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome

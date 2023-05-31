@@ -45,5 +45,5 @@ This helper call can be used with the following map types:
 
 ### Example
 
-```c
-```
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
