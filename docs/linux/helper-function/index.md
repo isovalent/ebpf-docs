@@ -207,12 +207,12 @@ These helpers return information about processes, particularly the one for which
 
 These helpers return information about the current state of the CPU.
 
-* bpf_get_smp_processor_id
-* bpf_get_numa_node_id
-* bpf_read_branch_records
-* bpf_get_branch_snapshot
-* bpf_per_cpu_ptr
-* bpf_this_cpu_ptr
+* [bpf_get_smp_processor_id](bpf_get_smp_processor_id.md)
+* [bpf_get_numa_node_id](bpf_get_numa_node_id.md)
+* [bpf_read_branch_records](bpf_read_branch_records.md)
+* [bpf_get_branch_snapshot](bpf_get_branch_snapshot.md)
+* [bpf_per_cpu_ptr](bpf_per_cpu_ptr.md)
+* [bpf_this_cpu_ptr](bpf_this_cpu_ptr.md)
 
 ## Print helpers
 
