@@ -86,41 +86,41 @@ These helpers are used with [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_S
 
 These helpers are used with `BPF_MAP_TYPE_TASK_STORAGE` maps.
 
-* bpf_task_storage_get
-* bpf_task_storage_delete
+* [bpf_task_storage_get](bpf_task_storage_get.md)
+* [bpf_task_storage_delete](bpf_task_storage_delete.md)
 
 ### Inode storage helpers
 
 These helpers are used with `BPF_MAP_TYPE_INODE_STORAGE` maps.
 
-* bpf_inode_storage_get
-* bpf_inode_storage_delete
+* [bpf_inode_storage_get](bpf_inode_storage_get.md)
+* [bpf_inode_storage_delete](bpf_inode_storage_delete.md)
 
 ### Socket storage helpers
 
 These helpers are used with `BPF_MAP_TYPE_SK_STORAGE` maps.
 
-* bpf_sk_storage_get
-* bpf_sk_storage_delete
+* [bpf_sk_storage_get](bpf_sk_storage_get.md)
+* [bpf_sk_storage_delete](bpf_sk_storage_delete.md)
 
 ### Local cGroup storage helpers
 
 These helpers are used with `BPF_MAP_TYPE_CGROUP_STORAGE` and `BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE` maps.
 
-* bpf_get_local_storage
+* [bpf_get_local_storage](bpf_get_local_storage.md)
 
 ### Global cGroup storage helpers
 
 These helpers are used with `BPF_MAP_TYPE_CGRP_STORAGE` maps.
 
-* bpf_cgrp_storage_get
-* bpf_cgrp_storage_delete
+* [bpf_cgrp_storage_get](bpf_cgrp_storage_get.md)
+* [bpf_cgrp_storage_delete](bpf_cgrp_storage_delete.md)
 
 ### User ring buffer
 
 These helpers are related to `BPF_MAP_TYPE_USER_RINGBUF` maps.
 
-* bpf_user_ringbuf_drain
+* [bpf_user_ringbuf_drain](bpf_user_ringbuf_drain.md)
 
 ## Probe and trace helpers
 

@@ -1085,11 +1085,11 @@
       version: v6.1
       commit: 20571567384428dfc9fe5cf9f2e942e1df13c2dd
     - name: bpf_cgrp_storage_get
-      version: ""
-      commit: ""
+      version: v6.2
+      commit: c4bcfb38a95edb1021a53f2d0356a78120ecfbe4
     - name: bpf_cgrp_storage_delete
-      version: ""
-      commit: ""
+      version: v6.2
+      commit: c4bcfb38a95edb1021a53f2d0356a78120ecfbe4
 - name: flags
   features:
     - name: BPF_F_ALLOW_OVERRIDE
