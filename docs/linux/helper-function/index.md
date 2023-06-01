@@ -149,11 +149,11 @@ These helpers are used to read from or write to kernel or userspace memory.
 
 These helpers are used to influence processes.
 
-* bpf_override_return
-* bpf_get_retval
-* bpf_set_retval
-* bpf_send_signal
-* bpf_send_signal_thread
+* [bpf_override_return](bpf_override_return.md)
+* [bpf_get_retval](bpf_get_retval.md)
+* [bpf_set_retval](bpf_set_retval.md)
+* [bpf_send_signal](bpf_send_signal.md)
+* [bpf_send_signal_thread](bpf_send_signal_thread.md)
 
 ### Tracing helpers
 
