@@ -179,11 +179,11 @@ These helpers return information from the kernel which is otherwise not availabl
 
 These helpers return time information.
 
-* bpf_ktime_get_ns
-* bpf_jiffies64
-* bpf_ktime_get_boot_ns
-* bpf_ktime_get_coarse_ns
-* bpf_ktime_get_tai_ns
+* [bpf_ktime_get_ns](bpf_ktime_get_ns.md)
+* [bpf_jiffies64](bpf_jiffies64.md)
+* [bpf_ktime_get_boot_ns](bpf_ktime_get_boot_ns.md)
+* [bpf_ktime_get_coarse_ns](bpf_ktime_get_coarse_ns.md)
+* [bpf_ktime_get_tai_ns](bpf_ktime_get_tai_ns.md)
 
 ### Process info helpers
 
