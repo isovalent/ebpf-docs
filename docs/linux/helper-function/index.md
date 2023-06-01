@@ -61,14 +61,14 @@ These helpers are used with [`BPF_MAP_TYPE_QUEUE`](../map-type/BPF_MAP_TYPE_QUEU
 
 These helpers are used with `BPF_MAP_TYPE_RINGBUF` maps.
 
-* bpf_ringbuf_output
-* bpf_ringbuf_reserve
-* bpf_ringbuf_submit
-* bpf_ringbuf_discard
-* bpf_ringbuf_query
-* bpf_ringbuf_reserve_dynptr
-* bpf_ringbuf_submit_dynptr
-* bpf_ringbuf_discard_dynptr
+* [bpf_ringbuf_output](bpf_ringbuf_output.md)
+* [bpf_ringbuf_reserve](bpf_ringbuf_reserve.md)
+* [bpf_ringbuf_submit](bpf_ringbuf_submit.md)
+* [bpf_ringbuf_discard](bpf_ringbuf_discard.md)
+* [bpf_ringbuf_query](bpf_ringbuf_query.md)
+* [bpf_ringbuf_reserve_dynptr](bpf_ringbuf_reserve_dynptr.md)
+* [bpf_ringbuf_submit_dynptr](bpf_ringbuf_submit_dynptr.md)
+* [bpf_ringbuf_discard_dynptr](bpf_ringbuf_discard_dynptr.md)
 
 ### Socket map helpers
 
