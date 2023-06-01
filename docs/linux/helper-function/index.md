@@ -132,18 +132,18 @@ These helpers are used in probing and tracing functions like kprobes, tracepoint
 
 These helpers are used to read from or write to kernel or userspace memory.
 
-* bpf_probe_read
-* bpf_probe_write_user
-* bpf_probe_read_str
-* bpf_get_stack
-* bpf_probe_read_user
-* bpf_probe_read_kernel
-* bpf_probe_read_user_str
-* bpf_probe_read_kernel_str
-* bpf_copy_from_user
-* bpf_copy_from_user_task
-* bpf_copy_from_user_task
-* bpf_find_vma
+* [bpf_probe_read](bpf_probe_read.md)
+* [bpf_probe_write_user](bpf_probe_write_user.md)
+* [bpf_probe_read_str](bpf_probe_read_str.md)
+* [bpf_get_stack](bpf_get_stack.md)
+* [bpf_probe_read_user](bpf_probe_read_user.md)
+* [bpf_probe_read_kernel](bpf_probe_read_kernel.md)
+* [bpf_probe_read_user_str](bpf_probe_read_user_str.md)
+* [bpf_probe_read_kernel_str](bpf_probe_read_kernel_str.md)
+* [bpf_copy_from_user](bpf_copy_from_user.md)
+* [bpf_copy_from_user_task](bpf_copy_from_user_task.md)
+* [bpf_copy_from_user_task](bpf_copy_from_user_task.md)
+* [bpf_find_vma](bpf_find_vma.md)
 
 ### Process influencing helpers
 
