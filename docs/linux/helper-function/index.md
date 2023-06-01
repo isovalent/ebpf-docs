@@ -159,11 +159,11 @@ These helpers are used to influence processes.
 
 These helpers return information specific to `BPF_PROG_TYPE_TRACING` programs.
 
-* bpf_get_func_ip
-* bpf_get_func_arg
-* bpf_get_func_ret
-* bpf_get_func_arg_cnt
-* bpf_sock_from_file
+* [bpf_get_func_ip](bpf_get_func_ip.md)
+* [bpf_get_func_arg](bpf_get_func_arg.md)
+* [bpf_get_func_ret](bpf_get_func_ret.md)
+* [bpf_get_func_arg_cnt](bpf_get_func_arg_cnt.md)
+* [bpf_sock_from_file](bpf_sock_from_file.md)
 
 ### Perf event helpers
 
