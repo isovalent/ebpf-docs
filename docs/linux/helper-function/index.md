@@ -321,10 +321,10 @@ These helpers are specific to `BPF_PROG_TYPE_SK_MSG` programs.
 
 These helpers are specific to `BPF_PROG_TYPE_LWT_*` programs.
 
-* bpf_lwt_push_encap
-* bpf_lwt_seg6_store_bytes
-* bpf_lwt_seg6_adjust_srh
-* bpf_lwt_seg6_action
+* [bpf_lwt_push_encap](bpf_lwt_push_encap.md)
+* [bpf_lwt_seg6_store_bytes](bpf_lwt_seg6_store_bytes.md)
+* [bpf_lwt_seg6_adjust_srh](bpf_lwt_seg6_adjust_srh.md)
+* [bpf_lwt_seg6_action](bpf_lwt_seg6_action.md)
 
 ### SYNCookie helpers
 
