@@ -377,9 +377,9 @@ These helpers are specific to `BPF_PROG_TYPE_SOCK_OPS` programs.
 
 These helpers are specific to `BPF_PROG_TYPE_LIRC_MODE2` programs.
 
-* bpf_rc_repeat
-* bpf_rc_keydown
-* bpf_rc_pointer_rel
+* [bpf_rc_repeat](bpf_rc_repeat.md)
+* [bpf_rc_keydown](bpf_rc_keydown.md)
+* [bpf_rc_pointer_rel](bpf_rc_pointer_rel.md)
 
 ## Syscall helpers
 
