@@ -420,7 +420,7 @@ These helpers are related to dynamic pointers
 
 These helpers are used to execute loops.
 
-* bpf_loop
+* [bpf_loop](bpf_loop.md)
 
 ## Utility helpers
 
@@ -434,4 +434,4 @@ These helpers are smaller utility functions which don't really fit in elsewhere.
 
 ## Misc
 
-* bpf_kptr_xchg
+* [bpf_kptr_xchg](bpf_kptr_xchg.md)
