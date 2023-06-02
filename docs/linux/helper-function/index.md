@@ -330,12 +330,12 @@ These helpers are specific to `BPF_PROG_TYPE_LWT_*` programs.
 
 These helpers are related to syn cookies.
 
-* bpf_tcp_check_syncookie
-* bpf_tcp_gen_syncookie
-* bpf_tcp_raw_gen_syncookie_ipv4
-* bpf_tcp_raw_gen_syncookie_ipv6
-* bpf_tcp_raw_check_syncookie_ipv4
-* bpf_tcp_raw_check_syncookie_ipv6
+* [bpf_tcp_check_syncookie](bpf_tcp_check_syncookie.md)
+* [bpf_tcp_gen_syncookie](bpf_tcp_gen_syncookie.md)
+* [bpf_tcp_raw_gen_syncookie_ipv4](bpf_tcp_raw_gen_syncookie_ipv4.md)
+* [bpf_tcp_raw_gen_syncookie_ipv6](bpf_tcp_raw_gen_syncookie_ipv6.md)
+* [bpf_tcp_raw_check_syncookie_ipv4](bpf_tcp_raw_check_syncookie_ipv4.md)
+* [bpf_tcp_raw_check_syncookie_ipv6](bpf_tcp_raw_check_syncookie_ipv6.md)
 
 ### Socket helpers
 
