@@ -235,10 +235,10 @@ These helpers are used to print logs to the sequence files used by eBPF iterator
 
 These helpers are related to networking.
 
-* bpf_get_netns_cookie
-* bpf_check_mtu
-* bpf_get_route_realm
-* bpf_fib_lookup
+* [bpf_get_netns_cookie](bpf_get_netns_cookie.md)
+* [bpf_check_mtu](bpf_check_mtu.md)
+* [bpf_get_route_realm](bpf_get_route_realm.md)
+* [bpf_fib_lookup](bpf_fib_lookup.md)
 
 ### Socket buffer helpers
 
