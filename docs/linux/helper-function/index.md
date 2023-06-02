@@ -402,10 +402,10 @@ These helpers are specific to `BPF_PROG_TYPE_LSM` programs.
 
 These helpers are specific to `BPF_PROG_TYPE_CGROUP_SYSCTL` programs.
 
-* bpf_sysctl_get_name
-* bpf_sysctl_get_current_value
-* bpf_sysctl_get_new_value
-* bpf_sysctl_set_new_value
+* [bpf_sysctl_get_name](bpf_sysctl_get_name.md)
+* [bpf_sysctl_get_current_value](bpf_sysctl_get_current_value.md)
+* [bpf_sysctl_get_new_value](bpf_sysctl_get_new_value.md)
+* [bpf_sysctl_set_new_value](bpf_sysctl_set_new_value.md)
 
 ## Dynptr
 
