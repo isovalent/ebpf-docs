@@ -341,29 +341,29 @@ These helpers are related to syn cookies.
 
 These helpers are related to socket.
 
-* bpf_sk_lookup_tcp
-* bpf_sk_lookup_udp
-* bpf_sk_release
-* bpf_sk_fullsock
-* bpf_sk_cgroup_id
-* bpf_sk_ancestor_cgroup_id
-* bpf_get_socket_cookie
-* bpf_get_socket_uid
-* bpf_setsockopt
-* bpf_getsockopt
-* bpf_sock_ops_cb_flags_set
-* bpf_tcp_sock
-* bpf_get_listener_sock
-* bpf_tcp_send_ack
-* bpf_skc_lookup_tcp
-* bpf_skc_to_tcp6_sock
-* bpf_skc_to_tcp_sock
-* bpf_skc_to_tcp_timewait_sock
-* bpf_skc_to_tcp_request_sock
-* bpf_skc_to_udp6_sock
-* bpf_skc_to_mptcp_sock
-* bpf_skc_to_unix_sock
-* bpf_bind
+* [bpf_sk_lookup_tcp](bpf_sk_lookup_tcp.md)
+* [bpf_sk_lookup_udp](bpf_sk_lookup_udp.md)
+* [bpf_sk_release](bpf_sk_release.md)
+* [bpf_sk_fullsock](bpf_sk_fullsock.md)
+* [bpf_sk_cgroup_id](bpf_sk_cgroup_id.md)
+* [bpf_sk_ancestor_cgroup_id](bpf_sk_ancestor_cgroup_id.md)
+* [bpf_get_socket_cookie](bpf_get_socket_cookie.md)
+* [bpf_get_socket_uid](bpf_get_socket_uid.md)
+* [bpf_setsockopt](bpf_setsockopt.md)
+* [bpf_getsockopt](bpf_getsockopt.md)
+* [bpf_sock_ops_cb_flags_set](bpf_sock_ops_cb_flags_set.md)
+* [bpf_tcp_sock](bpf_tcp_sock.md)
+* [bpf_get_listener_sock](bpf_get_listener_sock.md)
+* [bpf_tcp_send_ack](bpf_tcp_send_ack.md)
+* [bpf_skc_lookup_tcp](bpf_skc_lookup_tcp.md)
+* [bpf_skc_to_tcp6_sock](bpf_skc_to_tcp6_sock.md)
+* [bpf_skc_to_tcp_sock](bpf_skc_to_tcp_sock.md)
+* [bpf_skc_to_tcp_timewait_sock](bpf_skc_to_tcp_timewait_sock.md)
+* [bpf_skc_to_tcp_request_sock](bpf_skc_to_tcp_request_sock.md)
+* [bpf_skc_to_udp6_sock](bpf_skc_to_udp6_sock.md)
+* [bpf_skc_to_mptcp_sock](bpf_skc_to_mptcp_sock.md)
+* [bpf_skc_to_unix_sock](bpf_skc_to_unix_sock.md)
+* [bpf_bind](bpf_bind.md)
 
 ### Socket ops helpers
 
