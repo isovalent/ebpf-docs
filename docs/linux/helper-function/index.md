@@ -426,11 +426,11 @@ These helpers are used to execute loops.
 
 These helpers are smaller utility functions which don't really fit in elsewhere.
 
-* bpf_get_prandom_u32
-* bpf_strtol
-* bpf_strtoul
-* bpf_strncmp
-* bpf_d_path
+* [bpf_get_prandom_u32](bpf_get_prandom_u32.md)
+* [bpf_strtol](bpf_strtol.md)
+* [bpf_strtoul](bpf_strtoul.md)
+* [bpf_strncmp](bpf_strncmp.md)
+* [bpf_d_path](bpf_d_path.md)
 
 ## Misc
 
