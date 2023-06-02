@@ -411,10 +411,10 @@ These helpers are specific to `BPF_PROG_TYPE_CGROUP_SYSCTL` programs.
 
 These helpers are related to dynamic pointers
 
-* bpf_dynptr_from_mem
-* bpf_dynptr_read
-* bpf_dynptr_write
-* bpf_dynptr_data
+* [bpf_dynptr_from_mem](bpf_dynptr_from_mem.md)
+* [bpf_dynptr_read](bpf_dynptr_read.md)
+* [bpf_dynptr_write](bpf_dynptr_write.md)
+* [bpf_dynptr_data](bpf_dynptr_data.md)
 
 ## Loop helpers
 
