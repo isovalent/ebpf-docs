@@ -369,9 +369,9 @@ These helpers are related to socket.
 
 These helpers are specific to `BPF_PROG_TYPE_SOCK_OPS` programs.
 
-* bpf_load_hdr_opt
-* bpf_store_hdr_opt
-* bpf_reserve_hdr_opt
+* [bpf_load_hdr_opt](bpf_load_hdr_opt.md)
+* [bpf_store_hdr_opt](bpf_store_hdr_opt.md)
+* [bpf_reserve_hdr_opt](bpf_reserve_hdr_opt.md)
 
 ## Infrared related helpers
 
