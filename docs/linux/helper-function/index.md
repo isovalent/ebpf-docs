@@ -274,11 +274,11 @@ These helpers read from, write to, or modify socket buffers in some way.
 
 These helpers calculate and/or update checksums.
 
-* bpf_l3_csum_replace
-* bpf_l4_csum_replace
-* bpf_csum_diff
-* bpf_csum_update
-* bpf_csum_level
+* [bpf_l3_csum_replace](bpf_l3_csum_replace.md)
+* [bpf_l4_csum_replace](bpf_l4_csum_replace.md)
+* [bpf_csum_diff](bpf_csum_diff.md)
+* [bpf_csum_update](bpf_csum_update.md)
+* [bpf_csum_level](bpf_csum_level.md)
 
 ### Redirect helpers
 
