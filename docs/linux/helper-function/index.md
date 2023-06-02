@@ -385,10 +385,10 @@ These helpers are specific to `BPF_PROG_TYPE_LIRC_MODE2` programs.
 
 These helpers are specific to `BPF_PROG_TYPE_SYSCALL` programs.
 
-* bpf_sys_bpf
-* bpf_btf_find_by_name_kind
-* bpf_sys_close
-* bpf_kallsyms_lookup_name
+* [bpf_sys_bpf](bpf_sys_bpf.md)
+* [bpf_btf_find_by_name_kind](bpf_btf_find_by_name_kind.md)
+* [bpf_sys_close](bpf_sys_close.md)
+* [bpf_kallsyms_lookup_name](bpf_kallsyms_lookup_name.md)
 
 ## LSM helpers
 
