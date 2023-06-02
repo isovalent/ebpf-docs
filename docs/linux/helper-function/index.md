@@ -284,15 +284,15 @@ These helpers calculate and/or update checksums.
 
 These helpers redirect the flow of packets in some way.
 
-* bpf_clone_redirect
-* bpf_redirect
-* bpf_redirect_map
+* [bpf_clone_redirect](bpf_clone_redirect.md)
+* [bpf_redirect](bpf_redirect.md)
+* [bpf_redirect_map](bpf_redirect_map.md)
 * [bpf_sk_redirect_map](bpf_sk_redirect_map.md)
 * [bpf_msg_redirect_map](bpf_msg_redirect_map.md)
-* bpf_redirect_peer
+* [bpf_redirect_peer](bpf_redirect_peer.md)
 * [bpf_sk_redirect_hash](bpf_sk_redirect_hash.md)
 * [bpf_msg_redirect_hash](bpf_msg_redirect_hash.md)
-* bpf_redirect_neigh
+* [bpf_redirect_neigh](bpf_redirect_neigh.md)
 * [bpf_sk_assign](bpf_sk_assign.md)
 * [bpf_sk_select_reuseport](bpf_sk_select_reuseport.md)
 
