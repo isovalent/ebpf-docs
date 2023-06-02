@@ -311,11 +311,11 @@ These helpers are specific to `BPF_PROG_TYPE_XDP` programs.
 
 These helpers are specific to `BPF_PROG_TYPE_SK_MSG` programs.
 
-* bpf_msg_apply_bytes
-* bpf_msg_cork_bytes
-* bpf_msg_pull_data
-* bpf_msg_push_data
-* bpf_msg_pop_data
+* [bpf_msg_apply_bytes](bpf_msg_apply_bytes.md)
+* [bpf_msg_cork_bytes](bpf_msg_cork_bytes.md)
+* [bpf_msg_pull_data](bpf_msg_pull_data.md)
+* [bpf_msg_push_data](bpf_msg_push_data.md)
+* [bpf_msg_pop_data](bpf_msg_pop_data.md)
 
 ### LWT helpers
 
