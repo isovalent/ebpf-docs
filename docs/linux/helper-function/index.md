@@ -394,9 +394,9 @@ These helpers are specific to `BPF_PROG_TYPE_SYSCALL` programs.
 
 These helpers are specific to `BPF_PROG_TYPE_LSM` programs.
 
-* bpf_bprm_opts_set
-* bpf_ima_inode_hash
-* bpf_ima_file_hash
+* [bpf_bprm_opts_set](bpf_bprm_opts_set.md)
+* [bpf_ima_inode_hash](bpf_ima_inode_hash.md)
+* [bpf_ima_file_hash](bpf_ima_file_hash.md)
 
 ## Sysctl helpers
 
