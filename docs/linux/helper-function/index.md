@@ -219,17 +219,17 @@ These helpers return information about the current state of the CPU.
 These helpers are used to print logs from an eBPF program which will appear in the kernel tracing log.
 
 * [bpf_trace_printk](bpf_trace_printk.md)
-* bpf_snprintf
-* bpf_snprintf_btf
-* bpf_trace_vprintk
+* [bpf_snprintf](bpf_snprintf.md)
+* [bpf_snprintf_btf](bpf_snprintf_btf.md)
+* [bpf_trace_vprintk](bpf_trace_vprintk.md)
 
 ### Iterator print helpers
   
 These helpers are used to print logs to the sequence files used by eBPF iterator programs.
 
-* bpf_seq_printf
-* bpf_seq_write
-* bpf_seq_printf_btf
+* [bpf_seq_printf](bpf_seq_printf.md)
+* [bpf_seq_write](bpf_seq_write.md)
+* [bpf_seq_printf_btf](bpf_seq_printf_btf.md)
 
 ## Network helpers
 
