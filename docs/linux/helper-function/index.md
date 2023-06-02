@@ -300,12 +300,12 @@ These helpers redirect the flow of packets in some way.
 
 These helpers are specific to `BPF_PROG_TYPE_XDP` programs.
 
-* bpf_xdp_adjust_head
-* bpf_xdp_adjust_tail
-* bpf_xdp_adjust_meta
-* bpf_xdp_get_buff_len
-* bpf_xdp_load_bytes
-* bpf_xdp_store_bytes
+* [bpf_xdp_adjust_head](bpf_xdp_adjust_head.md)
+* [bpf_xdp_adjust_tail](bpf_xdp_adjust_tail.md)
+* [bpf_xdp_adjust_meta](bpf_xdp_adjust_meta.md)
+* [bpf_xdp_get_buff_len](bpf_xdp_get_buff_len.md)
+* [bpf_xdp_load_bytes](bpf_xdp_load_bytes.md)
+* [bpf_xdp_store_bytes](bpf_xdp_store_bytes.md)
 
 ### Sk msg helpers
 
