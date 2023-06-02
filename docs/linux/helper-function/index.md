@@ -244,31 +244,31 @@ These helpers are related to networking.
 
 These helpers read from, write to, or modify socket buffers in some way.
 
-* bpf_skb_store_bytes
-* bpf_skb_load_bytes
-* bpf_skb_vlan_push
-* bpf_skb_vlan_pop
-* bpf_skb_get_tunnel_key
-* bpf_skb_set_tunnel_key
-* bpf_skb_get_tunnel_opt
-* bpf_skb_set_tunnel_opt
-* bpf_skb_change_proto
-* bpf_skb_change_type
-* bpf_skb_under_cgroup
-* bpf_skb_change_tail
-* bpf_skb_pull_data
-* bpf_skb_adjust_room
-* bpf_skb_change_head
-* bpf_skb_get_xfrm_state
-* bpf_skb_load_bytes_relative
-* bpf_skb_cgroup_id
-* bpf_skb_ancestor_cgroup_id
-* bpf_skb_ecn_set_ce
-* bpf_skb_cgroup_classid
-* bpf_skb_set_tstamp
-* bpf_set_hash
-* bpf_get_hash_recalc
-* bpf_set_hash_invalid
+* [bpf_skb_store_bytes](bpf_skb_store_bytes.md)
+* [bpf_skb_load_bytes](bpf_skb_load_bytes.md)
+* [bpf_skb_vlan_push](bpf_skb_vlan_push.md)
+* [bpf_skb_vlan_pop](bpf_skb_vlan_pop.md)
+* [bpf_skb_get_tunnel_key](bpf_skb_get_tunnel_key.md)
+* [bpf_skb_set_tunnel_key](bpf_skb_set_tunnel_key.md)
+* [bpf_skb_get_tunnel_opt](bpf_skb_get_tunnel_opt.md)
+* [bpf_skb_set_tunnel_opt](bpf_skb_set_tunnel_opt.md)
+* [bpf_skb_change_proto](bpf_skb_change_proto.md)
+* [bpf_skb_change_type](bpf_skb_change_type.md)
+* [bpf_skb_under_cgroup](bpf_skb_under_cgroup.md)
+* [bpf_skb_change_tail](bpf_skb_change_tail.md)
+* [bpf_skb_pull_data](bpf_skb_pull_data.md)
+* [bpf_skb_adjust_room](bpf_skb_adjust_room.md)
+* [bpf_skb_change_head](bpf_skb_change_head.md)
+* [bpf_skb_get_xfrm_state](bpf_skb_get_xfrm_state.md)
+* [bpf_skb_load_bytes_relative](bpf_skb_load_bytes_relative.md)
+* [bpf_skb_cgroup_id](bpf_skb_cgroup_id.md)
+* [bpf_skb_ancestor_cgroup_id](bpf_skb_ancestor_cgroup_id.md)
+* [bpf_skb_ecn_set_ce](bpf_skb_ecn_set_ce.md)
+* [bpf_skb_cgroup_classid](bpf_skb_cgroup_classid.md)
+* [bpf_skb_set_tstamp](bpf_skb_set_tstamp.md)
+* [bpf_set_hash](bpf_set_hash.md)
+* [bpf_get_hash_recalc](bpf_get_hash_recalc.md)
+* [bpf_set_hash_invalid](bpf_set_hash_invalid.md)
 
 ### Checksum helpers
 
