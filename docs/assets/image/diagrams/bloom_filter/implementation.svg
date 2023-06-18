@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="649" height="233.126"
+	 viewBox="0 0 649 233.126" overflow="visible" enable-background="new 0 0 649 233.126" xml:space="preserve">
+<text transform="matrix(1 0 0 1 13.25 125.4507)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 49.25 125.4507)" font-family="Liberation Serif" font-style="normal" font-size="21">1</text>
+<text transform="matrix(1 0 0 1 85.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 121.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">1</text>
+<text transform="matrix(1 0 0 1 157.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">1</text>
+<text transform="matrix(1 0 0 1 193.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">1</text>
+<text transform="matrix(1 0 0 1 229.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+
+<text transform="matrix(1 0 0 1 265.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 301.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 337.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 373.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 409.2505 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">1</text>
+<text transform="matrix(1 0 0 1 445.2505 125.4507)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 481.2505 125.4507)" font-family="Liberation Serif" font-style="normal" font-size="21">1</text>
+<text transform="matrix(1 0 0 1 517.2515 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<text transform="matrix(1 0 0 1 553.2515 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+
+<text transform="matrix(1 0 0 1 589.2515 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">1</text>
+<text transform="matrix(1 0 0 1 625.2515 125.4497)" font-family="Liberation Serif" font-style="normal" font-size="21">0</text>
+<rect x="0.5" y="107.451" fill="none" stroke="#000000" width="648" height="27"/>
+<line fill="none" stroke="#000000" x1="36.5" y1="107.451" x2="36.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="72.5" y1="107.451" x2="72.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="108.5" y1="107.451" x2="108.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="144.5" y1="107.451" x2="144.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="180.5" y1="107.451" x2="180.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="216.5" y1="107.451" x2="216.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="252.5" y1="107.451" x2="252.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="288.5" y1="107.451" x2="288.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="324.5" y1="107.451" x2="324.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="360.5" y1="107.451" x2="360.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="396.5" y1="107.451" x2="396.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="432.5" y1="107.451" x2="432.5" y2="134.451"/>
+
+<line fill="none" stroke="#000000" x1="468.5" y1="107.451" x2="468.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="504.5" y1="107.451" x2="504.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="540.5" y1="107.451" x2="540.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="576.5" y1="107.451" x2="576.5" y2="134.451"/>
+<line fill="none" stroke="#000000" x1="612.5" y1="107.451" x2="612.5" y2="134.451"/>
+<text transform="matrix(1 0 0 1 290.5142 17.4507)"><tspan x="0" y="0" font-family="Liberation Serif" font-style="normal" font-size="21">{</tspan><tspan x="10.08" y="0" font-family="Liberation Serif" font-style="italic" font-size="21">x, y, z</tspan><tspan x="57.894" y="0" font-family="Liberation Serif" font-style="normal" font-size="21">}</tspan></text>
+<g>
+	<path fill="none" stroke="#0060B6" stroke-width="2" d="M306.5,26.451c0,45-252,27-252,72"/>
+	<path fill="#0060B6" d="M54.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C57.352,98.123,55.553,101.646,54.5,104.486z"/>
+</g>
+<g>
+	<path fill="none" stroke="#0060B6" stroke-width="2" d="M306.5,26.451c0,45-117,27.792-117,72.792"/>
+
+	<path fill="#0060B6" d="M189.5,105.277c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C192.352,98.914,190.554,102.438,189.5,105.277z"/>
+</g>
+<g>
+	<path fill="none" stroke="#0060B6" stroke-width="2" d="M306.5,26.451c0,45,180,27,180,72"/>
+	<path fill="#0060B6" d="M486.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C489.352,98.123,487.553,101.646,486.5,104.486z"/>
+</g>
+<g>
+	<path fill="none" stroke="#BF0000" stroke-width="2" d="M324.5,26.451c0,45-162,27-162,72"/>
+	<path fill="#BF0000" d="M162.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C165.352,98.123,163.553,101.646,162.5,104.486z"/>
+</g>
+<g>
+	<path fill="none" stroke="#BF0000" stroke-width="2" d="M324.5,26.451c0,45,81,27,81,72"/>
+
+	<path fill="#BF0000" d="M405.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C408.352,98.123,406.553,101.646,405.5,104.486z"/>
+</g>
+<g>
+	<path fill="none" stroke="#BF0000" stroke-width="2" d="M324.5,26.451c0,45,270,27,270,72"/>
+	<path fill="#BF0000" d="M594.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C597.352,98.123,595.553,101.646,594.5,104.486z"/>
+</g>
+<g>
+	<path fill="none" stroke="#8210D2" stroke-width="2" d="M342.5,26.451c0,45-216,27-216,72"/>
+	<path fill="#8210D2" d="M126.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C129.352,98.123,127.553,101.646,126.5,104.486z"/>
+</g>
+<g>
+	<path fill="none" stroke="#8210D2" stroke-width="2" d="M342.5,26.451c0,45-135,27-135,72"/>
+
+	<path fill="#8210D2" d="M207.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C210.352,98.123,208.553,101.646,207.5,104.486z"/>
+</g>
+<g>
+	<path fill="none" stroke="#8210D2" stroke-width="2" d="M342.5,26.451c0,45,81,27,81,72"/>
+	<path fill="#8210D2" d="M423.5,104.486c-1.054-2.84-2.852-6.363-4.755-8.547l4.755,1.72l4.755-1.72
+		C426.351,98.123,424.553,101.646,423.5,104.486z"/>
+</g>
+<text transform="matrix(1 0 0 1 317.4966 224.4512)" font-family="Liberation Serif" font-style="italic" font-size="21">w</text>
+<g>
+	<path fill="none" stroke="#8C8C8C" stroke-width="2" d="M324.5,206.451c0-45-162-17.208-162-63"/>
+	<path fill="#8C8C8C" d="M162.5,137.416c1.054,2.84,2.852,6.363,4.755,8.547l-4.755-1.72l-4.755,1.72
+		C159.648,143.779,161.447,140.255,162.5,137.416z"/>
+</g>
+
+<g>
+	<path fill="none" stroke="#8C8C8C" stroke-width="2" d="M324.5,206.451c0-45,162-18.001,162-63"/>
+	<path fill="#8C8C8C" d="M486.5,137.416c1.054,2.84,2.852,6.363,4.755,8.547l-4.755-1.72l-4.755,1.72
+		C483.649,143.779,485.448,140.255,486.5,137.416z"/>
+</g>
+<g>
+	<path fill="none" stroke="#8C8C8C" stroke-width="2" d="M324.5,206.451c0-45,234-18.001,234-63"/>
+	<path fill="#8C8C8C" d="M558.5,137.416c1.054,2.84,2.852,6.363,4.755,8.547l-4.755-1.72l-4.755,1.72
+		C555.649,143.779,557.448,140.255,558.5,137.416z"/>
+</g>
+</svg>

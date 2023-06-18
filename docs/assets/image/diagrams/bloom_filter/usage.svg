@@ -1,0 +1,214 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: fig2dev Version 3.2 Patchlevel 5a -->
+<!-- CreationDate: Tue Jan  5 09:21:32 2010 -->
+<!-- Magnification: 1.050 -->
+<svg xmlns="http://www.w3.org/2000/svg" width="8.2in" height="7.3in" viewBox="1023 1118 9829 8743">
+<g style="stroke-width:.025in; fill:none">
+<!-- Line -->
+<polyline points="5905,5905
+8236,5905
+" style="stroke:#00d100;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 5905 5905 - 8377 5905-->
+<polygon points="8235 5937
+8361 5905
+8235 5874
+8235 5937
+
+" style="stroke:#00d100;stroke-width:8;stroke-miterlimit:8;
+fill:#00d100;"/>
+<!-- Line -->
+<polyline points="1417,2740
+3748,2740
+" style="stroke:#00d100;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 1417 2740 - 3889 2740-->
+<polygon points="3746 2771
+3872 2740
+3746 2708
+3746 2771
+
+" style="stroke:#00d100;stroke-width:8;stroke-miterlimit:8;
+fill:#00d100;"/>
+<!-- Line -->
+<polyline points="1370,5999
+3700,5999
+" style="stroke:#00d100;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 1370 5999 - 3842 5999-->
+<polygon points="3699 6031
+3825 5999
+3699 5968
+3699 6031
+
+" style="stroke:#00d100;stroke-width:8;stroke-miterlimit:8;
+fill:#00d100;"/>
+<!-- Line -->
+<polyline points="1275,8362
+3606,8362
+" style="stroke:#00d100;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 1275 8362 - 3748 8362-->
+<polygon points="3605 8393
+3731 8362
+3605 8330
+3605 8393
+
+" style="stroke:#00d100;stroke-width:8;stroke-miterlimit:8;
+fill:#00d100;"/>
+<!-- Line -->
+<polyline points="3732,3070
+1400,3070
+" style="stroke:#0000ff;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 3732 3070 - 1259 3070-->
+<polygon points="1402 3039
+1276 3070
+1402 3102
+1402 3039
+
+" style="stroke:#0000ff;stroke-width:8;stroke-miterlimit:8;
+fill:#0000ff;"/>
+<!-- Line -->
+<polyline points="3779,6330
+1447,6330
+" style="stroke:#0000ff;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 3779 6330 - 1307 6330-->
+<polygon points="1449 6299
+1323 6330
+1449 6362
+1449 6299
+
+" style="stroke:#0000ff;stroke-width:8;stroke-miterlimit:8;
+fill:#0000ff;"/>
+<!-- Line -->
+<polyline points="3685,8692
+1353,8692
+" style="stroke:#0000ff;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 3685 8692 - 1212 8692-->
+<polygon points="1355 8661
+1229 8692
+1355 8724
+1355 8661
+
+" style="stroke:#0000ff;stroke-width:8;stroke-miterlimit:8;
+fill:#0000ff;"/>
+<!-- Line: box -->
+<rect x="3968" y="1700" width="1700" height="8078" rx="0" 
+style="stroke:#0000ff;stroke-width:32;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line: box -->
+<rect x="8834" y="1700" width="1984" height="8125" rx="0" 
+style="stroke:#0000ff;stroke-width:32;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Line -->
+<polyline points="8314,6188
+5983,6188
+" style="stroke:#0000ff;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 8314 6188 - 5842 6188-->
+<polygon points="5985 6157
+5859 6188
+5985 6220
+5985 6157
+
+" style="stroke:#0000ff;stroke-width:8;stroke-miterlimit:8;
+fill:#0000ff;"/>
+<!-- Line -->
+<polyline points="8456,8645
+6124,8645
+" style="stroke:#0000ff;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 8456 8645 - 5984 8645-->
+<polygon points="6127 8614
+6001 8645
+6127 8677
+6127 8614
+
+" style="stroke:#0000ff;stroke-width:8;stroke-miterlimit:8;
+fill:#0000ff;"/>
+<!-- Line -->
+<polyline points="5999,8362
+8283,8362
+" style="stroke:#ff0000;stroke-width:8;
+stroke-linejoin:miter; stroke-linecap:butt;
+"/>
+<!-- Arrowhead on XXXpoint 5999 8362 - 8425 8362-->
+<polygon points="8282 8393
+8408 8362
+8282 8330
+8282 8393
+
+" style="stroke:#ff0000;stroke-width:8;stroke-miterlimit:8;
+fill:#ff0000;"/>
+<!-- Text -->
+<text xml:space="preserve" x="4346" y="2551" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Filter:</text>
+<!-- Text -->
+<text xml:space="preserve" x="4346" y="2960" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">No</text>
+<!-- Text -->
+<text xml:space="preserve" x="4299" y="5811" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Filter:</text>
+<!-- Text -->
+<text xml:space="preserve" x="4299" y="6220" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Yes</text>
+<!-- Text -->
+<text xml:space="preserve" x="4251" y="8220" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Filter:</text>
+<!-- Text -->
+<text xml:space="preserve" x="4251" y="8629" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Yes</text>
+<!-- Text -->
+<text xml:space="preserve" x="1086" y="2267" fill="#00d100"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Do you have 'key1'?</text>
+<!-- Text -->
+<text xml:space="preserve" x="1039" y="5527" fill="#00d100"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Do you have 'key2'?</text>
+<!-- Text -->
+<text xml:space="preserve" x="1039" y="7937" fill="#00d100"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Do you have 'key3'?</text>
+<!-- Text -->
+<text xml:space="preserve" x="4204" y="1417" fill="#0000ff"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">FILTER</text>
+<!-- Text -->
+<text xml:space="preserve" x="2173" y="3448" fill="#0000ff"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">No</text>
+<!-- Text -->
+<text xml:space="preserve" x="2078" y="9070" fill="#0000ff"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">No</text>
+<!-- Text -->
+<text xml:space="preserve" x="1322" y="6755" fill="#0000ff"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Yes: here is key2</text>
+<!-- Text -->
+<text xml:space="preserve" x="8834" y="1370" fill="#0000ff"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">STORAGE</text>
+<!-- Text -->
+<text xml:space="preserve" x="9165" y="2456" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Storage:</text>
+<!-- Text -->
+<text xml:space="preserve" x="9448" y="2881" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">No</text>
+<!-- Text -->
+<text xml:space="preserve" x="9165" y="5574" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Storage:</text>
+<!-- Text -->
+<text xml:space="preserve" x="9448" y="6141" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Yes</text>
+<!-- Text -->
+<text xml:space="preserve" x="9165" y="7937" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Storage:</text>
+<!-- Text -->
+<text xml:space="preserve" x="9448" y="8456" fill="#000000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">No</text>
+<!-- Text -->
+<text xml:space="preserve" x="6425" y="5196" fill="#00d100"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">necessary</text>
+<!-- Text -->
+<text xml:space="preserve" x="6330" y="5669" fill="#00d100"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">disk access</text>
+<!-- Text -->
+<text xml:space="preserve" x="5952" y="6708" fill="#0000ff"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">Yes: here is key2</text>
+<!-- Text -->
+<text xml:space="preserve" x="6944" y="9023" fill="#0000ff"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">No</text>
+<!-- Text -->
+<text xml:space="preserve" x="6425" y="8173" fill="#ff0000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">disk access</text>
+<!-- Text -->
+<text xml:space="preserve" x="4015" y="7748" fill="#ff0000"  font-family="Times" font-style="normal" font-weight="normal" font-size="202" text-anchor="start">False Positive</text>
+<!-- Text -->
+<text xml:space="preserve" x="6330" y="7795" fill="#ff0000"  font-family="Times" font-style="normal" font-weight="normal" font-size="252" text-anchor="start">unnecessary</text>
+</g>
+</svg>
