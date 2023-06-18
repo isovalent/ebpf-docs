@@ -167,8 +167,7 @@ This field contains the address family of the socket associated this this socket
 
 This field is a pointer to a `struct bpf_flow_keys` which like the name implies hold the keys that identify the network flow of the socket buffer. More details can be found in the [dedicated section](#flow-keys).
 
-This field is only accessible from within `BPF_PROG_TYPE_FLOW_DISSECTOR` programs.
-<!-- TODO make program type link -->
+This field is only accessible from within [`BPF_PROG_TYPE_FLOW_DISSECTOR`](../program-type/BPF_PROG_TYPE_FLOW_DISSECTOR.md) programs.
 
 ### `tstamp`
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/f11216b24219ab26d8d159fbfa12dff886b16e32)

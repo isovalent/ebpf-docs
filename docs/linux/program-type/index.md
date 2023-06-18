@@ -19,7 +19,7 @@ These program types are triggered by network events
 * BPF_PROG_TYPE_SK_MSG
 * [BPF_PROG_TYPE_SK_LOOKUP](BPF_PROG_TYPE_SK_LOOKUP.md)
 * [BPF_PROG_TYPE_SK_REUSEPORT](BPF_PROG_TYPE_SK_REUSEPORT.md)
-* BPF_PROG_TYPE_FLOW_DISSECTOR
+* [BPF_PROG_TYPE_FLOW_DISSECTOR](BPF_PROG_TYPE_FLOW_DISSECTOR.md)
 
 ### Light weight tunnel program types
 
