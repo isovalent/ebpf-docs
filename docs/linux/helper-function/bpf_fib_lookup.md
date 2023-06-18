@@ -15,6 +15,10 @@ _plen_ argument is the size of the passed in struct. _flags_ argument can be a c
 
 &nbsp;&nbsp;&nbsp;&nbsp;Do a direct table lookup vs full lookup using FIB rules.
 
+**BPF_FIB_LOOKUP_TBID**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Used with BPF_FIB_LOOKUP_DIRECT. Use the routing table ID present in _params_->tbid for the fib lookup.
+
 **BPF_FIB_LOOKUP_OUTPUT**
 
 &nbsp;&nbsp;&nbsp;&nbsp;Perform lookup from an egress perspective (default is ingress).
