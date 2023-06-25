@@ -130,44 +130,46 @@ This field contains the address family of the socket associated this this socket
 ### `remote_ip4`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/8a31db5615667956c513d205cfb06885c3ec6d0b)
 
-<!-- TODO -->
+The IPv4 address of the remote end of the socket.
 
 ### `local_ip4`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/8a31db5615667956c513d205cfb06885c3ec6d0b)
 
-<!-- TODO -->
+The locally bound IPv4 address of the socket.
 
 ### `remote_ip6`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/8a31db5615667956c513d205cfb06885c3ec6d0b)
 
-<!-- TODO -->
+The IPv6 address of the remote end of the socket.
 
 ### `local_ip6`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/8a31db5615667956c513d205cfb06885c3ec6d0b)
 
-<!-- TODO -->
+The locally bound IPv6 address of the socket.
 
 ### `remote_port`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/8a31db5615667956c513d205cfb06885c3ec6d0b)
 
-<!-- TODO -->
+The L4 port number of the remote side of the socket.
 
 ### `local_port`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/8a31db5615667956c513d205cfb06885c3ec6d0b)
 
-<!-- TODO -->
+The L4 port number of the local side of the socket.
 
 ### `data_meta`
 [:octicons-tag-24: v4.15](https://github.com/torvalds/linux/commit/de8f3a83b0a0fddb2cf56e7a718127e9619ea3da)
 
-<!-- TODO -->
+This field contains a pointer to the start of a metadata region in the socket buffer. If no metadata room is set, so the value of `data_meta` and `data` will be the same. A XDP program can request metadata to be allocated with the [`bpf_xdp_adjust_meta`](../helper-function/bpf_xdp_adjust_meta.md) helper after which it can write arbitrary data into it.
+
+If the packet with metadata is passed to the kernel, that metadata will be available in the [`__sk_buff`](../program-context/__sk_buff.md) via this pointer. The region being between `data_meta` and `data`.
+
+This means that XDP programs can communicate information to for example [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md) programs which can then manipulate the socket buffer to change `__sk_buff->mark` or `__sk_buff->priority` on behalf of an XDP program.
 
 ### `flow_keys`
 [:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
 
-This field is a pointer to a `struct bpf_flow_keys` which like the name implies hold the keys that identify the network flow of the socket buffer. More details can be found in the [dedicated section](#flow-keys).
-
-This field is only accessible from within [`BPF_PROG_TYPE_FLOW_DISSECTOR`](../program-type/BPF_PROG_TYPE_FLOW_DISSECTOR.md) programs.
+This field is a pointer to a `struct bpf_flow_keys` which like the name implies hold the keys that identify the network flow of the socket buffer. This field is only accessible from within [`BPF_PROG_TYPE_FLOW_DISSECTOR`](../program-type/BPF_PROG_TYPE_FLOW_DISSECTOR.md) programs. More details can be found in its [context section](../program-type/BPF_PROG_TYPE_FLOW_DISSECTOR.md#context).
 
 ### `tstamp`
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/f11216b24219ab26d8d159fbfa12dff886b16e32)
@@ -177,15 +179,18 @@ This field indicates the time when this packet should be transmitted in nanoseco
 !!! note
     The `fq` qdisc has a "drop horizon" if packets are set to transmit to far into the future they will be dropped to avoid queueing to many packets.
 
+!!! note
+    After v5.18 [1](https://github.com/torvalds/linux/commit/8d21ec0e46ed6e39994accff8eb4f2be3d2e76b5) / [2](https://github.com/torvalds/linux/commit/9bb984f28d5bcb917d35d930fcfb89f90f9449fd) the meaning of this field can also be "received time" and the [`tstamp_type`](#tstamp_type) field will indicate one or the other.
+
 ### `wire_len`
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/e3da08d057002f9d0831949d51666c3e15dc6b29)
 
-<!-- TODO -->
+This field contains the length of the data as it will appear on the wire.
 
 ### `gso_segs`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/d9ff286a0f59fa7843549e49bd240393dd7d8b87)
 
-<!-- TODO -->
+This field indicates the number of [GSO](https://docs.kernel.org/networking/segmentation-offloads.html#generic-segmentation-offload) segments that are contained within the current socket buffer.
 
 ### `sk`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/46f8bc92758c6259bcf945e9216098661c1587cd)
@@ -194,107 +199,26 @@ This field is a pointer to a `struct bpf_sock` which holds information about the
 
 This field is always read-only.
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `gso_size`
 [:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/cf62089b0edd7e74a1f474844b4d9f7b5697fb5c)
 
-<!-- TODO -->
+This field indicates the size of [GSO](https://docs.kernel.org/networking/segmentation-offloads.html#generic-segmentation-offload) segments that are contained within the current socket buffer.
 
 ### `tstamp_type`
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/9bb984f28d5bcb917d35d930fcfb89f90f9449fd)
 
-<!-- TODO -->
+This field indicates what the meaning of [`tstamp`](#tstamp) is. The field can have the following values:
+
+* `BPF_SKB_TSTAMP_UNSPEC` - The `tstamp` field contains has the (rcv) tstamp at ingress and the delivery time at egress.
+* `BPF_SKB_TSTAMP_DELIVERY_MONO` - The `tstamp` field contains the requested to to deliver the packet, see [`tstamp`](#tstamp) for details.
 
 ### `hwtstamp`
 [:octicons-tag-24: v5.16](https://github.com/torvalds/linux/commit/f64c4acea51fbe2c08c0b0f48b7f5d1657d7a5e4)
 
-<!-- TODO -->
-
-## Flow keys
-
-This section describes the fields of the `struct bpf_flow_keys` type.
-
-### `nhoff`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `thoff`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `addr_proto`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `is_frag`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `is_first_frag`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `is_encap`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `ip_proto`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `n_proto`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `sport`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `dport`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `ipv4_src`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `ipv4_dst`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `ipv6_src`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `ipv6_dst`
-[:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/d58e468b1112dcd1d5193c0a89ff9f98b5a3e8b9)
-
-<!-- TODO -->
-
-### `flags`
-[:octicons-tag-24: v5.4](https://github.com/torvalds/linux/commit/086f95682114fd2d1790bd3226e76cbae9a2d192)
-
-<!-- TODO -->
-
-### `flow_label`
-[:octicons-tag-24: v5.4](https://github.com/torvalds/linux/commit/71c99e32b926159ea628352751f66383d7d04d17)
-
-<!-- TODO -->
-
+This field contains the time the packet was received at as reported by the NIC if it supports this feature.
 
 ## Socket
 
@@ -303,72 +227,86 @@ This section describes the fields of the `struct bpf_sock` type which is a mirro
 ### `bound_dev_if`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/61023658760032e97869b07d54be9681d2529e77)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `family`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `type`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `protocol`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `mark`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/482dca939fb7ee35ba20b944b4c2476133dbf0df)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `priority`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/482dca939fb7ee35ba20b944b4c2476133dbf0df)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `src_ip4`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `src_ip6`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `src_port`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `dst_port`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `dst_ip4`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `dst_ip6`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `state`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ### `rx_queue_mapping`
 [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/c3c16f2ea6d20159903cf93afbb1155f3d8348d5)
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 [^1]: [https://www.spinics.net/lists/netdev/msg235744.html](https://www.spinics.net/lists/netdev/msg235744.html)
 [^2]: [https://www.kernel.org/doc/Documentation/networking/multiqueue.txt](https://www.kernel.org/doc/Documentation/networking/multiqueue.txt)
