@@ -12,6 +12,21 @@ This map type can be use too lookup a pointer to a socket with the [bpf_map_look
 
 This map can also be manipulated from kernel space, the main use-case for doing so seems to be to manage the contents of the map automatically from program types that trigger on socket events. This would allow 1 program to manage the contents of the map, and another to do the actual redirecting on packet events.
 
+[`BPF_PROG_TYPE_SK_MSG`](../program-type/BPF_PROG_TYPE_SK_MSG.md) and [`BPF_PROG_TYPE_SK_SKB`](../program-type/BPF_PROG_TYPE_SK_SKB.md) programs can be attached to this map type. When a socket is inserted into the map, its socket callbacks will be replaced with these programs.
+
+The attach types for the map programs are:
+
+* `msg_parser` program - [`BPF_SK_MSG_VERDICT`](../syscall/BPF_LINK_CREATE.md#bpf_sk_msg_verdict).
+* `stream_parser` program - [`BPF_SK_SKB_STREAM_PARSER`](../syscall/BPF_LINK_CREATE.md#bpf_sk_skb_stream_parser).
+* `stream_verdict` program - [`BPF_SK_SKB_STREAM_VERDICT`](../syscall/BPF_LINK_CREATE.md#bpf_sk_skb_stream_verdict).
+* `skb_verdict` program - [`BPF_SK_SKB_VERDICT`](../syscall/BPF_LINK_CREATE.md#bpf_sk_skb_verdict).
+
+
+A sock object may be in multiple maps, but can only inherit a single parse or verdict program. If adding a sock object to a map would result in having multiple parser programs the update will return an `EBUSY` error.
+
+!!! warning
+    Users are not allowed to attach stream_verdict and skb_verdict programs to the same map.
+
 ## Attributes
 
 The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must always be `4` and the [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must always be `8`. 
