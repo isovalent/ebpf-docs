@@ -60,7 +60,6 @@ Socket SKB programs are called by the kernel with a [__sk_buff](../program-conte
 
 This program type isn't allowed to read from and write to all fields of the context since doing so might break assumptions in the kernel or because data isn't available at the point where the program is hooked into the kernel.
 
-<!-- TODO validate below -->
 <!-- Information based on `sk_skb_is_valid_access` and `bpf_skb_is_valid_access` functions in the kernel sources -->
 
 ??? abstract "Context fields"
