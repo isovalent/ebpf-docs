@@ -16,20 +16,10 @@ theme:
     text: Inter
     code: Inter
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: yellow
-      accent: amber
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: yellow
-      accent: amber
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+    scheme: slate
+    primary: yellow
+    accent: amber
+
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil 
