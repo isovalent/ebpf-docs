@@ -14,6 +14,9 @@ All ingress traffic is first processes by a XDP program, it can make a decision 
 
 The rest of this page goes into details on how this feature works at the kernel level. Most user will want to use a library such as [libxdp](https://github.com/xdp-project/xdp-tools/tree/master/lib/libxdp#using-af_xdp-sockets) which implements most of the difficult details. An example program can be found [here](https://github.com/xdp-project/bpf-examples/tree/master/AF_XDP-example).
 
+!!! warning
+	AF_XDP requires additional driver support on top of plain XDP support. Please check the [driver support](../program-type/BPF_PROG_TYPE_XDP.md#driver-support) table for driver compatibility.
+
 ## How it works
 
 A XSK consists of a few "parts" which all work together and have to be setup and linked in the correct manner to get a working XSK.
