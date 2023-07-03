@@ -592,6 +592,7 @@ Socket ops programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../sysca
 
 ??? example "Clamping a connection"
     ```c
+    // Copyright (c) 2017 Facebook
     #define DEBUG 1
 
     SEC("sockops")
@@ -733,6 +734,7 @@ Socket ops programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../sysca
 
 ??? example "Adding socket to map"
     ```c
+    // Copyright (c) 2017-2018 Covalent IO
     SEC("sockops")
     int bpf_sockmap(struct bpf_sock_ops *skops)
     {

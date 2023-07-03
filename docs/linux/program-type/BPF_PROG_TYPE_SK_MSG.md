@@ -53,6 +53,8 @@ Socket message programs are attached to [`BPF_MAP_TYPE_SOCKMAP`](../map-type/BPF
 Example of redirecting a message:
 
 ```c
+// Copyright (c) 2020 Cloudflare
+
 struct {
 	__uint(type, BPF_MAP_TYPE_SOCKMAP);
 	__uint(max_entries, 2);
@@ -97,6 +99,8 @@ int prog_msg_verdict(struct sk_msg_md *msg)
 Example of dropping based on PID and TPID:
 
 ```c
+// Copyright (c) 2020 Isovalent, Inc.
+
 struct {
 	__uint(type, BPF_MAP_TYPE_SOCKMAP);
 	__uint(max_entries, 2);

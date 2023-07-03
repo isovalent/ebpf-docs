@@ -14,6 +14,7 @@ the socket is allowed to be created, but the eBPF program can also return an err
 The list of all LSM hooks can be found in [lsm_hook_defs.h](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hook_defs.h), additional documentation for these hooks lives in [lsm_hooks.h](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hooks.h) 
 
 ```c
+// Copyright (C) 2020 Google LLC.
 SEC("lsm/file_mprotect")
 int BPF_PROG(mprotect_audit, struct vm_area_struct *vma,
             unsigned long reqprot, unsigned long prot, int ret)

@@ -116,6 +116,7 @@ The programs should be loaded with the same expected attach type as used during 
 Example BPF program:
 
 ```c
+// Copyright Red Hat
 SEC("sk_skb/stream_verdict")
 int bpf_prog_verdict(struct __sk_buff *skb)
 {
@@ -132,6 +133,7 @@ int bpf_prog_verdict(struct __sk_buff *skb)
 Example userspace loader code:
 
 ```c
+// Copyright Red Hat
 int create_sample_sockmap(int sock, int parse_prog_fd, int verdict_prog_fd)
 {
         int index = 0;

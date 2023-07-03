@@ -90,6 +90,7 @@ Socket lookup programs are attached to a network namespace using a link. When [c
 ## Example
 
 ```c
+// Copyright (c) 2020 Cloudflare
 struct {
 	__uint(type, BPF_MAP_TYPE_SOCKMAP);
 	__uint(max_entries, 32);

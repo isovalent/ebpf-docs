@@ -74,6 +74,8 @@ This helper call can be used in the following program types:
 
 Socket lookup program example usage
 ```c
+// Copyright (c) 2020 Cloudflare
+
 struct {
 	__uint(type, BPF_MAP_TYPE_SOCKMAP);
 	__uint(max_entries, 32);

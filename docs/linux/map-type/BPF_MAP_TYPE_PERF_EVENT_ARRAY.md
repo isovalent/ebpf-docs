@@ -55,6 +55,19 @@ The `mmap` call, if all is well, should return a pointer to a memory address. Th
 ??? abstract "C structure"
     ```c
     /*
+    * Performance events:
+    *
+    *    Copyright (C) 2008-2009, Thomas Gleixner <tglx@linutronix.de>
+    *    Copyright (C) 2008-2011, Red Hat, Inc., Ingo Molnar
+    *    Copyright (C) 2008-2011, Red Hat, Inc., Peter Zijlstra
+    *
+    * Data type definitions, declarations, prototypes.
+    *
+    *    Started by: Thomas Gleixner and Ingo Molnar
+    *
+    * For licencing details see kernel-base/COPYING
+    */
+    /*
     * Structure of the page that can be mapped via mmap
     */
     struct perf_event_mmap_page {
