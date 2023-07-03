@@ -34,7 +34,7 @@ These program types are used to implement custom light weight tunneling protocol
 
 These program types are triggered by events of cGroups to which the program is attached
 
-* BPF_PROG_TYPE_CGROUP_SKB
+* [BPF_PROG_TYPE_CGROUP_SKB](BPF_PROG_TYPE_CGROUP_SKB.md)
 * BPF_PROG_TYPE_CGROUP_SOCK
 * BPF_PROG_TYPE_CGROUP_DEVICE
 * BPF_PROG_TYPE_CGROUP_SOCK_ADDR
