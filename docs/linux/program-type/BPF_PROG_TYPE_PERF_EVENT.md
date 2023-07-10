@@ -1,71 +1,53 @@
-# Program type `BPF_PROG_TYPE_TRACEPOINT`
+# Program type `BPF_PROG_TYPE_PERF_EVENT`
 
-<!-- [FEATURE_TAG](BPF_PROG_TYPE_TRACEPOINT) -->
-[:octicons-tag-24: v4.7](https://github.com/torvalds/linux/commit/98b5c2c65c2951772a8fc661f50d675e450e8bce)
+<!-- [FEATURE_TAG](BPF_PROG_TYPE_PERF_EVENT) -->
+[:octicons-tag-24: v4.9](https://github.com/torvalds/linux/commit/0515e5999a466dfe6e1924f460da599bb6821487)
 <!-- [/FEATURE_TAG] -->
 
-`BPF_PROG_TYPE_TRACEPOINT` programs are eBPF programs that attach to pre-defined trace points in the linux kernel. These tracepoint are often placed in locations which are interesting or common locations to measure performance.
+Perf event programs that can be attached to hardware and software perf events. Once attached the BPF program is executed each time the perf event is triggered. 
 
 ## Usage
 
-Tracepoint programs can attach to trace events. These events are declared with the [`TRACE_EVENT`](https://elixir.bootlin.com/linux/v6.2.2/source/include/linux/tracepoint.h#L436) macro. Take for example the [`xdp_exception`](https://elixir.bootlin.com/linux/v6.2.2/source/include/trace/events/xdp.h#L28) trace event. With a combination of `TP_*` macros a function prototype for the tracepoint is defined, a structure which will be passed to any handlers and a conversion method for going from the arguments to the structure. 
+Perf event programs are typically used for profiling and tracing. These programs are called with the CPU register state at the time of the event. This allows the programs to collect information for each event and aggregate it in a customized way. 
 
-The `TRACE_EVENT` macro will make a tracepoint available via a function with the `trace_` prefix followed by the name. So `trace_xdp_exception` will fire the `xdp_exception` event, which can happen from any number of locations in the code. The attached eBPF program will be called for all invocations of the trace program.
-
-We can use the [tracefs](https://www.kernel.org/doc/Documentation/trace/ftrace.txt) to list all of these available trace events. For the sake of this page we will assume the tracefs is mounted at `/sys/kernel/tracing` (which is usual for most distros). The `/sys/kernel/tracing/events/` directory contains a number of yet more directories. The events are grouped by the first word in their name, so all `kvm_*` events reside in `/sys/kernel/tracing/events/kvm`. So `xdp_exception` is located in `/sys/kernel/tracing/events/xdp/xdp_exception`. We will refer to this directory as the "event directory".
+Perf event programs are typically placed in the `perf_event` ELF header.
 
 ## Context
 
-The context for a tracepoint program is a pointer to a structure, the type of which is different for each trace event. The event directory contains a pseudo-file called `format` so for `xdp_exception` that would be `/sys/kernel/tracing/events/xdp/xdp_exception/format`. We can read this file to get the layout of the struct type:
+??? abstract "C Structure"
+    ```c
+    struct bpf_perf_event_data {
+        bpf_user_pt_regs_t regs;
+        __u64 sample_period;
+        __u64 addr;
+    };
+    ```
 
-`#!bash $ cat /sys/kernel/tracing/events/xdp/xdp_exception/format`
-```
-name: xdp_exception
-ID: 488
-format:
-	field:unsigned short common_type;	offset:0;	size:2;	signed:0;
-	field:unsigned char common_flags;	offset:2;	size:1;	signed:0;
-	field:unsigned char common_preempt_count;	offset:3;	size:1;	signed:0;
-	field:int common_pid;	offset:4;	size:4;	signed:1;
+### `regs`
 
-	field:int prog_id;	offset:8;	size:4;	signed:1;
-	field:u32 act;	offset:12;	size:4;	signed:0;
-	field:int ifindex;	offset:16;	size:4;	signed:1;
+This field contains the CPU registers at the time of the event. The type of the field is different for each architecture since each architecture has different registers. The helpers in `tools/lib/bpf/bpf_tracing.h` can be used to access the registers in a portable way.
 
-print fmt: "prog_id=%d action=%s ifindex=%d", REC->prog_id, __print_symbolic(REC->act, { 0, "ABORTED" }, { 1, "DROP" }, { 2, "PASS" }, { 3, "TX" }, { 4, "REDIRECT" }, { -1, ((void *)0) }), REC->ifindex
-```
+### `sample_period`
 
-From this output we can reconstruct the context, which as C struct would look like:
+This field contains the amount of times this perf even has been triggered.
 
-```c
-struct xdp_exception_ctx {
-    __u16 common_type;
-    __u8 flags;
-    __u8 common_preempt_count;
-    __s32 common_pid;
+### `addr`
 
-    __s32 prog_int;
-    __u32 act;
-    __s32 ifindex;
-};
-```
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ## Attachment
 
-There are three methods of attaching tracepoint programs, from oldest and least recommended to newest and most recommended, however, all methods have this first part in common. 
-
-We start by looking up the event ID in the tracefs. Inside the event directory is located a pseudo-file called `id`, so for `xdp_exception` that would be `/sys/kernel/tracing/events/xdp/xdp_exception/id`. When reading the file a decimal number is returned.
+here are three methods of attaching perf event programs, from oldest and least recommended to newest and most recommended, however, all methods have this first part in common. 
 
 Next step is to open a new perf event using the [`perf_event_open`](https://man7.org/linux/man-pages/man2/perf_event_open.2.html) syscall:
 
 ```c
 struct perf_event_attr attr = {
-    .type = PERF_TYPE_TRACEPOINT,
-    .size = sizeof(struct perf_event_attr),
-    .config = event_id, /* The ID of your trace event */
-    .sample_period = 1,
-    .sample_type = PERF_SAMPLE_RAW,
-    .wakeup_events = 1,
+    .sample_freq = SAMPLE_FREQ,
+    .freq = 1,
+    .type = PERF_TYPE_HARDWARE,
+    .config = PERF_COUNT_HW_CPU_CYCLES,
 };
 
 syscall(SYS_perf_event_open, 
@@ -77,7 +59,7 @@ syscall(SYS_perf_event_open,
 );
 ```
 
-This syscall will return a file descriptor on success. 
+This syscall will return a file descriptor on success. Perf event programs can be attached to any event, as long as it is of type `PERF_TYPE_HARDWARE` or `PERF_TYPE_SOFTWARE`.
 
 ### ioctl method
 
@@ -87,7 +69,7 @@ This is the oldest and least recommended method. After we have the perf event fi
 
 `#!c ioctl(perf_event_fd, PERF_EVENT_IOC_ENABLE, 0);` to enable.
 
-The tracepoint can be temporality disabled with the `PERF_EVENT_IOC_DISABLE` ioctl option. Otherwise the tracepoint stays attached until the perf_event goes away due to the closing of the perf_event FD or the program exiting. The perf event holds a reference to the BPF program so it will stay loaded until no more tracepoint reference it.
+The perf event program can be temporality disabled with the `PERF_EVENT_IOC_DISABLE` ioctl option. Otherwise the perf event program stays attached until the perf_event goes away due to the closing of the perf_event FD or the program exiting. The perf event holds a reference to the BPF program so it will stay loaded until no more perf event program reference it.
 
 ### `perf_event_open` PMU
 
@@ -96,11 +78,139 @@ The tracepoint can be temporality disabled with the `PERF_EVENT_IOC_DISABLE` ioc
 
 ### BPF link
 
-This is the newest and most recommended method of attaching tracepoint programs. 
+This is the newest and most recommended method of attaching perf event programs. 
 
 After we have gotten the perf event file descriptor we attach the program by making a bpf link via the [link create syscall command](../syscall/BPF_LINK_CREATE.md).
 
 We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREATE.md#bpf_perf_event) [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type), [`target_fd`](../syscall/BPF_LINK_CREATE.md#target_fd) set to the perf event fd, [`prog_fd`](../syscall/BPF_LINK_CREATE.md#prog_fd) to the file descriptor of the tracepoint program, and optionally a [`cookie`](../syscall/BPF_LINK_CREATE.md#cookie)
+
+
+## Examples
+
+??? Example "profiling example"
+    ```c
+    /* Copyright (c) 2016 Facebook
+    *
+    * This program is free software; you can redistribute it and/or
+    * modify it under the terms of version 2 of the GNU General Public
+    * License as published by the Free Software Foundation.
+    */
+    #include <linux/ptrace.h>
+    #include <uapi/linux/bpf.h>
+    #include <uapi/linux/bpf_perf_event.h>
+    #include <uapi/linux/perf_event.h>
+    #include <bpf/bpf_helpers.h>
+    #include <bpf/bpf_tracing.h>
+
+    struct key_t {
+        char comm[TASK_COMM_LEN];
+        u32 kernstack;
+        u32 userstack;
+    };
+
+    struct {
+        __uint(type, BPF_MAP_TYPE_HASH);
+        __type(key, struct key_t);
+        __type(value, u64);
+        __uint(max_entries, 10000);
+    } counts SEC(".maps");
+
+    struct {
+        __uint(type, BPF_MAP_TYPE_STACK_TRACE);
+        __uint(key_size, sizeof(u32));
+        __uint(value_size, PERF_MAX_STACK_DEPTH * sizeof(u64));
+        __uint(max_entries, 10000);
+    } stackmap SEC(".maps");
+
+    #define KERN_STACKID_FLAGS (0 | BPF_F_FAST_STACK_CMP)
+    #define USER_STACKID_FLAGS (0 | BPF_F_FAST_STACK_CMP | BPF_F_USER_STACK)
+
+    SEC("perf_event")
+    int bpf_prog1(struct bpf_perf_event_data *ctx)
+    {
+        char time_fmt1[] = "Time Enabled: %llu, Time Running: %llu";
+        char time_fmt2[] = "Get Time Failed, ErrCode: %d";
+        char addr_fmt[] = "Address recorded on event: %llx";
+        char fmt[] = "CPU-%d period %lld ip %llx";
+        u32 cpu = bpf_get_smp_processor_id();
+        struct bpf_perf_event_value value_buf;
+        struct key_t key;
+        u64 *val, one = 1;
+        int ret;
+
+        if (ctx->sample_period < 10000)
+            /* ignore warmup */
+            return 0;
+        bpf_get_current_comm(&key.comm, sizeof(key.comm));
+        key.kernstack = bpf_get_stackid(ctx, &stackmap, KERN_STACKID_FLAGS);
+        key.userstack = bpf_get_stackid(ctx, &stackmap, USER_STACKID_FLAGS);
+        if ((int)key.kernstack < 0 && (int)key.userstack < 0) {
+            bpf_trace_printk(fmt, sizeof(fmt), cpu, ctx->sample_period,
+                    PT_REGS_IP(&ctx->regs));
+            return 0;
+        }
+
+        ret = bpf_perf_prog_read_value(ctx, (void *)&value_buf, sizeof(struct bpf_perf_event_value));
+        if (!ret)
+        bpf_trace_printk(time_fmt1, sizeof(time_fmt1), value_buf.enabled, value_buf.running);
+        else
+        bpf_trace_printk(time_fmt2, sizeof(time_fmt2), ret);
+
+        if (ctx->addr != 0)
+        bpf_trace_printk(addr_fmt, sizeof(addr_fmt), ctx->addr);
+
+        val = bpf_map_lookup_elem(&counts, &key);
+        if (val)
+            (*val)++;
+        else
+            bpf_map_update_elem(&counts, &key, &one, BPF_NOEXIST);
+        return 0;
+    }
+
+    char _license[] SEC("license") = "GPL";
+    ```
+
+??? example "recording instruction pointer"
+    ```c
+    /* Copyright 2016 Netflix, Inc.
+    *
+    * This program is free software; you can redistribute it and/or
+    * modify it under the terms of version 2 of the GNU General Public
+    * License as published by the Free Software Foundation.
+    */
+    #include <linux/ptrace.h>
+    #include <uapi/linux/bpf.h>
+    #include <uapi/linux/bpf_perf_event.h>
+    #include <bpf/bpf_helpers.h>
+    #include <bpf/bpf_tracing.h>
+
+    #define MAX_IPS		8192
+
+    struct {
+        __uint(type, BPF_MAP_TYPE_HASH);
+        __type(key, u64);
+        __type(value, u32);
+        __uint(max_entries, MAX_IPS);
+    } ip_map SEC(".maps");
+
+    SEC("perf_event")
+    int do_sample(struct bpf_perf_event_data *ctx)
+    {
+        u64 ip;
+        u32 *value, init_val = 1;
+
+        ip = PT_REGS_IP(&ctx->regs);
+        value = bpf_map_lookup_elem(&ip_map, &ip);
+        if (value)
+            *value += 1;
+        else
+            /* E2BIG not tested for this example only */
+            bpf_map_update_elem(&ip_map, &ip, &init_val, BPF_NOEXIST);
+
+        return 0;
+    }
+    char _license[] SEC("license") = "GPL";
+    ```
 
 ## Helper functions
 
@@ -110,6 +220,8 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     * [bpf_perf_event_output](../helper-function/bpf_perf_event_output.md)
     * [bpf_get_stackid](../helper-function/bpf_get_stackid.md)
     * [bpf_get_stack](../helper-function/bpf_get_stack.md)
+    * [bpf_perf_prog_read_value](../helper-function/bpf_perf_prog_read_value.md)
+    * [bpf_read_branch_records](../helper-function/bpf_read_branch_records.md)
     * [bpf_get_attach_cookie](../helper-function/bpf_get_attach_cookie.md)
     * [bpf_map_lookup_elem](../helper-function/bpf_map_lookup_elem.md)
     * [bpf_map_update_elem](../helper-function/bpf_map_update_elem.md)
