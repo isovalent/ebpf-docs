@@ -35,8 +35,9 @@ This helper call can be used in the following program types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_PROG_REF] -->
- * [BPF_PROG_TYPE_CGROUP_SOCKOPT](../program-type/BPF_PROG_TYPE_CGROUP_SOCKOPT.md)
- * [BPF_PROG_TYPE_CGROUP_SOCK_ADDR](../program-type/BPF_PROG_TYPE_CGROUP_SOCK_ADDR.md)
+ * [BPF_PROG_TYPE_CGROUP_SOCKOPT](../program-type/BPF_PROG_TYPE_CGROUP_SOCKOPT.md) [:octicons-tag-24: v5.15](2c531639deb5e3ddfd6e8123b82052b2d9fbc6e5)
+ * [BPF_PROG_TYPE_CGROUP_SOCK_ADDR](../program-type/BPF_PROG_TYPE_CGROUP_SOCK_ADDR.md) [:octicons-tag-24: v5.8](beecf11bc2188067824591612151c4dc6ec383c7)
+ * [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md) [:octicons-tag-24: v6.0](9113d7e48e9128522b9f5a54dfd30dff10509a92)
  * [BPF_PROG_TYPE_SOCK_OPS](../program-type/BPF_PROG_TYPE_SOCK_OPS.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 

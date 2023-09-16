@@ -46,8 +46,14 @@ type helperDef struct {
 	KConfig            []string `yaml:"kconfig"`
 	Capabilities       []string `yaml:"cap"`
 	AttachType         []string `yaml:"attach_type"`
-	ProgramTrampoline  bool     `yaml:"prog_trampoline"`
-	NoSecurityLockdown bool     `yaml:"no_security_lockdown"`
+	Since              *since
+	ProgramTrampoline  bool `yaml:"prog_trampoline"`
+	NoSecurityLockdown bool `yaml:"no_security_lockdown"`
+}
+
+type since struct {
+	Version string `yaml:"version"`
+	Commit  string `yaml:"commit"`
 }
 
 type helperFuncDataFile struct {
@@ -246,18 +252,30 @@ func renderMapPages(dataFile *helperFuncDataFile) error {
 	return nil
 }
 
+type perFunc struct {
+	name  string
+	since *since
+}
+
 func renderHelperFuncPages(dataFile *helperFuncDataFile) error {
-	progTypesPerFunc := make(map[string][]string)
+	progTypesPerFunc := make(map[string][]perFunc)
 	for progType := range dataFile.Programs {
 		group := dataFile.flatten(dataFile.Programs[progType])
 		for _, helperDef := range group {
-			progTypesPerFunc[helperDef.Name] = append(progTypesPerFunc[helperDef.Name], progType)
+			progTypesPerFunc[helperDef.Name] = append(progTypesPerFunc[helperDef.Name], perFunc{
+				name:  progType,
+				since: helperDef.Since,
+			})
 		}
 	}
 
 	for idx, progTypes := range progTypesPerFunc {
-		sort.Strings(progTypes)
-		progTypes = slices.Compact(progTypes)
+		sort.Slice(progTypes, func(i, j int) bool {
+			return progTypes[i].name < progTypes[j].name
+		})
+		progTypes = slices.CompactFunc(progTypes, func(i, j perFunc) bool {
+			return i.name == j.name
+		})
 		progTypesPerFunc[idx] = progTypes
 	}
 
@@ -324,16 +342,21 @@ func renderHelperFuncPages(dataFile *helperFuncDataFile) error {
 		}()
 	}
 
-	mapTypesPerFunc := make(map[string][]string)
+	mapTypesPerFunc := make(map[string][]perFunc)
 	for mapType := range dataFile.Maps {
 		group := dataFile.flatten(dataFile.Maps[mapType])
 		for _, helperDef := range group {
-			mapTypesPerFunc[helperDef.Name] = append(mapTypesPerFunc[helperDef.Name], mapType)
+			mapTypesPerFunc[helperDef.Name] = append(mapTypesPerFunc[helperDef.Name], perFunc{
+				name:  mapType,
+				since: helperDef.Since,
+			})
 		}
 	}
 
 	for _, mapTypes := range mapTypesPerFunc {
-		sort.Strings(mapTypes)
+		sort.Slice(mapTypes, func(i, j int) bool {
+			return mapTypes[i].name < mapTypes[j].name
+		})
 	}
 
 	for helper, mapTypes := range mapTypesPerFunc {
@@ -426,7 +449,11 @@ func renderProgramHelperFuncReference(file *helperFuncDataFile, progType string)
 
 	sb.WriteString("??? abstract \"Supported helper functions\"\n")
 	for _, item := range group {
-		sb.WriteString(fmt.Sprintf("    * [%s](../helper-function/%s.md)\n", item.Name, item.Name))
+		fmt.Fprintf(&sb, "    * [%s](../helper-function/%s.md)", item.Name, item.Name)
+		if item.Since != nil {
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.Since.Version, item.Since.Commit)
+		}
+		fmt.Fprint(&sb, "\n")
 	}
 
 	return sb.String()
@@ -439,27 +466,39 @@ func renderMapHelperFuncReference(file *helperFuncDataFile, progType string) str
 	var sb strings.Builder
 
 	for _, item := range group {
-		sb.WriteString(fmt.Sprintf(" * [%s](../helper-function/%s.md)\n", item.Name, item.Name))
+		fmt.Fprintf(&sb, " * [%s](../helper-function/%s.md)", item.Name, item.Name)
+		if item.Since != nil {
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.Since.Version, item.Since.Commit)
+		}
+		fmt.Fprint(&sb, "\n")
 	}
 
 	return sb.String()
 }
 
-func renderHelperFuncProgReference(programTypes []string) string {
+func renderHelperFuncProgReference(programTypes []perFunc) string {
 	var sb strings.Builder
 
 	for _, item := range programTypes {
-		sb.WriteString(fmt.Sprintf(" * [%s](../program-type/%s.md)\n", item, item))
+		fmt.Fprintf(&sb, " * [%s](../program-type/%s.md)", item.name, item.name)
+		if item.since != nil {
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.since.Version, item.since.Commit)
+		}
+		fmt.Fprint(&sb, "\n")
 	}
 
 	return sb.String()
 }
 
-func renderHelperFuncMapReference(mapTypes []string) string {
+func renderHelperFuncMapReference(mapTypes []perFunc) string {
 	var sb strings.Builder
 
 	for _, item := range mapTypes {
-		sb.WriteString(fmt.Sprintf(" * [%s](../map-type/%s.md)\n", item, item))
+		fmt.Fprintf(&sb, " * [%s](../map-type/%s.md)", item.name, item.name)
+		if item.since != nil {
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.since.Version, item.since.Commit)
+		}
+		fmt.Fprint(&sb, "\n")
 	}
 
 	return sb.String()

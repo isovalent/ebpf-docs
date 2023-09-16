@@ -638,6 +638,9 @@ programs:
   - name: bpf_sk_storage_get
   - name: bpf_sk_storage_delete
   - name: bpf_setsockopt
+    since:
+      version: 5.8
+      commit: beecf11bc2188067824591612151c4dc6ec383c7
     attach_type:
     - BPF_CGROUP_INET4_BIND
     - BPF_CGROUP_INET6_BIND
@@ -652,6 +655,9 @@ programs:
     - BPF_CGROUP_INET4_GETSOCKNAME
     - BPF_CGROUP_INET6_GETSOCKNAME
   - name: bpf_getsockopt
+    since:
+      version: 5.8
+      commit: beecf11bc2188067824591612151c4dc6ec383c7
     attach_type:
     - BPF_CGROUP_INET4_BIND
     - BPF_CGROUP_INET6_BIND
@@ -732,9 +738,15 @@ programs:
   - name: bpf_setsockopt
     kconfig: [CONFIG_NET]
     attach_type: [BPF_CGROUP_SETSOCKOPT]
+    since:
+      version: 5.15
+      commit: 2c531639deb5e3ddfd6e8123b82052b2d9fbc6e5
   - name: bpf_getsockopt
     kconfig: [CONFIG_NET]
     attach_type: [BPF_CGROUP_SETSOCKOPT]
+    since:
+      version: 5.15
+      commit: 2c531639deb5e3ddfd6e8123b82052b2d9fbc6e5
   - name: bpf_tcp_sock
     kconfig: [CONFIG_INET]
   - group: cgroup_base
@@ -762,6 +774,16 @@ programs:
     sleepable: true
   - name: bpf_ima_file_hash
     sleepable: true
+  - name: bpf_setsockopt
+    attach_type: [BPF_LSM_CGROUP]
+    since:
+      version: 6.0
+      commit: 9113d7e48e9128522b9f5a54dfd30dff10509a92
+  - name: bpf_getsockopt
+    attach_type: [BPF_LSM_CGROUP]
+    since:
+      version: 6.0
+      commit: 9113d7e48e9128522b9f5a54dfd30dff10509a92
   - group: tracing
 
   # TODO

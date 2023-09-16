@@ -1,72 +1,28 @@
-# Program type `BPF_PROG_TYPE_LSM`
+# Program type `BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE`
 
-<!-- [FEATURE_TAG](BPF_PROG_TYPE_LSM) -->
-[:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/fc611f47f2188ade2b48ff6902d5cce8baac0c58)
+<!-- [FEATURE_TAG](BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE) -->
+[:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/9df1c28bb75217b244257152ab7d788bb2a386d0)
 <!-- [/FEATURE_TAG] -->
 
-`BPF_PROG_TYPE_LSM` are eBPF programs that can attach to LSM (Linux Security Module) hooks. These are the same hooks as used by programs such as SELinux and AppArmor.
 
 ## Usage
 
-The primary use case is to implement security software. For example, the `socket_create` hook is called when a process calls the `socket` syscall, if the eBPF program returns `0`
-the socket is allowed to be created, but the eBPF program can also return an error value to block the socket creation.
-
-The list of all LSM hooks can be found in [lsm_hook_defs.h](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hook_defs.h), additional documentation for these hooks lives in [lsm_hooks.h](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hooks.h) 
-
-```c
-// Copyright (C) 2020 Google LLC.
-SEC("lsm/file_mprotect")
-int BPF_PROG(mprotect_audit, struct vm_area_struct *vma,
-            unsigned long reqprot, unsigned long prot, int ret)
-{
-    /* ret is the return value from the previous BPF program
-        * or 0 if it's the first hook.
-        */
-    if (ret != 0)
-        return ret;
-
-    int is_heap;
-
-    is_heap = (vma->vm_start >= vma->vm_mm->start_brk &&
-            vma->vm_end <= vma->vm_mm->brk);
-
-    /* Return an -EPERM or write information to the perf events buffer
-        * for auditing
-        */
-    if (is_heap)
-        return -EPERM;
-}
-```
-
 ## Context
-
-LSM programs are invoked with an array of `__u64` values equal in length to the amount of arguments of the LSM hook, each index representing the arguments in order. The `BPF_PROG` macro defined in `tools/lib/bpf/bpf_tracing.h` is often used to make it easier to write LSM programs. The macro allows the user to write the arguments as declared on the hooks, the macro will cast the arguments. The actual arguments and their times are determined by the hook to which this program is attached.
 
 ## Attachment
 
-LSM programs are exclusively attached via bpf links. To do so the program must be loaded with the [`BPF_LSM_MAC`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_mac) expected attach type and use it as the param to [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type). The [`target_btf_id`](../syscall/BPF_LINK_CREATE.md#target_btf_id) parameter must be populated with the BTF ID of the LSM hook point which can be extracted from the selinux BTF on the system.
-
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+## Example
 
 ## Helper functions
 
-Not all helper functions are available in all program types. These are the helper calls available for LSM programs:
+Not all helper functions are available in all program types. These are the helper calls available for raw tracepoint writable programs:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [PROG_HELPER_FUNC_REF] -->
 ??? abstract "Supported helper functions"
-    * [bpf_inode_storage_get](../helper-function/bpf_inode_storage_get.md)
-    * [bpf_inode_storage_delete](../helper-function/bpf_inode_storage_delete.md)
-    * [bpf_sk_storage_get](../helper-function/bpf_sk_storage_get.md)
-    * [bpf_sk_storage_delete](../helper-function/bpf_sk_storage_delete.md)
-    * [bpf_spin_lock](../helper-function/bpf_spin_lock.md)
-    * [bpf_spin_unlock](../helper-function/bpf_spin_unlock.md)
-    * [bpf_bprm_opts_set](../helper-function/bpf_bprm_opts_set.md)
-    * [bpf_ima_inode_hash](../helper-function/bpf_ima_inode_hash.md)
-    * [bpf_ima_file_hash](../helper-function/bpf_ima_file_hash.md)
-    * [bpf_setsockopt](../helper-function/bpf_setsockopt.md) [:octicons-tag-24: v6.0](9113d7e48e9128522b9f5a54dfd30dff10509a92)
-    * [bpf_getsockopt](../helper-function/bpf_getsockopt.md) [:octicons-tag-24: v6.0](9113d7e48e9128522b9f5a54dfd30dff10509a92)
+    * [bpf_perf_event_output](../helper-function/bpf_perf_event_output.md)
+    * [bpf_get_stackid](../helper-function/bpf_get_stackid.md)
+    * [bpf_get_stack](../helper-function/bpf_get_stack.md)
     * [bpf_map_lookup_elem](../helper-function/bpf_map_lookup_elem.md)
     * [bpf_map_update_elem](../helper-function/bpf_map_update_elem.md)
     * [bpf_map_delete_elem](../helper-function/bpf_map_delete_elem.md)
