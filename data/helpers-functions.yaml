@@ -282,6 +282,9 @@ programs:
   - name: bpf_skb_adjust_room
   - name: bpf_skb_change_tail
   - name: bpf_skb_change_head
+    since:
+      version: 5.8
+      commit: 6f3f65d80dac8f2bafce2213005821fccdce194c
   - name: bpf_skb_get_tunnel_key
   - name: bpf_skb_set_tunnel_key
   - name: bpf_skb_get_tunnel_opt
@@ -355,6 +358,9 @@ programs:
   - name: bpf_skb_adjust_room
   - name: bpf_skb_change_tail
   - name: bpf_skb_change_head
+    since:
+      version: 5.8
+      commit: 6f3f65d80dac8f2bafce2213005821fccdce194c
   - name: bpf_skb_get_tunnel_key
   - name: bpf_skb_set_tunnel_key
   - name: bpf_skb_get_tunnel_opt
