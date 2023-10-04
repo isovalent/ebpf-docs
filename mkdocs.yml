@@ -25,6 +25,8 @@ theme:
     edit: material/pencil 
     view: material/eye
 
+  custom_dir: overwrites
+
 markdown_extensions:
   - admonition
   - pymdownx.details
