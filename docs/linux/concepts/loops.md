@@ -4,7 +4,7 @@ Loops in programming is a common concept, however, in BPF they can be a bit more
 
 ## Unrolling
 
-Before [:octicons-tag-24: v5.3](https://github.com/torvalds/linux/commit/2589726d12a1b12eaaa93c7f1ea64287e383c7a5) loops in BPF bytecode were not allowed because the verifier wasn't smart enough to determine if a loop would always terminate. The workaround for a long time was to unroll loops in the compiler. Unrolling loops increases the size of a program and can only be done if the amount of iterations is known at compile time. To unroll a loop you can use the `#unroll` pragma as such:
+Before [:octicons-tag-24: v5.3](https://github.com/torvalds/linux/commit/2589726d12a1b12eaaa93c7f1ea64287e383c7a5) loops in BPF bytecode were not allowed because the verifier wasn't smart enough to determine if a loop would always terminate. The workaround for a long time was to unroll loops in the compiler. Unrolling loops increases the size of a program and can only be done if the amount of iterations is known at compile time. To unroll a loop you can use the `#pragma unroll` pragma as such:
 
 ```c
 #pragma unroll
