@@ -3,7 +3,10 @@
 <!-- [FEATURE_TAG](bpf_ktime_get_coarse_ns) -->
 [:octicons-tag-24: v5.11](https://github.com/torvalds/linux/commit/d055126180564a57fe533728a4e93d0cb53d49b3)
 <!-- [/FEATURE_TAG] -->
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return a coarse-grained version of the time elapsed since system boot, in nanoseconds. Does not include time the system was suspended.

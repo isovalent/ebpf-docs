@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.13](https://github.com/torvalds/linux/commit/8c4b4c7e9ff0447995750d9329949fa082520269)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Emulate a call to **setsockopt()** on the socket associated to _bpf_socket_, which must be a full socket. The _level_ at which the option resides and the name _optname_ of the option must be specified, see **setsockopt(2)** for more information. The option value of length _optlen_ is pointed by _optval_.

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/3a0af8fd61f90920f6fa04e4f1e9a6a73c1b4fd2)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Grows headroom of packet associated to _skb_ and adjusts the offset of the MAC header accordingly, adding _len_ bytes of space. It automatically extends and reallocates memory as required.

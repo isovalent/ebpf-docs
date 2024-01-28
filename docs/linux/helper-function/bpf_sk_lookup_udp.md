@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/6acc9b432e6714d72d7d77ec7c27f6f8358d0c71)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Look for UDP socket matching _tuple_, optionally in a child network namespace _netns_. The return value must be checked, and if non-**NULL**, released via **bpf_sk_release**().

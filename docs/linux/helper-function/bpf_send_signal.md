@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.3](https://github.com/torvalds/linux/commit/8b401f9ed2441ad9e219953927a842d24ed051fc)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Send signal _sig_ to the process of the current task. The signal may be delivered to any of this process's threads.

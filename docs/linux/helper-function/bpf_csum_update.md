@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.9](https://github.com/torvalds/linux/commit/36bbef52c7eb646ed6247055a2acd3851e317857)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Add the checksum _csum_ into _skb_**->csum** in case the driver has supplied a checksum for the entire packet into that field. Return an error otherwise. This helper is intended to be used in combination with **bpf_csum_diff**(), in particular when the checksum needs to be updated after data has been written into the packet through direct packet access.

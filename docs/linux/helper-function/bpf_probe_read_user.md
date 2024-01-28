@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.5](https://github.com/torvalds/linux/commit/6ae08ae3dea2cfa03dd3665a3c8475c2d429ef47)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Safely attempt to read _size_ bytes from user space address _unsafe_ptr_ and store the data in _dst_.

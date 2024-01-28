@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.4](https://github.com/torvalds/linux/commit/27b29f63058d26c6c1742f1993338280d5a41dc6)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Redirect the packet to another net device of index _ifindex_. This helper is somewhat similar to **bpf_clone_redirect**\ (), except that the packet is not cloned, which provides increased performance.

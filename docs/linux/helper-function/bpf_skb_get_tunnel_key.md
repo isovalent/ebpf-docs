@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.3](https://github.com/torvalds/linux/commit/d3aa45ce6b94c65b83971257317867db13e5f492)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get tunnel metadata. This helper takes a pointer _key_ to an empty **struct bpf_tunnel_key** of **size**, that will be filled with tunnel metadata for the packet associated to _skb_. The _flags_ can be set to **BPF_F_TUNINFO_IPV6**, which indicates that the tunnel is based on IPv6 protocol instead of IPv4.

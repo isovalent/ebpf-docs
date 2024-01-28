@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/7b15523a989b63927c2bb08e9b5b0bbc10b58bef)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Outputs a string into the **str** buffer of size **str_size** based on a format string stored in a read-only map pointed by **fmt**.

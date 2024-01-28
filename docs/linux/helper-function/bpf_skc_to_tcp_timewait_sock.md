@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.9](https://github.com/torvalds/linux/commit/478cfbdf5f13dfe09cfd0b1cbac821f5e27f6108)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Dynamically cast a _sk_ pointer to a _tcp_timewait_sock_ pointer.

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/3f364222d032eea6b245780e845ad213dab28cdd)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 This helper is provided as an easy way to load data from a xdp buffer. It can be used to load _len_ bytes from _offset_ from the frame associated to _xdp_md_, into the buffer pointed by _buf_.

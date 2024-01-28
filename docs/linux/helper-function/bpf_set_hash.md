@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.13](https://github.com/torvalds/linux/commit/ded092cd73c2c56a394b936f86897f29b2e131c0)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Set the full hash for _skb_ (set the field _skb_**->hash**) to value _hash_.

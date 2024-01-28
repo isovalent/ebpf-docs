@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/2a100317c9ebc204a166f16294884fbf9da074ce)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 For socket policies, apply the verdict of the eBPF program to the next _bytes_ (number of bytes) of message _msg_.

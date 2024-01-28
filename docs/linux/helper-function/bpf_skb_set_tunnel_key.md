@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.3](https://github.com/torvalds/linux/commit/d3aa45ce6b94c65b83971257317867db13e5f492)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Populate tunnel metadata for packet associated to _skb._ The tunnel metadata is set to the contents of _key_, of _size_. The _flags_ can be set to a combination of the following values:

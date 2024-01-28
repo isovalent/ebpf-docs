@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/9bb984f28d5bcb917d35d930fcfb89f90f9449fd)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Change the __sk_buff->tstamp_type to _tstamp_type_ and set _tstamp_ to the __sk_buff->tstamp together.

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/b4ab31414970a7a03a5d55d75083f2c101a30592)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Redirect the packet to another net device of index _ifindex_ and fill in L2 addresses from neighboring subsystem. This helper is somewhat similar to **bpf_redirect**(), except that it populates L2 addresses as well, meaning, internally, the helper relies on the neighbor lookup for the L2 address of the nexthop.

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/2d0e30c30f84d08dc16f0f2af41f1b8a85f0755e)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return the id of the current NUMA node. The primary use case for this helper is the selection of sockets for the local NUMA node, when the program is attached to sockets using the **SO_ATTACH_REUSEPORT_EBPF** option (see also **socket(7)**), but the helper is also available to other eBPF program types, similarly to **bpf_get_smp_processor_id**().

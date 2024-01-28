@@ -6,7 +6,10 @@
 
 This helper function is used to direct incoming traffic to a specific socket, overruling the normal socket selection logic.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 `#!c static long (*bpf_sk_assign)(void *ctx, void *sk, __u64 flags) = (void *) 124;`
 

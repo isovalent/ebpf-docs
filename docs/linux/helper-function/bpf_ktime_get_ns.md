@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/d9847d310ab4003725e6ed1822682e24bd406908)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return the time elapsed since system boot, in nanoseconds. Does not include time the system was suspended. See: **clock_gettime**(**CLOCK_MONOTONIC**)

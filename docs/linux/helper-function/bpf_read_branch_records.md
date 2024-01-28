@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/fff7b64355eac6e29b50229ad1512315bc04b44e)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 For an eBPF program attached to a perf event, retrieve the branch records (**struct perf_branch_entry**) associated to _ctx_ and store it in the buffer pointed by _buf_ up to size _size_ bytes.

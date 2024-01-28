@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/eaa6bcb71ef6ed3dc18fc525ee7e293b06b4882b)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Take a pointer to a percpu ksym, _percpu_ptr_, and return a pointer to the percpu kernel variable on _cpu_. A ksym is an extern variable decorated with '__ksym'. For ksym, there is a global var (either static or global) defined of the same name in the kernel. The ksym is percpu if the global var is percpu. The returned pointer points to the global percpu var on _cpu_.

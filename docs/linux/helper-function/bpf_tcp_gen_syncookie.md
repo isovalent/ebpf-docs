@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.4](https://github.com/torvalds/linux/commit/70d66244317e958092e9c971b08dd5b7fd29d9cb)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Try to issue a SYN cookie for the packet with corresponding IP/TCP headers, _iph_ and _th_, on the listening socket in _sk_.

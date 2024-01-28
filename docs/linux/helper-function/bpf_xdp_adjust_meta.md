@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.15](https://github.com/torvalds/linux/commit/de8f3a83b0a0fddb2cf56e7a718127e9619ea3da)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Adjust the address pointed by _xdp_md_**->data_meta** by _delta_ (which can be positive or negative). Note that this operation modifies the address stored in _xdp_md_**->data**, so the latter must be loaded only after the helper has been called.

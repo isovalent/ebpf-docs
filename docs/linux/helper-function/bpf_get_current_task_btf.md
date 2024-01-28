@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.11](https://github.com/torvalds/linux/commit/3ca1032ab7ab010eccb107aa515598788f7d93bb)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return a BTF pointer to the "current" task. This pointer can also be used in helpers that accept an _ARG_PTR_TO_BTF_ID_ of type _task_struct_.

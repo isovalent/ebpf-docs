@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.9](https://github.com/torvalds/linux/commit/fa28dcb82a38f8e3993b0fae9106b1a80b59e4f0)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return a user or a kernel stack in bpf program provided buffer. To achieve this, the helper needs _task_, which is a valid pointer to **struct task_struct**. To store the stacktrace, the bpf program provides _buf_ with a nonnegative _size_.

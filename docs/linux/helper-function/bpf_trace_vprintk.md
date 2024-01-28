@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.16](https://github.com/torvalds/linux/commit/10aceb629e198429c849d5e995c3bb1ba7a9aaa3)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Behaves like **bpf_trace_printk**() helper, but takes an array of u64 to format and can handle more format args as a result.

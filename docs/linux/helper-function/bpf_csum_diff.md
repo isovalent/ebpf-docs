@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/7d672345ed295b1356a5d9f7111da1d1d7d65867)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Compute a checksum difference, from the raw buffer pointed by _from_, of length _from_size_ (that must be a multiple of 4), towards the raw buffer pointed by _to_, of size _to_size_ (same remark). An optional _seed_ can be added to the value (this can be cascaded, the seed may come from a previous call to the helper).

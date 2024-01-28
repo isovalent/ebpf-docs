@@ -6,7 +6,10 @@
 
 The delete map element helper call is used to delete values from [maps](../index.md#maps).
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Delete entry with _key_ from _map_.

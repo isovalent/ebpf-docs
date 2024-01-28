@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/3f364222d032eea6b245780e845ad213dab28cdd)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Store _len_ bytes from buffer _buf_ into the frame associated to _xdp_md_, at _offset_.

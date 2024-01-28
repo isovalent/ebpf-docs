@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/546ac1ffb70d25b56c1126940e5ec639c4dd7413)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Redirect the packet to the endpoint referenced by _map_ at index _key_. Depending on its type, this _map_ can contain references to net devices (for forwarding packets through other ports), or to CPUs (for redirecting XDP frames to another CPU; but this is only implemented for native XDP (with driver support) as of this writing).

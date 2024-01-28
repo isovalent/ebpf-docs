@@ -4,7 +4,9 @@
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/d74bad4e74ee373787a9ae24197c17b7cdc428d5)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 <!-- [HELPER_FUNC_DEF] -->
 Bind the socket associated to _ctx_ to the address pointed by _addr_, of length _addr_len_. This allows for making outgoing connection from the desired IP address, which can be useful for example when all processes inside a cgroup should use one single IP address on a host that has multiple IP configured.

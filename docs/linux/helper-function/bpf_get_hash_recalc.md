@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.8](https://github.com/torvalds/linux/commit/13c5c240f789bbd2bcacb14a23771491485ae61f)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Retrieve the hash of the packet, _skb_**->hash**. If it is not set, in particular if the hash was cleared due to mangling, recompute this hash. Later accesses to the hash can be done directly with _skb_**->hash**.

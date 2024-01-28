@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/b13d880721729384757f235166068c315326f4a1)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Attempt to set the value of the **bpf_sock_ops_cb_flags** field for the full TCP socket associated to _bpf_sock_ops_ to _argval_.

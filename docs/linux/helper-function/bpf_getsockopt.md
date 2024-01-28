@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.15](https://github.com/torvalds/linux/commit/cd86d1fd21025fdd6daf23d1288da405e7ad0ec6)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Emulate a call to **getsockopt()** on the socket associated to _bpf_socket_, which must be a full socket. The _level_ at which the option resides and the name _optname_ of the option must be specified, see **getsockopt(2)** for more information. The retrieved value is stored in the structure pointed by _opval_ and of length _optlen_.

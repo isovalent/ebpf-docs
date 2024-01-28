@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/91bc4822c3d61b9bb7ef66d3b77948a4f9177954)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Recompute the layer 3 (e.g. IP) checksum for the packet associated to _skb_. Computation is incremental, so the helper must know the former value of the header field that was modified (_from_), the new value of this field (_to_), and the number of bytes (2 or 4) for this field, stored in _size_. Alternatively, it is possible to store the difference between the previous and the new values of the header field in _to_, by setting _from_ and _size_ to 0. For both methods, _offset_ indicates the location of the IP checksum within the packet.

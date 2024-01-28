@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/263ae152e96253f40c2c276faad8629e096b3bad)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get a dynptr to local memory _data_.

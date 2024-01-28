@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/0165cc817075cf701e4289838f1d925ff1911b3e)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get the total size of a given xdp buff (linear and paged area)

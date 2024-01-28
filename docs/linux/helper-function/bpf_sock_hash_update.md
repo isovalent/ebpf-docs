@@ -6,7 +6,10 @@
 
 Add an entry to, or update a `map` referencing sockets.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 **Returns**
 0 on success, or a negative error in case of failure.

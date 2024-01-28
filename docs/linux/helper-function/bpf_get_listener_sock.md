@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/dbafd7ddd62369b2f3926ab847cbf8fc40e800b7)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return a **struct bpf_sock** pointer in **TCP_LISTEN** state. **bpf_sk_release**() is unnecessary and not allowed.

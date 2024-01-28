@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/13bbbfbea7598ea9f8d9c3d73bf053bb57f9c4b2)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Read _len_ bytes from _src_ into _dst_, starting from _offset_ into _src_. _flags_ is currently unused.

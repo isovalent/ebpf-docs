@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/015632bb30daaaee64e1bcac07570860e0bf3092)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 For socket policies, pull in non-linear data from user space for _msg_ and set pointers _msg_**->data** and _msg_\ **->data_end** to _start_ and _end_ bytes offsets into _msg_, respectively.

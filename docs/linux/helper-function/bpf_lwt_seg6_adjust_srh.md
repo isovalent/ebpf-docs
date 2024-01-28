@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/fe94cc290f535709d3c5ebd1e472dfd0aec7ee79)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Adjust the size allocated to TLVs in the outermost IPv6 Segment Routing Header contained in the packet associated to _skb_, at position _offset_ by _delta_ bytes. Only offsets after the segments are accepted. _delta_ can be as well positive (growing) as negative (shrinking).

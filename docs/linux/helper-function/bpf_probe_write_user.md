@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.8](https://github.com/torvalds/linux/commit/96ae52279594470622ff0585621a13e96b700600)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Attempt in a safe way to write _len_ bytes from the buffer _src_ to _dst_ in memory. It only works for threads that are in user context, and _dst_ must be a valid user space address.

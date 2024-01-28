@@ -6,7 +6,10 @@
 
 The lookup map element helper call is used to read values from [maps](../index.md#maps).
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Perform a lookup in _map_ for an entry associated to _key_.

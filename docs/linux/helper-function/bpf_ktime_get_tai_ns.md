@@ -4,7 +4,10 @@
 [:octicons-tag-24: v6.1](https://github.com/torvalds/linux/commit/c8996c98f703b09afe77a1d247dae691c9849dc1)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 A nonsettable system-wide clock derived from wall-clock time but ignoring leap seconds.  This clock does not experience discontinuities and backwards jumps caused by NTP inserting leap seconds as CLOCK_REALTIME does.

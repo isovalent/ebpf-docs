@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/c4d0bfb45068d853a478b9067a95969b1886a30f)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Use BTF to store a string representation of _ptr_->ptr in _str_, using _ptr_->type_id.  This value should specify the type that _ptr_->ptr points to. LLVM __builtin_btf_type_id(type, 1) can be used to look up vmlinux BTF type ids. Traversing the data structure using BTF, the type information and values are stored in the first _str_size_ - 1 bytes of _str_.  Safe copy of the pointer data is carried out to avoid kernel crashes during operation.  Smaller types can use string space on the stack; larger programs can use map data to store the string representation.

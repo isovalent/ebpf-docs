@@ -6,7 +6,10 @@
 
 For each element in `map`, call `callback_fn` function with `map`, `callback_ctx` and other map-specific parameters.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 `#!c static long (*bpf_for_each_map_elem)(void *map, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 164;`
 

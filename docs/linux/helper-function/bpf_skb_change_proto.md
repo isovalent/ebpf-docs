@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.8](https://github.com/torvalds/linux/commit/6578171a7ff0c31dc73258f93da7407510abf085)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Change the protocol of the _skb_ to _proto_. Currently supported are transition from IPv4 to IPv6, and from IPv6 to IPv4. The helper takes care of the groundwork for the transition, including resizing the socket buffer. The eBPF program is expected to fill the new headers, if any, via **skb_store_bytes**() and to recompute the checksums with **bpf_l3_csum_replace**() and **bpf_l4_csum_replace**\ (). The main case for this helper is to perform NAT64 operations out of an eBPF program.

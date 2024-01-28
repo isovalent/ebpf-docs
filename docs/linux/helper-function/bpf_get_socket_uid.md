@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.12](https://github.com/torvalds/linux/commit/6acc5c2910689fc6ee181bf63085c5efff6a42bd)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get the owner UID of the socked associated to _skb_.

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/b4490c5c4e023f09b7d27c9a9d3e7ad7d09ea6bf)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Returns 0 on success, values for _pid_ and _tgid_ as seen from the current _namespace_ will be returned in _nsdata_.

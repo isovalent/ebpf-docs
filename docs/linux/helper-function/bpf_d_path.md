@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/6e22ab9da79343532cd3cde39df25e5a5478c692)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return full path for given **struct path** object, which needs to be the kernel BTF _path_ object. The path is returned in the provided buffer _buf_ of size _sz_ and is zero terminated.

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.13](https://github.com/torvalds/linux/commit/2be7e212d5419a400d051c84ca9fdd083e5aacac)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Grow or shrink the room for data in the packet associated to _skb_ by _len_diff_, and according to the selected _mode_.

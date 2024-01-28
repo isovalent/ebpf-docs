@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/bc34dee65a65e9c920c420005b8a43f2a721a458)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Query various characteristics of provided ring buffer. What exactly is queries is determined by _flags_:

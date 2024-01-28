@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/2541517c32be2531e0da59dfd7efc1ce844644f5)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 For tracing programs, safely attempt to read _size_ bytes from kernel space address _unsafe_ptr_ and store the data in _dst_.

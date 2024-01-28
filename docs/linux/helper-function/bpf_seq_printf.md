@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/492e639f0c222784e2e0f121966375f641c61b15)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 **bpf_seq_printf**() uses seq_file **seq_printf**() to print out the format string. The _m_ represents the seq_file. The _fmt_ and _fmt_size_ are for the format string itself. The _data_ and _data_len_ are format string arguments. The _data_ are a **u64** array and corresponding format string values are stored in the array. For strings and pointers where pointees are accessed, only the pointer values are stored in the _data_ array. The _data_len_ is the size of _data_ in bytes - must be a multiple of 8.

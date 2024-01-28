@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.12](https://github.com/torvalds/linux/commit/34b2021cc61642d61c3cf943d9e71925b827941b)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Check packet size against exceeding MTU of net device (based on _ifindex_).  This helper will likely be used in combination with helpers that adjust/change the packet size.

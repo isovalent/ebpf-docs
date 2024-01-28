@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/07343110b293456d30393e89b86c4dee1ac051c8)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Perform a lookup in _percpu map_ for an entry associated to _key_ on _cpu_.

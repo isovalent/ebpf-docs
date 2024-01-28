@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/0f09abd105da6c37713d2b253730a86cb45e127a)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return id of cgroup v2 that is ancestor of the cgroup associated with the current task at the _ancestor_level_. The root cgroup is at _ancestor_level_ zero and each step down the hierarchy increments the level. If _ancestor_level_ == level of cgroup associated with the current task, then return value will be the same as that of **bpf_get_current_cgroup_id**().

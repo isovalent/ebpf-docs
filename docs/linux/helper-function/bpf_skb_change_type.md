@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.8](https://github.com/torvalds/linux/commit/d2485c4242a826fdf493fd3a27b8b792965b9b9e)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Change the packet type for the packet associated to _skb_. This comes down to setting _skb_**->pkt_type** to _type_, except the eBPF program does not have a write access to _skb_\ **->pkt_type** beside this helper. Using a helper here allows for graceful handling of errors.

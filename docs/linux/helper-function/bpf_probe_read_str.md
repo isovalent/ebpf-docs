@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.11](https://github.com/torvalds/linux/commit/a5e8c07059d0f0b31737408711d44794928ac218)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Copy a NUL terminated string from an unsafe kernel address _unsafe_ptr_ to _dst_. See **bpf_probe_read_kernel_str**() for more details.

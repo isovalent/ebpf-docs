@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.2](https://github.com/torvalds/linux/commit/ffeedafbf0236f03aeb2e8db273b3e5ae5f5bc89)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Copy the **comm** attribute of the current task into _buf_ of _size_of_buf_. The **comm** attribute contains the name of the executable (excluding the path) for the current task. The _size_of_buf_ must be strictly positive. On success, the helper makes sure that the _buf_ is NUL-terminated. On failure, it is filled with zeroes.

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.4](https://github.com/torvalds/linux/commit/c46646d0484f5d08e2bede9b45034ba5b8b489cc)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Retrieve the realm or the route, that is to say the **tclassid** field of the destination for the _skb_. The identifier retrieved is a user-provided tag, similar to the one used with the net_cls cgroup (see description for **bpf_get_cgroup_classid**() helper), but here this tag is held by a route (a destination entry), not by a task.

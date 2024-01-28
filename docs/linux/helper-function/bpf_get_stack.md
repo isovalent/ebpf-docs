@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/c195651e565ae7f41a68acb7d4aa7390ad215de1)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return a user or a kernel stack in bpf program provided buffer. To achieve this, the helper needs _ctx_, which is a pointer to the context on which the tracing program is executed. To store the stacktrace, the bpf program provides _buf_ with a nonnegative _size_.

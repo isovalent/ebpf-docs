@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/fe94cc290f535709d3c5ebd1e472dfd0aec7ee79)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Encapsulate the packet associated to _skb_ within a Layer 3 protocol header. This header is provided in the buffer at address _hdr_, with _len_ its size in bytes. _type_ indicates the protocol of the header and can be one of:

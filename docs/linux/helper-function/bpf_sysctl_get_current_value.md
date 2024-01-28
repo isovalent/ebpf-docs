@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/1d11b3016cec4ed9770b98e82a61708c8f4926e7)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get current value of sysctl as it is presented in /proc/sys (incl. newline, etc), and copy it as a string into provided by program buffer _buf_ of size _buf_len_.

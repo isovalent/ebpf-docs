@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/492e639f0c222784e2e0f121966375f641c61b15)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 **bpf_seq_write**() uses seq_file **seq_write**() to write the data. The _m_ represents the seq_file. The _data_ and _len_ represent the data to write in bytes.

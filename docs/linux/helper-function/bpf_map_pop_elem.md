@@ -5,7 +5,10 @@
 <!-- [/FEATURE_TAG] -->
 
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Pop an element from _map_.

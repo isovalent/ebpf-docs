@@ -6,7 +6,10 @@
 
 This special helper is used to trigger a "tail call", or in other words, to jump into another eBPF program.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 Upon call of this helper, the program attempts to jump into a program referenced at index `index` in `prog_array_map`, a special map of type [`BPF_MAP_TYPE_PROG_ARRAY`](../program-type/BPF_MAP_TYPE_PROG_ARRAY.md), and passes
 `ctx`, a pointer to the context.

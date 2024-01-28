@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/4e63acdff864654cee0ac5aaeda3913798ee78f6)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get new value being written by user space to sysctl (before the actual write happens) and copy it as a string into provided by program buffer _buf_ of size _buf_len_.

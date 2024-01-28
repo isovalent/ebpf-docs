@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/46f8bc92758c6259bcf945e9216098661c1587cd)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 This helper gets a **struct bpf_sock** pointer such that all the fields in this **bpf_sock** can be accessed.

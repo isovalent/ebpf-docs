@@ -6,7 +6,10 @@
 
 The message redirect hash helper is used to redirect a message to a socket referenced by a hash map.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 **Returns**
 `SK_PASS` on success, or `SK_DROP` on error.

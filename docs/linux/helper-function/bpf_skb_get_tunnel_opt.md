@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/14ca0751c96f8d3d0f52e8ed3b3236f8b34d3460)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Retrieve tunnel options metadata for the packet associated to _skb_, and store the raw tunnel option data to the buffer _opt_ of _size_.

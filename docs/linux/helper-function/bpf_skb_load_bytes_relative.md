@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/4e1ec56cdc59746943b2acfab3c171b930187bbe)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 This helper is similar to **bpf_skb_load_bytes**() in that it provides an easy way to load _len_ bytes from _offset_ from the packet associated to _skb_, into the buffer pointed by _to_. The difference to **bpf_skb_load_bytes**() is that a fifth argument _start_header_ exists in order to select a base offset to start from. _start_header_ can be one of:

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/9aa1206e8f48222f35a0c809f33b2f4aaa1e2661)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Redirect the packet to another net device of index _ifindex_. This helper is somewhat similar to **bpf_redirect**(), except that the redirection happens to the _ifindex_' peer device and the netns switch takes place from ingress to ingress without going through the CPU's backlog queue.

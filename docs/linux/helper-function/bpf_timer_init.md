@@ -6,7 +6,10 @@
 
 This helper initializes a [timer](../ebpf-concepts/timers.md).
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Initialize the timer. First 4 bits of _flags_ specify clockid. Only CLOCK_MONOTONIC, CLOCK_REALTIME, CLOCK_BOOTTIME are allowed. All other bits of _flags_ are reserved. The verifier will reject the program if _timer_ is not from the same _map_.

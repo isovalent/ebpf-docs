@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/0813a841566f0962a5551be7749b43c45f0022a0)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Load header option.  Support reading a particular TCP header option for bpf program (**BPF_PROG_TYPE_SOCK_OPS**).

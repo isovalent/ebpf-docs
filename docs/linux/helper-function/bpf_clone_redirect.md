@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.2](https://github.com/torvalds/linux/commit/3896d655f4d491c67d669a15f275a39f713410f8)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Clone and redirect the packet associated to _skb_ to another net device of index _ifindex_. Both ingress and egress interfaces can be used for redirection. The **BPF_F_INGRESS** value in _flags_ is used to make the distinction (ingress path is selected if the flag is present, egress path otherwise). This is the only flag supported for now.

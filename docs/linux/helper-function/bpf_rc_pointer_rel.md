@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/01d3240a04f4c09392e13c77b54d4423ebce2d72)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 This helper is used in programs implementing IR decoding, to report a successfully decoded pointer movement.

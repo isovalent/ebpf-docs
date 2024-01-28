@@ -6,7 +6,10 @@
 
 This helper function reads the value of a perf event counter, and store it into `buf` of size `buf_size`.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 **Returns**
 0 on success, or a negative error in case of failure.

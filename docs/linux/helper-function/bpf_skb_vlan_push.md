@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.3](https://github.com/torvalds/linux/commit/4e10df9a60d96ced321dd2af71da558c6b750078)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Push a _vlan_tci_ (VLAN tag control information) of protocol _vlan_proto_ to the packet associated to _skb_, then update the checksum. Note that if _vlan_proto_ is different from **ETH_P_8021Q** and **ETH_P_8021AD**, it is considered to be **ETH_P_8021Q**.

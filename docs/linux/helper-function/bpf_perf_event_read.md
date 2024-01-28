@@ -6,7 +6,10 @@
 
 This helper reads the value of a perf event counter.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 **Returns**
 The value of the perf event counter read from the map, or a

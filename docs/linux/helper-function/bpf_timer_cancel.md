@@ -6,7 +6,10 @@
 
 This helper cancels a pending [timer](../ebpf-concepts/timers.md).
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Cancel the timer and wait for callback_fn to finish if it was running.

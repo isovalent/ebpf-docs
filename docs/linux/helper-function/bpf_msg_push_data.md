@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.20](https://github.com/torvalds/linux/commit/6fff607e2f14bd7c63c06c464a6f93b8efbabe28)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 For socket policies, insert _len_ bytes into _msg_ at offset _start_.

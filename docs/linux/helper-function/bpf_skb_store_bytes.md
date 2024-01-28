@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/608cd71a9c7c9db76e78a792c5a4101e12fea43f)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Store _len_ bytes from address _from_ into the packet associated to _skb_, at _offset_. _flags_ are a combination of **BPF_F_RECOMPUTE_CSUM** (automatically recompute the checksum for the packet after storing the bytes) and **BPF_F_INVALIDATE_HASH** (set _skb_**->hash**, _skb_\ **->swhash** and _skb_**->l4hash** to 0).

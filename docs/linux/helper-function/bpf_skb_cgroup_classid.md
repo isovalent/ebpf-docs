@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/b426ce83baa7dff947fb354118d3133f2953aac8)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 See **bpf_get_cgroup_classid**() for the main description. This helper differs from **bpf_get_cgroup_classid**() in that the cgroup v1 net_cls class is retrieved only from the _skb_'s associated socket instead of the current process.

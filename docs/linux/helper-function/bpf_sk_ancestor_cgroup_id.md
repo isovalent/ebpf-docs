@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/f307fa2cb4c935f7f1ff0aeb880c7b44fb9a642b)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Return id of cgroup v2 that is ancestor of cgroup associated with the _sk_ at the _ancestor_level_.  The root cgroup is at _ancestor_level_ zero and each step down the hierarchy increments the level. If _ancestor_level_ == level of cgroup associated with _sk_, then return value will be same as that of **bpf_sk_cgroup_id**().

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.17](https://github.com/torvalds/linux/commit/c5fb19937455095573a19ddcbff32e993ed10e35)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Do strncmp() between **s1** and **s2**. **s1** doesn't need to be null-terminated and **s1_sz** is the maximum storage size of **s1**. **s2** must be a read-only string.

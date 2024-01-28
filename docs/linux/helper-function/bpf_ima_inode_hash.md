@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.11](https://github.com/torvalds/linux/commit/27672f0d280a3f286a410a8db2004f46ace72a17)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Returns the stored IMA hash of the _inode_ (if it's available). If the hash is larger than _size_, then only _size_ bytes will be copied to _dst_

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/174b16946e39ebd369097e0f773536c91a8c1a4c)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Returns a calculated IMA hash of the _file_. If the hash is larger than _size_, then only _size_ bytes will be copied to _dst_

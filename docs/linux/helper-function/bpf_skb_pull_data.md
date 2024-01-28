@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.9](https://github.com/torvalds/linux/commit/36bbef52c7eb646ed6247055a2acd3851e317857)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Pull in non-linear data in case the _skb_ is non-linear and not all of _len_ are part of the linear section. Make _len_ bytes from _skb_ readable and writable. If a zero value is passed for _len_, then all bytes in the linear part of _skb_ will be made readable and writable.

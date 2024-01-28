@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.17](https://github.com/torvalds/linux/commit/7c7e3d31e7856a8260a254f8c71db416f7f9f5a1)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Find vma of _task_ that contains _addr_, call _callback_fn_ function with _task_, _vma_, and _callback_ctx_. The _callback_fn_ should be a static function and the _callback_ctx_ should be a pointer to the stack. The _flags_ is used to control certain aspects of the helper. Currently, the _flags_ must be 0.

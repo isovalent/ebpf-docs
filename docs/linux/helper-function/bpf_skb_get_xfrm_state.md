@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/12bed760a78da6e12ac8252fec64d019a9eac523)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Retrieve the XFRM state (IP transform framework, see also **ip-xfrm(8)**) at _index_ in XFRM "security path" for _skb_.

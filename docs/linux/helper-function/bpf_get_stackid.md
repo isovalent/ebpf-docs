@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/d5a3b1f691865be576c2bffa708549b8cdccda19)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Walk a user or a kernel stack and return its id. To achieve this, the helper needs _ctx_, which is a pointer to the context on which the tracing program is executed, and a pointer to a _map_ of type **BPF_MAP_TYPE_STACK_TRACE**.

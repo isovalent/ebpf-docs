@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/c0a5a21c25f37c9fd7b36072f9968cdff1e4aa13)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Exchange kptr at pointer _map_value_ with _ptr_, and return the old value. _ptr_ can be NULL, otherwise it must be a referenced pointer which will be released when this helper is called.

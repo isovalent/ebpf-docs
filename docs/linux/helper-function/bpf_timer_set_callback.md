@@ -6,7 +6,10 @@
 
 This helper sets the callback function for a [timer](../ebpf-concepts/timers.md).
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 <!-- [HELPER_FUNC_DEF] -->
 Configure the timer to call _callback_fn_ static function.
 

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/376040e47334c6dc6a939a32197acceb00fe4acf)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Read _size_ bytes from user space address _user_ptr_ in _tsk_'s address space, and stores the data in _dst_. _flags_ is not used yet and is provided for future extensibility. This helper can only be used by sleepable programs.

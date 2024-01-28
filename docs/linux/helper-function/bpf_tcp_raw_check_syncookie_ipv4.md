@@ -4,7 +4,10 @@
 [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/33bf9885040c399cf6a95bd33216644126728e14)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Check whether _iph_ and _th_ contain a valid SYN cookie ACK without depending on a listening socket.

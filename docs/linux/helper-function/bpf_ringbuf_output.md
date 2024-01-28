@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/bc34dee65a65e9c920c420005b8a43f2a721a458)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Copy _size_ bytes from _data_ into a ring buffer _ringbuf_. If **BPF_RB_NO_WAKEUP** is specified in _flags_, no notification of new data availability is sent. If **BPF_RB_FORCE_WAKEUP** is specified in _flags_, notification of new data availability is sent unconditionally. If **0** is specified in _flags_, an adaptive notification of new data availability is sent.

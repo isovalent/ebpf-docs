@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.15](https://github.com/torvalds/linux/commit/9b99edcae5c80c8fb9f8e7149bae528c9e610a72)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get address of the traced function (for tracing and kprobe programs).

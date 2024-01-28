@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.5](https://github.com/torvalds/linux/commit/05c74e5e53f6cb07502c3e6a820f33e2777b6605)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 This helper was provided as an easy way to load data from a packet. It can be used to load _len_ bytes from _offset_ from the packet associated to _skb_, into the buffer pointed by _to_.

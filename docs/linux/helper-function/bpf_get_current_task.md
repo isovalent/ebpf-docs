@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.8](https://github.com/torvalds/linux/commit/606274c5abd8e245add01bc7145a8cbb92b69ba8)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get the current task.

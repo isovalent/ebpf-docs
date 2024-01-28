@@ -6,7 +6,10 @@
 
 This helper prints messages to the trace log of the kernel.
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 **Returns**
 The number of bytes written to the buffer, or a negative error

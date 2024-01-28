@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/655a51e536c09d15ffa3603b1b6fce2b45b85a1f)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 This helper gets a **struct bpf_tcp_sock** pointer from a **struct bpf_sock** pointer.

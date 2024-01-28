@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.16](https://github.com/torvalds/linux/commit/d6aef08a872b9e23eecc92d0e92393473b13c497)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get the address of a kernel symbol, returned in _res_. _res_ is set to 0 if the symbol is not found.

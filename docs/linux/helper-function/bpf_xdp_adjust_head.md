@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/17bedab2723145d17b14084430743549e6943d03)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Adjust (move) _xdp_md_**->data** by _delta_ bytes. Note that it is possible to use a negative value for _delta_. This helper can be used to prepare the packet for pushing or popping headers.

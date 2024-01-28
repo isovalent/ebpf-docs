@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.9](https://github.com/torvalds/linux/commit/60d20f9195b260bdf0ac10c275ae9f6016f9c069)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Check whether the probe is being run is the context of a given subset of the cgroup2 hierarchy. The cgroup2 to test is held by _map_ of type **BPF_MAP_TYPE_CGROUP_ARRAY**, at _index_.

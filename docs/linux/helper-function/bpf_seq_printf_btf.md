@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/eb411377aed9e27835e77ee0710ee8f4649958f3)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Use BTF to write to seq_write a string representation of _ptr_->ptr, using _ptr_->type_id as per bpf_snprintf_btf(). _flags_ are identical to those used for bpf_snprintf_btf.

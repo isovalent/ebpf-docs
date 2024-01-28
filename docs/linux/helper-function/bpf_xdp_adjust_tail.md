@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/b32cc5b9a346319c171e3ad905e0cddda032b5eb)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Adjust (move) _xdp_md_**->data_end** by _delta_ bytes. It is possible to both shrink and grow the packet tail. Shrink done via _delta_ being a negative integer.

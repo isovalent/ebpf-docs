@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/91843d540a139eb8070bcff8aa10089164436deb)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 For socket policies, prevent the execution of the verdict eBPF program for message _msg_ until _bytes_ (byte number) have been accumulated.

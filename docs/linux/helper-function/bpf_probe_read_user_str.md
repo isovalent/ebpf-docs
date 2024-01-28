@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.5](https://github.com/torvalds/linux/commit/6ae08ae3dea2cfa03dd3665a3c8475c2d429ef47)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Copy a NUL terminated string from an unsafe user address _unsafe_ptr_ to _dst_. The _size_ should include the terminating NUL byte. In case the string length is smaller than _size_, the target is not padded with further NUL bytes. If the string length is larger than _size_, just _size_-1 bytes are copied and the last byte is set to NUL.

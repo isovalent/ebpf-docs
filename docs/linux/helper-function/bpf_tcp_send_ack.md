@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/206057fe020ac5c037d5e2dd6562a9bd216ec765)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Send out a tcp-ack. _tp_ is the in-kernel struct **tcp_sock**. _rcv_nxt_ is the ack_seq to be sent out.

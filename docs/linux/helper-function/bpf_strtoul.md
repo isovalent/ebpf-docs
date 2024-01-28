@@ -4,7 +4,10 @@
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/d7a4cb9b6705a89937d12c8158a35a3145dc967a)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Convert the initial part of the string from buffer _buf_ of size _buf_len_ to an unsigned long integer according to the given base and save the result in _res_.

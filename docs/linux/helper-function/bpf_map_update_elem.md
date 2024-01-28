@@ -6,7 +6,10 @@
 
 The update map element helper call is used to write values from [maps](../index.md#maps).
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 `#!c static long (*bpf_map_update_elem)(void *map, const void *key, const void *value, __u64 flags) = (void *) 2;`
 

@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.19](https://github.com/torvalds/linux/commit/cd3394317653837e2eb5c5d0904a8996102af9fc)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Get the pointer to the local storage area. The type and the size of the local storage is defined by the _map_ argument. The _flags_ meaning is specific for each map type, and has to be 0 for cgroup local storage.

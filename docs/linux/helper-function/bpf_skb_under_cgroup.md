@@ -4,7 +4,10 @@
 [:octicons-tag-24: v4.8](https://github.com/torvalds/linux/commit/747ea55e4f78fd980350c39570a986b8c1c3e4aa)
 <!-- [/FEATURE_TAG] -->
 
-## Definition
+## Defintion
+
+> Copyright (c) 2015 The Libbpf Authors. All rights reserved.
+
 
 <!-- [HELPER_FUNC_DEF] -->
 Check whether _skb_ is a descendant of the cgroup2 held by _map_ of type **BPF_MAP_TYPE_CGROUP_ARRAY**, at _index_.
