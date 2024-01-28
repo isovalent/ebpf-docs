@@ -43,6 +43,5 @@ Applications can transfer copies of these file descriptors to other processes vi
 
 ## Capabilities
 
-<!-- TODO explain CAP_BPF and others -->
-
-
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome

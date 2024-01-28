@@ -68,4 +68,5 @@ The concept of a program type only exists at the kernel/syscall level. There is 
 
 ## Index of section names
 
-<!-- TODO -->
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
