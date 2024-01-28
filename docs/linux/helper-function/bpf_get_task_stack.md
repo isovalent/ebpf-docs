@@ -10,13 +10,13 @@
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Return a user or a kernel stack in bpf program provided buffer. To achieve this, the helper needs _task_, which is a valid pointer to **struct task_struct**. To store the stacktrace, the bpf program provides _buf_ with a nonnegative _size_.
+Return a user or a kernel stack in bpf program provided buffer. Note: the user stack will only be populated if the _task_ is the current task; all other tasks will return -EOPNOTSUPP. To achieve this, the helper needs _task_, which is a valid pointer to **struct task_struct**. To store the stacktrace, the bpf program provides _buf_ with a nonnegative _size_.
 
 The last argument, _flags_, holds the number of stack frames to skip (from 0 to 255), masked with **BPF_F_SKIP_FIELD_MASK**. The next bits can be used to set the following flags:
 
 **BPF_F_USER_STACK**
 
-&nbsp;&nbsp;&nbsp;&nbsp;Collect a user space stack instead of a kernel stack.
+&nbsp;&nbsp;&nbsp;&nbsp;Collect a user space stack instead of a kernel stack. The _task_ must be the current task.
 
 **BPF_F_USER_BUILD_ID**
 

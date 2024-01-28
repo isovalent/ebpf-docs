@@ -12,7 +12,7 @@
 <!-- [HELPER_FUNC_DEF] -->
 Redirect the packet to another net device of index _ifindex_. This helper is somewhat similar to **bpf_redirect**(), except that the redirection happens to the _ifindex_' peer device and the netns switch takes place from ingress to ingress without going through the CPU's backlog queue.
 
-The _flags_ argument is reserved and must be 0. The helper is currently only supported for tc BPF program types at the ingress hook and for veth device types. The peer device must reside in a different network namespace.
+The _flags_ argument is reserved and must be 0. The helper is currently only supported for tc BPF program types at the ingress hook and for veth and netkit target device types. The peer device must reside in a different network namespace.
 
 ### Returns
 

@@ -20,6 +20,10 @@ _flags_ can be one of:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Start the timer in absolute expire value instead of the default relative one.
 
+**BPF_F_TIMER_CPU_PIN**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Timer will be pinned to the CPU of the caller.
+
 &nbsp;&nbsp;&nbsp;&nbsp;
 
 ### Returns

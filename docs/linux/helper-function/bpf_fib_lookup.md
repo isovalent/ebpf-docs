@@ -30,6 +30,10 @@ _plen_ argument is the size of the passed in struct. _flags_ argument can be a c
 
 &nbsp;&nbsp;&nbsp;&nbsp;Skip the neighbour table lookup. _params_->dmac and _params_->smac will not be set as output. A common use case is to call **bpf_redirect_neigh**() after doing **bpf_fib_lookup**().
 
+**BPF_FIB_LOOKUP_SRC**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Derive and set source IP addr in _params_->ipv{4,6}_src for the nexthop. If the src addr cannot be derived, **BPF_FIB_LKUP_RET_NO_SRC_ADDR** is returned. In this case, _params_->dmac and _params_->smac are not set either.
+
 _ctx_ is either **struct xdp_md** for XDP programs or **struct sk_buff** tc cls_act programs.
 
 ### Returns

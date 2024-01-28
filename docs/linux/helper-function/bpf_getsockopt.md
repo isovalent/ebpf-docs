@@ -15,8 +15,8 @@ Emulate a call to **getsockopt()** on the socket associated to _bpf_socket_, whi
 _bpf_socket_ should be one of the following:
 
 * **struct bpf_sock_ops** for **BPF_PROG_TYPE_SOCK_OPS**.
-* **struct bpf_sock_addr** for **BPF_CGROUP_INET4_CONNECT**
-  and **BPF_CGROUP_INET6_CONNECT**.
+* **struct bpf_sock_addr** for **BPF_CGROUP_INET4_CONNECT**,
+  **BPF_CGROUP_INET6_CONNECT** and **BPF_CGROUP_UNIX_CONNECT**.
 
 This helper actually implements a subset of **getsockopt()**. It supports the same set of _optname_s that is supported by the **bpf_setsockopt**() helper.  The exceptions are **TCP_BPF_*** is **bpf_setsockopt**() only and **TCP_SAVED_SYN** is **bpf_getsockopt**() only.
 
