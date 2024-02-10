@@ -11,6 +11,8 @@ $ make serve
 
 Or you can serve from you own host by following these steps:
 ```
+$ python3 -m venv .venv
+$ source .venv/bin/activate
 $ pip install -r requirements.txt
 $ mkdocs serve -a 127.0.0.1:8000 --watch /docs
 ```
