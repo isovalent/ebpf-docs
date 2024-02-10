@@ -71,7 +71,7 @@ See the [Loops](loops.md) page for more details on doing loops in BPF.
 
 ### Function by function verification
 
-[v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342)
+[:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342)
 
 Before this feature every BPF-to-BPF function had to be `static`. Static functions are verified from the perspective of the caller. Every time a program invokes a function, verification continues in that function with the state of the arguments to prove invocation from every call site is safe. This means that the verifier might need to verify certain functions multiple times which is slow and drives up complexity.
 

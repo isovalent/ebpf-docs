@@ -39,6 +39,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - abbr
   - pymdownx.snippets
+  - attr_list
+  - md_in_html
 
 plugins:
   - search:
