@@ -15,16 +15,17 @@ VERSION := latest
 
 .PHONY: build-container
 build-container:
-	${CONTAINER_ENGINE} build -f ${REPODIR}/tools/Dockerfile -t ${IMAGE}:${VERSION} ${REPODIR}
+	${CONTAINER_ENGINE} build -f ${REPODIR}/tools/Dockerfile \
+	--build-arg="UID=$$(id -u $${USER})" --build-arg="GID=$$(id -g $${USER})" -t ${IMAGE}:${VERSION} ${REPODIR}
 
 .PHONY: container-shell
 container-shell: build-container
-	${CONTAINER_ENGINE} run --rm -it -v "${REPODIR}:/docs" -w /docs "${IMAGE}:${VERSION}"
+	${CONTAINER_ENGINE} run --rm -it -v "${REPODIR}:/docs" -u $$(id -u $${USER}):$$(id -g $${USER}) -w /docs "${IMAGE}:${VERSION}"
 
 .PHONY: html
 html: build-container
 	${CONTAINER_ENGINE} run --rm -it -v "${REPODIR}:/docs" \
-	-w /docs --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs build -d /docs/out"
+	-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs build -d /docs/out"
 
 .PHONY: clear-html
 clear-html:
@@ -33,7 +34,7 @@ clear-html:
 .PHONY: serve
 serve: build-container
 	${CONTAINER_ENGINE} run --rm -it -p 8000:8000 -v "${REPODIR}:/docs" \
-	-w /docs --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs serve -a 0.0.0.0:8000 --watch /docs/docs"
+	-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs serve -a 0.0.0.0:8000 --watch /docs/docs"
 
 .PHONY: generate-docs
 generate-docs:
