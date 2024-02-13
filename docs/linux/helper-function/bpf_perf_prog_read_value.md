@@ -6,7 +6,7 @@
 
 This helper retrieves the value of an event counter.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

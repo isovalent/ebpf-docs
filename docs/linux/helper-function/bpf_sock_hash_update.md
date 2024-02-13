@@ -6,7 +6,7 @@
 
 Add an entry to, or update a `map` referencing sockets.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

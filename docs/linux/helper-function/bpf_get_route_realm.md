@@ -4,7 +4,7 @@
 [:octicons-tag-24: v4.4](https://github.com/torvalds/linux/commit/c46646d0484f5d08e2bede9b45034ba5b8b489cc)
 <!-- [/FEATURE_TAG] -->
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

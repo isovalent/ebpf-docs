@@ -6,7 +6,7 @@
 
 This helper reads the value of a perf event counter.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

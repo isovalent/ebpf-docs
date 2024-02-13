@@ -6,7 +6,7 @@
 
 This helper cancels a pending [timer](../ebpf-concepts/timers.md).
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

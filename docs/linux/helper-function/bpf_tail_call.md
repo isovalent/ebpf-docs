@@ -6,7 +6,7 @@
 
 This special helper is used to trigger a "tail call", or in other words, to jump into another eBPF program.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

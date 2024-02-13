@@ -6,7 +6,7 @@
 
 For each element in `map`, call `callback_fn` function with `map`, `callback_ctx` and other map-specific parameters.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

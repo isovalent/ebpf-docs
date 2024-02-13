@@ -6,7 +6,7 @@
 
 The socket select reuse port helper select which socket to send an incoming request to when multiple sockets are bound to the same port.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
