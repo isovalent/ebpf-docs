@@ -6,7 +6,7 @@
 
 The message redirect map helper is used to redirect a message to a socket referenced by a map.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

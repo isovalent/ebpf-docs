@@ -6,7 +6,7 @@
 
 This helper function is used to direct incoming traffic to a specific socket, overruling the normal socket selection logic.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

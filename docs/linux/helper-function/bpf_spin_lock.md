@@ -10,7 +10,7 @@ safely update the rest of the fields in that value. The
 spinlock can (and must) later be released with a call to
 [`bpf_spin_unlock`](bpf_spin_unlock.md).
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

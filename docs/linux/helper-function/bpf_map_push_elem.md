@@ -5,7 +5,7 @@
 <!-- [/FEATURE_TAG] -->
 
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

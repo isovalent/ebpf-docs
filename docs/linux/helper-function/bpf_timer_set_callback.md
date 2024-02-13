@@ -6,7 +6,7 @@
 
 This helper sets the callback function for a [timer](../ebpf-concepts/timers.md).
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 

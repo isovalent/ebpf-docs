@@ -16,8 +16,8 @@ Pins can be removed by using the `rm` cli tool or `unlink` syscall. Pins are eph
 
 Most loader libraries will offer a API for pinning and opening resources from pins. This is usually an action that needs to be explicitly taken. For BTF style maps, however, there is a property called `pinning` which is set to the macro value `LIBBPF_PIN_BY_NAME`/`1` then most loader libraries will attempt to pin the map by default (sometimes given a path to a directory). If a pin already exists, the library will open the pin instead of creating a new map. If no pin exists, the library creates a new map and pins it, using the name of the map as filename.
 
-Example of a map defintion with `pinning`:
-```c
+Example of a map definition with `pinning`:
+:``c
 struct {
 	__uint(type, BPF_MAP_TYPE_ARRAY);
 	__uint(max_entries, 1);

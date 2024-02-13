@@ -6,7 +6,7 @@
 
 This helper prints messages to the trace log of the kernel.
 
-## Defintion
+## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
