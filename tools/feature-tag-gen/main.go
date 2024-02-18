@@ -21,6 +21,7 @@ const (
 	mapDir       = "docs/linux/map-type"
 	helperDir    = "docs/linux/helper-function"
 	syscallDir   = "docs/linux/syscall"
+	kfuncsDir    = "docs/linux/kfuncs"
 )
 
 var featureTagMarkerStartRegex = regexp.MustCompile(`<!-- \[FEATURE_TAG\]\(([^\)]+)\) -->`)
@@ -54,7 +55,7 @@ func mainE() error {
 		}
 	}
 
-	for _, dir := range []string{programsDir, helperDir, mapDir, syscallDir} {
+	for _, dir := range []string{programsDir, helperDir, mapDir, syscallDir, kfuncsDir} {
 		entries, err := os.ReadDir(path.Join(*projectroot, dir))
 		if err != nil {
 			return fmt.Errorf("Read dir: %w", err)
