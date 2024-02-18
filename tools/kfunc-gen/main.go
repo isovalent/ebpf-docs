@@ -160,7 +160,7 @@ func main() {
 			sort.Strings(progTypes)
 			slices.Compact(progTypes)
 			for _, progType := range progTypes {
-				newFile.WriteString(fmt.Sprintf("- [%s](../../program-types/%s.md)\n", progType, progType))
+				newFile.WriteString(fmt.Sprintf("- [%s](../program-type/%s.md)\n", progType, progType))
 			}
 
 			newFile.WriteString(kfuncProgRefEnd)

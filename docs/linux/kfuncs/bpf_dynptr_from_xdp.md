@@ -23,7 +23,7 @@ The dynptr acts on xdp data. xdp dynptrs have two main benefits. One is that the
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_XDP](../../program-types/BPF_PROG_TYPE_XDP.md)
+- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

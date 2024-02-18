@@ -24,7 +24,7 @@ If `bpf_xdp_metadata_rx_timestamp` is not supported by the target device, the de
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_XDP](../../program-types/BPF_PROG_TYPE_XDP.md)
+- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example
