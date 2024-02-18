@@ -5,4 +5,5 @@
   * [Map types](linux/map-type/)
   * [Helper functions](linux/helper-function/)
   * [Syscall commands](linux/syscall/)
+  * [KFuncs](linux/kfuncs/)
 * [FAQ](faq.md)

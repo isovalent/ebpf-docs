@@ -60,6 +60,14 @@ This site aims to provide technical documentation for eBPF. If you are looking f
 
     [:octicons-arrow-right-24: Syscall commands](./linux/syscall/index.md)
 
+-   :material-function:{ .lg .middle } __KFuncs__
+
+    ---
+
+    An overview of eBPF KFuncs
+
+    [:octicons-arrow-right-24: KFuncs](./linux/kfuncs/index.md)
+
 </div>
 
 ## Contributions
