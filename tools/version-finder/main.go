@@ -141,7 +141,7 @@ func main() {
 				// If we didn't match on the last iteration, don't check it again since we will only be going
 				// further back in time. This will save us a lot of useless duplication
 				if groupMatches[pattern.Name].Version != lastTag {
-					break
+					continue
 				}
 
 				regexes := pattern.Regexes

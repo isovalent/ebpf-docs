@@ -1575,3 +1575,416 @@
     - name: BPF_WRITE_HDR_TCP_SYNACK_COOKIE
       version: v5.10
       commit: 0813a841566f0962a5551be7749b43c45f0022a0
+- name: kfuncs
+  features:
+    - name: cgroup_rstat_updated
+      version: v6.1
+      commit: a319185be9f5ad13c2a296d448ac52ffe45d194c
+    - name: cgroup_rstat_flush
+      version: v6.1
+      commit: a319185be9f5ad13c2a296d448ac52ffe45d194c
+    - name: bpf_lookup_user_key
+      version: v6.1
+      commit: f3cf4134c5c6c47b9b5c7aa3cb2d67e107887a7b
+    - name: bpf_lookup_system_key
+      version: v6.1
+      commit: f3cf4134c5c6c47b9b5c7aa3cb2d67e107887a7b
+    - name: bpf_key_put
+      version: v6.1
+      commit: f3cf4134c5c6c47b9b5c7aa3cb2d67e107887a7b
+    - name: bpf_verify_pkcs7_signature
+      version: v6.1
+      commit: 865b0566d8f1a0c3937e5eb4bd6ba4ef03e7e98c
+    - name: bpf_get_file_xattr
+      version: v6.8
+      commit: ac9c05e0e453cfcab2866f6d28f257590e4f66e5
+    - name: bpf_cpumask_create
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_release
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_acquire
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_first
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_first_zero
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_first_and
+      version: v6.5
+      commit: 5ba3a7a851e3ebffc4cb8f052a4581c4d8af3ae3
+    - name: bpf_cpumask_set_cpu
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_clear_cpu
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_test_cpu
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_test_and_set_cpu
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_test_and_clear_cpu
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_setall
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_clear
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_and
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_or
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_xor
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_equal
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_intersects
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_subset
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_empty
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_full
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_copy
+      version: v6.3
+      commit: 516f4d3397c9e90f4da04f59986c856016269aa1
+    - name: bpf_cpumask_any_distribute
+      version: v6.5
+      commit: f983be917332ea5e03f689e12c6668be48cb4cfe
+    - name: bpf_cpumask_any_and_distribute
+      version: v6.5
+      commit: f983be917332ea5e03f689e12c6668be48cb4cfe
+    - name: bpf_cpumask_weight
+      version: v6.8
+      commit: a6de18f310a511278c1ff16b96eb2d500eada725
+    - name: crash_kexec
+      version: v6.1
+      commit: 133790596406ce2658f0864eb7eac64987c2b12f
+    - name: bpf_obj_new_impl
+      version: v6.2
+      commit: 958cf2e273f0929c66169e0788031310e8118722
+    - name: bpf_percpu_obj_new_impl
+      version: v6.7
+      commit: 36d8bdf75a93190e5669b9d1d95994e13e15ba1d
+    - name: bpf_obj_drop_impl
+      version: v6.2
+      commit: ac9f06050a3580cf4076a57a470cd71f12a81171
+    - name: bpf_percpu_obj_drop_impl
+      version: v6.7
+      commit: 36d8bdf75a93190e5669b9d1d95994e13e15ba1d
+    - name: bpf_refcount_acquire_impl
+      version: v6.4
+      commit: 7c50b1cb76aca4540aa917db5f2a302acddcadff
+    - name: bpf_list_push_front_impl
+      version: v6.4
+      commit: d2dcc67df910dd85253a701b6a5b747f955d28f5
+    - name: bpf_list_push_back_impl
+      version: v6.4
+      commit: d2dcc67df910dd85253a701b6a5b747f955d28f5
+    - name: bpf_list_pop_front
+      version: v6.2
+      commit: 8cab76ec634995e59a8b6346bf8b835ab7fad3a3
+    - name: bpf_list_pop_back
+      version: v6.2
+      commit: 8cab76ec634995e59a8b6346bf8b835ab7fad3a3
+    - name: bpf_task_acquire
+      version: v6.2
+      commit: 3f00c52393445ed49aadc1a567aa502c6333b1a1
+    - name: bpf_task_release
+      version: v6.2
+      commit: 3f00c52393445ed49aadc1a567aa502c6333b1a1
+    - name: bpf_rbtree_remove
+      version: v6.3
+      commit: bd1279ae8a691d7ec75852c6d0a22139afb034a4
+    - name: bpf_rbtree_add_impl
+      version: v6.4
+      commit: d2dcc67df910dd85253a701b6a5b747f955d28f5
+    - name: bpf_rbtree_first
+      version: v6.3
+      commit: bd1279ae8a691d7ec75852c6d0a22139afb034a4
+    - name: bpf_cgroup_acquire
+      version: v6.2
+      commit: fda01efc61605af7c6fa03c4109f14d59c9228b7
+    - name: bpf_cgroup_release
+      version: v6.2
+      commit: fda01efc61605af7c6fa03c4109f14d59c9228b7
+    - name: bpf_cgroup_ancestor
+      version: v6.2
+      commit: 5ca7867078296cfa9c100f9a3b2d24be1e139825
+    - name: bpf_cgroup_from_id
+      version: v6.4
+      commit: 332ea1f697be148bd5e66475d82b5ecc5084da65
+    - name: bpf_task_under_cgroup
+      version: v6.5
+      commit: b5ad4cdc46c7d6e7f8d2c9e24b6c9a1edec95154
+    - name: bpf_task_get_cgroup1
+      version: v6.8
+      commit: fe977716b40cb98cf9c91a66454adf3dc2f8c59a
+    - name: bpf_task_from_pid
+      version: v6.2
+      commit: 3f0e6f2b41d35d4446160c745e8f09037447dd8f
+    - name: bpf_throw
+      version: v6.7
+      commit: fd5d27b70188379bb441d404c29a0afb111e1753
+    - name: bpf_cast_to_kern_ctx
+      version: v6.2
+      commit: fd264ca020948a743e4c36731dfdecc4a812153c
+    - name: bpf_rdonly_cast
+      version: v6.2
+      commit: a35b9af4ec2c7f69286ef861fd2074a577e354cb
+    - name: bpf_rcu_read_lock
+      version: v6.2
+      commit: 9bb00b2895cbfe0ad410457b605d0a72524168c1
+    - name: bpf_rcu_read_unlock
+      version: v6.2
+      commit: 9bb00b2895cbfe0ad410457b605d0a72524168c1
+    - name: bpf_dynptr_slice
+      version: v6.4
+      commit: b5964b968ac64c2ec2debee7518499113b27c34e
+    - name: bpf_dynptr_slice_rdwr
+      version: v6.4
+      commit: b5964b968ac64c2ec2debee7518499113b27c34e
+    - name: bpf_iter_num_new
+      version: v6.4
+      commit: 06accc8779c1d558a5b5a21f2ac82b0c95827ddd
+    - name: bpf_iter_num_next
+      version: v6.4
+      commit: 06accc8779c1d558a5b5a21f2ac82b0c95827ddd
+    - name: bpf_iter_num_destroy
+      version: v6.4
+      commit: 06accc8779c1d558a5b5a21f2ac82b0c95827ddd
+    - name: bpf_iter_task_vma_new
+      version: v6.7
+      commit: 4ac4546821584736798aaa9e97da9f6eaf689ea3
+    - name: bpf_iter_task_vma_next
+      version: v6.7
+      commit: 4ac4546821584736798aaa9e97da9f6eaf689ea3
+    - name: bpf_iter_task_vma_destroy
+      version: v6.7
+      commit: 4ac4546821584736798aaa9e97da9f6eaf689ea3
+    - name: bpf_iter_css_task_new
+      version: v6.7
+      commit: 9c66dc94b62aef23300f05f63404afb8990920b4
+    - name: bpf_iter_css_task_next
+      version: v6.7
+      commit: 9c66dc94b62aef23300f05f63404afb8990920b4
+    - name: bpf_iter_css_task_destroy
+      version: v6.7
+      commit: 9c66dc94b62aef23300f05f63404afb8990920b4
+    - name: bpf_iter_css_new
+      version: v6.7
+      commit: 7251d0905e7518bcb990c8e9a3615b1bb23c78f2
+    - name: bpf_iter_css_next
+      version: v6.7
+      commit: 7251d0905e7518bcb990c8e9a3615b1bb23c78f2
+    - name: bpf_iter_css_destroy
+      version: v6.7
+      commit: 7251d0905e7518bcb990c8e9a3615b1bb23c78f2
+    - name: bpf_iter_task_new
+      version: v6.7
+      commit: c68a78ffe2cb4207f64fd0f4262818c728c67be0
+    - name: bpf_iter_task_next
+      version: v6.7
+      commit: c68a78ffe2cb4207f64fd0f4262818c728c67be0
+    - name: bpf_iter_task_destroy
+      version: v6.7
+      commit: c68a78ffe2cb4207f64fd0f4262818c728c67be0
+    - name: bpf_dynptr_adjust
+      version: v6.5
+      commit: 987d0242d189661f78b77cc4d77f843b15600fed
+    - name: bpf_dynptr_is_null
+      version: v6.5
+      commit: 540ccf96ddbc173474c32e595787d5622253be3d
+    - name: bpf_dynptr_is_rdonly
+      version: v5.19
+      commit: 13bbbfbea7598ea9f8d9c3d73bf053bb57f9c4b2
+    - name: bpf_dynptr_size
+      version: v6.5
+      commit: 26662d7347a058ca497792c4b22ac91cc415cbf6
+    - name: bpf_dynptr_clone
+      version: v6.5
+      commit: 361f129f3cc185af6667aca0bec0be9a020a8abc
+    - name: bpf_map_sum_elem_count
+      version: v6.6
+      commit: 803370d3d37579e080e8c59f2360a072d0e45aff
+    - name: bpf_get_fsverity_digest
+      version: v6.8
+      commit: 67814c00de3161181cddd06c77aeaf86ac4cc584
+    - name: bpf_xdp_metadata_rx_timestamp
+      version: v6.3
+      commit: 3d76a4d3d4e591af3e789698affaad88a5a8e8ab
+    - name: bpf_xdp_metadata_rx_hash
+      version: v6.3
+      commit: 3d76a4d3d4e591af3e789698affaad88a5a8e8ab
+    - name: bpf_xdp_metadata_rx_vlan_tag
+      version: v6.8
+      commit: e6795330f88b4f643c649a02662d47b779340535
+    - name: bpf_dynptr_from_skb
+      version: v6.4
+      commit: b5964b968ac64c2ec2debee7518499113b27c34e
+    - name: bpf_dynptr_from_xdp
+      version: v6.4
+      commit: 05421aecd4ed65da0dc17b0c3c13779ef334e9e5
+    - name: bpf_sock_addr_set_sun_path
+      version: v6.7
+      commit: 53e380d21441909b12b6e0782b77187ae4b971c4
+    - name: bpf_sock_destroy
+      version: v6.5
+      commit: 4ddbcb886268af8d12a23e6640b39d1d9c652b1b
+    - name: bbr_init
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bbr_main
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bbr_sndbuf_expand
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bbr_undo_cwnd
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bbr_cwnd_event
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bbr_ssthresh
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bbr_min_tso_segs
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bbr_set_state
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bpf_skb_set_fou_encap
+      version: v6.4
+      commit: c50e96099edb134bf107fafc02715fbc4aa2277f
+    - name: bpf_skb_get_fou_encap
+      version: v6.4
+      commit: c50e96099edb134bf107fafc02715fbc4aa2277f
+    - name: cubictcp_init
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: cubictcp_recalc_ssthresh
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: cubictcp_cong_avoid
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: cubictcp_state
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: cubictcp_cwnd_event
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: cubictcp_acked
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: dctcp_init
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: dctcp_update_alpha
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: dctcp_cwnd_event
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: dctcp_ssthresh
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: dctcp_cwnd_undo
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: dctcp_state
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: tcp_reno_ssthresh
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: tcp_reno_cong_avoid
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: tcp_reno_undo_cwnd
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: tcp_slow_start
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: tcp_cong_avoid_ai
+      version: v5.13
+      commit: e78aea8b2170be1b88c96a4d138422986a737336
+    - name: bpf_ct_set_nat_info
+      version: v6.1
+      commit: 0fabd2aa199faeb8754aee94658f2c48ccb2c8c3
+    - name: bpf_xdp_ct_alloc
+      version: v6.0
+      commit: d7e79c97c00ca82dace0e3b645d4b3b02fa273c2
+    - name: bpf_xdp_ct_lookup
+      version: v5.18
+      commit: b4c2b9593a1c4c3a718370e34af28e817fd5e5c6
+    - name: bpf_skb_ct_alloc
+      version: v6.0
+      commit: d7e79c97c00ca82dace0e3b645d4b3b02fa273c2
+    - name: bpf_skb_ct_lookup
+      version: v5.18
+      commit: b4c2b9593a1c4c3a718370e34af28e817fd5e5c6
+    - name: bpf_ct_insert_entry
+      version: v6.0
+      commit: d7e79c97c00ca82dace0e3b645d4b3b02fa273c2
+    - name: bpf_ct_release
+      version: v5.18
+      commit: b4c2b9593a1c4c3a718370e34af28e817fd5e5c6
+    - name: bpf_ct_set_timeout
+      version: v6.0
+      commit: 0b3892364431684e883682b85d008979e08d4ce6
+    - name: bpf_ct_change_timeout
+      version: v6.0
+      commit: 0b3892364431684e883682b85d008979e08d4ce6
+    - name: bpf_ct_set_status
+      version: v6.0
+      commit: ef69aa3a986ef94f01ce8b5b619f550db54432fe
+    - name: bpf_ct_change_status
+      version: v6.0
+      commit: ef69aa3a986ef94f01ce8b5b619f550db54432fe
+    - name: bpf_skb_get_xfrm_info
+      version: v6.2
+      commit: 94151f5aa9667c562281abeaaa5e89b9d5c17729
+    - name: bpf_skb_set_xfrm_info
+      version: v6.2
+      commit: 94151f5aa9667c562281abeaaa5e89b9d5c17729
+    - name: bpf_xdp_get_xfrm_state
+      version: v6.8
+      commit: 8f0ec8c681755f523cf842bfe350ea40609b83a9
+    - name: bpf_xdp_xfrm_state_release
+      version: v6.8
+      commit: 8f0ec8c681755f523cf842bfe350ea40609b83a9
+    - name: hid_bpf_get_data
+      version: v6.3
+      commit: f5c27da4e3c8a2e42fb4f41a0c685debcb9af294
+    - name: hid_bpf_attach_prog
+      version: v6.3
+      commit: f5c27da4e3c8a2e42fb4f41a0c685debcb9af294
+    - name: hid_bpf_allocate_context
+      version: v6.3
+      commit: 91a7f802d1852f60139712bdcfa98db547ce0531
+    - name: hid_bpf_release_context
+      version: v6.3
+      commit: 91a7f802d1852f60139712bdcfa98db547ce0531
+    - name: hid_bpf_hw_request
+      version: v6.3
+      commit: 91a7f802d1852f60139712bdcfa98db547ce0531
