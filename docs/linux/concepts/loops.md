@@ -65,7 +65,7 @@ Sometimes you really need to iterate over a huge range. For cases where any of t
 
 ## Numeric open coded iterators
 
-In [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit 06accc8779c1d558a5b5a21f2ac82b0c95827ddd) open-coded iterators were introduced. Which allow programs to iterate over kernel objects. The numeric iterator allows us to iterate over a range of numbers, allowing us to make a for loop.
+In [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/06accc8779c1d558a5b5a21f2ac82b0c95827ddd) open-coded iterators were introduced. Which allow programs to iterate over kernel objects. The numeric iterator allows us to iterate over a range of numbers, allowing us to make a for loop.
 
 The advantage of this method is that the verifier only has to check two states as opposed to the amount of iterations like with a bounded loop and we don't require a callback function like with the loop helper.
 
