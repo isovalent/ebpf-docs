@@ -1,5 +1,6 @@
 ---
 title: Program types (Linux)
+description: This page lists all program types that are available in the Linux kernel. They are categorized based on their functionality.
 hide: toc
 ---
 # Program types (Linux)

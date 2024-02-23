@@ -1,3 +1,7 @@
+---
+title: "Program Type 'BPF_PROG_TYPE_CGROUP_SKB' - eBPF Docs"
+description: "This page documents the 'BPF_PROG_TYPE_CGROUP_SKB' eBPF program type, including its defintion, usage, program types that can use it, and examples."
+---
 # Program type `BPF_PROG_TYPE_CGROUP_SKB`
 
 <!-- [FEATURE_TAG](BPF_PROG_TYPE_CGROUP_SKB) -->
