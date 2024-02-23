@@ -1,5 +1,6 @@
 ---
 title: Syscall commands
+description: This page lists all syscall commands that are available in the Linux kernel. They are categorized based on their functionality.
 hide: toc
 ---
 # Syscall commands

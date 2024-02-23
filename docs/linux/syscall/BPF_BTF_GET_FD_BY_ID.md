@@ -1,3 +1,7 @@
+---
+title: "Syscall command 'BPF_BTF_GET_FD_BY_ID' - eBPF Docs"
+description: "This page documents the 'BPF_BTF_GET_FD_BY_ID' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+---
 # BPF Syscall `BPF_BTF_GET_FD_BY_ID` command
 
 <!-- [FEATURE_TAG](BPF_BTF_GET_FD_BY_ID) -->

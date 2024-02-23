@@ -1,3 +1,7 @@
+---
+title: "Syscall command 'BPF_OBJ_GET' - eBPF Docs"
+description: "This page documents the 'BPF_OBJ_GET' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+---
 # BPF Syscall `BPF_OBJ_GET` command
 
 <!-- [FEATURE_TAG](BPF_OBJ_GET) -->

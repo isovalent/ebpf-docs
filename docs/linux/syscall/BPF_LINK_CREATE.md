@@ -1,3 +1,7 @@
+---
+title: "Syscall command 'BPF_LINK_CREATE' - eBPF Docs"
+description: "This page documents the 'BPF_LINK_CREATE' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+---
 # BPF Syscall `BPF_LINK_CREATE` command
 
 <!-- [FEATURE_TAG](BPF_LINK_CREATE) -->
