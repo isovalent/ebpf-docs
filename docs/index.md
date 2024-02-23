@@ -1,5 +1,6 @@
 ---
 hide: toc
+description: Landing page of the eBPF docs, providing a quick overview of the main topics and links to the most important pages. These docs aim to provide a knowledge base for all there is to know about eBPF with a focus on developers.
 ---
 # eBPF Docs
 
