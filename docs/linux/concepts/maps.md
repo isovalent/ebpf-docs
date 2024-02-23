@@ -1,3 +1,7 @@
+---
+title: "Maps - eBPF Docs"
+description: "This page explains the concept of eBPF maps. It goes into depth about how to define, create, and use maps in eBPF programs."
+---
 # Maps
 
 Maps provide a way for eBPF programs to communicate with each other (kernel space) and with user space.

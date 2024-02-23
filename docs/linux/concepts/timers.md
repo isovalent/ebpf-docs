@@ -1,3 +1,7 @@
+---
+title: "Timers - eBPF Docs"
+description: "This page explains the concept of timers in eBPF. It explains what timers are, how to use them, and when to use them."
+---
 # eBPF timers
 
 [:octicons-tag-24: v5.15](https://github.com/torvalds/linux/commit/b00628b1c7d595ae5b544e059c27b1f5828314b4)
