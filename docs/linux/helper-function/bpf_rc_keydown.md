@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_rc_keydown' - eBPF Docs"
+description: "This page documents the 'bpf_rc_keydown' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_rc_keydown`
 
 <!-- [FEATURE_TAG](bpf_rc_keydown) -->

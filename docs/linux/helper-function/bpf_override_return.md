@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_override_return' - eBPF Docs"
+description: "This page documents the 'bpf_override_return' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_override_return`
 
 <!-- [FEATURE_TAG](bpf_override_return) -->

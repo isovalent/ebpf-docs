@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_perf_event_output' - eBPF Docs"
+description: "This page documents the 'bpf_perf_event_output' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_perf_event_output`
 
 <!-- [FEATURE_TAG](bpf_perf_event_output) -->

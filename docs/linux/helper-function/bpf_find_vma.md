@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_find_vma' - eBPF Docs"
+description: "This page documents the 'bpf_find_vma' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_find_vma`
 
 <!-- [FEATURE_TAG](bpf_find_vma) -->

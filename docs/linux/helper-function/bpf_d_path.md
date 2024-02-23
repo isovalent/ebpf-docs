@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_d_path' - eBPF Docs"
+description: "This page documents the 'bpf_d_path' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_d_path`
 
 <!-- [FEATURE_TAG](bpf_d_path) -->

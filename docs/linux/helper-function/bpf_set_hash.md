@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_set_hash' - eBPF Docs"
+description: "This page documents the 'bpf_set_hash' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_set_hash`
 
 <!-- [FEATURE_TAG](bpf_set_hash) -->

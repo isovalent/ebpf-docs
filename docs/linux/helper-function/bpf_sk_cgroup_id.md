@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_sk_cgroup_id' - eBPF Docs"
+description: "This page documents the 'bpf_sk_cgroup_id' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_sk_cgroup_id`
 
 <!-- [FEATURE_TAG](bpf_sk_cgroup_id) -->

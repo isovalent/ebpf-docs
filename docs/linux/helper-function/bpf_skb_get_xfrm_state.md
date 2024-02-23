@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_skb_get_xfrm_state' - eBPF Docs"
+description: "This page documents the 'bpf_skb_get_xfrm_state' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_skb_get_xfrm_state`
 
 <!-- [FEATURE_TAG](bpf_skb_get_xfrm_state) -->

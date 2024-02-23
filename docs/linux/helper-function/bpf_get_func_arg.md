@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_get_func_arg' - eBPF Docs"
+description: "This page documents the 'bpf_get_func_arg' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_get_func_arg`
 
 <!-- [FEATURE_TAG](bpf_get_func_arg) -->

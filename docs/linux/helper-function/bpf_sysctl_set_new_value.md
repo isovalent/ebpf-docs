@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_sysctl_set_new_value' - eBPF Docs"
+description: "This page documents the 'bpf_sysctl_set_new_value' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_sysctl_set_new_value`
 
 <!-- [FEATURE_TAG](bpf_sysctl_set_new_value) -->

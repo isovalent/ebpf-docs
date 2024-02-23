@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_set_hash_invalid' - eBPF Docs"
+description: "This page documents the 'bpf_set_hash_invalid' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_set_hash_invalid`
 
 <!-- [FEATURE_TAG](bpf_set_hash_invalid) -->

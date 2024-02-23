@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_send_signal' - eBPF Docs"
+description: "This page documents the 'bpf_send_signal' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_send_signal`
 
 <!-- [FEATURE_TAG](bpf_send_signal) -->

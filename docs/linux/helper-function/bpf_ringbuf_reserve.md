@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_ringbuf_reserve' - eBPF Docs"
+description: "This page documents the 'bpf_ringbuf_reserve' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_ringbuf_discard_dynptr`
 
 <!-- [FEATURE_TAG](bpf_ringbuf_discard_dynptr) -->

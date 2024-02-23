@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_dynptr_data' - eBPF Docs"
+description: "This page documents the 'bpf_dynptr_data' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_dynptr_data`
 
 <!-- [FEATURE_TAG](bpf_dynptr_data) -->

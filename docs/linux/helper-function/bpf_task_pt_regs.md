@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_task_pt_regs' - eBPF Docs"
+description: "This page documents the 'bpf_task_pt_regs' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_task_pt_regs`
 
 <!-- [FEATURE_TAG](bpf_task_pt_regs) -->

@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_copy_from_user_task' - eBPF Docs"
+description: "This page documents the 'bpf_copy_from_user_task' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_copy_from_user_task`
 
 <!-- [FEATURE_TAG](bpf_copy_from_user_task) -->

@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_sk_release' - eBPF Docs"
+description: "This page documents the 'bpf_sk_release' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_sk_release`
 
 <!-- [FEATURE_TAG](bpf_sk_release) -->

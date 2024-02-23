@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_tcp_raw_check_syncookie_ipv6' - eBPF Docs"
+description: "This page documents the 'bpf_tcp_raw_check_syncookie_ipv6' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_tcp_raw_check_syncookie_ipv6`
 
 <!-- [FEATURE_TAG](bpf_tcp_raw_check_syncookie_ipv6) -->

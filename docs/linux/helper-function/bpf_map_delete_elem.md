@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_map_delete_elem' - eBPF Docs"
+description: "This page documents the 'bpf_map_delete_elem' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_map_delete_elem`
 
 <!-- [FEATURE_TAG](bpf_map_delete_elem) -->

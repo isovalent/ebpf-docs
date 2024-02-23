@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_spin_lock' - eBPF Docs"
+description: "This page documents the 'bpf_spin_lock' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_spin_lock`
 
 <!-- [FEATURE_TAG](bpf_spin_lock) -->

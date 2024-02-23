@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_inode_storage_delete' - eBPF Docs"
+description: "This page documents the 'bpf_inode_storage_delete' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_inode_storage_delete`
 
 <!-- [FEATURE_TAG](bpf_inode_storage_delete) -->

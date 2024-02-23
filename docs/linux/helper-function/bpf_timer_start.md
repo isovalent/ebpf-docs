@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_timer_start' - eBPF Docs"
+description: "This page documents the 'bpf_timer_start' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_timer_start`
 
 <!-- [FEATURE_TAG](bpf_timer_start) -->

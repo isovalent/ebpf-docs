@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_strtoul' - eBPF Docs"
+description: "This page documents the 'bpf_strtoul' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_strtoul`
 
 <!-- [FEATURE_TAG](bpf_strtoul) -->

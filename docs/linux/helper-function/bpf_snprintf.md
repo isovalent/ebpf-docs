@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_snprintf' - eBPF Docs"
+description: "This page documents the 'bpf_snprintf' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_snprintf`
 
 <!-- [FEATURE_TAG](bpf_snprintf) -->
