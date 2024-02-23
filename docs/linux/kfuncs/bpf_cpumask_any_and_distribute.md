@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_cpumask_any_and_distribute' - eBPF Docs"
+description: "This page documents the 'bpf_cpumask_any_and_distribute' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_cpumask_any_and_distribute`
 
 <!-- [FEATURE_TAG](bpf_cpumask_any_and_distribute) -->

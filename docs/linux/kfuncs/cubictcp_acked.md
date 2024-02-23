@@ -1,3 +1,7 @@
+---
+title: "KFunc 'cubictcp_acked' - eBPF Docs"
+description: "This page documents the 'cubictcp_acked' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `cubictcp_acked`
 
 <!-- [FEATURE_TAG](cubictcp_acked) -->

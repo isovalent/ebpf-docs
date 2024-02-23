@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_rdonly_cast' - eBPF Docs"
+description: "This page documents the 'bpf_rdonly_cast' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_rdonly_cast`
 
 <!-- [FEATURE_TAG](bpf_rdonly_cast) -->

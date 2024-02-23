@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_cgroup_from_id' - eBPF Docs"
+description: "This page documents the 'bpf_cgroup_from_id' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_cgroup_from_id`
 
 <!-- [FEATURE_TAG](bpf_cgroup_from_id) -->

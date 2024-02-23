@@ -1,3 +1,7 @@
+---
+title: "KFunc 'dctcp_state' - eBPF Docs"
+description: "This page documents the 'dctcp_state' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `dctcp_state`
 
 <!-- [FEATURE_TAG](dctcp_state) -->

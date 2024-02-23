@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_refcount_acquire_impl' - eBPF Docs"
+description: "This page documents the 'bpf_refcount_acquire_impl' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_refcount_acquire_impl`
 
 <!-- [FEATURE_TAG](bpf_refcount_acquire_impl) -->

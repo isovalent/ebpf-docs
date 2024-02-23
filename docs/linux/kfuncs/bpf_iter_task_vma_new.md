@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_iter_task_vma_new' - eBPF Docs"
+description: "This page documents the 'bpf_iter_task_vma_new' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_iter_task_vma_new`
 
 <!-- [FEATURE_TAG](bpf_iter_task_vma_new) -->

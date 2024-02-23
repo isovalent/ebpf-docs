@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_ct_set_timeout' - eBPF Docs"
+description: "This page documents the 'bpf_ct_set_timeout' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_ct_set_timeout`
 
 <!-- [FEATURE_TAG](bpf_ct_set_timeout) -->

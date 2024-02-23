@@ -1,3 +1,7 @@
+---
+title: "KFunc 'crash_kexec' - eBPF Docs"
+description: "This page documents the 'crash_kexec' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `crash_kexec`
 
 <!-- [FEATURE_TAG](crash_kexec) -->

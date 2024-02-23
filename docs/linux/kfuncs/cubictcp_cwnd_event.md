@@ -1,3 +1,7 @@
+---
+title: "KFunc 'cubictcp_cwnd_event' - eBPF Docs"
+description: "This page documents the 'cubictcp_cwnd_event' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `cubictcp_cwnd_event`
 
 <!-- [FEATURE_TAG](cubictcp_cwnd_event) -->

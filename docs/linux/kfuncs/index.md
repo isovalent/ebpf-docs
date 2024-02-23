@@ -1,5 +1,6 @@
 ---
 title: KFuncs (Linux)
+description: This page lists all KFuncs (Kernel Functions) that are available in the Linux kernel. They are categorized based on their functionality.
 hide: toc
 ---
 

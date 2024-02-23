@@ -1,3 +1,7 @@
+---
+title: "KFunc 'cubictcp_init' - eBPF Docs"
+description: "This page documents the 'cubictcp_init' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `cubictcp_init`
 
 <!-- [FEATURE_TAG](cubictcp_init) -->

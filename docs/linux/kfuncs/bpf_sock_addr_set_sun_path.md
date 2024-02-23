@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_sock_addr_set_sun_path' - eBPF Docs"
+description: "This page documents the 'bpf_sock_addr_set_sun_path' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_sock_addr_set_sun_path`
 
 <!-- [FEATURE_TAG](bpf_sock_addr_set_sun_path) -->

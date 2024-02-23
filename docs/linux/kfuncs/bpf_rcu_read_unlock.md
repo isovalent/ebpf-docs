@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_rcu_read_unlock' - eBPF Docs"
+description: "This page documents the 'bpf_rcu_read_unlock' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_rcu_read_unlock`
 
 <!-- [FEATURE_TAG](bpf_rcu_read_unlock) -->
