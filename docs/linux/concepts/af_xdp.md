@@ -1,3 +1,7 @@
+---
+title: "AF_XDP - eBPF Docs"
+description: "This page explains the concept of AF_XDP in depth, AF_XDP being a special socket type which in combination with an XDP program can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP SocKet)."
+---
 # AF_XDP
 
 The kernel allows process to create sockets under the Address Family Express DataPath (AF_XDP) address family. This is a special socket type which in combination with an XDP program can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP SocKet).

@@ -1,3 +1,7 @@
+---
+title: "Pinning - eBPF Docs"
+description: "This page explains the concept of pinning in eBPF. It explains what pinning is, how to use it, and when to use it."
+---
 # Pinning
 
 [:octicons-tag-24: v4.4](https://github.com/torvalds/linux/commit/b2197755b2633e164a439682fb05a9b5ea48f706)

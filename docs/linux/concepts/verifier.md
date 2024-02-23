@@ -1,3 +1,7 @@
+---
+title: "Verifier - eBPF Docs"
+description: "This page explains the eBPF verifier. It explains what the verifier is, why it exists, and what features it has."
+---
 # Verifier
 
 The verifier is a core component of the BPF subsystem. Its main responsibility is to ensure that the BPF program is "safe" to execute. It does this by checking the program against a set of rules. The verifier also performs some additional tasks, mainly optimizations for which it uses the information gathered during the verification process.

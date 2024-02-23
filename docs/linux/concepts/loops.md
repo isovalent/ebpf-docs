@@ -1,3 +1,7 @@
+---
+title: "Loops - eBPF Docs"
+description: "This page explains the limits of loops in eBPF. It explains different methods of looping and their pros, cons, and when you can use them."
+---
 # Loops in BPF
 
 Loops in programming is a common concept, however, in BPF they can be a bit more complicated than in most environments. This is due to the verifier and the guaranteed "safe" nature of BPF programs. 

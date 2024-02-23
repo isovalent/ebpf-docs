@@ -1,3 +1,7 @@
+---
+title: "Concurrency - eBPF Docs"
+description: "This page explains how to deal with concurrency in eBPF programs. It explains multiple methods to deal with concurrency, their pros and cons, and when to use them."
+---
 # Concurrency
 
 Concurrency in the BPF world is something to be aware of when writing BPF programs. A BPF program can be seen as a function called by the kernel, thus the same program can in theory be invoked concurrently by every kernel thread. The only guarantee given by the kernel is that the same program invocation always [runs on the same logical CPU](scheduling.md).

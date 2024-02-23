@@ -1,3 +1,7 @@
+---
+title: "Tail calls - eBPF Docs"
+description: "This page explains the concept of tail calls in eBPF. It explains what tail calls are, how to use them, and when to use them."
+---
 # Tail calls
 
 A tail call is a form mechanism that allows eBPF authors to break up their logic into multiple parts and go from one to the other. Unlike traditional function calls, control flow never returns to the code making a tail call, it works more like a `goto` statement.
