@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_lookup_system_key' - eBPF Docs"
+description: "This page documents the 'bpf_lookup_system_key' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_lookup_system_key`
 
 <!-- [FEATURE_TAG](bpf_lookup_system_key) -->

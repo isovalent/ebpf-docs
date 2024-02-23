@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_get_fsverity_digest' - eBPF Docs"
+description: "This page documents the 'bpf_get_fsverity_digest' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_get_fsverity_digest`
 
 <!-- [FEATURE_TAG](bpf_get_fsverity_digest) -->

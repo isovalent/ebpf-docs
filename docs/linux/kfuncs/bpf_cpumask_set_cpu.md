@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_cpumask_set_cpu' - eBPF Docs"
+description: "This page documents the 'bpf_cpumask_set_cpu' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_cpumask_set_cpu`
 
 <!-- [FEATURE_TAG](bpf_cpumask_set_cpu) -->

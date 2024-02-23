@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_verify_pkcs7_signature' - eBPF Docs"
+description: "This page documents the 'bpf_verify_pkcs7_signature' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_verify_pkcs7_signature`
 
 <!-- [FEATURE_TAG](bpf_verify_pkcs7_signature) -->

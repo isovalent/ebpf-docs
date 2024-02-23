@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_dynptr_is_rdonly' - eBPF Docs"
+description: "This page documents the 'bpf_dynptr_is_rdonly' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_dynptr_is_rdonly`
 
 <!-- [FEATURE_TAG](bpf_dynptr_is_rdonly) -->

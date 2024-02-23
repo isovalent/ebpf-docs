@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_throw' - eBPF Docs"
+description: "This page documents the 'bpf_throw' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_throw`
 
 <!-- [FEATURE_TAG](bpf_throw) -->

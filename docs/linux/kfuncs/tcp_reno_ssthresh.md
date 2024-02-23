@@ -1,3 +1,7 @@
+---
+title: "KFunc 'tcp_reno_ssthresh' - eBPF Docs"
+description: "This page documents the 'tcp_reno_ssthresh' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `tcp_reno_ssthresh`
 
 <!-- [FEATURE_TAG](tcp_reno_ssthresh) -->

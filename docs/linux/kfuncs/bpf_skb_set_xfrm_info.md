@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_skb_set_xfrm_info' - eBPF Docs"
+description: "This page documents the 'bpf_skb_set_xfrm_info' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_skb_set_xfrm_info`
 
 <!-- [FEATURE_TAG](bpf_skb_set_xfrm_info) -->

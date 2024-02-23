@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_obj_drop_impl' - eBPF Docs"
+description: "This page documents the 'bpf_obj_drop_impl' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_obj_drop_impl`
 
 <!-- [FEATURE_TAG](bpf_obj_drop_impl) -->

@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_map_sum_elem_count' - eBPF Docs"
+description: "This page documents the 'bpf_map_sum_elem_count' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_map_sum_elem_count`
 
 <!-- [FEATURE_TAG](bpf_map_sum_elem_count) -->

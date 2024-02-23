@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_xdp_metadata_rx_hash' - eBPF Docs"
+description: "This page documents the 'bpf_xdp_metadata_rx_hash' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_xdp_metadata_rx_hash`
 
 <!-- [FEATURE_TAG](bpf_xdp_metadata_rx_hash) -->

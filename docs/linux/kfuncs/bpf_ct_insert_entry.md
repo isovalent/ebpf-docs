@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_ct_insert_entry' - eBPF Docs"
+description: "This page documents the 'bpf_ct_insert_entry' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_ct_insert_entry`
 
 <!-- [FEATURE_TAG](bpf_ct_insert_entry) -->

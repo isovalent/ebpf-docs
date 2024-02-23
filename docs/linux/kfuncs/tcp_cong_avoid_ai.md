@@ -1,3 +1,7 @@
+---
+title: "KFunc 'tcp_cong_avoid_ai' - eBPF Docs"
+description: "This page documents the 'tcp_cong_avoid_ai' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `tcp_cong_avoid_ai`
 
 <!-- [FEATURE_TAG](tcp_cong_avoid_ai) -->

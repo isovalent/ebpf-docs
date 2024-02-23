@@ -1,3 +1,7 @@
+---
+title: "KFunc 'bpf_cast_to_kern_ctx' - eBPF Docs"
+description: "This page documents the 'bpf_cast_to_kern_ctx' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+---
 # KFunc `bpf_cast_to_kern_ctx`
 
 <!-- [FEATURE_TAG](bpf_cast_to_kern_ctx) -->
