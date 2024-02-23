@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_per_cpu_ptr' - eBPF Docs"
+description: "This page documents the 'bpf_per_cpu_ptr' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_per_cpu_ptr`
 
 <!-- [FEATURE_TAG](bpf_per_cpu_ptr) -->

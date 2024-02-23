@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_tail_call' - eBPF Docs"
+description: "This page documents the 'bpf_tail_call' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_tail_call`
 
 <!-- [FEATURE_TAG](bpf_tail_call) -->

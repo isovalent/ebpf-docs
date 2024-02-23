@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_task_storage_get' - eBPF Docs"
+description: "This page documents the 'bpf_task_storage_get' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_task_storage_get`
 
 <!-- [FEATURE_TAG](bpf_task_storage_get) -->

@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_l3_csum_replace' - eBPF Docs"
+description: "This page documents the 'bpf_l3_csum_replace' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_l3_csum_replace`
 
 <!-- [FEATURE_TAG](bpf_l3_csum_replace) -->

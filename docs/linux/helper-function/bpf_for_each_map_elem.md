@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_for_each_map_elem' - eBPF Docs"
+description: "This page documents the 'bpf_for_each_map_elem' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_for_each_map_elem`
 
 <!-- [FEATURE_TAG](bpf_for_each_map_elem) -->

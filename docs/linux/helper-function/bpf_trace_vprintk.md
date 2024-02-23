@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_trace_vprintk' - eBPF Docs"
+description: "This page documents the 'bpf_trace_vprintk' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_trace_vprintk`
 
 <!-- [FEATURE_TAG](bpf_trace_vprintk) -->

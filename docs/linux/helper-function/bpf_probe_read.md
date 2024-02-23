@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_probe_read' - eBPF Docs"
+description: "This page documents the 'bpf_probe_read' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_probe_read`
 
 <!-- [FEATURE_TAG](bpf_probe_read) -->

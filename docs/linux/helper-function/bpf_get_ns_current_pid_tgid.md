@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_get_ns_current_pid_tgid' - eBPF Docs"
+description: "This page documents the 'bpf_get_ns_current_pid_tgid' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_get_ns_current_pid_tgid`
 
 <!-- [FEATURE_TAG](bpf_get_ns_current_pid_tgid) -->

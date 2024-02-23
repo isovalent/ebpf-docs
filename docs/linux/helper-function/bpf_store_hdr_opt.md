@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_store_hdr_opt' - eBPF Docs"
+description: "This page documents the 'bpf_store_hdr_opt' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_store_hdr_opt`
 
 <!-- [FEATURE_TAG](bpf_store_hdr_opt) -->

@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_msg_apply_bytes' - eBPF Docs"
+description: "This page documents the 'bpf_msg_apply_bytes' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_msg_apply_bytes`
 
 <!-- [FEATURE_TAG](bpf_msg_apply_bytes) -->

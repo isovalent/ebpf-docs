@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_kptr_xchg' - eBPF Docs"
+description: "This page documents the 'bpf_kptr_xchg' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_kptr_xchg`
 
 <!-- [FEATURE_TAG](bpf_kptr_xchg) -->

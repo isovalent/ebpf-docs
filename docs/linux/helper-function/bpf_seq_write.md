@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_seq_write' - eBPF Docs"
+description: "This page documents the 'bpf_seq_write' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_seq_write`
 
 <!-- [FEATURE_TAG](bpf_seq_write) -->

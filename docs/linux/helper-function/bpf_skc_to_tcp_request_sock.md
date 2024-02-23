@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_skc_to_tcp_request_sock' - eBPF Docs"
+description: "This page documents the 'bpf_skc_to_tcp_request_sock' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_skc_to_tcp_request_sock`
 
 <!-- [FEATURE_TAG](bpf_skc_to_tcp_request_sock) -->

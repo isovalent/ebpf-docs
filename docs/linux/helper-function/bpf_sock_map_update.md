@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_sock_map_update' - eBPF Docs"
+description: "This page documents the 'bpf_sock_map_update' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_sock_map_update`
 
 <!-- [FEATURE_TAG](bpf_sock_map_update) -->

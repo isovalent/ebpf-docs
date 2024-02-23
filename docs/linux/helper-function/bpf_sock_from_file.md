@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_sock_from_file' - eBPF Docs"
+description: "This page documents the 'bpf_sock_from_file' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_sock_from_file`
 
 <!-- [FEATURE_TAG](bpf_sock_from_file) -->

@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_read_branch_records' - eBPF Docs"
+description: "This page documents the 'bpf_read_branch_records' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_read_branch_records`
 
 <!-- [FEATURE_TAG](bpf_read_branch_records) -->

@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_strncmp' - eBPF Docs"
+description: "This page documents the 'bpf_strncmp' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_strncmp`
 
 <!-- [FEATURE_TAG](bpf_strncmp) -->

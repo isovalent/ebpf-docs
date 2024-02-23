@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_ima_inode_hash' - eBPF Docs"
+description: "This page documents the 'bpf_ima_inode_hash' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_ima_inode_hash`
 
 <!-- [FEATURE_TAG](bpf_ima_inode_hash) -->

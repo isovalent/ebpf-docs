@@ -1,3 +1,7 @@
+---
+title: "Helper Function 'bpf_getsockopt' - eBPF Docs"
+description: "This page documents the 'bpf_getsockopt' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+---
 # Helper function `bpf_getsockopt`
 
 <!-- [FEATURE_TAG](bpf_getsockopt) -->
