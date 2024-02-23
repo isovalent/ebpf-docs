@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_bprm_opts_set' - eBPF Docs"
+title: "Helper Function 'bpf_bprm_opts_set'"
 description: "This page documents the 'bpf_bprm_opts_set' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_bprm_opts_set`

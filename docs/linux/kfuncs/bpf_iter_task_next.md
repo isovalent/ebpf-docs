@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_iter_task_next' - eBPF Docs"
+title: "KFunc 'bpf_iter_task_next'"
 description: "This page documents the 'bpf_iter_task_next' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_iter_task_next`

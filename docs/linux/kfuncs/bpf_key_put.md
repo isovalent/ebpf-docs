@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_key_put' - eBPF Docs"
+title: "KFunc 'bpf_key_put'"
 description: "This page documents the 'bpf_key_put' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_key_put`

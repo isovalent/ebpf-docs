@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bbr_ssthresh' - eBPF Docs"
+title: "KFunc 'bbr_ssthresh'"
 description: "This page documents the 'bbr_ssthresh' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bbr_ssthresh`

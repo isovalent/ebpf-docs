@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_cpumask_or' - eBPF Docs"
+title: "KFunc 'bpf_cpumask_or'"
 description: "This page documents the 'bpf_cpumask_or' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_cpumask_or`

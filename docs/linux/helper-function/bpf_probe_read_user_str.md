@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_probe_read_user_str' - eBPF Docs"
+title: "Helper Function 'bpf_probe_read_user_str'"
 description: "This page documents the 'bpf_probe_read_user_str' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_probe_read_user_str`

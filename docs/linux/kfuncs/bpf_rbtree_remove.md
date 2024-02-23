@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_rbtree_remove' - eBPF Docs"
+title: "KFunc 'bpf_rbtree_remove'"
 description: "This page documents the 'bpf_rbtree_remove' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_rbtree_remove`

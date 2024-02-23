@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'tcp_slow_start' - eBPF Docs"
+title: "KFunc 'tcp_slow_start'"
 description: "This page documents the 'tcp_slow_start' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `tcp_slow_start`

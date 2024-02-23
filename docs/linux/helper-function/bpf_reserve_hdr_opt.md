@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_reserve_hdr_opt' - eBPF Docs"
+title: "Helper Function 'bpf_reserve_hdr_opt'"
 description: "This page documents the 'bpf_reserve_hdr_opt' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_reserve_hdr_opt`

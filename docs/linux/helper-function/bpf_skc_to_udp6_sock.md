@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_skc_to_udp6_sock' - eBPF Docs"
+title: "Helper Function 'bpf_skc_to_udp6_sock'"
 description: "This page documents the 'bpf_skc_to_udp6_sock' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_skc_to_udp6_sock`

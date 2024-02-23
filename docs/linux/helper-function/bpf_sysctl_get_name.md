@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_sysctl_get_name' - eBPF Docs"
+title: "Helper Function 'bpf_sysctl_get_name'"
 description: "This page documents the 'bpf_sysctl_get_name' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_sysctl_get_name`

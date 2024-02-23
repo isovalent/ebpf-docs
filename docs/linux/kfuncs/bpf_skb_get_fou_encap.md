@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_skb_get_fou_encap' - eBPF Docs"
+title: "KFunc 'bpf_skb_get_fou_encap'"
 description: "This page documents the 'bpf_skb_get_fou_encap' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_skb_get_fou_encap`

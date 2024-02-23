@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_set_retval' - eBPF Docs"
+title: "Helper Function 'bpf_set_retval'"
 description: "This page documents the 'bpf_set_retval' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_set_retval`

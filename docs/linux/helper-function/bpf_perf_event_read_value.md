@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_perf_event_read_value' - eBPF Docs"
+title: "Helper Function 'bpf_perf_event_read_value'"
 description: "This page documents the 'bpf_perf_event_read_value' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_perf_event_read_value`

@@ -1,5 +1,5 @@
 ---
-title: "Map Type 'BPF_MAP_TYPE_ARRAY_OF_MAPS' - eBPF Docs"
+title: "Map Type 'BPF_MAP_TYPE_ARRAY_OF_MAPS'"
 description: "This page documents the 'BPF_MAP_TYPE_ARRAY_OF_MAPS' eBPF map type, including its defintion, usage, program types that can use it, and examples."
 ---
 # Map type `BPF_MAP_TYPE_ARRAY_OF_MAPS`

@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_percpu_obj_drop_impl' - eBPF Docs"
+title: "KFunc 'bpf_percpu_obj_drop_impl'"
 description: "This page documents the 'bpf_percpu_obj_drop_impl' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_percpu_obj_drop_impl`

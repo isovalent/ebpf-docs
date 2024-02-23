@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_bind' - eBPF Docs"
+title: "Helper Function 'bpf_bind'"
 description: "This page documents the 'bpf_bind' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_bind`

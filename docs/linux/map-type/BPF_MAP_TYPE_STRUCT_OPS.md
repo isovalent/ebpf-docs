@@ -1,5 +1,5 @@
 ---
-title: "Map Type 'BPF_MAP_TYPE_STRUCT_OPS' - eBPF Docs"
+title: "Map Type 'BPF_MAP_TYPE_STRUCT_OPS'"
 description: "This page documents the 'BPF_MAP_TYPE_STRUCT_OPS' eBPF map type, including its defintion, usage, program types that can use it, and examples."
 ---
 # Map type `BPF_MAP_TYPE_STRUCT_OPS`

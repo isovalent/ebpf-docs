@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'dctcp_update_alpha' - eBPF Docs"
+title: "KFunc 'dctcp_update_alpha'"
 description: "This page documents the 'dctcp_update_alpha' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `dctcp_update_alpha`

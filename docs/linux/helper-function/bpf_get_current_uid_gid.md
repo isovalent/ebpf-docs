@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_get_current_uid_gid' - eBPF Docs"
+title: "Helper Function 'bpf_get_current_uid_gid'"
 description: "This page documents the 'bpf_get_current_uid_gid' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_get_current_uid_gid`

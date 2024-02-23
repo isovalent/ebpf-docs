@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bbr_main' - eBPF Docs"
+title: "KFunc 'bbr_main'"
 description: "This page documents the 'bbr_main' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bbr_main`

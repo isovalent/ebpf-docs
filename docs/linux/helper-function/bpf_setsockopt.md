@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_setsockopt' - eBPF Docs"
+title: "Helper Function 'bpf_setsockopt'"
 description: "This page documents the 'bpf_setsockopt' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_setsockopt`

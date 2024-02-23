@@ -1,5 +1,5 @@
 ---
-title: "Syscall command 'BPF_BTF_LOAD' - eBPF Docs"
+title: "Syscall command 'BPF_BTF_LOAD'"
 description: "This page documents the 'BPF_BTF_LOAD' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_BTF_LOAD` command

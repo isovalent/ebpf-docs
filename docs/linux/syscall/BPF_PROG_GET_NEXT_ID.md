@@ -1,5 +1,5 @@
 ---
-title: "Syscall command 'BPF_PROG_GET_NEXT_ID' - eBPF Docs"
+title: "Syscall command 'BPF_PROG_GET_NEXT_ID'"
 description: "This page documents the 'BPF_PROG_GET_NEXT_ID' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_PROG_GET_NEXT_ID` command

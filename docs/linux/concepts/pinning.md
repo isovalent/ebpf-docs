@@ -1,5 +1,5 @@
 ---
-title: "Pinning - eBPF Docs"
+title: "Pinning"
 description: "This page explains the concept of pinning in eBPF. It explains what pinning is, how to use it, and when to use it."
 ---
 # Pinning

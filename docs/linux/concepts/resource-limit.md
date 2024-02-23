@@ -1,5 +1,5 @@
 ---
-title: "Resource limits - eBPF Docs"
+title: "Resource limits"
 description: "This page explains the concept of resource limits in eBPF. It explains what resource limits are and how resource limits work."
 ---
 # Resource limits

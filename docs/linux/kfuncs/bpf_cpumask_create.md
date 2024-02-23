@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_cpumask_create' - eBPF Docs"
+title: "KFunc 'bpf_cpumask_create'"
 description: "This page documents the 'bpf_cpumask_create' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_cpumask_create`

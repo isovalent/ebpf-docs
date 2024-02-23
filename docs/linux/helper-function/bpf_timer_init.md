@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_timer_init' - eBPF Docs"
+title: "Helper Function 'bpf_timer_init'"
 description: "This page documents the 'bpf_timer_init' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_timer_init`

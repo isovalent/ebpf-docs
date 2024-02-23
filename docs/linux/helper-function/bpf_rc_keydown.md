@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_rc_keydown' - eBPF Docs"
+title: "Helper Function 'bpf_rc_keydown'"
 description: "This page documents the 'bpf_rc_keydown' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_rc_keydown`

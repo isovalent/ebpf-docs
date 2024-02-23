@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_task_under_cgroup' - eBPF Docs"
+title: "KFunc 'bpf_task_under_cgroup'"
 description: "This page documents the 'bpf_task_under_cgroup' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_task_under_cgroup`

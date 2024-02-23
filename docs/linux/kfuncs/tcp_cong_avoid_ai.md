@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'tcp_cong_avoid_ai' - eBPF Docs"
+title: "KFunc 'tcp_cong_avoid_ai'"
 description: "This page documents the 'tcp_cong_avoid_ai' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `tcp_cong_avoid_ai`

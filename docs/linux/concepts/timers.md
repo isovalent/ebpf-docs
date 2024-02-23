@@ -1,5 +1,5 @@
 ---
-title: "Timers - eBPF Docs"
+title: "Timers"
 description: "This page explains the concept of timers in eBPF. It explains what timers are, how to use them, and when to use them."
 ---
 # eBPF timers

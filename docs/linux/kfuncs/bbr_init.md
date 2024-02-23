@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bbr_init' - eBPF Docs"
+title: "KFunc 'bbr_init'"
 description: "This page documents the 'bbr_init' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bbr_init`

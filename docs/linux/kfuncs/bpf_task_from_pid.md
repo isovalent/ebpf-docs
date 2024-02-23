@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_task_from_pid' - eBPF Docs"
+title: "KFunc 'bpf_task_from_pid'"
 description: "This page documents the 'bpf_task_from_pid' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_task_from_pid`

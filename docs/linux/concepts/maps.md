@@ -1,5 +1,5 @@
 ---
-title: "Maps - eBPF Docs"
+title: "Maps"
 description: "This page explains the concept of eBPF maps. It goes into depth about how to define, create, and use maps in eBPF programs."
 ---
 # Maps

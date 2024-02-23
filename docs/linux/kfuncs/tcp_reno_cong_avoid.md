@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'tcp_reno_cong_avoid' - eBPF Docs"
+title: "KFunc 'tcp_reno_cong_avoid'"
 description: "This page documents the 'tcp_reno_cong_avoid' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `tcp_reno_cong_avoid`

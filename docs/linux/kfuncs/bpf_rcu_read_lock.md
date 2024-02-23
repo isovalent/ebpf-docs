@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_rcu_read_lock' - eBPF Docs"
+title: "KFunc 'bpf_rcu_read_lock'"
 description: "This page documents the 'bpf_rcu_read_lock' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_rcu_read_lock`

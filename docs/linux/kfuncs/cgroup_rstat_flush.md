@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'cgroup_rstat_flush' - eBPF Docs"
+title: "KFunc 'cgroup_rstat_flush'"
 description: "This page documents the 'cgroup_rstat_flush' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `cgroup_rstat_flush`
