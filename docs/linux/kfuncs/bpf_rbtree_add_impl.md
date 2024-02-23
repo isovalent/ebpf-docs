@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_rbtree_add_impl' - eBPF Docs"
+title: "KFunc 'bpf_rbtree_add_impl'"
 description: "This page documents the 'bpf_rbtree_add_impl' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_rbtree_add_impl`

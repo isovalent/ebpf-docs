@@ -1,5 +1,5 @@
 ---
-title: "Concurrency - eBPF Docs"
+title: "Concurrency"
 description: "This page explains how to deal with concurrency in eBPF programs. It explains multiple methods to deal with concurrency, their pros and cons, and when to use them."
 ---
 # Concurrency

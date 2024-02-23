@@ -1,5 +1,5 @@
 ---
-title: "Syscall command 'BPF_PROG_LOAD' - eBPF Docs"
+title: "Syscall command 'BPF_PROG_LOAD'"
 description: "This page documents the 'BPF_PROG_LOAD' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_PROG_LOAD` command

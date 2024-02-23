@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_snprintf_btf' - eBPF Docs"
+title: "Helper Function 'bpf_snprintf_btf'"
 description: "This page documents the 'bpf_snprintf_btf' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_snprintf_btf`

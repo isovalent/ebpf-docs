@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_skb_cgroup_id' - eBPF Docs"
+title: "Helper Function 'bpf_skb_cgroup_id'"
 description: "This page documents the 'bpf_skb_cgroup_id' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_skb_cgroup_id`

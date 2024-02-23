@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_redirect_peer' - eBPF Docs"
+title: "Helper Function 'bpf_redirect_peer'"
 description: "This page documents the 'bpf_redirect_peer' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_redirect_peer`

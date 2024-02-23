@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_msg_pop_data' - eBPF Docs"
+title: "Helper Function 'bpf_msg_pop_data'"
 description: "This page documents the 'bpf_msg_pop_data' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_msg_pop_data`

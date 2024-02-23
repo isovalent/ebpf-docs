@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_sk_storage_delete' - eBPF Docs"
+title: "Helper Function 'bpf_sk_storage_delete'"
 description: "This page documents the 'bpf_sk_storage_delete' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_sk_storage_delete`

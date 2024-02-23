@@ -1,5 +1,5 @@
 ---
-title: "Program Type 'BPF_PROG_TYPE_SK_MSG' - eBPF Docs"
+title: "Program Type 'BPF_PROG_TYPE_SK_MSG'"
 description: "This page documents the 'BPF_PROG_TYPE_SK_MSG' eBPF program type, including its defintion, usage, program types that can use it, and examples."
 ---
 # Program type `BPF_PROG_TYPE_SK_MSG`

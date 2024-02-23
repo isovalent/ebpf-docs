@@ -1,5 +1,5 @@
 ---
-title: "Syscall command 'BPF_PROG_BIND_MAP' - eBPF Docs"
+title: "Syscall command 'BPF_PROG_BIND_MAP'"
 description: "This page documents the 'BPF_PROG_BIND_MAP' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_PROG_BIND_MAP` command

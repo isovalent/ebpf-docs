@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'cgroup_rstat_updated' - eBPF Docs"
+title: "KFunc 'cgroup_rstat_updated'"
 description: "This page documents the 'cgroup_rstat_updated' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `cgroup_rstat_updated`

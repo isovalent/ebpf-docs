@@ -1,5 +1,5 @@
 ---
-title: "Verifier - eBPF Docs"
+title: "Verifier"
 description: "This page explains the eBPF verifier. It explains what the verifier is, why it exists, and what features it has."
 ---
 # Verifier

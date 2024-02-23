@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_sk_lookup_tcp' - eBPF Docs"
+title: "Helper Function 'bpf_sk_lookup_tcp'"
 description: "This page documents the 'bpf_sk_lookup_tcp' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_sk_lookup_tcp`

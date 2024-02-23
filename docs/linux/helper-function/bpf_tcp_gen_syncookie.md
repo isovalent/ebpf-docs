@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_tcp_gen_syncookie' - eBPF Docs"
+title: "Helper Function 'bpf_tcp_gen_syncookie'"
 description: "This page documents the 'bpf_tcp_gen_syncookie' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_tcp_gen_syncookie`

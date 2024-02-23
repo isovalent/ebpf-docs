@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_dynptr_size' - eBPF Docs"
+title: "KFunc 'bpf_dynptr_size'"
 description: "This page documents the 'bpf_dynptr_size' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_dynptr_size`

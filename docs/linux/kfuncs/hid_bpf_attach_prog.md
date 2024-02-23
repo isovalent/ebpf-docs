@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'hid_bpf_attach_prog' - eBPF Docs"
+title: "KFunc 'hid_bpf_attach_prog'"
 description: "This page documents the 'hid_bpf_attach_prog' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `hid_bpf_attach_prog`

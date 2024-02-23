@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_kallsyms_lookup_name' - eBPF Docs"
+title: "Helper Function 'bpf_kallsyms_lookup_name'"
 description: "This page documents the 'bpf_kallsyms_lookup_name' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_kallsyms_lookup_name`

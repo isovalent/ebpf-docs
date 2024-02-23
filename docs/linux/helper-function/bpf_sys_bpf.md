@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_sys_bpf' - eBPF Docs"
+title: "Helper Function 'bpf_sys_bpf'"
 description: "This page documents the 'bpf_sys_bpf' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_sys_bpf`

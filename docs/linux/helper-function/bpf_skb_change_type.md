@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_skb_change_type' - eBPF Docs"
+title: "Helper Function 'bpf_skb_change_type'"
 description: "This page documents the 'bpf_skb_change_type' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_skb_change_type`

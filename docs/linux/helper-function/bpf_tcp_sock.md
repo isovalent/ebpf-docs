@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_tcp_sock' - eBPF Docs"
+title: "Helper Function 'bpf_tcp_sock'"
 description: "This page documents the 'bpf_tcp_sock' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_tcp_sock`

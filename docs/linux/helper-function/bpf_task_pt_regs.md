@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_task_pt_regs' - eBPF Docs"
+title: "Helper Function 'bpf_task_pt_regs'"
 description: "This page documents the 'bpf_task_pt_regs' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_task_pt_regs`

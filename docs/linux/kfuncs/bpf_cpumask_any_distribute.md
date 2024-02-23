@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_cpumask_any_distribute' - eBPF Docs"
+title: "KFunc 'bpf_cpumask_any_distribute'"
 description: "This page documents the 'bpf_cpumask_any_distribute' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_cpumask_any_distribute`

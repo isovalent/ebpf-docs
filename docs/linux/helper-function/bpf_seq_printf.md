@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_seq_printf' - eBPF Docs"
+title: "Helper Function 'bpf_seq_printf'"
 description: "This page documents the 'bpf_seq_printf' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_seq_printf`

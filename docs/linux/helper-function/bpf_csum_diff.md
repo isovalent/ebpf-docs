@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_csum_diff' - eBPF Docs"
+title: "Helper Function 'bpf_csum_diff'"
 description: "This page documents the 'bpf_csum_diff' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_csum_diff`

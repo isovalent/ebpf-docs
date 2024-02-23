@@ -1,5 +1,5 @@
 ---
-title: "Syscall command 'BPF_MAP_DELETE_BATCH' - eBPF Docs"
+title: "Syscall command 'BPF_MAP_DELETE_BATCH'"
 description: "This page documents the 'BPF_MAP_DELETE_BATCH' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_MAP_DELETE_BATCH` command

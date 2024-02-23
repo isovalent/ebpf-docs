@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'dctcp_cwnd_event' - eBPF Docs"
+title: "KFunc 'dctcp_cwnd_event'"
 description: "This page documents the 'dctcp_cwnd_event' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `dctcp_cwnd_event`

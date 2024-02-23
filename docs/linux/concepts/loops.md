@@ -1,5 +1,5 @@
 ---
-title: "Loops - eBPF Docs"
+title: "Loops"
 description: "This page explains the limits of loops in eBPF. It explains different methods of looping and their pros, cons, and when you can use them."
 ---
 # Loops in BPF

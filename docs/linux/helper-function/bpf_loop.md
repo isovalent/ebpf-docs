@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_loop' - eBPF Docs"
+title: "Helper Function 'bpf_loop'"
 description: "This page documents the 'bpf_loop' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_loop`

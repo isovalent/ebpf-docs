@@ -1,5 +1,5 @@
 ---
-title: "Tail calls - eBPF Docs"
+title: "Tail calls"
 description: "This page explains the concept of tail calls in eBPF. It explains what tail calls are, how to use them, and when to use them."
 ---
 # Tail calls

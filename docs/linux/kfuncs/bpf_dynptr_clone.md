@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_dynptr_clone' - eBPF Docs"
+title: "KFunc 'bpf_dynptr_clone'"
 description: "This page documents the 'bpf_dynptr_clone' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_dynptr_clone`

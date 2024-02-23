@@ -1,5 +1,5 @@
 ---
-title: "Map Type 'BPF_MAP_TYPE_STACK_TRACE' - eBPF Docs"
+title: "Map Type 'BPF_MAP_TYPE_STACK_TRACE'"
 description: "This page documents the 'BPF_MAP_TYPE_STACK_TRACE' eBPF map type, including its defintion, usage, program types that can use it, and examples."
 ---
 # Map type `BPF_MAP_TYPE_STACK_TRACE`

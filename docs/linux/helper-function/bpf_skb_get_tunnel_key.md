@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_skb_get_tunnel_key' - eBPF Docs"
+title: "Helper Function 'bpf_skb_get_tunnel_key'"
 description: "This page documents the 'bpf_skb_get_tunnel_key' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_skb_get_tunnel_key`

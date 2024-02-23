@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_ktime_get_coarse_ns' - eBPF Docs"
+title: "Helper Function 'bpf_ktime_get_coarse_ns'"
 description: "This page documents the 'bpf_ktime_get_coarse_ns' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_ktime_get_coarse_ns`

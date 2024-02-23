@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_skb_vlan_pop' - eBPF Docs"
+title: "Helper Function 'bpf_skb_vlan_pop'"
 description: "This page documents the 'bpf_skb_vlan_pop' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_skb_vlan_pop`

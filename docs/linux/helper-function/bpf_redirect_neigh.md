@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_redirect_neigh' - eBPF Docs"
+title: "Helper Function 'bpf_redirect_neigh'"
 description: "This page documents the 'bpf_redirect_neigh' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_redirect_neigh`

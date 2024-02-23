@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_map_lookup_percpu_elem' - eBPF Docs"
+title: "Helper Function 'bpf_map_lookup_percpu_elem'"
 description: "This page documents the 'bpf_map_lookup_percpu_elem' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_map_lookup_percpu_elem`

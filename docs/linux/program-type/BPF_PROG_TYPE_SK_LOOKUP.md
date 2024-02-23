@@ -1,5 +1,5 @@
 ---
-title: "Program Type 'BPF_PROG_TYPE_SK_LOOKUP' - eBPF Docs"
+title: "Program Type 'BPF_PROG_TYPE_SK_LOOKUP'"
 description: "This page documents the 'BPF_PROG_TYPE_SK_LOOKUP' eBPF program type, including its defintion, usage, program types that can use it, and examples."
 ---
 # Program type `BPF_PROG_TYPE_SK_LOOKUP`

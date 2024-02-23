@@ -1,5 +1,5 @@
 ---
-title: "Helper Function 'bpf_inode_storage_get' - eBPF Docs"
+title: "Helper Function 'bpf_inode_storage_get'"
 description: "This page documents the 'bpf_inode_storage_get' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_inode_storage_get`

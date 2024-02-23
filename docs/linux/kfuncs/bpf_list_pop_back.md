@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_list_pop_back' - eBPF Docs"
+title: "KFunc 'bpf_list_pop_back'"
 description: "This page documents the 'bpf_list_pop_back' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_list_pop_back`

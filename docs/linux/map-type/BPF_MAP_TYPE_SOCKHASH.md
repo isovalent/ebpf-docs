@@ -1,5 +1,5 @@
 ---
-title: "Map Type 'BPF_MAP_TYPE_SOCKHASH' - eBPF Docs"
+title: "Map Type 'BPF_MAP_TYPE_SOCKHASH'"
 description: "This page documents the 'BPF_MAP_TYPE_SOCKHASH' eBPF map type, including its defintion, usage, program types that can use it, and examples."
 ---
 # Map type `BPF_MAP_TYPE_SOCKHASH`

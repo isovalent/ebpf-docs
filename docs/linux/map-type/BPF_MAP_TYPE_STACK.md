@@ -1,5 +1,5 @@
 ---
-title: "Map Type 'BPF_MAP_TYPE_STACK' - eBPF Docs"
+title: "Map Type 'BPF_MAP_TYPE_STACK'"
 description: "This page documents the 'BPF_MAP_TYPE_STACK' eBPF map type, including its defintion, usage, program types that can use it, and examples."
 ---
 # Map type `BPF_MAP_TYPE_STACK`

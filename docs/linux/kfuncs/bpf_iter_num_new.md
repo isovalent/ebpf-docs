@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_iter_num_new' - eBPF Docs"
+title: "KFunc 'bpf_iter_num_new'"
 description: "This page documents the 'bpf_iter_num_new' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_iter_num_new`

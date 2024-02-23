@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_task_get_cgroup1' - eBPF Docs"
+title: "KFunc 'bpf_task_get_cgroup1'"
 description: "This page documents the 'bpf_task_get_cgroup1' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_task_get_cgroup1`

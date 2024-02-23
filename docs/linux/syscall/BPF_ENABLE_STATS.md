@@ -1,5 +1,5 @@
 ---
-title: "Syscall command 'BPF_ENABLE_STATS' - eBPF Docs"
+title: "Syscall command 'BPF_ENABLE_STATS'"
 description: "This page documents the 'BPF_ENABLE_STATS' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_ENABLE_STATS` command

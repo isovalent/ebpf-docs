@@ -1,5 +1,5 @@
 ---
-title: "KFunc 'bpf_cgroup_ancestor' - eBPF Docs"
+title: "KFunc 'bpf_cgroup_ancestor'"
 description: "This page documents the 'bpf_cgroup_ancestor' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_cgroup_ancestor`
