@@ -1,5 +1,6 @@
 ---
 title: eBPF on Linux
+description: This page provides an high level overview of eBPF (extended Berkeley Packet Filter) technology within the Linux kernel. It covers essential components like programs, helper functions, maps, and objects.
 ---
 # eBPF on Linux
 
