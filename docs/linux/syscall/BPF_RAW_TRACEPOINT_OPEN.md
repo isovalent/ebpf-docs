@@ -1,3 +1,7 @@
+---
+title: "Syscall command 'BPF_RAW_TRACEPOINT_OPEN' - eBPF Docs"
+description: "This page documents the 'BPF_RAW_TRACEPOINT_OPEN' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+---
 # BPF Syscall `BPF_RAW_TRACEPOINT_OPEN` command
 
 <!-- [FEATURE_TAG](BPF_RAW_TRACEPOINT_OPEN) -->
