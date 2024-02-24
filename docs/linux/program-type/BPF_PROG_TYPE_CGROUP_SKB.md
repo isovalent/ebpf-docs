@@ -313,3 +313,38 @@ char _license[] SEC("license") = "GPL";
     * [bpf_task_pt_regs](../helper-function/bpf_task_pt_regs.md)
     * [bpf_trace_vprintk](../helper-function/bpf_trace_vprintk.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
+
+## KFuncs
+
+<!-- [PROG_KFUNC_REF] -->
+??? abstract "Supported kfuncs"
+    - [bpf_cast_to_kern_ctx](../kfuncs/bpf_cast_to_kern_ctx.md)
+    - [bpf_dynptr_adjust](../kfuncs/bpf_dynptr_adjust.md)
+    - [bpf_dynptr_clone](../kfuncs/bpf_dynptr_clone.md)
+    - [bpf_dynptr_from_skb](../kfuncs/bpf_dynptr_from_skb.md)
+    - [bpf_dynptr_is_null](../kfuncs/bpf_dynptr_is_null.md)
+    - [bpf_dynptr_is_rdonly](../kfuncs/bpf_dynptr_is_rdonly.md)
+    - [bpf_dynptr_size](../kfuncs/bpf_dynptr_size.md)
+    - [bpf_dynptr_slice](../kfuncs/bpf_dynptr_slice.md)
+    - [bpf_dynptr_slice_rdwr](../kfuncs/bpf_dynptr_slice_rdwr.md)
+    - [bpf_iter_css_destroy](../kfuncs/bpf_iter_css_destroy.md)
+    - [bpf_iter_css_new](../kfuncs/bpf_iter_css_new.md)
+    - [bpf_iter_css_next](../kfuncs/bpf_iter_css_next.md)
+    - [bpf_iter_css_task_destroy](../kfuncs/bpf_iter_css_task_destroy.md)
+    - [bpf_iter_css_task_new](../kfuncs/bpf_iter_css_task_new.md)
+    - [bpf_iter_css_task_next](../kfuncs/bpf_iter_css_task_next.md)
+    - [bpf_iter_num_destroy](../kfuncs/bpf_iter_num_destroy.md)
+    - [bpf_iter_num_new](../kfuncs/bpf_iter_num_new.md)
+    - [bpf_iter_num_next](../kfuncs/bpf_iter_num_next.md)
+    - [bpf_iter_task_destroy](../kfuncs/bpf_iter_task_destroy.md)
+    - [bpf_iter_task_new](../kfuncs/bpf_iter_task_new.md)
+    - [bpf_iter_task_next](../kfuncs/bpf_iter_task_next.md)
+    - [bpf_iter_task_vma_destroy](../kfuncs/bpf_iter_task_vma_destroy.md)
+    - [bpf_iter_task_vma_new](../kfuncs/bpf_iter_task_vma_new.md)
+    - [bpf_iter_task_vma_next](../kfuncs/bpf_iter_task_vma_next.md)
+    - [bpf_map_sum_elem_count](../kfuncs/bpf_map_sum_elem_count.md)
+    - [bpf_rcu_read_lock](../kfuncs/bpf_rcu_read_lock.md)
+    - [bpf_rcu_read_unlock](../kfuncs/bpf_rcu_read_unlock.md)
+    - [bpf_rdonly_cast](../kfuncs/bpf_rdonly_cast.md)
+    - [bpf_sock_addr_set_sun_path](../kfuncs/bpf_sock_addr_set_sun_path.md)
+<!-- [/PROG_KFUNC_REF] -->

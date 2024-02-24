@@ -34,6 +34,9 @@ const (
 	kfuncDefEnd       = `<!-- [/KFUNC_DEF] -->`
 	kfuncProgRefStart = `<!-- [KFUNC_PROG_REF] -->`
 	kfuncProgRefEnd   = `<!-- [/KFUNC_PROG_REF] -->`
+
+	progKfuncRefStart = `<!-- [PROG_KFUNC_REF] -->`
+	progKfuncRefEnd   = `<!-- [/PROG_KFUNC_REF] -->`
 )
 
 func main() {
@@ -131,6 +134,8 @@ func main() {
 		}
 	}
 
+	progToKfunc := make(map[string][]string)
+
 	for _, set := range kfuncsConfig.Sets {
 		for _, kfunc := range set.Funcs {
 			file, err := os.OpenFile(*projectroot+"/docs/linux/kfuncs/"+kfunc.Name+".md", os.O_RDWR, 0644)
@@ -162,8 +167,14 @@ func main() {
 					progTypes = append(progTypes, progType)
 				}
 			}
+
 			sort.Strings(progTypes)
 			slices.Compact(progTypes)
+
+			for _, progType := range progTypes {
+				progToKfunc[progType] = append(progToKfunc[progType], kfunc.Name)
+			}
+
 			for _, progType := range progTypes {
 				newFile.WriteString(fmt.Sprintf("- [%s](../program-type/%s.md)\n", progType, progType))
 			}
@@ -188,6 +199,78 @@ func main() {
 
 			file.Close()
 		}
+	}
+
+	progDirEntries, err := os.ReadDir(*projectroot + "/docs/linux/program-type")
+	if err != nil {
+		panic(err)
+	}
+	for _, dirEntry := range progDirEntries {
+		if dirEntry.IsDir() {
+			continue
+		}
+
+		fileName := dirEntry.Name()
+		progName := strings.TrimSuffix(fileName, ".md")
+		filePath := *projectroot + "/docs/linux/program-type/" + fileName
+		file, err := os.OpenFile(filePath, os.O_RDWR, 0644)
+		if err != nil {
+			panic(err)
+		}
+
+		fileContents, err := io.ReadAll(file)
+		if err != nil {
+			panic(err)
+		}
+
+		fileStr := string(fileContents)
+
+		startIdx := strings.Index(fileStr, progKfuncRefStart)
+		endIdx := strings.Index(fileStr, progKfuncRefEnd)
+
+		if startIdx == -1 || endIdx == -1 {
+			continue
+		}
+
+		var newFile strings.Builder
+
+		// Write everything before the marker
+		newFile.WriteString(fileStr[:startIdx])
+		newFile.WriteString(progKfuncRefStart)
+		newFile.WriteString("\n")
+
+		kfuncs, ok := progToKfunc[progName]
+		if ok {
+			newFile.WriteString("??? abstract \"Supported kfuncs\"\n")
+
+			sort.Strings(kfuncs)
+
+			for _, kfunc := range kfuncs {
+				newFile.WriteString(fmt.Sprintf("    - [%s](../kfuncs/%s.md)\n", kfunc, kfunc))
+			}
+		} else {
+			newFile.WriteString("There are currently no kfuncs supported for this program type\n")
+		}
+
+		newFile.WriteString(progKfuncRefEnd)
+		newFile.WriteString(fileStr[endIdx+len(progKfuncRefEnd):])
+
+		_, err = file.Seek(0, 0)
+		if err != nil {
+			panic(err)
+		}
+
+		err = file.Truncate(0)
+		if err != nil {
+			panic(err)
+		}
+
+		_, err = io.Copy(file, strings.NewReader(newFile.String()))
+		if err != nil {
+			panic(err)
+		}
+
+		file.Close()
 	}
 }
 

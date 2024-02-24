@@ -856,3 +856,9 @@ Socket ops programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../sysca
     * [bpf_task_pt_regs](../helper-function/bpf_task_pt_regs.md)
     * [bpf_trace_vprintk](../helper-function/bpf_trace_vprintk.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
+
+## KFuncs
+
+<!-- [PROG_KFUNC_REF] -->
+There are currently no kfuncs supported for this program type
+<!-- [/PROG_KFUNC_REF] -->

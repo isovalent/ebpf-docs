@@ -219,3 +219,9 @@ int prog_msg_verdict(struct sk_msg_md *msg)
     * [bpf_trace_vprintk](../helper-function/bpf_trace_vprintk.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
+## KFuncs
+
+<!-- [PROG_KFUNC_REF] -->
+There are currently no kfuncs supported for this program type
+<!-- [/PROG_KFUNC_REF] -->
+
