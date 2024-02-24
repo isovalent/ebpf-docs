@@ -106,6 +106,7 @@ func main() {
 				case "KF_ITER_NEXT":
 				case "KF_ITER_DESTROY":
 				case "KF_RCU_PROTECTED":
+					newFile.WriteString(kfRCUProtectedNotice)
 				}
 			}
 
@@ -325,5 +326,13 @@ const (
 	This kfunc is destructive to the system. For example such a call can result in system rebooting or panicking. 
 	Due to this additional restrictions apply to these calls. At the moment they only require CAP_SYS_BOOT capability, 
 	but more can be added later.
+`
+
+	kfRCUProtectedNotice = `
+!!! note
+	This kfunc is RCU protected. This means that the kfunc can be called from RCU read-side critical section.
+	If a program isn't called from RCU read-side critical section, such as sleepable programs, the 
+	[` + "`" + `bpf_rcu_read_lock` + "`" + `](../kfuncs/bpf_rcu_read_lock.md) and 
+	[` + "`" + `bpf_rcu_read_unlock` + "`" + `](../kfuncs/bpf_rcu_read_unlock.md) to protect the calls to such KFuncs.
 `
 )

@@ -20,6 +20,12 @@ Initialize a task iterator.
 
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_iter_task_new(struct bpf_iter_task *it, struct task_struct *task__nullable, unsigned int flags)`
+
+!!! note
+	This kfunc is RCU protected. This means that the kfunc can be called from RCU read-side critical section.
+	If a program isn't called from RCU read-side critical section, such as sleepable programs, the 
+	[`bpf_rcu_read_lock`](../kfuncs/bpf_rcu_read_lock.md) and 
+	[`bpf_rcu_read_unlock`](../kfuncs/bpf_rcu_read_unlock.md) to protect the calls to such KFuncs.
 <!-- [/KFUNC_DEF] -->
 
 ## Usage
