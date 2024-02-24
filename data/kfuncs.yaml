@@ -6,6 +6,7 @@ sets:
         flags: [KF_SLEEPABLE]
     program_types:
       - BPF_PROG_TYPE_TRACING
+      - BPF_PROG_TYPE_LSM
 
   key_sig_kfunc_set:
     funcs:
@@ -19,6 +20,8 @@ sets:
         flags: [KF_SLEEPABLE]
     program_types:
       - BPF_PROG_TYPE_TRACING
+    attach_type:
+      - BPF_TRACE_ITER
         
   fs_kfunc_set_ids:
     funcs:
@@ -81,6 +84,7 @@ sets:
         flags: [KF_RCU]
     program_types:
       - BPF_PROG_TYPE_TRACING
+      - BPF_PROG_TYPE_LSM
       - BPF_PROG_TYPE_STRUCT_OPS
 
   generic_btf_ids:
@@ -129,6 +133,7 @@ sets:
       - name: bpf_throw
     program_types:
      - BPF_PROG_TYPE_TRACING
+     - BPF_PROG_TYPE_LSM
      - BPF_PROG_TYPE_SCHED_CLS
      - BPF_PROG_TYPE_XDP
      - BPF_PROG_TYPE_STRUCT_OPS
@@ -228,6 +233,7 @@ sets:
     funcs:
       - name: bpf_sock_addr_set_sun_path
     program_types:
+      - BPF_PROG_TYPE_CGROUP_SKB
       - BPF_PROG_TYPE_CGROUP_SOCK_ADDR
 
   bpf_sk_iter_kfunc_ids:
@@ -236,6 +242,8 @@ sets:
         flags: [KF_TRUSTED_ARGS]
     program_types:
       - BPF_PROG_TYPE_TRACING
+    attach_type:
+      - BPF_TRACE_ITER
 
   tcp_bbr_check_kfunc_ids:
     funcs:
@@ -327,6 +335,8 @@ sets:
     funcs:
       - name: bpf_skb_get_xfrm_info
       - name: bpf_skb_set_xfrm_info
+    program_types:
+      - BPF_PROG_TYPE_SCHED_CLS
 
   xfrm_state_kfunc_set:
     funcs:
@@ -343,6 +353,7 @@ sets:
         flags: [KF_RET_NULL]
     program_types:
       - BPF_PROG_TYPE_TRACING
+      - BPF_PROG_TYPE_LSM
 
   hid_bpf_syscall_kfunc_ids:
     funcs:
