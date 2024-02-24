@@ -28,6 +28,14 @@ These helper functions, take up to 5 arguments and return a single return value.
 
 Helper functions have a large variety of purposes ranging from simply getting some additional information like what CPU core we are executing on to invoking major side effects like redirecting packets. For a complete overview checkout the [helper functions](./helper-function/index.md) page.
 
+## KFuncs
+
+KFuncs are the kernel functions that have been annotated so that they can be called from eBPF programs. Its essentially an alternative mechainsm to helper functions. The upstream kernel in principle doesn't accept new helper functions anymore, so any new functionality that needs to be exposed to eBPF programs should be done through KFuncs.
+
+KFuncs are not considered UAPI (User-space API) and are not subject to the same stability guarantees as the UAPI. Users of KFuncs are advices to use defensive programming techniques to handle the case where a KFunc is not available or has changed.
+
+For more details checkout the [KFuncs](../concepts/kfuncs.md) page.
+
 ## Maps
 
 eBPF maps are datastructures that live in the kernel. Both eBPF programs and userspace programs can access these maps and thus they are the communication layer between eBPF programs and userspace as well as a place to persist data between program calls. Maps like all other BPF objects are shared over the whole host, and multiple programs can access the same maps at the same time. Thus maps can also be used to transfer information between programs of different types at different attached points.
