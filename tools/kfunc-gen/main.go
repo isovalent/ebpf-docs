@@ -156,7 +156,11 @@ func main() {
 			newFile.WriteString("\n")
 			var progTypes []string
 			for _, progType := range set.ProgramTypes {
-				progTypes = append(progTypes, kfuncResolveProgramTypes(progType)...)
+				if progType == "BPF_PROG_TYPE_UNSPEC" {
+					progTypes = append(progTypes, kfuncProgramTypes...)
+				} else {
+					progTypes = append(progTypes, progType)
+				}
 			}
 			sort.Strings(progTypes)
 			slices.Compact(progTypes)
@@ -204,38 +208,6 @@ var kfuncProgramTypes = []string{
 	"BPF_PROG_TYPE_LWT_XMIT",
 	"BPF_PROG_TYPE_LWT_SEG6LOCAL",
 	"BPF_PROG_TYPE_NETFILTER",
-}
-
-func kfuncResolveProgramTypes(progType string) []string {
-	switch progType {
-	case "BPF_PROG_TYPE_UNSPEC":
-		return kfuncProgramTypes
-	case "BPF_PROG_TYPE_XDP":
-		return []string{"BPF_PROG_TYPE_XDP"}
-	case "BPF_PROG_TYPE_SCHED_CLS":
-		return []string{"BPF_PROG_TYPE_SCHED_CLS"}
-	case "BPF_PROG_TYPE_STRUCT_OPS":
-		return []string{"BPF_PROG_TYPE_STRUCT_OPS"}
-	case "BPF_PROG_TYPE_TRACING",
-		"BPF_PROG_TYPE_LSM":
-		return []string{"BPF_PROG_TYPE_TRACING", "BPF_PROG_TYPE_LSM"}
-	case "BPF_PROG_TYPE_SYSCALL":
-		return []string{"BPF_PROG_TYPE_SYSCALL"}
-	case "BPF_PROG_TYPE_CGROUP_SKB", "BPF_PROG_TYPE_CGROUP_SOCK_ADDR":
-		return []string{"BPF_PROG_TYPE_CGROUP_SKB", "BPF_PROG_TYPE_CGROUP_SOCK_ADDR"}
-	case "BPF_PROG_TYPE_SCHED_ACT":
-		return []string{"BPF_PROG_TYPE_SCHED_ACT"}
-	case "BPF_PROG_TYPE_SK_SKB":
-		return []string{"BPF_PROG_TYPE_SK_SKB"}
-	case "BPF_PROG_TYPE_SOCKET_FILTER":
-		return []string{"BPF_PROG_TYPE_SOCKET_FILTER"}
-	case "BPF_PROG_TYPE_LWT_OUT", "BPF_PROG_TYPE_LWT_IN", "BPF_PROG_TYPE_LWT_XMIT", "BPF_PROG_TYPE_LWT_SEG6LOCAL":
-		return []string{"BPF_PROG_TYPE_LWT_OUT", "BPF_PROG_TYPE_LWT_IN", "BPF_PROG_TYPE_LWT_XMIT", "BPF_PROG_TYPE_LWT_SEG6LOCAL"}
-	case "BPF_PROG_TYPE_NETFILTER":
-		return []string{"BPF_PROG_TYPE_NETFILTER"}
-	}
-
-	return nil
 }
 
 func cFuncSignature(fn *btf.Func) string {
