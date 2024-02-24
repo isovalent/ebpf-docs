@@ -1,7 +1,6 @@
 ---
 title: Helper functions
-description: This page is an overview of all available eBPF helper functions in the linux kernel.
-It provides a categorization of the helper functions by their purpose.
+description: This page is an overview of all available eBPF helper functions in the linux kernel. It provides a categorization of the helper functions by their purpose.
 hide: toc
 ---
 # Helper functions
