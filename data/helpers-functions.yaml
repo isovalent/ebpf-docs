@@ -513,7 +513,7 @@ programs:
 
   # `lwt_in_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_LWT_IN:
-  - name: bpf_lwt_in_push_encap
+  - name: bpf_lwt_push_encap
   - group: lwt_out
 
   # `lwt_out_func_proto` in `net/core/filter.c`
