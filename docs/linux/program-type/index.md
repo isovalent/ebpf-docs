@@ -26,9 +26,9 @@ These program types are triggered by network events
 
 These program types are used to implement custom light weight tunneling protocols
 
-* BPF_PROG_TYPE_LWT_IN
-* BPF_PROG_TYPE_LWT_OUT
-* BPF_PROG_TYPE_LWT_XMIT
+* [BPF_PROG_TYPE_LWT_IN](BPF_PROG_TYPE_LWT_IN.md)
+* [BPF_PROG_TYPE_LWT_OUT](BPF_PROG_TYPE_LWT_OUT.md)
+* [BPF_PROG_TYPE_LWT_XMIT](BPF_PROG_TYPE_LWT_XMIT.md)
 * BPF_PROG_TYPE_LWT_SEG6LOCAL
 
 ## cGroup program types
