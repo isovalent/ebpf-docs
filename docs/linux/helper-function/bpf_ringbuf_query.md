@@ -2,9 +2,9 @@
 title: "Helper Function 'bpf_ringbuf_query'"
 description: "This page documents the 'bpf_ringbuf_query' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
 ---
-# Helper function `bpf_ringbuf_discard_dynptr`
+# Helper function `bpf_ringbuf_query`
 
-<!-- [FEATURE_TAG](bpf_ringbuf_discard_dynptr) -->
+<!-- [FEATURE_TAG](bpf_ringbuf_query) -->
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/bc34dee65a65e9c920c420005b8a43f2a721a458)
 <!-- [/FEATURE_TAG] -->
 
