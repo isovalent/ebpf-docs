@@ -16,6 +16,11 @@ description: "This page documents the 'bpf_ringbuf_reserve' eBPF helper function
 <!-- [HELPER_FUNC_DEF] -->
 Reserve _size_ bytes of payload in a ring buffer _ringbuf_. _flags_ must be 0.
 
+This allows the verifier to proof that no out-of-bounds memory is accessed, when
+accessing the memory of the ring buffer directly. With this, there is no need
+to keep a separate array when constructing messages that are larger than the
+eBPF stack size, thus removing the need for memory copies.
+
 ### Returns
 
 Valid pointer with _size_ bytes of memory available; NULL, otherwise.
