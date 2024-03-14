@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_ringbuf_query' eBPF helper function, 
 # Helper function `bpf_ringbuf_query`
 
 <!-- [FEATURE_TAG](bpf_ringbuf_query) -->
-[:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/bc34dee65a65e9c920c420005b8a43f2a721a458)
+[:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/457f44363a8894135c85b7a9afd2bd8196db24ab)
 <!-- [/FEATURE_TAG] -->
 
 ## Definition
