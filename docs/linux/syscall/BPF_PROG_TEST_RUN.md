@@ -111,7 +111,7 @@ This field is not supported for the following program types:
 
 [:octicons-tag-24: v4.12](https://github.com/torvalds/linux/commit/1cf1cae963c2e6032aebe1637e995bc2f5d330f4)
 
-This field indicates how long the execution of the program took in nanoseconds. If `repeat` is larger than 1, this value should be divided by `repeat` to get the average per-invocation time.
+This field indicates how long the execution of the program took in nanoseconds. If `repeat` is larger than 1, the field will contain the avarage per-invokation run time for all repetitions.
 
 This field is not supported for the following program types:
 
