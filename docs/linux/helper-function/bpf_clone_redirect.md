@@ -45,5 +45,25 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <linux/bpf.h>
+#include <bpf/bpf_helpers.h>
+#include <linux/pkt_cls.h>
+
+
+SEC("tc/egress")
+int bpf_clone_redirect_example(struct __sk_buff *skb) {
+
+    __u32 if_index = 2; // interface index to redirect to
+
+    int ret = bpf_clone_redirect(skb, if_index, 0); // redirect to egress path because BPF_F_INGRESS flag is not set
+
+    if (ret) {
+        bpf_printk("bpf_clone_redirect error: %d", ret);
+    }
+
+    return TC_ACT_OK;
+}
+
+char LICENSE[] SEC("license") = "Dual BSD/GPL";
+```
