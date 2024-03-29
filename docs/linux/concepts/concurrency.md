@@ -33,6 +33,18 @@ If you want to perform one of the above sequences on a variable you can do so wi
 
 Atomic instructions work on variable of 1, 2, 4, or 8 bytes. Any variables larger than that such as multiple struct fields require multiple atomics or other synchronization mechanisms.
 
+Here is a simple example using atomics to count the number of times the `sys_enter` tracepoint is called.
+
+```c
+int counter = 0;
+
+SEC("tp_btf/sys_enter")
+int sys_enter_count(void *ctx) {
+	__sync_fetch_and_add(&counter, 1);
+	return 0;
+}
+```
+
 !!! note
 	Atomics still synchronize at the hardware level, so using atomics will still decrease performance compared to its non-atomic variant.
 
@@ -53,28 +65,37 @@ struct {
 	__type(key, int);
 	__type(value, struct concurrent_element);
 	__uint(max_entries, 100);
-} SEC(".maps") concurrent_map ;
+} concurrent_map SEC(".maps");
 ```
 
-Then in your code, you can take the lock with [`bpf_spin_lock`](../helper-function/bpf_spin_lock.md), do whatever you need to do, and release the lock with [`bpf_spin_unlock`](../helper-function/bpf_spin_unlock.md). 
+Then in your code, you can take the lock with [`bpf_spin_lock`](../helper-function/bpf_spin_lock.md), do whatever you need to do, and release the lock with [`bpf_spin_unlock`](../helper-function/bpf_spin_unlock.md). In this example, we simply increment the number of times the `sys_enter` tracepoint is called.
 
 ```c
-int bpf_program(struct pt_regs *ctx) {
+SEC("tp_btf/sys_enter")
+int sys_enter_count(void *ctx) {
 	int key = 0;
 	struct concurrent_element init_value = {};
 	struct concurrent_element *read_value;
-
-	bpf_map_create_elem(&concurrent_map, &key, &init_value, BPF_NOEXIST);
+	bpf_map_update_elem(&concurrent_map, &key, &init_value, BPF_NOEXIST);
 
 	read_value = bpf_map_lookup_elem(&concurrent_map, &key);
+	if(!read_value)
+	{
+		return 0;
+	}
+
 	bpf_spin_lock(&read_value->semaphore);
-	read_value->count += 100;
+	read_value->count += 1;
 	bpf_spin_unlock(&read_value->semaphore);
+	return 0;
 }
 ```
 
 !!! warning
 	The [verifier](linux-verifier.md) will fail if there exists a code path where you take a lock and never release it. You are also not to take more than one lock at a time since that can cause a [deadlock](https://en.wikipedia.org/wiki/Deadlock) scenario.
+
+!!! warning
+	Not all BPF program types support `bpf_spin_lock` so be sure to check the [supported program types list](../helper-function/bpf_spin_lock.md#program-types).
 
 On the userspace side we can also request that the spinlock in a value is taken when performing a lookup or update with the [`BPF_F_LOCK`](../syscall/BPF_MAP_LOOKUP_ELEM.md#bpf_f_lock) flag.
 
