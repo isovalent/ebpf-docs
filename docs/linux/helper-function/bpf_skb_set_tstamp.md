@@ -30,7 +30,7 @@ This function is most useful when it needs to set a mono delivery time to __sk_b
 
 0 on success. **-EINVAL** for invalid input **-EOPNOTSUPP** for unsupported protocol
 
-`#!c static long (*bpf_skb_set_tstamp)(struct __sk_buff *skb, __u64 tstamp, __u32 tstamp_type) = (void *) 192;`
+`#!c static long (* const bpf_skb_set_tstamp)(struct __sk_buff *skb, __u64 tstamp, __u32 tstamp_type) = (void *) 192;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

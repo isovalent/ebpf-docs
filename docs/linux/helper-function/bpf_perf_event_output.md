@@ -18,7 +18,7 @@ This helper writes a raw `data` blob into a special BPF perf event held by `map`
 **Returns**
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_perf_event_output)(void *ctx, void *map, __u64 flags, void *data, __u64 size) = (void *) 25;`
+`#!c static long (* const bpf_perf_event_output)(void *ctx, void *map, __u64 flags, void *data, __u64 size) = (void *) 25;`
 
 ## Usage
 

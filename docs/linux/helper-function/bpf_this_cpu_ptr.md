@@ -22,7 +22,7 @@ bpf_this_cpu_ptr() has the same semantic as this_cpu_ptr() in the kernel. Differ
 
 A pointer pointing to the kernel percpu variable on this cpu.
 
-`#!c static void *(*bpf_this_cpu_ptr)(const void *percpu_ptr) = (void *) 154;`
+`#!c static void *(* const bpf_this_cpu_ptr)(const void *percpu_ptr) = (void *) 154;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

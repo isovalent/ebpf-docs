@@ -22,7 +22,7 @@ A call to this helper is susceptible to change the underlying packet buffer. The
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_lwt_seg6_adjust_srh)(struct __sk_buff *skb, __u32 offset, __s32 delta) = (void *) 75;`
+`#!c static long (* const bpf_lwt_seg6_adjust_srh)(struct __sk_buff *skb, __u32 offset, __s32 delta) = (void *) 75;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

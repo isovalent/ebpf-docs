@@ -22,7 +22,7 @@ For more information on _flags_, please see 'bpf_ringbuf_submit'.
 
 Nothing. Always succeeds.
 
-`#!c static void (*bpf_ringbuf_submit_dynptr)(struct bpf_dynptr *ptr, __u64 flags) = (void *) 199;`
+`#!c static void (* const bpf_ringbuf_submit_dynptr)(struct bpf_dynptr *ptr, __u64 flags) = (void *) 199;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

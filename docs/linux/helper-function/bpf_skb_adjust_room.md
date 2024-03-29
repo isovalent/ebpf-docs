@@ -55,7 +55,7 @@ A call to this helper is susceptible to change the underlying packet buffer. The
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_skb_adjust_room)(struct __sk_buff *skb, __s32 len_diff, __u32 mode, __u64 flags) = (void *) 50;`
+`#!c static long (* const bpf_skb_adjust_room)(struct __sk_buff *skb, __s32 len_diff, __u32 mode, __u64 flags) = (void *) 50;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -28,7 +28,7 @@ On failure, the returned value is one of the following:
 
 **-EINVAL** if _th_len_ is invalid.
 
-`#!c static __s64 (*bpf_tcp_raw_gen_syncookie_ipv4)(struct iphdr *iph, struct tcphdr *th, __u32 th_len) = (void *) 204;`
+`#!c static __s64 (* const bpf_tcp_raw_gen_syncookie_ipv4)(struct iphdr *iph, struct tcphdr *th, __u32 th_len) = (void *) 204;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Set ECN (Explicit Congestion Notification) field of IP header to **CE** (Congest
 
 1 if the **CE** flag is set (either by the current helper call or because it was already present), 0 if it is not set.
 
-`#!c static long (*bpf_skb_ecn_set_ce)(struct __sk_buff *skb) = (void *) 97;`
+`#!c static long (* const bpf_skb_ecn_set_ce)(struct __sk_buff *skb) = (void *) 97;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

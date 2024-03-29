@@ -22,7 +22,7 @@ This helper can be used on TC egress path, but not on ingress, and is available 
 
 The id is returned or 0 in case the id could not be retrieved.
 
-`#!c static __u64 (*bpf_skb_cgroup_id)(struct __sk_buff *skb) = (void *) 79;`
+`#!c static __u64 (* const bpf_skb_cgroup_id)(struct __sk_buff *skb) = (void *) 79;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Safely attempt to read _size_ bytes from kernel space address _unsafe_ptr_ and s
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_probe_read_kernel)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 113;`
+`#!c static long (* const bpf_probe_read_kernel)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 113;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

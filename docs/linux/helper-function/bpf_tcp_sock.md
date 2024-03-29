@@ -20,7 +20,7 @@ This helper gets a **struct bpf_tcp_sock** pointer from a **struct bpf_sock** po
 
 A **struct bpf_tcp_sock** pointer on success, or **NULL** in case of failure.
 
-`#!c static struct bpf_tcp_sock *(*bpf_tcp_sock)(struct bpf_sock *sk) = (void *) 96;`
+`#!c static struct bpf_tcp_sock *(* const bpf_tcp_sock)(struct bpf_sock *sk) = (void *) 96;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

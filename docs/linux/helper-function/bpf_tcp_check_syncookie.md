@@ -24,7 +24,7 @@ _th_ points to the start of the TCP header, while _th_len_ contains the length o
 
 0 if _iph_ and _th_ are a valid SYN cookie ACK, or a negative error otherwise.
 
-`#!c static long (*bpf_tcp_check_syncookie)(void *sk, void *iph, __u32 iph_len, struct tcphdr *th, __u32 th_len) = (void *) 100;`
+`#!c static long (* const bpf_tcp_check_syncookie)(void *sk, void *iph, __u32 iph_len, struct tcphdr *th, __u32 th_len) = (void *) 100;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

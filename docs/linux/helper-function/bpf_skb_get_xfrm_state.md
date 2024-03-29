@@ -26,7 +26,7 @@ This helper is available only if the kernel was compiled with **CONFIG_XFRM** co
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_skb_get_xfrm_state)(struct __sk_buff *skb, __u32 index, struct bpf_xfrm_state *xfrm_state, __u32 size, __u64 flags) = (void *) 66;`
+`#!c static long (* const bpf_skb_get_xfrm_state)(struct __sk_buff *skb, __u32 index, struct bpf_xfrm_state *xfrm_state, __u32 size, __u64 flags) = (void *) 66;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

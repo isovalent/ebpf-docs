@@ -22,7 +22,7 @@ Return full path for given **struct path** object, which needs to be the kernel 
 
 On success, the strictly positive length of the string, including the trailing NUL character. On error, a negative value.
 
-`#!c static long (*bpf_d_path)(struct path *path, char *buf, __u32 sz) = (void *) 147;`
+`#!c static long (* const bpf_d_path)(struct path *path, char *buf, __u32 sz) = (void *) 147;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

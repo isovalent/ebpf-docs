@@ -29,7 +29,7 @@ This helper can be used in combination with **bpf_l3_csum_replace**() and **bpf_
 
 The checksum result, or a negative error code in case of failure.
 
-`#!c static __s64 (*bpf_csum_diff)(__be32 *from, __u32 from_size, __be32 *to, __u32 to_size, __wsum seed) = (void *) 28;`
+`#!c static __s64 (* const bpf_csum_diff)(__be32 *from, __u32 from_size, __be32 *to, __u32 to_size, __wsum seed) = (void *) 28;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

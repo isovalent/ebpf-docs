@@ -20,7 +20,7 @@ Read _size_ bytes from user space address _user_ptr_ in _tsk_'s address space, a
 
 0 on success, or a negative error in case of failure. On error _dst_ buffer is zeroed out.
 
-`#!c static long (*bpf_copy_from_user_task)(void *dst, __u32 size, const void *user_ptr, struct task_struct *tsk, __u64 flags) = (void *) 191;`
+`#!c static long (* const bpf_copy_from_user_task)(void *dst, __u32 size, const void *user_ptr, struct task_struct *tsk, __u64 flags) = (void *) 191;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

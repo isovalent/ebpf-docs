@@ -20,7 +20,7 @@ See **bpf_get_cgroup_classid**() for the main description. This helper differs f
 
 The id is returned or 0 in case the id could not be retrieved.
 
-`#!c static __u64 (*bpf_skb_cgroup_classid)(struct __sk_buff *skb) = (void *) 151;`
+`#!c static __u64 (* const bpf_skb_cgroup_classid)(struct __sk_buff *skb) = (void *) 151;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -22,7 +22,7 @@ description: "This page documents the 'bpf_seq_write' eBPF helper function, incl
 
 **-EOVERFLOW** if an overflow happened: The same object will be tried again.
 
-`#!c static long (*bpf_seq_write)(struct seq_file *m, const void *data, __u32 len) = (void *) 127;`
+`#!c static long (* const bpf_seq_write)(struct seq_file *m, const void *data, __u32 len) = (void *) 127;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

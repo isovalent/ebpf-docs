@@ -20,7 +20,7 @@ Use BTF to write to seq_write a string representation of _ptr_->ptr, using _ptr_
 
 0 on success or a negative error in case of failure.
 
-`#!c static long (*bpf_seq_printf_btf)(struct seq_file *m, struct btf_ptr *ptr, __u32 ptr_size, __u64 flags) = (void *) 150;`
+`#!c static long (* const bpf_seq_printf_btf)(struct seq_file *m, struct btf_ptr *ptr, __u32 ptr_size, __u64 flags) = (void *) 150;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

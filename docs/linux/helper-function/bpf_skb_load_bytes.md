@@ -22,7 +22,7 @@ Since Linux 4.7, usage of this helper has mostly been replaced by "direct packet
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_skb_load_bytes)(const void *skb, __u32 offset, void *to, __u32 len) = (void *) 26;`
+`#!c static long (* const bpf_skb_load_bytes)(const void *skb, __u32 offset, void *to, __u32 len) = (void *) 26;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

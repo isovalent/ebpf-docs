@@ -22,7 +22,7 @@ An adaptive notification is a notification sent whenever the user-space process 
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_ringbuf_output)(void *ringbuf, void *data, __u64 size, __u64 flags) = (void *) 130;`
+`#!c static long (* const bpf_ringbuf_output)(void *ringbuf, void *data, __u64 size, __u64 flags) = (void *) 130;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

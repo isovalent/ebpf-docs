@@ -24,7 +24,7 @@ skb and xdp type dynptrs may not use bpf_dynptr_data. They should instead use bp
 
 Pointer to the underlying dynptr data, NULL if the dynptr is read-only, if the dynptr is invalid, or if the offset and length is out of bounds.
 
-`#!c static void *(*bpf_dynptr_data)(const struct bpf_dynptr *ptr, __u32 offset, __u32 len) = (void *) 203;`
+`#!c static void *(* const bpf_dynptr_data)(const struct bpf_dynptr *ptr, __u32 offset, __u32 len) = (void *) 203;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -28,7 +28,7 @@ On failure, the returned value is one of the following:
 
 **-EACCES** if the SYN cookie is not valid.
 
-`#!c static long (*bpf_tcp_raw_check_syncookie_ipv4)(struct iphdr *iph, struct tcphdr *th) = (void *) 206;`
+`#!c static long (* const bpf_tcp_raw_check_syncookie_ipv4)(struct iphdr *iph, struct tcphdr *th) = (void *) 206;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

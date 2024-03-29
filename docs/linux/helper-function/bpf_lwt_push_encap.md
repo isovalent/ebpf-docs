@@ -36,7 +36,7 @@ A call to this helper is susceptible to change the underlying packet buffer. The
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_lwt_push_encap)(struct __sk_buff *skb, __u32 type, void *hdr, __u32 len) = (void *) 73;`
+`#!c static long (* const bpf_lwt_push_encap)(struct __sk_buff *skb, __u32 type, void *hdr, __u32 len) = (void *) 73;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

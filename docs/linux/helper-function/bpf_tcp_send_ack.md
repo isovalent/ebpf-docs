@@ -20,7 +20,7 @@ Send out a tcp-ack. _tp_ is the in-kernel struct **tcp_sock**. _rcv_nxt_ is the 
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_tcp_send_ack)(void *tp, __u32 rcv_nxt) = (void *) 116;`
+`#!c static long (* const bpf_tcp_send_ack)(void *tp, __u32 rcv_nxt) = (void *) 116;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

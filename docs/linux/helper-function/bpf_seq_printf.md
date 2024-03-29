@@ -30,7 +30,7 @@ Formats **%s**, **%p{i,I}{4,6}** requires to read kernel memory. Reading kernel 
 
 **-EOVERFLOW** if an overflow happened: The same object will be tried again.
 
-`#!c static long (*bpf_seq_printf)(struct seq_file *m, const char *fmt, __u32 fmt_size, const void *data, __u32 data_len) = (void *) 126;`
+`#!c static long (* const bpf_seq_printf)(struct seq_file *m, const char *fmt, __u32 fmt_size, const void *data, __u32 data_len) = (void *) 126;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

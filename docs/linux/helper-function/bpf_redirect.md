@@ -24,7 +24,7 @@ The same effect can also be attained with the more generic **bpf_redirect_map**(
 
 For XDP, the helper returns **XDP_REDIRECT** on success or **XDP_ABORTED** on error. For other program types, the values are **TC_ACT_REDIRECT** on success or **TC_ACT_SHOT** on error.
 
-`#!c static long (*bpf_redirect)(__u32 ifindex, __u64 flags) = (void *) 23;`
+`#!c static long (* const bpf_redirect)(__u32 ifindex, __u64 flags) = (void *) 23;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

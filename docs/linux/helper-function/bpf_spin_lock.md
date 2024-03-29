@@ -19,7 +19,7 @@ spinlock can (and must) later be released with a call to
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-`#!c static long (*bpf_spin_lock)(struct bpf_spin_lock *lock) = (void *) 93;`
+`#!c static long (* const bpf_spin_lock)(struct bpf_spin_lock *lock) = (void *) 93;`
 
 ## Usage
 

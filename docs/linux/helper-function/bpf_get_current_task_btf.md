@@ -20,7 +20,7 @@ Return a BTF pointer to the "current" task. This pointer can also be used in hel
 
 Pointer to the current task.
 
-`#!c static struct task_struct *(*bpf_get_current_task_btf)(void) = (void *) 158;`
+`#!c static struct task_struct *(* const bpf_get_current_task_btf)(void) = (void *) 158;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

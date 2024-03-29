@@ -26,7 +26,7 @@ A call to this helper is susceptible to change the underlying packet buffer. The
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_skb_change_proto)(struct __sk_buff *skb, __be16 proto, __u64 flags) = (void *) 31;`
+`#!c static long (* const bpf_skb_change_proto)(struct __sk_buff *skb, __be16 proto, __u64 flags) = (void *) 31;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

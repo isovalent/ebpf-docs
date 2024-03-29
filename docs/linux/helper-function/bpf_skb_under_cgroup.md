@@ -25,7 +25,7 @@ The return value depends on the result of the test, and can be:
 * A negative error code, if an error occurred.
 
 
-`#!c static long (*bpf_skb_under_cgroup)(struct __sk_buff *skb, void *map, __u32 index) = (void *) 33;`
+`#!c static long (* const bpf_skb_under_cgroup)(struct __sk_buff *skb, void *map, __u32 index) = (void *) 33;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

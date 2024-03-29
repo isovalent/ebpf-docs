@@ -42,7 +42,7 @@ This can be used together with various tunnels such as VXLan, Geneve, GRE or IP 
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_skb_get_tunnel_key)(struct __sk_buff *skb, struct bpf_tunnel_key *key, __u32 size, __u64 flags) = (void *) 20;`
+`#!c static long (* const bpf_skb_get_tunnel_key)(struct __sk_buff *skb, struct bpf_tunnel_key *key, __u32 size, __u64 flags) = (void *) 20;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

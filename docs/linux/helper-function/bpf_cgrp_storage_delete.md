@@ -22,7 +22,7 @@ Delete a bpf_local_storage from a _cgroup_.
 
 **-ENOENT** if the bpf_local_storage cannot be found.
 
-`#!c static long (*bpf_cgrp_storage_delete)(void *map, struct cgroup *cgroup) = (void *) 211;`
+`#!c static long (* const bpf_cgrp_storage_delete)(void *map, struct cgroup *cgroup) = (void *) 211;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

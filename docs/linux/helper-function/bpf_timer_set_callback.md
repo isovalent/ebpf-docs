@@ -21,7 +21,7 @@ Configure the timer to call _callback_fn_ static function.
 
 0 on success. **-EINVAL** if _timer_ was not initialized with bpf_timer_init() earlier. **-EPERM** if _timer_ is in a map that doesn't have any user references. The user space should either hold a file descriptor to a map with timers or pin such map in bpffs. When map is unpinned or file descriptor is closed all timers in the map will be cancelled and freed.
 
-`#!c static long (*bpf_timer_set_callback)(struct bpf_timer *timer, void *callback_fn) = (void *) 170;`
+`#!c static long (* const bpf_timer_set_callback)(struct bpf_timer *timer, void *callback_fn) = (void *) 170;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 The function passed to `callback_fn` should have the following signature:

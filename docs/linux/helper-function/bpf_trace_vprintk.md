@@ -22,7 +22,7 @@ Arguments are to be used as in **bpf_seq_printf**() helper.
 
 The number of bytes written to the buffer, or a negative error in case of failure.
 
-`#!c static long (*bpf_trace_vprintk)(const char *fmt, __u32 fmt_size, const void *data, __u32 data_len) = (void *) 177;`
+`#!c static long (* const bpf_trace_vprintk)(const char *fmt, __u32 fmt_size, const void *data, __u32 data_len) = (void *) 177;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

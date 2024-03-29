@@ -20,7 +20,7 @@ Copy the **comm** attribute of the current task into _buf_ of _size_of_buf_. The
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_get_current_comm)(void *buf, __u32 size_of_buf) = (void *) 16;`
+`#!c static long (* const bpf_get_current_comm)(void *buf, __u32 size_of_buf) = (void *) 16;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Execute close syscall for given FD.
 
 A syscall result.
 
-`#!c static long (*bpf_sys_close)(__u32 fd) = (void *) 168;`
+`#!c static long (* const bpf_sys_close)(__u32 fd) = (void *) 168;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Release the reference held by _sock_. _sock_ must be a non-**NULL** pointer that
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_sk_release)(void *sock) = (void *) 86;`
+`#!c static long (* const bpf_sk_release)(void *sock) = (void *) 86;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

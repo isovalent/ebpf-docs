@@ -22,7 +22,7 @@ This helper can be used with encapsulation devices that can operate in "collect 
 
 The size of the option data retrieved.
 
-`#!c static long (*bpf_skb_get_tunnel_opt)(struct __sk_buff *skb, void *opt, __u32 size) = (void *) 29;`
+`#!c static long (* const bpf_skb_get_tunnel_opt)(struct __sk_buff *skb, void *opt, __u32 size) = (void *) 29;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Store _len_ bytes from buffer _buf_ into the frame associated to _xdp_md_, at _o
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_xdp_store_bytes)(struct xdp_md *xdp_md, __u32 offset, void *buf, __u32 len) = (void *) 190;`
+`#!c static long (* const bpf_xdp_store_bytes)(struct xdp_md *xdp_md, __u32 offset, void *buf, __u32 len) = (void *) 190;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

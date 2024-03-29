@@ -26,7 +26,7 @@ For skb-type dynptrs:     _  All data slices of the dynptr are automatically    
 
 0 on success, -E2BIG if _offset_ + _len_ exceeds the length of _dst_'s data, -EINVAL if _dst_ is an invalid dynptr or if _dst_ is a read-only dynptr or if _flags_ is not correct. For skb-type dynptrs, other errors correspond to errors returned by **bpf_skb_store_bytes**().
 
-`#!c static long (*bpf_dynptr_write)(const struct bpf_dynptr *dst, __u32 offset, void *src, __u32 len, __u64 flags) = (void *) 202;`
+`#!c static long (* const bpf_dynptr_write)(const struct bpf_dynptr *dst, __u32 offset, void *src, __u32 len, __u64 flags) = (void *) 202;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

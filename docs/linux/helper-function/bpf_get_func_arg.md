@@ -22,7 +22,7 @@ Get **n**-th argument register (zero based) of the traced function (for tracing 
 
 0 on success. **-EINVAL** if n >= argument register count of traced function.
 
-`#!c static long (*bpf_get_func_arg)(void *ctx, __u32 n, __u64 *value) = (void *) 183;`
+`#!c static long (* const bpf_get_func_arg)(void *ctx, __u32 n, __u64 *value) = (void *) 183;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Return the time elapsed since system boot, in nanoseconds. Does not include time
 
 Current _ktime_.
 
-`#!c static __u64 (*bpf_ktime_get_ns)(void) = (void *) 5;`
+`#!c static __u64 (* const bpf_ktime_get_ns)(void) = (void *) 5;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

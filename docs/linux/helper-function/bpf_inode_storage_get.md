@@ -28,7 +28,7 @@ A bpf_local_storage pointer is returned on success.
 
 **NULL** if not found or there was an error in adding a new bpf_local_storage.
 
-`#!c static void *(*bpf_inode_storage_get)(void *map, void *inode, void *value, __u64 flags) = (void *) 145;`
+`#!c static void *(* const bpf_inode_storage_get)(void *map, void *inode, void *value, __u64 flags) = (void *) 145;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

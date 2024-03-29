@@ -28,7 +28,7 @@ User space may write new value at file position > 0. To override the whole sysct
 
 **-EINVAL** if sysctl is being read.
 
-`#!c static long (*bpf_sysctl_set_new_value)(struct bpf_sysctl *ctx, const char *buf, unsigned long buf_len) = (void *) 104;`
+`#!c static long (* const bpf_sysctl_set_new_value)(struct bpf_sysctl *ctx, const char *buf, unsigned long buf_len) = (void *) 104;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -32,7 +32,7 @@ On failure, the returned value is one of the following:
 
 **-E2BIG** if user-space has tried to publish a sample which is larger than the size of the ring buffer, or which cannot fit within a struct bpf_dynptr.
 
-`#!c static long (*bpf_user_ringbuf_drain)(void *map, void *callback_fn, void *ctx, __u64 flags) = (void *) 209;`
+`#!c static long (* const bpf_user_ringbuf_drain)(void *map, void *callback_fn, void *ctx, __u64 flags) = (void *) 209;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

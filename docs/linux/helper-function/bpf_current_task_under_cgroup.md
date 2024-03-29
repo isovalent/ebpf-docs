@@ -25,7 +25,7 @@ The return value depends on the result of the test, and can be:
 * A negative error code, if an error occurred.
 
 
-`#!c static long (*bpf_current_task_under_cgroup)(void *map, __u32 index) = (void *) 37;`
+`#!c static long (* const bpf_current_task_under_cgroup)(void *map, __u32 index) = (void *) 37;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

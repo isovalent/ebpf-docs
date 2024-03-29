@@ -45,7 +45,7 @@ Here are some examples of where one could call such eBPF program:
 
 Code **-EINVAL** if the socket is not a full TCP socket; otherwise, a positive number containing the bits that could not be set is returned (which comes down to 0 if all bits were set as required).
 
-`#!c static long (*bpf_sock_ops_cb_flags_set)(struct bpf_sock_ops *bpf_sock, int argval) = (void *) 59;`
+`#!c static long (* const bpf_sock_ops_cb_flags_set)(struct bpf_sock_ops *bpf_sock, int argval) = (void *) 59;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

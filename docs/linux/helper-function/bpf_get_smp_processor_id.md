@@ -20,7 +20,7 @@ Get the SMP (symmetric multiprocessing) processor id. Note that all programs run
 
 The SMP id of the processor running the program.
 
-`#!c static __u32 (*bpf_get_smp_processor_id)(void) = (void *) 8;`
+`#!c static __u32 (* const bpf_get_smp_processor_id)(void) = (void *) 8;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

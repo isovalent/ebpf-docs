@@ -18,7 +18,7 @@ Add an entry to, or update a `map` referencing sockets.
 **Returns**
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_sock_map_update)(struct bpf_sock_ops *skops, void *map, void *key, __u64 flags) = (void *) 53;`
+`#!c static long (* const bpf_sock_map_update)(struct bpf_sock_ops *skops, void *map, void *key, __u64 flags) = (void *) 53;`
 
 ## Usage
 

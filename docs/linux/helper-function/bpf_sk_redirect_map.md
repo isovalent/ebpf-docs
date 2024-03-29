@@ -18,7 +18,7 @@ The message redirect map helper is used to redirect a message to a socket refere
 **Returns**
 `SK_PASS` on success, or `SK_DROP` on error.
 
-`#!c static long (*bpf_sk_redirect_map)(struct __sk_buff *skb, void *map, __u32 key, __u64 flags) = (void *) 52;`
+`#!c static long (* const bpf_sk_redirect_map)(struct __sk_buff *skb, void *map, __u32 key, __u64 flags) = (void *) 52;`
 
 ## Usage
 

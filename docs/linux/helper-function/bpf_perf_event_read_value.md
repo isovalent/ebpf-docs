@@ -18,7 +18,7 @@ This helper function reads the value of a perf event counter, and store it into 
 **Returns**
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_perf_event_read_value)(void *map, __u64 flags, struct bpf_perf_event_value *buf, __u32 buf_size) = (void *) 55;`
+`#!c static long (* const bpf_perf_event_read_value)(void *map, __u64 flags, struct bpf_perf_event_value *buf, __u32 buf_size) = (void *) 55;`
 
 ## Usage
 

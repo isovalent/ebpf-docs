@@ -26,7 +26,7 @@ The _flags_ can be set to **BPF_F_GET_BRANCH_RECORDS_SIZE** to instead return th
 
 **-ENOENT** if architecture does not support branch records.
 
-`#!c static long (*bpf_read_branch_records)(struct bpf_perf_event_data *ctx, void *buf, __u32 size, __u64 flags) = (void *) 119;`
+`#!c static long (* const bpf_read_branch_records)(struct bpf_perf_event_data *ctx, void *buf, __u32 size, __u64 flags) = (void *) 119;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

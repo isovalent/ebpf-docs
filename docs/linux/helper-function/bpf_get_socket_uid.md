@@ -20,7 +20,7 @@ Get the owner UID of the socked associated to _skb_.
 
 The owner UID of the socket associated to _skb_. If the socket is **NULL**, or if it is not a full socket (i.e. if it is a time-wait or a request socket instead), **overflowuid** value is returned (note that **overflowuid** might also be the actual UID value for the socket).
 
-`#!c static __u32 (*bpf_get_socket_uid)(struct __sk_buff *skb) = (void *) 47;`
+`#!c static __u32 (* const bpf_get_socket_uid)(struct __sk_buff *skb) = (void *) 47;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

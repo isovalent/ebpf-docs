@@ -20,7 +20,7 @@ Will remove _len_ bytes from a _msg_ starting at byte _start_. This may result i
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_msg_pop_data)(struct sk_msg_md *msg, __u32 start, __u32 len, __u64 flags) = (void *) 91;`
+`#!c static long (* const bpf_msg_pop_data)(struct sk_msg_md *msg, __u32 start, __u32 len, __u64 flags) = (void *) 91;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

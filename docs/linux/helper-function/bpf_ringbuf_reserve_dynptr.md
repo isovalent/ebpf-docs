@@ -22,7 +22,7 @@ Please note that a corresponding bpf_ringbuf_submit_dynptr or bpf_ringbuf_discar
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_ringbuf_reserve_dynptr)(void *ringbuf, __u32 size, __u64 flags, struct bpf_dynptr *ptr) = (void *) 198;`
+`#!c static long (* const bpf_ringbuf_reserve_dynptr)(void *ringbuf, __u32 size, __u64 flags, struct bpf_dynptr *ptr) = (void *) 198;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

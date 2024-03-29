@@ -24,7 +24,7 @@ The format of returned id and helper limitations are same as in **bpf_get_curren
 
 The id is returned or 0 in case the id could not be retrieved.
 
-`#!c static __u64 (*bpf_get_current_ancestor_cgroup_id)(int ancestor_level) = (void *) 123;`
+`#!c static __u64 (* const bpf_get_current_ancestor_cgroup_id)(int ancestor_level) = (void *) 123;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

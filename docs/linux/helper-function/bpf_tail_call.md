@@ -21,7 +21,7 @@ Upon call of this helper, the program attempts to jump into a program referenced
 **Returns**
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_tail_call)(void *ctx, void *prog_array_map, __u32 index) = (void *) 12;`
+`#!c static long (* const bpf_tail_call)(void *ctx, void *prog_array_map, __u32 index) = (void *) 12;`
 
 ## Usage
 

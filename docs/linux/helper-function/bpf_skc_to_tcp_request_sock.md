@@ -20,7 +20,7 @@ Dynamically cast a _sk_ pointer to a _tcp_request_sock_ pointer.
 
 _sk_ if casting is valid, or **NULL** otherwise.
 
-`#!c static struct tcp_request_sock *(*bpf_skc_to_tcp_request_sock)(void *sk) = (void *) 139;`
+`#!c static struct tcp_request_sock *(* const bpf_skc_to_tcp_request_sock)(void *sk) = (void *) 139;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

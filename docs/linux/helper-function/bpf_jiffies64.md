@@ -20,7 +20,7 @@ Obtain the 64bit jiffies
 
 The 64 bit jiffies
 
-`#!c static __u64 (*bpf_jiffies64)(void) = (void *) 118;`
+`#!c static __u64 (* const bpf_jiffies64)(void) = (void *) 118;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

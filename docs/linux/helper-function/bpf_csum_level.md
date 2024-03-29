@@ -32,7 +32,7 @@ There are three supported level settings at this time:
 
 0 on success, or a negative error in case of failure. In the case of **BPF_CSUM_LEVEL_QUERY**, the current skb->csum_level is returned or the error code -EACCES in case the skb is not subject to CHECKSUM_UNNECESSARY.
 
-`#!c static long (*bpf_csum_level)(struct __sk_buff *skb, __u64 level) = (void *) 135;`
+`#!c static long (* const bpf_csum_level)(struct __sk_buff *skb, __u64 level) = (void *) 135;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

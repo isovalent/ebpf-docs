@@ -28,7 +28,7 @@ Number of character copied (not including the trailing NUL).
 
 **-EINVAL** if sysctl is being read.
 
-`#!c static long (*bpf_sysctl_get_new_value)(struct bpf_sysctl *ctx, char *buf, unsigned long buf_len) = (void *) 103;`
+`#!c static long (* const bpf_sysctl_get_new_value)(struct bpf_sysctl *ctx, char *buf, unsigned long buf_len) = (void *) 103;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

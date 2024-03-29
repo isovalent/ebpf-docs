@@ -24,7 +24,7 @@ Keep in mind that this feature is meant for experiments, and it has a risk of cr
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_probe_write_user)(void *dst, const void *src, __u32 len) = (void *) 36;`
+`#!c static long (* const bpf_probe_write_user)(void *dst, const void *src, __u32 len) = (void *) 36;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

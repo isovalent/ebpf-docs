@@ -22,7 +22,7 @@ Generally, use **bpf_probe_read_user_str**() or **bpf_probe_read_kernel_str**() 
 
 On success, the strictly positive length of the string, including the trailing NUL character. On error, a negative value.
 
-`#!c static long (*bpf_probe_read_str)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 45;`
+`#!c static long (* const bpf_probe_read_str)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 45;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

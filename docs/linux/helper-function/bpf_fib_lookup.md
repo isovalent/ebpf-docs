@@ -49,7 +49,7 @@ _ctx_ is either **struct xdp_md** for XDP programs or **struct sk_buff** tc cls_
 
 If lookup fails with BPF_FIB_LKUP_RET_FRAG_NEEDED, then the MTU was exceeded and output params->mtu_result contains the MTU.
 
-`#!c static long (*bpf_fib_lookup)(void *ctx, struct bpf_fib_lookup *params, int plen, __u32 flags) = (void *) 69;`
+`#!c static long (* const bpf_fib_lookup)(void *ctx, struct bpf_fib_lookup *params, int plen, __u32 flags) = (void *) 69;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

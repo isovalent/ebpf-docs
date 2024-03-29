@@ -34,7 +34,7 @@ On failure, the returned value is one of the following:
 
 **-EPROTONOSUPPORT** IP packet version is not 4 or 6
 
-`#!c static __s64 (*bpf_tcp_gen_syncookie)(void *sk, void *iph, __u32 iph_len, struct tcphdr *th, __u32 th_len) = (void *) 110;`
+`#!c static __s64 (* const bpf_tcp_gen_syncookie)(void *sk, void *iph, __u32 iph_len, struct tcphdr *th, __u32 th_len) = (void *) 110;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

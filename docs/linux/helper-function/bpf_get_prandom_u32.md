@@ -22,7 +22,7 @@ From a security point of view, this helper uses its own pseudo-random internal s
 
 A random 32-bit unsigned value.
 
-`#!c static __u32 (*bpf_get_prandom_u32)(void) = (void *) 7;`
+`#!c static __u32 (* const bpf_get_prandom_u32)(void) = (void *) 7;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -15,7 +15,7 @@ Release the `lock` previously locked by a call to `bpf_spin_lock(lock)`.
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-`#!c static long (*bpf_spin_unlock)(struct bpf_spin_lock *lock) = (void *) 94;`
+`#!c static long (* const bpf_spin_unlock)(struct bpf_spin_lock *lock) = (void *) 94;`
 
 ## Usage
 ### Program types

@@ -20,7 +20,7 @@ Returns the stored IMA hash of the _inode_ (if it's available). If the hash is l
 
 The **hash_algo** is returned on success, **-EOPNOTSUP** if IMA is disabled or **-EINVAL** if invalid arguments are passed.
 
-`#!c static long (*bpf_ima_inode_hash)(struct inode *inode, void *dst, __u32 size) = (void *) 161;`
+`#!c static long (* const bpf_ima_inode_hash)(struct inode *inode, void *dst, __u32 size) = (void *) 161;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -28,7 +28,7 @@ Send signal _sig_ to the thread corresponding to the current task.
 
 **-EAGAIN** if bpf program can try again.
 
-`#!c static long (*bpf_send_signal_thread)(__u32 sig) = (void *) 117;`
+`#!c static long (* const bpf_send_signal_thread)(__u32 sig) = (void *) 117;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

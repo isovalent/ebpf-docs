@@ -25,7 +25,7 @@ Push an element _value_ in _map_. _flags_ is one of:
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_map_push_elem)(void *map, const void *value, __u64 flags) = (void *) 87;`
+`#!c static long (* const bpf_map_push_elem)(void *map, const void *value, __u64 flags) = (void *) 87;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

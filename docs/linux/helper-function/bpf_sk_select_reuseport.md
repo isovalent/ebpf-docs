@@ -18,7 +18,7 @@ The socket select reuse port helper select which socket to send an incoming requ
 **Returns**
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_sk_select_reuseport)(struct sk_reuseport_md *reuse, void *map, void *key, __u64 flags) = (void *) 82;`
+`#!c static long (* const bpf_sk_select_reuseport)(struct sk_reuseport_md *reuse, void *map, void *key, __u64 flags) = (void *) 82;`
 
 ## Usage
 

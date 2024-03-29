@@ -38,7 +38,7 @@ This helper can only be called during **BPF_SOCK_OPS_WRITE_HDR_OPT_CB**.
 
 **-EPERM** if the helper cannot be used under the current _skops_**->op**.
 
-`#!c static long (*bpf_store_hdr_opt)(struct bpf_sock_ops *skops, const void *from, __u32 len, __u64 flags) = (void *) 143;`
+`#!c static long (* const bpf_store_hdr_opt)(struct bpf_sock_ops *skops, const void *from, __u32 len, __u64 flags) = (void *) 143;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

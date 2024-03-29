@@ -19,7 +19,7 @@ This helper reads the value of a perf event counter.
 The value of the perf event counter read from the map, or a
 negative error code in case of failure.
 
-`#!c static __u64 (*bpf_perf_event_read)(void *map, __u64 flags) = (void *) 22;`
+`#!c static __u64 (* const bpf_perf_event_read)(void *map, __u64 flags) = (void *) 22;`
 
 ## Usage
 

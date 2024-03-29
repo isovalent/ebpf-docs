@@ -22,7 +22,7 @@ The _flags_ argument is reserved and must be 0. The helper is currently only sup
 
 The helper returns **TC_ACT_REDIRECT** on success or **TC_ACT_SHOT** on error.
 
-`#!c static long (*bpf_redirect_peer)(__u32 ifindex, __u64 flags) = (void *) 155;`
+`#!c static long (* const bpf_redirect_peer)(__u32 ifindex, __u64 flags) = (void *) 155;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

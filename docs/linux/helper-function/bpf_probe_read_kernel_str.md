@@ -20,7 +20,7 @@ Copy a NUL terminated string from an unsafe kernel address _unsafe_ptr_ to _dst_
 
 On success, the strictly positive length of the string, including the trailing NUL character. On error, a negative value.
 
-`#!c static long (*bpf_probe_read_kernel_str)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 115;`
+`#!c static long (* const bpf_probe_read_kernel_str)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 115;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
