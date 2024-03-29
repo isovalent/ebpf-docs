@@ -8,7 +8,7 @@ Maps provide a way for eBPF programs to communicate with each other (kernel spac
 
 When both kernel and user space access the same maps they will need a common understanding of the key and value structures in memory. This can work if both programs are written in C and they share a header. Otherwise, both the user space language and the kernel space structures must understand the k/v structures byte-for-byte.
 
-Maps come in a variety of [types](../map-type/index.md), each of which working in a slightly different way, like different data structures.
+Maps come in a variety of [types](../map-type/index.md), each of which works in a slightly different way, like different data structures.
 
 ## Defining maps in eBPF programs
 
@@ -56,7 +56,7 @@ They are defined in [`tools/lib/bpf/bpf_helpers.h`](https://elixir.bootlin.com/l
 #define __array(name, val) typeof(val) *name[]
 ```
 
-The `name` part of these macros refer to field names of the to be created structure. Not all names are recognized by libbpf and compatible libraries. However, the following are:
+The `name` part of these macros refers to field names of the to be created structure. Not all names are recognized by libbpf and compatible libraries. However, the following are:
 
 * `type` (`__uint`) - enum, see the [map types](../map-type/index.md) index for all valid options.
 * `max_entries` (`__uint`) - int indicating the maximum amount of entries.
@@ -78,7 +78,7 @@ The `values` map field has a syntax when used, it is the only field to use the `
 
 The `val` part of the `__array` parameter should contain a type describing the individual array elements. The values we would like to pre-populate should go into the value part of the struct initialization.
 
-The following examples shows how to pre-populate a map-in-map:
+The following examples show how to pre-populate a map-in-map:
 
 ```c
 struct inner_map {
@@ -123,11 +123,11 @@ struct {
 
 It is common for maps to be declared in the eBPF program, but maps are ultimately created from userspace. Most loader libraries pick up the map declarations from the compiled ELF file and create them automatically for the user.
 
-However it is also possible for users to manually create maps using the [BPF_MAP_CREATE](../syscall/BPF_MAP_CREATE.md) command of the BPF syscall or to use a loader library which such capabilities.
+However, it is also possible for users to manually create maps using the [BPF_MAP_CREATE](../syscall/BPF_MAP_CREATE.md) command of the BPF syscall or to use a loader library with such capabilities.
 
 ### LibBPF
 
-LibBPF is such a library, it provide the `bpf_map_create` function to allow for the manual creation of maps.
+LibBPF is such a library, it provides the `bpf_map_create` function to allow for the manual creation of maps.
 
 [`/tools/lib/bpf/bpf.h`](https://elixir.bootlin.com/linux/v6.2.2/source/tools/lib/bpf/bpf.h#L40)
 ```c
@@ -159,13 +159,13 @@ The `bpf_map_create` function in `libbpf` can be used to create maps during runt
 
 ## Using maps
 
-Maps are manipulated differently from kernel space then user space.
+Maps are manipulated differently from kernel space than user space.
 
 ### Using from kernel space
 
-eBPF programs can interact with maps via [helper functions](../helper-function/index.md), these are defined in `tools/lib/bpf/bpf_helpers.h`. The exact helper functions that can be used to interact with maps depends on the [map type](../map-type/index.md), you can reference the list of supported helper calls on the page of a given map type.
+eBPF programs can interact with maps via [helper functions](../helper-function/index.md), these are defined in `tools/lib/bpf/bpf_helpers.h`. The exact helper functions that can be used to interact with maps depend on the [map type](../map-type/index.md), you can reference the list of supported helper calls on the page of a given map type.
 
-Elements of generic maps can we read using the [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md) helper, updated with the [`bpf_map_update_elem`](../helper-function/bpf_map_update_elem.md), and deleted with [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md).
+Elements of generic maps can be read using the [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md) helper, updated with the [`bpf_map_update_elem`](../helper-function/bpf_map_update_elem.md), and deleted with [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md).
 
 Some of these generic map types can be iterated using the [`bpf_for_each_map_elem`](../helper-function/bpf_for_each_map_elem.md) helper function.
 

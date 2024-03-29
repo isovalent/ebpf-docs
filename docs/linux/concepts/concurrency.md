@@ -6,7 +6,7 @@ description: "This page explains how to deal with concurrency in eBPF programs. 
 
 Concurrency in the BPF world is something to be aware of when writing BPF programs. A BPF program can be seen as a function called by the kernel, thus the same program can in theory be invoked concurrently by every kernel thread. The only guarantee given by the kernel is that the same program invocation always [runs on the same logical CPU](scheduling.md).
 
-This is particularly important when accessing memory that is shared between multiple programs or invocations of the same program such as non-per-cpu maps and kernel memory. Accesses and modification to such kinds of memory are subject to [race conditions](https://en.wikipedia.org/wiki/Race_condition). Same goes for programs and userspace accessing the same map value at the same time.
+This is particularly important when accessing memory that is shared between multiple programs or invocations of the same program such as non-per-cpu maps and kernel memory. Accesses and modifications to such kinds of memory are subject to [race conditions](https://en.wikipedia.org/wiki/Race_condition). Same goes for programs and userspace accessing the same map value at the same time.
 
 There are a few methods to avoid race conditions.
 
@@ -20,7 +20,7 @@ Atomics refers to atomic CPU instructions. A normal `i += 1` operation will at s
 
 Since this happens in multiple steps, even such a simple operation is subject to a [race condition](https://en.wikipedia.org/wiki/Race_condition).
 
-There are a class of CPU instructions that can perform specific tasks in a single CPU instruction which is serialized at the hardware level. These are also available in BPF. When compiling with Clang/LLVM these special instructions can be accessed via a list of special builtin functions:
+There is a class of CPU instructions that can perform specific tasks in a single CPU instruction which is serialized at the hardware level. These are also available in BPF. When compiling with Clang/LLVM these special instructions can be accessed via a list of special builtin functions:
 
 * `__sync_fetch_and_add(*a, b)` - Read value at `a`, add `b` and write it back, return the new value
 * `__sync_fetch_and_sub(*a, b)` - Read value at `a`, subtract a number and write it back, return the new value
