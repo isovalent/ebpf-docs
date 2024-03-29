@@ -20,7 +20,7 @@ If the given file represents a socket, returns the associated socket.
 
 A pointer to a struct socket on success or NULL if the file is not a socket.
 
-`#!c static struct socket *(*bpf_sock_from_file)(struct file *file) = (void *) 162;`
+`#!c static struct socket *(* const bpf_sock_from_file)(struct file *file) = (void *) 162;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

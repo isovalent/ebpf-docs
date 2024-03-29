@@ -20,7 +20,7 @@ This helper gets a **struct bpf_sock** pointer such that all the fields in this 
 
 A **struct bpf_sock** pointer on success, or **NULL** in case of failure.
 
-`#!c static struct bpf_sock *(*bpf_sk_fullsock)(struct bpf_sock *sk) = (void *) 95;`
+`#!c static struct bpf_sock *(* const bpf_sk_fullsock)(struct bpf_sock *sk) = (void *) 95;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

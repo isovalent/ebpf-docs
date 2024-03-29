@@ -20,7 +20,7 @@ Set the full hash for _skb_ (set the field _skb_**->hash**) to value _hash_.
 
 0
 
-`#!c static long (*bpf_set_hash)(struct __sk_buff *skb, __u32 hash) = (void *) 48;`
+`#!c static long (* const bpf_set_hash)(struct __sk_buff *skb, __u32 hash) = (void *) 48;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

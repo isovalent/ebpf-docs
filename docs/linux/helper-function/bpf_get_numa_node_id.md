@@ -20,7 +20,7 @@ Return the id of the current NUMA node. The primary use case for this helper is 
 
 The id of current NUMA node.
 
-`#!c static long (*bpf_get_numa_node_id)(void) = (void *) 42;`
+`#!c static long (* const bpf_get_numa_node_id)(void) = (void *) 42;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

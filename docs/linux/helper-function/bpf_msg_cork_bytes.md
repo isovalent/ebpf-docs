@@ -22,7 +22,7 @@ This can be used when one needs a specific number of bytes before a verdict can 
 
 0
 
-`#!c static long (*bpf_msg_cork_bytes)(struct sk_msg_md *msg, __u32 bytes) = (void *) 62;`
+`#!c static long (* const bpf_msg_cork_bytes)(struct sk_msg_md *msg, __u32 bytes) = (void *) 62;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

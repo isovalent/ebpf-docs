@@ -20,7 +20,7 @@ Get an element from _map_ without removing it.
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_map_peek_elem)(void *map, void *value) = (void *) 89;`
+`#!c static long (* const bpf_map_peek_elem)(void *map, void *value) = (void *) 89;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -28,7 +28,7 @@ Data returned is just a momentary snapshot of actual values and could be inaccur
 
 Requested value, or 0, if _flags_ are not recognized.
 
-`#!c static __u64 (*bpf_ringbuf_query)(void *ringbuf, __u64 flags) = (void *) 134;`
+`#!c static __u64 (* const bpf_ringbuf_query)(void *ringbuf, __u64 flags) = (void *) 134;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

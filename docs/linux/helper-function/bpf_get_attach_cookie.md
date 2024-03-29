@@ -27,7 +27,7 @@ Supported for the following program types:
 
 Value specified by user at BPF link creation/attachment time or 0, if it was not specified.
 
-`#!c static __u64 (*bpf_get_attach_cookie)(void *ctx) = (void *) 174;`
+`#!c static __u64 (* const bpf_get_attach_cookie)(void *ctx) = (void *) 174;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

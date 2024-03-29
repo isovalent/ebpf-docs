@@ -22,7 +22,7 @@ Cancel the timer and wait for callback_fn to finish if it was running.
 
 0 if the timer was not active. 1 if the timer was active. **-EINVAL** if _timer_ was not initialized with bpf_timer_init() earlier. **-EDEADLK** if callback_fn tried to call bpf_timer_cancel() on its own timer which would have led to a deadlock otherwise.
 
-`#!c static long (*bpf_timer_cancel)(struct bpf_timer *timer) = (void *) 172;`
+`#!c static long (* const bpf_timer_cancel)(struct bpf_timer *timer) = (void *) 172;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

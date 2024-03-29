@@ -36,7 +36,7 @@ The last argument, _flags_, holds the number of stack frames to skip (from 0 to 
 
 The non-negative copied _buf_ length equal to or less than _size_ on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_get_task_stack)(struct task_struct *task, void *buf, __u32 size, __u64 flags) = (void *) 141;`
+`#!c static long (* const bpf_get_task_stack)(struct task_struct *task, void *buf, __u32 size, __u64 flags) = (void *) 141;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

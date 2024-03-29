@@ -26,7 +26,7 @@ See also **bpf_redirect**(), which only supports redirecting to an ifindex, but 
 
 **XDP_REDIRECT** on success, or the value of the two lower bits of the _flags_ argument on error.
 
-`#!c static long (*bpf_redirect_map)(void *map, __u64 key, __u64 flags) = (void *) 51;`
+`#!c static long (* const bpf_redirect_map)(void *map, __u64 key, __u64 flags) = (void *) 51;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -53,7 +53,7 @@ Supported flags:
 
 **-EPERM** if the helper cannot be used under the current _skops_**->op**.
 
-`#!c static long (*bpf_load_hdr_opt)(struct bpf_sock_ops *skops, void *searchby_res, __u32 len, __u64 flags) = (void *) 142;`
+`#!c static long (* const bpf_load_hdr_opt)(struct bpf_sock_ops *skops, void *searchby_res, __u32 len, __u64 flags) = (void *) 142;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

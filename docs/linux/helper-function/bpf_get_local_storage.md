@@ -24,7 +24,7 @@ A user should care about the synchronization by himself. For example, by using t
 
 A pointer to the local storage area.
 
-`#!c static void *(*bpf_get_local_storage)(void *map, __u64 flags) = (void *) 81;`
+`#!c static void *(* const bpf_get_local_storage)(void *map, __u64 flags) = (void *) 81;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

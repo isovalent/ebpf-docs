@@ -20,7 +20,7 @@ Add the checksum _csum_ into _skb_**->csum** in case the driver has supplied a c
 
 The checksum on success, or a negative error code in case of failure.
 
-`#!c static __s64 (*bpf_csum_update)(struct __sk_buff *skb, __wsum csum) = (void *) 40;`
+`#!c static __s64 (* const bpf_csum_update)(struct __sk_buff *skb, __wsum csum) = (void *) 40;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

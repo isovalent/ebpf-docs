@@ -21,7 +21,7 @@ Pop an element from _map_.
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_map_pop_elem)(void *map, void *value) = (void *) 88;`
+`#!c static long (* const bpf_map_pop_elem)(void *map, void *value) = (void *) 88;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

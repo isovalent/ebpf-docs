@@ -28,7 +28,7 @@ Send signal _sig_ to the process of the current task. The signal may be delivere
 
 **-EAGAIN** if bpf program can try again.
 
-`#!c static long (*bpf_send_signal)(__u32 sig) = (void *) 109;`
+`#!c static long (* const bpf_send_signal)(__u32 sig) = (void *) 109;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

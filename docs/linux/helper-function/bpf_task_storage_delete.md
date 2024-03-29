@@ -22,7 +22,7 @@ Delete a bpf_local_storage from a _task_.
 
 **-ENOENT** if the bpf_local_storage cannot be found.
 
-`#!c static long (*bpf_task_storage_delete)(void *map, struct task_struct *task) = (void *) 157;`
+`#!c static long (* const bpf_task_storage_delete)(void *map, struct task_struct *task) = (void *) 157;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

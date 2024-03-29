@@ -30,7 +30,7 @@ In this case, the BPF program's return value will use helper's -EPERM. This stil
 
 0 on success, or a negative error in case of failure.
 
-`#!c static int (*bpf_set_retval)(int retval) = (void *) 187;`
+`#!c static int (* const bpf_set_retval)(int retval) = (void *) 187;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

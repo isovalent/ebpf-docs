@@ -20,7 +20,7 @@ Get the current cgroup id based on the cgroup within which the current task is r
 
 A 64-bit integer containing the current cgroup id based on the cgroup within which the current task is running.
 
-`#!c static __u64 (*bpf_get_current_cgroup_id)(void) = (void *) 80;`
+`#!c static __u64 (* const bpf_get_current_cgroup_id)(void) = (void *) 80;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -28,7 +28,7 @@ This helper is only available is the kernel was compiled with the **CONFIG_BPF_L
 
 0
 
-`#!c static long (*bpf_rc_keydown)(void *ctx, __u32 protocol, __u64 scancode, __u32 toggle) = (void *) 78;`
+`#!c static long (* const bpf_rc_keydown)(void *ctx, __u32 protocol, __u64 scancode, __u32 toggle) = (void *) 78;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

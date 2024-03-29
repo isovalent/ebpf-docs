@@ -20,7 +20,7 @@ Exchange kptr at pointer _map_value_ with _ptr_, and return the old value. _ptr_
 
 The old value of kptr (which can be NULL). The returned pointer if not NULL, is a reference which must be released using its corresponding release function, or moved into a BPF map before program exit.
 
-`#!c static void *(*bpf_kptr_xchg)(void *map_value, void *ptr) = (void *) 194;`
+`#!c static void *(* const bpf_kptr_xchg)(void *map_value, void *ptr) = (void *) 194;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

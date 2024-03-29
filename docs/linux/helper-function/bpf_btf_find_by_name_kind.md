@@ -20,7 +20,7 @@ Find BTF type with given name and kind in vmlinux BTF or in module's BTFs.
 
 Returns btf_id and btf_obj_fd in lower and upper 32 bits.
 
-`#!c static long (*bpf_btf_find_by_name_kind)(char *name, int name_sz, __u32 kind, int flags) = (void *) 167;`
+`#!c static long (* const bpf_btf_find_by_name_kind)(char *name, int name_sz, __u32 kind, int flags) = (void *) 167;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

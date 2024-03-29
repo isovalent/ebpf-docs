@@ -21,7 +21,7 @@ See: **clock_gettime**(**CLOCK_MONOTONIC_COARSE**)
 
 Current _ktime_.
 
-`#!c static __u64 (*bpf_ktime_get_coarse_ns)(void) = (void *) 160;`
+`#!c static __u64 (* const bpf_ktime_get_coarse_ns)(void) = (void *) 160;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

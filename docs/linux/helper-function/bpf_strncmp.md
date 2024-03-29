@@ -20,7 +20,7 @@ Do strncmp() between **s1** and **s2**. **s1** doesn't need to be null-terminate
 
 An integer less than, equal to, or greater than zero if the first **s1_sz** bytes of **s1** is found to be less than, to match, or be greater than **s2**.
 
-`#!c static long (*bpf_strncmp)(const char *s1, __u32 s1_sz, const char *s2) = (void *) 182;`
+`#!c static long (* const bpf_strncmp)(const char *s1, __u32 s1_sz, const char *s2) = (void *) 182;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

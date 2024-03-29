@@ -42,7 +42,7 @@ For walking a stack, this helper is an improvement over **bpf_probe_read**(), wh
 
 The positive or null stack id on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_get_stackid)(void *ctx, void *map, __u64 flags) = (void *) 27;`
+`#!c static long (* const bpf_get_stackid)(void *ctx, void *map, __u64 flags) = (void *) 27;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -21,7 +21,7 @@ This helper works for IPv4 and IPv6, TCP and UDP sockets. The domain (_addr_**->
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_bind)(struct bpf_sock_addr *ctx, struct sockaddr *addr, int addr_len) = (void *) 64;`
+`#!c static long (* const bpf_bind)(struct bpf_sock_addr *ctx, struct sockaddr *addr, int addr_len) = (void *) 64;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

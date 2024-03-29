@@ -20,7 +20,7 @@ Get the current pid and tgid.
 
 A 64-bit integer containing the current tgid and pid, and created as such: _current_task_**->tgid << 32 \|** _current_task_**->pid**.
 
-`#!c static __u64 (*bpf_get_current_pid_tgid)(void) = (void *) 14;`
+`#!c static __u64 (* const bpf_get_current_pid_tgid)(void) = (void *) 14;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

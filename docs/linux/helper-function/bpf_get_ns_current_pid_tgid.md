@@ -24,7 +24,7 @@ Returns 0 on success, values for _pid_ and _tgid_ as seen from the current _name
 
 **-ENOENT** if pidns does not exists for the current task.
 
-`#!c static long (*bpf_get_ns_current_pid_tgid)(__u64 dev, __u64 ino, struct bpf_pidns_info *nsdata, __u32 size) = (void *) 120;`
+`#!c static long (* const bpf_get_ns_current_pid_tgid)(__u64 dev, __u64 ino, struct bpf_pidns_info *nsdata, __u32 size) = (void *) 120;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

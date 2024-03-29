@@ -20,7 +20,7 @@ Get the struct pt_regs associated with **task**.
 
 A pointer to struct pt_regs.
 
-`#!c static long (*bpf_task_pt_regs)(struct task_struct *task) = (void *) 175;`
+`#!c static long (* const bpf_task_pt_regs)(struct task_struct *task) = (void *) 175;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

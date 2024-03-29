@@ -30,7 +30,7 @@ Number of characters consumed on success. Must be positive but no more than _buf
 
 **-ERANGE** if resulting value was out of range.
 
-`#!c static long (*bpf_strtol)(const char *buf, unsigned long buf_len, __u64 flags, long *res) = (void *) 105;`
+`#!c static long (* const bpf_strtol)(const char *buf, unsigned long buf_len, __u64 flags, long *res) = (void *) 105;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

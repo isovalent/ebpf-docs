@@ -24,7 +24,7 @@ This helper is available only if the kernel was compiled with **CONFIG_IP_ROUTE_
 
 The realm of the route for the packet associated to _skb_, or 0 if none was found.
 
-`#!c static __u32 (*bpf_get_route_realm)(struct __sk_buff *skb) = (void *) 24;`
+`#!c static __u32 (* const bpf_get_route_realm)(struct __sk_buff *skb) = (void *) 24;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

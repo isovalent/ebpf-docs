@@ -26,7 +26,7 @@ All values for _flags_ are reserved for future usage, and must be left at zero.
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_msg_pull_data)(struct sk_msg_md *msg, __u32 start, __u32 end, __u64 flags) = (void *) 63;`
+`#!c static long (* const bpf_msg_pull_data)(struct sk_msg_md *msg, __u32 start, __u32 end, __u64 flags) = (void *) 63;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

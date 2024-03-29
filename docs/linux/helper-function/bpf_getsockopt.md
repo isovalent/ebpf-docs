@@ -28,7 +28,7 @@ This helper actually implements a subset of **getsockopt()**. It supports the sa
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_getsockopt)(void *bpf_socket, int level, int optname, void *optval, int optlen) = (void *) 57;`
+`#!c static long (* const bpf_getsockopt)(void *bpf_socket, int level, int optname, void *optval, int optlen) = (void *) 57;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

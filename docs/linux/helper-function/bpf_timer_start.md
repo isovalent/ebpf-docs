@@ -34,7 +34,7 @@ _flags_ can be one of:
 
 0 on success. **-EINVAL** if _timer_ was not initialized with bpf_timer_init() earlier or invalid _flags_ are passed.
 
-`#!c static long (*bpf_timer_start)(struct bpf_timer *timer, __u64 nsecs, __u64 flags) = (void *) 171;`
+`#!c static long (* const bpf_timer_start)(struct bpf_timer *timer, __u64 nsecs, __u64 flags) = (void *) 171;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

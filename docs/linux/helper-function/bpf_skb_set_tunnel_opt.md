@@ -22,7 +22,7 @@ See also the description of the **bpf_skb_get_tunnel_opt**() helper for addition
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_skb_set_tunnel_opt)(struct __sk_buff *skb, void *opt, __u32 size) = (void *) 30;`
+`#!c static long (* const bpf_skb_set_tunnel_opt)(struct __sk_buff *skb, void *opt, __u32 size) = (void *) 30;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

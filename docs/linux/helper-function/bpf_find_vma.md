@@ -26,7 +26,7 @@ long (\_callback_fn)(struct task_struct \_task, struct vm_area_struct \_vma, voi
 
 0 on success. **-ENOENT** if _task->mm_ is NULL, or no vma contains _addr_. **-EBUSY** if failed to try lock mmap_lock. **-EINVAL** for invalid **flags**.
 
-`#!c static long (*bpf_find_vma)(struct task_struct *task, __u64 addr, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 180;`
+`#!c static long (* const bpf_find_vma)(struct task_struct *task, __u64 addr, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 180;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

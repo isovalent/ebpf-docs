@@ -22,7 +22,7 @@ For more information on _flags_, please see 'bpf_ringbuf_discard'.
 
 Nothing. Always succeeds.
 
-`#!c static void (*bpf_ringbuf_discard_dynptr)(struct bpf_dynptr *ptr, __u64 flags) = (void *) 200;`
+`#!c static void (* const bpf_ringbuf_discard_dynptr)(struct bpf_dynptr *ptr, __u64 flags) = (void *) 200;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

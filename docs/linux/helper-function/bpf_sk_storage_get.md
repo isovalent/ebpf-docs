@@ -30,7 +30,7 @@ A bpf-local-storage pointer is returned on success.
 
 **NULL** if not found or there was an error in adding a new bpf-local-storage.
 
-`#!c static void *(*bpf_sk_storage_get)(void *map, void *sk, void *value, __u64 flags) = (void *) 107;`
+`#!c static void *(* const bpf_sk_storage_get)(void *map, void *sk, void *value, __u64 flags) = (void *) 107;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

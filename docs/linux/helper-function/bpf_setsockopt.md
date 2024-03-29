@@ -34,7 +34,7 @@ This helper actually implements a subset of **setsockopt()**. It supports the fo
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_setsockopt)(void *bpf_socket, int level, int optname, void *optval, int optlen) = (void *) 49;`
+`#!c static long (* const bpf_setsockopt)(void *bpf_socket, int level, int optname, void *optval, int optlen) = (void *) 49;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

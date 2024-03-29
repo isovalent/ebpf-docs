@@ -28,7 +28,7 @@ The strictly positive length of the formatted string, including the trailing zer
 
 Or **-EBUSY** if the per-CPU memory copy buffer is busy.
 
-`#!c static long (*bpf_snprintf)(char *str, __u32 str_size, const char *fmt, __u64 *data, __u32 data_len) = (void *) 165;`
+`#!c static long (* const bpf_snprintf)(char *str, __u32 str_size, const char *fmt, __u64 *data, __u32 data_len) = (void *) 165;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

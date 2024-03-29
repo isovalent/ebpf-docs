@@ -24,7 +24,7 @@ This helper is available only if the kernel was compiled with the **CONFIG_SOCK_
 
 The id is returned or 0 in case the id could not be retrieved.
 
-`#!c static __u64 (*bpf_sk_cgroup_id)(void *sk) = (void *) 128;`
+`#!c static __u64 (* const bpf_sk_cgroup_id)(void *sk) = (void *) 128;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

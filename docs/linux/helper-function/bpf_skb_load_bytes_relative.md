@@ -30,7 +30,7 @@ In general, "direct packet access" is the preferred method to access packet data
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_skb_load_bytes_relative)(const void *skb, __u32 offset, void *to, __u32 len, __u32 start_header) = (void *) 68;`
+`#!c static long (* const bpf_skb_load_bytes_relative)(const void *skb, __u32 offset, void *to, __u32 len, __u32 start_header) = (void *) 68;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

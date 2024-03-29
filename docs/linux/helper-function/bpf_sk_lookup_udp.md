@@ -38,7 +38,7 @@ This helper is available only if the kernel was compiled with **CONFIG_NET** con
 
 Pointer to **struct bpf_sock**, or **NULL** in case of failure. For sockets with reuseport option, the **struct bpf_sock** result is from _reuse_**->socks**[] using the hash of the tuple.
 
-`#!c static struct bpf_sock *(*bpf_sk_lookup_udp)(void *ctx, struct bpf_sock_tuple *tuple, __u32 tuple_size, __u64 netns, __u64 flags) = (void *) 85;`
+`#!c static struct bpf_sock *(* const bpf_sk_lookup_udp)(void *ctx, struct bpf_sock_tuple *tuple, __u32 tuple_size, __u64 netns, __u64 flags) = (void *) 85;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -18,7 +18,7 @@ This helper retrieves the value of an event counter.
 **Returns**
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_perf_prog_read_value)(struct bpf_perf_event_data *ctx, struct bpf_perf_event_value *buf, __u32 buf_size) = (void *) 56;`
+`#!c static long (* const bpf_perf_prog_read_value)(struct bpf_perf_event_data *ctx, struct bpf_perf_event_value *buf, __u32 buf_size) = (void *) 56;`
 
 ## Usage
 

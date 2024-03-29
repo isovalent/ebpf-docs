@@ -20,7 +20,7 @@ Dynamically cast a _sk_ pointer to a _tcp_timewait_sock_ pointer.
 
 _sk_ if casting is valid, or **NULL** otherwise.
 
-`#!c static struct tcp_timewait_sock *(*bpf_skc_to_tcp_timewait_sock)(void *sk) = (void *) 138;`
+`#!c static struct tcp_timewait_sock *(* const bpf_skc_to_tcp_timewait_sock)(void *sk) = (void *) 138;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

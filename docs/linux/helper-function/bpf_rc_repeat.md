@@ -26,7 +26,7 @@ This helper is only available is the kernel was compiled with the **CONFIG_BPF_L
 
 0
 
-`#!c static long (*bpf_rc_repeat)(void *ctx) = (void *) 77;`
+`#!c static long (* const bpf_rc_repeat)(void *ctx) = (void *) 77;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

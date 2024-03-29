@@ -26,7 +26,7 @@ Also, the helper is only available for the architectures having the CONFIG_FUNCT
 
 0
 
-`#!c static long (*bpf_override_return)(struct pt_regs *regs, __u64 rc) = (void *) 58;`
+`#!c static long (* const bpf_override_return)(struct pt_regs *regs, __u64 rc) = (void *) 58;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

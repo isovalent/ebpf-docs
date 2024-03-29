@@ -22,7 +22,7 @@ Delete a bpf_local_storage from an _inode_.
 
 **-ENOENT** if the bpf_local_storage cannot be found.
 
-`#!c static int (*bpf_inode_storage_delete)(void *map, void *inode) = (void *) 146;`
+`#!c static int (* const bpf_inode_storage_delete)(void *map, void *inode) = (void *) 146;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

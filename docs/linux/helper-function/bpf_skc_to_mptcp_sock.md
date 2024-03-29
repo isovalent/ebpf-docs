@@ -20,7 +20,7 @@ Dynamically cast a _sk_ pointer to a _mptcp_sock_ pointer.
 
 _sk_ if casting is valid, or **NULL** otherwise.
 
-`#!c static struct mptcp_sock *(*bpf_skc_to_mptcp_sock)(void *sk) = (void *) 196;`
+`#!c static struct mptcp_sock *(* const bpf_skc_to_mptcp_sock)(void *sk) = (void *) 196;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

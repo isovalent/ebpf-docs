@@ -22,7 +22,7 @@ Set or clear certain options on _bprm_:
 
 **-EINVAL** if invalid _flags_ are passed, zero otherwise.
 
-`#!c static long (*bpf_bprm_opts_set)(struct linux_binprm *bprm, __u64 flags) = (void *) 159;`
+`#!c static long (* const bpf_bprm_opts_set)(struct linux_binprm *bprm, __u64 flags) = (void *) 159;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

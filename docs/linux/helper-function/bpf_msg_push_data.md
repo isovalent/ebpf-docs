@@ -24,7 +24,7 @@ This helper may fail if under memory pressure (a malloc fails) in these cases BP
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_msg_push_data)(struct sk_msg_md *msg, __u32 start, __u32 len, __u64 flags) = (void *) 90;`
+`#!c static long (* const bpf_msg_push_data)(struct sk_msg_md *msg, __u32 start, __u32 len, __u64 flags) = (void *) 90;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

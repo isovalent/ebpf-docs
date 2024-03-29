@@ -24,7 +24,7 @@ A call to this helper is susceptible to change the underlying packet buffer. The
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_xdp_adjust_meta)(struct xdp_md *xdp_md, int delta) = (void *) 54;`
+`#!c static long (* const bpf_xdp_adjust_meta)(struct xdp_md *xdp_md, int delta) = (void *) 54;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

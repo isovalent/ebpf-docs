@@ -20,7 +20,7 @@ Read _size_ bytes from user space address _user_ptr_ and store the data in _dst_
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_copy_from_user)(void *dst, __u32 size, const void *user_ptr) = (void *) 148;`
+`#!c static long (* const bpf_copy_from_user)(void *dst, __u32 size, const void *user_ptr) = (void *) 148;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

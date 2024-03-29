@@ -22,7 +22,7 @@ Calling **bpf_set_hash_invalid**(), changing a packet prototype with **bpf_skb_c
 
 The 32-bit hash.
 
-`#!c static __u32 (*bpf_get_hash_recalc)(struct __sk_buff *skb) = (void *) 34;`
+`#!c static __u32 (* const bpf_get_hash_recalc)(struct __sk_buff *skb) = (void *) 34;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

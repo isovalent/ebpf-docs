@@ -20,7 +20,7 @@ Returns a calculated IMA hash of the _file_. If the hash is larger than _size_, 
 
 The **hash_algo** is returned on success, **-EOPNOTSUP** if the hash calculation failed or **-EINVAL** if invalid arguments are passed.
 
-`#!c static long (*bpf_ima_file_hash)(struct file *file, void *dst, __u32 size) = (void *) 193;`
+`#!c static long (* const bpf_ima_file_hash)(struct file *file, void *dst, __u32 size) = (void *) 193;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

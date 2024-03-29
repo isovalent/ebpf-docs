@@ -22,7 +22,7 @@ This helper is currently supported by cgroup programs and only by the hooks wher
 
 The BPF program's return value.
 
-`#!c static int (*bpf_get_retval)(void) = (void *) 186;`
+`#!c static int (* const bpf_get_retval)(void) = (void *) 186;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

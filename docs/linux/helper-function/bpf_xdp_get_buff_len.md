@@ -20,7 +20,7 @@ Get the total size of a given xdp buff (linear and paged area)
 
 The total size of a given xdp buffer.
 
-`#!c static __u64 (*bpf_xdp_get_buff_len)(struct xdp_md *xdp_md) = (void *) 188;`
+`#!c static __u64 (* const bpf_xdp_get_buff_len)(struct xdp_md *xdp_md) = (void *) 188;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

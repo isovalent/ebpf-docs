@@ -20,7 +20,7 @@ Read _len_ bytes from _src_ into _dst_, starting from _offset_ into _src_. _flag
 
 0 on success, -E2BIG if _offset_ + _len_ exceeds the length of _src_'s data, -EINVAL if _src_ is an invalid dynptr or if _flags_ is not 0.
 
-`#!c static long (*bpf_dynptr_read)(void *dst, __u32 len, const struct bpf_dynptr *src, __u32 offset, __u64 flags) = (void *) 201;`
+`#!c static long (* const bpf_dynptr_read)(void *dst, __u32 len, const struct bpf_dynptr *src, __u32 offset, __u64 flags) = (void *) 201;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

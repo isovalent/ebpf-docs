@@ -22,7 +22,7 @@ See 'bpf_ringbuf_output()' for the definition of adaptive notification.
 
 Nothing. Always succeeds.
 
-`#!c static void (*bpf_ringbuf_discard)(void *data, __u64 flags) = (void *) 133;`
+`#!c static void (* const bpf_ringbuf_discard)(void *data, __u64 flags) = (void *) 133;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

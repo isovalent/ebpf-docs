@@ -28,7 +28,7 @@ On success, zero. On error, a negative value.
 
 **-EPERM** if caller does not have permission to obtain kernel address.
 
-`#!c static long (*bpf_kallsyms_lookup_name)(const char *name, int name_sz, int flags, __u64 *res) = (void *) 179;`
+`#!c static long (* const bpf_kallsyms_lookup_name)(const char *name, int name_sz, int flags, __u64 *res) = (void *) 179;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

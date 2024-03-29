@@ -28,7 +28,7 @@ On success, number of bytes written to _buf_. On error, a negative value.
 
 **-ENOENT** if architecture does not support branch records.
 
-`#!c static long (*bpf_get_branch_snapshot)(void *entries, __u32 size, __u64 flags) = (void *) 176;`
+`#!c static long (* const bpf_get_branch_snapshot)(void *entries, __u32 size, __u64 flags) = (void *) 176;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

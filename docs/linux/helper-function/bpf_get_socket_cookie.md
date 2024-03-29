@@ -20,7 +20,7 @@ If the **struct sk_buff** pointed by _skb_ has a known socket, retrieve the cook
 
 A 8-byte long unique number on success, or 0 if the socket field is missing inside _skb_.
 
-`#!c static __u64 (*bpf_get_socket_cookie)(void *ctx) = (void *) 46;`
+`#!c static __u64 (* const bpf_get_socket_cookie)(void *ctx) = (void *) 46;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

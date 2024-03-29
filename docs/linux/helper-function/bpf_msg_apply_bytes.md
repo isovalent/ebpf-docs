@@ -30,7 +30,7 @@ Note that if a socket closes with the internal counter holding a non-zero value,
 
 0
 
-`#!c static long (*bpf_msg_apply_bytes)(struct sk_msg_md *msg, __u32 bytes) = (void *) 61;`
+`#!c static long (* const bpf_msg_apply_bytes)(struct sk_msg_md *msg, __u32 bytes) = (void *) 61;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Get the current task.
 
 A pointer to the current task struct.
 
-`#!c static __u64 (*bpf_get_current_task)(void) = (void *) 35;`
+`#!c static __u64 (* const bpf_get_current_task)(void) = (void *) 35;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

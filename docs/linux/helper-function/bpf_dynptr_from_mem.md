@@ -22,7 +22,7 @@ _data_ must be a ptr to a map value. The maximum _size_ supported is DYNPTR_MAX_
 
 0 on success, -E2BIG if the size exceeds DYNPTR_MAX_SIZE, -EINVAL if flags is not 0.
 
-`#!c static long (*bpf_dynptr_from_mem)(void *data, __u32 size, __u64 flags, struct bpf_dynptr *ptr) = (void *) 197;`
+`#!c static long (* const bpf_dynptr_from_mem)(void *data, __u32 size, __u64 flags, struct bpf_dynptr *ptr) = (void *) 197;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

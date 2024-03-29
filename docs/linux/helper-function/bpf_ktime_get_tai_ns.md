@@ -22,7 +22,7 @@ See: **clock_gettime**(**CLOCK_TAI**)
 
 Current _ktime_.
 
-`#!c static __u64 (*bpf_ktime_get_tai_ns)(void) = (void *) 208;`
+`#!c static __u64 (* const bpf_ktime_get_tai_ns)(void) = (void *) 208;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

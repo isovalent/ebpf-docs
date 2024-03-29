@@ -22,7 +22,7 @@ bpf_per_cpu_ptr() has the same semantic as per_cpu_ptr() in the kernel, except t
 
 A pointer pointing to the kernel percpu variable on _cpu_, or NULL, if _cpu_ is invalid.
 
-`#!c static void *(*bpf_per_cpu_ptr)(const void *percpu_ptr, __u32 cpu) = (void *) 153;`
+`#!c static void *(* const bpf_per_cpu_ptr)(const void *percpu_ptr, __u32 cpu) = (void *) 153;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

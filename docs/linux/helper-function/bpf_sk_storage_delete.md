@@ -22,7 +22,7 @@ Delete a bpf-local-storage from a _sk_.
 
 **-ENOENT** if the bpf-local-storage cannot be found. **-EINVAL** if sk is not a fullsock (e.g. a request_sock).
 
-`#!c static long (*bpf_sk_storage_delete)(void *map, void *sk) = (void *) 108;`
+`#!c static long (* const bpf_sk_storage_delete)(void *map, void *sk) = (void *) 108;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

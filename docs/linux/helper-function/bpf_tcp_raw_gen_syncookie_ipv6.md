@@ -30,7 +30,7 @@ On failure, the returned value is one of the following:
 
 **-EPROTONOSUPPORT** if CONFIG_IPV6 is not builtin.
 
-`#!c static __s64 (*bpf_tcp_raw_gen_syncookie_ipv6)(struct ipv6hdr *iph, struct tcphdr *th, __u32 th_len) = (void *) 205;`
+`#!c static __s64 (* const bpf_tcp_raw_gen_syncookie_ipv6)(struct ipv6hdr *iph, struct tcphdr *th, __u32 th_len) = (void *) 205;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

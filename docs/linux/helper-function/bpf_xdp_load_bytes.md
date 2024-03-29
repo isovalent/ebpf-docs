@@ -20,7 +20,7 @@ This helper is provided as an easy way to load data from a xdp buffer. It can be
 
 0 on success, or a negative error in case of failure.
 
-`#!c static long (*bpf_xdp_load_bytes)(struct xdp_md *xdp_md, __u32 offset, void *buf, __u32 len) = (void *) 189;`
+`#!c static long (* const bpf_xdp_load_bytes)(struct xdp_md *xdp_md, __u32 offset, void *buf, __u32 len) = (void *) 189;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

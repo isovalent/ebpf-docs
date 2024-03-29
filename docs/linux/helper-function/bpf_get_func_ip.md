@@ -24,7 +24,7 @@ When called for kprobe program attached as uprobe it returns probe address for b
 
 Address of the traced function for kprobe. 0 for kprobes placed within the function (not at the entry). Address of the probe for uprobe and return uprobe.
 
-`#!c static __u64 (*bpf_get_func_ip)(void *ctx) = (void *) 173;`
+`#!c static __u64 (* const bpf_get_func_ip)(void *ctx) = (void *) 173;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

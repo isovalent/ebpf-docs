@@ -15,7 +15,7 @@ This helper function is used to direct incoming traffic to a specific socket, ov
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-`#!c static long (*bpf_sk_assign)(void *ctx, void *sk, __u64 flags) = (void *) 124;`
+`#!c static long (* const bpf_sk_assign)(void *ctx, void *sk, __u64 flags) = (void *) 124;`
 
 ### Return value in `BPF_PROG_TYPE_SCHED_CLS` and `BPF_PROG_TYPE_SCHED_ACT`
 

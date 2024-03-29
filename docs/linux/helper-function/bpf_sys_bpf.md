@@ -20,7 +20,7 @@ Execute bpf syscall with given arguments.
 
 A syscall result.
 
-`#!c static long (*bpf_sys_bpf)(__u32 cmd, void *attr, __u32 attr_size) = (void *) 166;`
+`#!c static long (* const bpf_sys_bpf)(__u32 cmd, void *attr, __u32 attr_size) = (void *) 166;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

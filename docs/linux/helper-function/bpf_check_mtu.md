@@ -50,7 +50,7 @@ MTU violations return positive values, but also populate MTU value in _mtu_len_ 
 * **BPF_MTU_CHK_RET_SEGS_TOOBIG**
 
 
-`#!c static long (*bpf_check_mtu)(void *ctx, __u32 ifindex, __u32 *mtu_len, __s32 len_diff, __u64 flags) = (void *) 163;`
+`#!c static long (* const bpf_check_mtu)(void *ctx, __u32 ifindex, __u32 *mtu_len, __s32 len_diff, __u64 flags) = (void *) 163;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

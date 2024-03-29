@@ -18,7 +18,7 @@ The message redirect hash helper is used to redirect a message to a socket refer
 **Returns**
 `SK_PASS` on success, or `SK_DROP` on error.
 
-`#!c static long (*bpf_msg_redirect_hash)(struct sk_msg_md *msg, void *map, void *key, __u64 flags) = (void *) 71;`
+`#!c static long (* const bpf_msg_redirect_hash)(struct sk_msg_md *msg, void *map, void *key, __u64 flags) = (void *) 71;`
 
 ## Usage
 

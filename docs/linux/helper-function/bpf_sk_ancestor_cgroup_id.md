@@ -24,7 +24,7 @@ The format of returned id and helper limitations are same as in **bpf_sk_cgroup_
 
 The id is returned or 0 in case the id could not be retrieved.
 
-`#!c static __u64 (*bpf_sk_ancestor_cgroup_id)(void *sk, int ancestor_level) = (void *) 129;`
+`#!c static __u64 (* const bpf_sk_ancestor_cgroup_id)(void *sk, int ancestor_level) = (void *) 129;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

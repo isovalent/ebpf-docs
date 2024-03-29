@@ -22,7 +22,7 @@ Get return value of the traced function (for tracing programs) in **value**.
 
 0 on success. **-EOPNOTSUPP** for tracing programs other than BPF_TRACE_FEXIT or BPF_MODIFY_RETURN.
 
-`#!c static long (*bpf_get_func_ret)(void *ctx, __u64 *value) = (void *) 184;`
+`#!c static long (* const bpf_get_func_ret)(void *ctx, __u64 *value) = (void *) 184;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

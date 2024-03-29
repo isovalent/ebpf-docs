@@ -20,7 +20,7 @@ Invalidate the current _skb_**->hash**. It can be used after mangling on headers
 
 void.
 
-`#!c static void (*bpf_set_hash_invalid)(struct __sk_buff *skb) = (void *) 41;`
+`#!c static void (* const bpf_set_hash_invalid)(struct __sk_buff *skb) = (void *) 41;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -42,7 +42,7 @@ _flags_ is a combination of
 
 The number of bytes that were written (or would have been written if output had to be truncated due to string size), or a negative error in cases of failure.
 
-`#!c static long (*bpf_snprintf_btf)(char *str, __u32 str_size, struct btf_ptr *ptr, __u32 btf_ptr_size, __u64 flags) = (void *) 149;`
+`#!c static long (* const bpf_snprintf_btf)(char *str, __u32 str_size, struct btf_ptr *ptr, __u32 btf_ptr_size, __u64 flags) = (void *) 149;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -26,7 +26,7 @@ Number of character copied (not including the trailing NUL).
 
 **-E2BIG** if the buffer wasn't big enough (_buf_ will contain truncated name in this case).
 
-`#!c static long (*bpf_sysctl_get_name)(struct bpf_sysctl *ctx, char *buf, unsigned long buf_len, __u64 flags) = (void *) 101;`
+`#!c static long (* const bpf_sysctl_get_name)(struct bpf_sysctl *ctx, char *buf, unsigned long buf_len, __u64 flags) = (void *) 101;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

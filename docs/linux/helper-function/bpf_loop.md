@@ -28,7 +28,7 @@ If **callback_fn** returns 0, the helper will continue to the next loop. If retu
 
 The number of loops performed, **-EINVAL** for invalid **flags**, **-E2BIG** if **nr_loops** exceeds the maximum number of loops.
 
-`#!c static long (*bpf_loop)(__u32 nr_loops, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 181;`
+`#!c static long (* const bpf_loop)(__u32 nr_loops, void *callback_fn, void *callback_ctx, __u64 flags) = (void *) 181;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

@@ -20,7 +20,7 @@ Return a **struct bpf_sock** pointer in **TCP_LISTEN** state. **bpf_sk_release**
 
 A **struct bpf_sock** pointer on success, or **NULL** in case of failure.
 
-`#!c static struct bpf_sock *(*bpf_get_listener_sock)(struct bpf_sock *sk) = (void *) 98;`
+`#!c static struct bpf_sock *(* const bpf_get_listener_sock)(struct bpf_sock *sk) = (void *) 98;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

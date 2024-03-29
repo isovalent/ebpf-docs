@@ -19,7 +19,7 @@ This helper prints messages to the trace log of the kernel.
 The number of bytes written to the buffer, or a negative error
 in case of failure.
 
-`#!c static long (*bpf_trace_printk)(const char *fmt, __u32 fmt_size, ...) = (void *) 6;`
+`#!c static long (* const bpf_trace_printk)(const char *fmt, __u32 fmt_size, ...) = (void *) 6;`
 
 ## Usage
 

@@ -28,7 +28,7 @@ This helper is only available is the kernel was compiled with the **CONFIG_CGROU
 
 The classid, or 0 for the default unconfigured classid.
 
-`#!c static __u32 (*bpf_get_cgroup_classid)(struct __sk_buff *skb) = (void *) 17;`
+`#!c static __u32 (* const bpf_get_cgroup_classid)(struct __sk_buff *skb) = (void *) 17;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

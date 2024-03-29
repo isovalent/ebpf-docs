@@ -24,7 +24,7 @@ This helper is only available is the kernel was compiled with the **CONFIG_BPF_L
 
 0
 
-`#!c static long (*bpf_rc_pointer_rel)(void *ctx, __s32 rel_x, __s32 rel_y) = (void *) 92;`
+`#!c static long (* const bpf_rc_pointer_rel)(void *ctx, __s32 rel_x, __s32 rel_y) = (void *) 92;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

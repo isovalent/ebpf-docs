@@ -22,7 +22,7 @@ Get number of registers of the traced function (for tracing programs) where func
 
 The number of argument registers of the traced function.
 
-`#!c static long (*bpf_get_func_arg_cnt)(void *ctx) = (void *) 185;`
+`#!c static long (* const bpf_get_func_arg_cnt)(void *ctx) = (void *) 185;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
