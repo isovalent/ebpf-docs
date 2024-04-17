@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_timer_start' eBPF helper function, in
 [:octicons-tag-24: v5.15](https://github.com/torvalds/linux/commit/b00628b1c7d595ae5b544e059c27b1f5828314b4)
 <!-- [/FEATURE_TAG] -->
 
-This helper starts a [timer](../ebpf-concepts/timers.md).
+This helper starts a [timer](../concepts/timers.md).
 
 ## Definition
 

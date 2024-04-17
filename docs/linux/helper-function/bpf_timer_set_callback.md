@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_timer_set_callback' eBPF helper funct
 [:octicons-tag-24: v5.15](https://github.com/torvalds/linux/commit/b00628b1c7d595ae5b544e059c27b1f5828314b4)
 <!-- [/FEATURE_TAG] -->
 
-This helper sets the callback function for a [timer](../ebpf-concepts/timers.md).
+This helper sets the callback function for a [timer](../concepts/timers.md).
 
 ## Definition
 
