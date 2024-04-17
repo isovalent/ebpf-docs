@@ -8,7 +8,7 @@ description: "This page documents the 'BPF_OBJ_PIN' eBPF syscall command, includ
 [:octicons-tag-24: v4.4](https://github.com/torvalds/linux/commit/b2197755b2633e164a439682fb05a9b5ea48f706)
 <!-- [/FEATURE_TAG] -->
 
-The `BPF_OBJ_PIN` command is used to [pin](../ebpf-concepts/pinning.md) a BPF object to the BPF file system.
+The `BPF_OBJ_PIN` command is used to [pin](../concepts/pinning.md) a BPF object to the BPF file system.
 
 ## Return value
 
@@ -18,7 +18,7 @@ This command will return `0` on success or a error number (negative integer) if 
 
 A common use case for creating such a pin is to transfer a reference to a BPF object from one process to another. The [`BPF_OBJ_GET`](BPF_OBJ_GET.md) syscall command can be used to get a file descriptor from pins created with this command.
 
-Please the the [pinning concept page](../ebpf-concepts/pinning.md) for more details.
+Please the the [pinning concept page](../concepts/pinning.md) for more details.
 
 ## Attributes
 
