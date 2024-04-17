@@ -47,8 +47,15 @@ The positive or null stack id on success, or a negative error in case of failure
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+Call `bpf_get_stackid` to retrieve the stack id of the context in which the program is running, specifying as arguments:
+
+* *ctx*, the pointer to the currenct context on which the program is executing
+* *bpf_map*, the pointer to a map of type **BPF_PROG_TYPE_STACK_TRACE**
+* *flags*, the flags bitmap
+
+```c
+long bpf_get_stackid(void *ctx, struct bpf_map *map, u64 flags)
+```
 
 ### Program types
 
@@ -65,5 +72,34 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <bpf/bpf_helpers.h>
+
+struct {
+	__uint(type, BPF_MAP_TYPE_STACK_TRACE);
+	__uint(key_size, sizeof(u32));
+	__uint(value_size, PERF_MAX_STACK_DEPTH * sizeof(u64));
+	__uint(max_entries, 10000);
+} stack_traces SEC(".maps");
+
+SEC("perf_event")
+int print_stack_ids(struct bpf_perf_event_data *ctx)
+{
+	char fmt[] = "kern_stack_id=%d user_stack_id=%d";
+	
+	kern_stack_id = bpf_get_stackid(ctx, &stack_traces, 0);
+	user_stack_id = bpf_get_stackid(ctx, &stack_traces, 0 | BPF_F_USER_STACK);
+	
+	if kern_stack_id >= 0 && user_stack_id >=0 {
+		bpf_trace_printk(fmt, sizeof(fmt), kern_stack_id, user_stack_id);
+	}
+}
+
+char _license[] SEC("license") = "GPL";
+```
+
+Complete examples in the Linux source bpf samples:
+
+  * [samples/bpf/offwaketime.bpf.c](https://github.com/torvalds/linux/blob/e8f897f4afef0031fe618a8e94127a0934896aba/samples/bpf/offwaketime.bpf.c)
+  * [samples/bpf/trace_event_kern.c](https://github.com/torvalds/linux/blob/e8f897f4afef0031fe618a8e94127a0934896aba/samples/bpf/trace_event_kern.c)
+
