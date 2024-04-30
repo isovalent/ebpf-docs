@@ -211,6 +211,120 @@ Program authors can indicate to loaders like libbpf that a given program should 
 
 [^1]: Only the legacy RQ mode supports XDP frags, which is not the default and will require setting via ethtool.
 
+### Max MTU
+
+Plain XDP (fragments disabled) has the limitation that every packet must fit within a single memory page (typically 4096 bytes). This same memory page is also used to store NIC specific metadata and metadata to be passed to the network stack. The room needed for the metadata eats into the available space for the packet data. This means that the actual maximum MTU is some amount lower. The exact value depends on a lot of factors including but not limited to: the driver, the NIC, the CPU architecture, the kernel version and kernel configuration.
+
+The following table has been calculated from mathematical formulas based on the driver code and constants derived from the most common systems. This table assumes a 4k page size, most common L2 cache line sizes for the given architectures, a 6.8 kernel (kernel version doesn't seem to make a big difference). Please refer to `tools/mtu-calc` in the doc sources to see the exact formulas used and/or to calculate exact max MTU if you have a non-standard system.
+
+<!-- [MTU_TABLE] -->
+=== "Plain XDP"
+
+    | Vendor           | Driver                | x86   | arm   | arm64 | armv7 | riscv |
+    | ---------------- | --------------------- | ----- | ----- | ----- | ----- | ----- |
+    | Kernel           | Veth                  | 3520  | 3518  | 3520  | 3454  | 3518  |
+    | Kernel           | VirtIO                | 3506  | 3506  | 3506  | 3442  | 3506  |
+    | Kernel           | Tun                   | 1500  | 1500  | 1500  | 1500  | 1500  |
+    | Kernel           | Bond                  | [^4]  | [^4]  | [^4]  | [^4]  | [^4]  |
+    | Xen              | Netfront              | 3840  | 3840  | 3840  | 3840  | 3840  |
+    | Amazon           | ENA                   | 3498  | 3498  | 3498  | 3434  | 3498  |
+    | Aquantia/Marvell | AQtion                | 2048  | 2048  | 2048  | 2048  | 2048  |
+    | Broadcom         | BNXT                  | 3502  | 3500  | 3502  | 3436  | 3500  |
+    | Cavium           | Thunder (nicvf)       | 1508  | 1508  | 1508  | 1508  | 1508  |
+    | Engelder         | TSN Endpoint          | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
+    | Freescale        | FEC                   | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
+    | Freescale        | DPAA                  | 3706  | 3706  | 3706  | 3642  | 3706  |
+    | Freescale        | DPAA2                 | ?[^3] | ?[^3] | ?[^3] | ?[^3] | ?[^3] |
+    | Freescale        | ENETC                 | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
+    | Fungible         | Funeth                | 3566  | 3566  | 3566  | 3502  | 3566  |
+    | Google           | GVE                   | 2032  | 2032  | 2032  | 2032  | 2032  |
+    | Intel            | I40e                  | 3046  | 3046  | 3046  | 3046  | 3046  |
+    | Intel            | ICE                   | 3046  | 3046  | 3046  | 3046  | 3046  |
+    | Intel            | IGB                   | 3046  | 3046  | 3046  | 3046  | 3046  |
+    | Intel            | IGC                   | 1500  | 1500  | 1500  | 1500  | 1500  |
+    | Intel            | IXGBE                 | 3050  | 3050  | 3050  | 3050  | 3050  |
+    | Intel            | IXGBEVF               | 3050  | 3050  | 3050  | 3050  | 3050  |
+    | Marvell          | NETA                  | 3520  | 3520  | 3520  | 3456  | 3520  |
+    | Marvell          | PPv2                  | 3552  | 3552  | 3552  | 3488  | 3552  |
+    | Marvell          | Octeon TX2            | 1508  | 1508  | 1508  | 1508  | 1508  |
+    | MediaTek         | MTK                   | 3520  | 3520  | 3520  | 3456  | 3520  |
+    | Mellanox         | MLX4                  | 3498  | 3498  | 3498  | 3434  | 3498  |
+    | Mellanox         | MLX5                  | 3498  | 3498  | 3498  | 3434  | 3498  |
+    | Microchip        | LAN966x               | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
+    | Microsoft        | Mana                  | 3506  | 3506  | 3506  | 3442  | 3506  |
+    | Microsoft        | Hyper-V               | 3506  | 3506  | 3506  | 3442  | 3506  |
+    | Netronome        | NFP                   | 4096  | 4096  | 4096  | 4096  | 4096  |
+    | Pensando         | Ionic                 | 3502  | 3502  | 3502  | 3438  | 3502  |
+    | Qlogic           | QEDE                  | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
+    | Solarflare       | SFP (SFC9xxx PF/VF)   | 3530  | 3546  | 3530  | 3386  | 3514  |
+    | Solarflare       | SFP (Riverhead)       | 3522  | 3530  | 3522  | 3370  | 3498  |
+    | Solarflare       | SFP (SFC4000A)        | 3508  | 3538  | 3508  | 3378  | 3506  |
+    | Solarflare       | SFP (SFC4000B)        | 3528  | 3542  | 3528  | 3382  | 3510  |
+    | Solarflare       | SFP (SFC9020/SFL9021) | 3528  | 3542  | 3528  | 3382  | 3510  |
+    | Socionext        | NetSec                | 1500  | 1500  | 1500  | 1500  | 1500  |
+    | STMicro          | ST MAC                | 1500  | 1500  | 1500  | 1500  | 1500  |
+    | TI               | CPSW                  | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
+    | VMWare           | VMXNET 3              | 3494  | 3492  | 3494  | 3428  | 3492  |
+
+
+=== "XDP with Fragments"
+
+    | Vendor           | Driver                | x86              | arm              | arm64            | armv7            | riscv            |
+    | ---------------- | --------------------- | ---------------- | ---------------- | ---------------- | ---------------- | ---------------- |
+    | Kernel           | Veth                  | 73152            | 73150            | 73152            | 73086            | 73150            |
+    | Kernel           | VirtIO                | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
+    | Kernel           | Tun                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Kernel           | Bond                  | [^4]             | [^4]             | [^4]             | [^4]             | [^4]             |
+    | Xen              | Netfront              | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Amazon           | ENA                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Aquantia/Marvell | AQtion                | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
+    | Broadcom         | BNXT                  | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
+    | Cavium           | Thunder (nicvf)       | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Engelder         | TSN Endpoint          | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Freescale        | FEC                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Freescale        | DPAA                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Freescale        | DPAA2                 | ?[^3]            | ?[^3]            | ?[^3]            | ?[^3]            | ?[^3]            |
+    | Freescale        | ENETC                 | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Fungible         | Funeth                | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Google           | GVE                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Intel            | I40e                  | 9702             | 9702             | 9702             | 9702             | 9702             |
+    | Intel            | ICE                   | 3046             | 3046             | 3046             | 3046             | 3046             |
+    | Intel            | IGB                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Intel            | IGC                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Intel            | IXGBE                 | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Intel            | IXGBEVF               | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Marvell          | NETA                  | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
+    | Marvell          | PPv2                  | 3552             | 3552             | 3552             | 3488             | 3552             |
+    | Marvell          | Octeon TX2            | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | MediaTek         | MTK                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Mellanox         | MLX4                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Mellanox         | MLX5                  | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
+    | Microchip        | LAN966x               | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Microsoft        | Mana                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Microsoft        | Hyper-V               | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Netronome        | NFP                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Pensando         | Ionic                 | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Qlogic           | QEDE                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Solarflare       | SFP (SFC9xxx PF/VF)   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Solarflare       | SFP (Riverhead)       | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Solarflare       | SFP (SFC4000A)        | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Solarflare       | SFP (SFC4000B)        | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Solarflare       | SFP (SFC9020/SFL9021) | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Socionext        | NetSec                | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | STMicro          | ST MAC                | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | TI               | CPSW                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | VMWare           | VMXNET 3              | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+
+<!-- [/MTU_TABLE] -->
+
+!!! warning
+    If the configured MTU on a network interface is higher than the limit calculated by the network driver, XDP programs cannot be attached. When attaching via netlink, most drivers will use netlink debug messages to communicate the exact limit. When attaching via BPF links, no such feedback is given, by default. The error message can still be obtained by attaching a eBPF program to the `bpf_xdp_link_attach_failed` tracepoint and printing the error message or passing it userspace.
+
+
+[^2]: Driver does not have logic to limit the max MTU and XDP usage, but implicit limits such as in firmware or hardware may still apply.
+[^3]: MTU limit is loaded from firmware.
+[^4]: MTU limit is determed by slave devices.
+
 ## Helper functions
 
 Not all helper functions are available in all program types. These are the helper calls available for XDP programs:
