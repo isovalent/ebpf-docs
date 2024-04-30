@@ -45,4 +45,5 @@ generate-docs:
 	cd ${REPODIR}/tools/helper-ref-gen; go run main.go --project-root "${REPODIR}"
 	cd ${REPODIR}/tools/feature-tag-gen; go run main.go --project-root "${REPODIR}"
 	cd ${REPODIR}/tools/kfunc-gen; go run main.go --project-root "${REPODIR}"
+	cd ${REPODIR}/tools/mtu-calc; go run . --project-root "${REPODIR}"
 	cd ${REPODIR}/tools/helper-def-scraper; go run main.go --helper-path "${REPODIR}/docs/linux/helper-function"
