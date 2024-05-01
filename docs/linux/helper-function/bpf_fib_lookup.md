@@ -38,6 +38,10 @@ _plen_ argument is the size of the passed in struct. _flags_ argument can be a c
 
 &nbsp;&nbsp;&nbsp;&nbsp;Derive and set source IP addr in _params_->ipv{4,6}_src for the nexthop. If the src addr cannot be derived, **BPF_FIB_LKUP_RET_NO_SRC_ADDR** is returned. In this case, _params_->dmac and _params_->smac are not set either.
 
+**BPF_FIB_LOOKUP_MARK**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Use the mark present in _params_->mark for the fib lookup. This option should not be used with BPF_FIB_LOOKUP_DIRECT, as it only has meaning for full lookups.
+
 _ctx_ is either **struct xdp_md** for XDP programs or **struct sk_buff** tc cls_act programs.
 
 ### Returns
