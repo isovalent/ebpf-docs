@@ -49,7 +49,7 @@ plugins:
       lang: en
       separator: '[\s\-\_\.]+'
   - literate-nav:
-      nav-file: SUMMARY.md
+      nav_file: SUMMARY.md
       tab_length: 2
   - git-revision-date-localized:
       enabled: !ENV [PROD, false]
