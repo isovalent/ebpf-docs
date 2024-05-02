@@ -106,9 +106,9 @@ For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#
 
 In regular C programs running in userspace it is not uncommon to use global variables. These live in the heap memory accessible by the processes, the memory location of which are relocated by the operating system when the program is started.
 
-In eBPF we have no heap, only the stack and pointers into kernel space. To work around the issue, we use array maps. The compiler will place global data into the `.data`, `.rodata`, and `.bss` [ELF](../../elf.md) sections. The [loader](../../loader.md) will take these sections and turn them into array maps with a single key (`max_entries` set to 1) and its value the same size as the binary blob in the ELF section.
+In eBPF we have no heap, only the stack and pointers into kernel space. To work around the issue, we use array maps. The compiler will place global data into the `.data`, `.rodata`, and `.bss` [ELF](../../concepts/elf.md) sections. The [loader](../../concepts/loader.md) will take these sections and turn them into array maps with a single key (`max_entries` set to 1) and its value the same size as the binary blob in the ELF section.
 
-The compiler emits special `LDIMM64` instructions with the first source register set to `BPF_PSEUDO_MAP_VALUE` and an offset into the map value. The loader will relocate the correct map file descriptor into it as well. For details, check out the [instruction set](../../instruction-set.md) page.
+The compiler emits special `LDIMM64` instructions with the first source register set to `BPF_PSEUDO_MAP_VALUE` and an offset into the map value. The loader will relocate the correct map file descriptor into it as well. For details, check out the [instruction set](../../concepts/instruction-set.md) page.
 
 All of this results in the ability to get a pointer into the global data in a single instruction much like in regular userspace programs.
 

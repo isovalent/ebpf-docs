@@ -24,8 +24,6 @@ The list goes on. A lot of rules are conditional, there are additional rules per
 
 ### Analysis
 
-So, how does the verifier check all these rules? We can't go into full detail in this section, please see the [Verifier internal](verifier-internal.md) page for more details.
-
 The basic premise is that the verifier checks every possible permutation of a program mathematically. It starts by walking the code and constructing a graph based on branching instructions. It will reject any statically-dead-code unreachable code might be a link in an exploit chain.
 
 Next the verifier starts at the top, setting the initial registers. R1 for example is almost always a pointer to the context. It walks over each instruction and updates the state of the registers and stack. This state contains information like smax32 (what is the largest 32 bit signed integer that could be in this register). It has many such variables which it can use to evaluate if a branch such as "if R1 > 123" is always taken, sometimes taken or never taken.
