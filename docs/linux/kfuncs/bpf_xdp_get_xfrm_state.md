@@ -56,7 +56,7 @@ A `struct xfrm_state *`, if found, must be released with a corresponding bpf_xdp
 !!! note
 	This kfunc returns a pointer to a refcounted object. The verifier will then ensure that the pointer to the object 
 	is eventually released using a release kfunc, or transferred to a map using a referenced kptr 
-	(by invoking [`bpf_kptr_xchg`](../../helper-function/bpf_kptr_xchg.md)). If not, the verifier fails the 
+	(by invoking [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)). If not, the verifier fails the 
 	loading of the BPF program until no lingering references remain in all possible explored states of the program.
 <!-- [/KFUNC_DEF] -->
 

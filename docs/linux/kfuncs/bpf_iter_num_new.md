@@ -22,7 +22,7 @@ If any of the input arguments are invalid, constructor should make sure to still
 
 ## Usage
 
-These open coded iterators allow you to do iteration over kernel objects like [iterator programs](../../program-type/BPF_PROG_TYPE_TRACING/#iterator). Except we can just use a classic iterator pattern.
+These open coded iterators allow you to do iteration over kernel objects like [iterator programs](../program-type/BPF_PROG_TYPE_TRACING.md/#iterator). Except we can just use a classic iterator pattern.
 
 This specific iterator is a numeric iterator which allows us to iterate over a range of numbers. Effectively this gives us yet another way to do a for loop in BPF. The advantage of this method over bounded loops is that the verifier only has to check two states, the [`bpf_iter_num_next`](bpf_iter_num_next.md) can return NULL or a integer between `start` and `end`. So no matter the size of the range, the verifier only has to check these two states, it understands the contract that the iterator will always produce a NULL at some point and terminate.
 

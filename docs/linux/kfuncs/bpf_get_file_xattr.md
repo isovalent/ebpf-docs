@@ -24,7 +24,7 @@ For security reasons, only `name__str` with prefix "user." is allowed.
 `#!c int bpf_get_file_xattr(struct file *file, const char *name__str, struct bpf_dynptr_kern *value_ptr)`
 
 !!! note
-    This function may sleep, and therefore can only be used from [sleepable programs](../../syscall/BPF_PROG_LOAD/#bpf_f_sleepable).
+    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 <!-- [/KFUNC_DEF] -->
 
 ## Usage
