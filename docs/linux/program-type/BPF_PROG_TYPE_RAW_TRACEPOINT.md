@@ -12,7 +12,7 @@ Raw tracepoint programs are similar to [tracepoint programs](BPF_PROG_TYPE_TRACE
 
 ## Usage
 
-Raw tracepoint programs are typically put into an [ELF](../../elf.md) section prefixed with `raw_tp/` or in a `raw_tracepoint` section. When loading as a `BPF_PROG_TYPE_TRACING` program, the raw tracepoint is typically located in a section prefixed with `tp_btf/`.
+Raw tracepoint programs are typically put into an [ELF](../../concepts/elf.md) section prefixed with `raw_tp/` or in a `raw_tracepoint` section. When loading as a `BPF_PROG_TYPE_TRACING` program, the raw tracepoint is typically located in a section prefixed with `tp_btf/`.
 
 Raw tracepoints are attached to the same tracepoints as normal tracepoint programs. The reason why you might want to use raw tracepoints over normal tracepoints is due to the performance improvement. For normal tracepoints, the kernel will cast or transform arguments even if the arguments are never used. By taking the raw arguments, the BPF program can do the casting or transformation only if the arguments are used, thereby making a more efficient tracepoint program.
 

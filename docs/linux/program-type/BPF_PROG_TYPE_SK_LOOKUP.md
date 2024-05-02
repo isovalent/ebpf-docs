@@ -14,7 +14,7 @@ The primary use case for this program type is to allow a single program to handl
 
 ## Usage
 
-Socket lookup programs are typically put into an [ELF](../../elf.md) section prefixed with `sk_lookup`. Socket lookup programs  are invoked by the transport layer when looking up a listening socket for a new connection request for connection oriented protocols, or when looking up an unconnected socket for a packet for connection-less protocols.
+Socket lookup programs are typically put into an [ELF](../../concepts/elf.md) section prefixed with `sk_lookup`. Socket lookup programs  are invoked by the transport layer when looking up a listening socket for a new connection request for connection oriented protocols, or when looking up an unconnected socket for a packet for connection-less protocols.
 
 The socket lookup program acts as a filter, if it returns `SK_DROP` (`0`) the connection or packet is dropped. If it returns `SK_PASS` (`1`) without setting a socket, the normal resolve behavior is used. However, the program can also chose to assign a specific socket with the [`bpf_sk_assign`](../helper-function/bpf_sk_assign.md) helper function.
 

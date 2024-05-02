@@ -14,7 +14,7 @@ TC allows an admin to filter traffic using a hierarchical model of qdisc's (Queu
 
 ## Usage
 
-TC CLS programs are typically put into an [ELF](../../elf.md) section prefixed with `tc/` or `classifier/`. The TC CLS program is called by the kernel with a [__sk_buff](../program-context/__sk_buff.md) context. The return value indicates what action the kernel should take with the packet, the following values are permitted:
+TC CLS programs are typically put into an [ELF](../../concepts/elf.md) section prefixed with `tc/` or `classifier/`. The TC CLS program is called by the kernel with a [__sk_buff](../program-context/__sk_buff.md) context. The return value indicates what action the kernel should take with the packet, the following values are permitted:
 
 ### Regular classifier
 
@@ -125,7 +125,7 @@ Not all helper functions are available in all program types. These are the helpe
     * [bpf_skb_change_type](../helper-function/bpf_skb_change_type.md)
     * [bpf_skb_adjust_room](../helper-function/bpf_skb_adjust_room.md)
     * [bpf_skb_change_tail](../helper-function/bpf_skb_change_tail.md)
-    * [bpf_skb_change_head](../helper-function/bpf_skb_change_head.md) [:octicons-tag-24: v5.8](6f3f65d80dac8f2bafce2213005821fccdce194c)
+    * [bpf_skb_change_head](../helper-function/bpf_skb_change_head.md) [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/6f3f65d80dac8f2bafce2213005821fccdce194c)
     * [bpf_skb_get_tunnel_key](../helper-function/bpf_skb_get_tunnel_key.md)
     * [bpf_skb_set_tunnel_key](../helper-function/bpf_skb_set_tunnel_key.md)
     * [bpf_skb_get_tunnel_opt](../helper-function/bpf_skb_get_tunnel_opt.md)

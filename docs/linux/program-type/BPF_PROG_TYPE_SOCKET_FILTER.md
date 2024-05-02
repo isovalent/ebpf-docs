@@ -15,7 +15,7 @@ A noticeable use-case for this program type is [tcpdump](https://www.tcpdump.org
 
 ## Usage
 
-Socket filter programs are typically put into an [ELF](../../elf.md) section prefixed with `socket`. The socket filter is called by the kernel with a [__sk_buff](../program-context/__sk_buff.md) context. The return value from indicates how many bytes of the message should be **kept**. Returning a value less then the side of the packet will truncate it and returning `0` will discard the packet.
+Socket filter programs are typically put into an [ELF](../../concepts/elf.md) section prefixed with `socket`. The socket filter is called by the kernel with a [__sk_buff](../program-context/__sk_buff.md) context. The return value from indicates how many bytes of the message should be **kept**. Returning a value less then the side of the packet will truncate it and returning `0` will discard the packet.
 
 ## Context
 
