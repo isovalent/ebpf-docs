@@ -18,7 +18,7 @@ Verify the PKCS#7 signature `sig_ptr` against the supplied `data_ptr` with keys 
 `#!c int bpf_verify_pkcs7_signature(struct bpf_dynptr_kern *data_ptr, struct bpf_dynptr_kern *sig_ptr, struct bpf_key *trusted_keyring)`
 
 !!! note
-    This function may sleep, and therefore can only be used from [sleepable programs](../../syscall/BPF_PROG_LOAD/#bpf_f_sleepable).
+    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

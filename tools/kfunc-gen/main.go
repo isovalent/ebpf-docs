@@ -353,14 +353,14 @@ func typeToC(t btf.Type) string {
 const (
 	kfSleepableNotice = `
 !!! note
-    This function may sleep, and therefore can only be used from [sleepable programs](../../syscall/BPF_PROG_LOAD/#bpf_f_sleepable).
+    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 `
 
 	kfAcquireNotice = `
 !!! note
 	This kfunc returns a pointer to a refcounted object. The verifier will then ensure that the pointer to the object 
 	is eventually released using a release kfunc, or transferred to a map using a referenced kptr 
-	(by invoking [` + "`bpf_kptr_xchg`" + `](../../helper-function/bpf_kptr_xchg.md)). If not, the verifier fails the 
+	(by invoking [` + "`bpf_kptr_xchg`" + `](../helper-function/bpf_kptr_xchg.md)). If not, the verifier fails the 
 	loading of the BPF program until no lingering references remain in all possible explored states of the program.
 `
 

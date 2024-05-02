@@ -16,7 +16,7 @@ Obtain a bpf_key structure with a key pointer set to the passed key ID.
 The key pointer is marked as invalid, to prevent [`bpf_key_put()`](bpf_key_put.md) from
 attempting to decrement the key reference count on that pointer. The key
 pointer set in such way is currently understood only by
-[`verify_pkcs7_signature()`](verify_pkcs7_signature.md).
+[`bpf_verify_pkcs7_signature()`](bpf_verify_pkcs7_signature.md).
 
 Set `id` to one of the values defined in `include/linux/verification.h`:
 
@@ -38,7 +38,7 @@ a bpf_key pointer with an invalid key pointer set from the pre-determined ID on 
 !!! note
 	This kfunc returns a pointer to a refcounted object. The verifier will then ensure that the pointer to the object 
 	is eventually released using a release kfunc, or transferred to a map using a referenced kptr 
-	(by invoking [`bpf_kptr_xchg`](../../helper-function/bpf_kptr_xchg.md)). If not, the verifier fails the 
+	(by invoking [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)). If not, the verifier fails the 
 	loading of the BPF program until no lingering references remain in all possible explored states of the program.
 
 !!! note
