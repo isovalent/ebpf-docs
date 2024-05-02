@@ -451,7 +451,7 @@ func renderProgramHelperFuncReference(file *helperFuncDataFile, progType string)
 	for _, item := range group {
 		fmt.Fprintf(&sb, "    * [%s](../helper-function/%s.md)", item.Name, item.Name)
 		if item.Since != nil {
-			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.Since.Version, item.Since.Commit)
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", item.Since.Version, item.Since.Commit)
 		}
 		fmt.Fprint(&sb, "\n")
 	}
@@ -468,7 +468,7 @@ func renderMapHelperFuncReference(file *helperFuncDataFile, progType string) str
 	for _, item := range group {
 		fmt.Fprintf(&sb, " * [%s](../helper-function/%s.md)", item.Name, item.Name)
 		if item.Since != nil {
-			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.Since.Version, item.Since.Commit)
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", item.Since.Version, item.Since.Commit)
 		}
 		fmt.Fprint(&sb, "\n")
 	}
@@ -482,7 +482,7 @@ func renderHelperFuncProgReference(programTypes []perFunc) string {
 	for _, item := range programTypes {
 		fmt.Fprintf(&sb, " * [%s](../program-type/%s.md)", item.name, item.name)
 		if item.since != nil {
-			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.since.Version, item.since.Commit)
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", item.since.Version, item.since.Commit)
 		}
 		fmt.Fprint(&sb, "\n")
 	}
@@ -496,7 +496,7 @@ func renderHelperFuncMapReference(mapTypes []perFunc) string {
 	for _, item := range mapTypes {
 		fmt.Fprintf(&sb, " * [%s](../map-type/%s.md)", item.name, item.name)
 		if item.since != nil {
-			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](%s)", item.since.Version, item.since.Commit)
+			fmt.Fprintf(&sb, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", item.since.Version, item.since.Commit)
 		}
 		fmt.Fprint(&sb, "\n")
 	}

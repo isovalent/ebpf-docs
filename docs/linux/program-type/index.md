@@ -65,7 +65,7 @@ These program types have unique purposes and do not fit neatly in any of the lar
 
 ## ELF sections
 
-The concept of a program type only exists at the kernel/syscall level. There is no standardized way of marking which program type a particular program within an [ELF](../../elf.md) is. The industry standard that most [loaders](../../loader.md) follow the example set out by LibBPF which is to patterns in the [ELF](../../elf.md) section names to convey the program type. 
+The concept of a program type only exists at the kernel/syscall level. There is no standardized way of marking which program type a particular program within an [ELF](../../concepts/elf.md) is. The industry standard that most [loaders](../../concepts/loader.md) follow the example set out by LibBPF which is to patterns in the [ELF](../../concepts/elf.md) section names to convey the program type. 
 
 ## Index of section names
 

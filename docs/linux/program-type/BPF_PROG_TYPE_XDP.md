@@ -14,7 +14,7 @@ Notable use cases for XDP programs are for DDoS protection, Load Balancing, and 
 
 ## Usage
 
-XDP programs are typically put into an [ELF](../../elf.md) section prefixed with `xdp`. The XDP program is called by the kernel with a [xdp_md](../program-context/xdp_md.md) context. The return value indicates what action the kernel should take with the packet, the following values are permitted:
+XDP programs are typically put into an [ELF](../../concepts/elf.md) section prefixed with `xdp`. The XDP program is called by the kernel with a `xdp_md` context. The return value indicates what action the kernel should take with the packet, the following values are permitted:
 
 * `XDP_ABORTED` - Signals that a unrecoverable error has taken place. Returning this action will cause the kernel to trigger the `xdp_exception` tracepoint and print a line to the trace log. This allows for debugging of such occurrences. It is also expensive, so should not be used without consideration in production.
 * `XDP_DROP` - Discards the packet. It should be noted that since we drop the packet very early, it will be invisible to tools like `tcpdump`. Consider recording drops using a custom feedback mechanism to maintain visibility.

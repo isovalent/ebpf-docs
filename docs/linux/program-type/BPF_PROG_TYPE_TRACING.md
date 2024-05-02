@@ -34,7 +34,7 @@ Fentry programs are similar in function to a kprobe attached to a functions firs
 
 Kprobes do not have to be attached at the entry point of a function, kprobes can be installed at any point in the function, whereas fentry programs are always attached at the entry point of a function.
 
-Fentry programs are attached to a [BPF trampoline](../concepts/bpf-trampoline.md) which causes less overhead than kprobes. Fentry programs can also be attached to BPF programs such as XDP, TC or cgroup programs which makes debugging eBPF programs easier. Kprobes lack this capability.
+Fentry programs are attached to a BPF trampoline which causes less overhead than kprobes. Fentry programs can also be attached to BPF programs such as XDP, TC or cgroup programs which makes debugging eBPF programs easier. Kprobes lack this capability.
 
 Fentry programs are typically located in an ELF section prefixed with `fentry/`.
 
