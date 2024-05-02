@@ -34,7 +34,7 @@ KFuncs are the kernel functions that have been annotated so that they can be cal
 
 KFuncs are not considered UAPI (User-space API) and are not subject to the same stability guarantees as the UAPI. Users of KFuncs are advices to use defensive programming techniques to handle the case where a KFunc is not available or has changed.
 
-For more details checkout the [KFuncs](../concepts/kfuncs.md) page.
+For more details checkout the [KFuncs](../linux/concepts/kfuncs.md) page.
 
 ## Maps
 

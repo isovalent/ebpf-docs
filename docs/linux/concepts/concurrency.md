@@ -4,7 +4,7 @@ description: "This page explains how to deal with concurrency in eBPF programs. 
 ---
 # Concurrency
 
-Concurrency in the BPF world is something to be aware of when writing BPF programs. A BPF program can be seen as a function called by the kernel, thus the same program can in theory be invoked concurrently by every kernel thread. The only guarantee given by the kernel is that the same program invocation always [runs on the same logical CPU](scheduling.md).
+Concurrency in the BPF world is something to be aware of when writing BPF programs. A BPF program can be seen as a function called by the kernel, thus the same program can in theory be invoked concurrently by every kernel thread. The only guarantee given by the kernel is that the same program invocation always runs on the same logical CPU.
 
 This is particularly important when accessing memory that is shared between multiple programs or invocations of the same program such as non-per-cpu maps and kernel memory. Accesses and modifications to such kinds of memory are subject to [race conditions](https://en.wikipedia.org/wiki/Race_condition). Same goes for programs and userspace accessing the same map value at the same time.
 
@@ -92,7 +92,7 @@ int sys_enter_count(void *ctx) {
 ```
 
 !!! warning
-	The [verifier](linux-verifier.md) will fail if there exists a code path where you take a lock and never release it. You are also not to take more than one lock at a time since that can cause a [deadlock](https://en.wikipedia.org/wiki/Deadlock) scenario.
+	The verifier will fail if there exists a code path where you take a lock and never release it. You are also not to take more than one lock at a time since that can cause a [deadlock](https://en.wikipedia.org/wiki/Deadlock) scenario.
 
 !!! warning
 	Not all BPF program types support `bpf_spin_lock` so be sure to check the [supported program types list](../helper-function/bpf_spin_lock.md#program-types).
