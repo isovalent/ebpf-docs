@@ -1,0 +1,8 @@
+---
+title: "Program Type 'BPF_PROG_TYPE_STRUCT_OPS'"
+description: "This page documents the 'BPF_PROG_TYPE_STRUCT_OPS' eBPF program type, including its defintion, usage, program types that can use it, and examples."
+---
+# Program type `BPF_PROG_TYPE_STRUCT_OPS`
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
