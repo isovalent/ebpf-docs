@@ -86,7 +86,7 @@ Adding BTF information about the key and value types of the map allows tools lik
 
 This attribute specifies the [BTF](../../concepts/btf.md) type ID of the map key within the [BTF](../../concepts/btf.md) object indicated by `btf_id`.
 
-### `btf_key_value_id`
+### `btf_value_type_id`
 
 [:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/a26ca7c982cb576749cbdd01e8ecde4bf010d60a)
 

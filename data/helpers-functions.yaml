@@ -762,8 +762,14 @@ programs:
   - group: tracing
 
   # TODO struct ops has allowed helpers per struct type, currently only TCP Congestion Algo
-  # but it doesn't fit neatly with the rest :( 
-  # BPF_PROG_TYPE_STRUCT_OPS:
+  # but it doesn't fit neatly with the rest :(
+  # When more struct_ops are added, we need to add a new field and make the tools render it
+  # properly
+  BPF_PROG_TYPE_STRUCT_OPS:
+  - name: bpf_tcp_send_ack
+  - name: bpf_sk_storage_get
+  - name: bpf_sk_storage_delete
+  - group: base
 
   # `bpf_lsm_func_proto` in `kernel/bpf/bpf_lsm.c`
   BPF_PROG_TYPE_LSM:
