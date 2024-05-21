@@ -60,7 +60,7 @@ These program types have unique purposes and do not fit neatly in any of the lar
 * BPF_PROG_TYPE_LIRC_MODE2
 * [BPF_PROG_TYPE_LSM](BPF_PROG_TYPE_LSM.md)
 * [BPF_PROG_TYPE_EXT](BPF_PROG_TYPE_EXT.md)
-* BPF_PROG_TYPE_STRUCT_OPS
+* [BPF_PROG_TYPE_STRUCT_OPS](BPF_PROG_TYPE_STRUCT_OPS.md)
 * [BPF_PROG_TYPE_SYSCALL](BPF_PROG_TYPE_SYSCALL.md) 
 
 ## ELF sections
