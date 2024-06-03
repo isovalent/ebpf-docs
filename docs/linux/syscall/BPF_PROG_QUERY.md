@@ -1,6 +1,6 @@
 ---
 title: "Syscall command 'BPF_PROG_QUERY'"
-description: "This page documents the 'BPF_PROG_QUERY' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_PROG_QUERY' eBPF syscall command, including its definition, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_PROG_QUERY` command
 

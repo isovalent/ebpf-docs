@@ -1,6 +1,6 @@
 ---
 title: "Program Type 'BPF_PROG_TYPE_KPROBE'"
-description: "This page documents the 'BPF_PROG_TYPE_KPROBE' eBPF program type, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_PROG_TYPE_KPROBE' eBPF program type, including its definition, usage, program types that can use it, and examples."
 ---
 # Program type `BPF_PROG_TYPE_KPROBE`
 
@@ -208,5 +208,7 @@ Not all helper functions are available in all program types. These are the helpe
 ## KFuncs
 
 <!-- [PROG_KFUNC_REF] -->
-There are currently no kfuncs supported for this program type
+??? abstract "Supported kfuncs"
+    - [bpf_session_cookie](../kfuncs/bpf_session_cookie.md)
+    - [bpf_session_is_return](../kfuncs/bpf_session_is_return.md)
 <!-- [/PROG_KFUNC_REF] -->

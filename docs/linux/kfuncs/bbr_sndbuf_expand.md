@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bbr_sndbuf_expand'"
-description: "This page documents the 'bbr_sndbuf_expand' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bbr_sndbuf_expand' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bbr_sndbuf_expand`
 

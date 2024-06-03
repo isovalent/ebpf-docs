@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_current_task_under_cgroup'"
-description: "This page documents the 'bpf_current_task_under_cgroup' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_current_task_under_cgroup' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_current_task_under_cgroup`
 

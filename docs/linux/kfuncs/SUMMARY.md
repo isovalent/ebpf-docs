@@ -102,6 +102,13 @@
 - Misc KFuncs
   - [bpf_map_sum_elem_count](bpf_map_sum_elem_count.md)
   - [bpf_get_fsverity_digest](bpf_get_fsverity_digest.md)
+- Preemption kfuncs
+  - [bpf_preempt_disable](bpf_preempt_disable.md)
+  - [bpf_preempt_enable](bpf_preempt_enable.md)
+- Workqueue KFuncs
+  - [bpf_wq_init](bpf_wq_init.md)
+  - [bpf_wq_set_callback_impl](bpf_wq_set_callback_impl.md)
+  - [bpf_wq_start](bpf_wq_start.md)
 - XDP metadata kfuncs
   - [bpf_xdp_metadata_rx_timestamp](bpf_xdp_metadata_rx_timestamp.md)
   - [bpf_xdp_metadata_rx_hash](bpf_xdp_metadata_rx_hash.md)
@@ -112,6 +119,12 @@
 - Socket related kfuncs
   - [bpf_sock_addr_set_sun_path](bpf_sock_addr_set_sun_path.md)
   - [bpf_sock_destroy](bpf_sock_destroy.md)
+- Network crypto kfuncs
+  - [bpf_crypto_ctx_create](bpf_crypto_ctx_create.md)
+  - [bpf_crypto_ctx_acquire](bpf_crypto_ctx_acquire.md)
+  - [bpf_crypto_ctx_release](bpf_crypto_ctx_release.md)
+  - [bpf_crypto_decrypt](bpf_crypto_decrypt.md)
+  - [bpf_crypto_encrypt](bpf_crypto_encrypt.md)
 - BBR congestion control kfuncs
   - [bbr_init](bbr_init.md)
   - [bbr_main](bbr_main.md)
@@ -167,4 +180,7 @@
   - [hid_bpf_allocate_context](hid_bpf_allocate_context.md)
   - [hid_bpf_release_context](hid_bpf_release_context.md)
   - [hid_bpf_hw_request](hid_bpf_hw_request.md)
+- KProbe session Kfuncs
+  - [bpf_session_cookie](bpf_session_cookie.md)
+  - [bpf_session_is_return](bpf_session_is_return.md)
 

@@ -1,6 +1,6 @@
 ---
 title: "Syscall command 'BPF_LINK_UPDATE'"
-description: "This page documents the 'BPF_LINK_UPDATE' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_LINK_UPDATE' eBPF syscall command, including its definition, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_LINK_UPDATE` command
 

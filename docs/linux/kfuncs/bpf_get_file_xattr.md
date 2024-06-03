@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bpf_get_file_xattr'"
-description: "This page documents the 'bpf_get_file_xattr' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_get_file_xattr' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_get_file_xattr`
 

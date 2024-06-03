@@ -1988,3 +1988,39 @@
     - name: hid_bpf_hw_request
       version: v6.3
       commit: 91a7f802d1852f60139712bdcfa98db547ce0531
+    - name: bpf_wq_init
+      version: v6.10
+      commit: eb48f6cd41a0f7803770a76bbffb6bd5b1b2ae2f
+    - name: bpf_wq_set_callback_impl
+      version: v6.10
+      commit: 81f1d7a583fa1fa14f0c4e6140d34b5e3d08d227
+    - name: bpf_wq_start
+      version: v6.10
+      commit: 8e83da9732d91c60fdc651b2486c8e5935eb0ca2
+    - name: bpf_preempt_disable
+      version: v6.10
+      commit: fc7566ad0a826cdc8886c5dbbb39ce72a0dc6333
+    - name: bpf_preempt_enable
+      version: v6.10
+      commit: fc7566ad0a826cdc8886c5dbbb39ce72a0dc6333
+    - name: bpf_crypto_ctx_create
+      version: v6.10
+      commit: 3e1c6f35409f9e447bf37f64840f5b65576bfb78
+    - name: bpf_crypto_ctx_release
+      version: v6.10
+      commit: 3e1c6f35409f9e447bf37f64840f5b65576bfb78
+    - name: bpf_crypto_ctx_acquire
+      version: v6.10
+      commit: 3e1c6f35409f9e447bf37f64840f5b65576bfb78
+    - name: bpf_crypto_decrypt
+      version: v6.10
+      commit: 3e1c6f35409f9e447bf37f64840f5b65576bfb78
+    - name: bpf_crypto_encrypt
+      version: v6.10
+      commit: 3e1c6f35409f9e447bf37f64840f5b65576bfb78
+    - name: bpf_session_is_return
+      version: v6.10
+      commit: adf46d88ae4b2557f7e2e02547a25fb866935711
+    - name: bpf_session_cookie
+      version: v6.10
+      commit: 5c919acef85147886eb2abf86fb147f94680a8b0

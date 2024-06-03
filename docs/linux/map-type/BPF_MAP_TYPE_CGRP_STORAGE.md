@@ -1,6 +1,6 @@
 ---
 title: "Map Type 'BPF_MAP_TYPE_CGRP_STORAGE'"
-description: "This page documents the 'BPF_MAP_TYPE_CGRP_STORAGE' eBPF map type, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_MAP_TYPE_CGRP_STORAGE' eBPF map type, including its definition, usage, program types that can use it, and examples."
 ---
 # Map type `BPF_MAP_TYPE_CGRP_STORAGE`
 

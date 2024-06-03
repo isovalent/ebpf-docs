@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'hid_bpf_hw_request'"
-description: "This page documents the 'hid_bpf_hw_request' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'hid_bpf_hw_request' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `hid_bpf_hw_request`
 

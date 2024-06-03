@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bpf_rdonly_cast'"
-description: "This page documents the 'bpf_rdonly_cast' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_rdonly_cast' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_rdonly_cast`
 
@@ -21,8 +21,11 @@ the return value and subsequent pointer chasing cannot be
 used as helper/kfunc arguments.
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_rdonly_cast(void *obj__ign, u32 btf_id__k)`
+`#!c void *bpf_rdonly_cast(const void *obj__ign, u32 btf_id__k)`
 <!-- [/KFUNC_DEF] -->
+
+!!! warning "signature changed"
+    The signature of this kfunc has changed in [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/5b268d1ebcdceacf992dfda8f9031d56005a274e). The previous signature was `#!c void *bpf_rdonly_cast(void *obj__ign, u32 btf_id__k)` weak ELF symbols can be used to support both versions.
 
 ## Usage
 

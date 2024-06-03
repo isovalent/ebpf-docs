@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_cgrp_storage_delete'"
-description: "This page documents the 'bpf_cgrp_storage_delete' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_cgrp_storage_delete' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_cgrp_storage_delete`
 

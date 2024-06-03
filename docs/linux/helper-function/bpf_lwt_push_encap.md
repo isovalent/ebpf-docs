@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_lwt_push_encap'"
-description: "This page documents the 'bpf_lwt_push_encap' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_lwt_push_encap' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_lwt_push_encap`
 

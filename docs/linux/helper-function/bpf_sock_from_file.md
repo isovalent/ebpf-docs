@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_sock_from_file'"
-description: "This page documents the 'bpf_sock_from_file' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_sock_from_file' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_sock_from_file`
 

@@ -1,6 +1,6 @@
 ---
 title: "Syscall command 'BPF_ITER_CREATE'"
-description: "This page documents the 'BPF_ITER_CREATE' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_ITER_CREATE' eBPF syscall command, including its definition, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_ITER_CREATE` command
 

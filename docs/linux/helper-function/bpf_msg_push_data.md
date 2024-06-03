@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_msg_push_data'"
-description: "This page documents the 'bpf_msg_push_data' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_msg_push_data' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_msg_push_data`
 

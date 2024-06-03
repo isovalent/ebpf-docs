@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bpf_ct_set_nat_info'"
-description: "This page documents the 'bpf_ct_set_nat_info' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_ct_set_nat_info' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_ct_set_nat_info`
 

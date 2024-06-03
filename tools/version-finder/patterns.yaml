@@ -709,3 +709,15 @@ patterns:
     - name: hid_bpf_allocate_context
     - name: hid_bpf_release_context
     - name: hid_bpf_hw_request
+    - name: bpf_wq_init
+    - name: bpf_wq_set_callback_impl
+    - name: bpf_wq_start
+    - name: bpf_preempt_disable
+    - name: bpf_preempt_enable
+    - name: bpf_crypto_ctx_create
+    - name: bpf_crypto_ctx_release
+    - name: bpf_crypto_ctx_acquire
+    - name: bpf_crypto_decrypt
+    - name: bpf_crypto_encrypt
+    - name: bpf_session_is_return
+    - name: bpf_session_cookie

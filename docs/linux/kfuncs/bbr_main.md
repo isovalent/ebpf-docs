@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bbr_main'"
-description: "This page documents the 'bbr_main' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bbr_main' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bbr_main`
 
@@ -13,8 +13,11 @@ Notify BBR congestion control algorithm of newly delivered packets.
 ## Definition
 
 <!-- [KFUNC_DEF] -->
-`#!c void bbr_main(struct sock *sk, const struct rate_sample *rs)`
+`#!c void bbr_main(struct sock *sk, u32 ack, int flag, const struct rate_sample *rs)`
 <!-- [/KFUNC_DEF] -->
+
+!!! warning "signature changed"
+    The signature of this kfunc has changed in [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/57bfc7605ca5b102ba336779ae9adbc5bbba1d96). The previous signature was `#!c void bbr_main(struct sock *sk, const struct rate_sample *rs)` weak ELF symbols can be used to support both versions.
 
 ## Usage
 

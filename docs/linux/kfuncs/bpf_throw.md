@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bpf_throw'"
-description: "This page documents the 'bpf_throw' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_throw' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_throw`
 

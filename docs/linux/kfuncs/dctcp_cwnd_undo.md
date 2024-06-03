@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'dctcp_cwnd_undo'"
-description: "This page documents the 'dctcp_cwnd_undo' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'dctcp_cwnd_undo' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `dctcp_cwnd_undo`
 

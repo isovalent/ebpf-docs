@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'tcp_reno_undo_cwnd'"
-description: "This page documents the 'tcp_reno_undo_cwnd' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'tcp_reno_undo_cwnd' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `tcp_reno_undo_cwnd`
 

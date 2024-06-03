@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_ktime_get_tai_ns'"
-description: "This page documents the 'bpf_ktime_get_tai_ns' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_ktime_get_tai_ns' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_ktime_get_tai_ns`
 

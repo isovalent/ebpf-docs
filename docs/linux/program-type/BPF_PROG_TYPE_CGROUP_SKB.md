@@ -1,6 +1,6 @@
 ---
 title: "Program Type 'BPF_PROG_TYPE_CGROUP_SKB'"
-description: "This page documents the 'BPF_PROG_TYPE_CGROUP_SKB' eBPF program type, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_PROG_TYPE_CGROUP_SKB' eBPF program type, including its definition, usage, program types that can use it, and examples."
 ---
 # Program type `BPF_PROG_TYPE_CGROUP_SKB`
 
@@ -343,8 +343,13 @@ char _license[] SEC("license") = "GPL";
     - [bpf_iter_task_vma_new](../kfuncs/bpf_iter_task_vma_new.md)
     - [bpf_iter_task_vma_next](../kfuncs/bpf_iter_task_vma_next.md)
     - [bpf_map_sum_elem_count](../kfuncs/bpf_map_sum_elem_count.md)
+    - [bpf_preempt_disable](../kfuncs/bpf_preempt_disable.md)
+    - [bpf_preempt_enable](../kfuncs/bpf_preempt_enable.md)
     - [bpf_rcu_read_lock](../kfuncs/bpf_rcu_read_lock.md)
     - [bpf_rcu_read_unlock](../kfuncs/bpf_rcu_read_unlock.md)
     - [bpf_rdonly_cast](../kfuncs/bpf_rdonly_cast.md)
     - [bpf_sock_addr_set_sun_path](../kfuncs/bpf_sock_addr_set_sun_path.md)
+    - [bpf_wq_init](../kfuncs/bpf_wq_init.md)
+    - [bpf_wq_set_callback_impl](../kfuncs/bpf_wq_set_callback_impl.md)
+    - [bpf_wq_start](../kfuncs/bpf_wq_start.md)
 <!-- [/PROG_KFUNC_REF] -->

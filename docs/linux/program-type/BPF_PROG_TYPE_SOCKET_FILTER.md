@@ -1,6 +1,6 @@
 ---
 title: "Program Type 'BPF_PROG_TYPE_SOCKET_FILTER'"
-description: "This page documents the 'BPF_PROG_TYPE_SOCKET_FILTER' eBPF program type, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_PROG_TYPE_SOCKET_FILTER' eBPF program type, including its definition, usage, program types that can use it, and examples."
 ---
 # Program type `BPF_PROG_TYPE_SOCKET_FILTER`
 
@@ -151,9 +151,14 @@ Not all helper functions are available in all program types. These are the helpe
     - [bpf_iter_task_vma_new](../kfuncs/bpf_iter_task_vma_new.md)
     - [bpf_iter_task_vma_next](../kfuncs/bpf_iter_task_vma_next.md)
     - [bpf_map_sum_elem_count](../kfuncs/bpf_map_sum_elem_count.md)
+    - [bpf_preempt_disable](../kfuncs/bpf_preempt_disable.md)
+    - [bpf_preempt_enable](../kfuncs/bpf_preempt_enable.md)
     - [bpf_rcu_read_lock](../kfuncs/bpf_rcu_read_lock.md)
     - [bpf_rcu_read_unlock](../kfuncs/bpf_rcu_read_unlock.md)
     - [bpf_rdonly_cast](../kfuncs/bpf_rdonly_cast.md)
+    - [bpf_wq_init](../kfuncs/bpf_wq_init.md)
+    - [bpf_wq_set_callback_impl](../kfuncs/bpf_wq_set_callback_impl.md)
+    - [bpf_wq_start](../kfuncs/bpf_wq_start.md)
 <!-- [/PROG_KFUNC_REF] -->
 
 ## Examples

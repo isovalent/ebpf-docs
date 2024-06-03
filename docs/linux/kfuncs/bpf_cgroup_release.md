@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bpf_cgroup_release'"
-description: "This page documents the 'bpf_cgroup_release' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_cgroup_release' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_cgroup_release`
 

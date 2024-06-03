@@ -1,6 +1,6 @@
 ---
 title: "Program Type 'BPF_PROG_TYPE_SYSCALL'"
-description: "This page documents the 'BPF_PROG_TYPE_SYSCALL' eBPF program type, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_PROG_TYPE_SYSCALL' eBPF program type, including its definition, usage, program types that can use it, and examples."
 ---
 # Program type `BPF_PROG_TYPE_SYSCALL`
 
@@ -177,6 +177,9 @@ Not all helper functions are available in all program types. These are the helpe
 <!-- [PROG_KFUNC_REF] -->
 ??? abstract "Supported kfuncs"
     - [bpf_cast_to_kern_ctx](../kfuncs/bpf_cast_to_kern_ctx.md)
+    - [bpf_crypto_ctx_acquire](../kfuncs/bpf_crypto_ctx_acquire.md)
+    - [bpf_crypto_ctx_create](../kfuncs/bpf_crypto_ctx_create.md)
+    - [bpf_crypto_ctx_release](../kfuncs/bpf_crypto_ctx_release.md)
     - [bpf_dynptr_adjust](../kfuncs/bpf_dynptr_adjust.md)
     - [bpf_dynptr_clone](../kfuncs/bpf_dynptr_clone.md)
     - [bpf_dynptr_is_null](../kfuncs/bpf_dynptr_is_null.md)
@@ -200,9 +203,14 @@ Not all helper functions are available in all program types. These are the helpe
     - [bpf_iter_task_vma_new](../kfuncs/bpf_iter_task_vma_new.md)
     - [bpf_iter_task_vma_next](../kfuncs/bpf_iter_task_vma_next.md)
     - [bpf_map_sum_elem_count](../kfuncs/bpf_map_sum_elem_count.md)
+    - [bpf_preempt_disable](../kfuncs/bpf_preempt_disable.md)
+    - [bpf_preempt_enable](../kfuncs/bpf_preempt_enable.md)
     - [bpf_rcu_read_lock](../kfuncs/bpf_rcu_read_lock.md)
     - [bpf_rcu_read_unlock](../kfuncs/bpf_rcu_read_unlock.md)
     - [bpf_rdonly_cast](../kfuncs/bpf_rdonly_cast.md)
+    - [bpf_wq_init](../kfuncs/bpf_wq_init.md)
+    - [bpf_wq_set_callback_impl](../kfuncs/bpf_wq_set_callback_impl.md)
+    - [bpf_wq_start](../kfuncs/bpf_wq_start.md)
     - [hid_bpf_allocate_context](../kfuncs/hid_bpf_allocate_context.md)
     - [hid_bpf_attach_prog](../kfuncs/hid_bpf_attach_prog.md)
     - [hid_bpf_hw_request](../kfuncs/hid_bpf_hw_request.md)
