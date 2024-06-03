@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bbr_min_tso_segs'"
-description: "This page documents the 'bbr_min_tso_segs' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bbr_min_tso_segs' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bbr_min_tso_segs`
 

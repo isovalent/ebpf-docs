@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_get_current_ancestor_cgroup_id'"
-description: "This page documents the 'bpf_get_current_ancestor_cgroup_id' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_get_current_ancestor_cgroup_id' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_get_current_ancestor_cgroup_id`
 

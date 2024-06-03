@@ -1,6 +1,6 @@
 ---
 title: "Program Type 'BPF_PROG_TYPE_XDP'"
-description: "This page documents the 'BPF_PROG_TYPE_XDP' eBPF program type, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_PROG_TYPE_XDP' eBPF program type, including its definition, usage, program types that can use it, and examples."
 ---
 # Program type `BPF_PROG_TYPE_XDP`
 
@@ -403,6 +403,8 @@ Not all helper functions are available in all program types. These are the helpe
     - [bpf_cgroup_ancestor](../kfuncs/bpf_cgroup_ancestor.md)
     - [bpf_cgroup_from_id](../kfuncs/bpf_cgroup_from_id.md)
     - [bpf_cgroup_release](../kfuncs/bpf_cgroup_release.md)
+    - [bpf_crypto_decrypt](../kfuncs/bpf_crypto_decrypt.md)
+    - [bpf_crypto_encrypt](../kfuncs/bpf_crypto_encrypt.md)
     - [bpf_ct_change_status](../kfuncs/bpf_ct_change_status.md)
     - [bpf_ct_change_timeout](../kfuncs/bpf_ct_change_timeout.md)
     - [bpf_ct_insert_entry](../kfuncs/bpf_ct_insert_entry.md)
@@ -442,6 +444,8 @@ Not all helper functions are available in all program types. These are the helpe
     - [bpf_obj_new_impl](../kfuncs/bpf_obj_new_impl.md)
     - [bpf_percpu_obj_drop_impl](../kfuncs/bpf_percpu_obj_drop_impl.md)
     - [bpf_percpu_obj_new_impl](../kfuncs/bpf_percpu_obj_new_impl.md)
+    - [bpf_preempt_disable](../kfuncs/bpf_preempt_disable.md)
+    - [bpf_preempt_enable](../kfuncs/bpf_preempt_enable.md)
     - [bpf_rbtree_add_impl](../kfuncs/bpf_rbtree_add_impl.md)
     - [bpf_rbtree_first](../kfuncs/bpf_rbtree_first.md)
     - [bpf_rbtree_remove](../kfuncs/bpf_rbtree_remove.md)
@@ -457,6 +461,9 @@ Not all helper functions are available in all program types. These are the helpe
     - [bpf_task_release](../kfuncs/bpf_task_release.md)
     - [bpf_task_under_cgroup](../kfuncs/bpf_task_under_cgroup.md)
     - [bpf_throw](../kfuncs/bpf_throw.md)
+    - [bpf_wq_init](../kfuncs/bpf_wq_init.md)
+    - [bpf_wq_set_callback_impl](../kfuncs/bpf_wq_set_callback_impl.md)
+    - [bpf_wq_start](../kfuncs/bpf_wq_start.md)
     - [bpf_xdp_ct_alloc](../kfuncs/bpf_xdp_ct_alloc.md)
     - [bpf_xdp_ct_lookup](../kfuncs/bpf_xdp_ct_lookup.md)
     - [bpf_xdp_metadata_rx_hash](../kfuncs/bpf_xdp_metadata_rx_hash.md)

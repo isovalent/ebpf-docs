@@ -183,6 +183,11 @@ sets:
       - name: bpf_dynptr_is_rdonly
       - name: bpf_dynptr_size
       - name: bpf_dynptr_clone
+      - name: bpf_wq_init
+      - name: bpf_wq_set_callback_impl
+      - name: bpf_wq_start
+      - name: bpf_preempt_disable
+      - name: bpf_preempt_enable
     program_types:
       - BPF_PROG_TYPE_UNSPEC
 
@@ -366,3 +371,33 @@ sets:
     program_types:
       - BPF_PROG_TYPE_SYSCALL
 
+  crypt_init_kfunc_btf_ids:
+    funcs:
+      - name: bpf_crypto_ctx_create
+        flags: [KF_ACQUIRE, KF_RET_NULL, KF_SLEEPABLE]
+      - name: bpf_crypto_ctx_release
+        flags: [KF_RELEASE]
+      - name: bpf_crypto_ctx_acquire
+        flags: [KF_ACQUIRE, KF_RCU, KF_RET_NULL]
+    program_types:
+      - BPF_PROG_TYPE_SYSCALL
+
+  crypt_kfunc_btf_ids:
+    funcs:
+      - name: bpf_crypto_decrypt
+        flags: [KF_RCU]
+      - name: bpf_crypto_encrypt
+        flags: [KF_RCU]
+    program_types:
+      - BPF_PROG_TYPE_SCHED_CLS
+      - BPF_PROG_TYPE_SCHED_ACT
+      - BPF_PROG_TYPE_XDP
+
+  kprobe_multi_kfunc_set_ids:
+    funcs:
+      - name: bpf_session_is_return
+      - name: bpf_session_cookie
+    program_types:
+      - BPF_PROG_TYPE_KPROBE
+    attach_type:
+      - BPF_TRACE_KPROBE_SESSION

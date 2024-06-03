@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_l4_csum_replace'"
-description: "This page documents the 'bpf_l4_csum_replace' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_l4_csum_replace' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_l4_csum_replace`
 

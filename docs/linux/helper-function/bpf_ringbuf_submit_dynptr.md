@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_ringbuf_submit_dynptr'"
-description: "This page documents the 'bpf_ringbuf_submit_dynptr' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_ringbuf_submit_dynptr' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_ringbuf_submit_dynptr`
 

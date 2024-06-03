@@ -1,6 +1,6 @@
 ---
 title: "Syscall command 'BPF_PROG_GET_FD_BY_ID'"
-description: "This page documents the 'BPF_PROG_GET_FD_BY_ID' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_PROG_GET_FD_BY_ID' eBPF syscall command, including its definition, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_PROG_GET_FD_BY_ID` command
 

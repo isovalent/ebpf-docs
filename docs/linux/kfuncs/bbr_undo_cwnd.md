@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bbr_undo_cwnd'"
-description: "This page documents the 'bbr_undo_cwnd' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bbr_undo_cwnd' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bbr_undo_cwnd`
 

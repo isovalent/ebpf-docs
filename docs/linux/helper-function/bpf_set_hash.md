@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_set_hash'"
-description: "This page documents the 'bpf_set_hash' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_set_hash' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_set_hash`
 

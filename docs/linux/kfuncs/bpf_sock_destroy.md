@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'bpf_sock_destroy'"
-description: "This page documents the 'bpf_sock_destroy' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_sock_destroy' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `bpf_sock_destroy`
 

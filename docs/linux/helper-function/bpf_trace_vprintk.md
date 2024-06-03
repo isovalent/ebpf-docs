@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_trace_vprintk'"
-description: "This page documents the 'bpf_trace_vprintk' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_trace_vprintk' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_trace_vprintk`
 

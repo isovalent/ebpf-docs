@@ -1,6 +1,6 @@
 ---
 title: "Helper Function 'bpf_xdp_output'"
-description: "This page documents the 'bpf_xdp_output' eBPF helper function, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'bpf_xdp_output' eBPF helper function, including its definition, usage, program types that can use it, and examples."
 ---
 # Helper function `bpf_xdp_output`
 

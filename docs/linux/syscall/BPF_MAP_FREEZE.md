@@ -1,6 +1,6 @@
 ---
 title: "Syscall command 'BPF_MAP_FREEZE'"
-description: "This page documents the 'BPF_MAP_FREEZE' eBPF syscall command, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'BPF_MAP_FREEZE' eBPF syscall command, including its definition, usage, program types that can use it, and examples."
 ---
 # BPF Syscall `BPF_MAP_FREEZE` command
 

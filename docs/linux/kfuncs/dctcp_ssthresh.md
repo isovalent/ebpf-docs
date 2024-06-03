@@ -1,6 +1,6 @@
 ---
 title: "KFunc 'dctcp_ssthresh'"
-description: "This page documents the 'dctcp_ssthresh' eBPF kfunc, including its defintion, usage, program types that can use it, and examples."
+description: "This page documents the 'dctcp_ssthresh' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
 # KFunc `dctcp_ssthresh`
 

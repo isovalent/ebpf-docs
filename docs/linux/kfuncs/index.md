@@ -155,7 +155,18 @@ These kfuncs allow you to take a reference to a cgroup and store them as kptrs i
 - [bpf_dynptr_is_rdonly](bpf_dynptr_is_rdonly.md)
 - [bpf_dynptr_size](bpf_dynptr_size.md)
 - [bpf_dynptr_clone](bpf_dynptr_clone.md)
- 
+
+## Preemption KFuncs
+
+- [bpf_preempt_disable](bpf_preempt_disable.md)
+- [bpf_preempt_enable](bpf_preempt_enable.md)
+
+## Workqueue KFuncs
+
+- [bpf_wq_init](bpf_wq_init.md)
+- [bpf_wq_set_callback_impl](bpf_wq_set_callback_impl.md)
+- [bpf_wq_start](bpf_wq_start.md)
+
 ## Misc KFuncs
 
 - [bpf_map_sum_elem_count](bpf_map_sum_elem_count.md)
@@ -177,6 +188,14 @@ These kfuncs allow you to take a reference to a cgroup and store them as kptrs i
 
 - [bpf_sock_addr_set_sun_path](bpf_sock_addr_set_sun_path.md)
 - [bpf_sock_destroy](bpf_sock_destroy.md)
+
+## Network crypto kfuncs
+
+- [bpf_crypto_ctx_create](bpf_crypto_ctx_create.md)
+- [bpf_crypto_ctx_acquire](bpf_crypto_ctx_acquire.md)
+- [bpf_crypto_ctx_release](bpf_crypto_ctx_release.md)
+- [bpf_crypto_decrypt](bpf_crypto_decrypt.md)
+- [bpf_crypto_encrypt](bpf_crypto_encrypt.md)
 
 ## BBR congestion control kfuncs
 
@@ -249,3 +268,6 @@ These kfuncs allow you to take a reference to a cgroup and store them as kptrs i
 - [hid_bpf_release_context](hid_bpf_release_context.md)
 - [hid_bpf_hw_request](hid_bpf_hw_request.md)
 
+## KProbe session Kfuncs
+  - [bpf_session_cookie](bpf_session_cookie.md)
+  - [bpf_session_is_return](bpf_session_is_return.md)
