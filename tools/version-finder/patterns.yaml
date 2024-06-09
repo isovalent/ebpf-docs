@@ -477,6 +477,12 @@ patterns:
     - name: BTF_F_NONAME
     - name: BTF_F_PTR_RAW
     - name: BTF_F_ZERO
+    - name: BPF_F_LINK
+    - name: BPF_F_PATH_FD
+    - name: BPF_F_VTYPE_BTF_OBJ_FD
+    - name: BPF_F_TOKEN_FD
+    - name: BPF_F_SEGV_ON_FAULT
+    - name: BPF_F_NO_USER_CONV
   
   - name: argument_constants
     patterns:
