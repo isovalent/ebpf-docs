@@ -1320,6 +1320,25 @@
     - name: BTF_F_ZERO
       version: v5.10
       commit: c4d0bfb45068d853a478b9067a95969b1886a30f
+    - name: BPF_F_LINK
+      version: v6.4
+      commit: 68b04864ca425d1894c96b8141d4fba1181f11cb
+    - name: BPF_F_PATH_FD
+      version: v6.5
+      commit: cb8edce28073a906401c9e421eca7c99f3396da1
+    - name: BPF_F_VTYPE_BTF_OBJ_FD
+      version: v6.9
+      commit: fcc2c1fb0651477c8ed78a3a293c175ccd70697a
+    - name: BPF_F_TOKEN_FD
+      version: v6.9
+      commit: a177fc2bf6fd83704854feaf7aae926b1df4f0b9
+    - name: BPF_F_SEGV_ON_FAULT
+      version: v6.9
+      commit: 317460317a02a1af512697e6e964298dedd8a163
+    - name: BPF_F_NO_USER_CONV
+      version: v6.9
+      commit: 317460317a02a1af512697e6e964298dedd8a163
+
 - name: argument_constants
   features:
     - name: BPF_CGROUP_ITER_ORDER_UNSPEC

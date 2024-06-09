@@ -108,6 +108,17 @@ It has the following meanings per map type:
 
 * `BPF_MAP_TYPE_BLOOM_FILTER` - The lowest 4 bits indicate the number of hash functions (if 0, the bloom filter will default to using 5 hash functions).
 
+### `value_type_btf_obj_fd`
+
+[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/fcc2c1fb0651477c8ed78a3a293c175ccd70697a)
+
+This attribute is used when creating a [`BPF_MAP_TYPE_STRUCT_OPS`](../map-type/BPF_MAP_TYPE_STRUCT_OPS.md) map which attaches to a ops struct defined in a kernel module. The `BPF_F_VTYPE_BTF_OBJ_FD` flag should be set to indicate to the kernel that the attribute is used.
+
+### `map_token_fd`
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
 ## Flags
 
 ### `BPF_F_NO_PREALLOC`
@@ -249,6 +260,61 @@ Maps of type `BPF_MAP_TYPE_PERF_EVENT_ARRAY` by default will clear all unread pe
 
 *[BTF]: BPF Type Format 
 *[FD]: File Descriptor
+
+### `BPF_F_LINK`
+
+<!-- [FEATURE_TAG](BPF_F_LINK) -->
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/68b04864ca425d1894c96b8141d4fba1181f11cb)
+<!-- [/FEATURE_TAG] -->
+
+The `BPF_F_LINK` flag is used to indicate that a link is to be used to attach a `BPF_TYPE_STRUCT_OPS` map to a callsite. If this flag is absent, the map is attached when the value of the map is set using `BPF_MAP_UPDATE_ELEM` and can be detached using `BPF_MAP_DELETE_ELEM`.
+
+!!! note
+    This flag has a different meaning when used in the `BPF_LINK_CREATE` command.
+
+### `BPF_F_PATH_FD`
+
+<!-- [FEATURE_TAG](BPF_F_PATH_FD) -->
+[:octicons-tag-24: v6.5](https://github.com/torvalds/linux/commit/cb8edce28073a906401c9e421eca7c99f3396da1)
+<!-- [/FEATURE_TAG] -->
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+### `BPF_F_VTYPE_BTF_OBJ_FD`
+
+<!-- [FEATURE_TAG](BPF_F_VTYPE_BTF_OBJ_FD) -->
+[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/fcc2c1fb0651477c8ed78a3a293c175ccd70697a)
+<!-- [/FEATURE_TAG] -->
+
+The `BPF_F_VTYPE_BTF_OBJ_FD` flag is used to indicate that the [`btf_vmlinux_value_type_id`](#btf_vmlinux_value_type_id) attribute has been set.
+
+### `BPF_F_TOKEN_FD`
+
+<!-- [FEATURE_TAG](BPF_F_TOKEN_FD) -->
+[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/a177fc2bf6fd83704854feaf7aae926b1df4f0b9)
+<!-- [/FEATURE_TAG] -->
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+### `BPF_F_SEGV_ON_FAULT`
+
+<!-- [FEATURE_TAG](BPF_F_SEGV_ON_FAULT) -->
+[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/317460317a02a1af512697e6e964298dedd8a163)
+<!-- [/FEATURE_TAG] -->
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+### `BPF_F_NO_USER_CONV`
+
+<!-- [FEATURE_TAG](BPF_F_NO_USER_CONV) -->
+[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/317460317a02a1af512697e6e964298dedd8a163)
+<!-- [/FEATURE_TAG] -->
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
 
 ## Example
 
