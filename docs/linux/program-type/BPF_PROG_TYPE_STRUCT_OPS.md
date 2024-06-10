@@ -343,6 +343,8 @@ Not all helper functions are available in all program types. These are the helpe
     - [bbr_sndbuf_expand](../kfuncs/bbr_sndbuf_expand.md)
     - [bbr_ssthresh](../kfuncs/bbr_ssthresh.md)
     - [bbr_undo_cwnd](../kfuncs/bbr_undo_cwnd.md)
+    - [bpf_arena_alloc_pages](../kfuncs/bpf_arena_alloc_pages.md)
+    - [bpf_arena_free_pages](../kfuncs/bpf_arena_free_pages.md)
     - [bpf_cast_to_kern_ctx](../kfuncs/bpf_cast_to_kern_ctx.md)
     - [bpf_cgroup_acquire](../kfuncs/bpf_cgroup_acquire.md)
     - [bpf_cgroup_ancestor](../kfuncs/bpf_cgroup_ancestor.md)

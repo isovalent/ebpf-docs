@@ -247,6 +247,8 @@ out:
 
 <!-- [PROG_KFUNC_REF] -->
 ??? abstract "Supported kfuncs"
+    - [bpf_arena_alloc_pages](../kfuncs/bpf_arena_alloc_pages.md)
+    - [bpf_arena_free_pages](../kfuncs/bpf_arena_free_pages.md)
     - [bpf_cast_to_kern_ctx](../kfuncs/bpf_cast_to_kern_ctx.md)
     - [bpf_dynptr_adjust](../kfuncs/bpf_dynptr_adjust.md)
     - [bpf_dynptr_clone](../kfuncs/bpf_dynptr_clone.md)

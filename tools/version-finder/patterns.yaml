@@ -727,3 +727,5 @@ patterns:
     - name: bpf_crypto_encrypt
     - name: bpf_session_is_return
     - name: bpf_session_cookie
+    - name: bpf_arena_alloc_pages
+    - name: bpf_arena_free_pages

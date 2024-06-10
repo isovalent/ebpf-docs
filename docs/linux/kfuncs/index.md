@@ -73,6 +73,13 @@ A set of KFuncs to allocate and deallocate custom objects for the purposes of bu
 - [bpf_list_pop_front](bpf_list_pop_front.md)
 - [bpf_list_pop_back](bpf_list_pop_back.md)
 
+## BPF Arena KFuncs
+
+KFuncs used to allocate and free pages from an arena.
+
+- [bpf_arena_alloc_pages](bpf_arena_alloc_pages.md)
+- [bpf_arena_free_pages](bpf_arena_free_pages.md)
+
 ## BPF task KFuncs
 
 Kfuncs used to aquire and release task reference.
