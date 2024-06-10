@@ -401,3 +401,12 @@ sets:
       - BPF_PROG_TYPE_KPROBE
     attach_type:
       - BPF_TRACE_KPROBE_SESSION
+
+  arena_kfuncs:
+    funcs:
+      - name: bpf_arena_alloc_pages
+        flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE]
+      - name: bpf_arena_free_pages
+        flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE]
+    program_types:
+      - BPF_PROG_TYPE_UNSPEC

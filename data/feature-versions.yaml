@@ -2024,3 +2024,9 @@
     - name: bpf_session_cookie
       version: v6.10
       commit: 5c919acef85147886eb2abf86fb147f94680a8b0
+    - name: bpf_arena_alloc_pages
+      version: v6.9
+      commit: 317460317a02a1af512697e6e964298dedd8a163
+    - name: bpf_arena_free_pages
+      version: v6.9
+      commit: 317460317a02a1af512697e6e964298dedd8a163

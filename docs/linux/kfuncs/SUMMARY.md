@@ -48,6 +48,9 @@
   - [bpf_list_push_back_impl](bpf_list_push_back_impl.md)
   - [bpf_list_pop_front](bpf_list_pop_front.md)
   - [bpf_list_pop_back](bpf_list_pop_back.md)
+- BPF Arena KFuncs
+  - [bpf_arena_alloc_pages](bpf_arena_alloc_pages.md)
+  - [bpf_arena_free_pages](bpf_arena_free_pages.md)
 - BPF task KFuncs
   - [bpf_task_acquire](bpf_task_acquire.md)
   - [bpf_task_release](bpf_task_release.md)
