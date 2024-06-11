@@ -95,10 +95,10 @@ non-inclusive.
 
 Libbpf also provides macros to provide a more natural feeling way to write the above:
 ```c
-int *v;
+int v;
 
 bpf_for(v, start, end) {
-    bpf_printk("X = %d", *v);
+    bpf_printk("X = %d", v);
 }
 ```
 
