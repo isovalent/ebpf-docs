@@ -55,7 +55,7 @@ Applications can transfer copies of these file descriptors to other processes vi
 Starting with Linux 5.8, eBPF capabilities have been made more granular. You can find the lists of program types along with their required capabilities [here](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/kernel/bpf/syscall.c#n2644).
 
 * `CAP_BPF`: Allow loading eBPF programs and the creation of eBPF maps.
-* `CAP_PERFMON`: Needed for loading tracing programs, which is necessary for `bpf_trace_printk()`.
+* `CAP_PERFMON`: Needed for loading tracing programs, which is necessary for [`bpf_trace_printk()`](https://ebpf-docs.dylanreimerink.nl/linux/helper-function/bpf_trace_printk/).
 * `CAP_NET_ADMIN`: Needed for loading network programs.
 
 More details can be found in the [kernel header](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/include/uapi/linux/capability.h#n382)
