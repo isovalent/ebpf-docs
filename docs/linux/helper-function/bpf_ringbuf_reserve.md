@@ -70,29 +70,12 @@ This helper call can be used in the following program types:
 ### Example
 
 ```c
-// Define the structure of the data to be stored in the ring buffer
-struct ringbuf_data {
-    __u64 timestamp;
-    __u32 pid;
-    char filename[512];
-};
-
-// Define a ring buffer map
-struct {
-    __uint(type, BPF_MAP_TYPE_RINGBUF);
-    __uint(max_entries, 256*1024);
-} my_ringbuf SEC(".maps");
-
-
-SEC("tp/syscalls/sys_enter_execve") 
-int get_pid_execve(struct trace_event_raw_sys_enter *ctx) {
-    // Reserve memory in the ring buffer
-    struct ringbuf_data *rb_data = bpf_ringbuf_reserve(&my_ringbuf, sizeof(struct ringbuf_data), 0);
-    if (! rb_data) {
-        // if bpf_ringbuf_reserve fails, print an error message and return
-        bpf_printk("bpf_ringbuf_reserve failed\n");
-        return 1;
-    }
-    ... // populate the rb_data struct with the required data
+struct ringbuf_data *rb_data = bpf_ringbuf_reserve(&my_ringbuf, sizeof(struct ringbuf_data), 0);
+if (! rb_data) {
+    // if bpf_ringbuf_reserve fails, print an error message and return
+    bpf_printk("bpf_ringbuf_reserve failed\n");
+    return 1;
 }
 ```
+
+Where `my_ringbuf` is the pointer to the ring buffer, and `ringbuf_data` is a struct that defines the structure of the data to be stored in the ring buffer. 

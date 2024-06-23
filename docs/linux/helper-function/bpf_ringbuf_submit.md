@@ -27,8 +27,8 @@ Nothing. Always succeeds.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+Submit makes the data reserved in the ringbuf available for reading. The `data` argument must be a pointer to the reserved data in the ring buffer. 
+The `flags` argument declares how the notification of new data availability should be handled. 
 
 ### Program types
 
@@ -69,5 +69,15 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+// Reserve space in the ring buffer
+struct ringbuf_data *rb_data = bpf_ringbuf_reserve(&my_ringbuf, sizeof(struct ringbuf_data), 0);
+
+// Fill the reserved data with some values
+rb_data->data = 42;
+rb_data->timestamp = bpf_ktime_get_ns();
+
+// Submit the reserved data
+bpf_ringbuf_submit(rb_data, 0);
+```
+
