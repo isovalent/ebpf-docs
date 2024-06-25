@@ -72,6 +72,11 @@ This helper call can be used in the following program types:
 ```c
 // Reserve space in the ring buffer
 struct ringbuf_data *rb_data = bpf_ringbuf_reserve(&my_ringbuf, sizeof(struct ringbuf_data), 0);
+if(!rb_data) {
+    // if bpf_ringbuf_reserve fails, print an error message and return
+    bpf_printk("bpf_ringbuf_reserve failed\n");
+    return 1;
+}
 
 // Fill the reserved data with some values
 rb_data->data = 42;
