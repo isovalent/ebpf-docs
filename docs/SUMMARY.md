@@ -6,7 +6,7 @@
   * [Helper functions](linux/helper-function/)
   * [Syscall commands](linux/syscall/)
   * [KFuncs](linux/kfuncs/)
-* [Concepts](/docs/concepts/index.md)
+* [Concepts](concepts/index.md)
   * [BPF CO-RE](concepts/core.md)
   * [BTF](concepts/btf.md)
   * [ELF](concepts/elf.md)
