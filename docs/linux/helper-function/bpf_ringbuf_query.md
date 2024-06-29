@@ -33,8 +33,7 @@ Requested value, or 0, if _flags_ are not recognized.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The `ringbuf` must be a pointer to the ring buffer map. The `flags` argument defines what is being queried. This function can be used to query the amount of data not yet consumed, the size of the ring buffer, the logical position of the consumer, and the logical position of the producer. 
 
 ### Program types
 
@@ -75,5 +74,14 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+long avail_data = 0;
+long ring_size = 0;
+long cons_pos = 0;
+long prod_pos = 0;
+
+avail_data = bpf_ringbuf_query(&my_ringbuf, BPF_RB_AVAIL_DATA);
+ring_size = bpf_ringbuf_query(&my_ringbuf, BPF_RB_RING_SIZE);
+cons_pos = bpf_ringbuf_query(&my_ringbuf, BPF_RB_CONS_POS);
+prod_pos = bpf_ringbuf_query(&my_ringbuf, BPF_RB_PROD_POS);
+```

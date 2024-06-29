@@ -25,8 +25,11 @@ Valid pointer with _size_ bytes of memory available; NULL, otherwise.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The `rinfbuf` argument must be a pointer to a ring buffer definition. The `size` argument specifies the number of bytes to be reserved in the ring buffer. And the `flags` argument must be set to 0.
+
+This function is generally used in combination with a `struct` that defines the structure of the data stored in the ring buffer. Hence, in this case, the `size` argument would be set to the size of the struct. The function returns a pointer to the reserved memory, which can be used to write data to the ring buffer. See the example below for more details. 
+
+Also check [bpf_ringbuf_submit](./bpf_ringbuf_submit.md) and [bpf_ringbuf_discard](./bpf_ringbuf_discard.md) for more information on how to handle the reserved memory in the ring buffer. 
 
 ### Program types
 
@@ -67,5 +70,13 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+struct ringbuf_data *rb_data = bpf_ringbuf_reserve(&my_ringbuf, sizeof(struct ringbuf_data), 0);
+if (! rb_data) {
+    // if bpf_ringbuf_reserve fails, print an error message and return
+    bpf_printk("bpf_ringbuf_reserve failed\n");
+    return 1;
+}
+```
+
+Where `my_ringbuf` is the pointer to the ring buffer, and `ringbuf_data` is a struct that defines the structure of the data to be stored in the ring buffer. 

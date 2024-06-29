@@ -27,8 +27,7 @@ Nothing. Always succeeds.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This function discards the reserved memory in the ring buffer. The `data` argument must be a pointer to the reserved memory. The `flags` argument, similar to [bpf_ringbuf_submit](./bpf_ringbuf_submit.md), can be set to **BPF_RB_NO_WAKEUP**, **BPF_RB_FORCE_WAKEUP**, or **0** to specify how the notification of the discarded data should be handled. This function must be used if space is reserved in the ring buffer but the flow does not lead to [bpf_ringbuf_submit](./bpf_ringbuf_submit.md).
 
 ### Program types
 
@@ -69,5 +68,21 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+// Reserve space in the ring buffer
+struct ringbuf_data *rb_data = bpf_ringbuf_reserve(&my_ringbuf, sizeof(struct ringbuf_data), 0);
+if(!rb_data) {
+    // if bpf_ringbuf_reserve fails, print an error message and return
+    bpf_printk("bpf_ringbuf_reserve failed\n");
+    return 1;
+}
+
+if(unhappy_flow) {
+    // Discard the reserved data
+    bpf_ringbuf_discard(rb_data, 0);
+    return 1;
+}
+
+// Submit the reserved data
+bpf_ringbuf_submit(rb_data, 0);
+```
