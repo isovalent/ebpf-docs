@@ -69,6 +69,14 @@ This site aims to provide technical documentation for eBPF. If you are looking f
 
     [:octicons-arrow-right-24: KFuncs](./linux/kfuncs/index.md)
 
+-   :octicons-repo-24:{ .lg .middle } __eBPF libraries__
+
+    ---
+
+    Libraries to help you with eBPF
+
+    [:octicons-arrow-right-24: eBPF libraries](./ebpf-library/index.md)
+
 </div>
 
 ## Contributions
