@@ -1,0 +1,58 @@
+groups:
+  load_unload:
+  - name: xdp_program__from_bpf_obj
+  - name: xdp_program__find_file
+  - name: xdp_program__open_file
+  - name: xdp_program__from_fd
+  - name: xdp_program__from_id
+  - name: xdp_program__from_pin
+
+  metadata:
+  - name: xdp_program__run_prio
+  - name: xdp_program__set_run_prio
+  - name: xdp_program__chain_call_enabled
+  - name: xdp_program__set_chain_call_enabled
+  - name: xdp_program__print_chain_call_actions
+
+  multiprog:
+  - name: xdp_multiprog__get_from_ifindex
+  - name: xdp_multiprog__next_prog
+  - name: xdp_multiprog__close
+  - name: xdp_multiprog__detach
+  - name: xdp_multiprog__attach_mode
+  - name: xdp_multiprog__main_prog
+  - name: xdp_multiprog__hw_prog
+  - name: xdp_multiprog__is_legacy
+
+  control_path:
+  - name: xsk_umem__create
+  - name: xsk_umem__create_with_fd
+  - name: xsk_socket__create
+  - name: xsk_socket__create_shared
+  - name: xsk_umem__delete
+  - name: xsk_socket__delete
+  - name: xsk_umem__fd
+  - name: xsk_socket__fd
+  - name: xsk_setup_xdp_prog
+  - name: xsk_socket__update_xskmap
+
+  data_path:
+  - name: xsk_ring_prod__reserve
+  - name: xsk_ring_prod__submit
+  - name: xsk_ring_cons__peek
+  - name: xsk_ring_cons__cancel
+  - name: xsk_ring_cons__release
+  - name: xsk_ring_prod__fill_addr
+  - name: xsk_ring_prod__tx_desc
+  - name: xsk_ring_cons__comp_addr
+  - name: xsk_ring_cons__rx_desc
+  - name: xsk_umem__get_data
+  - name: xsk_umem__extract_addr
+  - name: xsk_umem__extract_offset
+  - name: xsk_umem__add_offset_to_addr
+  - name: xsk_ring_prod__needs_wakeup
+
+
+
+  
+
