@@ -47,6 +47,17 @@ This helper call can be used in the following program types:
  * [BPF_PROG_TYPE_SOCK_OPS](../program-type/BPF_PROG_TYPE_SOCK_OPS.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
+
+### Map types
+
+This helper call can be used with the following map types:
+
+<!-- DO NOT EDIT MANUALLY -->
+<!-- [HELPER_FUNC_MAP_REF] -->
+ * [BPF_MAP_TYPE_CGROUP_STORAGE](../map-type/BPF_MAP_TYPE_CGROUP_STORAGE.md)
+ * [BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE](../map-type/BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE.md)
+<!-- [/HELPER_FUNC_MAP_REF] -->
+
 ### Example
 
 !!! example "Docs could be improved"
