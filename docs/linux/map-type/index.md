@@ -81,7 +81,7 @@ This map type allows eBPF programs to read the stack trace.
 
 This map type replaces a structure containing function pointers in the kernel and allows authors to replace existing function pointers with pointers to BPF programs.
 
-  * BPF_MAP_TYPE_STRUCT_OPS
+  * [BPF_MAP_TYPE_STRUCT_OPS](BPF_MAP_TYPE_STRUCT_OPS.md)
   
 ## Per CPU maps
 
