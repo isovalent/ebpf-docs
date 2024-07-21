@@ -185,6 +185,16 @@
     - name: BPF_MAP_TYPE_BLOOM_FILTER
       version: v5.16
       commit: 9330986c03006ab1d33d243b7cfe598a7a3c1baa
+    - name: BPF_MAP_TYPE_USER_RINGBUF
+      version: v6.1
+      commit: 583c1f420173f7d84413a1a1fbf5109d798b4faa
+    - name: BPF_MAP_TYPE_CGRP_STORAGE
+      version: v6.2
+      commit: c4bcfb38a95edb1021a53f2d0356a78120ecfbe4
+    - name: BPF_MAP_TYPE_ARENA
+      version: v6.9
+      commit: 317460317a02a1af512697e6e964298dedd8a163
+
 - name: attach_types
   features:
     - name: BPF_CGROUP_INET_INGRESS

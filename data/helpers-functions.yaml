@@ -952,3 +952,5 @@ maps:
   BPF_MAP_TYPE_USER_RINGBUF:
   - name: bpf_user_ringbuf_drain
   BPF_MAP_TYPE_CGRP_STORAGE:
+  - name: bpf_cgrp_storage_get
+  - name: bpf_cgrp_storage_delete
