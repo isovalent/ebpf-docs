@@ -324,11 +324,11 @@ The following syscall commands work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_perf_event_read](../helper-function/bpf_perf_event_read.md)
- * [bpf_perf_event_output](../helper-function/bpf_perf_event_output.md)
- * [bpf_skb_output](../helper-function/bpf_skb_output.md)
- * [bpf_perf_event_read_value](../helper-function/bpf_perf_event_read_value.md)
- * [bpf_xdp_output](../helper-function/bpf_xdp_output.md)
+ * [`bpf_perf_event_read`](../helper-function/bpf_perf_event_read.md)
+ * [`bpf_perf_event_output`](../helper-function/bpf_perf_event_output.md)
+ * [`bpf_skb_output`](../helper-function/bpf_skb_output.md)
+ * [`bpf_perf_event_read_value`](../helper-function/bpf_perf_event_read_value.md)
+ * [`bpf_xdp_output`](../helper-function/bpf_xdp_output.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

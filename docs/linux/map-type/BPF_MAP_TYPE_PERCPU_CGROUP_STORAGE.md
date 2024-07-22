@@ -39,7 +39,7 @@ The following helper functions work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_get_local_storage](../helper-function/bpf_get_local_storage.md)
+ * [`bpf_get_local_storage`](../helper-function/bpf_get_local_storage.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

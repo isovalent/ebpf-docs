@@ -246,7 +246,7 @@ func main() {
 			sort.Strings(kfuncs)
 
 			for _, kfunc := range kfuncs {
-				newFile.WriteString(fmt.Sprintf("    - [%s](../kfuncs/%s.md)\n", kfunc, kfunc))
+				newFile.WriteString(fmt.Sprintf("    - [`%s`](../kfuncs/%s.md)\n", kfunc, kfunc))
 			}
 		} else {
 			newFile.WriteString("There are currently no kfuncs supported for this program type\n")

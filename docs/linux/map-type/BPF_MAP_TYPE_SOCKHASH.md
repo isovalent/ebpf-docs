@@ -37,13 +37,13 @@ The following syscall commands work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_sk_redirect_hash](../helper-function/bpf_sk_redirect_hash.md)
- * [bpf_sock_hash_update](../helper-function/bpf_sock_hash_update.md)
- * [bpf_map_delete_elem](../helper-function/bpf_map_delete_elem.md)
- * [bpf_msg_redirect_hash](../helper-function/bpf_msg_redirect_hash.md)
- * [bpf_sk_select_reuseport](../helper-function/bpf_sk_select_reuseport.md)
- * [bpf_map_lookup_elem](../helper-function/bpf_map_lookup_elem.md)
- * [bpf_map_update_elem](../helper-function/bpf_map_update_elem.md)
+ * [`bpf_sk_redirect_hash`](../helper-function/bpf_sk_redirect_hash.md)
+ * [`bpf_sock_hash_update`](../helper-function/bpf_sock_hash_update.md)
+ * [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md)
+ * [`bpf_msg_redirect_hash`](../helper-function/bpf_msg_redirect_hash.md)
+ * [`bpf_sk_select_reuseport`](../helper-function/bpf_sk_select_reuseport.md)
+ * [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md)
+ * [`bpf_map_update_elem`](../helper-function/bpf_map_update_elem.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

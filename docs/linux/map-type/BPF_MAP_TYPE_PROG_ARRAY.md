@@ -37,7 +37,7 @@ The following syscall commands work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_tail_call](../helper-function/bpf_tail_call.md)
+ * [`bpf_tail_call`](../helper-function/bpf_tail_call.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

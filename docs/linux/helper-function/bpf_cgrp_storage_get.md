@@ -78,7 +78,7 @@ This helper call can be used with the following map types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_MAP_REF] -->
- * [BPF_MAP_TYPE_CGRP_STORAGE](../map-type/BPF_MAP_TYPE_CGRP_STORAGE.md)
+ * [`BPF_MAP_TYPE_CGRP_STORAGE`](../map-type/BPF_MAP_TYPE_CGRP_STORAGE.md)
 <!-- [/HELPER_FUNC_MAP_REF] -->
 
 ### Example

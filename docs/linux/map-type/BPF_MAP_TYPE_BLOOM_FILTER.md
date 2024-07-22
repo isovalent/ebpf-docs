@@ -59,8 +59,8 @@ The bloom filter map supports two operations:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_map_peek_elem](../helper-function/bpf_map_peek_elem.md)
- * [bpf_map_push_elem](../helper-function/bpf_map_push_elem.md)
+ * [`bpf_map_peek_elem`](../helper-function/bpf_map_peek_elem.md)
+ * [`bpf_map_push_elem`](../helper-function/bpf_map_push_elem.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags
