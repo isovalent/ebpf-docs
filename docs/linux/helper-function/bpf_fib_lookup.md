@@ -67,9 +67,9 @@ This helper call can be used in the following program types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_PROG_REF] -->
- * [BPF_PROG_TYPE_SCHED_ACT](../program-type/BPF_PROG_TYPE_SCHED_ACT.md)
- * [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
- * [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+ * [`BPF_PROG_TYPE_SCHED_ACT`](../program-type/BPF_PROG_TYPE_SCHED_ACT.md)
+ * [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+ * [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Example

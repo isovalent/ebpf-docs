@@ -40,7 +40,7 @@ This helper call can be used in the following program types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_PROG_REF] -->
- * [BPF_PROG_TYPE_PERF_EVENT](../program-type/BPF_PROG_TYPE_PERF_EVENT.md)
+ * [`BPF_PROG_TYPE_PERF_EVENT`](../program-type/BPF_PROG_TYPE_PERF_EVENT.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Example

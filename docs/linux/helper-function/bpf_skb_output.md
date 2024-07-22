@@ -46,7 +46,7 @@ This helper call can be used with the following map types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_MAP_REF] -->
- * [BPF_MAP_TYPE_PERF_EVENT_ARRAY](../map-type/BPF_MAP_TYPE_PERF_EVENT_ARRAY.md)
+ * [`BPF_MAP_TYPE_PERF_EVENT_ARRAY`](../map-type/BPF_MAP_TYPE_PERF_EVENT_ARRAY.md)
 <!-- [/HELPER_FUNC_MAP_REF] -->
 
 ### Example

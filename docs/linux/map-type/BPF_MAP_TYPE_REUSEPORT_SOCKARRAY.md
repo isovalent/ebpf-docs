@@ -32,7 +32,7 @@ The following syscall commands work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_sk_select_reuseport](../helper-function/bpf_sk_select_reuseport.md)
+ * [`bpf_sk_select_reuseport`](../helper-function/bpf_sk_select_reuseport.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

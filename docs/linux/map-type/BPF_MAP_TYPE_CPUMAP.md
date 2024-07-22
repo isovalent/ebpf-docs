@@ -53,7 +53,7 @@ The following syscall commands work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_redirect_map](../helper-function/bpf_redirect_map.md)
+ * [`bpf_redirect_map`](../helper-function/bpf_redirect_map.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

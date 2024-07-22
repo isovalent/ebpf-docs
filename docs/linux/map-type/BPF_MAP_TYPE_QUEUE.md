@@ -37,9 +37,9 @@ The following syscall commands work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_map_peek_elem](../helper-function/bpf_map_peek_elem.md)
- * [bpf_map_pop_elem](../helper-function/bpf_map_pop_elem.md)
- * [bpf_map_push_elem](../helper-function/bpf_map_push_elem.md)
+ * [`bpf_map_peek_elem`](../helper-function/bpf_map_peek_elem.md)
+ * [`bpf_map_pop_elem`](../helper-function/bpf_map_pop_elem.md)
+ * [`bpf_map_push_elem`](../helper-function/bpf_map_push_elem.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

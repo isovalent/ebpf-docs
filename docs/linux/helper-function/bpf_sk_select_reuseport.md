@@ -36,7 +36,7 @@ This helper call can be used in the following program types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_PROG_REF] -->
- * [BPF_PROG_TYPE_SK_REUSEPORT](../program-type/BPF_PROG_TYPE_SK_REUSEPORT.md)
+ * [`BPF_PROG_TYPE_SK_REUSEPORT`](../program-type/BPF_PROG_TYPE_SK_REUSEPORT.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Map types
@@ -45,9 +45,9 @@ This helper call can be used with the following map types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_MAP_REF] -->
- * [BPF_MAP_TYPE_REUSEPORT_SOCKARRAY](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md)
- * [BPF_MAP_TYPE_SOCKHASH](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
- * [BPF_MAP_TYPE_SOCKMAP](../map-type/BPF_MAP_TYPE_SOCKMAP.md)
+ * [`BPF_MAP_TYPE_REUSEPORT_SOCKARRAY`](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md)
+ * [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
+ * [`BPF_MAP_TYPE_SOCKMAP`](../map-type/BPF_MAP_TYPE_SOCKMAP.md)
 <!-- [/HELPER_FUNC_MAP_REF] -->
 
 ### Example

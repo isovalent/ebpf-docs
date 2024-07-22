@@ -58,8 +58,8 @@ The following syscall commands work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [bpf_map_lookup_elem](../helper-function/bpf_map_lookup_elem.md)
- * [bpf_redirect_map](../helper-function/bpf_redirect_map.md)
+ * [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md)
+ * [`bpf_redirect_map`](../helper-function/bpf_redirect_map.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

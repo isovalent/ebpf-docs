@@ -30,7 +30,7 @@ This helper call can be used in the following program types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_PROG_REF] -->
- * [BPF_PROG_TYPE_SK_SKB](../program-type/BPF_PROG_TYPE_SK_SKB.md)
+ * [`BPF_PROG_TYPE_SK_SKB`](../program-type/BPF_PROG_TYPE_SK_SKB.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Map types
@@ -39,7 +39,7 @@ This helper call can be used with the following map types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_MAP_REF] -->
- * [BPF_MAP_TYPE_SOCKHASH](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
+ * [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
 <!-- [/HELPER_FUNC_MAP_REF] -->
 
 ### Example
