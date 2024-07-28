@@ -1,0 +1,20 @@
+name: Spellcheck
+
+on:
+  pull_request: {}
+  push:
+    branches:
+      - master
+
+env:
+  USER: root
+
+jobs:
+  spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run spellcheck
+        run: |
+          make spellcheck
+
