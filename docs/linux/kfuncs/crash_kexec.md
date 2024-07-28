@@ -17,14 +17,14 @@ Crash the kernel at a specific point in the code.
 
 !!! warning
 	This kfunc is destructive to the system. For example such a call can result in system rebooting or panicking. 
-	Due to this additional restrictions apply to these calls. At the moment they only require CAP_SYS_BOOT capability, 
+	Due to this additional restrictions apply to these calls. At the moment they only require `CAP_SYS_BOOT`capability, 
 	but more can be added later.
 <!-- [/KFUNC_DEF] -->
 
 ## Usage
 
 eBPF is often used for kernel debugging, and one of the widely used and
-powerful debugging techniques is post-mortem debugging with a full memory dump.
+powerful debugging techniques is postmortem debugging with a full memory dump.
 
 This kfunc allows to trigger a kernel panic at a specific point in the kernels 
 execution, this allows for the inspection of the memory dump at the exact point
@@ -35,11 +35,11 @@ a program detected a certain condition.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

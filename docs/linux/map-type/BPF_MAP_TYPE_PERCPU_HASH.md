@@ -10,7 +10,7 @@ description: "This page documents the 'BPF_MAP_TYPE_PERCPU_HASH' eBPF map type, 
 
 This is the per-CPU variant of the [`BPF_MAP_TYPE_HASH`](BPF_MAP_TYPE_HASH.md) map type. 
 
-This map type is a generic map type with no restrictions on the structure of the key and value. Hashmaps are implemented using a hash table, allowing for lookups with arbitrary keys. 
+This map type is a generic map type with no restrictions on the structure of the key and value. Hash-maps are implemented using a hash table, allowing for lookups with arbitrary keys. 
 
 This per-CPU version has a separate hash map for each logical CPU. When accessing the map using most [helper function](../helper-function/index.md), the hash map assigned to the CPU the eBPF program is currently running on is accessed implicitly. 
 

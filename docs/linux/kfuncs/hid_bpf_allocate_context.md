@@ -44,7 +44,7 @@ A pointer to &struct hid_bpf_ctx on success, `NULL` on error.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SYSCALL](../program-type/BPF_PROG_TYPE_SYSCALL.md)
+- [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

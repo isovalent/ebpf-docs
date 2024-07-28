@@ -8,18 +8,15 @@ description: "This page documents the 'bpf_xdp_xfrm_state_release' eBPF kfunc, i
 [:octicons-tag-24: v6.8](https://github.com/torvalds/linux/commit/8f0ec8c681755f523cf842bfe350ea40609b83a9)
 <!-- [/FEATURE_TAG] -->
 
+Release acquired `xfrm_state` object
+
 ## Definition
 
-/* bpf_xdp_xfrm_state_release - Release acquired xfrm_state object
- *
- * This must be invoked for referenced PTR_TO_BTF_ID, and the verifier rejects
- * the program if any references remain in the program in all of the explored
- * states.
- *
- * Parameters:
- * @x		- Pointer to referenced xfrm_state object, obtained using
- *		  bpf_xdp_get_xfrm_state.
- */
+This must be invoked for referenced `PTR_TO_BTF_ID`, and the verifier rejects the program if any references remain in the program in all of the explored states.
+
+**Parameters**
+
+`x`: Pointer to referenced `xfrm_state` object, obtained using `bpf_xdp_get_xfrm_state`
 
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_xdp_xfrm_state_release(struct xfrm_state *x)`
@@ -31,16 +28,16 @@ description: "This page documents the 'bpf_xdp_xfrm_state_release' eBPF kfunc, i
 
 ## Usage
 
-The intent for this kfunc is to support software RSS (via XDP) for the ongoing/upcoming ipsec pcpu work. [^1]
+The intent for this kfunc is to support software RSS (via XDP) for the ongoing/upcoming IPsec per-CPU work. [^1]
 
-[^1]: [https://datatracker.ietf.org/doc/draft-ietf-ipsecme-multi-sa-performance/03/](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-multi-sa-performance/03/)
+[^1]: [`https://datatracker.ietf.org/doc/draft-ietf-ipsecme-multi-sa-performance/03/`](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-multi-sa-performance/03/)
 
 ### Program types
 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

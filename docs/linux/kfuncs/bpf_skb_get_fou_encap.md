@@ -8,17 +8,17 @@ description: "This page documents the 'bpf_skb_get_fou_encap' eBPF kfunc, includ
 [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c50e96099edb134bf107fafc02715fbc4aa2277f)
 <!-- [/FEATURE_TAG] -->
 
-Get FOU (Foo over UDP) encap parameters
+Get FOU (Foo over UDP) encapsulation parameters
 
 ## Definition
 
-This function allows for reading encap metadata from a packet received on an ipip device in collect-metadata mode.
+This function allows for reading encapsulation metadata from a packet received on an IPIP device in collect-metadata mode.
 
 **Parameters**
 
 `skb_ctx`:  Pointer to ctx (__sk_buff) in TC program. Cannot be NULL
 
-`encap`:    Pointer to a struct bpf_fou_encap storing UDP source and destination port. Cannot be NULL
+`encap`:    Pointer to a struct `bpf_fou_encap` storing UDP source and destination port. Cannot be NULL
 
 
  **Returns**
@@ -31,14 +31,14 @@ This function allows for reading encap metadata from a packet received on an ipi
 
 ## Usage
 
-On the ingress path bpf_skb_get_fou_encap can be used to read UDP source and destination ports from the receiver's point of view and allows for packet multiplexing across different destination ports within a single BPF program and ipip device.
+On the ingress path `bpf_skb_get_fou_encap` can be used to read UDP source and destination ports from the receiver's point of view and allows for packet multiplexing across different destination ports within a single BPF program and IPIP device.
 
 ### Program types
 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_cgroup_from_id' eBPF kfunc, including
 [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/332ea1f697be148bd5e66475d82b5ecc5084da65)
 <!-- [/FEATURE_TAG] -->
 
-Find a cgroup from its ID.
+Find a cGroup from its ID.
 
 ## Definition
 
-cgroup returned by this kfunc which is not subsequently stored in a map, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
+cGroup returned by this kfunc which is not subsequently stored in a map, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
 
 <!-- [KFUNC_DEF] -->
 `#!c struct cgroup *bpf_cgroup_from_id(u64 cgid)`
@@ -38,11 +38,11 @@ cgroup returned by this kfunc which is not subsequently stored in a map, must be
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

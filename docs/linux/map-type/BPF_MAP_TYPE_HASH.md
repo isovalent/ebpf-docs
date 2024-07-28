@@ -8,7 +8,7 @@ description: "This page documents the 'BPF_MAP_TYPE_HASH' eBPF map type, includi
 [:octicons-tag-24: v3.19](https://github.com/torvalds/linux/commit/0f8e4bd8a1fc8c4185f1630061d0a1f2d197a475)
 <!-- [/FEATURE_TAG] -->
 
-The hash map type is a generic map type with no restrictions on the structure of the key and value. Hashmaps are implemented using a hash table, allowing for lookups with arbitrary keys.
+The hash map type is a generic map type with no restrictions on the structure of the key and value. Hash-maps are implemented using a hash table, allowing for lookups with arbitrary keys.
 
 ## Attributes
 

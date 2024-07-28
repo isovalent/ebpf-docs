@@ -15,7 +15,7 @@ description: "This page documents the 'BPF_PROG_TYPE_LSM' eBPF program type, inc
 The primary use case is to implement security software. For example, the `socket_create` hook is called when a process calls the `socket` syscall, if the eBPF program returns `0`
 the socket is allowed to be created, but the eBPF program can also return an error value to block the socket creation.
 
-The list of all LSM hooks can be found in [lsm_hook_defs.h](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hook_defs.h), additional documentation for these hooks lives in [lsm_hooks.h](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hooks.h) 
+The list of all LSM hooks can be found in [`lsm_hook_defs.h`](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hook_defs.h), additional documentation for these hooks lives in [`lsm_hooks.h`](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hooks.h) 
 
 ```c
 // Copyright (C) 2020 Google LLC.
@@ -48,7 +48,7 @@ LSM programs are invoked with an array of `__u64` values equal in length to the 
 
 ## Attachment
 
-LSM programs are exclusively attached via bpf links. To do so the program must be loaded with the [`BPF_LSM_MAC`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_mac) expected attach type and use it as the param to [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type). The [`target_btf_id`](../syscall/BPF_LINK_CREATE.md#target_btf_id) parameter must be populated with the BTF ID of the LSM hook point which can be extracted from the selinux BTF on the system.
+LSM programs are exclusively attached via bpf links. To do so the program must be loaded with the [`BPF_LSM_MAC`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_mac) expected attach type and use it as the parameter to [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type). The [`target_btf_id`](../syscall/BPF_LINK_CREATE.md#target_btf_id) parameter must be populated with the BTF ID of the LSM hook point which can be extracted from the SELinux BTF on the system.
 
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
@@ -167,6 +167,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

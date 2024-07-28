@@ -6,7 +6,7 @@ description: "This page documents the 'xsk_ring_prod__tx_desc' libxdp function, 
 
 ## Definition
 
-This function allow to access a specific transmit descriptor in the **Tx** ring.
+This function allow to access a specific transmit descriptor in the **TX** ring.
 
 ### Returns
 

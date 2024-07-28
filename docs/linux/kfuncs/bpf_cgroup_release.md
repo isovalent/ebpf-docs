@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_cgroup_release' eBPF kfunc, including
 [:octicons-tag-24: v6.2](https://github.com/torvalds/linux/commit/fda01efc61605af7c6fa03c4109f14d59c9228b7)
 <!-- [/FEATURE_TAG] -->
 
-Release the reference acquired on a cgroup.
+Release the reference acquired on a cGroup.
 
 ## Definition
 
-If this kfunc is invoked in an RCU read region, the cgroup is guaranteed to not be freed until the current grace period has ended, even if its refcount drops to `0`.
+If this kfunc is invoked in an RCU read region, the cGroup is guaranteed to not be freed until the current grace period has ended, even if its refcount drops to `0`.
 
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cgroup_release(struct cgroup *cgrp)`
@@ -32,11 +32,11 @@ If this kfunc is invoked in an RCU read region, the cgroup is guaranteed to not 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

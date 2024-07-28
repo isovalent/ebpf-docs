@@ -9,7 +9,7 @@ description: "This page documents the 'xsk_umem__get_data' libxdp function, incl
 Allow to get a pointer to the packet data with the **Rx** descriptor, in **aligned mode**.
 
 !!! note
-    In unaligned mode, you need to use these functions [xsk_umem__extract_addr](./xsk_umem__extract_addr.md) [xsk_umem__extract_offset](./xsk_umem__extract_offset.md) [xsk_umem__add_offset_to_addr](./xsk_umem__add_offset_to_addr.md)
+    In unaligned mode, you need to use these functions [`xsk_umem__extract_addr`](./xsk_umem__extract_addr.md) [`xsk_umem__extract_offset`](./xsk_umem__extract_offset.md) [`xsk_umem__add_offset_to_addr`](./xsk_umem__add_offset_to_addr.md)
 
 ### Returns
 

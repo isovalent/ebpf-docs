@@ -80,7 +80,7 @@ The log is also written to on success. If the kernel runs out of space in the bu
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/2541517c32be2531e0da59dfd7efc1ce844644f5)
 
 !!! warning
-    This attribute is no longer used as of [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/6c4fc209fcf9d27efbaa48368773e4d2bfbd59aa). The field is still present for compatibly reasons but doesn't do anything.
+    This attribute is no longer used as of [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/6c4fc209fcf9d27efbaa48368773e4d2bfbd59aa). The field is still present for compatibly reasons but does not do anything.
 
 Before its deprecation, this field was supposed to point to a string containing the current kernel version. This string was checked against the actual kernel version for programs of type [`BPF_PROG_TYPE_KPROBE`](../program-type/BPF_PROG_TYPE_KPROBE.md).The rational behind the field was that kprobe are fundamentally unstable and thus had to be recompiled for every kernel version (this was before [CO-RE](../../concepts/core.md) was introduced), having to set this field would make this apparent to users.
 
@@ -173,7 +173,7 @@ This attribute specifies the memory region where extended BTF line info is locat
 This line information associates information like the filename+path, line number, column number and an snippet of source code which produced a given piece of the eBPF code. This information is available in the verifier log to make understanding the output easier as well as in output of [`BPF_OBJ_GET`](./BPF_OBJ_GET.md).
 
 !!! note
-    The verifier also enforces that for every func info record, there also exists a line info record on the same instruction.
+    The verifier also enforces that for every function info record, there also exists a line info record on the same instruction.
 
 ### `line_info_cnt`
 
@@ -259,7 +259,7 @@ It is mostly used for testing when we want to validate the context and memory ac
 !!! warning
     `BPF_F_TEST_RND_HI32` is used for testing purpose, not meant for production usage.
 
-Verifier does sub-register def/use analysis and identifies instructions whose def only matters for low 32-bit, high 32-bit is never referenced later through implicit zero extension. Therefore verifier notifies JIT back-ends that it is safe to ignore clearing high 32-bit for these instructions. This saves some back-ends a lot of code-gen. However such optimization is not necessary on some arches, for example x86_64, arm64 etc, whose JIT back-ends hence hasn't used verifier's analysis result. But, we really want to have a way to be able to verify the correctness of the described optimization on x86_64 on which testsuites are frequently exercised.
+Verifier does sub-register def/use analysis and identifies instructions whose def only matters for low 32-bit, high 32-bit is never referenced later through implicit zero extension. Therefore verifier notifies JIT back-ends that it is safe to ignore clearing high 32-bit for these instructions. This saves some back-ends a lot of code-gen. However such optimization is not necessary on some arches, for example x86_64, arm64 etc, whose JIT back-ends hence hasn't used verifier's analysis result. But, we really want to have a way to be able to verify the correctness of the described optimization on x86_64 on which test suites are frequently exercised.
 
 So, this flag is introduced. Once it is set, verifier will randomize high 32-bit for those instructions who has been identified as safe to ignore them. Then, if verifier is not doing correct analysis, such randomization will regress tests to expose bugs.
 

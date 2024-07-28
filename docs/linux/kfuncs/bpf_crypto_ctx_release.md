@@ -33,7 +33,7 @@ This kfunc is used to release a reference held on a BPF crypto context previousl
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SYSCALL](../program-type/BPF_PROG_TYPE_SYSCALL.md)
+- [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

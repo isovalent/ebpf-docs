@@ -53,7 +53,7 @@ struct lpm_key {
 
 LPM tries may be created with a maximum prefix length that is a multiple of 8, in the range from 8 to 2048. So the `data` part of the key can't be larger than 256 bytes (4 or 16 is normal for IPv4 and IPv6 addresses).
 
-> Data stored in @data of struct bpf_lpm_key and struct lpm_trie_node is interpreted as big endian, so data[0] stores the most significant byte. [...] one single element that matches 192.168.0.0/16. The data array would hence contain [0xc0, 0xa8, 0x00, 0x00] in big-endian notation.
+> Data stored in @data of struct `bpf_lpm_key` and struct `lpm_trie_node` is interpreted as big endian, so data[0] stores the most significant byte. [...] one single element that matches 192.168.0.0/16. The data array would hence contain `[0xc0, 0xa8, 0x00, 0x00]` in big-endian notation.
 
 !!! note
     The `BPF_F_NO_PREALLOC` flag must always be set when creating this map type since the implementation cannot pre-allocate the map.

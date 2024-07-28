@@ -22,7 +22,7 @@ The message redirect hash helper is used to redirect a message to a socket refer
 
 ## Usage
 
-This helper is used in programs implementing policies at the skb socket level. If the sk_buff `skb` is allowed to pass (i.e. if the verdict eBPF program returns `SK_PASS`), redirect it to the socket referenced by `map` (of type [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_SOCKHASH.md)) using hash `key`. Both ingress and egress interfaces can be used for redirection. The `BPF_F_INGRESS` value in `flags` is used to make the distinction (ingress path is selected if the flag is present, egress otherwise). This is the only flag supported for now.
+This helper is used in programs implementing policies at the skb socket level. If the socket buffer `skb` is allowed to pass (i.e. if the verdict eBPF program returns `SK_PASS`), redirect it to the socket referenced by `map` (of type [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_SOCKHASH.md)) using hash `key`. Both ingress and egress interfaces can be used for redirection. The `BPF_F_INGRESS` value in `flags` is used to make the distinction (ingress path is selected if the flag is present, egress otherwise). This is the only flag supported for now.
 
 ### Program types
 

@@ -20,7 +20,7 @@ Due to its implementation a bloom filter does not take up much memory compared t
 
 ### Implementation
 
-A bloom filter is a bitfield (array of bits). When querying the bloom filter we take our key and hash it so the result is an index into the bitfield. The result the value of the bit, 1 or 0. When writing a value we use the same hash and set the bit to 1. This deliberately causes hash collisions. So when the result of a query is 0, you know 100% that the key was never written to the bloom filter. But when the result is a 1, that may be because the key was written or due to hash collision.
+A bloom filter is a bit-field (array of bits). When querying the bloom filter we take our key and hash it so the result is an index into the bit-field. The result the value of the bit, 1 or 0. When writing a value we use the same hash and set the bit to 1. This deliberately causes hash collisions. So when the result of a query is 0, you know 100% that the key was never written to the bloom filter. But when the result is a 1, that may be because the key was written or due to hash collision.
 
 In practice we use multiple hash methods for example 5, and see if all 5 indices are 1 to decrease false positives without increasing the size of the bitfield.
 
@@ -38,7 +38,7 @@ The bloom filter map does not have keys, only values. When the bloom filter map 
 
 The [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries) size that is specified at map creation time is used to approximate a reasonable bitmap size for the bloom filter, and is not otherwise strictly enforced. If the user wishes to insert more entries into the bloom filter than [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries), this may lead to a higher false positive rate.
 
-The number of hashes to use for the bloom filter is configurable using the lower 4 bits of [`map_extra`](../syscall/BPF_MAP_CREATE.md#map_extra) in union bpf_attr at map creation time. If no number is specified, the default used will be 5 hash functions. In general, using more hashes decreases both the false positive rate and the speed of a lookup.
+The number of hashes to use for the bloom filter is configurable using the lower 4 bits of [`map_extra`](../syscall/BPF_MAP_CREATE.md#map_extra) in union `bpf_attr` at map creation time. If no number is specified, the default used will be 5 hash functions. In general, using more hashes decreases both the false positive rate and the speed of a lookup.
 
 ## Syscall commands
 

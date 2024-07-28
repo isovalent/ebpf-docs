@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_get_fsverity_digest' eBPF kfunc, incl
 [:octicons-tag-24: v6.8](https://github.com/torvalds/linux/commit/67814c00de3161181cddd06c77aeaf86ac4cc584)
 <!-- [/FEATURE_TAG] -->
 
-Get the fs-verity digest of a file.
+Get the `fs-verity` digest of a file.
 
 ## Definition
 
@@ -26,7 +26,7 @@ Get the fs-verity digest of a file.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

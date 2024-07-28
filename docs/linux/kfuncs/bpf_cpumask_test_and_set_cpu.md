@@ -8,16 +8,16 @@ description: "This page documents the 'bpf_cpumask_test_and_set_cpu' eBPF kfunc,
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Atomically test and set a CPU in a BPF cpumask.
+Atomically test and set a CPU in a BPF CPU-mask.
 
 ## Definition
 
 `cpu`: The CPU being set and queried for.
-`cpumask`: The BPF cpumask being set and queried for containing a CPU.
+`cpumask`: The BPF CPU-mask being set and queried for containing a CPU.
 
 Return:
-* `true`  - `cpu` is set in the cpumask
-* `false` - `cpu` was not set in the cpumask, or `cpu` is invalid.
+* `true`  - `cpu` is set in the CPU-mask
+* `false` - `cpu` was not set in the CPU-mask, or `cpu` is invalid.
 
 <!-- [KFUNC_DEF] -->
 `#!c bool bpf_cpumask_test_and_set_cpu(u32 cpu, struct bpf_cpumask *cpumask)`
@@ -33,9 +33,9 @@ Return:
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

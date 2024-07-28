@@ -29,7 +29,7 @@ This helper function is used to direct incoming traffic to a specific socket, ov
 
 ### Return value in `BPF_PROG_TYPE_SK_LOOKUP` returns
 
-0 on success, or a negative errno in case of failure.
+0 on success, or a negative error number in case of failure.
 
 * `-EAFNOSUPPORT` if socket family (`sk->family`) is not compatible with packet family ([`ctx->family`](../program-type/BPF_PROG_TYPE_SK_LOOKUP.md#family)).
 * `-EEXIST` if socket has been already selected, potentially by another program, and `BPF_SK_LOOKUP_F_REPLACE` flag was not specified.

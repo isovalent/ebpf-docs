@@ -14,7 +14,7 @@ This allow to get the `xdp_multiprog`, the dispatcher program, from the index of
 
 **-EBUSY** if the dispatcher can't be reach
 
-**-ENOENT** if _ifindex_ dosen't exist
+**-ENOENT** if _ifindex_ doesn't exist
     
 ## Usage
 

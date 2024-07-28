@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_cgroup_ancestor' eBPF kfunc, includin
 [:octicons-tag-24: v6.2](https://github.com/torvalds/linux/commit/5ca7867078296cfa9c100f9a3b2d24be1e139825)
 <!-- [/FEATURE_TAG] -->
 
-Perform a lookup on an entry in a cgroup's ancestor array.
+Perform a lookup on an entry in a cGroups ancestor array.
 
 ## Definition
 
-A cgroup returned by this kfunc which is not subsequently stored in a map, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
+A cGroup returned by this kfunc which is not subsequently stored in a map, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
 
 <!-- [KFUNC_DEF] -->
 `#!c struct cgroup *bpf_cgroup_ancestor(struct cgroup *cgrp, int level)`
@@ -38,11 +38,11 @@ A cgroup returned by this kfunc which is not subsequently stored in a map, must 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

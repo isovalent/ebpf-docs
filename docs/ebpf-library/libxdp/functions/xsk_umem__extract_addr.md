@@ -9,7 +9,7 @@ description: "This page documents the 'xsk_umem__extract_addr' libxdp function, 
 This function extract the memory address in **unaligned mode**.
 
 !!! note
-    You need to use this function with these functions [xsk_umem__extract_offset](./xsk_umem__extract_offset.md) [xsk_umem__add_offset_to_addr](./xsk_umem__add_offset_to_addr.md)
+    You need to use this function with these functions [`xsk_umem__extract_offset`](./xsk_umem__extract_offset.md) [`xsk_umem__add_offset_to_addr`](./xsk_umem__add_offset_to_addr.md)
 
 !!! note
     In aligned mode, you need to use [`xsk_umem_get_data`](./xsk_umem__get_data.md).

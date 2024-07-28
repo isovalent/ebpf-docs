@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_cpumask_full' eBPF kfunc, including i
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Check if a cpumask has all bits set.
+Check if a CPU-mask has all bits set.
 
 ## Definition
 
-`cpumask`: The cpumask being checked.
+`cpumask`: The CPU-mask being checked.
 
 Return:
 * `true`   - All of the bits in `cpumask` are set.
@@ -34,9 +34,9 @@ A `struct bpf_cpumask` pointer may be safely passed to `cpumask`.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

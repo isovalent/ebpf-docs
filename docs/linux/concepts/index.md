@@ -1,6 +1,10 @@
-# linux eBPF concepts
+---
+title: Linux eBPF concepts
+description: An index of Linux specific eBPF concepts.
+---
+# Linux eBPF concepts
 
-This is an index of linux specific eBPF concepts and features.
+This is an index of Linux specific eBPF concepts and features.
 
 * [Maps](maps.md)
 * [Verifier](verifier.md)

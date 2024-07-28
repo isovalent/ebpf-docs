@@ -8,15 +8,15 @@ description: "This page documents the 'bpf_ct_release' eBPF kfunc, including its
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/b4c2b9593a1c4c3a718370e34af28e817fd5e5c6)
 <!-- [/FEATURE_TAG] -->
 
-Release acquired nf_conn object
+Release acquired `nf_conn` object
 
 ## Definition
 
-This must be invoked for referenced PTR_TO_BTF_ID, and the verifier rejects the program if any references remain in the program in all of the explored states.
+This must be invoked for referenced `PTR_TO_BTF_ID`, and the verifier rejects the program if any references remain in the program in all of the explored states.
 
 **Parameters**
 
-`nf_conn`: Pointer to referenced nf_conn object, obtained using [`bpf_xdp_ct_lookup`](bpf_xdp_ct_lookup.md) or [`bpf_skb_ct_lookup`](bpf_skb_ct_alloc.md).
+`nf_conn`: Pointer to referenced `nf_conn` object, obtained using [`bpf_xdp_ct_lookup`](bpf_xdp_ct_lookup.md) or [`bpf_skb_ct_lookup`](bpf_skb_ct_alloc.md).
 
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_ct_release(struct nf_conn *nfct)`
@@ -36,10 +36,10 @@ This must be invoked for referenced PTR_TO_BTF_ID, and the verifier rejects the 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example
 
-See [bpf_ct_set_nat_info](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.
+See [`bpf_ct_set_nat_info`](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.

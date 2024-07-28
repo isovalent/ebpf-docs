@@ -27,8 +27,8 @@ The `callback_fn` should be a static function with the following signature:
 
 The `flags` is used to control certain aspects of the helper. Currently, the `flags` must be 0.
 
-For per_cpu maps, the map_value is the value on the cpu where the
-bpf_prog is running.
+For per-CPU maps, the `map_value` is the value on the cpu where the
+`bpf_prog` is running.
 
 If `callback_fn` return 0, the helper will continue to the next
 element. If return value is 1, the helper will skip the rest of

@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_get_file_xattr' eBPF kfunc, including
 [:octicons-tag-24: v6.8](https://github.com/torvalds/linux/commit/ac9c05e0e453cfcab2866f6d28f257590e4f66e5)
 <!-- [/FEATURE_TAG] -->
 
-Get xattr of a file
+Get extended attributed of a file
 
 ## Definition
 
-Get xattr `name__str` of `file` and store the output in `value_ptr`.
+Get extended attributed `name__str` of `file` and store the output in `value_ptr`.
 
 For security reasons, only `name__str` with prefix "user." is allowed.
 
@@ -37,7 +37,7 @@ For security reasons, only `name__str` with prefix "user." is allowed.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

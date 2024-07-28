@@ -30,15 +30,15 @@ Helper functions have a large variety of purposes ranging from simply getting so
 
 ## KFuncs
 
-KFuncs are the kernel functions that have been annotated so that they can be called from eBPF programs. Its essentially an alternative mechainsm to helper functions. The upstream kernel in principle doesn't accept new helper functions anymore, so any new functionality that needs to be exposed to eBPF programs should be done through KFuncs.
+KFuncs are the kernel functions that have been annotated so that they can be called from eBPF programs. Its essentially an alternative mechanism to helper functions. The upstream kernel in principle doesn't accept new helper functions anymore, so any new functionality that needs to be exposed to eBPF programs should be done through KFuncs.
 
-KFuncs are not considered UAPI (User-space API) and are not subject to the same stability guarantees as the UAPI. Users of KFuncs are advices to use defensive programming techniques to handle the case where a KFunc is not available or has changed.
+KFuncs are not considered UAPI (User-space API) and are not subject to the same stability guarantees as the UAPI. Users of KFuncs are advised to use defensive programming techniques to handle the case where a KFunc is not available or has changed.
 
 For more details checkout the [KFuncs](../linux/concepts/kfuncs.md) page.
 
 ## Maps
 
-eBPF maps are datastructures that live in the kernel. Both eBPF programs and userspace programs can access these maps and thus they are the communication layer between eBPF programs and userspace as well as a place to persist data between program calls. Maps like all other BPF objects are shared over the whole host, and multiple programs can access the same maps at the same time. Thus maps can also be used to transfer information between programs of different types at different attached points.
+eBPF maps are data structures that live in the kernel. Both eBPF programs and userspace programs can access these maps and thus they are the communication layer between eBPF programs and userspace as well as a place to persist data between program calls. Maps like all other BPF objects are shared over the whole host, and multiple programs can access the same maps at the same time. Thus maps can also be used to transfer information between programs of different types at different attached points.
 
 Examples of these maps are [`BPF_MAP_TYPE_ARRAY`](./map-type/BPF_MAP_TYPE_ARRAY.md) which is an array of arbitrary values or a [`BPF_MAP_TYPE_HASH`](./map-type/BPF_MAP_TYPE_HASH.md) which is a hash map with arbitrary key and value types. For more details check out the [map type overview](./map-type/index.md).
 
@@ -48,7 +48,7 @@ For more details on how to use maps, see the [maps concept page](./concepts/maps
 
 eBPF programs and maps are BPF objects along with some others we didn't mention yet. All of these objects managed in roughly the same way. Such BPF objects are created by a loader which gets a file descriptor to that object. The file descriptor is used to interact with the object further, but it also is a reference that keeps the object "alive". Objects are free-ed as soon as there exist no more references to that object.
 
-Applications can transfer copies of these file descriptors to other processes via interprocess communication techniques like unix sockets which is quite universal. A more eBPF special technique is called pinning, which allows the loader to reference a BPF object with a special file called a pin. These pins can only be made in the special BPF File System which needs to be mounted somewhere (typically at /sys/bpf but this can change between distros). As long as a pin exists it will keep the object it refers to alive. These pins can be read by any program that has permissions to access the pin file and get a reference of the object that way. Thus, multiple program can share the same objects at the same time.
+Applications can transfer copies of these file descriptors to other processes via inter-process communication techniques like UNIX sockets which is quite universal. A more eBPF special technique is called pinning, which allows the loader to reference a BPF object with a special file called a pin. These pins can only be made in the special BPF File System which needs to be mounted somewhere (typically at `/sys/bpf` but this can change between Linux distributions). As long as a pin exists it will keep the object it refers to alive. These pins can be read by any program that has permissions to access the pin file and get a reference of the object that way. Thus, multiple program can share the same objects at the same time.
 
 ## Capabilities
 

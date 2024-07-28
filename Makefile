@@ -61,7 +61,7 @@ generate-docs: build-container build-tools
 		/docs/tools/bin/helper-def-scraper --helper-path /docs/docs/linux/helper-function"
 
 .PHONY: spellcheck
-spellcheck: build-container build-tools
+spellcheck: build-container build-tools html
 	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
 		-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c \
 		"/docs/tools/bin/spellcheck --project-root /docs"

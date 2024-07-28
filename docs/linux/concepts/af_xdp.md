@@ -4,15 +4,15 @@ description: "This page explains the concept of AF_XDP in depth, AF_XDP being a 
 ---
 # AF_XDP
 
-The kernel allows process to create sockets under the Address Family Express DataPath (AF_XDP) address family. This is a special socket type which in combination with an XDP program can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP SocKet).
+The kernel allows process to create sockets under the Address Family Express Data Path (AF_XDP) address family. This is a special socket type which in combination with an XDP program can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP Socket).
 
 Examples of such use cases are:
 
 * Custom protocol implementations - If a kernel does not understand a custom protocol, it will do a lot of unnecessary work, bypassing the kernel and giving the traffic to a process which handles it correctly avoids overhead.
-* DDoS protection - If complex processing across multiple packets is required, eBPF programs can't keep up, thus forwarding traffic to userspace for analysis might be needed.
+* DDoS protection - If complex processing across multiple packets is required, eBPF programs can't keep up, thus forwarding traffic to user space for analysis might be needed.
 * Application specific optimization - The Linux network stack by necessity needs to handle a lot of protocols and edge cases which are not applicable to workloads you are running. This means paying performance cost for features you are not using. While not easy, one can implementing a custom network stack specific to their needs, to eke out every drop of performance. 
 
-All ingress traffic is first processes by a XDP program, it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques suck as PACKET_MMAP or PF_RING which require you to handle all traffic and reimplement every protocol needed for the host to function.
+All ingress traffic is first processes by a XDP program, it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques suck as `PACKET_MMAP` or `PF_RING` which require you to handle all traffic and re-implement every protocol needed for the host to function.
 
 ## Usage
 
@@ -47,7 +47,7 @@ static const int umem_len = chunk_size * chunk_count;
 unsigned char[chunk_count][chunk_size] umem = malloc(umem_len);
 ```
 
-Now that we have a UMEM, link it to the socket via the setsockopt syscall:
+Now that we have a UMEM, link it to the socket via the `setsockopt` syscall:
 
 ```c
 struct xdp_umem_reg {
@@ -69,13 +69,13 @@ if (!setsockopt(fd, SOL_XDP, XDP_UMEM_REG, &umem_reg, sizeof(xdp_umem_reg)))
     // handle error
 ```
 
-Next up are our ring buffers. These are allocated by the kernel when we tell the kernel how large we want each ring buffer to be via a setsockopt syscall. After allocation, we can map the ring buffer into the memory of our process via the mmap syscall.
+Next up are our ring buffers. These are allocated by the kernel when we tell the kernel how large we want each ring buffer to be via a `setsockopt` syscall. After allocation, we can map the ring buffer into the memory of our process via the `mmap` syscall.
 
 The following process should be repeated for each ring buffer (with different options, which will be pointed out):
 
 We have to determine the desired ring buffer size, which must be a power of 2 for example `128`, `256`, `512`, `1024` ect. The sizes of the ring buffers can be tweaked and can differ from ring buffer to ring buffer, we will pick `512` for this example.
 
-We inform the kernel of our chosen size via a setsockopt syscall:
+We inform the kernel of our chosen size via a `setsockopt` syscall:
 
 ```c
 static const int ring_size = 512;
@@ -83,7 +83,7 @@ if (!setsockopt(fd, SOL_XDP, {XDP_RX_RING,XDP_TX_RING,XDP_UMEM_FILL_RING,XDP_UME
     // handle error
 ```
 
-After we have set the sizes for all ring buffers we can request the mmap offsets with a getsockopt syscall:
+After we have set the sizes for all ring buffers we can request the `mmap` offsets with a `getsockopt` syscall:
 
 ```c
 struct xdp_ring_offset {
@@ -106,7 +106,7 @@ if (!getsockopt(fd, SOL_XDP, XDP_MMAP_OFFSETS, &offsets, sizeof(xdp_ring_offset)
     // handle error
 ```
 
-The final step is to map the ring buffers into process memory with the mmap syscall:
+The final step is to map the ring buffers into process memory with the `mmap` syscall:
 
 ```c
 struct xdp_desc {
@@ -154,13 +154,13 @@ if(!bind(fd, &sockaddr, sizeof(struct sockaddr_xdp)))
 
 A XSK can only bind to a single queue on a NIC. For multi-queue NICs, the procedure of creating a XSK should be repeated for every queue. The UMEM can optionally be shared to save on memory usage, for details see the [Options, variations, and exceptions](#options-variations-and-exceptions) section.
 
-At this point we are ready to send traffic, see [Receiving and sending packets](#receiving-and-sending-packets). But we still need to setup our XDP program and XSKMAP in order to bypass incoming traffic.
+At this point we are ready to send traffic, see [Receiving and sending packets](#receiving-and-sending-packets). But we still need to setup our XDP program and `XSKMAP` in order to bypass incoming traffic.
 
 ### eBPF program and map
 
-To actually start bypassing ingress traffic we need a XDP program and a [BPF_MAP_TYPE_XSKMAP](../map-type/BPF_MAP_TYPE_XSKMAP.md) map. The map is an array type with numeric keys starting at 0 and going up. The process should populate the values of the map with the file descriptors of the XSK's obtained in the [Setting up a XSK](#setting-up-a-xsk) section. By default, the key of the map should match the queue to which the XSK is attached.
+To actually start bypassing ingress traffic we need a XDP program and a [`BPF_MAP_TYPE_XSKMAP`](../map-type/BPF_MAP_TYPE_XSKMAP.md) map. The map is an array type with numeric keys starting at 0 and going up. The process should populate the values of the map with the file descriptors of the XSKs obtained in the [Setting up a XSK](#setting-up-a-xsk) section. By default, the key of the map should match the queue to which the XSK is attached.
 
-So if for example, we are dealing with a 4 queue nic, then the map size should be at least 4, and the fd of the XSK bound to queue#2 should bit assigned to key `2` in the map. If the queue-id mismatches, the packet will be dropped at runtime. (Except when using a shared UMEM, see [Options, variations, and exceptions](#options-variations-and-exceptions)).
+So if for example, we are dealing with a 4 queue NIC, then the map size should be at least 4, and the file descriptor of the XSK bound to queue#2 should bit assigned to key `2` in the map. If the queue-id mismatches, the packet will be dropped at runtime. (Except when using a shared UMEM, see [Options, variations, and exceptions](#options-variations-and-exceptions)).
 
 Your XDP program can be as simple or complex as your use case requires. The actual bypassing is done with the [`bpf_redirect_map`](../helper-function/bpf_redirect_map.md) helper function.
 
@@ -283,7 +283,7 @@ Once updated, our process should increment the `consumer`/`tail` pointer and do 
 At this point we can do a few things:
 
 * We can keep the chunk. If your use case requires the sending of packets without responding (not strictly a request-reply protocol), it might be needed to buffer a few chunks for sending.
-* We can give the chunk back via the FILL buffer. Optionally copying the contents for async processing or processing before returning the chunk.
+* We can give the chunk back via the FILL buffer. Optionally copying the contents for asynchronous processing or processing before returning the chunk.
 * We can modify the chuck to turn it into a reply and transmit by adding it to the TX buffer.
 
 Our example process makes clever use of this by modifying only the some of the fields, recalculating the hashes and adjusting the sizes. It then updates a descriptor in the TX buffer and increments the `producer`/`head`.
@@ -308,7 +308,7 @@ The process of transferring data between the NIC and UMEM can work in copy or ze
 
 You can request an explicit mode by specifying the `XDP_COPY` or `XDP_ZEROCOPY` flags when performing the bind syscall. If zero-copy mode is requested but not available, the bind syscall will result in an error.
 
-Additionally, a bound socket can be queried with getsockopt and the `XDP_OPTIONS` option and `struct xdp_options` value. If the flag `XDP_OPTIONS_ZEROCOPY` is set, then the socket operates in zero-copy mode.
+Additionally, a bound socket can be queried with `getsockopt` and the `XDP_OPTIONS` option and `struct xdp_options` value. If the flag `XDP_OPTIONS_ZEROCOPY` is set, then the socket operates in zero-copy mode.
 
 #### Headroom
 
@@ -320,7 +320,7 @@ This is desirable in situations where the user expects to encapsulate received p
 
 If your use-case only requires sending or receiving it might be worthwhile to no instantiate some of the ring buffers. You can create a TX only socket by just creating the TX and COMPLETION ring buffers or a RX only socket by just creating the RX and FILL ring buffers.
 
-#### XDP_USE_NEED_WAKEUP
+#### `XDP_USE_NEED_WAKEUP`
 
 By default, drivers will pro-actively check the TX and FILL rings to see if work needs to be done. By setting the `XDP_USE_NEED_WAKEUP` flag while binding the socket you tell the driver to never pro-actively checks the ring buffers, rater the process is now responsible for triggering this via syscalls.
 
@@ -348,9 +348,9 @@ In the XSK creation section we mention that the size of UMEM chunks need to be a
 
 #### XDP_SHARED_UMEM
 
-This flag enables you to bind multiple sockets to the same UMEM. It works on the same queue id, between queue ids and between netdevs/devices. In this mode, each socket has their own RX and TX rings as usual, but you are going to have one or more FILL and COMPLETION ring pairs. You have to create one of these pairs per unique netdev and queue id tuple that you bind to.
+This flag enables you to bind multiple sockets to the same UMEM. It works on the same queue id, between queue ids and between network devices. In this mode, each socket has their own RX and TX rings as usual, but you are going to have one or more FILL and COMPLETION ring pairs. You have to create one of these pairs per unique netdev and queue id tuple that you bind to.
 
-Starting with the case were we would like to share a UMEM between sockets bound to the same netdev and queue id. The UMEM (tied to the first socket created) will only have a single FILL ring and a single COMPLETION ring as there is only on unique netdev,queue_id tuple that we have bound to. To use this mode, create the first socket and bind it in the normal way. Create a second socket and create an RX and a TX ring, or at least one of them, but no FILL or COMPLETION rings as the ones from the first socket will be used. In the bind call, set he XDP_SHARED_UMEM option and provide the initial socket’s fd in the sxdp_shared_umem_fd field. You can attach an arbitrary number of extra sockets this way.
+Starting with the case were we would like to share a UMEM between sockets bound to the same netdev and queue id. The UMEM (tied to the first socket created) will only have a single FILL ring and a single COMPLETION ring as there is only on unique netdev,queue_id tuple that we have bound to. To use this mode, create the first socket and bind it in the normal way. Create a second socket and create an RX and a TX ring, or at least one of them, but no FILL or COMPLETION rings as the ones from the first socket will be used. In the bind call, set he `XDP_SHARED_UMEM` option and provide the initial socket’s file descriptor in the `sxdp_shared_umem_fd` field. You can attach an arbitrary number of extra sockets this way.
 
 In the non-shared situation, the packet must be redirected to a socket bound to the same queue id. However, when all queues share the same UMEM, the XDP program has the freedom to pick which socket to use. This capability allows for custom RPS. A simple round-robin example of distributing packets is shown below:
 
@@ -380,7 +380,7 @@ SEC("xdp_sock") int xdp_sock_prog(struct xdp_md *ctx)
 !!! note
     since there is only a single set of FILL and COMPLETION rings, and they are single producer, single consumer rings, you need to make sure that multiple processes or threads do not use these rings concurrently. The process needs to implement its own synchronization mechanism to manage this.
 
-The second case is when you share a UMEM between sockets that are bound to different queue ids and/or netdevs. In this case you have to create one FILL ring and one COMPLETION ring for each unique netdev,queue_id pair. Let us say you want to create two sockets bound to two different queue ids on the same netdev. Create the first socket and bind it in the normal way. Create a second socket and create an RX and a TX ring, or at least one of them, and then one FILL and COMPLETION ring for this socket. Then in the bind call, set he XDP_SHARED_UMEM option and provide the initial socket’s fd in the sxdp_shared_umem_fd field as you registered the UMEM on that socket. These two sockets will now share one and the same UMEM.
+The second case is when you share a UMEM between sockets that are bound to different queue ids and/or netdevs. In this case you have to create one FILL ring and one COMPLETION ring for each unique netdev,queue_id pair. Let us say you want to create two sockets bound to two different queue ids on the same netdev. Create the first socket and bind it in the normal way. Create a second socket and create an RX and a TX ring, or at least one of them, and then one FILL and COMPLETION ring for this socket. Then in the bind call, set he `XDP_SHARED_UMEM` option and provide the initial socket’s file descriptor in the `sxdp_shared_umem_fd` field as you registered the UMEM on that socket. These two sockets will now share one and the same UMEM.
 
 !!! note
     A UMEM can be shared between sockets on the same queue id and device, as well as between queues on the same device and between devices at the same time. However, packets can only be steered between queues on the same netdev. A packet can't be redirected to a XSK bound to a different netdev even if they share a UMEM.

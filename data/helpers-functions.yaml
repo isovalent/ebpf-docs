@@ -70,6 +70,20 @@ groups:
     cap: [CAP_BPF, CAP_PERFMON]
   - name: bpf_trace_vprintk
     cap: [CAP_BPF, CAP_PERFMON]
+  - name: bpf_cgrp_storage_get
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_cgrp_storage_delete
+    kconfig: [CONFIG_CGROUPS]
+  - name: bpf_dynptr_data
+  - name: bpf_dynptr_from_mem
+  - name: bpf_dynptr_read
+  - name: bpf_dynptr_write
+  - name: bpf_kptr_xchg
+  - name: bpf_ktime_get_tai_ns
+  - name: bpf_ringbuf_discard_dynptr
+  - name: bpf_ringbuf_reserve_dynptr
+  - name: bpf_ringbuf_submit_dynptr
+  - name: bpf_user_ringbuf_drain
 
   # `tracing_prog_func_proto` in `kernel/tracing/bpf_trace.c`
   tracing_prog:
@@ -98,6 +112,8 @@ groups:
   - name: bpf_get_socket_cookie
     kconfig: [CONFIG_NET]
   - name: bpf_xdp_get_buff_len
+    kconfig: [CONFIG_NET]
+  - name: bpf_skc_to_mptcp_sock
     kconfig: [CONFIG_NET]
   - name: bpf_seq_printf
     attach_type: [BPF_TRACE_ITER]
@@ -336,6 +352,14 @@ programs:
     kconfig: [CONFIG_INET]
   - name: bpf_skb_set_tstamp
     kconfig: [CONFIG_INET]
+  - name: bpf_tcp_raw_gen_syncookie_ipv4
+    kconfig: [CONFIG_SYN_COOKIES]
+  - name: bpf_tcp_raw_gen_syncookie_ipv6
+    kconfig: [CONFIG_SYN_COOKIES]
+  - name: bpf_tcp_raw_check_syncookie_ipv4
+    kconfig: [CONFIG_SYN_COOKIES]
+  - name: bpf_tcp_raw_check_syncookie_ipv6
+    kconfig: [CONFIG_SYN_COOKIES]
   - group: base
 
   # `tc_cls_act_func_proto` in `net/core/filter.c`
@@ -449,6 +473,14 @@ programs:
     kconfig: [CONFIG_INET]
   - name: bpf_tcp_gen_syncookie
     kconfig: [CONFIG_INET]
+  - name: bpf_tcp_raw_check_syncookie_ipv4
+    kconfig: [CONFIG_SYN_COOKIES]
+  - name: bpf_tcp_raw_gen_syncookie_ipv6
+    kconfig: [CONFIG_SYN_COOKIES]
+  - name: bpf_tcp_raw_check_syncookie_ipv4
+    kconfig: [CONFIG_SYN_COOKIES]
+  - name: bpf_tcp_raw_check_syncookie_ipv6
+    kconfig: [CONFIG_SYN_COOKIES]
   - group: base
 
   # `pe_prog_func_proto` in `kernel/tracing/bpf_trace.c`
@@ -759,7 +791,7 @@ programs:
 
   # `tracing_prog_func_proto` in `kernel/tracing/bpf_trace.c`
   BPF_PROG_TYPE_TRACING:
-  - group: tracing
+  - group: tracing_prog
 
   # TODO struct ops has allowed helpers per struct type, currently only TCP Congestion Algo
   # but it doesn't fit neatly with the rest :(

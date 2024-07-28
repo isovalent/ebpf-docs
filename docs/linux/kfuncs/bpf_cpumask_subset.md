@@ -8,12 +8,12 @@ description: "This page documents the 'bpf_cpumask_subset' eBPF kfunc, including
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Check if a cpumask is a subset of another.
+Check if a CPU-mask is a subset of another.
 
 ## Definition
 
-`src1`: The first cpumask being checked as a subset.
-`src2`: The second cpumask being checked as a superset.
+`src1`: The first CPU-mask being checked as a subset.
+`src2`: The second CPU-mask being checked as a superset.
 
 Return:
 * `true`   - All of the bits of `src1` are set in `src2`.
@@ -35,9 +35,9 @@ Return:
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

@@ -6,7 +6,7 @@
   * [Helper functions](linux/helper-function/)
   * [Syscall commands](linux/syscall/)
   * [KFuncs](linux/kfuncs/)
-* [ePBF librairies](ebpf-library/index.md)
+* [eBPF libraries](ebpf-library/index.md)
   * [Libbpf](ebpf-library/libbpf.md)
   * [Libxdp](ebpf-library/libxdp/)
 * [Concepts](concepts/index.md)

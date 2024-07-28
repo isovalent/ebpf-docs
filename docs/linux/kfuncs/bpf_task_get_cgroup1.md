@@ -8,15 +8,15 @@ description: "This page documents the 'bpf_task_get_cgroup1' eBPF kfunc, includi
 [:octicons-tag-24: v6.8](https://github.com/torvalds/linux/commit/fe977716b40cb98cf9c91a66454adf3dc2f8c59a)
 <!-- [/FEATURE_TAG] -->
 
-Acquires the associated cgroup of a task within a specific cgroup1 hierarchy. 
+Acquires the associated cGroup of a task within a specific cGroup1 hierarchy. 
 
 ## Definition
 
-The cgroup1 hierarchy is identified by its hierarchy ID.
+The cGroup1 hierarchy is identified by its hierarchy ID.
 
 **Returns**
 
-On success, the cgroup is returen. On failure, NULL is returned.
+On success, the cGroup is returned. On failure, NULL is returned.
 
 <!-- [KFUNC_DEF] -->
 `#!c struct cgroup *bpf_task_get_cgroup1(struct task_struct *task, int hierarchy_id)`
@@ -42,11 +42,11 @@ On success, the cgroup is returen. On failure, NULL is returned.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

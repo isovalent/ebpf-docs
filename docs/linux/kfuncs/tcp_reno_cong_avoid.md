@@ -12,7 +12,7 @@ Do new congestion window calculation
 
 ## Definition
 
-This is Jacobson's slow start and congestion avoidance. SIGCOMM '88, p. 328.
+This is Jacobson's slow start and congestion avoidance. <nospell>SIGCOMM '88, p. 328</nospell>.
 
 <!-- [KFUNC_DEF] -->
 `#!c void tcp_reno_cong_avoid(struct sock *sk, u32 ack, u32 acked)`
@@ -28,7 +28,7 @@ This is Jacobson's slow start and congestion avoidance. SIGCOMM '88, p. 328.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

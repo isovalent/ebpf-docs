@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_cgroup_acquire' eBPF kfunc, including
 [:octicons-tag-24: v6.2](https://github.com/torvalds/linux/commit/fda01efc61605af7c6fa03c4109f14d59c9228b7)
 <!-- [/FEATURE_TAG] -->
 
-Acquire a reference to a cgroup.
+Acquire a reference to a cGroup.
 
 ## Definition
 
-A cgroup acquired by this kfunc which is not stored in a map as a kptr, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
+A cGroup acquired by this kfunc which is not stored in a map as a kptr, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
 
 <!-- [KFUNC_DEF] -->
 `#!c struct cgroup *bpf_cgroup_acquire(struct cgroup *cgrp)`
@@ -38,11 +38,11 @@ A cgroup acquired by this kfunc which is not stored in a map as a kptr, must be 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

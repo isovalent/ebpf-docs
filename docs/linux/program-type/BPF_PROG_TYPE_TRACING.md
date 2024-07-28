@@ -34,7 +34,7 @@ Fentry programs are similar in function to a kprobe attached to a functions firs
 
 Kprobes do not have to be attached at the entry point of a function, kprobes can be installed at any point in the function, whereas fentry programs are always attached at the entry point of a function.
 
-Fentry programs are attached to a BPF trampoline which causes less overhead than kprobes. Fentry programs can also be attached to BPF programs such as XDP, TC or cgroup programs which makes debugging eBPF programs easier. Kprobes lack this capability.
+Fentry programs are attached to a BPF trampoline which causes less overhead than kprobes. Fentry programs can also be attached to BPF programs such as XDP, TC or cGroup programs which makes debugging eBPF programs easier. Kprobes lack this capability.
 
 Fentry programs are typically located in an ELF section prefixed with `fentry/`.
 
@@ -354,6 +354,30 @@ Not all helper functions are available in all program types. These are the helpe
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [PROG_HELPER_FUNC_REF] -->
 ??? abstract "Supported helper functions"
+    * [`bpf_skb_output`](../helper-function/bpf_skb_output.md)
+    * [`bpf_xdp_output`](../helper-function/bpf_xdp_output.md)
+    * [`bpf_skc_to_tcp6_sock`](../helper-function/bpf_skc_to_tcp6_sock.md)
+    * [`bpf_skc_to_tcp_sock`](../helper-function/bpf_skc_to_tcp_sock.md)
+    * [`bpf_skc_to_tcp_timewait_sock`](../helper-function/bpf_skc_to_tcp_timewait_sock.md)
+    * [`bpf_skc_to_tcp_request_sock`](../helper-function/bpf_skc_to_tcp_request_sock.md)
+    * [`bpf_skc_to_udp6_sock`](../helper-function/bpf_skc_to_udp6_sock.md)
+    * [`bpf_skc_to_unix_sock`](../helper-function/bpf_skc_to_unix_sock.md)
+    * [`bpf_sk_storage_get`](../helper-function/bpf_sk_storage_get.md)
+    * [`bpf_sk_storage_delete`](../helper-function/bpf_sk_storage_delete.md)
+    * [`bpf_sock_from_file`](../helper-function/bpf_sock_from_file.md)
+    * [`bpf_get_socket_cookie`](../helper-function/bpf_get_socket_cookie.md)
+    * [`bpf_xdp_get_buff_len`](../helper-function/bpf_xdp_get_buff_len.md)
+    * [`bpf_skc_to_mptcp_sock`](../helper-function/bpf_skc_to_mptcp_sock.md)
+    * [`bpf_seq_printf`](../helper-function/bpf_seq_printf.md)
+    * [`bpf_seq_write`](../helper-function/bpf_seq_write.md)
+    * [`bpf_seq_printf_btf`](../helper-function/bpf_seq_printf_btf.md)
+    * [`bpf_d_path`](../helper-function/bpf_d_path.md)
+    * [`bpf_get_func_arg`](../helper-function/bpf_get_func_arg.md)
+    * [`bpf_get_func_ret`](../helper-function/bpf_get_func_ret.md)
+    * [`bpf_get_func_arg_cnt`](../helper-function/bpf_get_func_arg_cnt.md)
+    * [`bpf_perf_event_output`](../helper-function/bpf_perf_event_output.md)
+    * [`bpf_get_stackid`](../helper-function/bpf_get_stackid.md)
+    * [`bpf_get_stack`](../helper-function/bpf_get_stack.md)
     * [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md)
     * [`bpf_map_update_elem`](../helper-function/bpf_map_update_elem.md)
     * [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md)
@@ -450,6 +474,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

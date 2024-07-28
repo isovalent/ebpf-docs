@@ -12,11 +12,11 @@ Add the provided entry into a CT map
 
 ## Definition
 
-This must be invoked for referenced PTR_TO_BTF_ID.
+This must be invoked for referenced `PTR_TO_BTF_ID`.
 
 **Parameters**
 
-`nfct__ref`: Pointer to referenced nf_conn___init object, obtained using bpf_xdp_ct_alloc or bpf_skb_ct_alloc.
+`nfct__ref`: Pointer to referenced `nf_conn___init` object, obtained using `bpf_xdp_ct_alloc` or `bpf_skb_ct_alloc`.
 
 <!-- [KFUNC_DEF] -->
 `#!c struct nf_conn *bpf_ct_insert_entry(struct nf_conn___init *nfct_i)`
@@ -46,10 +46,10 @@ This must be invoked for referenced PTR_TO_BTF_ID.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example
 
-See [bpf_ct_set_nat_info](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.
+See [`bpf_ct_set_nat_info`](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.

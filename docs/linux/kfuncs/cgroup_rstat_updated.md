@@ -8,11 +8,11 @@ description: "This page documents the 'cgroup_rstat_updated' eBPF kfunc, includi
 [:octicons-tag-24: v6.1](https://github.com/torvalds/linux/commit/a319185be9f5ad13c2a296d448ac52ffe45d194c)
 <!-- [/FEATURE_TAG] -->
 
-Keep track of updated rstat_cpu
+Keep track of updated `rstat_cpu`
 
 ## Definition
 
-`cgrp`'s rstat_cpu on `cpu` was updated. Put it on the parent's matching rstat_cpu->updated_children list. See the comment on top of cgroup_rstat_cpu definition for details.
+`cgrp`'s rstat_cpu on `cpu` was updated. Put it on the parent's matching `rstat_cpu->updated_children` list. See the comment on top of `cgroup_rstat_cpu` definition for details.
 
 
 **Parameters**
@@ -35,8 +35,8 @@ Keep track of updated rstat_cpu
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

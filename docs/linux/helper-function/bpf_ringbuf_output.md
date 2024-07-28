@@ -29,7 +29,7 @@ An adaptive notification is a notification sent whenever the user-space process 
 
 The `ringbuf` must be a pointer to the ring buffer map. `data` is a pointer to the data that needs to be copied into the ring buffer. The `size` argument specifies the number of bytes to be copied. The `flags` argument defines how the notification of the new data availability should be handled.
 
-This function incurs an extra memory copy operation in comparison to using [bpf_ringbuf_reserve](./bpf_ringbuf_reserve.md)/[bpf_ringbuf_submit](./bpf_ringbuf_submit.md)/[bpf_ringbuf_discard](./bpf_ringbuf_discard.md), but allows submitting records of lengths unknown to the [verifier](https://www.kernel.org/doc/html/next/bpf/ringbuf.html). 
+This function incurs an extra memory copy operation in comparison to using [`bpf_ringbuf_reserve`](./bpf_ringbuf_reserve.md)/[`bpf_ringbuf_submit`](./bpf_ringbuf_submit.md)/[`bpf_ringbuf_discard`](./bpf_ringbuf_discard.md), but allows submitting records of lengths unknown to the [verifier](https://www.kernel.org/doc/html/next/bpf/ringbuf.html). 
 
 ### Program types
 

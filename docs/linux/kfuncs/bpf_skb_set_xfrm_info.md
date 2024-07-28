@@ -40,14 +40,14 @@ This kfunc allows steering traffic towards different IPsec connections based on 
 
 This object is built based on the availability of BTF debug info.
 
-When setting the xfrm metadata, percpu metadata dsts are used in order to avoid allocating a metadata dst per packet.
+When setting the xfrm metadata, per-CPU metadata destinations are used in order to avoid allocating a metadata destination per packet.
 
 ### Program types
 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

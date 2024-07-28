@@ -11,7 +11,7 @@ description: "This page documents the 'BPF_PROG_TYPE_SOCKET_FILTER' eBPF program
 Socket filter programs can hook into network sockets and are designed to filter or modify packets received by
 that socket (the program isn't called for egress/outgoing packets). 
 
-A noticeable use-case for this program type is [tcpdump](https://www.tcpdump.org/) which uses a [raw](https://man7.org/linux/man-pages/man7/raw.7.html) sockets in combination with a socket filter generated from the filter query to efficiently filter packets and only pay the kernel-userspace barrier cost for packets of interest.
+A noticeable use-case for this program type is [`tcpdump`](https://www.tcpdump.org/) which uses a [raw](https://man7.org/linux/man-pages/man7/raw.7.html) sockets in combination with a socket filter generated from the filter query to efficiently filter packets and only pay the kernel-userspace barrier cost for packets of interest.
 
 ## Usage
 
@@ -120,6 +120,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

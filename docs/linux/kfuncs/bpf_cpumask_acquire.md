@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_cpumask_acquire' eBPF kfunc, includin
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Acquire a reference to a BPF cpumask.
+Acquire a reference to a BPF CPU-mask.
 
 ## Definition
 
-Acquires a reference to a BPF cpumask. The cpumask returned by this function
+Acquires a reference to a BPF CPU-mask. The CPU-mask returned by this function
 must either be embedded in a map as a kptr, or freed with
 [`bpf_cpumask_release()`](bpf_cpumask_release.md).
 
@@ -36,9 +36,9 @@ must either be embedded in a map as a kptr, or freed with
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

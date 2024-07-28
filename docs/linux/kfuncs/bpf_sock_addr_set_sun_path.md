@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_sock_addr_set_sun_path' eBPF kfunc, i
 [:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/53e380d21441909b12b6e0782b77187ae4b971c4)
 <!-- [/FEATURE_TAG] -->
 
-Modify the sockaddr of a socket.
+Modify the socket address of a socket.
 
 ## Definition
 
@@ -26,8 +26,8 @@ Modify the sockaddr of a socket.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_CGROUP_SKB](../program-type/BPF_PROG_TYPE_CGROUP_SKB.md)
-- [BPF_PROG_TYPE_CGROUP_SOCK_ADDR](../program-type/BPF_PROG_TYPE_CGROUP_SOCK_ADDR.md)
+- [`BPF_PROG_TYPE_CGROUP_SKB`](../program-type/BPF_PROG_TYPE_CGROUP_SKB.md)
+- [`BPF_PROG_TYPE_CGROUP_SOCK_ADDR`](../program-type/BPF_PROG_TYPE_CGROUP_SOCK_ADDR.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

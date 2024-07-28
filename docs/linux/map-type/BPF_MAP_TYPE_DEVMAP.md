@@ -31,7 +31,7 @@ struct bpf_devmap_val {
 The `fd`/`id` refers to an XDP program optionally set by userspace. If set, the referred XDP program will execute on the packet, in the context of the new network device after the packet has been redirected but before it egresses the network interface.
 
 !!! note
-    Programs attached to a devmap must be loaded with the `BPF_XDP_DEVMAP` expected attach type.
+    Programs attached to a <nospell>devmap</nospell> must be loaded with the `BPF_XDP_DEVMAP` expected attach type.
 
 ## Attributes
 

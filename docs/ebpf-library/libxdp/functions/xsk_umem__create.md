@@ -14,7 +14,7 @@ Create an umem area.
 
 **-EINVAL** if arguments are invalid  
 
-**-EFAULT** if the memory adress is invalid
+**-EFAULT** if the memory address is invalid
 
 **-ENOMEM** if no space memory left
     

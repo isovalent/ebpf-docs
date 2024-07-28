@@ -8,17 +8,17 @@ description: "This page documents the 'bpf_cpumask_any_and_distribute' eBPF kfun
 [:octicons-tag-24: v6.5](https://github.com/torvalds/linux/commit/f983be917332ea5e03f689e12c6668be48cb4cfe)
 <!-- [/FEATURE_TAG] -->
 
-Return a random set CPU from the AND of two cpumasks.
+Return a random set CPU from the AND of two CPU-masks.
 
 ## Definition
 
-`src1`: The first cpumask.
-`src2`: The second cpumask.
+`src1`: The first CPU-mask.
+`src2`: The second CPU-mask.
 
 Return:
-* A random set bit within [0, num_cpus) from the AND of two cpumasks, if at
+* A random set bit within [0, `num_cpus`) from the AND of two CPU-mask, if at
   least one bit is set.
-* >= num_cpus if no bit is set.
+* >= `num_cpus` if no bit is set.
 
 `struct bpf_cpumask` pointers may be safely passed to `src1` and `src2`.
 
@@ -36,9 +36,9 @@ Return:
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

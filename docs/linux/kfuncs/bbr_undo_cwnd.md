@@ -12,7 +12,7 @@ Return new value of congestion window after loss.
 
 ## Definition
 
-In theory BBR does not need to undo the cwnd since it does not always reduce cwnd on losses (see bbr_main()).
+In theory BBR does not need to undo the `cwnd` since it does not always reduce `cwnd` on losses (see `bbr_main()`).
 
 <!-- [KFUNC_DEF] -->
 `#!c u32 bbr_undo_cwnd(struct sock *sk)`
@@ -28,7 +28,7 @@ In theory BBR does not need to undo the cwnd since it does not always reduce cwn
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

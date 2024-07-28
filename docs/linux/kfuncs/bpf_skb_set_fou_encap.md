@@ -8,13 +8,13 @@ description: "This page documents the 'bpf_skb_set_fou_encap' eBPF kfunc, includ
 [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c50e96099edb134bf107fafc02715fbc4aa2277f)
 <!-- [/FEATURE_TAG] -->
 
-Set FOU (Foo Over UDP) encap parameters
+Set FOU (Foo Over UDP) encapsulation parameters
 
 ## Definition
 
-This function allows for using GUE or FOU encapsulation together with an ipip device in collect-metadata mode.
+This function allows for using GUE or FOU encapsulation together with an IPIP device in collect-metadata mode.
 
-It is meant to be used in BPF tc-hooks and after a call to the [`bpf_skb_set_tunnel_key`](../helper-function/bpf_skb_set_tunnel_key.md) helper, responsible for setting IP addresses.
+It is meant to be used in BPF traffic control hooks and after a call to the [`bpf_skb_set_tunnel_key`](../helper-function/bpf_skb_set_tunnel_key.md) helper, responsible for setting IP addresses.
 
 **Parameters**
 `skb_ctx`:  Pointer to ctx (__sk_buff) in TC program. Cannot be NULL
@@ -37,14 +37,14 @@ It is meant to be used in BPF tc-hooks and after a call to the [`bpf_skb_set_tun
 
 ## Usage
 
-The bpf_skb_set_fou_encap kfunc is supposed to be used in tandem and after a successful call to the [`bpf_skb_set_tunnel_key`](../helper-function/bpf_skb_set_tunnel_key.md) bpf-helper. UDP source and destination ports can be controlled by passing a `struct bpf_fou_encap`. A source port of zero will auto-assign a source port. `enum bpf_fou_encap_type` is used to specify if the egress path should FOU or GUE encap the packet.
+The `bpf_skb_set_fou_encap` kfunc is supposed to be used in tandem and after a successful call to the [`bpf_skb_set_tunnel_key`](../helper-function/bpf_skb_set_tunnel_key.md) bpf-helper. UDP source and destination ports can be controlled by passing a `struct bpf_fou_encap`. A source port of zero will auto-assign a source port. `enum bpf_fou_encap_type` is used to specify if the egress path should FOU or GUE encap the packet.
 
 ### Program types
 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

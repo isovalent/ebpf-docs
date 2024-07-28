@@ -8,7 +8,7 @@ description: "This page documents the 'BPF_PROG_TYPE_CGROUP_SYSCTL' eBPF program
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/7b146cebe30cb481b0f70d85779da938da818637)
 <!-- [/FEATURE_TAG] -->
 
-cGroup sysctl programs are called when a process in the cGroup to which the program is attached attempts to read or write a sysctl option in the proc filesystem.
+cGroup sysctl programs are called when a process in the cGroup to which the program is attached attempts to read or write a sysctl option in the `proc` file system.
 
 ## Usage
 
@@ -31,11 +31,11 @@ If program returns `0` user space will get `-1` from [`read(2)`](https://linux.d
     may return results different from that at `sys_open` time, i.e. process that
     opened sysctl file in proc filesystem may differ from process that is trying
     to read from / write to it and two such processes may run in different
-    cgroups, what means ``BPF_PROG_TYPE_CGROUP_SYSCTL`` should not be used as a
+    cGroups, what means ``BPF_PROG_TYPE_CGROUP_SYSCTL`` should not be used as a
     security mechanism to limit sysctl usage.
 
-    As with any cgroup-bpf program additional care should be taken if an
-    application running as root in a cgroup should not be allowed to
+    As with any cGroup-bpf program additional care should be taken if an
+    application running as root in a cGroup should not be allowed to
     detach/replace BPF program attached by administrator.
 
 ### Special helpers
@@ -50,7 +50,7 @@ Since sysctl knob is represented by a name and a value, sysctl specific BPF help
 
 * [`bpf_sysctl_set_new_value`](../helper-function/bpf_sysctl_set_new_value.md) to override new string value currently being written to sysctl before actual write happens. Sysctl value will be overridden starting from the current `ctx->file_pos`. If the whole value has to be overridden BPF program can set `file_pos` to zero before calling to the helper. This helper can be used only on `ctx->write == 1`. New string value set by the helper is treated and verified by kernel same way as an equivalent string passed by user space.
 
-BPF program sees sysctl value same way as user space does in proc filesystem, i.e. as a string. Since many sysctl values represent an integer or a vector of integers, the following helpers can be used to get numeric value from the string:
+BPF program sees sysctl value same way as user space does in `proc` file system, i.e. as a string. Since many sysctl values represent an integer or a vector of integers, the following helpers can be used to get numeric value from the string:
 
 * `bpf_strtol()` to convert initial part of the string to long integer similar to user space [`strtol(3)`](https://linux.die.net/man/3/strtol)
 * `bpf_strtoul()` to convert initial part of the string to unsigned long integer similar to user space [`strtoul(3)`](https://linux.die.net/man/3/strtoul)
@@ -70,11 +70,11 @@ This field indicates whether sysctl value is being read (`0`) or written (`1`). 
 
 ### `file_pos`
 
-This field indicates file position sysctl is being accessed at, read or written. This field is read-write. Writing to the field sets the starting position in sysctl proc file [`read(2)`](https://linux.die.net/man/2/read) will be reading from or [`write(2)`](https://linux.die.net/man/2/write) will be writing to. Writing zero to the field can be used e.g. to override whole sysctl value by [`bpf_sysctl_set_new_value`](../helper-function/bpf_sysctl_get_new_value.md) on [`write(2)`](https://linux.die.net/man/2/write) even when it's called by user space on `file_pos > 0`. Writing non-zero value to the field can be used to access part of sysctl value starting from specified `file_pos`. Not all sysctl support access with `file_pos != 0`, e.g. writes to numeric sysctl entries must always be at file position `0`. See also `kernel.sysctl_writes_strict` sysctl.
+This field indicates file position sysctl is being accessed at, read or written. This field is read-write. Writing to the field sets the starting position in sysctl `proc` file [`read(2)`](https://linux.die.net/man/2/read) will be reading from or [`write(2)`](https://linux.die.net/man/2/write) will be writing to. Writing zero to the field can be used e.g. to override whole sysctl value by [`bpf_sysctl_set_new_value`](../helper-function/bpf_sysctl_get_new_value.md) on [`write(2)`](https://linux.die.net/man/2/write) even when it's called by user space on `file_pos > 0`. Writing non-zero value to the field can be used to access part of sysctl value starting from specified `file_pos`. Not all sysctl support access with `file_pos != 0`, e.g. writes to numeric sysctl entries must always be at file position `0`. See also `kernel.sysctl_writes_strict` sysctl.
 
 ## Attachment
 
-cGroup socket buffer programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
+cGroup socket buffer programs are attached to cGroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
 
 ## Example
 
@@ -213,6 +213,18 @@ char _license[] SEC("license") = "GPL";
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

@@ -18,7 +18,7 @@ Regardless of the type of operation, the program should always return `1` on suc
 
 There are a few envisioned use cases for this program type. First is to reply with certain settings like RTO, RTT and ECN (see [ops](#ops) section for details) or to set socket options using the [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md) helper to tune settings/options on a per-connection basis. 
 
->  For example, it is easy to use facebook's internal IPv6 addresses to determine if both hosts of a connection are in the same datacenter. Therefore, it is easy to write a BPF program to choose a small SYN RTO value when both hosts are in the same datacenter.
+>  For example, it is easy to use Facebook's internal IPv6 addresses to determine if both hosts of a connection are in the same data center. Therefore, it is easy to write a BPF program to choose a small SYN RTO value when both hosts are in the same data center.
 
 Secondly, socket ops programs are in an excellent position to gather detailed metrics about connections. Especially after [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/44f0e43037d3a17b043843ba67610ac7c7e37db6).
 
@@ -195,13 +195,13 @@ The arguments in the context will have the following meanings:
 
 `args[0]`: bool want_cookie. (in writing SYNACK only)
 
-`sock_ops->skb_data`: Referring to the outgoing skb. It covers the TCP header that has already been written by the kernel and the earlier bpf-progs.
+`sock_ops->skb_data`: Referring to the outgoing skb. It covers the TCP header that has already been written by the kernel and the earlier BPF programs.
 
 `sock_ops->skb_tcp_flags`: The tcp_flags of the outgoing skb. (e.g. SYN, ACK, FIN).
 
 The [`bpf_store_hdr_opt`](../helper-function/bpf_store_hdr_opt.md) should be used to write the option.
 
-The [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md) can also be used to search for a particular option that has already been written by the kernel or the earlier bpf-progs.
+The [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md) can also be used to search for a particular option that has already been written by the kernel or the earlier BPF programs.
 
 ## Context
 
@@ -475,13 +475,13 @@ Number of packets which are "in flight".
 
 [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/44f0e43037d3a17b043843ba67610ac7c7e37db6)
 
-Number of packets retransmitted out.
+Number of packets re-transmitted out.
 
 ### `total_retrans`
 
 [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/44f0e43037d3a17b043843ba67610ac7c7e37db6)
 
-Total # of packet retransmits for entire connection.
+Total # of packet re-transmits for entire connection.
 
 ### `segs_in`
 
@@ -517,7 +517,7 @@ Number of lost packets.
 
 [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/44f0e43037d3a17b043843ba67610ac7c7e37db6)
 
-Number of SACK'd packets.
+Number of <nospell>SACK'd</nospell> packets.
 
 ### `sk_txhash`
 
@@ -529,13 +529,13 @@ Computed flow hash for use on transmit.
 
 [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/44f0e43037d3a17b043843ba67610ac7c7e37db6)
 
-RFC4898 tcpEStatsAppHCThruOctetsReceived sum(delta(rcv_nxt)), or how many bytes were acked.
+RFC4898 `tcpEStatsAppHCThruOctetsReceived sum(delta(rcv_nxt))`, or how many bytes were acked.
 
 ### `bytes_acked`
 
 [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/44f0e43037d3a17b043843ba67610ac7c7e37db6)
 
-RFC4898 tcpEStatsAppHCThruOctetsAcked sum(delta(snd_una)), or how many bytes were acked.
+RFC4898 `tcpEStatsAppHCThruOctetsAcked sum(delta(snd_una))`, or how many bytes were acked.
 
 ### `sk`
 
@@ -573,9 +573,9 @@ The total length of a packet. It includes the header, options, and payload.
 
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/0813a841566f0962a5551be7749b43c45f0022a0)
 
-tcp_flags of the header.  It provides an easy way to check for tcp_flags without parsing skb_data.
+`tcp_flags` of the header.  It provides an easy way to check for `tcp_flags` without parsing skb_data.
 
-In particular, the skb_tcp_flags will still be available in `BPF_SOCK_OPS_HDR_OPT_LEN` even though the outgoing header has not been written yet.
+In particular, the `skb_tcp_flags` will still be available in `BPF_SOCK_OPS_HDR_OPT_LEN` even though the outgoing header has not been written yet.
 
 ### `skb_hwtstamp`
 
@@ -583,14 +583,14 @@ In particular, the skb_tcp_flags will still be available in `BPF_SOCK_OPS_HDR_OP
 
 The timestamp at which the packet was received as reported by the hardware/NIC.
 
-> In sockops, the skb is also available to the bpf prog during the `BPF_SOCK_OPS_PARSE_HDR_OPT_CB` event.  There is a use case that the hwtstamp will be useful to the sockops prog to better measure the one-way-delay when the sender has put the tx timestamp in the tcp header option.
+> <nospell>In sockops, the skb is also available to the bpf prog during the `BPF_SOCK_OPS_PARSE_HDR_OPT_CB` event.  There is a use case that the hwtstamp will be useful to the sockops prog to better measure the one-way-delay when the sender has put the tx timestamp in the tcp header option.</nospell>
 
 !!! warning
-    hwtstamps can only be compared against other hwtstamps from the same device.
+    `hwtstamps` can only be compared against other `hwtstamps` from the same device.
 
 ## Attachment
 
-Socket ops programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
+Socket ops programs are attached to cGroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
 
 ## Examples
 
@@ -855,6 +855,18 @@ Socket ops programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../sysca
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

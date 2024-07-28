@@ -1,4 +1,4 @@
-# LibBPF kernel side library
+# Libbpf kernel side library
 
 <!-- TODO abstract -->
 

@@ -12,7 +12,7 @@ Struct ops maps are specialized maps that act as implementations of "struct ops"
 
 ## Usage
 
-The kernel has the concept of of "struct ops" which are function pointers inside a struct, this is the kernels way of implementing polymorphism. A callsite defines a structure and contract for how the implementations should behave. A new implementation can then create an instance of this struct and set its own functions.
+The kernel has the concept of of "struct ops" which are function pointers inside a struct, this is the kernels way of implementing polymorphism. A call site defines a structure and contract for how the implementations should behave. A new implementation can then create an instance of this struct and set its own functions.
 
 The struct ops map type is meant to serve as a way to allocate memory for an instant of struct ops. BPF programs are then set as field values to implement the functions in the struct ops.
 
@@ -46,7 +46,7 @@ The following helper functions work with this map type:
 
 [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/68b04864ca425d1894c96b8141d4fba1181f11cb)
 
-If this flag is specified, the defined struct ops isn't directly attached to the callsite of the struct ops. Instead, a BPF link must be used to attach the struct ops to the callsite. 
+If this flag is specified, the defined struct ops isn't directly attached to the call site of the struct ops. Instead, a BPF link must be used to attach the struct ops to the call site. 
 
 ### `BPF_F_VTYPE_BTF_OBJ_FD`
 

@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_cpumask_first' eBPF kfunc, including 
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Get the index of the first nonzero bit in the cpumask.
+Get the index of the first nonzero bit in the CPU-mask.
 
 ## Definition
 
-Find the index of the first nonzero bit of the cpumask. A `struct bpf_cpumask`
+Find the index of the first nonzero bit of the CPU-mask. A `struct bpf_cpumask`
 pointer may be safely passed to this function.
 
 <!-- [KFUNC_DEF] -->
@@ -29,9 +29,9 @@ pointer may be safely passed to this function.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

@@ -8,17 +8,17 @@ description: "This page documents the 'bpf_cpumask_test_cpu' eBPF kfunc, includi
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Test whether a CPU is set in a cpumask.
+Test whether a CPU is set in a CPU-mask.
 
 ## Definition
 
 `cpu`: The CPU being queried for.
 
-`cpumask`: The cpumask being queried for containing a CPU.
+`cpumask`: The CPU-mask being queried for containing a CPU.
 
 Return:
-* `true`  - `cpu` is set in the cpumask
-* `false` - `cpu` was not set in the cpumask, or `cpu` is an invalid cpu.
+* `true`  - `cpu` is set in the CPU-mask
+* `false` - `cpu` was not set in the CPU-mask, or `cpu` is an invalid cpu.
 
 
 <!-- [KFUNC_DEF] -->
@@ -35,9 +35,9 @@ Return:
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

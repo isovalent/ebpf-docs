@@ -23,7 +23,7 @@ in case of failure.
 
 ## Usage
 
-This helper is a "printk()-like" facility for debugging. It prints a message defined by format `fmt` (of size `fmt_size`) to file `/sys/kernel/tracing/trace` from TraceFS, if available. It can take up to three additional `u64` arguments (as an eBPF helpers, the total number of arguments is limited to five).
+This helper is a <nospell>"printk()-like"</nospell> facility for debugging. It prints a message defined by format `fmt` (of size `fmt_size`) to file `/sys/kernel/tracing/trace` from TraceFS, if available. It can take up to three additional `u64` arguments (as an eBPF helpers, the total number of arguments is limited to five).
 
 !!! warning
     A commonly made mistake is to call `bpf_trace_printk` with a literal string like 

@@ -14,7 +14,7 @@ Until kernel version v5.11 this mechanism was used to track and limit the memory
 
 ## cGroup memory limit
 
-In the v5.11 kernel update, [this patch set](https://lore.kernel.org/bpf/20201201215900.3569844-1-guro@fb.com/) switched the memory accounting and limiting from rlimit to cgroups. This means that all memory used adds to the "memory used" figure of the cGroup of which the process that creates it is a part. This eliminates the need to grant loaders `CAP_SYS_RESOURCE` capability. If resource limits need to be raised, it should be done so with the `memory.max` setting on the cGroup.
+In the v5.11 kernel update, [this patch set](https://lore.kernel.org/bpf/20201201215900.3569844-1-guro@fb.com/) switched the memory accounting and limiting from rlimit to cGroups. This means that all memory used adds to the "memory used" figure of the cGroup of which the process that creates it is a part. This eliminates the need to grant loaders `CAP_SYS_RESOURCE` capability. If resource limits need to be raised, it should be done so with the `memory.max` setting on the cGroup.
 
 !!! note
     Kernel memory accounting and limiting per cGroup can be disabled by disabling the `MEMCG_KMEM` kconfig during kernel compilation which is set to `y` by default.

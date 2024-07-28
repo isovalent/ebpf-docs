@@ -16,7 +16,7 @@ Creates an AF_XDP socket and share the ownership of the umem between multiple so
 
 **-EFAULT**  if memory address is invalid
 
-**-ENOMEM**  if no data space avaible
+**-ENOMEM**  if no data space available
 
 **-ENOPROTOOPT**  if option is not supported by the protocol
     

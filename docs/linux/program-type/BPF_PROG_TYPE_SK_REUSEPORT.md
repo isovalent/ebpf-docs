@@ -16,9 +16,9 @@ In [:octicons-tag-24: v3.9](https://github.com/torvalds/linux/commit/c617f398edd
 
 By default, incoming connections and datagrams are distributed to the server sockets using a hash based on the 4-tuple of the connection—that is, the peer IP address and port plus the local IP address and port.
 
-With the introduction of [BPF_PROG_TYPE_SK_REUSEPORT](../program-type/BPF_PROG_TYPE_SK_REUSEPORT.md) program, [BPF_MAP_TYPE_REUSEPORT_SOCKARRAY](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md) map, and the [bpf_sk_select_reuseport](../helper-function/bpf_sk_select_reuseport.md) helper function we can replace the default distribution behavior with a BPF program.
+With the introduction of [`BPF_PROG_TYPE_SK_REUSEPORT`](../program-type/BPF_PROG_TYPE_SK_REUSEPORT.md) program, [`BPF_MAP_TYPE_REUSEPORT_SOCKARRAY`](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md) map, and the [`bpf_sk_select_reuseport`](../helper-function/bpf_sk_select_reuseport.md) helper function we can replace the default distribution behavior with a BPF program.
 
-A key feature is that the sockets do not have to belong to the same process. This means that you can steer traffic between two processes to do A/B testing or software updates without dropping connections. For the latter scenario, the typical use case is to use a map-in-map with a [BPF_MAP_TYPE_REUSEPORT_SOCKARRAY](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md) as inner map, allowing userspace to switch out all sockets at once. In that scenario, any existing TCP connections would still be handled by the old sockets/process but new connections are routed to the new process. 
+A key feature is that the sockets do not have to belong to the same process. This means that you can steer traffic between two processes to do A/B testing or software updates without dropping connections. For the latter scenario, the typical use case is to use a map-in-map with a [`BPF_MAP_TYPE_REUSEPORT_SOCKARRAY`](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md) as inner map, allowing userspace to switch out all sockets at once. In that scenario, any existing TCP connections would still be handled by the old sockets/process but new connections are routed to the new process. 
 
 ## Context
 
@@ -68,7 +68,7 @@ The context of this program type is `#!c struct sk_reuseport_md`. All fields of 
 
 ### `data`
 
-This field contain a pointer to the start of directly accessible data. It begins from the tcp/udp header.
+This field contain a pointer to the start of directly accessible data. It begins from the TCP/UDP header.
 
 !!! note
     This program type only has read access, it may not modify the packet data.
@@ -79,10 +79,10 @@ This field contain a pointer to the end of directly accessible data.
 
 ### `len`
 
-This field contains the total length of packet (starting from the tcp/udp header). 
+This field contains the total length of packet (starting from the TCP/UDP header). 
 
 !!! note 
-    The directly accessible bytes (data_end - data) could be less than this "len". Those bytes could be indirectly read by a helper `bpf_skb_load_bytes`.
+    The directly accessible bytes (data_end - data) could be less than this `len`. Those bytes could be indirectly read by a helper `bpf_skb_load_bytes`.
 
 ### `eth_protocol`
 
@@ -122,7 +122,7 @@ This program should be loaded with the `BPF_SK_REUSEPORT_SELECT` [`expected_atta
 
 Before [:octicons-tag-24: v5.14](https://github.com/torvalds/linux/commit/d5e4ddaeb6ab2c3c7fbb7b247a6d34bb0b18d87e), the reuse port feature had a defect in its logic. When a SYN packet is received, the connection is tied to a listening socket. Accordingly, when the listener is closed, in-flight requests during the three-way handshake and child sockets in the accept queue are dropped even if other listeners could accept such connections.
 
-This situation can happen when various server management tools restart server (such as nginx) processes. For instance, when we change nginx configurations and restart it, it spins up new workers that respect the new configuration and closes all listeners on the old workers, resulting in in-flight ACK of 3WHS is responded by RST.
+This situation can happen when various server management tools restart server (such as nginx) processes. For instance, when we change nginx configurations and restart it, it spins up new workers that respect the new configuration and closes all listeners on the old workers, resulting in in-flight <nospell>ACK of 3WHS is responded by RST</nospell>.
 
 To fix this defect, the concept of socket migration was added, which will repeat the socket selection logic to pick a new socket. When not using eBPF, the same hash logic is used, but only if the `net.ipv4.tcp_migrate_req` sysctl setting has been enabled. When using eBPF with this program type, loading the program with the `BPF_SK_REUSEPORT_SELECT_OR_MIGRATE` attachment type indicates that this program also overwrites the migration logic. No need to set the sysctl option in this case. This does mean that the the program can be called for initial selection as well as for migration. The `sk` and `sk_migration` context fields indicate for which purpose the program is invoked.
 
@@ -188,6 +188,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

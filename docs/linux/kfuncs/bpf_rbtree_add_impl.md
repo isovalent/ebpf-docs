@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_rbtree_add_impl' eBPF kfunc, includin
 [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/d2dcc67df910dd85253a701b6a5b747f955d28f5)
 <!-- [/FEATURE_TAG] -->
 
-Add 'node' to rbtree with root 'root' using comparator 'less'
+Add `node` to red-black-tree with root `root` using comparator `less`
 
 ## Definition
 
-The 'meta' and 'off' parameters are rewritten by the verifier, no need for BPF programs to set them
+The `meta` and `off` parameters are rewritten by the verifier, no need for BPF programs to set them
 
 **Returns**
 
@@ -33,11 +33,11 @@ The 'meta' and 'off' parameters are rewritten by the verifier, no need for BPF p
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

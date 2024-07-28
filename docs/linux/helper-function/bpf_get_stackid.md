@@ -49,8 +49,8 @@ The positive or null stack id on success, or a negative error in case of failure
 
 Call `bpf_get_stackid` to retrieve the stack id of the context in which the program is running, specifying as arguments:
 
-* *ctx*, the pointer to the currenct context on which the program is executing
-* *bpf_map*, the pointer to a map of type **BPF_PROG_TYPE_STACK_TRACE**
+* *ctx*, the pointer to the current context on which the program is executing
+* *bpf_map*, the pointer to a map of type [`BPF_MAP_TYPE_STACK_TRACE`](../map-type/BPF_MAP_TYPE_STACK_TRACE.md)
 * *flags*, the flags bitmap
 
 ```c
@@ -68,6 +68,7 @@ This helper call can be used in the following program types:
  * [`BPF_PROG_TYPE_RAW_TRACEPOINT`](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT.md)
  * [`BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE`](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE.md)
  * [`BPF_PROG_TYPE_TRACEPOINT`](../program-type/BPF_PROG_TYPE_TRACEPOINT.md)
+ * [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Example
@@ -100,6 +101,6 @@ char _license[] SEC("license") = "GPL";
 
 Complete examples in the Linux source bpf samples:
 
-  * [samples/bpf/offwaketime.bpf.c](https://github.com/torvalds/linux/blob/e8f897f4afef0031fe618a8e94127a0934896aba/samples/bpf/offwaketime.bpf.c)
-  * [samples/bpf/trace_event_kern.c](https://github.com/torvalds/linux/blob/e8f897f4afef0031fe618a8e94127a0934896aba/samples/bpf/trace_event_kern.c)
+  * [`samples/bpf/offwaketime.bpf.c`](https://github.com/torvalds/linux/blob/e8f897f4afef0031fe618a8e94127a0934896aba/samples/bpf/offwaketime.bpf.c)
+  * [`samples/bpf/trace_event_kern.c`](https://github.com/torvalds/linux/blob/e8f897f4afef0031fe618a8e94127a0934896aba/samples/bpf/trace_event_kern.c)
 
