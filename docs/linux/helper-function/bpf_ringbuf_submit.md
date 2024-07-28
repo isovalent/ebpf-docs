@@ -27,7 +27,7 @@ Nothing. Always succeeds.
 
 ## Usage
 
-Submit makes the data reserved in the ringbuf available for reading. The `data` argument must be a pointer to the reserved data in the ring buffer. 
+Submit makes the data reserved in the ring buffer available for reading. The `data` argument must be a pointer to the reserved data in the ring buffer. 
 The `flags` argument declares how the notification of new data availability should be handled. 
 
 ### Program types

@@ -6,13 +6,13 @@ description: "This page explains how to deal with concurrency in eBPF programs. 
 
 Concurrency in the BPF world is something to be aware of when writing BPF programs. A BPF program can be seen as a function called by the kernel, thus the same program can in theory be invoked concurrently by every kernel thread. The only guarantee given by the kernel is that the same program invocation always runs on the same logical CPU.
 
-This is particularly important when accessing memory that is shared between multiple programs or invocations of the same program such as non-per-cpu maps and kernel memory. Accesses and modifications to such kinds of memory are subject to [race conditions](https://en.wikipedia.org/wiki/Race_condition). Same goes for programs and userspace accessing the same map value at the same time.
+This is particularly important when accessing memory that is shared between multiple programs or invocations of the same program such as non-per-CPU maps and kernel memory. Accesses and modifications to such kinds of memory are subject to [race conditions](https://en.wikipedia.org/wiki/Race_condition). Same goes for programs and userspace accessing the same map value at the same time.
 
 There are a few methods to avoid race conditions.
 
-## Atomics
+## Atomic operations
 
-Atomics refers to atomic CPU instructions. A normal `i += 1` operation will at some level break down into:
+Atomic operations refers to atomic CPU instructions. A normal `i += 1` operation will at some level break down into:
 
 1. Read `i` into some CPU register
 2. Increment the CPU register with `1`
@@ -29,11 +29,11 @@ There is a class of CPU instructions that can perform specific tasks in a single
 * `__sync_val_compare_and_swap(*a, b, c)` - Read value at `a`, check if it is equal to `b`, if true write `c` to `a` and return the original value of `a`. On fail leave `a` be and return `c`.
 * `__sync_lock_test_and_set(*a, b)` - Read value at `a`, write `b` to `a`, return original value of `a`
 
-If you want to perform one of the above sequences on a variable you can do so with the atomic-builtins. A common example is to increment a shared counter with `__sync_fetch_and_add`.
+If you want to perform one of the above sequences on a variable you can do so with the atomic builtin functions. A common example is to increment a shared counter with `__sync_fetch_and_add`.
 
-Atomic instructions work on variable of 1, 2, 4, or 8 bytes. Any variables larger than that such as multiple struct fields require multiple atomics or other synchronization mechanisms.
+Atomic instructions work on variable of 1, 2, 4, or 8 bytes. Any variables larger than that such as multiple struct fields require multiple atomic instructions or other synchronization mechanisms.
 
-Here is a simple example using atomics to count the number of times the `sys_enter` tracepoint is called.
+Here is a simple example using atomic instructions to count the number of times the `sys_enter` tracepoint is called.
 
 ```c
 int counter = 0;
@@ -46,11 +46,11 @@ int sys_enter_count(void *ctx) {
 ```
 
 !!! note
-	Atomics still synchronize at the hardware level, so using atomics will still decrease performance compared to its non-atomic variant.
+	Atomic instructions still synchronize at the hardware level, so using atomic instructions will still decrease performance compared to its non-atomic variant.
 
 ## Spin locks
 
-A common technique in the kernel for synchronization is a [spinlock](https://en.wikipedia.org/wiki/Spinlock). eBPF also provides spinlock capabilities for map values. The main advantage of spinlocks over atomics is that it guarantees multiple fields are updated together.
+A common technique in the kernel for synchronization is a [spinlock](https://en.wikipedia.org/wiki/Spinlock). eBPF also provides spinlock capabilities for map values. The main advantage of spinlocks over atomic instructions is that it guarantees multiple fields are updated together.
 
 To use spin locks, you first have to include a `struct bpf_spin_lock` at the top of your map value.
 
@@ -109,7 +109,7 @@ This scheme also increases the complexity on the userspace side since more data 
 
 In niche use-cases it might be possible to get away with the the helper functions built-in RCU logic. This method work by never modifying the map value directly via the pointer you get via the `bpf_map_lookup_elem` helper. But instead copying the map value to the BPF stack, modifying its value there, then calling `bpf_map_update_elem` on the modified copy. The helper functions will guarantee that we transition cleanly from the initial state to the updated state. This property might be important if there exists a relation between fields in the map value. This technique map result in missing updates if multiple updates happen at the same time, but values will never be "mixed".
 
-Performance wise there is a tradeoff. This technique does perform additional memory copies, but is also does not block or synchronize. So this may or may not be faster than spin-locking depending on the size of the values.
+Performance wise there is a trade off. This technique does perform additional memory copies, but is also does not block or synchronize. So this may or may not be faster than spin-locking depending on the size of the values.
 
 It should be noted that updates via userspace always follow this principle, it is only for BPF programs where this distinction matters.
 

@@ -26,9 +26,9 @@ In [:octicons-tag-24: v3.9](https://github.com/torvalds/linux/commit/c617f398edd
 
 By default, incoming connections and datagrams are distributed to the server sockets using a hash based on the 4-tuple of the connection—that is, the peer IP address and port plus the local IP address and port.
 
-With the introduction of [BPF_PROG_TYPE_SK_REUSEPORT](../program-type/BPF_PROG_TYPE_SK_REUSEPORT.md) programs and this helper we can replace the default distribution behavior with a BPF program. This helper does the actual assigning of an incoming request to a socket in a [`BPF_MAP_TYPE_REUSEPORT_SOCKARRAY`](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md) `map`.
+With the introduction of [`BPF_PROG_TYPE_SK_REUSEPORT`](../program-type/BPF_PROG_TYPE_SK_REUSEPORT.md) programs and this helper we can replace the default distribution behavior with a BPF program. This helper does the actual assigning of an incoming request to a socket in a [`BPF_MAP_TYPE_REUSEPORT_SOCKARRAY`](../map-type/BPF_MAP_TYPE_REUSEPORT_SOCKARRAY.md) `map`.
 
-Since [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/64d85290d79c0677edb5a8ee2295b36c022fa5df)  [BPF_MAP_TYPE_SOCKHASH](../map-type/BPF_MAP_TYPE_SOCKHASH.md) and [BPF_MAP_TYPE_SOCKMAP](../map-type/BPF_MAP_TYPE_SOCKMAP.md) maps can also be used with this helper.
+Since [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/64d85290d79c0677edb5a8ee2295b36c022fa5df)  [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_SOCKHASH.md) and [`BPF_MAP_TYPE_SOCKMAP`](../map-type/BPF_MAP_TYPE_SOCKMAP.md) maps can also be used with this helper.
 
 ### Program types
 

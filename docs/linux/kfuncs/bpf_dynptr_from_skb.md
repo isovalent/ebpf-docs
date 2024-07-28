@@ -12,7 +12,7 @@ Get dynptrs whose underlying pointer points to a skb.
 
 ## Definition
 
-For bpf prog types that don't support writes on skb data, the dynptr is read-only ([`bpf_dynptr_write()`](../helper-function/bpf_dynptr_write.md) will return an error)
+For bpf program types that don't support writes on skb data, the dynptr is read-only ([`bpf_dynptr_write()`](../helper-function/bpf_dynptr_write.md) will return an error)
 
 For reads and writes through the [`bpf_dynptr_read()`](../helper-function/bpf_dynptr_read.md) and [`bpf_dynptr_write()`](../helper-function/bpf_dynptr_write.md) interfaces, reading and writing from/to data in the head as well as from/to non-linear paged buffers is supported. Data slices through the bpf_dynptr_data API are not supported; instead [`bpf_dynptr_slice()`](bpf_dynptr_slice.md) and [`bpf_dynptr_slice_rdwr()`](bpf_dynptr_slice_rdwr.md) should be used.
 
@@ -22,28 +22,28 @@ For reads and writes through the [`bpf_dynptr_read()`](../helper-function/bpf_dy
 
 ## Usage
 
-The dynptr acts on skb data. skb dynptrs have two main benefits. One is that they allow operations on sizes that are not statically known at compile-time (eg variable-sized accesses). Another is that parsing the packet data through dynptrs (instead of through direct access of skb->data and skb->data_end) can be more ergonomic and less brittle (eg does not need manual if checking for being within bounds of data_end).
+The dynptr acts on skb data. skb dynptrs have two main benefits. One is that they allow operations on sizes that are not statically known at compile-time (for example variable-sized accesses). Another is that parsing the packet data through dynptrs (instead of through direct access of skb->data and skb->data_end) can be more ergonomic and less brittle (does not need manual if checking for being within bounds of data_end).
 
 ### Program types
 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_CGROUP_SKB](../program-type/BPF_PROG_TYPE_CGROUP_SKB.md)
-- [BPF_PROG_TYPE_LWT_IN](../program-type/BPF_PROG_TYPE_LWT_IN.md)
-- [BPF_PROG_TYPE_LWT_OUT](../program-type/BPF_PROG_TYPE_LWT_OUT.md)
-- [BPF_PROG_TYPE_LWT_SEG6LOCAL](../program-type/BPF_PROG_TYPE_LWT_SEG6LOCAL.md)
-- [BPF_PROG_TYPE_LWT_XMIT](../program-type/BPF_PROG_TYPE_LWT_XMIT.md)
-- [BPF_PROG_TYPE_NETFILTER](../program-type/BPF_PROG_TYPE_NETFILTER.md)
-- [BPF_PROG_TYPE_SCHED_ACT](../program-type/BPF_PROG_TYPE_SCHED_ACT.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_SK_SKB](../program-type/BPF_PROG_TYPE_SK_SKB.md)
-- [BPF_PROG_TYPE_SOCKET_FILTER](../program-type/BPF_PROG_TYPE_SOCKET_FILTER.md)
+- [`BPF_PROG_TYPE_CGROUP_SKB`](../program-type/BPF_PROG_TYPE_CGROUP_SKB.md)
+- [`BPF_PROG_TYPE_LWT_IN`](../program-type/BPF_PROG_TYPE_LWT_IN.md)
+- [`BPF_PROG_TYPE_LWT_OUT`](../program-type/BPF_PROG_TYPE_LWT_OUT.md)
+- [`BPF_PROG_TYPE_LWT_SEG6LOCAL`](../program-type/BPF_PROG_TYPE_LWT_SEG6LOCAL.md)
+- [`BPF_PROG_TYPE_LWT_XMIT`](../program-type/BPF_PROG_TYPE_LWT_XMIT.md)
+- [`BPF_PROG_TYPE_NETFILTER`](../program-type/BPF_PROG_TYPE_NETFILTER.md)
+- [`BPF_PROG_TYPE_SCHED_ACT`](../program-type/BPF_PROG_TYPE_SCHED_ACT.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_SK_SKB`](../program-type/BPF_PROG_TYPE_SK_SKB.md)
+- [`BPF_PROG_TYPE_SOCKET_FILTER`](../program-type/BPF_PROG_TYPE_SOCKET_FILTER.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example
 
-??? example "L4LB noinline dynptr"
+??? example "L4LB no inline dynptr"
     ```c
     // SPDX-License-Identifier: GPL-2.0
     // Copyright (c) 2017 Facebook

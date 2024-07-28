@@ -16,7 +16,7 @@ This command will return a file descriptor to the pinned BTF object on success (
 
 ## Usage
 
-A common use case for opening such a pin is to transfer a reference to a BPF object from one process to another. The [`BPF_OBJ_PIN`](BPF_OBJ_PIN.md) syscall command can be used to pin a BPF object to the BPF filesystem so another process can get a reference to it with this syscall command.
+A common use case for opening such a pin is to transfer a reference to a BPF object from one process to another. The [`BPF_OBJ_PIN`](BPF_OBJ_PIN.md) syscall command can be used to pin a BPF object to the BPF file system so another process can get a reference to it with this syscall command.
 
 Please the the [pinning concept page](../concepts/pinning.md) for more details.
 

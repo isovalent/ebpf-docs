@@ -24,7 +24,7 @@ The return value of kprobes programs doesn't do anything.
 
 The context passed to kprobe programs is `struct pt_regs`. This structure is different for each CPU architecture since it contains a copy of the CPU registers at the time the kprobe was invoked.
 
-It is common for kprobe programs to use the macros from libbpf's `bpf_tracing.h` header file which defines `PT_REGS_PARM1` ... `PT_REGS_PARM5` as well as a number of others. These macros will translate to the correct field in `struct pt_regs` depending on the current architecture. Communicating the architecture you are compiling the BPF program for is done by defining one of the `__TARGET_ARCH_*` values in your program or via the command line while compiling.
+It is common for kprobe programs to use the macros from the Libbpf `bpf_tracing.h` header file which defines `PT_REGS_PARM1` ... `PT_REGS_PARM5` as well as a number of others. These macros will translate to the correct field in `struct pt_regs` depending on the current architecture. Communicating the architecture you are compiling the BPF program for is done by defining one of the `__TARGET_ARCH_*` values in your program or via the command line while compiling.
 
 The same header file also provides the `BPF_KPROBE(name, args...)` macro which allows program authors to define the function signatures in the same fashion as the functions they are tracing with type info and all. The macro will cast the correct argument numbers to the given argument names. For example:
 
@@ -41,13 +41,13 @@ Similar macros also exists for kprobes intended to attach to syscalls: `BPF_KSYS
 
 ## Attachment
 
-There are two methods of attaching probe programs with variations for uprobes. The "legacy" way involves the manual creation of a k{ret}probe or u{ret}probe event via the [DebugFS](https://www.kernel.org/doc/html/next/filesystems/debugfs.html) and then attaching a BPF program to that event via the `perf_event_open` syscall.
+There are two methods of attaching probe programs with variations for uprobes. The "legacy" way involves the manual creation of a `k{ret}probe` or `u{ret}probe` event via the [`DebugFS`](https://www.kernel.org/doc/html/next/filesystems/debugfs.html) and then attaching a BPF program to that event via the `perf_event_open` syscall.
 
 The newer method uses BPF links to do both the probe event creation and attaching in one.
 
 ### Legacy kprobe attaching
 
-First step is to create a kprobe or kretprobe trace event. To do so we can use the DebugFS, which we will assume is mounted at `/sys/kernel/debug` for the purposes of this document.
+First step is to create a kprobe or kretprobe trace event. To do so we can use the <nospell>DebugFS</nospell>, which we will assume is mounted at `/sys/kernel/debug` for the purposes of this document.
 
 Existing kprobe events can be listed by printing `/sys/kernel/debug/tracing/kprobe_events`. And we can create new events by writing to this pseudo-file. For example executing `echo 'p:myprobe do_sys_open' > /sys/kernel/debug/tracing/kprobe_events`
 will make a new kprobe (`p:`) called `myprobe` at the `do_sys_open` function in the kernel. For details on the full syntax, checkout [this link](https://docs.kernel.org/trace/kprobetrace.html). kretprobes are created by specifying a `r:` prefix.
@@ -203,6 +203,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

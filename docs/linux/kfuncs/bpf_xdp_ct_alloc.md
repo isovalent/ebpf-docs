@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_xdp_ct_alloc' eBPF kfunc, including i
 [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/d7e79c97c00ca82dace0e3b645d4b3b02fa273c2)
 <!-- [/FEATURE_TAG] -->
 
-Allocate a new CT (ConnTrack) entry
+Allocate a new CT (connection tracking) entry
 
 ## Definition
 
@@ -70,11 +70,11 @@ Allocate a new CT (ConnTrack) entry
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example
 
-See [bpf_ct_set_nat_info](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.
+See [`bpf_ct_set_nat_info`](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.
 

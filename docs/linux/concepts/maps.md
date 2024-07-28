@@ -125,9 +125,9 @@ It is common for maps to be declared in the eBPF program, but maps are ultimatel
 
 However, it is also possible for users to manually create maps using the [BPF_MAP_CREATE](../syscall/BPF_MAP_CREATE.md) command of the BPF syscall or to use a loader library with such capabilities.
 
-### LibBPF
+### Libbpf
 
-LibBPF is such a library, it provides the `bpf_map_create` function to allow for the manual creation of maps.
+Libbpf is such a library, it provides the `bpf_map_create` function to allow for the manual creation of maps.
 
 [`/tools/lib/bpf/bpf.h`](https://elixir.bootlin.com/linux/v6.2.2/source/tools/lib/bpf/bpf.h#L40)
 ```c
@@ -179,4 +179,4 @@ Besides the single key versions, there are also batch variants of those syscall 
 
 Most map types support iterating over keys using the [`BPF_MAP_GET_NEXT_KEY`](../syscall/BPF_MAP_GET_NEXT_KEY.md) syscall command.
 
-Some map types like the [`BPF_MAP_TYPE_PERF_EVENT_ARRAY`](../map-type/BPF_MAP_TYPE_PERF_EVENT_ARRAY.md) require the usage of additional mechanisms like perf_event and ring buffers to read the actual data sent via the [`bpf_perf_event_output`](../helper-function/bpf_perf_event_output.md) helper from the kernel side.
+Some map types like the [`BPF_MAP_TYPE_PERF_EVENT_ARRAY`](../map-type/BPF_MAP_TYPE_PERF_EVENT_ARRAY.md) require the usage of additional mechanisms like `perf_event` and ring buffers to read the actual data sent via the [`bpf_perf_event_output`](../helper-function/bpf_perf_event_output.md) helper from the kernel side.

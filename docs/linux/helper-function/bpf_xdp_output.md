@@ -36,7 +36,7 @@ This helper is similar to [`bpf_perf_event_output`](bpf_perf_event_output.md) bu
 
 This helper call can be used in the following program types:
 
- * [BPF_PROG_TYPE_PERF_EVENT](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT.md)
+ * [`BPF_PROG_TYPE_PERF_EVENT`](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT.md)
 
 ### Map types
 

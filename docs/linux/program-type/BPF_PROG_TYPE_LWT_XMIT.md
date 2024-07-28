@@ -18,15 +18,15 @@ This program type can be attached to route, the program will be called when tran
 
 The initial use cases listed for this program type are:
 
-- Collect statistics and generate sampling data for a subset of traffic based on the dst utilized by the packet thus allowing to extend the existing realms.
-- Apply additional per route/dst filters to prohibit certain outgoing or incoming packets based on BPF filters. In particular, this allows to maintain per dst custom state across multiple packets in BPF maps and apply filters based on statistics and behaviour observed over time.
+- Collect statistics and generate sampling data for a subset of traffic based on the destination utilized by the packet thus allowing to extend the existing realms.
+- Apply additional per route/destination filters to prohibit certain outgoing or incoming packets based on BPF filters. In particular, this allows to maintain per destination custom state across multiple packets in BPF maps and apply filters based on statistics and behaviour observed over time.
 - Attachment of L2 headers at transmit where resolving the L2 address is not required.
 
-LWT xmit programs are called after the IP header has been assembled and thus it can safely modify the packet. The program can also prepend a L2 header to the packet using the [`bpf_skb_change_head`](../helper-function/bpf_skb_change_head.md) helper function.
+LWT <nospell>xmit</nospell> programs are called after the IP header has been assembled and thus it can safely modify the packet. The program can also prepend a L2 header to the packet using the [`bpf_skb_change_head`](../helper-function/bpf_skb_change_head.md) helper function.
 
 ## Context
 
-Socket SKB programs are called by the kernel with a [__sk_buff](../program-context/__sk_buff.md) context.
+Socket SKB programs are called by the kernel with a [`__sk_buff`](../program-context/__sk_buff.md) context.
 
 This program type isn't allowed to read from and write to all fields of the context since doing so might break assumptions in the kernel or because data isn't available at the point where the program is hooked into the kernel.
 
@@ -154,6 +154,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

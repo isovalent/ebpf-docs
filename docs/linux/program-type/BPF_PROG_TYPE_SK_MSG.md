@@ -20,9 +20,9 @@ The program returns a verdict on what to do with the data the process wants to s
 * `SK_DROP` - The message should be dropped.
 
 The [`bpf_msg_apply_bytes`](../helper-function/bpf_msg_apply_bytes.md) helper function can be used to indicate for which bytes the verdict applies. This has two cases. First BPF program applies
-verdict to fewer bytes than in the current sendmsg/sendfile this will apply the verdict to the first N bytes of the message then run the BPF program again with data pointers recalculated to the N+1 byte. The second case is the BPF program applies a verdict to more bytes than the current sendmsg or sendfile system call. In this case the infrastructure will cache the verdict and apply it to future sendmsg/sendfile calls until the byte limit is reached. This avoids the overhead of running BPF programs on large payloads.
+verdict to fewer bytes than in the current `sendmsg`/`sendfile` this will apply the verdict to the first N bytes of the message then run the BPF program again with data pointers recalculated to the N+1 byte. The second case is the BPF program applies a verdict to more bytes than the current `sendmsg` or `sendfile` system call. In this case the infrastructure will cache the verdict and apply it to future `sendmsg`/`sendfile` calls until the byte limit is reached. This avoids the overhead of running BPF programs on large payloads.
 
-The helper [`bpf_msg_cork_bytes`](../helper-function/bpf_msg_cork_bytes.md) handles a different case where a BPF program can not reach a verdict on a msg until it receives more bytes AND the program doesn't want to forward the packet until it is known to be "good". The example case being a user (albeit a dumb one probably) sends messages in 1B system calls. The BPF program can call [`bpf_msg_cork_bytes`](../helper-function/bpf_msg_cork_bytes.md) with the required byte limit to reach a verdict and then the program will only be called again once N bytes are received.
+The helper [`bpf_msg_cork_bytes`](../helper-function/bpf_msg_cork_bytes.md) handles a different case where a BPF program can not reach a verdict on a message until it receives more bytes AND the program doesn't want to forward the packet until it is known to be "good". The example case being a user (albeit a dumb one probably) sends messages in 1B system calls. The BPF program can call [`bpf_msg_cork_bytes`](../helper-function/bpf_msg_cork_bytes.md) with the required byte limit to reach a verdict and then the program will only be called again once N bytes are received.
 
 ## Context
 
@@ -217,6 +217,18 @@ int prog_msg_verdict(struct sk_msg_md *msg)
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

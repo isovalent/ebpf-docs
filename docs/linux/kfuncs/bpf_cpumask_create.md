@@ -8,12 +8,12 @@ description: "This page documents the 'bpf_cpumask_create' eBPF kfunc, including
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Create a mutable BPF cpumask.
+Create a mutable BPF CPU-mask.
 
 ## Definition
 
-Allocates a cpumask that can be queried, mutated, acquired, and released by
-a BPF program. The cpumask returned by this function must either be embedded
+Allocates a CPU-mask that can be queried, mutated, acquired, and released by
+a BPF program. The CPU-mask returned by this function must either be embedded
 in a map as a kptr, or freed with [`bpf_cpumask_release()`](bpf_cpumask_release.md).
 
 `bpf_cpumask_create()` allocates memory using the BPF memory allocator, and
@@ -43,9 +43,9 @@ will not block. It may return NULL if no memory is available.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

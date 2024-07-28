@@ -12,7 +12,7 @@ Returns slow start threshold
 
 ## Definition
 
-Entering loss recovery, so save cwnd for when we exit or undo recovery.
+Entering loss recovery, so save `cwnd` for when we exit or undo recovery.
 
 <!-- [KFUNC_DEF] -->
 `#!c u32 bbr_ssthresh(struct sock *sk)`
@@ -28,7 +28,7 @@ Entering loss recovery, so save cwnd for when we exit or undo recovery.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

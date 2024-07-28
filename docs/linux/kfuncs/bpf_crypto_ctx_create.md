@@ -12,7 +12,7 @@ Create a mutable BPF crypto context.
 
 ## Definition
 
-Allocates a crypto context that can be used, acquired, and released by a BPF program. The crypto context returned by this function must either be embedded in a map as a kptr, or freed with [`bpf_crypto_ctx_release`](bpf_crypto_ctx_release.md). As crypto API functions use GFP_KERNEL allocations, this function can only be used in sleepable BPF programs.
+Allocates a crypto context that can be used, acquired, and released by a BPF program. The crypto context returned by this function must either be embedded in a map as a kptr, or freed with [`bpf_crypto_ctx_release`](bpf_crypto_ctx_release.md). As crypto API functions use `GFP_KERNEL` allocations, this function can only be used in sleepable BPF programs.
 
 `params`: pointer to struct bpf_crypto_params which contains all the details needed to initialise crypto context.
 
@@ -52,7 +52,7 @@ The created context can be stored and shared with network programs via a map con
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SYSCALL](../program-type/BPF_PROG_TYPE_SYSCALL.md)
+- [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

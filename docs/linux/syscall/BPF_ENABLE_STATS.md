@@ -8,7 +8,7 @@ description: "This page documents the 'BPF_ENABLE_STATS' eBPF syscall command, i
 [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/d46edd671a147032e22cfeb271a5734703093649)
 <!-- [/FEATURE_TAG] -->
 
-This syscall command is used to temporarily enable statistics tracking, globally for all programs. This allows for the benchmarking or monitoring of programs in-situ.
+This syscall command is used to temporarily enable statistics tracking, globally for all programs. This allows for the benchmarking or monitoring of programs <nospell>in situ</nospell>.
 
 ## Return value
 

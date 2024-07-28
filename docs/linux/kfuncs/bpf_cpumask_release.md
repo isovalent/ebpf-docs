@@ -8,12 +8,12 @@ description: "This page documents the 'bpf_cpumask_release' eBPF kfunc, includin
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/516f4d3397c9e90f4da04f59986c856016269aa1)
 <!-- [/FEATURE_TAG] -->
 
-Release a previously acquired BPF cpumask.
+Release a previously acquired BPF CPU-mask.
 
 ## Definition
 
-Releases a previously acquired reference to a BPF cpumask. When the final
-reference of the BPF cpumask has been released, it is subsequently freed in
+Releases a previously acquired reference to a BPF CPU-mask. When the final
+reference of the BPF CPU-mask has been released, it is subsequently freed in
 an RCU callback in the BPF memory allocator.
 
 <!-- [KFUNC_DEF] -->
@@ -34,9 +34,9 @@ an RCU callback in the BPF memory allocator.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

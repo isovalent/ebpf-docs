@@ -12,7 +12,7 @@ Officially KFuncs are unstable, unlike helper functions, kfuncs have no UAPI gua
 
 ## Usage
 
-Using a KFunc is fairly strightforward. The first step is to copy the function signature(return type, name, and parameters) of the kfunc we would like to call. These function signatures are usually found in the kernel source code or in [KFunc pages](../kfuncs/index.md).
+Using a KFunc is fairly straightforward. The first step is to copy the function signature(return type, name, and parameters) of the kfunc we would like to call. These function signatures are usually found in the kernel source code or in [KFunc pages](../kfuncs/index.md).
 Second step is to add the `extern` keyword, this tells the compiler that the function isn't defined in our compilation unit. Lastly we add the `__ksym` attribute which tells the loader that references to the function should be resolved with the address of a kernel symbol (kernel function).
 
 After we have done this we can call the kfunc as if it was a normal function.
@@ -45,11 +45,11 @@ char _license[] SEC("license") = "GPL";
 ```
 
 !!! note
-    The defintion of `__ksym` is `#define __ksym __attribute__((section(".ksyms")))`
+    The definition of `__ksym` is `#define __ksym __attribute__((section(".ksyms")))`
 
 ### Kernel modules
 
-The [KFunc index](../kfuncs/index.md) includes all KFuncs defined in the linux kernel sources. Depending on the KConfig used to compile the kernel not all of these might be available or might be available via a kernel module.
+The [KFunc index](../kfuncs/index.md) includes all KFuncs defined in the Linux kernel sources. Depending on the KConfig used to compile the kernel not all of these might be available or might be available via a kernel module.
 
 KFuncs can be dynamically added to the kernel via kernel modules, so both builtin and third party modules can add KFuncs. The usage mechanism is the same, but you might have to handle situations where a module isn't loaded.
 
@@ -95,7 +95,7 @@ A parameter with the `__ign` suffix is used to indicate that this parameter is i
 
 A parameter with the `__uninit` suffix is used to indicate that the parameter will be treated as if its uninitialized. Normally, without this annotation, the verifier will enforce that all parameters are initialized before they are used.
 
-So its typically used in situations where a KFunc intializes a object for you.
+So its typically used in situations where a KFunc initializes a object for you.
 
 ### `__alloc` annotation
 

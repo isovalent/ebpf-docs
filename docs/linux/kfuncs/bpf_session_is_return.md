@@ -30,7 +30,7 @@ Returns `true` if the bpf program is executed from the exit probe of the kprobe 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_KPROBE](../program-type/BPF_PROG_TYPE_KPROBE.md)
+- [`BPF_PROG_TYPE_KPROBE`](../program-type/BPF_PROG_TYPE_KPROBE.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

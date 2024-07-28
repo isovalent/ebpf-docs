@@ -44,7 +44,7 @@ The full file is turned into a light skeleton. After loading the light skeleton 
 
 The loader locates the struct(s) in the `.struct_ops` section. It uses BTF to get the name and structure of the struct. The values of non-function fields are present in the `.struct_ops` section itself and for the function pointer fields that were set there will be ELF relocation entries pointing to the respective eBPF programs.
 
-The loader will figure out which eBPF programs were referenced and load them. The loader then will inspect the VMLinux BTF of the host to find the BTF type ID of the struct_ops struct. Once we have that, the loader creates a [`BPF_MAP_TYPE_STRUCT_OPS`](../map-type/BPF_MAP_TYPE_STRUCT_OPS.md) map. While loading the BTF type ID of the struct_ops struct is provided via the [`btf_vmlinux_value_type_id`](../syscall/BPF_MAP_CREATE.md#btf_vmlinux_value_type_id) argument. The [`btf_value_type_id`](../syscall/BPF_MAP_CREATE.md#btf_value_type_id) is set to the BTF ID of the programs struct. The key of the map must be an `int`/4 bytes and `max_entries` of 1. 
+The loader will figure out which eBPF programs were referenced and load them. The loader then will inspect the Vmlinux BTF of the host to find the BTF type ID of the struct_ops struct. Once we have that, the loader creates a [`BPF_MAP_TYPE_STRUCT_OPS`](../map-type/BPF_MAP_TYPE_STRUCT_OPS.md) map. While loading the BTF type ID of the struct_ops struct is provided via the [`btf_vmlinux_value_type_id`](../syscall/BPF_MAP_CREATE.md#btf_vmlinux_value_type_id) argument. The [`btf_value_type_id`](../syscall/BPF_MAP_CREATE.md#btf_value_type_id) is set to the BTF ID of the programs struct. The key of the map must be an `int`/4 bytes and `max_entries` of 1. 
 
 The kernel has now allocated memory for one instance of the struct_ops struct and associated it with the call location. So the next step for the loader is to write to the only element in the map, element `0`. The value of the map is the instance of the struct as C would lay it out in memory. Except the values of the function pointer fields are populated with the file descriptors of the eBPF programs, the kernel will transform these into the actual memory locations of the JITed eBPF programs. As soon as the update happens, the struct_ops programs are attached. The map holds the refcounts to the programs, so they don't have to be pinned. As soon as element `0` of the map is deleted or the map is cleaned up due to being unreferenced, the struct_ops programs are detached. So typically the map gets pinned.
 
@@ -329,6 +329,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

@@ -28,7 +28,7 @@ This attribute is set by userspace. At the start of iteration it should be set t
 
 ### `out_batch`
 
-This attribute is set by the kernel during the command exectution. At the start of iteration it should be set to `0`/`NULL`. The kernel will 
+This attribute is set by the kernel during the command execution. At the start of iteration it should be set to `0`/`NULL`. The kernel will 
 
 ### `keys`
 

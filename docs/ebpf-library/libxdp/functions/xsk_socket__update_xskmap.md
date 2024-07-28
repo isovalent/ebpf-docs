@@ -24,7 +24,7 @@ int xsk_socket__update_xskmap(struct xsk_socket *xsk, int xsks_map_fd);
 
 ### Example
 
-You can find an exemple at [AF_XDP-example](https://github.com/xdp-project/bpf-examples/tree/master/AF_XDP-example)
+You can find an example at [AF_XDP-example](https://github.com/xdp-project/bpf-examples/tree/master/AF_XDP-example)
 
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome

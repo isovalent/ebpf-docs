@@ -8,15 +8,15 @@ description: "This page documents the 'bpf_ct_set_nat_info' eBPF kfunc, includin
 [:octicons-tag-24: v6.1](https://github.com/torvalds/linux/commit/0fabd2aa199faeb8754aee94658f2c48ccb2c8c3)
 <!-- [/FEATURE_TAG] -->
 
-Set source or destination nat address
+Set source or destination network address translation address
 
 ## Definition
 
-Set source or destination nat address of the newly allocated nf_conn before insertion. This must be invoked for referenced PTR_TO_BTF_ID to nf_conn___init.
+Set source or destination address network translation address of the newly allocated `nf_conn` before insertion. This must be invoked for referenced `PTR_TO_BTF_ID` to `nf_conn___init`.
 
 **Parameters**
 
-`nfct`: Pointer to referenced nf_conn object, obtained using [`bpf_xdp_ct_alloc`](bpf_xdp_ct_alloc.md) or [`bpf_skb_ct_alloc`](bpf_skb_ct_alloc.md).
+`nfct`: Pointer to referenced `nf_conn` object, obtained using [`bpf_xdp_ct_alloc`](bpf_xdp_ct_alloc.md) or [`bpf_skb_ct_alloc`](bpf_skb_ct_alloc.md).
 
 `addr`: Nat source/destination address
 
@@ -30,15 +30,15 @@ Set source or destination nat address of the newly allocated nf_conn before inse
 
 ## Usage
 
-The bpf_ct_set_nat_info kfunc helper in order to set source and destination nat addresses/ports in a new allocated ct entry not inserted in the connection tracking table yet.
+The `bpf_ct_set_nat_info` kfunc helper in order to set source and destination nat addresses/ports in a new allocated connection tracking entry not inserted in the connection tracking table yet.
 
 ### Program types
 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

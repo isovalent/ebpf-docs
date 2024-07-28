@@ -20,14 +20,14 @@ For reads and writes on the dynptr, this includes reading/writing from/to and ac
 
 ## Usage
 
-The dynptr acts on xdp data. xdp dynptrs have two main benefits. One is that they allow operations on sizes that are not statically known at compile-time (eg variable-sized accesses). Another is that parsing the packet data through dynptrs (instead of through direct access of xdp->data and xdp->data_end) can be more ergonomic and less brittle (eg does not need manual if checking for being within bounds of data_end).
+The dynptr acts on xdp data. xdp dynptrs have two main benefits. One is that they allow operations on sizes that are not statically known at compile-time (for example variable-sized accesses). Another is that parsing the packet data through dynptrs (instead of through direct access of xdp->data and xdp->data_end) can be more ergonomic and less brittle (for example does not need manual if checking for being within bounds of data_end).
 
 ### Program types
 
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example
@@ -150,7 +150,7 @@ The following program types can make use of this kfunc:
     }
     ```
 
-??? example "Tunnel encap with dynamic point"
+??? example "Tunnel encapsulate with dynamic point"
     ```c
     // SPDX-License-Identifier: GPL-2.0
     /* Copyright (c) 2022 Meta */

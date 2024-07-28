@@ -8,7 +8,7 @@ description: "This page documents the 'cubictcp_cong_avoid' eBPF kfunc, includin
 [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/e78aea8b2170be1b88c96a4d138422986a737336)
 <!-- [/FEATURE_TAG] -->
 
-Do new cwnd calculation
+Do new `cwnd` calculation
 
 ## Definition
 
@@ -26,7 +26,7 @@ Do new cwnd calculation
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

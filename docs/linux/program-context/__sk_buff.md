@@ -1,3 +1,6 @@
+---
+title: Program context '__sk_buff'
+---
 # Program context `__sk_buff`
 
 The socket buffer context is provided to program types that deal with network packets when there already is a socket buffer created/allocated. The `struct __sk_buff` is a "mirror" of the `struct sk_buff` program type which is actually used by the kernel. 
@@ -35,7 +38,7 @@ the `PACKET_*` values defined in `include/uapi/linux/if_packet.h`.
 ### `mark`
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/9bac3d6d548e5cc925570b263f35b70a00a00ffd)
 
-This field is a general purpose 32 bit tag used in the network subsystem to carry metadata with global implications across network sub-subsystem. As an example, a driver could mark on incoming packet to be used by the ingress tc classifier-action sub-subsystem, netfilter, ipsec all to execute provisioned policies.[^1]
+This field is a general purpose 32 bit tag used in the network subsystem to carry metadata with global implications across network sub-subsystem. As an example, a driver could mark on incoming packet to be used by the ingress traffic control classifier-action sub-subsystem, netfilter, IPsec all to execute provisioned policies.[^1]
 
 ### `queue_mapping`
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/9bac3d6d548e5cc925570b263f35b70a00a00ffd)
@@ -65,7 +68,7 @@ This field contains the protocol ID of the used VLAN protocol which will be one 
 ### `priority`
 [:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/bcad57182425426dd4aa14deb27f97acb329f3cd)
 
-This field indicates the queueing priority of the packet. Packets with higher priority will be send out first. Only values between `0` and `63` are effective, values of `64` and above will be converted to `63`. This field only takes effect if the `skbprio` queueing discipline has been configured in TC. [^3]
+This field indicates the queuing priority of the packet. Packets with higher priority will be send out first. Only values between `0` and `63` are effective, values of `64` and above will be converted to `63`. This field only takes effect if the `skbprio` queueing discipline has been configured in TC. [^3]
 
 This only effects egress traffic since ingress traffic is never queued.
 

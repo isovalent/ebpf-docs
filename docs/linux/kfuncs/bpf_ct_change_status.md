@@ -8,12 +8,12 @@ description: "This page documents the 'bpf_ct_change_status' eBPF kfunc, includi
 [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/ef69aa3a986ef94f01ce8b5b619f550db54432fe)
 <!-- [/FEATURE_TAG] -->
 
-Change status of inserted nf_conn
+Change status of inserted `nf_conn`
 
 ## Definition
 
 Change the status field of the provided connection tracking entry.
-This must be invoked for referenced PTR_TO_BTF_ID to nf_conn.
+This must be invoked for referenced `PTR_TO_BTF_ID` to `nf_conn`.
 
 **Parameters**
 
@@ -35,10 +35,10 @@ This must be invoked for referenced PTR_TO_BTF_ID to nf_conn.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example
 
-See [bpf_ct_set_nat_info](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.
+See [`bpf_ct_set_nat_info`](bpf_ct_set_nat_info.md#example) for an example of how to use this kfunc.

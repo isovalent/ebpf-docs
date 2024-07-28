@@ -8,7 +8,7 @@ description: "This page documents the 'hid_bpf_attach_prog' eBPF kfunc, includin
 [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/f5c27da4e3c8a2e42fb4f41a0c685debcb9af294)
 <!-- [/FEATURE_TAG] -->
 
-Attach the given @prog_fd to the given HID device
+Attach the given `prog_fd` to the given HID device
 
 ## Definition
 
@@ -22,7 +22,7 @@ Attach the given @prog_fd to the given HID device
 
 **Returns**
 
-an fd of a bpf_link object on success (> %0), an error code otherwise. Closing this fd will detach the program from the HID device (unless the bpf_link is pinned to the BPF file system).
+A file descriptor of a `bpf_link` object on success (> %0), an error code otherwise. Closing this file descriptor will detach the program from the HID device (unless the `bpf_link` is pinned to the BPF file system).
 
 <!-- [KFUNC_DEF] -->
 `#!c int hid_bpf_attach_prog(unsigned int hid_id, int prog_fd, __u32 flags)`
@@ -37,7 +37,7 @@ This kfunc is used to attach a BPF program to the jump-table in the BPF-HID subs
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SYSCALL](../program-type/BPF_PROG_TYPE_SYSCALL.md)
+- [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

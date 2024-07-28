@@ -10,11 +10,11 @@ description: "This page documents the 'BPF_PROG_TYPE_SCHED_CLS' eBPF program typ
 
 This program type allows for the implementation of a Traffic Control (TC) classifier (aka filter) in eBPF. TC can be used for a number of use cases, all of them having to do with the manipulation of traffic. TC is for example used to implement QoS (Quality of Service) allowing latency sensitive traffic like VoIP (Voice over IP) to be processed ahead of lets say web traffic. It can also drop packets to simulate packet-loss, add latency to simulate distant clients or apply bandwidth limitations for applications or users, to name a few.
 
-TC allows an admin to filter traffic using a hierarchical model of qdisc's (Queuing DISCipline). A root qdisc is attached to a network interface with certain actions. This qdisc can also have child qdiscs which will be used over the root if their filter matches the traffic. This program type allows us to implement such a filter in eBPF.
+TC allows an admin to filter traffic using a hierarchical model of qdiscs (<nospell>Queuing DISCipline</nospell>). A root qdisc is attached to a network interface with certain actions. This qdisc can also have child qdiscs which will be used over the root if their filter matches the traffic. This program type allows us to implement such a filter in eBPF.
 
 ## Usage
 
-TC CLS programs are typically put into an [ELF](../../concepts/elf.md) section prefixed with `tc/` or `classifier/`. The TC CLS program is called by the kernel with a [__sk_buff](../program-context/__sk_buff.md) context. The return value indicates what action the kernel should take with the packet, the following values are permitted:
+TC Classifier programs are typically put into an [ELF](../../concepts/elf.md) section prefixed with `tc/` or `classifier/`. The TC Classifier program is called by the kernel with a [`__sk_buff`](../program-context/__sk_buff.md) context. The return value indicates what action the kernel should take with the packet, the following values are permitted:
 
 ### Regular classifier
 
@@ -97,9 +97,9 @@ $ tc qdisc add dev eth1 clsact
 $ tc filter add dev eth1 ingress bpf obj program.o sec my_func
 ```
 
-For more details on the tc command, see the general [man page](https://man7.org/linux/man-pages/man8/tc.8.html).
+For more details on the `tc` command, see the general [man page](https://man7.org/linux/man-pages/man8/tc.8.html).
 
-For more details on the bpf filter options, see the tc-bpf [man page](https://man7.org/linux/man-pages/man8/tc-bpf.8.html).
+For more details on the bpf filter options, see the `tc-bpf` [man page](https://man7.org/linux/man-pages/man8/tc-bpf.8.html).
 
 ## Helper functions
 
@@ -162,6 +162,10 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_tcp_gen_syncookie`](../helper-function/bpf_tcp_gen_syncookie.md)
     * [`bpf_sk_assign`](../helper-function/bpf_sk_assign.md)
     * [`bpf_skb_set_tstamp`](../helper-function/bpf_skb_set_tstamp.md)
+    * [`bpf_tcp_raw_gen_syncookie_ipv4`](../helper-function/bpf_tcp_raw_gen_syncookie_ipv4.md)
+    * [`bpf_tcp_raw_gen_syncookie_ipv6`](../helper-function/bpf_tcp_raw_gen_syncookie_ipv6.md)
+    * [`bpf_tcp_raw_check_syncookie_ipv4`](../helper-function/bpf_tcp_raw_check_syncookie_ipv4.md)
+    * [`bpf_tcp_raw_check_syncookie_ipv6`](../helper-function/bpf_tcp_raw_check_syncookie_ipv6.md)
     * [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md)
     * [`bpf_map_update_elem`](../helper-function/bpf_map_update_elem.md)
     * [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md)
@@ -203,6 +207,18 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

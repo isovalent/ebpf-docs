@@ -28,7 +28,7 @@ The return value is interpreted as follows:
 * `other < 0` - Error in parsing, give control back to userspace assuming that synchronization is lost and the stream is unrecoverable (application expected to close TCP socket)
 
 !!! note
-    Before [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/ef5659280eb13e8ac31c296f58cfdfa1684ac06b) it was required to have a stream parser attached to a sockmap if you wanted to use the stream verdict as well. On newer versions this is no longer required.
+    Before [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/ef5659280eb13e8ac31c296f58cfdfa1684ac06b) it was required to have a stream parser attached to a `BPF_MAP_TYPE_SOCKMAP` if you wanted to use the stream verdict as well. On newer versions this is no longer required.
 
     On the older kernels, a no-op program can be used to just return the length of the current skb to retain default behavior and pass verdict per TCP packet.
 
@@ -60,7 +60,7 @@ The non-stream verdict attach type is a replacement for the `BPF_SK_SKB_STREAM_V
 
 ## Context
 
-Socket SKB programs are called by the kernel with a [__sk_buff](../program-context/__sk_buff.md) context.
+Socket SKB programs are called by the kernel with a [`__sk_buff`](../program-context/__sk_buff.md) context.
 
 This program type isn't allowed to read from and write to all fields of the context since doing so might break assumptions in the kernel or because data isn't available at the point where the program is hooked into the kernel.
 
@@ -241,6 +241,18 @@ out:
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

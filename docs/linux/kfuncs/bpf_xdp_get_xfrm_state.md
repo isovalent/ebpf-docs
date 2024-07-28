@@ -62,7 +62,7 @@ A `struct xfrm_state *`, if found, must be released with a corresponding bpf_xdp
 
 ## Usage
 
-This kfunc helper accesses internal xfrm_state associated with an SA. This is intended to be used for the assigning of special pcpu SAs to a particular CPU. In other words: for custom software RSS. [^1]
+This kfunc helper accesses internal `xfrm_state` associated with an SA(Security Association). This is intended to be used for the assigning of special per-CPU <nospell>SAs</nospell> to a particular CPU. In other words: for custom software RSS. [^1]
 
 [^1]: [https://datatracker.ietf.org/doc/draft-ietf-ipsecme-multi-sa-performance/03/](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-multi-sa-performance/03/)
 
@@ -71,7 +71,7 @@ This kfunc helper accesses internal xfrm_state associated with an SA. This is in
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

@@ -12,7 +12,7 @@ This is a special purpose map type which holds references to sockets with the `S
 
 ## Usage
 
-This map is used together with the [bpf_sk_select_reuseport](../helper-function/bpf_sk_select_reuseport.md) helper function to select a socket from a reuse port socket group to handle traffic.
+This map is used together with the [`bpf_sk_select_reuseport`](../helper-function/bpf_sk_select_reuseport.md) helper function to select a socket from a reuse port socket group to handle traffic.
 
 ## Attributes
 

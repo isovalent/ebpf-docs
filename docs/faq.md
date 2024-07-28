@@ -14,7 +14,7 @@ These docs are (ideally) for everyone in the eBPF community, specifically
 * eBPF library maintainers
 * eBPF researchers/intellectuals (those who need to or want to know about eBPF without working on or with eBPF directly for a number of reasons)
 
-## What is the scope of the project? Will you add XYZ?
+## What is the scope of the project? Will you add `XYZ`?
 
 The Linux kernel, libraries maintained alongside the Linux kernel as "reference implementation" (specifically `iproute2`, `libbpf`, `libxdp`), eBPF on Windows (when it matures). 
 

@@ -16,7 +16,7 @@ Tracepoint programs can attach to trace events. These events are declared with t
 
 The `TRACE_EVENT` macro will make a tracepoint available via a function with the `trace_` prefix followed by the name. So `trace_xdp_exception` will fire the `xdp_exception` event, which can happen from any number of locations in the code. The attached eBPF program will be called for all invocations of the trace program.
 
-We can use the [tracefs](https://www.kernel.org/doc/Documentation/trace/ftrace.txt) to list all of these available trace events. For the sake of this page we will assume the tracefs is mounted at `/sys/kernel/tracing` (which is usual for most distros). The `/sys/kernel/tracing/events/` directory contains a number of yet more directories. The events are grouped by the first word in their name, so all `kvm_*` events reside in `/sys/kernel/tracing/events/kvm`. So `xdp_exception` is located in `/sys/kernel/tracing/events/xdp/xdp_exception`. We will refer to this directory as the "event directory".
+We can use the [`tracefs`](https://www.kernel.org/doc/Documentation/trace/ftrace.txt) to list all of these available trace events. For the sake of this page we will assume the `tracefs` is mounted at `/sys/kernel/tracing` (which is usual for most distros). The `/sys/kernel/tracing/events/` directory contains a number of yet more directories. The events are grouped by the first word in their name, so all `kvm_*` events reside in `/sys/kernel/tracing/events/kvm`. So `xdp_exception` is located in `/sys/kernel/tracing/events/xdp/xdp_exception`. We will refer to this directory as the "event directory".
 
 ## Context
 
@@ -58,7 +58,7 @@ struct xdp_exception_ctx {
 
 There are three methods of attaching tracepoint programs, from oldest and least recommended to newest and most recommended, however, all methods have this first part in common. 
 
-We start by looking up the event ID in the tracefs. Inside the event directory is located a pseudo-file called `id`, so for `xdp_exception` that would be `/sys/kernel/tracing/events/xdp/xdp_exception/id`. When reading the file a decimal number is returned.
+We start by looking up the event ID in the `tracefs`. Inside the event directory is located a pseudo-file called `id`, so for `xdp_exception` that would be `/sys/kernel/tracing/events/xdp/xdp_exception/id`. When reading the file a decimal number is returned.
 
 Next step is to open a new perf event using the [`perf_event_open`](https://man7.org/linux/man-pages/man2/perf_event_open.2.html) syscall:
 
@@ -104,7 +104,7 @@ This is the newest and most recommended method of attaching tracepoint programs.
 
 After we have gotten the perf event file descriptor we attach the program by making a bpf link via the [link create syscall command](../syscall/BPF_LINK_CREATE.md).
 
-We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREATE.md#bpf_perf_event) [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type), [`target_fd`](../syscall/BPF_LINK_CREATE.md#target_fd) set to the perf event fd, [`prog_fd`](../syscall/BPF_LINK_CREATE.md#prog_fd) to the file descriptor of the tracepoint program, and optionally a [`cookie`](../syscall/BPF_LINK_CREATE.md#cookie)
+We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREATE.md#bpf_perf_event) [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type), [`target_fd`](../syscall/BPF_LINK_CREATE.md#target_fd) set to the perf event file descriptor, [`prog_fd`](../syscall/BPF_LINK_CREATE.md#prog_fd) to the file descriptor of the tracepoint program, and optionally a [`cookie`](../syscall/BPF_LINK_CREATE.md#cookie)
 
 ## Helper functions
 
@@ -211,6 +211,18 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

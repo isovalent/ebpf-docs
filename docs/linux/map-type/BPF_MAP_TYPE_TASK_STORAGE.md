@@ -10,7 +10,7 @@ description: "This page documents the 'BPF_MAP_TYPE_TASK_STORAGE' eBPF map type,
 
 This map type stores data keyed on a task. The user can only create, update or delete entries for existing tasks. When a task is deleted, the entry for that task is automatically removed.
 
-Userspace can read or update values for any task, granted they have a PID file descriptor for that task.
+Userspace can read or update values for any task, granted they have a process ID file descriptor for that task.
 
 ## Attributes
 

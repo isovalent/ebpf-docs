@@ -176,7 +176,7 @@ func main() {
 			}
 
 			for _, progType := range progTypes {
-				newFile.WriteString(fmt.Sprintf("- [%s](../program-type/%s.md)\n", progType, progType))
+				newFile.WriteString(fmt.Sprintf("- [`%s`](../program-type/%s.md)\n", progType, progType))
 			}
 
 			newFile.WriteString(kfuncProgRefEnd)
@@ -379,7 +379,7 @@ const (
 	kfDestructiveNotice = `
 !!! warning
 	This kfunc is destructive to the system. For example such a call can result in system rebooting or panicking. 
-	Due to this additional restrictions apply to these calls. At the moment they only require CAP_SYS_BOOT capability, 
+	Due to this additional restrictions apply to these calls. At the moment they only require ` + "`" + "CAP_SYS_BOOT" + "`" + `capability, 
 	but more can be added later.
 `
 

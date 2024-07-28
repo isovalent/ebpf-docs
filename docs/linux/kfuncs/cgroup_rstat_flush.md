@@ -12,9 +12,9 @@ Flush stats in `cgrp`'s subtree
 
 ## Definition
 
-Collect all per-cpu stats in `cgrp`'s subtree into the global countersand propagate them upwards. After this function returns, all cgroups in the subtree have up-to-date ->stat.
+Collect all per-CPU stats in `cgrp`'s sub-tree into the global countersand propagate them upwards. After this function returns, all cGroups in the sub-tree have up-to-date `->stat`.
 
-This also gets all cgroups in the subtree including `cgrp` off the ->updated_children lists.
+This also gets all cGroups in the sub-tree including `cgrp` off the `->updated_children` lists.
 
 This function may block.
 
@@ -39,8 +39,8 @@ This function may block.
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

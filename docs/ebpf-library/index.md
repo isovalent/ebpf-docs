@@ -1,6 +1,6 @@
 # Kernel/User side libraries
 
-eBPF have multiple libraries to help the eBPF developement
+eBPF have multiple libraries to help the eBPF development
 
 <div class="grid cards" markdown>
 

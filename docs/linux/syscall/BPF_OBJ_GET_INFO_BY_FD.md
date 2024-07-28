@@ -128,15 +128,15 @@ This field indicates the length of the buffer provided by `xlated_prog_len` when
 
 [:octicons-tag-24: v4.13](https://github.com/torvalds/linux/commit/1e270976908686ec25fb91b8a34145be54137976)
 
-This field indicates a memory area where the kernel can write the jitted program instructions to. This field should be a pointer to a memory buffer.
+This field indicates a memory area where the kernel can write the JIT-ed program instructions to. This field should be a pointer to a memory buffer.
 
-The jitted instructions are machine code in the host architecture, the actual code that runs on the CPU.
+The JIT-ed instructions are machine code in the host architecture, the actual code that runs on the CPU.
 
 #### `xlated_prog_insns`
 
 [:octicons-tag-24: v4.13](https://github.com/torvalds/linux/commit/1e270976908686ec25fb91b8a34145be54137976)
 
-This field indicates a memory area where the kernel can write the xlated/translated program instructions to. This field should be a pointer to a memory buffer.
+This field indicates a memory area where the kernel can write the <nospell>xlated</nospell>/translated program instructions to. This field should be a pointer to a memory buffer.
 
 The translated program instructions are still use the eBPF instruction set, but have been modified by the verifier.
 
@@ -247,7 +247,7 @@ This field indicates the size of the records available via `func_info`
 
 This field indicates a list of function info records. This should be a pointer to an array of function info blobs the size of `func_info_rec_size` with `nr_func_info` elements.
 
-These are the func info records supplied during program loading via [`func_info`](BPF_PROG_LOAD.md#func_info). And are aligned to the `xlated_prog_insns`.
+These are the function info records supplied during program loading via [`func_info`](BPF_PROG_LOAD.md#func_info). And are aligned to the `xlated_prog_insns`.
 
 #### `nr_func_info`
 
@@ -345,7 +345,7 @@ This field indicates the id of the BTF object which contains the type indicated 
 
 [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/b79c9fc9551b45953a94abf550b7bd3b00e3a0f9)
 
-This field indicates the type id of the BTF func type to which this program is attached. Currently used for `BPF_LSM_CGROUP` programs.
+This field indicates the type id of the BTF function type to which this program is attached. Currently used for `BPF_LSM_CGROUP` programs.
 
 ### `struct bpf_map_info`
 
@@ -678,7 +678,7 @@ These fields apply for the `BPF_LINK_TYPE_ITER` link type.
 
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/6b0a249a301e2af9adda84adbced3a2988248b95)
 
-This field indicates the cgroup ID.
+This field indicates the cGroup ID.
 
 ##### `order`
 

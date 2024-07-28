@@ -29,7 +29,7 @@ The session cookie is u64 value, implemented via fprobe feature that allows to s
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_KPROBE](../program-type/BPF_PROG_TYPE_KPROBE.md)
+- [`BPF_PROG_TYPE_KPROBE`](../program-type/BPF_PROG_TYPE_KPROBE.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

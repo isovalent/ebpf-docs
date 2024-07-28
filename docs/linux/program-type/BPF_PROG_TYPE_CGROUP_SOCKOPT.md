@@ -16,9 +16,9 @@ cGroup socket ops programs are typically located in the `cgroup/getsockopt` or `
 
 ### `BPF_CGROUP_SETSOCKOPT`
 
-`BPF_CGROUP_SETSOCKOPT` is triggered *before* the kernel handling of sockopt and it has writable context: it can modify the supplied arguments before passing them down to the kernel. This hook has access to the cgroup and socket local storage.
+`BPF_CGROUP_SETSOCKOPT` is triggered *before* the kernel handling of sockopt and it has writable context: it can modify the supplied arguments before passing them down to the kernel. This hook has access to the cGroup and socket local storage.
 
-If BPF program sets [`optlen`](#optlen) to -1, the control will be returned back to the userspace after all other BPF programs in the cgroup chain finish (i.e. kernel [`setsockopt`](https://linux.die.net/man/2/setsockopt) handling will *not* be executed).
+If BPF program sets [`optlen`](#optlen) to -1, the control will be returned back to the userspace after all other BPF programs in the cGroup chain finish (i.e. kernel [`setsockopt`](https://linux.die.net/man/2/setsockopt) handling will *not* be executed).
 
 !!! note 
      [`optlen`](#optlen) can not be increased beyond the user-supplied value. It can only be decreased or set to -1. Any other value will trigger `EFAULT`.
@@ -32,7 +32,7 @@ Return Type:
 
 `BPF_CGROUP_GETSOCKOPT` is triggered *after* the kernel handing of sockopt. The BPF hook can observe [`optval`](#optval), [`optlen`](#optlen) and [`retval`](#retval) if it's interested in whatever kernel has returned. BPF hook can override the values above, adjust  [`optlen`](#optlen) and reset [`retval`](#retval) to 0. If [`optlen`](#optlen) has been increased above initial [`getsockopt`](https://linux.die.net/man/2/getsockopt) value (i.e. userspace buffer is too small), `EFAULT` is returned.
 
-This hook has access to the cgroup and socket local storage.
+This hook has access to the cGroup and socket local storage.
 
 !!! note
     The only acceptable value to set to [`retval`](#retval) is 0 and the original value that the kernel returned. Any other value will trigger `EFAULT`.
@@ -40,11 +40,11 @@ This hook has access to the cgroup and socket local storage.
 Return Type:
 
 * `0` - reject the syscall, `EPERM` will be returned to the userspace.
-* `1` - success: copy [`optval`](#optval) and [`optlen`](#optlen) to userspace, return[`retval`](#retval) from the syscall (note that this can be overwritten by the BPF program from the parent cgroup).
+* `1` - success: copy [`optval`](#optval) and [`optlen`](#optlen) to userspace, return[`retval`](#retval) from the syscall (note that this can be overwritten by the BPF program from the parent cGroup).
 
-### Cgroup Inheritance
+### cGroup Inheritance
 
-Suppose, there is the following cgroup hierarchy where each cgroup has `BPF_CGROUP_GETSOCKOPT` attached at each level with `BPF_F_ALLOW_MULTI`
+Suppose, there is the following cGroup hierarchy where each cGroup has `BPF_CGROUP_GETSOCKOPT` attached at each level with `BPF_F_ALLOW_MULTI`
 
 ```
   A (root, parent)
@@ -52,11 +52,11 @@ Suppose, there is the following cgroup hierarchy where each cgroup has `BPF_CGRO
     B (child)
 ```
 
-When the application calls [`getsockopt`](https://linux.die.net/man/2/getsockopt) syscall from the cgroup B, the programs are executed from the bottom up: B, A. First program (B) sees the result of kernel's [`getsockopt`](https://linux.die.net/man/2/getsockopt). It can optionally adjust [`optval`](#optval), [`optlen`](#optlen) and reset [`retval`](#retval) to 0. After that control will be passed to the second (A) program which will see the same context as B including any potential modifications.
+When the application calls [`getsockopt`](https://linux.die.net/man/2/getsockopt) syscall from the cGroup B, the programs are executed from the bottom up: B, A. First program (B) sees the result of kernel's [`getsockopt`](https://linux.die.net/man/2/getsockopt). It can optionally adjust [`optval`](#optval), [`optlen`](#optlen) and reset [`retval`](#retval) to 0. After that control will be passed to the second (A) program which will see the same context as B including any potential modifications.
 
 Same for `BPF_CGROUP_SETSOCKOPT`: if the program is attached to A and B, the trigger order is B, then A. If B does any changes to the input arguments ([`level`](#level), [`optname`](#optname), [`optval`](#optval), [`optlen`](#optlen)), then the next program in the chain (A) will see those changes, *not* the original input [`setsockopt`](https://linux.die.net/man/2/setsockopt) arguments. The potentially modified values will be then passed down to the kernel.
 
-### Large optval
+### Large `optval`
 
 When the [`optval`](#optval) is greater than the `PAGE_SIZE`, the BPF program can access only the first `PAGE_SIZE` of that data. So it has to options:
 
@@ -116,7 +116,7 @@ This field indicates the return value of the syscall. Only `BPF_CGROUP_GETSOCKOP
 
 ## Attachment
 
-cGroup socket buffer programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
+cGroup socket buffer programs are attached to cGroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
 
 ## Example
 
@@ -229,6 +229,18 @@ int setsockopt(struct bpf_sockopt *ctx)
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs

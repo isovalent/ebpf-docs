@@ -139,7 +139,7 @@ Some map types require the loader to set this flag when creating maps to explici
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/29ba732acbeece1e34c68483d1ec1f3720fa1bb3)
 <!-- [/FEATURE_TAG] -->
 
-By default, LRU maps have a single LRU list (even per-CPU LRU maps). When set, the an LRU map will use a percpu LRU list
+By default, LRU maps have a single LRU list (even per-CPU LRU maps). When set, the an LRU map will use a per-CPU LRU list
 which can scale and perform better.
 
 !!! note
@@ -236,7 +236,7 @@ This flag specifically applies to `BPF_MAP_TYPE_SK_STORAGE` maps. Sockets can be
 
 Setting this flag on a `BPF_MAP_TYPE_ARRAY` will allow userspace programs to [mmap](https://man7.org/linux/man-pages/man2/mmap.2.html) the array values into the userspace process, effectively making a shared memory region between eBPF programs and a userspace program.
 
-This can significantly improve read and write performance since there is no sycall overhead to access the map.
+This can significantly improve read and write performance since there is no syscall overhead to access the map.
 
 Using this flag is only supported on `BPF_MAP_TYPE_ARRAY` maps, for more details check the [array map page](../map-type/BPF_MAP_TYPE_ARRAY.md).
 

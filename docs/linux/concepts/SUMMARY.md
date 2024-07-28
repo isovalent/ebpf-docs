@@ -1,4 +1,4 @@
-* [index.md](index.md)
+* [`index.md`](index.md)
 * [Maps](maps.md)
 * [Verifier](verifier.md)
 * [Concurrency](concurrency.md)

@@ -10,7 +10,7 @@ description: "This page documents the 'tcp_cong_avoid_ai' eBPF kfunc, including 
 
 ## Definition
 
-In theory this is tp->snd_cwnd += 1 / tp->snd_cwnd (or alternative w), for every packet that was ACKed.
+In theory this is `tp->snd_cwnd += 1 / tp->snd_cwnd` (or alternative w), for every packet that was ACK-ed.
 
 <!-- [KFUNC_DEF] -->
 `#!c void tcp_cong_avoid_ai(struct tcp_sock *tp, u32 w, u32 acked)`
@@ -26,7 +26,7 @@ In theory this is tp->snd_cwnd += 1 / tp->snd_cwnd (or alternative w), for every
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

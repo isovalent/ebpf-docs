@@ -6,7 +6,7 @@ description: "This page documents the 'xdp_program__run_prio' libxdp function, i
 
 ## Definition
 
-It allow to retrieve the value of the priorty of the program.
+It allow to retrieve the value of the priority of the program.
 
 !!! note
     The higher the value, the later the program will run.

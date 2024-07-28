@@ -6,7 +6,7 @@ description: "This page documents the 'xdp_multiprog__hw_prog' libxdp function, 
 
 ## Definition
 
-It return a reference to the program loaded in the interface (useful is it's not the dispacther).
+It return a reference to the program loaded in the interface (useful is it's not the dispatcher).
 
 ### Returns
 

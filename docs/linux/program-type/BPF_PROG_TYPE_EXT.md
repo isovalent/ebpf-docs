@@ -21,7 +21,7 @@ Programs of this type are typically placed in an ELF section prefixed with `frep
 The main use case for extensions is to provide generic mechanism to plug external programs into policy program or function call chaining. The [libxdp](https://github.com/xdp-project/xdp-tools/tree/master/lib/libxdp) project uses this functionality to implement XDP program chaining from a dispatcher program.
 
 This new function/program is called 'an extension' of old program. At load time
-the verifier uses (attach_prog_fd, attach_btf_id) pair to identify the function
+the verifier uses (`attach_prog_fd`, `attach_btf_id`) pair to identify the function
 to be replaced. The BPF program type is derived from the target program into
 extension program. 
 

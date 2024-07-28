@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_percpu_obj_drop_impl' eBPF kfunc, inc
 [:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/36d8bdf75a93190e5669b9d1d95994e13e15ba1d)
 <!-- [/FEATURE_TAG] -->
 
-Free an allocated percpu object.
+Free an allocated per-CPU object.
 
 ## Definition
 
@@ -34,11 +34,11 @@ The `meta` parameter is rewritten by the verifier, no need for BPF program to se
 The following program types can make use of this kfunc:
 
 <!-- [KFUNC_PROG_REF] -->
-- [BPF_PROG_TYPE_LSM](../program-type/BPF_PROG_TYPE_LSM.md)
-- [BPF_PROG_TYPE_SCHED_CLS](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
-- [BPF_PROG_TYPE_STRUCT_OPS](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
-- [BPF_PROG_TYPE_TRACING](../program-type/BPF_PROG_TYPE_TRACING.md)
-- [BPF_PROG_TYPE_XDP](../program-type/BPF_PROG_TYPE_XDP.md)
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+- [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+- [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md)
 <!-- [/KFUNC_PROG_REF] -->
 
 ### Example

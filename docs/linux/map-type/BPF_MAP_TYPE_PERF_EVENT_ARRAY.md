@@ -12,13 +12,13 @@ This is a specialized map type which holds file descriptors to perf events. It i
 
 ## Usage
 
-There are two different ways to use this map type. The first and most popular way is to allows programs to send arbitrary data, for example debug messages, network flows, parts of the program context, ect.
+There are two different ways to use this map type. The first and most popular way is to allows programs to send arbitrary data, for example debug messages, network flows, parts of the program context, etcetera.
 
 The second way is with the [bpf_perf_event_read](../helper-function/bpf_perf_event_read.md) and [bpf_perf_event_read_value](../helper-function/bpf_perf_event_read_value.md) helpers to allow tracing programs to read performance counters.
 
 ### Data transfer
 
-This usage scenario allows eBPF logic to piggy-back on the existing perf-subsystem implementation of ringbuffers to transfer data from the kernel to userspace. Sending data from an eBPF program is simple. Define a `BPF_MAP_TYPE_PERF_EVENT_ARRAY`, prepare some data to be sent, then call the [bpf_perf_event_output](../helper-function/bpf_perf_event_output.md) helper.
+This usage scenario allows eBPF logic to piggy-back on the existing perf-subsystem implementation of ring-buffers to transfer data from the kernel to userspace. Sending data from an eBPF program is simple. Define a `BPF_MAP_TYPE_PERF_EVENT_ARRAY`, prepare some data to be sent, then call the [bpf_perf_event_output](../helper-function/bpf_perf_event_output.md) helper.
 
 Receiving this data on the userspace side will need to do some initial setup work.
 
@@ -52,7 +52,7 @@ Note that `{watermark}` and `{cpu}` are not pre-set. In this example we set `.wa
 
 After creating the perf event, it is recommended to make it non-blocking, if using used with a signaling mechanism such as `epoll`. This can be done by calling [`fcntl`](https://man7.org/linux/man-pages/man2/fcntl.2.html) with the `O_NONBLOCK` option on the file descriptor.
 
-Next, we need to setup the actual ringbuffer which we will use to read data from the perf event. To do so we first have to request a shared memory region from the kernel using [`mmap`](https://man7.org/linux/man-pages/man2/mmap.2.html) `#!c mmap(nil, length, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0)`. `length` can be picked and tuned depending on the use case but should always be `1+2^n` memory pages and `n` should not be `0`. So Assuming a 4k page size, valid values would be `12288`, `20480`, `28672` and so on. The `fd` should be the file descriptor of the perf event.
+Next, we need to setup the actual ring-buffer which we will use to read data from the perf event. To do so we first have to request a shared memory region from the kernel using [`mmap`](https://man7.org/linux/man-pages/man2/mmap.2.html) `#!c mmap(nil, length, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0)`. `length` can be picked and tuned depending on the use case but should always be `1+2^n` memory pages and `n` should not be `0`. So Assuming a 4k page size, valid values would be `12288`, `20480`, `28672` and so on. The `fd` should be the file descriptor of the perf event.
 
 The `mmap` call, if all is well, should return a pointer to a memory address. The first page will contain the following data structure populated by the perf subsystem:
 
@@ -252,15 +252,15 @@ The `mmap` call, if all is well, should return a pointer to a memory address. Th
 
 This structure contains a lot of additional data, but for consuming the data, we interested in the `perf_event_mmap_page->head`, `perf_event_mmap_page->tail`, `perf_event_mmap_page->data_offset` and `perf_event_mmap_page->data_size` fields.
 
-The `data_offset` and `data_size` indicate the offset from the `addr` pointer where the ringbuffer data starts, and `data_size` where it ends. The region between these two locations will be written to by the kernel. To avoid race conditions, we should avoid reading and writing the same location at the same time. The `head` and `tail` are used to coordinate access. The `head` will be written to by the kernel and should be read by userspace, it moves if new data is available. The `tail` will be written to by userspace to indicate data has been consumed. So if `head` and `tail` are equal, no data is pending. If `head` == `tail-1` then the buffer is full.
+The `data_offset` and `data_size` indicate the offset from the `addr` pointer where the ring-buffer data starts, and `data_size` where it ends. The region between these two locations will be written to by the kernel. To avoid race conditions, we should avoid reading and writing the same location at the same time. The `head` and `tail` are used to coordinate access. The `head` will be written to by the kernel and should be read by userspace, it moves if new data is available. The `tail` will be written to by userspace to indicate data has been consumed. So if `head` and `tail` are equal, no data is pending. If `head` == `tail-1` then the buffer is full.
 
-To recap, we create a perf event for every logical CPU, and every perf event gets its own ringbuffer.
+To recap, we create a perf event for every logical CPU, and every perf event gets its own ring-buffer.
 
-Once setup, userspace can busy-poll the ringbuffers, but this might cause significant overhead or data loss during spikes. It is recommended to use [`epoll`](https://man7.org/linux/man-pages/man7/epoll.7.html) to setup signalling in combination with the watermark settings for optimal result. Allowing a reader thread to wake-up when there is data, read from all buffers indicated to have pending data by `epoll` and then go back to blocking mode/sleep. This avoids CPU usage when nothing happens and wakes up the thread more frequently when more data is sent. 
+Once setup, userspace can busy-poll the ring-buffers, but this might cause significant overhead or data loss during spikes. It is recommended to use [`epoll`](https://man7.org/linux/man-pages/man7/epoll.7.html) to setup signalling in combination with the watermark settings for optimal result. Allowing a reader thread to wake-up when there is data, read from all buffers indicated to have pending data by `epoll` and then go back to blocking mode/sleep. This avoids CPU usage when nothing happens and wakes up the thread more frequently when more data is sent. 
 
-Depending on the use case, a author might want to dedicate more threads to reading concurrently, not use watermarks, or still do busy polling, it all depends on optimizing thruput, latency (between eBPF sending and userspace consuming), memory usage, and CPU usage.
+Depending on the use case, a author might want to dedicate more threads to reading concurrently, not use watermarks, or still do busy polling, it all depends on optimizing throughput, latency (between eBPF sending and userspace consuming), memory usage, and CPU usage.
 
-Every entry on the ringbuffer will start with the same header:
+Every entry on the ring-buffer will start with the same header:
 
 ```c
 struct perf_event_header {
@@ -294,7 +294,7 @@ struct {
 
 The `lost` field indicates how many samples have been lost. This might happen when the ringbuffer is full or nearly full. The kernel will keep track of the amount of samples it can't write and will populate the ring buffer with record lost messages after there is room on the ringbuffer again.
 
-For further reading, checkout [tools/perf/design.txt](https://github.com/torvalds/linux/blob/v6.2/tools/perf/design.txt) which goes into the design and logic behind the above instructions.
+For further reading, checkout [`tools/perf/design.txt`](https://github.com/torvalds/linux/blob/v6.2/tools/perf/design.txt) which goes into the design and logic behind the above instructions.
 
 ### Performance counters
 

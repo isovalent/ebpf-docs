@@ -105,7 +105,7 @@ The context allows 4-byte reads from the field, but no writes to it.
 
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/4fbac77d2d092b475dda9eea66da674369665427)
 
-This field contains the IPv4 address passed to the syscall. Its value is stored in network byte order. This field is only valid of INET4 attach types.
+This field contains the IPv4 address passed to the syscall. Its value is stored in network byte order. This field is only valid of `INET4` attach types.
 
 The context allows 1,2,4-byte reads and 4-byte writes.
 
@@ -113,7 +113,7 @@ The context allows 1,2,4-byte reads and 4-byte writes.
 
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/4fbac77d2d092b475dda9eea66da674369665427)
 
-This field contains the IPv6 address passed to the syscall. Its value is stored in network byte order. This field is only valid of INET6 attach types.
+This field contains the IPv6 address passed to the syscall. Its value is stored in network byte order. This field is only valid of `INET6` attach types.
 
 This context allows 1,2,4,8-byte reads and 4,8-byte writes.
 
@@ -184,7 +184,7 @@ This field contains a pointer to the socket for which the program was invoked, i
 
 ## Attachment
 
-cGroup socket buffer programs are attached to cgroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
+cGroup socket buffer programs are attached to cGroups via the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall or via [BPF link](../syscall/BPF_LINK_CREATE.md).
 
 ## Example
 
@@ -396,6 +396,18 @@ cGroup socket buffer programs are attached to cgroups via the [`BPF_PROG_ATTACH`
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md)
+    * [`bpf_cgrp_storage_get`](../helper-function/bpf_cgrp_storage_get.md)
+    * [`bpf_cgrp_storage_delete`](../helper-function/bpf_cgrp_storage_delete.md)
+    * [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md)
+    * [`bpf_dynptr_from_mem`](../helper-function/bpf_dynptr_from_mem.md)
+    * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
+    * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
+    * [`bpf_kptr_xchg`](../helper-function/bpf_kptr_xchg.md)
+    * [`bpf_ktime_get_tai_ns`](../helper-function/bpf_ktime_get_tai_ns.md)
+    * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+    * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+    * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
+    * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md)
 <!-- [/PROG_HELPER_FUNC_REF] -->
 
 ## KFuncs
