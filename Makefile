@@ -40,10 +40,28 @@ serve: build-container
 	-e "PROD=${PROD}" -e "GH_TOKEN=${GH_TOKEN}" \
 	-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs serve -a 0.0.0.0:8000 --watch /docs/docs"
 
+.PHONY: build-tools
+build-tools:
+	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" -w /docs golang:latest bash -c \
+	"CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/spellcheck /docs/tools/spellcheck/. && \
+	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-ref-gen /docs/tools/helper-ref-gen/. && \
+	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/feature-tag-gen /docs/tools/feature-tag-gen/. && \
+	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/kfunc-gen /docs/tools/spellcheck/. && \
+	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/mtu-calc /docs/tools/mtu-calc/. && \
+	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-def-scraper /docs/tools/helper-def-scraper/."
+
 .PHONY: generate-docs
-generate-docs:
-	cd ${REPODIR}/tools/helper-ref-gen; go run main.go --project-root "${REPODIR}"
-	cd ${REPODIR}/tools/feature-tag-gen; go run main.go --project-root "${REPODIR}"
-	cd ${REPODIR}/tools/kfunc-gen; go run main.go --project-root "${REPODIR}"
-	cd ${REPODIR}/tools/mtu-calc; go run . --project-root "${REPODIR}"
-	cd ${REPODIR}/tools/helper-def-scraper; go run main.go --helper-path "${REPODIR}/docs/linux/helper-function"
+generate-docs: build-container build-tools
+	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
+		-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c \
+		"/docs/tools/bin/helper-ref-gen --project-root /docs && \
+		/docs/tools/bin/feature-tag-gen --project-root /docs && \
+		/docs/tools/bin/kfunc-gen --project-root /docs && \
+		/docs/tools/bin/mtu-calc --project-root /docs && \
+		/docs/tools/bin/helper-def-scraper --helper-path /docs/docs/linux/helper-function"
+
+.PHONY: spellcheck
+spellcheck: build-container build-tools
+	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
+		-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c \
+		"/docs/tools/bin/spellcheck --project-root /docs"
