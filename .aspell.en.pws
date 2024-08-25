@@ -54,6 +54,7 @@ Fmodify
 fmodify
 datagram
 datagrams
+epoll
 preempt
 preemptible
 subprog

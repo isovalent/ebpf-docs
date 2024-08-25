@@ -4,6 +4,7 @@
  * with the same relative offsets for best result.
  ***/
 
+
 .md-grid {
     /* was 61rem  */
     max-width: 70rem;
@@ -38,4 +39,8 @@
 img.image-bg-white {
     background-color: white;
     padding: 10px;
+}
+
+div.mono code {
+    font-family: monospace;
 }

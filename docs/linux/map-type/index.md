@@ -33,7 +33,7 @@ These map types hold references to other map types as their values.
 These map types allow for the streaming of large amounts of data across the kernel-userspace boundary.
 
   * [`BPF_MAP_TYPE_PERF_EVENT_ARRAY`](BPF_MAP_TYPE_PERF_EVENT_ARRAY.md)
-  * `BPF_MAP_TYPE_RINGBUF`
+  * [`BPF_MAP_TYPE_RINGBUF`](BPF_MAP_TYPE_RINGBUF.md)
   * `BPF_MAP_TYPE_USER_RINGBUF`
 
 ## Packet redirection
