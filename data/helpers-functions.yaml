@@ -973,9 +973,14 @@ maps:
   - name: bpf_redirect_map
   BPF_MAP_TYPE_STRUCT_OPS:
   BPF_MAP_TYPE_RINGBUF:
-  - name: ringbuf_output
-  - name: ringbuf_reserve
-  - name: ringbuf_query
+  - name: bpf_ringbuf_output
+  - name: bpf_ringbuf_reserve
+  - name: bpf_ringbuf_query
+  - name: bpf_ringbuf_submit
+  - name: bpf_ringbuf_discard
+  - name: bpf_ringbuf_reserve_dynptr
+  - name: bpf_ringbuf_submit_dynptr
+  - name: bpf_ringbuf_discard_dynptr
   BPF_MAP_TYPE_INODE_STORAGE:
   - name: bpf_inode_storage_get
   - name: bpf_inode_storage_delete
