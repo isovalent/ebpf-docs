@@ -93,6 +93,9 @@
     - name: BPF_PROG_TYPE_SYSCALL
       version: v5.14
       commit: 79a7f8bdb159d9914b58740f3d31d602a6e4aca8
+    - name: BPF_PROG_TYPE_NETFILTER
+      version: v6.4
+      commit: 84601d6ee68ae820dec97450934797046d62db4b
 - name: map_types
   features:
     - name: BPF_MAP_TYPE_HASH

@@ -848,6 +848,10 @@ programs:
   - name: bpf_sys_close
   - name: bpf_kallsyms_lookup_name
   - group: tracing
+
+  # `bpf_nf_func_proto` in `net/netfilter/nf_bpf_link.c`
+  BPF_PROG_TYPE_NETFILTER:
+  - group: base
   
 
 # Track which helper functions can be used with a given map type

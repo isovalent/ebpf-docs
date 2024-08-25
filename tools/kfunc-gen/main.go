@@ -169,7 +169,7 @@ func main() {
 			}
 
 			sort.Strings(progTypes)
-			slices.Compact(progTypes)
+			progTypes = slices.Compact(progTypes)
 
 			for _, progType := range progTypes {
 				progToKfunc[progType] = append(progToKfunc[progType], kfunc.Name)
