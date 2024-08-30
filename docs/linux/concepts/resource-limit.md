@@ -4,7 +4,7 @@ description: "This page explains the concept of resource limits in eBPF. It expl
 ---
 # Resource limits
 
-The Linux kernel has protection mechanisms that prevent processes from taking up to much memory. Since BPF maps can take up a lot of space, they are also limited via these mechanisms.
+The Linux kernel has protection mechanisms that prevent processes from taking up too much memory. Since BPF maps can take up a lot of space, they are also limited via these mechanisms.
 
 ## Rlimit
 
