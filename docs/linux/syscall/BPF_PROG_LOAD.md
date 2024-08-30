@@ -138,7 +138,7 @@ Loading BTF for your program is optional, but highly recommended since a ever gr
 
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/838e96904ff3fc6c30e5ebbc611474669856e3c0)
 
-This attribute specifies the size of the records in `func_info`, this allows for compatibility between newer and older loaders and kernel versions if the size of the the function info records ever changes.
+This attribute specifies the size of the records in `func_info`, this allows for compatibility between newer and older loaders and kernel versions if the size of the function info records ever changes.
 
 ### `func_info`
 
@@ -160,7 +160,7 @@ This attribute specifies the amount of function records that are present in `fun
 
 [:octicons-tag-24: v5.0](https://github.com/torvalds/linux/commit/c454a46b5efd8eff8880e88ece2976e60a26bf35)
 
-This attribute specifies the size of the records in `line_info`, this allows for compatibility between newer and older loaders and kernel versions if the size of the the line info records ever changes.
+This attribute specifies the size of the records in `line_info`, this allows for compatibility between newer and older loaders and kernel versions if the size of the line info records ever changes.
 
 ### `line_info`
 
@@ -185,7 +185,7 @@ This attribute specifies the amount of function records that are present in `lin
 
 [:octicons-tag-24: v5.5](https://github.com/torvalds/linux/commit/ccfe29eb29c2edcea6552072ef00ff4117f53e83)
 
-This attribute specifies the [BTF](../../concepts/btf.md) type ID of kernel types the current program wishes to attach to. This ID refers the the ID within the `vmlinux` object, not the BTF object specified by `prog_btf_fd`. This attribute can have different meaning depending on the program type.
+This attribute specifies the [BTF](../../concepts/btf.md) type ID of kernel types the current program wishes to attach to. This ID refers the ID within the `vmlinux` object, not the BTF object specified by `prog_btf_fd`. This attribute can have different meaning depending on the program type.
 
 * For `BPF_PROG_TYPE_STRUCT_OPS` this attribute is the ID of the ops struct of which the user wants to replace a function pointer with an eBPF program.
 * For `BPF_PROG_TYPE_LSM` this attribute specifies the LSM hook point where we intend to attach it to.
@@ -208,7 +208,7 @@ This attribute specifies the file descriptor of a BTF object which the kernel sh
 
 [:octicons-tag-24: v5.17](https://github.com/torvalds/linux/commit/fbd94c7afcf99c9f3b1ba1168657ecc428eb2c8d)
 
-This attribute specifies the size of the records in `core_relos`, this allows for compatibility between newer and older loaders and kernel versions if the size of the the CO-RE relocation records ever changes.
+This attribute specifies the size of the records in `core_relos`, this allows for compatibility between newer and older loaders and kernel versions if the size of the CO-RE relocation records ever changes.
 
 ### `fd_array`
 
