@@ -16,7 +16,7 @@ Program like functions also have return values, the meaning of which is again de
 
 eBPF program are typically written in C and compiled with LLVM, but this isn't necessarily the only way to do it. Any program which can generate byte-code (following the eBPF instruction set) can author eBPF programs. eBPF programs are typically serialized into a relocatable ELF file.
 
-Ultimately eBPF programs are loaded into the kernel using the [BPF syscall](./syscall/index.md), the userspace program that does this is refereed to as a loader. In practice loaders range from applications that just load the eBPF program to complex systems that constantly interacts with multiple programs and maps to provide advanced features. Loaders often use [loader libraries](./../ebpf-library/index.md) to provide higher-level APIs than the syscall to ease development.
+Ultimately eBPF programs are loaded into the kernel using the [BPF syscall](./syscall/index.md), the userspace program that does this is referred to as a loader. In practice loaders range from applications that just load the eBPF program to complex systems that constantly interacts with multiple programs and maps to provide advanced features. Loaders often use [loader libraries](./../ebpf-library/index.md) to provide higher-level APIs than the syscall to ease development.
 
 When the loader loads a program the kernel will verify that the program is "safe". This job is done by a component of the kernel called the verifier. "safe" in this context means that programs are not allowed to crash the kernel or break critical components. eBPF programs have to pass quite a number of stringent requirements before being allowed anywhere near kernel memory. For more details checkout the verifier page.
 
