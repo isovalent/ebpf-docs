@@ -42,8 +42,7 @@ These three helper calls do not necessarily have to happen in the same program a
 * `prog2` calls `bpf_timer_set_callback` for some `map1` elements.
   * Those that were not `bpf_timer_init`-ed will return `-EINVAL`.
 * `prog3` calls `bpf_timer_start` for some `map1` elements.
-  * Those that were not both `bpf_timer_init`-ed and
-  * `bpf_timer_set_callback`-ed will return `-EINVAL`.
+  * Those that were not both `bpf_timer_init`-ed and `bpf_timer_set_callback`-ed will return `-EINVAL`.
 
 
 [`bpf_timer_init`](../helper-function/bpf_timer_init.md) and [`bpf_timer_set_callback`](../helper-function/bpf_timer_set_callback.md) will return `-EPERM` if map doesn't have user references (is not held by open file descriptor from user space and not pinned in bpffs).
