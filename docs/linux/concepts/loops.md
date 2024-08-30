@@ -38,7 +38,7 @@ for (int i = 0; i < ip->tot_len; i++) {
 }
 ```
 
-The since `ip->tot_len` is a 16 bit integer, the verifier will check the body for every possible value of `i` up to 65535. Depending on the instructions and branches in the body, you will run out of complexity very quickly. Most of the time scanning the first X bytes of a body is enough, so you can limit the loop to that:
+Since `ip->tot_len` is a 16 bit integer, the verifier will check the body for every possible value of `i` up to 65535. Depending on the instructions and branches in the body, you will run out of complexity very quickly. Most of the time scanning the first X bytes of a body is enough, so you can limit the loop to that:
 
 ```c
 void *data = ctx->data;

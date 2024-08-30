@@ -4,7 +4,7 @@ description: "This page explains the concept of tail calls in eBPF. It explains 
 ---
 # Tail calls
 
-A tail call is a form mechanism that allows eBPF authors to break up their logic into multiple parts and go from one to the other. Unlike traditional function calls, control flow never returns to the code making a tail call, it works more like a `goto` statement.
+A tail call is a mechanism that allows eBPF authors to break up their logic into multiple parts and go from one to the other. Unlike traditional function calls, control flow never returns to the code making a tail call, it works more like a `goto` statement.
 
 To use tail calls, an author would add a [`BPF_MAP_TYPE_PROG_ARRAY`](../map-type/BPF_MAP_TYPE_PROG_ARRAY.md) map to their program. The map can be filled with references to other programs (given a few conditions). And the program can then use the [`bpf_tail_call`](../helper-function/bpf_tail_call.md) helper call with a reference to the map and an index to perform the actual tail call.
 

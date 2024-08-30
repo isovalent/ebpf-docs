@@ -14,7 +14,7 @@ If your Linux distribution does not automatically mount the BPF file system you 
 
 A process can get a file descriptor to a BPF object by calling the [`BPF_OBJ_GET`](../syscall/BPF_OBJ_GET.md) syscall command, passing it a valid path to a pin.
 
-Pins are usually used as an easy method of sharing or transferring a BPF object between processes or applications. Command line tools which have short running processes before existing can for example use them to perform actions on object over multiple invocation. Long running daemons can use pins to ensure resources do not go away while restarting. And tools like `iproute2`/`tc` can load a program on behalf of a user and then another program can modify the maps afterwards.
+Pins are usually used as an easy method of sharing or transferring a BPF object between processes or applications. Command line tools which have short running processes before exiting can for example use them to perform actions on object over multiple invocation. Long running daemons can use pins to ensure resources do not go away while restarting. And tools like `iproute2`/`tc` can load a program on behalf of a user and then another program can modify the maps afterwards.
 
 Pins can be removed by using the `rm` cli tool or `unlink` syscall. Pins are ephemeral and do not persist over restarts of the system.
 
