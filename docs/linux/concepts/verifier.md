@@ -36,7 +36,7 @@ The verifier also keeps track of data types, before I mentioned the pointer to a
 
 It uses this same type info tracking to assert that the correct parameters are passed to helper functions or function calls. The verifier can also use BTF to enforce that a map value contains a timer field for example or a spinlock. BTF is also used to enforce that the correct parameters are passed to KFuncs, that BTF function definitions match the actual BPF functions and that these BTF function definitions match callbacks.
 
-The verifier will attempt to asses all queued states and branches. But to protect itself it has limits. It tracks the amount of instructions inspected, this is for any permutation, so the complexity of a program not only depends on the amount of instructions, but also on the amount of branches. The verifier only has a limited amount of storage for states, so infinite recursion doesn't consume too much memory. 
+The verifier will attempt to assess all queued states and branches. But to protect itself it has limits. It tracks the amount of instructions inspected, this is for any permutation, so the complexity of a program not only depends on the amount of instructions, but also on the amount of branches. The verifier only has a limited amount of storage for states, so infinite recursion doesn't consume too much memory. 
 
 !!! note
     Until [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/c04c0d2b968ac45d6ef020316808ef6c82325a82) there was a hard 4k instruction limit and a 128k complexity limit. Afterwards both are 1 million.
