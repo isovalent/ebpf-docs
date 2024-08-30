@@ -107,7 +107,7 @@ This scheme also increases the complexity on the userspace side since more data 
 
 ## Map RCU
 
-In niche use-cases it might be possible to get away with the the helper functions built-in RCU logic. This method work by never modifying the map value directly via the pointer you get via the `bpf_map_lookup_elem` helper. But instead copying the map value to the BPF stack, modifying its value there, then calling `bpf_map_update_elem` on the modified copy. The helper functions will guarantee that we transition cleanly from the initial state to the updated state. This property might be important if there exists a relation between fields in the map value. This technique map result in missing updates if multiple updates happen at the same time, but values will never be "mixed".
+In niche use-cases it might be possible to get away with the helper functions built-in RCU logic. This method work by never modifying the map value directly via the pointer you get via the `bpf_map_lookup_elem` helper. But instead copying the map value to the BPF stack, modifying its value there, then calling `bpf_map_update_elem` on the modified copy. The helper functions will guarantee that we transition cleanly from the initial state to the updated state. This property might be important if there exists a relation between fields in the map value. This technique map result in missing updates if multiple updates happen at the same time, but values will never be "mixed".
 
 Performance wise there is a trade off. This technique does perform additional memory copies, but is also does not block or synchronize. So this may or may not be faster than spin-locking depending on the size of the values.
 

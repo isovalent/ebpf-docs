@@ -18,7 +18,7 @@ This command will return `0` on success or a error number (negative integer) if 
 
 A common use case for creating such a pin is to transfer a reference to a BPF object from one process to another. The [`BPF_OBJ_GET`](BPF_OBJ_GET.md) syscall command can be used to get a file descriptor from pins created with this command.
 
-Please the the [pinning concept page](../concepts/pinning.md) for more details.
+Please the [pinning concept page](../concepts/pinning.md) for more details.
 
 ## Attributes
 
