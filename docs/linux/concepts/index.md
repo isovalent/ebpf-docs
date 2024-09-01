@@ -16,3 +16,4 @@ This is an index of Linux specific eBPF concepts and features.
 * [Resource Limit](resource-limit.md)
 * [AF_XDP](af_xdp.md)
 * [KFuncs](kfuncs.md)
+* [dynptrs](dynptrs.md)
