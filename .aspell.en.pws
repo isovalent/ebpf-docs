@@ -121,6 +121,7 @@ NUMA
 IMM
 GPL
 MPL
+centric
 relocation
 relocations
 signable
@@ -139,6 +140,7 @@ prepend
 etcetera
 polymorphism
 deduplication
+dereference
 dereferenced
 dereferencing
 incrementing
