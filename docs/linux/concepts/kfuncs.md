@@ -8,7 +8,7 @@ description: This page explains the concept of kfunc in eBPF. It explains what k
 
 KFunc also known as a kernel function is a function within the kernel that has been annotated and specifically designated as being callable from eBPF programs. KFuncs are an alternative to [helper functions](../helper-function/index.md), a new method to provide similar functionality. 
 
-Officially KFuncs are unstable, unlike helper functions, kfuncs have no UAPI guarantees. In practice this might mean that kfuncs can change or be removed between kernel versions. Though as with all features, the kernel community will try to avoid breaking changes, and will provide deprecation warnings when possible. Users of kfuncs might need to be more vigilant about changes in the kernel, and be prepared to update their programs more frequently or write more complex code to handle different kernel versions.
+Officially KFuncs are unstable, unlike [helper functions](../helper-function/index.md#stability-guarantees), kfuncs have no UAPI guarantees. In practice this might mean that kfuncs can change or be removed between kernel versions. Though as with all features, the kernel community will try to avoid breaking changes, and will provide deprecation warnings when possible. Users of kfuncs might need to be more vigilant about changes in the kernel, and be prepared to update their programs more frequently or write more complex code to handle different kernel versions.
 
 ## Usage
 
