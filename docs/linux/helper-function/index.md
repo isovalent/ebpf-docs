@@ -9,6 +9,17 @@ Helper functions are functions defined by the kernel which can be invoked from e
 
 Helper functions can have a large variety of purposes. This page attempts to categorize them by function.
 
+## Stability guarantees
+
+Although helper functions are not to be used from userspace, but from eBPF programs, they are declared as part of the UAPI (the userspace API): [`include/uapi/linux/bpf.h`](https://github.com/torvalds/linux/blob/67784a74e258a467225f0e68335df77acd67b7ab/include/uapi/linux/bpf.h#L1828).
+
+As a consequence, helper functions enjoy the well-known stability guarantees of the Linux Kernel (userspace) API.
+Meaning that you can rely on helper functions not disappearing or changing across kernel versions.
+
+If the stability of the interaction between the eBPF program and the kernel (across different versions) is a concern, then usage of [KFuncs](../index.md#kfuncs) should be avoided whenever feasible.
+KFuncs are considered though the future API of the kernel for eBPF programs and therefore they will slowly become unavoidable.
+They can be expected to become more stable over time.
+
 ## Map helpers
 
 These are helpers with the primary purpose involves the interaction with a map.

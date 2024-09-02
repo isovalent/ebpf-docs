@@ -28,11 +28,14 @@ These helper functions, take up to 5 arguments and return a single return value.
 
 Helper functions have a large variety of purposes ranging from simply getting some additional information like what CPU core we are executing on to invoking major side effects like redirecting packets. For a complete overview checkout the [helper functions](./helper-function/index.md) page.
 
+Helper functions are declared as part of the UAPI (the userspace API), therefore they enjoy its well-known stability guarantees.
+Check the [helper functions](./helper-function/index.md#stability-guarantees) for more details.
+
 ## KFuncs
 
 KFuncs are the kernel functions that have been annotated so that they can be called from eBPF programs. Its essentially an alternative mechanism to helper functions. The upstream kernel in principle doesn't accept new helper functions anymore, so any new functionality that needs to be exposed to eBPF programs should be done through KFuncs.
 
-KFuncs are not considered UAPI (User-space API) and are not subject to the same stability guarantees as the UAPI. Users of KFuncs are advised to use defensive programming techniques to handle the case where a KFunc is not available or has changed.
+KFuncs are not considered UAPI (User-space API) and are not subject to the same stability guarantees as the UAPI (see contrast with [helper functions](helper-function/index.md#stability-guarantees)). Users of KFuncs are advised to use defensive programming techniques to handle the case where a KFunc is not available or has changed.
 
 For more details checkout the [KFuncs](../linux/concepts/kfuncs.md) page.
 
