@@ -20,6 +20,7 @@ These map types are not limited to a very specific use case but can be used in a
   * `BPF_MAP_TYPE_LRU_PERCPU_HASH`
   * [`BPF_MAP_TYPE_LPM_TRIE`](BPF_MAP_TYPE_LPM_TRIE.md)
   * [`BPF_MAP_TYPE_BLOOM_FILTER`](BPF_MAP_TYPE_BLOOM_FILTER.md)
+  * [`BPF_MAP_TYPE_ARENA`](BPF_MAP_TYPE_ARENA.md)
 
 ## Map in map
 
