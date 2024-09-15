@@ -1,0 +1,44 @@
+name: Deploy GH pages
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  USER: root
+
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache Primes
+        id: cache-plugins
+        uses: actions/cache@v4
+        with:
+          path: .cache
+      - name: Checkout gh-pages branch
+        run: |
+          git branch --delete --force gh-pages || true
+          git checkout -b gh-pages
+      - name: Apply deploy config
+        run: |
+          echo "" >> mkdocs.yml
+          echo "site_url: https://isovalent.github.io" >> mkdocs.yml
+          echo "" >> mkdocs.yml
+          echo "extra:" >> mkdocs.yml
+          echo "  analytics:" >> mkdocs.yml
+          echo "    provider: google" >> mkdocs.yml
+          echo "    property: G-KVJ1CK539N" >> mkdocs.yml
+      - name: Build html
+        run: |
+          make html PROD=true GH_TOKEN=${{ secrets.GH_TOKEN }}
+      - name: Deploy to gh-pages
+        run: |
+          rm out/.gitignore || true
+          git add -f out/.
+          git commit -m "Deploy to gh-pages"
+          git push -f --set-upstream origin gh-pages
+
+
