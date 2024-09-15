@@ -207,3 +207,5 @@ Mellanox
 init
 UID
 GID
+decl
+inlining
