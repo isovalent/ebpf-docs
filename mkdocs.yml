@@ -59,6 +59,9 @@ plugins:
       token: !ENV ["GH_TOKEN"]
       repository: isovalent/ebpf-docs
       branch: master
+  - social:
+      cards_layout_options:
+        logo: docs/assets/image/logo.png
 
 extra_css:
   - stylesheets/extra.css
