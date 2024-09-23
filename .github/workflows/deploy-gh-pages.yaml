@@ -41,7 +41,7 @@ jobs:
       - name: Apply deploy config
         run: |
           echo "" >> mkdocs.yml
-          echo "site_url: https://isovalent.github.io" >> mkdocs.yml
+          echo "site_url: https://docs.ebpf.io" >> mkdocs.yml
           echo "" >> mkdocs.yml
           echo "extra:" >> mkdocs.yml
           echo "  analytics:" >> mkdocs.yml
