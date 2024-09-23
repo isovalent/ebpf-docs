@@ -204,3 +204,6 @@ ENOMEM
 ENOPROTOOPT
 Netronome
 Mellanox
+init
+UID
+GID
