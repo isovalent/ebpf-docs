@@ -9,4 +9,4 @@ RUN apt update && \
     pip install -r /root/requirements.txt && \
     groupadd -g $GID docs || true && \
     useradd -u $UID -g $GID -m -s /bin/bash docs || true
-ENTRYPOINT bash
+ENTRYPOINT ["bash"]

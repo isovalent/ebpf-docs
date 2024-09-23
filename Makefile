@@ -13,12 +13,17 @@ VERSION := latest
 PROD := false
 GH_TOKEN := ""
 
+GHA_CACHE := false
+ifeq ($(GHA_CACHE), true)
+BUILD_FLAGS := --builder=container --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new,mode=max
+endif
+
 .DEFAULT_TARGET = build-container
 
 .PHONY: build-container
 build-container:
-	${CONTAINER_ENGINE} build -f ${REPODIR}/tools/Dockerfile \
-	--build-arg="UID=$$(id -u $${USER})" --build-arg="GID=$$(id -g $${USER})" -t ${IMAGE}:${VERSION} ${REPODIR}
+	${CONTAINER_ENGINE} buildx build -f ${REPODIR}/tools/Dockerfile \
+	${BUILD_FLAGS} --build-arg="UID=$$(id -u $${USER})" --build-arg="GID=$$(id -g $${USER})" -t ${IMAGE}:${VERSION} ${REPODIR}
 
 .PHONY: container-shell
 container-shell: build-container
@@ -26,7 +31,7 @@ container-shell: build-container
 
 .PHONY: html
 html: build-container
-	${CONTAINER_ENGINE} run --rm -it -v "${REPODIR}:/docs" \
+	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
 	-e "PROD=${PROD}" -e "GH_TOKEN=${GH_TOKEN}" \
 	-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs build -d /docs/out"
 

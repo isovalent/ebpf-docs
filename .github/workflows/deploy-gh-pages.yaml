@@ -49,7 +49,7 @@ jobs:
           echo "    property: G-KVJ1CK539N" >> mkdocs.yml
       - name: Build html
         run: |
-          make html PROD=true GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          make html PROD=true GH_TOKEN=${{ secrets.GITHUB_TOKEN }} GHA_CACHE=true CONTAINER_ENGINE=docker
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
