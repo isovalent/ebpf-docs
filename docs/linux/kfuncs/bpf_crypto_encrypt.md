@@ -27,7 +27,7 @@ Encrypts provided buffer using IV data and the crypto context. Crypto context mu
 Return 0 on success, or a negative error code on failure.
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_crypto_encrypt(struct bpf_crypto_ctx *ctx, const struct bpf_dynptr_kern *src, const struct bpf_dynptr_kern *dst, const struct bpf_dynptr_kern *siv)`
+`#!c int bpf_crypto_encrypt(struct bpf_crypto_ctx *ctx, const struct bpf_dynptr *src, const struct bpf_dynptr *dst, const struct bpf_dynptr *siv__nullable)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

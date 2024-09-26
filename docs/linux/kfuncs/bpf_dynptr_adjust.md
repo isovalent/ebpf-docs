@@ -15,7 +15,7 @@ Adjusts the dynptr to reflect the new [start, end) interval.
 It advances the offset of the dynptr by `start` bytes, and if end is less than the size of the dynptr, then this will trim the dynptr accordingly.
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_adjust(struct bpf_dynptr_kern *ptr, u32 start, u32 end)`
+`#!c int bpf_dynptr_adjust(const struct bpf_dynptr *p, u32 start, u32 end)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

@@ -26,6 +26,7 @@ The following functions create or manipulate dynptrs:
 * [`bpf_dynptr_clone`](../kfuncs/bpf_dynptr_clone.md) - Clones a dynptr. The new dynptr points to the same underlying data and has the same metadata as the original dynptr.
 
 The following functions are not dynptr centric, but do require dynptrs in their arguments:
+
 * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md) - Submits a dynptr to a ring buffer.
 * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md) - Discards a dynptr from a ring buffer.
 * [`bpf_user_ringbuf_drain`](../helper-function/bpf_user_ringbuf_drain.md) - Drains samples from a user ring buffer and invokes a callback for each sample, with a dynptr containing the sample data.

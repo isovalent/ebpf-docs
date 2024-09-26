@@ -1,22 +1,33 @@
 ---
-title: "KFunc 'bpf_dynptr_is_null'"
-description: "This page documents the 'bpf_dynptr_is_null' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_iter_bits_new'"
+description: "This page documents the 'bpf_iter_bits_new' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_dynptr_is_null`
+# KFunc `bpf_iter_bits_new`
 
-<!-- [FEATURE_TAG](bpf_dynptr_is_null) -->
-[:octicons-tag-24: v6.5](https://github.com/torvalds/linux/commit/540ccf96ddbc173474c32e595787d5622253be3d)
+<!-- [FEATURE_TAG](bpf_iter_bits_new) -->
+[:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/4665415975b0827e9646cab91c61d02a6b364d59)
 <!-- [/FEATURE_TAG] -->
 
-Returns true if the dynptr is null / invalid.
+Initialize a new bits iterator for a given memory area
 
 ## Definition
 
-Returns true if the dynptr is `null` / invalid (determined by whether `ptr->data` is `NULL`), else false if
-the dynptr is a valid dynptr.
+This function initializes a new `bpf_iter_bits` structure for iterating over a memory area which is specified by the `unsafe_ptr__ign` and `nr_words`. It copies the data of the memory area to the newly created bpf_iter_bits `it` for subsequent iteration operations.
+
+**Parameters**
+
+`it`: The new bpf_iter_bits to be created
+
+`unsafe_ptr__ign`: A pointer pointing to a memory area to be iterated over
+
+`nr_words`: The size of the specified memory area, measured in 8-byte units. Due to the limitation of memalloc, it can't be greater than 512.
+
+**Return**
+
+On success, 0 is returned. On failure, `ERR` is returned.
 
 <!-- [KFUNC_DEF] -->
-`#!c bool bpf_dynptr_is_null(const struct bpf_dynptr *p)`
+`#!c int bpf_iter_bits_new(struct bpf_iter_bits *it, const u64 *unsafe_ptr__ign, u32 nr_words)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

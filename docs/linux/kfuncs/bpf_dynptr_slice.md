@@ -15,7 +15,7 @@ Get a pointer to dynptr data up to `len` bytes for read only access.
 If the dynptr doesn't have continuous data up to `len` bytes, return NULL.
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_dynptr_slice(const struct bpf_dynptr_kern *ptr, u32 offset, void *buffer__opt, u32 buffer__szk)`
+`#!c void *bpf_dynptr_slice(const struct bpf_dynptr *p, u32 offset, void *buffer__opt, u32 buffer__szk)`
 
 !!! note
 	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 

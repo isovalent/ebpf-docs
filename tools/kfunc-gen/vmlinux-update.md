@@ -5,19 +5,21 @@ The current VMLinux blob is created from the v6.10-RC2 tag of the Linux kernel. 
 1. Clone cilium/ci-kernels
 2. Patch `config` with the following values (To compile in all Kfuncs defined in the kernel (so far)):
    ```
-   # CONFIG_HID=y
-   # CONFIG_HID_BPF=y
-   # CONFIG_NET_FOU=y
-   # CONFIG_TCP_CONG_BBR=y
-   # CONFIG_TCP_CONG_DCTCP=y
-   # CONFIG_XFRM=y
-   # CONFIG_XFRM_INTERFACE=y
-   # CONFIG_FS_VERITY=y
-   # CONFIG_MODULE_SIG=y
-   # CONFIG_MODULE_SIG_FORMAT=y
-   # CONFIG_SYSTEM_DATA_VERIFICATION=y
-   # CONFIG_FPROBE=y
-   # CONFIG_CRYPTO=y
+   CONFIG_HID=y
+   CONFIG_HID_BPF=y
+   CONFIG_TCP_CONG_BBR=y
+   CONFIG_TCP_CONG_DCTCP=y
+   CONFIG_XFRM=y
+   CONFIG_XFRM_INTERFACE=y
+   CONFIG_FS_VERITY=y
+   CONFIG_MODULE_SIG=y
+   CONFIG_MODULE_SIG_FORMAT=y
+   CONFIG_SYSTEM_DATA_VERIFICATION=y
+   CONFIG_CRYPTO=y
+   CONFIG_NF_TABLES=y
+   CONFIG_NF_FLOW_TABLE=y
+   CONFIG_MMU=y
+   CONFIG_64BIT=y
    ```
 3. Run `./buildx.sh {latest tag} amd64 vmlinux --tag foo:vmlinux`
 4. Run `echo "FROM foo:vmlinux" | "$docker" buildx build --quiet --output="$tmp" - &> /dev/null`

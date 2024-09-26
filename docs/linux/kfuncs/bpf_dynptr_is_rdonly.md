@@ -15,7 +15,7 @@ Returns true if the dynptr is read-only
 `bpf_dynptr_is_rdonly` returns true if the dynptr is read-only, else false if the dynptr is read-writable. If the dynptr is null / invalid, false is returned by default.
 
 <!-- [KFUNC_DEF] -->
-`#!c bool bpf_dynptr_is_rdonly(struct bpf_dynptr_kern *ptr)`
+`#!c bool bpf_dynptr_is_rdonly(const struct bpf_dynptr *p)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

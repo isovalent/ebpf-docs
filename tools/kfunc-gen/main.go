@@ -39,6 +39,21 @@ const (
 	progKfuncRefEnd   = `<!-- [/PROG_KFUNC_REF] -->`
 )
 
+// List of kfuncs which only exists for the selftests, and are not actually supposed to be used
+var testKfuncs = []string{
+	"bpf_fentry_test1",
+	"bpf_modify_return_test",
+	"bpf_modify_return_test2",
+	"bpf_modify_return_test_tp",
+	"bpf_kfunc_call_memb_release",
+	"bpf_kfunc_call_test_release",
+}
+
+// List of kfuncs which are known to have been removed
+var removeKfuncs = []string{
+	"hid_bpf_attach_prog",
+}
+
 func main() {
 	flag.Parse()
 
@@ -54,13 +69,62 @@ func main() {
 		panic(err)
 	}
 
+	var allDataKfuncs []kfunc
+	for _, set := range kfuncsConfig.Sets {
+		allDataKfuncs = append(allDataKfuncs, set.Funcs...)
+	}
+
 	spec, err := btf.LoadSpec(*projectroot + "/tools/kfunc-gen/vmlinux")
 	if err != nil {
 		panic(err)
 	}
 
+	throw := false
+
+	var allBTFKfuncs []*btf.Func
+	iter := spec.Iterate()
+	for iter.Next() {
+		switch t := (iter.Type).(type) {
+		case *btf.Func:
+			if slices.Contains(t.Tags, "bpf_kfunc") {
+				// Ignore test functions
+				if slices.Contains(testKfuncs, t.Name) {
+					continue
+				}
+
+				allBTFKfuncs = append(allBTFKfuncs, t)
+				if !slices.ContainsFunc(allDataKfuncs, func(k kfunc) bool {
+					return k.Name == t.Name
+				}) {
+					fmt.Printf("Missing kfunc in data file: '%s', possibly newly added\n", t.Name)
+					throw = true
+				}
+			}
+		}
+	}
+	for _, k := range allDataKfuncs {
+		if slices.Contains(removeKfuncs, k.Name) {
+			continue
+		}
+
+		if !slices.ContainsFunc(allBTFKfuncs, func(f *btf.Func) bool {
+			return f.Name == k.Name
+		}) {
+			fmt.Printf("Missing kfunc in BTF: '%s', possibly deleted from kernel\n", k.Name)
+			throw = true
+		}
+	}
+
+	if throw {
+		os.Exit(1)
+	}
+
 	for _, set := range kfuncsConfig.Sets {
 		for _, kfunc := range set.Funcs {
+			if slices.Contains(removeKfuncs, kfunc.Name) {
+				continue
+			}
+
 			file, err := os.OpenFile(*projectroot+"/docs/linux/kfuncs/"+kfunc.Name+".md", os.O_RDWR, 0644)
 			if err != nil {
 				panic(err)

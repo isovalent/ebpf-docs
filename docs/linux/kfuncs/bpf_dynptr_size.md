@@ -13,7 +13,7 @@ Returns the number of usable bytes in a dynptr.
 ## Definition
 
 <!-- [KFUNC_DEF] -->
-`#!c __u32 bpf_dynptr_size(const struct bpf_dynptr_kern *ptr)`
+`#!c __u32 bpf_dynptr_size(const struct bpf_dynptr *p)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

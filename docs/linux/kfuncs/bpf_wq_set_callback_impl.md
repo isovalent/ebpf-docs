@@ -25,7 +25,7 @@ The callback will be called asynchronously sometime after the current eBPF progr
 Return `0` on success, or a negative error code on failure.
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_wq_set_callback_impl(struct bpf_wq *wq, int (callback_fn)(void * , int * , struct bpf_wq * ), unsigned int flags, void *aux__ign)`
+`#!c int bpf_wq_set_callback_impl(struct bpf_wq *wq, int (callback_fn)(void * , int * , void * ), unsigned int flags, void *aux__ign)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

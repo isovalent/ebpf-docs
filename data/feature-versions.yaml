@@ -2062,3 +2062,27 @@
     - name: bpf_arena_free_pages
       version: v6.9
       commit: 317460317a02a1af512697e6e964298dedd8a163
+    - name: bpf_iter_bits_destroy
+      version: v6.11
+      commit: 4665415975b0827e9646cab91c61d02a6b364d59
+    - name: bpf_iter_bits_new
+      version: v6.11
+      commit: 4665415975b0827e9646cab91c61d02a6b364d59
+    - name: bpf_iter_bits_next
+      version: v6.11
+      commit: 4665415975b0827e9646cab91c61d02a6b364d59
+    - name: bpf_xdp_flow_lookup
+      version: v6.11
+      commit: 391bb6594fd3a567efb1cd3efc8136c78c4c9e31
+    - name: hid_bpf_hw_output_report
+      version: v6.10
+      commit: 5599f80196612efde96dbe6ef18f6ecc0cb4ba19
+    - name: hid_bpf_input_report
+      version: v6.10
+      commit: 9be50ac30a83896a753ab9f64e941763bb7900be
+    - name: hid_bpf_try_input_report
+      version: v6.11
+      commit: 9acbb7ba4589d4715141d4e14230a828ddc95f3d
+    - name: bpf_sk_assign_tcp_reqsk
+      version: v6.11
+      commit: e472f88891abbc535a5e16a68a104073985f6061
