@@ -1,22 +1,25 @@
 ---
-title: "KFunc 'bpf_dynptr_is_null'"
-description: "This page documents the 'bpf_dynptr_is_null' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_iter_bits_destroy'"
+description: "This page documents the 'bpf_iter_bits_destroy' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_dynptr_is_null`
+# KFunc `bpf_iter_bits_destroy`
 
-<!-- [FEATURE_TAG](bpf_dynptr_is_null) -->
-[:octicons-tag-24: v6.5](https://github.com/torvalds/linux/commit/540ccf96ddbc173474c32e595787d5622253be3d)
+<!-- [FEATURE_TAG](bpf_iter_bits_destroy) -->
+[:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/4665415975b0827e9646cab91c61d02a6b364d59)
 <!-- [/FEATURE_TAG] -->
 
-Returns true if the dynptr is null / invalid.
+Destroy a `bpf_iter_bits`
 
 ## Definition
 
-Returns true if the dynptr is `null` / invalid (determined by whether `ptr->data` is `NULL`), else false if
-the dynptr is a valid dynptr.
+Destroy the resource associated with the `bpf_iter_bits`.
+
+**Parameters**
+
+`it`: The `bpf_iter_bits` to be destroyed
 
 <!-- [KFUNC_DEF] -->
-`#!c bool bpf_dynptr_is_null(const struct bpf_dynptr *p)`
+`#!c void bpf_iter_bits_destroy(struct bpf_iter_bits *it)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

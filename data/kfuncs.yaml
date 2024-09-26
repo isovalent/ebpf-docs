@@ -188,6 +188,12 @@ sets:
       - name: bpf_wq_start
       - name: bpf_preempt_disable
       - name: bpf_preempt_enable
+      - name: bpf_iter_bits_new
+        flags: [KF_ITER_NEW]
+      - name: bpf_iter_bits_next
+        flags: [KF_ITER_NEXT, KF_RET_NULL]
+      - name: bpf_iter_bits_destroy
+        flags: [KF_ITER_DESTROY]
     program_types:
       - BPF_PROG_TYPE_UNSPEC
 
@@ -356,6 +362,17 @@ sets:
     funcs:
       - name: hid_bpf_get_data
         flags: [KF_RET_NULL]
+      - name: hid_bpf_allocate_context
+        flags: [KF_ACQUIRE, KF_RET_NULL, KF_SLEEPABLE]
+      - name: hid_bpf_release_context
+        flags: [KF_RELEASE, KF_SLEEPABLE]
+      - name: hid_bpf_hw_request
+        flags: [KF_SLEEPABLE]
+      - name: hid_bpf_hw_output_report
+        flags: [KF_SLEEPABLE]
+      - name: hid_bpf_input_report
+        flags: [KF_SLEEPABLE]
+      - name: hid_bpf_try_input_report
     program_types:
       - BPF_PROG_TYPE_TRACING
       - BPF_PROG_TYPE_LSM
@@ -368,6 +385,8 @@ sets:
       - name: hid_bpf_release_context
         flags: [KF_RELEASE]
       - name: hid_bpf_hw_request
+      - name: hid_bpf_hw_output_report
+      - name: hid_bpf_input_report
     program_types:
       - BPF_PROG_TYPE_SYSCALL
 
@@ -410,3 +429,17 @@ sets:
         flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE]
     program_types:
       - BPF_PROG_TYPE_UNSPEC
+
+  bpf_kfunc_check_set_tcp_reqsk:
+    funcs:
+      - name: bpf_sk_assign_tcp_reqsk
+        flags: [KF_TRUSTED_ARGS]
+    program_types:
+      - BPF_PROG_TYPE_SCHED_CLS
+
+  nf_ft_kfunc_set:
+    funcs:
+      - name: bpf_xdp_flow_lookup
+        flags: [KF_TRUSTED_ARGS, KF_RET_NULL]
+    program_types:
+      - BPF_PROG_TYPE_XDP

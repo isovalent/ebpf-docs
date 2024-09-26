@@ -22,7 +22,7 @@ Any writes to a dynptr will be reflected across all instances (by 'instance', th
 Changing the view of the dynptr (for example advancing the offset or trimming the size) will only affect that dynptr and not affect any other instances.
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_clone(struct bpf_dynptr_kern *ptr, struct bpf_dynptr_kern *clone__uninit)`
+`#!c int bpf_dynptr_clone(const struct bpf_dynptr *p, struct bpf_dynptr *clone__uninit)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

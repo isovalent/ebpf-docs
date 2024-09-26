@@ -4,11 +4,12 @@ description: "This page documents the 'hid_bpf_attach_prog' eBPF kfunc, includin
 ---
 # KFunc `hid_bpf_attach_prog`
 
-<!-- [FEATURE_TAG](hid_bpf_attach_prog) -->
-[:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/f5c27da4e3c8a2e42fb4f41a0c685debcb9af294)
-<!-- [/FEATURE_TAG] -->
+[:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/f5c27da4e3c8a2e42fb4f41a0c685debcb9af294) - [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/4a86220e046da009bef0948e9f51d1d26d68f93c)
 
 Attach the given `prog_fd` to the given HID device
+
+!!! warning
+	This kfunc has been removed in [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/4a86220e046da009bef0948e9f51d1d26d68f93c) HID eBPF programs are now attached as [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md).
 
 ## Definition
 

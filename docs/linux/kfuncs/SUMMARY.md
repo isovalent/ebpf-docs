@@ -84,6 +84,10 @@
   - [`bpf_iter_task_vma_new`](bpf_iter_task_vma_new.md)
   - [`bpf_iter_task_vma_next`](bpf_iter_task_vma_next.md)
   - [`bpf_iter_task_vma_destroy`](bpf_iter_task_vma_destroy.md)
+- Kfuncs for bits
+  - [`bpf_iter_bits_new`](bpf_iter_bits_new.md)
+  - [`bpf_iter_bits_next`](bpf_iter_bits_next.md)
+  - [`bpf_iter_bits_destroy`](bpf_iter_bits_destroy.md)
 - Kfuncs for open coded task cGroup iterators
   - [`bpf_iter_css_task_new`](bpf_iter_css_task_new.md)
   - [`bpf_iter_css_task_next`](bpf_iter_css_task_next.md)
@@ -160,6 +164,8 @@
 - Foo over UDP KFuncs
   - [`bpf_skb_set_fou_encap`](bpf_skb_set_fou_encap.md)
   - [`bpf_skb_get_fou_encap`](bpf_skb_get_fou_encap.md)
+- SYN Cookie KFuncs
+  - [`bpf_sk_assign_tcp_reqsk`](bpf_sk_assign_tcp_reqsk.md)
 - Connection tracking KFuncs
   - [`bpf_ct_set_nat_info`](bpf_ct_set_nat_info.md)
   - [`bpf_xdp_ct_alloc`](bpf_xdp_ct_alloc.md)
@@ -172,6 +178,8 @@
   - [`bpf_ct_change_timeout`](bpf_ct_change_timeout.md)
   - [`bpf_ct_set_status`](bpf_ct_set_status.md)
   - [`bpf_ct_change_status`](bpf_ct_change_status.md)
+- XDP KFuncs
+  - [`bpf_xdp_flow_lookup`](bpf_xdp_flow_lookup.md)
 - XFRM KFuncs
   - [`bpf_skb_get_xfrm_info`](bpf_skb_get_xfrm_info.md)
   - [`bpf_skb_set_xfrm_info`](bpf_skb_set_xfrm_info.md)
@@ -183,6 +191,9 @@
   - [`hid_bpf_allocate_context`](hid_bpf_allocate_context.md)
   - [`hid_bpf_release_context`](hid_bpf_release_context.md)
   - [`hid_bpf_hw_request`](hid_bpf_hw_request.md)
+  - [`hid_bpf_hw_output_report`](hid_bpf_hw_output_report.md)
+  - [`hid_bpf_input_report`](hid_bpf_input_report.md)
+  - [`hid_bpf_try_input_report`](hid_bpf_try_input_report.md)
 - KProbe session Kfuncs
   - [`bpf_session_cookie`](bpf_session_cookie.md)
   - [`bpf_session_is_return`](bpf_session_is_return.md)

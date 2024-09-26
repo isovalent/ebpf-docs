@@ -729,3 +729,10 @@ patterns:
     - name: bpf_session_cookie
     - name: bpf_arena_alloc_pages
     - name: bpf_arena_free_pages
+    - name: bpf_iter_bits_destroy
+    - name: bpf_iter_bits_new
+    - name: bpf_iter_bits_next
+    - name: bpf_xdp_flow_lookup
+    - name: hid_bpf_hw_output_report
+    - name: hid_bpf_input_report
+    - name: hid_bpf_try_input_report

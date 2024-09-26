@@ -226,6 +226,9 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_dynptr_slice_rdwr`](../kfuncs/bpf_dynptr_slice_rdwr.md)
     - [`bpf_get_file_xattr`](../kfuncs/bpf_get_file_xattr.md)
     - [`bpf_get_fsverity_digest`](../kfuncs/bpf_get_fsverity_digest.md)
+    - [`bpf_iter_bits_destroy`](../kfuncs/bpf_iter_bits_destroy.md)
+    - [`bpf_iter_bits_new`](../kfuncs/bpf_iter_bits_new.md)
+    - [`bpf_iter_bits_next`](../kfuncs/bpf_iter_bits_next.md)
     - [`bpf_iter_css_destroy`](../kfuncs/bpf_iter_css_destroy.md)
     - [`bpf_iter_css_new`](../kfuncs/bpf_iter_css_new.md)
     - [`bpf_iter_css_next`](../kfuncs/bpf_iter_css_next.md)
@@ -271,6 +274,12 @@ Not all helper functions are available in all program types. These are the helpe
     - [`cgroup_rstat_flush`](../kfuncs/cgroup_rstat_flush.md)
     - [`cgroup_rstat_updated`](../kfuncs/cgroup_rstat_updated.md)
     - [`crash_kexec`](../kfuncs/crash_kexec.md)
+    - [`hid_bpf_allocate_context`](../kfuncs/hid_bpf_allocate_context.md)
     - [`hid_bpf_get_data`](../kfuncs/hid_bpf_get_data.md)
+    - [`hid_bpf_hw_output_report`](../kfuncs/hid_bpf_hw_output_report.md)
+    - [`hid_bpf_hw_request`](../kfuncs/hid_bpf_hw_request.md)
+    - [`hid_bpf_input_report`](../kfuncs/hid_bpf_input_report.md)
+    - [`hid_bpf_release_context`](../kfuncs/hid_bpf_release_context.md)
+    - [`hid_bpf_try_input_report`](../kfuncs/hid_bpf_try_input_report.md)
 <!-- [/PROG_KFUNC_REF] -->
 

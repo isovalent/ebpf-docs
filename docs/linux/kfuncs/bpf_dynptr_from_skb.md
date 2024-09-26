@@ -17,7 +17,7 @@ For bpf program types that don't support writes on skb data, the dynptr is read-
 For reads and writes through the [`bpf_dynptr_read()`](../helper-function/bpf_dynptr_read.md) and [`bpf_dynptr_write()`](../helper-function/bpf_dynptr_write.md) interfaces, reading and writing from/to data in the head as well as from/to non-linear paged buffers is supported. Data slices through the bpf_dynptr_data API are not supported; instead [`bpf_dynptr_slice()`](bpf_dynptr_slice.md) and [`bpf_dynptr_slice_rdwr()`](bpf_dynptr_slice_rdwr.md) should be used.
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_from_skb(struct sk_buff *skb, u64 flags, struct bpf_dynptr_kern *ptr__uninit)`
+`#!c int bpf_dynptr_from_skb(struct __sk_buff *s, u64 flags, struct bpf_dynptr *ptr__uninit)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

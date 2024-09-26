@@ -13,7 +13,7 @@ Get the `fs-verity` digest of a file.
 ## Definition
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_get_fsverity_digest(struct file *file, struct bpf_dynptr_kern *digest_ptr)`
+`#!c int bpf_get_fsverity_digest(struct file *file, struct bpf_dynptr *digest_p)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage
