@@ -13,22 +13,21 @@ description: "This page documents the 'bpf_get_attach_cookie' eBPF helper functi
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-<!-- [HELPER_FUNC_DEF] -->
 Get bpf_cookie value provided (optionally) during the program attachment. It might be different for each individual attachment, even if BPF program itself is the same. Expects BPF program context _ctx_ as a first argument.
 
 Supported for the following program types:
 
-&nbsp;&nbsp;&nbsp;&nbsp;- kprobe/uprobe;
-&nbsp;- tracepoint;
-&nbsp;- perf_event.
-
+- kprobe/uprobe
+- tracepoint
+- perf_event
+- <nospell>fentry/fexit/fmod_ret</nospell>
+- LSM
 
 ### Returns
 
 Value specified by user at BPF link creation/attachment time or 0, if it was not specified.
 
 `#!c static __u64 (* const bpf_get_attach_cookie)(void *ctx) = (void *) 174;`
-<!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
 
@@ -41,8 +40,11 @@ This helper call can be used in the following program types:
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_PROG_REF] -->
  * [`BPF_PROG_TYPE_KPROBE`](../program-type/BPF_PROG_TYPE_KPROBE.md)
+ * [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md) [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/2fcc82411e74e5e6aba336561cf56fb899bfae4e)
  * [`BPF_PROG_TYPE_PERF_EVENT`](../program-type/BPF_PROG_TYPE_PERF_EVENT.md)
+ * [`BPF_PROG_TYPE_RAW_TRACEPOINT`](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT.md)
  * [`BPF_PROG_TYPE_TRACEPOINT`](../program-type/BPF_PROG_TYPE_TRACEPOINT.md)
+ * [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md) [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/2fcc82411e74e5e6aba336561cf56fb899bfae4e)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Example

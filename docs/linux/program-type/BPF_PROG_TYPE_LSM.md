@@ -71,6 +71,7 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_ima_file_hash`](../helper-function/bpf_ima_file_hash.md)
     * [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md) [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/9113d7e48e9128522b9f5a54dfd30dff10509a92)
     * [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md) [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/9113d7e48e9128522b9f5a54dfd30dff10509a92)
+    * [`bpf_get_attach_cookie`](../helper-function/bpf_get_attach_cookie.md) [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/2fcc82411e74e5e6aba336561cf56fb899bfae4e)
     * [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md)
     * [`bpf_map_update_elem`](../helper-function/bpf_map_update_elem.md)
     * [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md)

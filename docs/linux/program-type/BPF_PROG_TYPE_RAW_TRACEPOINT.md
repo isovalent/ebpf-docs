@@ -229,6 +229,7 @@ Not all helper functions are available in all program types. These are the helpe
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [PROG_HELPER_FUNC_REF] -->
 ??? abstract "Supported helper functions"
+    * [`bpf_get_attach_cookie`](../helper-function/bpf_get_attach_cookie.md)
     * [`bpf_perf_event_output`](../helper-function/bpf_perf_event_output.md)
     * [`bpf_get_stackid`](../helper-function/bpf_get_stackid.md)
     * [`bpf_get_stack`](../helper-function/bpf_get_stack.md)
