@@ -128,6 +128,10 @@ groups:
     prog_trampoline: true
   - name: bpf_get_func_arg_cnt
     prog_trampoline: true
+  - name: bpf_get_attach_cookie
+    since:
+      version: 5.19
+      commit: 2fcc82411e74e5e6aba336561cf56fb899bfae4e
   - group: raw_tp
   - group: bpf_iter
     attach_type: [BPF_TRACE_ITER]
@@ -646,6 +650,7 @@ programs:
 
   # `raw_tp_prog_func_proto` in `kernel/tracing/bpf_trace.c`
   BPF_PROG_TYPE_RAW_TRACEPOINT:
+  - name: bpf_get_attach_cookie
   - group: raw_tp
 
   # `sock_addr_func_proto` in `net/core/filter.c`
@@ -789,7 +794,7 @@ programs:
     kconfig: [CONFIG_INET]
   - group: cgroup_base
 
-  # `tracing_prog_func_proto` in `kernel/tracing/bpf_trace.c`
+  # `tracing_prog_func_proto` in `kernel/trace/bpf_trace.c`
   BPF_PROG_TYPE_TRACING:
   - group: tracing_prog
 
@@ -828,6 +833,10 @@ programs:
     since:
       version: 6.0
       commit: 9113d7e48e9128522b9f5a54dfd30dff10509a92
+  - name: bpf_get_attach_cookie
+    since:
+      version: 5.19
+      commit: 2fcc82411e74e5e6aba336561cf56fb899bfae4e
   - group: tracing
 
   # TODO

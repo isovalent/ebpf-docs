@@ -375,6 +375,7 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_get_func_arg`](../helper-function/bpf_get_func_arg.md)
     * [`bpf_get_func_ret`](../helper-function/bpf_get_func_ret.md)
     * [`bpf_get_func_arg_cnt`](../helper-function/bpf_get_func_arg_cnt.md)
+    * [`bpf_get_attach_cookie`](../helper-function/bpf_get_attach_cookie.md) [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/2fcc82411e74e5e6aba336561cf56fb899bfae4e)
     * [`bpf_perf_event_output`](../helper-function/bpf_perf_event_output.md)
     * [`bpf_get_stackid`](../helper-function/bpf_get_stackid.md)
     * [`bpf_get_stack`](../helper-function/bpf_get_stack.md)

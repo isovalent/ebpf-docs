@@ -60,6 +60,7 @@ plugins:
       repository: isovalent/ebpf-docs
       branch: master
   - social:
+      enabled: !ENV [PROD, false]
       cards_layout_options:
         logo: docs/assets/image/logo.png
 
