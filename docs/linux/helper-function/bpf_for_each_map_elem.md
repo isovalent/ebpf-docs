@@ -90,5 +90,26 @@ This helper call can be used with the following map types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+static long callback_fn(struct bpf_map *map, const void *key, void *value, void *ctx)
+{
+    bpf_printk("context value: %s\n", *(char **)ctx);
+    // delete elements with an odd key
+    if (*(__u32 *)key % 2)
+        bpf_map_delete_elem(map, key);
+    return 0;
+}
+
+int program(void *ctx)
+{
+    /*
+        .
+        .
+        .
+    */
+
+    char *context = "This string will pass to every callback call";
+    long (*cb_p)(struct bpf_map *, const void *, void *, void *) = &callback_fn;
+    bpf_for_each_map_elem(&my_map, cb_p, &context, 0);
+}
+```
