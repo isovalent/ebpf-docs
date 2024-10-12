@@ -8,37 +8,48 @@ UIDGID := $(shell stat -c '%u:%g' ${REPODIR})
 CONTAINER_ENGINE ?= $(if $(shell command -v podman), podman, docker)
 CONTAINER_RUN_ARGS ?= $(if $(filter ${CONTAINER_ENGINE}, podman), --log-driver=none, --user "${UIDGID}")
 
-IMAGE := ebpf-mkdocs
-VERSION := latest
+IMAGE := ghcr.io/isovalent/ebpf-docs
+VERSION := $(shell cat ${REPODIR}/tools/image-version)
+
 PROD := false
 GH_TOKEN := ""
 
-.DEFAULT_TARGET = build-container
+.DEFAULT_TARGET := serve
+default: serve ;
 
 .PHONY: build-container
-build-container:
-	${CONTAINER_ENGINE} build -f ${REPODIR}/tools/Dockerfile \
-	--build-arg="UID=$$(id -u $${USER})" --build-arg="GID=$$(id -g $${USER})" -t ${IMAGE}:${VERSION} ${REPODIR}
+build-container: 
+	$(eval EPOCH := $(shell date +%s))
+	${CONTAINER_ENGINE} build -f ${REPODIR}/tools/Dockerfile -t ${IMAGE}:$(EPOCH) ${REPODIR}
+	echo $(EPOCH) > ${REPODIR}/tools/image-version
+
+.PHONY: push-container
+push-container:
+	${CONTAINER_ENGINE} push ${IMAGE}:${VERSION}
 
 .PHONY: container-shell
-container-shell: build-container
-	${CONTAINER_ENGINE} run --rm -it -v "${REPODIR}:/docs" -e "GH_TOKEN=${GH_TOKEN}" -u $$(id -u $${USER}):$$(id -g $${USER}) -w /docs "${IMAGE}:${VERSION}"
+container-shell:
+	${CONTAINER_ENGINE} run --rm -it -v "${REPODIR}:/docs" -e "GH_TOKEN=${GH_TOKEN}" \
+	-e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" \
+	-w /docs "${IMAGE}:${VERSION}"
 
 .PHONY: html
-html: build-container
+html:
 	${CONTAINER_ENGINE} run --rm -it -v "${REPODIR}:/docs" \
 	-e "PROD=${PROD}" -e "GH_TOKEN=${GH_TOKEN}" \
-	-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs build -d /docs/out"
+	-e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" \
+	-w /docs "${IMAGE}:${VERSION}" "mkdocs build -d /docs/out"
 
 .PHONY: clear-html
 clear-html:
 	rm -r out/*
 
 .PHONY: serve
-serve: build-container
+serve:
 	${CONTAINER_ENGINE} run --rm -it -p 8000:8000 -v "${REPODIR}:/docs" \
 	-e "PROD=${PROD}" -e "GH_TOKEN=${GH_TOKEN}" \
-	-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c "mkdocs serve -a 0.0.0.0:8000 --watch /docs/docs"
+	-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" \
+	"${IMAGE}:${VERSION}" "mkdocs serve -a 0.0.0.0:8000 --watch /docs/docs"
 
 .PHONY: build-tools
 build-tools:
@@ -51,9 +62,9 @@ build-tools:
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-def-scraper /docs/tools/helper-def-scraper/."
 
 .PHONY: generate-docs
-generate-docs: build-container build-tools
+generate-docs: build-tools
 	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
-		-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c \
+		-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" "${IMAGE}:${VERSION}" \
 		"/docs/tools/bin/helper-ref-gen --project-root /docs && \
 		/docs/tools/bin/feature-tag-gen --project-root /docs && \
 		/docs/tools/bin/kfunc-gen --project-root /docs && \
@@ -61,7 +72,7 @@ generate-docs: build-container build-tools
 		/docs/tools/bin/helper-def-scraper --helper-path /docs/docs/linux/helper-function"
 
 .PHONY: spellcheck
-spellcheck: build-container build-tools html
+spellcheck: build-tools html
 	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
-		-w /docs -u $$(id -u $${USER}):$$(id -g $${USER}) --entrypoint "bash" "${IMAGE}:${VERSION}" -c \
+		-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" "${IMAGE}:${VERSION}" \
 		"/docs/tools/bin/spellcheck --project-root /docs"
