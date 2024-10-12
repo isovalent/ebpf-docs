@@ -50,5 +50,29 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+#include <bpf/bpf_tracing.h>
+#include <bpf/bpf_core_read.h>
+
+// We do it in the exit to not alter the syscall behavior. The userspace program
+// will see the new filename only after the syscall execution.
+SEC("fexit/__x64_sys_open")
+int BPF_PROG(p_open, struct pt_regs *regs, long ret) {
+  // If it is our example program overwrite the open path.
+  struct task_struct *task = (struct task_struct *)bpf_get_current_task_btf();
+  if (bpf_strncmp(task->comm, TASK_COMM_LEN, "example") != 0) {
+    return 0;
+  }
+
+  // SYSCALL_DEFINE3(open, const char __user *, filename, int, flags, umode_t, mode)
+  // first param is the pointer to filename.
+  void *filename_ptr = (void *)PT_REGS_PARM1_CORE_SYSCALL(regs);
+  const char filename[16] = "/tmp/new";
+  if (bpf_probe_write_user(filename_ptr, filename, 16)) {
+    bpf_printk("Failed to write new filename\n");
+  }
+  return 0;
+}
+```
