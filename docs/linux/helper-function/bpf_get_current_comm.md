@@ -48,5 +48,19 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+
+SEC("tp/syscalls/sys_enter_open")
+int sys_open_trace(void *ctx) {
+  // TASK_COMM_LEN is defined in vmlinux.h
+  char comm[TASK_COMM_LEN];
+  if (bpf_get_current_comm(comm, TASK_COMM_LEN)) {
+    bpf_printk("Failed to get comm\n");
+    return 0;
+  }
+  bpf_printk("Hello from %s\n", comm);
+  return 0;
+}
+```
