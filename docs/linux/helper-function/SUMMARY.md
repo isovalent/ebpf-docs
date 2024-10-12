@@ -125,6 +125,10 @@
   * [`bpf_check_mtu`](bpf_check_mtu.md)
   * [`bpf_get_route_realm`](bpf_get_route_realm.md)
   * [`bpf_fib_lookup`](bpf_fib_lookup.md)
+  * [`bpf_htons`](bpf_htons.md)
+  * [`bpf_htonl`](bpf_htonl.md)
+  * [`bpf_ntohl`](bpf_ntohl.md)
+  * [`bpf_ntohs`](bpf_ntohs.md)
   * Socket buffer helpers
     * [`bpf_skb_store_bytes`](bpf_skb_store_bytes.md)
     * [`bpf_skb_load_bytes`](bpf_skb_load_bytes.md)
