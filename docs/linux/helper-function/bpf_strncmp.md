@@ -68,5 +68,17 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+
+SEC("tp_btf/sys_enter")
+int sys_enter_trace(void *ctx) {
+  struct task_struct *task = (struct task_struct *)bpf_get_current_task_btf();
+  if (bpf_strncmp(task->comm, TASK_COMM_LEN, "cat") != 0) {
+    return 0;
+  }
+  bpf_printk("Hello, I'm a cat!\n");
+  return 0;
+}
+```
