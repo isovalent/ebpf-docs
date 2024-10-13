@@ -7,7 +7,7 @@
   * [Syscall commands](linux/syscall/)
   * [KFuncs](linux/kfuncs/)
 * [eBPF libraries](ebpf-library/index.md)
-  * [Libbpf](ebpf-library/libbpf.md)
+  * [Libbpf](ebpf-library/libbpf/)
   * [Libxdp](ebpf-library/libxdp/)
 * [Concepts](concepts/index.md)
   * [BPF CO-RE](concepts/core.md)
