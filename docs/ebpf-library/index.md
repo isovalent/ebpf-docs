@@ -8,9 +8,9 @@ eBPF have multiple libraries to help the eBPF development
 
     ---
 
-    Library for eBPF
+    Reference eBPF loader library and kernel helper library
 
-    [:octicons-arrow-right-24: Concepts](./libbpf.md)
+    [:octicons-arrow-right-24: Libbpf](./libbpf/index.md)
 
 -   :octicons-diamond-24:{ .lg .middle } __Libxdp__
 
@@ -18,6 +18,6 @@ eBPF have multiple libraries to help the eBPF development
 
     Library for XDP programs
 
-    [:octicons-arrow-right-24: Concepts](./libxdp/libxdp.md)
+    [:octicons-arrow-right-24: Libxdp](./libxdp/libxdp.md)
 
 </div>
