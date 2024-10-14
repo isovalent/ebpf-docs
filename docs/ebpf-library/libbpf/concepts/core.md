@@ -1,7 +1,7 @@
 # BPF CO-RE
 
 BPF CO-RE stand for Compile Once - Run Everywhere
-It's a **concept** to build cross-version kernel eBPF application by building in a single binary by bringing together the [BTF] type information, libbpf and the compiler. 
+It's a **concept** to build cross-version kernel eBPF application by building in a single binary by bringing together the [BTF] type information, [libbpf] and the compiler. 
 
 ## Problem of portability
 eBPF programs use the memory and data structures from the kernel. Between different kernel versions, some structures can be modified, altering the memory layout. 
@@ -38,6 +38,7 @@ Lists of examples programs using libbpf can be found on GitHub [libbpf-bootstrap
     This part of the docs is incomplete, contributions are very welcome
 
 
-[BTF]: btf.md
+[BTF]: ../../../concepts/btf.md
 [bpftool]: https://github.com/libbpf/bpftool
+[libbpf]: ../../libbpf/index.md
 [libbpf-bootstrap]: https://github.com/libbpf/libbpf-bootstrap

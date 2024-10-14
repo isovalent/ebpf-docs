@@ -10,7 +10,7 @@
   * [Libbpf](ebpf-library/libbpf/)
   * [Libxdp](ebpf-library/libxdp/)
 * [Concepts](concepts/index.md)
-  * [BPF CO-RE](concepts/core.md)
+  * [BPF CO-RE](ebpf-library/libbpf/concepts/core.md)
   * [BTF](concepts/btf.md)
   * [ELF](concepts/elf.md)
 * [FAQ](faq.md)
