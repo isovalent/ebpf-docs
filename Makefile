@@ -51,28 +51,34 @@ serve:
 	-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" \
 	"${IMAGE}:${VERSION}" "mkdocs serve -a 0.0.0.0:8000 --watch /docs/docs"
 
-.PHONY: build-tools
-build-tools:
+.PHONY: build-spellcheck
+build-spellcheck:
 	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" -w /docs golang:latest bash -c \
-	"CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/spellcheck /docs/tools/spellcheck/. && \
+	"CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/spellcheck /docs/tools/spellcheck/."
+
+.PHONY: build-gen-tools
+build-gen-tools:
+	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" -w /docs golang:latest bash -c \
+	"CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/libbpf-tag-gen /docs/tools/libbpf-tag-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-ref-gen /docs/tools/helper-ref-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/feature-tag-gen /docs/tools/feature-tag-gen/. && \
-	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/kfunc-gen /docs/tools/spellcheck/. && \
+	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/kfunc-gen /docs/tools/kfunc-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/mtu-calc /docs/tools/mtu-calc/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-def-scraper /docs/tools/helper-def-scraper/."
 
 .PHONY: generate-docs
-generate-docs: build-tools
+generate-docs: build-gen-tools
 	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
 		-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" "${IMAGE}:${VERSION}" \
 		"/docs/tools/bin/helper-ref-gen --project-root /docs && \
+		/docs/tools/bin/libbpf-tag-gen --project-root /docs && \
 		/docs/tools/bin/feature-tag-gen --project-root /docs && \
 		/docs/tools/bin/kfunc-gen --project-root /docs && \
 		/docs/tools/bin/mtu-calc --project-root /docs && \
 		/docs/tools/bin/helper-def-scraper --helper-path /docs/docs/linux/helper-function"
 
 .PHONY: spellcheck
-spellcheck: build-tools html
+spellcheck: build-spellcheck html
 	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" \
 		-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" "${IMAGE}:${VERSION}" \
 		"/docs/tools/bin/spellcheck --project-root /docs"
