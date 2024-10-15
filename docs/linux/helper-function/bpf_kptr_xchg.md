@@ -14,13 +14,13 @@ description: "This page documents the 'bpf_kptr_xchg' eBPF helper function, incl
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Exchange kptr at pointer _map_value_ with _ptr_, and return the old value. _ptr_ can be NULL, otherwise it must be a referenced pointer which will be released when this helper is called.
+Exchange kptr at pointer _dst_ with _ptr_, and return the old value. _dst_ can be map value or local kptr. _ptr_ can be NULL, otherwise it must be a referenced pointer which will be released when this helper is called.
 
 ### Returns
 
 The old value of kptr (which can be NULL). The returned pointer if not NULL, is a reference which must be released using its corresponding release function, or moved into a BPF map before program exit.
 
-`#!c static void *(* const bpf_kptr_xchg)(void *map_value, void *ptr) = (void *) 194;`
+`#!c static void *(* const bpf_kptr_xchg)(void *dst, void *ptr) = (void *) 194;`
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage

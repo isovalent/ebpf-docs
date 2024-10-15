@@ -26,7 +26,7 @@ This helper actually implements a subset of **setsockopt()**. It supports the fo
 
 * **SOL_SOCKET**, which supports the following _optname_s:
   **SO_RCVBUF**, **SO_SNDBUF**, **SO_MAX_PACING_RATE**,   **SO_PRIORITY**, **SO_RCVLOWAT**, **SO_MARK**,   **SO_BINDTODEVICE**, **SO_KEEPALIVE**, **SO_REUSEADDR**,   **SO_REUSEPORT**, **SO_BINDTOIFINDEX**, **SO_TXREHASH**. * **IPPROTO_TCP**, which supports the following _optname_s:
-  **TCP_CONGESTION**, **TCP_BPF_IW**,   **TCP_BPF_SNDCWND_CLAMP**, **TCP_SAVE_SYN**,   **TCP_KEEPIDLE**, **TCP_KEEPINTVL**, **TCP_KEEPCNT**,   **TCP_SYNCNT**, **TCP_USER_TIMEOUT**, **TCP_NOTSENT_LOWAT**,   **TCP_NODELAY**, **TCP_MAXSEG**, **TCP_WINDOW_CLAMP**,   **TCP_THIN_LINEAR_TIMEOUTS**, **TCP_BPF_DELACK_MAX**,   **TCP_BPF_RTO_MIN**. * **IPPROTO_IP**, which supports _optname_ **IP_TOS**.
+  **TCP_CONGESTION**, **TCP_BPF_IW**,   **TCP_BPF_SNDCWND_CLAMP**, **TCP_SAVE_SYN**,   **TCP_KEEPIDLE**, **TCP_KEEPINTVL**, **TCP_KEEPCNT**,   **TCP_SYNCNT**, **TCP_USER_TIMEOUT**, **TCP_NOTSENT_LOWAT**,   **TCP_NODELAY**, **TCP_MAXSEG**, **TCP_WINDOW_CLAMP**,   **TCP_THIN_LINEAR_TIMEOUTS**, **TCP_BPF_DELACK_MAX**,   **TCP_BPF_RTO_MIN**, **TCP_BPF_SOCK_OPS_CB_FLAGS**. * **IPPROTO_IP**, which supports _optname_ **IP_TOS**.
 * **IPPROTO_IPV6**, which supports the following _optname_s:
   **IPV6_TCLASS**, **IPV6_AUTOFLOWLABEL**.
 
