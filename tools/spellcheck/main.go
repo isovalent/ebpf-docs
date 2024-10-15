@@ -278,7 +278,8 @@ func checkFile(path string) error {
 				fmt.Printf("Possible locations in markdown:\n")
 
 				for _, loc := range possibleLocations {
-					fmt.Printf("  %s:%d:%d\n", loc.file, loc.line, loc.column+m.offset)
+					noRoot := strings.TrimPrefix(strings.TrimPrefix(loc.file, *projectroot), "/")
+					fmt.Printf("  %s:%d:%d\n", noRoot, loc.line, loc.column+m.offset)
 				}
 			}
 			fmt.Println()
