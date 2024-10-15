@@ -6,24 +6,6 @@ Definitions for the libbpf userspace library are split across a few different he
 
 In the `libbpf.h` header file you will find the high level APIs which do a lot of work for you under the hood. These are the most commonly used APIs.
 
-* `libbpf_major_version`
-* `libbpf_minor_version`
-* `libbpf_version_string`
-* `libbpf_strerror`
-* `libbpf_bpf_attach_type_str`
-* `libbpf_bpf_link_type_str`
-* `libbpf_bpf_map_type_str`
-* `libbpf_bpf_prog_type_str`
-* `libbpf_set_print`
-* `libbpf_prog_type_by_name`
-* `libbpf_attach_type_by_name`
-* `libbpf_find_vmlinux_btf_id`
-* `libbpf_probe_bpf_prog_type`
-* `libbpf_probe_bpf_map_type`
-* `libbpf_probe_bpf_helper`
-* `libbpf_num_possible_cpus`
-* `libbpf_register_prog_handler`
-* `libbpf_unregister_prog_handler`
 * BPF Object functions
     * `bpf_object__open`
     * `bpf_object__open_file`
@@ -221,6 +203,25 @@ In the `libbpf.h` header file you will find the high level APIs which do a lot o
     * `bpf_linker__add_file`
     * `bpf_linker__finalize`
     * `bpf_linker__free`
+* Misc libbpf functions
+    * [`libbpf_major_version`](libbpf_major_version.md)
+    * [`libbpf_minor_version`](libbpf_minor_version.md)
+    * `libbpf_version_string`
+    * [`libbpf_strerror`](libbpf_strerror.md)
+    * `libbpf_bpf_attach_type_str`
+    * `libbpf_bpf_link_type_str`
+    * `libbpf_bpf_map_type_str`
+    * `libbpf_bpf_prog_type_str`
+    * `libbpf_set_print`
+    * `libbpf_prog_type_by_name`
+    * `libbpf_attach_type_by_name`
+    * `libbpf_find_vmlinux_btf_id`
+    * `libbpf_probe_bpf_prog_type`
+    * `libbpf_probe_bpf_map_type`
+    * `libbpf_probe_bpf_helper`
+    * `libbpf_num_possible_cpus`
+    * `libbpf_register_prog_handler`
+    * `libbpf_unregister_prog_handler`
 
 ## BTF APIs
 
@@ -358,7 +359,6 @@ In the `bpf.h` header file you will find the low level APIs which are used to in
 * `bpf_raw_tracepoint_open_opts`
 * `bpf_raw_tracepoint_open`
 * `bpf_task_fd_query`
-* `bpf_enable_stats`
 * `bpf_enable_stats`
 * `bpf_prog_bind_map`
 * `bpf_prog_test_run_opts`

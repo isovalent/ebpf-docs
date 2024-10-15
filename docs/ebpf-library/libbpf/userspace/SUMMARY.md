@@ -1,0 +1,5 @@
+- [index](index.md)
+- Misc libbpf functions
+  - [`libbpf_major_version`](libbpf_major_version.md)
+  - [`libbpf_minor_version`](libbpf_minor_version.md)
+  - [`libbpf_strerror`](libbpf_strerror.md)
