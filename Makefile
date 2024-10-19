@@ -72,7 +72,8 @@ generate-docs: build-gen-tools
 		-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" "${IMAGE}:${VERSION}" \
 		"/docs/tools/bin/helper-ref-gen --project-root /docs && \
 		/docs/tools/bin/libbpf-tag-gen --project-root /docs && \
-		/docs/tools/bin/feature-gen --project-root /docs && \
+		/docs/tools/bin/feature-gen --project-root /docs --tags && \
+		/docs/tools/bin/feature-gen --project-root /docs --timeline && \
 		/docs/tools/bin/kfunc-gen --project-root /docs && \
 		/docs/tools/bin/mtu-calc --project-root /docs && \
 		/docs/tools/bin/helper-def-scraper --helper-path /docs/docs/linux/helper-function"
