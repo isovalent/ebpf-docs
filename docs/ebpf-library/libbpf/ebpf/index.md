@@ -27,11 +27,11 @@ so you don't need to include it separately.
 The file contains definitions for the following:
 
 * BTF map macros / types
-    * `__uint`
-    * `__int`
-    * `__array`
-    * `__ulong`
-    * `enum libbpf_pin_type`
+    * [`__uint`](__uint.md)
+    * [`__uint`](__uint.md)
+    * [`__array`](__array.md)
+    * [`__ulong`](__ulong.md)
+    * [`enum libbpf_pin_type`](enum-libbpf_pin_type.md)
 * `SEC`
 * Attributes
     * `__always_inline`
