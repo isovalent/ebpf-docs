@@ -61,7 +61,7 @@ build-gen-tools:
 	${CONTAINER_ENGINE} run --rm -v "${REPODIR}:/docs" -w /docs golang:latest bash -c \
 	"CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/libbpf-tag-gen /docs/tools/libbpf-tag-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-ref-gen /docs/tools/helper-ref-gen/. && \
-	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/feature-tag-gen /docs/tools/feature-tag-gen/. && \
+	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/feature-gen /docs/tools/feature-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/kfunc-gen /docs/tools/kfunc-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/mtu-calc /docs/tools/mtu-calc/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-def-scraper /docs/tools/helper-def-scraper/."
@@ -72,7 +72,7 @@ generate-docs: build-gen-tools
 		-w /docs -e "AS_USER=$$(id -u $${USER})" -e "AS_GROUP=$$(id -g $${USER})" "${IMAGE}:${VERSION}" \
 		"/docs/tools/bin/helper-ref-gen --project-root /docs && \
 		/docs/tools/bin/libbpf-tag-gen --project-root /docs && \
-		/docs/tools/bin/feature-tag-gen --project-root /docs && \
+		/docs/tools/bin/feature-gen --project-root /docs && \
 		/docs/tools/bin/kfunc-gen --project-root /docs && \
 		/docs/tools/bin/mtu-calc --project-root /docs && \
 		/docs/tools/bin/helper-def-scraper --helper-path /docs/docs/linux/helper-function"
