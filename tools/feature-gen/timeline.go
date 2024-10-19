@@ -74,7 +74,7 @@ hide: toc
 	for _, tag := range tags {
 		fmt.Fprintf(&sb, "\n## :octicons-tag-24: %s\n\n", tag)
 		for _, feature := range timeline[tag] {
-			fmt.Fprintf(&sb, "* **%s** [%s](https://github.com/torvalds/linux/commit/%s) (%s)\n", feature.Name, feature.Commit[:7], feature.Commit, feature.Type)
+			fmt.Fprintf(&sb, "* `%s` [%s](https://github.com/torvalds/linux/commit/%s) (%s)\n", feature.Name, feature.Commit[:7], feature.Commit, feature.Type)
 		}
 	}
 
