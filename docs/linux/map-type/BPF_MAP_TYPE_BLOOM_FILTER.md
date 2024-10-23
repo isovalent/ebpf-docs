@@ -54,8 +54,8 @@ The following syscall commands work with this map type:
 
 The bloom filter map supports two operations:
 
-* [bpf_map_peek_elem](../helper-function/bpf_map_peek_elem.md): adding an element to the map
-* [bpf_map_push_elem](../helper-function/bpf_map_push_elem.md): determining whether an element is present in the map
+* [bpf_map_peek_elem](../helper-function/bpf_map_peek_elem.md): determining whether an element is present in the map
+* [bpf_map_push_elem](../helper-function/bpf_map_push_elem.md): adding an element to the map
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
