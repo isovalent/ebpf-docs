@@ -14,7 +14,7 @@ The queue map type is a generic map type, resembling a FIFO (First-In First-Out)
 
 This map type has no keys, only values. The size and type of the values can be specified by the user to fit a large variety of use cases. The typical use-case for this map type is to keep track of a pool of elements such as available network ports when implementing NAT (network address translation).
 
-As apposed to most map types, this map type uses a custom set of helpers to pop, peek and push elements, noted in the [helper functions](#helper-functions) section below.
+As opposed to most map types, this map type uses a custom set of helpers to pop, peek and push elements, noted in the [helper functions](#helper-functions) section below.
 
 ## Attributes
 
