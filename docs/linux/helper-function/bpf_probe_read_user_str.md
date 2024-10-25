@@ -31,7 +31,7 @@ void bpf_sys_open(struct pt_regs ctx) {
 
 In comparison, using **bpf_probe_read_user**() helper here instead to read the string would require to estimate the length at compile time, and would often result in copying more memory than necessary.
 
-Another useful use case is when parsing individual process arguments or individual environment variables navigating **current->mm->arg_start** and **current->mm->env_start**: using this helper and the return value, one can quickly iterate at the right offset of the memory area.
+Another useful use case is when parsing individual process arguments or individual environment variables navigating `current->mm->arg_start` and `current->mm->env_start`: using this helper and the return value, one can quickly iterate at the right offset of the memory area.
 
 ### Returns
 
