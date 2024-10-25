@@ -13,7 +13,7 @@ description: "This page documents the 'bpf_probe_read_user_str' eBPF helper func
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-Copy a NUL terminated string from an unsafe user address _unsafe_ptr_ to _dst_. The _size_ should include the terminating NUL byte. In case the string length is smaller than _size_, the target is not padded with further NUL bytes. If the string length is larger than _size_, just _size_-1 bytes are copied and the last byte is set to NUL.
+Copy a `NULL` terminated string from an unsafe user address `unsafe_ptr` to `dst`. The `size` should include the terminating `NULL` byte. In case the string length is smaller than `size`, the target is not padded with further `NULL` bytes. If the string length is larger than `size`, just `size-1` bytes are copied and the last byte is set to `NULL`.
 
 On success, returns the number of bytes that were written, including the terminal NUL. This makes this helper useful in tracing programs for reading strings, and more importantly to get its length at runtime. See the following snippet:
 
