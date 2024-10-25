@@ -35,7 +35,7 @@ Another useful use case is when parsing individual process arguments or individu
 
 ### Returns
 
-On success, the strictly positive length of the output string, including the trailing NUL character. On error, a negative value.
+On success, the strictly positive length of the output string, including the trailing `NULL` character. On error, a negative value.
 
 `#!c static long (* const bpf_probe_read_user_str)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 114;`
 
