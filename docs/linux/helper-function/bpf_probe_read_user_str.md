@@ -15,7 +15,7 @@ description: "This page documents the 'bpf_probe_read_user_str' eBPF helper func
 
 Copy a `NULL` terminated string from an unsafe user address `unsafe_ptr` to `dst`. The `size` should include the terminating `NULL` byte. In case the string length is smaller than `size`, the target is not padded with further `NULL` bytes. If the string length is larger than `size`, just `size-1` bytes are copied and the last byte is set to `NULL`.
 
-On success, returns the number of bytes that were written, including the terminal NUL. This makes this helper useful in tracing programs for reading strings, and more importantly to get its length at runtime. See the following snippet:
+On success, returns the number of bytes that were written, including the terminal `NULL`. This makes this helper useful in tracing programs for reading strings, and more importantly to get its length at runtime. See the following snippet:
 
 ```c
 SEC("kprobe/sys_open")
