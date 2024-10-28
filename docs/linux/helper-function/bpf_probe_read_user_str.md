@@ -13,31 +13,31 @@ description: "This page documents the 'bpf_probe_read_user_str' eBPF helper func
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-<!-- [HELPER_FUNC_DEF] -->
-Copy a NUL terminated string from an unsafe user address _unsafe_ptr_ to _dst_. The _size_ should include the terminating NUL byte. In case the string length is smaller than _size_, the target is not padded with further NUL bytes. If the string length is larger than _size_, just _size_-1 bytes are copied and the last byte is set to NUL.
+Copy a `NULL` terminated string from an unsafe user address `unsafe_ptr` to `dst`. The `size` should include the terminating `NULL` byte. In case the string length is smaller than `size`, the target is not padded with further `NULL` bytes. If the string length is larger than `size`, just `size-1` bytes are copied and the last byte is set to `NULL`.
 
-On success, returns the number of bytes that were written, including the terminal NUL. This makes this helper useful in tracing programs for reading strings, and more importantly to get its length at runtime. See the following snippet:
+On success, returns the number of bytes that were written, including the terminal `NULL`. This makes this helper useful in tracing programs for reading strings, and more importantly to get its length at runtime. See the following snippet:
 
+```c
+SEC("kprobe/sys_open")
+void bpf_sys_open(struct pt_regs ctx) {
+    char buf[PATHLEN]; // PATHLEN is defined to 256
+    int res = bpf_probe_read_user_str(buf, sizeof(buf), ctx->di);
+    // Consume buf, for example push it to
+    // userspace via bpf_perf_event_output(); we
+    // can use res (the string length) as event
+    // size, after checking its boundaries.
+}
 ```
-SEC("kprobe/sys_open") void bpf_sys_open(struct pt_regs _ctx) {         char buf[PATHLEN]; // PATHLEN is defined to 256         int res = bpf_probe_read_user_str(buf, sizeof(buf),
-```
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                  ctx->di);
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Consume buf, for example push it to // userspace via bpf_perf_event_output(); we // can use res (the string length) as event // size, after checking its boundaries.
-
-&nbsp;&nbsp;&nbsp;&nbsp;}
 
 In comparison, using **bpf_probe_read_user**() helper here instead to read the string would require to estimate the length at compile time, and would often result in copying more memory than necessary.
 
-Another useful use case is when parsing individual process arguments or individual environment variables navigating _current_**->mm->arg_start** and _current_\ **->mm->env_start**: using this helper and the return value, one can quickly iterate at the right offset of the memory area.
+Another useful use case is when parsing individual process arguments or individual environment variables navigating `current->mm->arg_start` and `current->mm->env_start`: using this helper and the return value, one can quickly iterate at the right offset of the memory area.
 
 ### Returns
 
-On success, the strictly positive length of the output string, including the trailing NUL character. On error, a negative value.
+On success, the strictly positive length of the output string, including the trailing `NULL` character. On error, a negative value.
 
 `#!c static long (* const bpf_probe_read_user_str)(void *dst, __u32 size, const void *unsafe_ptr) = (void *) 114;`
-<!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
 
