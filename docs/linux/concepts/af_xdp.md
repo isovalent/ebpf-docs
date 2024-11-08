@@ -266,7 +266,7 @@ We start by giving the kernel some chunks. We do this my updating the descriptio
 
 ![Fill queue write](../../assets/image/diagrams/af_xdp/1_fill_write.svg){class=image-bg-white}
 
-This is important since the kernel is forced to drop packets if no chunks are available. In reality, it is therefor best to give most of your chunks to the kernel unless you have a write heavy application.
+This is important since the kernel is forced to drop packets if no chunks are available. In reality, it is therefore best to give most of your chunks to the kernel unless you have a write heavy application.
 
 The kernel will "consume" the messages from the queue and take ownership of the UMEM chunks. It increments the `consumer`/`tail` pointer.
 
