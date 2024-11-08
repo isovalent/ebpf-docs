@@ -65,7 +65,7 @@ struct xdp_umem_reg umem_reg = {
     .headroom = 0, // see Options, variations, and exceptions
     .flags = 0, // see Options, variations, and exceptions
 };
-if (!setsockopt(fd, SOL_XDP, XDP_UMEM_REG, &umem_reg, sizeof(xdp_umem_reg)))
+if (!setsockopt(fd, SOL_XDP, XDP_UMEM_REG, &umem_reg, sizeof(umem_reg)))
     // handle error
 ```
 
@@ -102,7 +102,7 @@ struct xdp_mmap_offsets {
 
 struct xdp_ring_offset offsets = {0};
 
-if (!getsockopt(fd, SOL_XDP, XDP_MMAP_OFFSETS, &offsets, sizeof(xdp_ring_offset)))
+if (!getsockopt(fd, SOL_XDP, XDP_MMAP_OFFSETS, &offsets, sizeof(offsets)))
     // handle error
 ```
 
