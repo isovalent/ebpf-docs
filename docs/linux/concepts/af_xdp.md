@@ -12,7 +12,7 @@ Examples of such use cases are:
 * DDoS protection - If complex processing across multiple packets is required, eBPF programs can't keep up, thus forwarding traffic to user space for analysis might be needed.
 * Application specific optimization - The Linux network stack by necessity needs to handle a lot of protocols and edge cases which are not applicable to workloads you are running. This means paying performance cost for features you are not using. While not easy, one can implement a custom network stack specific to their needs, to eke out every drop of performance.
 
-All ingress traffic is first processes by a XDP program, it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques such as `PACKET_MMAP` or `PF_RING` which require you to handle all traffic and re-implement every protocol needed for the host to function.
+All ingress traffic is first processes by an XDP program, it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques such as `PACKET_MMAP` or `PF_RING` which require you to handle all traffic and re-implement every protocol needed for the host to function.
 
 ## Usage
 
@@ -158,7 +158,7 @@ At this point we are ready to send traffic, see [Receiving and sending packets](
 
 ### eBPF program and map
 
-To actually start bypassing ingress traffic we need a XDP program and a [`BPF_MAP_TYPE_XSKMAP`](../map-type/BPF_MAP_TYPE_XSKMAP.md) map. The map is an array type with numeric keys starting at 0 and going up. The process should populate the values of the map with the file descriptors of the XSKs obtained in the [Setting up a XSK](#setting-up-a-xsk) section. By default, the key of the map should match the queue to which the XSK is attached.
+To actually start bypassing ingress traffic we need an XDP program and a [`BPF_MAP_TYPE_XSKMAP`](../map-type/BPF_MAP_TYPE_XSKMAP.md) map. The map is an array type with numeric keys starting at 0 and going up. The process should populate the values of the map with the file descriptors of the XSKs obtained in the [Setting up a XSK](#setting-up-a-xsk) section. By default, the key of the map should match the queue to which the XSK is attached.
 
 So if for example, we are dealing with a 4 queue NIC, then the map size should be at least 4, and the file descriptor of the XSK bound to queue#2 should bit assigned to key `2` in the map. If the queue-id mismatches, the packet will be dropped at runtime. (Except when using a shared UMEM, see [Options, variations, and exceptions](#options-variations-and-exceptions)).
 
