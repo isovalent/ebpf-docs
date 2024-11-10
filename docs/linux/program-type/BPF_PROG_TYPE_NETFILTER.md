@@ -16,7 +16,7 @@ The hook can make a decision to drop or accept the packet by returning `NF_DROP`
 
 ## Context
 
-The context that is passed in contains pointers to the hook state and to a full `sk_buff` as opposed to the `__sk_buff` we typically see as the context in other program types. The whole ctx is read-only.
+The context that is passed in contains pointers to the hook state and to a full `sk_buff` as opposed to the `__sk_buff` projection type we typically see as the context in other program types.
 
 ```c
 struct bpf_nf_ctx {
@@ -24,6 +24,8 @@ struct bpf_nf_ctx {
 	struct sk_buff *skb;
 };
 ```
+
+The whole ctx is read-only. `struct bpf_nf_ctx` is defined in an internal linux kernel header file and is intentionally unstable. Users are expected to get definitions from a vmlinux.h or to copy the relevant parts of the definition into their own code. Since both the context struct and its field types are kernel internal, users should use [CO-RE](../../concepts/core.md) to access any field to ensure programs work on multiple kernel versions.
 
 The `ctx->skb` pointer can be used in combination with the [`bpf_dynptr_from_skb`](../kfuncs/bpf_dynptr_from_skb.md) kfunc to access the packet data. The returned dynptr will be read-only.
 
