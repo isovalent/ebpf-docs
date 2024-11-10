@@ -477,7 +477,7 @@ programs:
     kconfig: [CONFIG_INET]
   - name: bpf_tcp_gen_syncookie
     kconfig: [CONFIG_INET]
-  - name: bpf_tcp_raw_check_syncookie_ipv4
+  - name: bpf_tcp_raw_gen_syncookie_ipv4
     kconfig: [CONFIG_SYN_COOKIES]
   - name: bpf_tcp_raw_gen_syncookie_ipv6
     kconfig: [CONFIG_SYN_COOKIES]
