@@ -205,14 +205,14 @@ The following helper functions work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [`bpf_ringbuf_output`](../helper-function/bpf_ringbuf_output.md)
- * [`bpf_ringbuf_reserve`](../helper-function/bpf_ringbuf_reserve.md)
- * [`bpf_ringbuf_query`](../helper-function/bpf_ringbuf_query.md)
- * [`bpf_ringbuf_submit`](../helper-function/bpf_ringbuf_submit.md)
  * [`bpf_ringbuf_discard`](../helper-function/bpf_ringbuf_discard.md)
- * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
- * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
  * [`bpf_ringbuf_discard_dynptr`](../helper-function/bpf_ringbuf_discard_dynptr.md)
+ * [`bpf_ringbuf_output`](../helper-function/bpf_ringbuf_output.md)
+ * [`bpf_ringbuf_query`](../helper-function/bpf_ringbuf_query.md)
+ * [`bpf_ringbuf_reserve`](../helper-function/bpf_ringbuf_reserve.md)
+ * [`bpf_ringbuf_reserve_dynptr`](../helper-function/bpf_ringbuf_reserve_dynptr.md)
+ * [`bpf_ringbuf_submit`](../helper-function/bpf_ringbuf_submit.md)
+ * [`bpf_ringbuf_submit_dynptr`](../helper-function/bpf_ringbuf_submit_dynptr.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags

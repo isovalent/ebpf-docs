@@ -77,7 +77,13 @@ func (df *helperFuncDataFile) flatten(group helperFuncGroup) helperFuncGroup {
 		}
 	}
 
-	return group
+	slices.SortFunc(group, func(i, j helperDef) bool {
+		return i.Name < j.Name
+	})
+
+	return slices.CompactFunc(group, func(i, j helperDef) bool {
+		return i.Name == j.Name
+	})
 }
 
 func main() {

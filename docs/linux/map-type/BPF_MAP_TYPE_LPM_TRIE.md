@@ -73,9 +73,9 @@ The following helper functions work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
+ * [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md)
  * [`bpf_map_lookup_elem`](../helper-function/bpf_map_lookup_elem.md)
  * [`bpf_map_update_elem`](../helper-function/bpf_map_update_elem.md)
- * [`bpf_map_delete_elem`](../helper-function/bpf_map_delete_elem.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags
