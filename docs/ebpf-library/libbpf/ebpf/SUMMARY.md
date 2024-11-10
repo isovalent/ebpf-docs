@@ -5,3 +5,13 @@
   - [`__array`](__array.md)
   - [`__ulong`](__ulong.md)
   - [`enum libbpf_pin_type`](enum-libbpf_pin_type.md)
+- Attributes
+  - [`__always_inline`](__always_inline.md)
+  - [`__noinline`](__noinline.md)
+  - [`__weak`](__weak.md)
+  - [`__hidden`](__hidden.md)
+  - [`__kconfig`](__kconfig.md)
+  - [`__ksym`](__ksym.md)
+  - [`__kptr_untrusted`](__kptr_untrusted.md)
+  - [`__kptr`](__kptr.md)
+  - [`__percpu_kptr`](__percpu_kptr.md)
