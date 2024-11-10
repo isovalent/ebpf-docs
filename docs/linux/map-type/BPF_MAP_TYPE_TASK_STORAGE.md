@@ -32,8 +32,8 @@ The following helper functions work with this map type:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [MAP_HELPER_FUNC_REF] -->
- * [`bpf_task_storage_get`](../helper-function/bpf_task_storage_get.md)
  * [`bpf_task_storage_delete`](../helper-function/bpf_task_storage_delete.md)
+ * [`bpf_task_storage_get`](../helper-function/bpf_task_storage_get.md)
 <!-- [/MAP_HELPER_FUNC_REF] -->
 
 ## Flags
