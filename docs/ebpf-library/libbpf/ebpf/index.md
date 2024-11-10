@@ -34,15 +34,15 @@ The file contains definitions for the following:
     * [`enum libbpf_pin_type`](enum-libbpf_pin_type.md)
 * `SEC`
 * Attributes
-    * `__always_inline`
-    * `__noinline`
-    * `__weak`
-    * `__hidden`
-    * `__kconfig`
-    * `__ksym`
-    * `__kptr_untrusted`
-    * `__kptr`
-    * `__percpu_kptr`
+    * [`__always_inline`](__always_inline.md)
+    * [`__noinline`](__noinline.md)
+    * [`__weak`](__weak.md)
+    * [`__hidden`](__hidden.md)
+    * [`__kconfig`](__kconfig.md)
+    * [`__ksym`](__ksym.md)
+    * [`__kptr_untrusted`](__kptr_untrusted.md)
+    * [`__kptr`](__kptr.md)
+    * [`__percpu_kptr`](__percpu_kptr.md)
 * `NULL`
 * `KERNEL_VERSION`
 * `offsetof`
