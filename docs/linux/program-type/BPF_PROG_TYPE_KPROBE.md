@@ -43,7 +43,7 @@ Similar macros also exists for kprobes intended to attach to syscalls: `BPF_KSYS
 
 There are two methods of attaching probe programs with variations for uprobes. The "legacy" way involves the manual creation of a `k{ret}probe` or `u{ret}probe` event via the [`DebugFS`](https://www.kernel.org/doc/html/next/filesystems/debugfs.html) and then attaching a BPF program to that event via the `perf_event_open` syscall.
 
-The newer method uses BPF links to do both the probe event creation and attaching in one.
+The newer method uses BPF links to do both the probe event creation and attaching in one for multiple probes. Single probes can, however, still be attached via the `perf_event_open` syscall but require different parameters and need to utilize BPF links afterwards.
 
 ### Legacy kprobe attaching
 
@@ -87,10 +87,73 @@ The kprobe can be temporality disabled with the `PERF_EVENT_IOC_DISABLE` ioctl o
 
 ### Link kprobe attaching
 
-The more modern and preferred way of attaching is using the [link create command](../syscall/BPF_LINK_CREATE.md) of the BPF syscall.  
+The more modern and preferred way of attaching is using the [link create command](../syscall/BPF_LINK_CREATE.md) of the BPF syscall. 
+For single probes, open a new perf event using the [`perf_event_open`](https://man7.org/linux/man-pages/man2/perf_event_open.2.html) syscall. Note that the values of the attributes of the perf event structure are a little different here compared to the legacy way. 
 
 <!-- TODO First use PMU instead of DebugFS -->
+
+```c
+ struct perf_event_attr attr = {
+    .type = 8; /* read type from /sys/bus/event_source/devices/kprobe/type or uprobe/type */
+    .sample_type = PERF_SAMPLE_RAW;
+    .sample_period = 1;
+    .wakeup_events = 1;
+    .size = sizeof(attr);
+    .config |= 1 << 0;
+    .kprobe_func = ((uint64_t)"symbol_name");  /* symbol name in string, valid names can be found in /proc/kallsyms */
+    .config1 = ((uint64_t)"symbol_name"); 
+    .config2 = 0x0;
+    .probe_offset = 0x0; /* offset must be a valid instruction, here it is just the start of the kernel symbol*/
+};
+
+syscall(SYS_perf_event_open, 
+    &attr,  /* struct perf_event_attr * */
+    -1,     /* pid_t pid */
+    0       /* int cpu */
+    -1,     /* int group_fd */
+    PERF_FLAG_FD_CLOEXEC /* unsigned long flags */
+);
+```
 <!-- TODO then use Link instead of perf_event -->
+
+After the perf event syscall is successful, the valid file descriptor returned can be used to set the link_create.target_fd attribute in the bpf structure before the [link create command](../syscall/BPF_LINK_CREATE.md) is called.
+
+```c
+union bpf_attr attr = {
+    .link_create.prog_fd = prog_fd; /* valid fd to bpf program of type KPROBE */
+    .link_create.target_fd = perf_fd; /* valid fd to PMU event */
+    .link_create.attach_type = BPF_PERF_EVENT;
+    .link_create.flags = 0;
+    .link_create.perf_event.bpf_cookie = 0;
+};
+
+syscall(SYS_bpf,
+    BPF_LINK_CREATE,
+    &attr,
+    sizeof(attr)
+);
+```   
+For multiple probes, [link create command](../syscall/BPF_LINK_CREATE.md) can be used to combine the creation and linking of the probes. [Fprobes](https://lore.kernel.org/bpf/20220316122419.933957-4-jolsa@kernel.org/) are used under the hood for multiple kprobes.
+
+```c
+
+union bpf_attr attr = {
+    attr.link_create.prog_fd = prog_fd;
+    attr.link_create.target_fd = 0;
+    attr.link_create.attach_type = BPF_TRACE_KPROBE_MULTI;
+    attr.link_create.flags = 0;
+    attr.link_create.kprobe_multi.cnt = target_count; 
+    attr.link_create.kprobe_multi.cookies = ((uint64_t)targets); 
+    attr.link_create.kprobe_multi.flags = BPF_F_KPROBE_MULTI_RETURN;
+    attr.link_create.kprobe_multi.syms = ptr_to_u64(targets);
+);
+
+syscall(SYS_bpf,
+    BPF_LINK_CREATE,
+    &attr,
+    sizeof(attr)
+);
+```   
 
 <!-- TODO upbrobe variation -->
 
