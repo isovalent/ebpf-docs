@@ -105,8 +105,14 @@ groups:
     kconfig: [CONFIG_NET]
   - name: bpf_sk_storage_get
     kconfig: [CONFIG_NET]
+    since:
+      version: 5.11
+      commit: 8e4597c627fb48f361e2a5b012202cb1b6cbcd5e
   - name: bpf_sk_storage_delete
     kconfig: [CONFIG_NET]
+    since:
+      version: 5.11
+      commit: 8e4597c627fb48f361e2a5b012202cb1b6cbcd5e
   - name: bpf_sock_from_file
     kconfig: [CONFIG_NET]
   - name: bpf_get_socket_cookie
