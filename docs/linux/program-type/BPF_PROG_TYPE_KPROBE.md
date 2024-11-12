@@ -139,13 +139,11 @@ For multiple probes, [link create command](../syscall/BPF_LINK_CREATE.md) can be
 
 union bpf_attr attr = {
     attr.link_create.prog_fd = prog_fd;
-    attr.link_create.target_fd = 0;
     attr.link_create.attach_type = BPF_TRACE_KPROBE_MULTI;
-    attr.link_create.flags = 0;
-    attr.link_create.kprobe_multi.cnt = target_count; 
-    attr.link_create.kprobe_multi.cookies = ((uint64_t)targets); 
+    attr.link_create.kprobe_multi.cnt = sym_count; 
+    attr.link_create.kprobe_multi.cookies = 0;
     attr.link_create.kprobe_multi.flags = BPF_F_KPROBE_MULTI_RETURN;
-    attr.link_create.kprobe_multi.syms = ptr_to_u64(targets);
+    attr.link_create.kprobe_multi.syms = ((uint64_t)sym_name); /* char array of symbol names */
 );
 
 syscall(SYS_bpf,
