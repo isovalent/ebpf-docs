@@ -44,6 +44,7 @@ kretprobe
 kretprobes
 uprobe
 uprobes
+Fprobes
 fprobe
 ftrace
 Fentry
