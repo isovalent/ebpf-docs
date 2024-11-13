@@ -116,7 +116,7 @@ syscall(SYS_perf_event_open,
 ```
 <!-- TODO then use Link instead of perf_event -->
 
-After the perf event syscall is successful, the valid file descriptor returned can be used to set the link_create.target_fd attribute in the bpf structure before the [link create command](../syscall/BPF_LINK_CREATE.md) is called.
+After the perf event syscall is successful, the valid file descriptor returned can be used to set the `link_create.target_fd` attribute in the bpf structure before the [link create command](../syscall/BPF_LINK_CREATE.md) is called.
 
 ```c
 union bpf_attr attr = {
