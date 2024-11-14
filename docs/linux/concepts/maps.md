@@ -123,7 +123,7 @@ struct {
 
 It is common for maps to be declared in the eBPF program, but maps are ultimately created from userspace. Most loader libraries pick up the map declarations from the compiled ELF file and create them automatically for the user.
 
-However, it is also possible for users to manually create maps using the [BPF_MAP_CREATE](../syscall/BPF_MAP_CREATE.md) command of the BPF syscall or to use a loader library with such capabilities.
+However, it is also possible for users to manually create maps using the [BPF_MAP_CREATE](../syscall/BPF_MAP_CREATE.md) command of the BPF syscall or to use a loader library with such capabilities. If the maps are declared from within the eBPF program, than a limit of 64 maps per program is enforced.
 
 ### Libbpf
 
