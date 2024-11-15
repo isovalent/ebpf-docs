@@ -14,7 +14,7 @@ description: "This page documents the 'bpf_task_pt_regs' eBPF helper function, i
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Get the struct pt_regs associated with **task**.
+Get the struct pt_regs associated with **task**. Expects a BTF pointer to the current task.
 
 ### Returns
 
