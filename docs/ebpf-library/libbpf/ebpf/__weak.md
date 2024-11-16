@@ -31,7 +31,7 @@ extern int bpf_dynptr_from_xdp(struct xdp_md *x, u64 flags, struct bpf_dynptr *p
 SEC("xdp.frags")
 int example_prog(struct xdp_md *ctx)
 {
-    if (bpf_dynptr_from_xdp) {
+    if (bpf_ksym_exists(bpf_dynptr_from_xdp)) {
         struct bpf_dynptr ptr;
         if (bpf_dynptr_from_xdp(ctx, 0, &ptr) < 0)
             return XDP_DROP;
