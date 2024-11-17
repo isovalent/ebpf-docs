@@ -43,11 +43,11 @@ The file contains definitions for the following:
     * [`__kptr`](__kptr.md)
     * [`__percpu_kptr`](__percpu_kptr.md)
 * Global function attributes
-    * `__arg_ctx`
-    * `__arg_nonnull`
-    * `__arg_nullable`
-    * `__arg_trusted`
-    * `__arg_arena`
+    * [`__arg_ctx`](__arg_ctx.md)
+    * [`__arg_nonnull`](__arg_nonnull.md)
+    * [`__arg_nullable`](__arg_nullable.md)
+    * [`__arg_trusted`](__arg_trusted.md)
+    * [`__arg_arena`](__arg_arena.md)
 * [`SEC`](SEC.md)
 * [`KERNEL_VERSION`](KERNEL_VERSION.md)
 * [`offsetof`](offsetof.md)
