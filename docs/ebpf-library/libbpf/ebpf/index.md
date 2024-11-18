@@ -58,9 +58,9 @@ The file contains definitions for the following:
 * [`bpf_tail_call_static`](bpf_tail_call_static.md)
 * [`bpf_ksym_exists`](bpf_ksym_exists.md)
 * <nospell>Printf macros</nospell>
-    * `BPF_SEQ_PRINTF`
-    * `BPF_SNPRINTF`
-    * `bpf_printk`
+    * [`BPF_SEQ_PRINTF`](bpf_seq_printf.md)
+    * [`BPF_SNPRINTF`](bpf_snprintf.md)
+    * [`bpf_printk`](bpf_printk.md)
 * Open coded iterator loop macros
     * `bpf_for_each`
     * `bpf_for`
