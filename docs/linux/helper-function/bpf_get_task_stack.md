@@ -13,7 +13,7 @@ description: "This page documents the 'bpf_get_task_stack' eBPF helper function,
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-<!-- [HELPER_FUNC_DEF] -->
+
 Return a user or a kernel stack in bpf program provided buffer. Note: the user stack will only be populated if the _task_ is the current task; all other tasks will return -EOPNOTSUPP. To achieve this, the helper needs _task_, which is a valid BTF pointer to **struct task_struct**, see [bpf_get_current_task_btf](../helper-function/bpf_get_current_task_btf.md) for more information. To store the stacktrace, the bpf program provides _buf_ with a nonnegative _size_.
 
 The last argument, _flags_, holds the number of stack frames to skip (from 0 to 255), masked with **BPF_F_SKIP_FIELD_MASK**. The next bits can be used to set the following flags:
@@ -37,7 +37,6 @@ The last argument, _flags_, holds the number of stack frames to skip (from 0 to 
 The non-negative copied _buf_ length equal to or less than _size_ on success, or a negative error in case of failure.
 
 `#!c static long (* const bpf_get_task_stack)(struct task_struct *task, void *buf, __u32 size, __u64 flags) = (void *) 141;`
-<!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
 
