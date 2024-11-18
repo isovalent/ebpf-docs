@@ -32,7 +32,6 @@ The file contains definitions for the following:
     * [`__array`](__array.md)
     * [`__ulong`](__ulong.md)
     * [`enum libbpf_pin_type`](enum-libbpf_pin_type.md)
-* `SEC`
 * Attributes
     * [`__always_inline`](__always_inline.md)
     * [`__noinline`](__noinline.md)
@@ -43,22 +42,21 @@ The file contains definitions for the following:
     * [`__kptr_untrusted`](__kptr_untrusted.md)
     * [`__kptr`](__kptr.md)
     * [`__percpu_kptr`](__percpu_kptr.md)
-* `NULL`
-* `KERNEL_VERSION`
-* `offsetof`
-* `container_of`
-* `barrier`
-* `barrier_var`
-* `__bpf_unreachable`
-* `bpf_tail_call_static`
-* `enum libbpf_tristate`
-* `bpf_ksym_exists`
 * Global function attributes
-    * `__arg_ctx`
-    * `__arg_nonnull`
-    * `__arg_nullable`
-    * `__arg_trusted`
-    * `__arg_arena`
+    * [`__arg_ctx`](__arg_ctx.md)
+    * [`__arg_nonnull`](__arg_nonnull.md)
+    * [`__arg_nullable`](__arg_nullable.md)
+    * [`__arg_trusted`](__arg_trusted.md)
+    * [`__arg_arena`](__arg_arena.md)
+* [`SEC`](SEC.md)
+* [`KERNEL_VERSION`](KERNEL_VERSION.md)
+* [`offsetof`](offsetof.md)
+* [`container_of`](container_of.md)
+* [`barrier`](barrier.md)
+* [`barrier_var`](barrier_var.md)
+* [`__bpf_unreachable`](__bpf_unreachable.md)
+* [`bpf_tail_call_static`](bpf_tail_call_static.md)
+* [`bpf_ksym_exists`](bpf_ksym_exists.md)
 * <nospell>Printf macros</nospell>
     * `BPF_SEQ_PRINTF`
     * `BPF_SNPRINTF`
