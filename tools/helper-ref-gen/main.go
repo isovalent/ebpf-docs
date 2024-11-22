@@ -67,7 +67,15 @@ func (df *helperFuncDataFile) flatten(group helperFuncGroup) helperFuncGroup {
 		if member.GroupName != "" {
 			subGroup := df.Groups[member.GroupName]
 			subGroup = df.flatten(subGroup)
-			group = append(group, subGroup...)
+			for _, subMember := range subGroup {
+				if slices.ContainsFunc(group, func(i helperDef) bool {
+					return i.Name == subMember.Name
+				}) {
+					continue
+				}
+
+				group = append(group, subMember)
+			}
 		}
 	}
 
@@ -81,9 +89,7 @@ func (df *helperFuncDataFile) flatten(group helperFuncGroup) helperFuncGroup {
 		return i.Name < j.Name
 	})
 
-	return slices.CompactFunc(group, func(i, j helperDef) bool {
-		return i.Name == j.Name
-	})
+	return group
 }
 
 func main() {

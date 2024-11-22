@@ -84,6 +84,14 @@ groups:
   - name: bpf_ringbuf_reserve_dynptr
   - name: bpf_ringbuf_submit_dynptr
   - name: bpf_user_ringbuf_drain
+  - name: bpf_get_current_pid_tgid
+    since:
+      version: 6.10
+      commit: eb166e522c77699fc19bfa705652327a1e51a117
+  - name: bpf_get_ns_current_pid_tgid
+    since:
+      version: 6.10
+      commit: eb166e522c77699fc19bfa705652327a1e51a117
 
   # `tracing_prog_func_proto` in `kernel/tracing/bpf_trace.c`
   tracing_prog:
