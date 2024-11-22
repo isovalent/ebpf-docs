@@ -29,6 +29,9 @@ Returns `0` on success, a negative error code otherwise. This function will wait
 
 <!-- [KFUNC_DEF] -->
 `#!c int hid_bpf_input_report(struct hid_bpf_ctx *ctx, hid_report_type type, u8 *buf, const size_t buf__sz)`
+
+!!! note
+    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 <!-- [/KFUNC_DEF] -->
 
 ## Usage
