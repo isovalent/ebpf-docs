@@ -20,6 +20,9 @@ Release the previously allocated context @ctx
 !!! note
 	This kfunc releases the pointer passed in to it. There can be only one referenced pointer that can be passed in. 
 	All copies of the pointer being released are invalidated as a result of invoking this kfunc.
+
+!!! note
+    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

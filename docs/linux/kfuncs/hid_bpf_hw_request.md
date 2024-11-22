@@ -30,6 +30,9 @@ Communicate with a HID device
 
 <!-- [KFUNC_DEF] -->
 `#!c int hid_bpf_hw_request(struct hid_bpf_ctx *ctx, __u8 *buf, size_t buf__sz, hid_report_type rtype, hid_class_request reqtype)`
+
+!!! note
+    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

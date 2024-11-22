@@ -32,6 +32,9 @@ A pointer to &struct hid_bpf_ctx on success, `NULL` on error.
 !!! note
 	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
 	from the kfunc before making use of it (dereferencing or passing to another helper).
+
+!!! note
+    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 <!-- [/KFUNC_DEF] -->
 
 ## Usage
