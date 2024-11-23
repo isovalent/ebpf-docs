@@ -34,3 +34,7 @@
   - [`BPF_SEQ_PRINTF`](bpf_seq_printf.md)
   - [`BPF_SNPRINTF`](bpf_snprintf.md)
   - [`bpf_printk`](bpf_printk.md)
+- Open coded iterator loop macros
+  - [`bpf_for_each`](bpf_for_each.md)
+  - [`bpf_for`](bpf_for.md)
+  - [`bpf_repeat`](bpf_repeat.md)
