@@ -72,12 +72,12 @@ The `bpf_endian.h` file contains macros for endianess conversion. It is useful w
 
 The file contains definitions for the following:
 
-* `bpf_htons`
-* `bpf_ntohs`
-* `bpf_htonl`
-* `bpf_ntohl`
-* `bpf_cpu_to_be64`
-* `bpf_be64_to_cpu`
+* [`bpf_htons`](bpf_htons.md)
+* [`bpf_ntohs`](bpf_ntohs.md)
+* [`bpf_htonl`](bpf_htonl.md)
+* [`bpf_ntohl`](bpf_ntohl.md)
+* [`bpf_cpu_to_be64`](bpf_cpu_to_be64.md)
+* [`bpf_be64_to_cpu`](bpf_be64_to_cpu.md)
 
 ## [`bpf_tracing.h`](https://github.com/libbpf/libbpf/blob/master/src/bpf_tracing.h)
 
