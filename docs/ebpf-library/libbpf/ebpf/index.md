@@ -85,18 +85,18 @@ The `bpf_tracing.h` file contains macros which are mostly meant for tracing-like
 
 The file contains definitions for the following:
 
-* `PT_REGS_PARM`
-* `PT_REGS_RET`
-* `PT_REGS_FP`
-* `PT_REGS_RC`
-* `PT_REGS_SP`
-* `PT_REGS_IP`
-* `PT_REGS_SYSCALL_REGS`
-* `BPF_PROG`
-* `BPF_PROG2`
-* `BPF_KPROBE`/`BPF_UPROBE`
-* `BPF_KRETPROBE`/`BPF_URETPROBE`
-* `BPF_KSYSCALL`/`BPF_KPROBE_SYSCALL`
+* [`PT_REGS_PARM`](PT_REGS_PARM.md)
+* [`PT_REGS_RET`](PT_REGS_RET.md)
+* [`PT_REGS_FP`](PT_REGS_FP.md)
+* [`PT_REGS_RC`](PT_REGS_RC.md)
+* [`PT_REGS_SP`](PT_REGS_SP.md) 
+* [`PT_REGS_IP`](PT_REGS_IP.md)
+* [`PT_REGS_SYSCALL_REGS`](PT_REGS_SYSCALL_REGS.md)
+* [`BPF_PROG`](BPF_PROG.md)
+* [`BPF_PROG2`](BPF_PROG2.md)
+* [`BPF_KPROBE`](BPF_KPROBE.md)/[`BPF_UPROBE`](BPF_UPROBE.md)
+* [`BPF_KRETPROBE`](BPF_KRETPROBE.md)/[`BPF_URETPROBE`](BPF_URETPROBE.md)
+* [`BPF_KSYSCALL`](BPF_KSYSCALL.md)/[`BPF_KPROBE_SYSCALL`](BPF_KPROBE_SYSCALL.md)
 
 ## [`bpf_core_read.h`](https://github.com/libbpf/libbpf/blob/master/src/bpf_core_read.h)
 
