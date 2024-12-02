@@ -64,7 +64,7 @@ struct {
 
 `flags` is a bitmask of flags. Supported flags are:
 
-* `BPF_F_NETFILTER_IP_DEFRAG` - Enable defragmentation of IP fragments, this hook will only see defragmented packets. If the `BPF_F_NETFILTER_IP_DEFRAG` flag is set, the priority must be higher than `NF_IP_PRI_CONNTRACK_DEFRAG` (-400) for ensuring the prog runs after nf_defrag.
+* `BPF_F_NETFILTER_IP_DEFRAG` - Enable defragmentation of IP fragments, this hook will only see defragmented packets. If the `BPF_F_NETFILTER_IP_DEFRAG` [:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/91721c2d02d3a0141df8a4787c7079b89b0d0607) flag is set, the priority must be higher than `NF_IP_PRI_CONNTRACK_DEFRAG` (-400) for ensuring the prog runs after nf_defrag.
 
 ## Example
 
