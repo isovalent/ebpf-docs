@@ -60,11 +60,11 @@ struct {
 
 `hooknum` is the hook number, supported values are `NF_INET_PRE_ROUTING` (0), `NF_INET_LOCAL_IN` (1), `NF_INET_FORWARD` (2), `NF_INET_LOCAL_OUT` (3), and `NF_INET_POST_ROUTING` (4).
 
-`priority` is the priority of the hook, lower values are called first. `NF_IP_PRI_FIRST` (-2147483648) and `NF_IP_PRI_LAST` (2147483647) are not allowed. If the `BPF_F_NETFILTER_IP_DEFRAG` flag is set, the priority must be higher than `NF_IP_PRI_CONNTRACK_DEFRAG` (-400).
+`priority` is the priority of the hook, lower values are called first. `NF_IP_PRI_FIRST` (-2147483648) and `NF_IP_PRI_LAST` (2147483647) are not allowed.
 
 `flags` is a bitmask of flags. Supported flags are:
 
-* `NF_IP_PRI_CONNTRACK_DEFRAG` - Enable defragmentation of IP fragments, this hook will only see defragmented packets.
+* `BPF_F_NETFILTER_IP_DEFRAG` - Enable defragmentation of IP fragments, this hook will only see defragmented packets. If the `BPF_F_NETFILTER_IP_DEFRAG` flag is set, the priority must be higher than `NF_IP_PRI_CONNTRACK_DEFRAG` (-400) for ensuring the prog runs after nf_defrag.
 
 ## Example
 
