@@ -19,7 +19,7 @@ TC Action programs are typically put into an [ELF](../../concepts/elf.md) sectio
 * `TC_ACT_OK` (0) - Signals that the packet should proceed.
 * `TC_ACT_RECLASSIFY` (1) - Signals that the packet has to re-start classification from the root qdisc. This is typically used after modifying the packet so its classification might have different results.
 * `TC_ACT_SHOT` (2) - Signals that the packet should be dropped, no other TC processing should happen.
-* `TC_ACT_PIPE`	(3) - While defined, this action should not be used and holds no particular meaning for eBPF classifiers.
+* `TC_ACT_PIPE`	(3) - Iterates to the next action, if available.
 * `TC_ACT_STOLEN` (4) - While defined, this action should not be used and holds no particular meaning for eBPF classifiers.
 * `TC_ACT_QUEUED` (5) - While defined, this action should not be used and holds no particular meaning for eBPF classifiers.
 * `TC_ACT_REPEAT` (6) - While defined, this action should not be used and holds no particular meaning for eBPF classifiers.
