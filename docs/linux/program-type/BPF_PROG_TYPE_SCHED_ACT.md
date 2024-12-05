@@ -5,7 +5,7 @@ description: "This page documents the 'BPF_PROG_TYPE_SCHED_ACT' eBPF program typ
 # Program type `BPF_PROG_TYPE_SCHED_ACT`
 
 <!-- [FEATURE_TAG](BPF_PROG_TYPE_SCHED_CLS) -->
-[:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/94caee8c312d)
+[:octicons-tag-24: v4.1](https://github.com/torvalds/linux/commit/96be4325f443dbbfeb37d2a157675ac0736531a1)
 <!-- [/FEATURE_TAG] -->
 
 This program type allows for the implementation of a Traffic Control (TC) action in eBPF.
@@ -194,10 +194,6 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
     * [`bpf_tcp_check_syncookie`](../helper-function/bpf_tcp_check_syncookie.md)
     * [`bpf_tcp_gen_syncookie`](../helper-function/bpf_tcp_gen_syncookie.md)
-    * [`bpf_tcp_raw_check_syncookie_ipv4`](../helper-function/bpf_tcp_raw_check_syncookie_ipv4.md)
-    * [`bpf_tcp_raw_check_syncookie_ipv6`](../helper-function/bpf_tcp_raw_check_syncookie_ipv6.md)
-    * [`bpf_tcp_raw_gen_syncookie_ipv4`](../helper-function/bpf_tcp_raw_gen_syncookie_ipv4.md)
-    * [`bpf_tcp_raw_gen_syncookie_ipv6`](../helper-function/bpf_tcp_raw_gen_syncookie_ipv6.md)
     * [`bpf_tcp_sock`](../helper-function/bpf_tcp_sock.md)
     * [`bpf_this_cpu_ptr`](../helper-function/bpf_this_cpu_ptr.md)
     * [`bpf_timer_cancel`](../helper-function/bpf_timer_cancel.md)
@@ -213,7 +209,44 @@ Not all helper functions are available in all program types. These are the helpe
 
 <!-- [PROG_KFUNC_REF] -->
 ??? abstract "Supported kfuncs"
+    - [`bpf_arena_alloc_pages`](../kfuncs/bpf_arena_alloc_pages.md)
+    - [`bpf_arena_free_pages`](../kfuncs/bpf_arena_free_pages.md)
+    - [`bpf_cast_to_kern_ctx`](../kfuncs/bpf_cast_to_kern_ctx.md)
     - [`bpf_crypto_decrypt`](../kfuncs/bpf_crypto_decrypt.md)
     - [`bpf_crypto_encrypt`](../kfuncs/bpf_crypto_encrypt.md)
+    - [`bpf_dynptr_adjust`](../kfuncs/bpf_dynptr_adjust.md)
+    - [`bpf_dynptr_clone`](../kfuncs/bpf_dynptr_clone.md)
     - [`bpf_dynptr_from_skb`](../kfuncs/bpf_dynptr_from_skb.md)
+    - [`bpf_dynptr_is_null`](../kfuncs/bpf_dynptr_is_null.md)
+    - [`bpf_dynptr_is_rdonly`](../kfuncs/bpf_dynptr_is_rdonly.md)
+    - [`bpf_dynptr_size`](../kfuncs/bpf_dynptr_size.md)
+    - [`bpf_dynptr_slice`](../kfuncs/bpf_dynptr_slice.md)
+    - [`bpf_dynptr_slice_rdwr`](../kfuncs/bpf_dynptr_slice_rdwr.md)
+    - [`bpf_iter_bits_destroy`](../kfuncs/bpf_iter_bits_destroy.md)
+    - [`bpf_iter_bits_new`](../kfuncs/bpf_iter_bits_new.md)
+    - [`bpf_iter_bits_next`](../kfuncs/bpf_iter_bits_next.md)
+    - [`bpf_iter_css_destroy`](../kfuncs/bpf_iter_css_destroy.md)
+    - [`bpf_iter_css_new`](../kfuncs/bpf_iter_css_new.md)
+    - [`bpf_iter_css_next`](../kfuncs/bpf_iter_css_next.md)
+    - [`bpf_iter_css_task_destroy`](../kfuncs/bpf_iter_css_task_destroy.md)
+    - [`bpf_iter_css_task_new`](../kfuncs/bpf_iter_css_task_new.md)
+    - [`bpf_iter_css_task_next`](../kfuncs/bpf_iter_css_task_next.md)
+    - [`bpf_iter_num_destroy`](../kfuncs/bpf_iter_num_destroy.md)
+    - [`bpf_iter_num_new`](../kfuncs/bpf_iter_num_new.md)
+    - [`bpf_iter_num_next`](../kfuncs/bpf_iter_num_next.md)
+    - [`bpf_iter_task_destroy`](../kfuncs/bpf_iter_task_destroy.md)
+    - [`bpf_iter_task_new`](../kfuncs/bpf_iter_task_new.md)
+    - [`bpf_iter_task_next`](../kfuncs/bpf_iter_task_next.md)
+    - [`bpf_iter_task_vma_destroy`](../kfuncs/bpf_iter_task_vma_destroy.md)
+    - [`bpf_iter_task_vma_new`](../kfuncs/bpf_iter_task_vma_new.md)
+    - [`bpf_iter_task_vma_next`](../kfuncs/bpf_iter_task_vma_next.md)
+    - [`bpf_map_sum_elem_count`](../kfuncs/bpf_map_sum_elem_count.md)
+    - [`bpf_preempt_disable`](../kfuncs/bpf_preempt_disable.md)
+    - [`bpf_preempt_enable`](../kfuncs/bpf_preempt_enable.md)
+    - [`bpf_rcu_read_lock`](../kfuncs/bpf_rcu_read_lock.md)
+    - [`bpf_rcu_read_unlock`](../kfuncs/bpf_rcu_read_unlock.md)
+    - [`bpf_rdonly_cast`](../kfuncs/bpf_rdonly_cast.md)
+    - [`bpf_wq_init`](../kfuncs/bpf_wq_init.md)
+    - [`bpf_wq_set_callback_impl`](../kfuncs/bpf_wq_set_callback_impl.md)
+    - [`bpf_wq_start`](../kfuncs/bpf_wq_start.md)
 <!-- [/PROG_KFUNC_REF] -->

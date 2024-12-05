@@ -304,7 +304,5 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_wq_start`](../kfuncs/bpf_wq_start.md)
     - [`bpf_xdp_ct_alloc`](../kfuncs/bpf_xdp_ct_alloc.md)
     - [`bpf_xdp_ct_lookup`](../kfuncs/bpf_xdp_ct_lookup.md)
-    - [`bpf_xdp_get_xfrm_state`](../kfuncs/bpf_xdp_get_xfrm_state.md)
-    - [`bpf_xdp_xfrm_state_release`](../kfuncs/bpf_xdp_xfrm_state_release.md)
     - [`crash_kexec`](../kfuncs/crash_kexec.md)
 <!-- [/PROG_KFUNC_REF] -->

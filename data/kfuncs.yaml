@@ -22,7 +22,7 @@ sets:
       - BPF_PROG_TYPE_TRACING
     attach_type:
       - BPF_TRACE_ITER
-        
+
   fs_kfunc_set_ids:
     funcs:
       - name: bpf_get_file_xattr
@@ -30,7 +30,7 @@ sets:
     program_types:
       - BPF_PROG_TYPE_LSM
 
-  cpumask_kfunc_btf_ids:    
+  cpumask_kfunc_btf_ids:
     funcs:
       - name: bpf_cpumask_create
         flags: [KF_ACQUIRE, KF_RET_NULL]
@@ -88,7 +88,7 @@ sets:
       - BPF_PROG_TYPE_STRUCT_OPS
 
   generic_btf_ids:
-    funcs:    
+    funcs:
       - name: crash_kexec
         flags: [KF_DESTRUCTIVE]
       - name: bpf_obj_new_impl
@@ -132,11 +132,11 @@ sets:
         flags: [KF_ACQUIRE, KF_RET_NULL]
       - name: bpf_throw
     program_types:
-     - BPF_PROG_TYPE_TRACING
-     - BPF_PROG_TYPE_LSM
-     - BPF_PROG_TYPE_SCHED_CLS
-     - BPF_PROG_TYPE_XDP
-     - BPF_PROG_TYPE_STRUCT_OPS
+      - BPF_PROG_TYPE_TRACING
+      - BPF_PROG_TYPE_LSM
+      - BPF_PROG_TYPE_SCHED_CLS
+      - BPF_PROG_TYPE_XDP
+      - BPF_PROG_TYPE_STRUCT_OPS
 
   common_btf_ids:
     funcs:
@@ -206,7 +206,7 @@ sets:
 
   fsverity_set_ids:
     funcs:
-      - name:  bpf_get_fsverity_digest
+      - name: bpf_get_fsverity_digest
         flags: [KF_TRUSTED_ARGS]
     program_types:
       - BPF_PROG_TYPE_LSM
@@ -248,7 +248,7 @@ sets:
       - BPF_PROG_TYPE_CGROUP_SOCK_ADDR
 
   bpf_sk_iter_kfunc_ids:
-    funcs:    
+    funcs:
       - name: bpf_sock_destroy
         flags: [KF_TRUSTED_ARGS]
     program_types:
@@ -356,7 +356,7 @@ sets:
       - name: bpf_xdp_xfrm_state_release
         flags: [KF_RELEASE]
     program_types:
-      - BPF_PROG_TYPE_SCHED_CLS
+      - BPF_PROG_TYPE_XDP
 
   hid_bpf_kfunc_ids:
     funcs:
