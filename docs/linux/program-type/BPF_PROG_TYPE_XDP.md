@@ -491,10 +491,10 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_xdp_ct_alloc`](../kfuncs/bpf_xdp_ct_alloc.md)
     - [`bpf_xdp_ct_lookup`](../kfuncs/bpf_xdp_ct_lookup.md)
     - [`bpf_xdp_flow_lookup`](../kfuncs/bpf_xdp_flow_lookup.md)
+    - [`bpf_xdp_get_xfrm_state`](../kfuncs/bpf_xdp_get_xfrm_state.md)
     - [`bpf_xdp_metadata_rx_hash`](../kfuncs/bpf_xdp_metadata_rx_hash.md)
     - [`bpf_xdp_metadata_rx_timestamp`](../kfuncs/bpf_xdp_metadata_rx_timestamp.md)
     - [`bpf_xdp_metadata_rx_vlan_tag`](../kfuncs/bpf_xdp_metadata_rx_vlan_tag.md)
-    - [`bpf_xdp_get_xfrm_state`](../kfuncs/bpf_xdp_get_xfrm_state.md)
     - [`bpf_xdp_xfrm_state_release`](../kfuncs/bpf_xdp_xfrm_state_release.md)
     - [`crash_kexec`](../kfuncs/crash_kexec.md)
 <!-- [/PROG_KFUNC_REF] -->
