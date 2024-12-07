@@ -14,9 +14,10 @@ import (
 	"strings"
 )
 
-const libBpfGhHelperDefsURL = "https://raw.githubusercontent.com/libbpf/libbpf/master/src/bpf_helper_defs.h"
+const libBpfGhHelperDefsURL = "https://raw.githubusercontent.com/libbpf/libbpf/{ref}/src/bpf_helper_defs.h"
 
 var (
+	libbpfRef      = flag.String("libbpf-ref", "master", "libbpf ref")
 	filePath       = flag.String("file-path", "", "If set, use a file path instead of fetching from the interwebs")
 	helperFuncPath = flag.String("helper-path", "", "The path the helper function pages")
 
@@ -47,7 +48,8 @@ func main() {
 
 		headerFileReader = file
 	} else {
-		resp, err := http.Get(libBpfGhHelperDefsURL)
+		url := strings.Replace(libBpfGhHelperDefsURL, "{ref}", *libbpfRef, 1)
+		resp, err := http.Get(url)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error: %w", err)
 			return
