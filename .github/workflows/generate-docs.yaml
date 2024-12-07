@@ -1,0 +1,22 @@
+name: Generate docs
+
+on:
+  pull_request: {}
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  USER: root
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run generate-docs
+        run: |
+          make generate-docs
+      - name: Assert no changes
+        run: |
+          git diff --quiet || (echo "Please run 'make generate-docs' and commit the changes" && exit 1)
+
