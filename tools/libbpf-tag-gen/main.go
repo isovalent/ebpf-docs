@@ -11,9 +11,12 @@ import (
 	"strings"
 )
 
-var projectroot = flag.String("project-root", "", "Root of the project")
+var (
+	projectroot = flag.String("project-root", "", "Root of the project")
+	libbpfRef   = flag.String("libbpf-ref", "master", "libbpf ref")
+)
 
-const libbpfMapURL = "https://raw.githubusercontent.com/libbpf/libbpf/refs/heads/master/src/libbpf.map"
+const libbpfMapURL = "https://raw.githubusercontent.com/libbpf/libbpf/{ref}/src/libbpf.map"
 
 const (
 	LIBBPF_TAG_START = "<!-- [LIBBPF_TAG] -->"
@@ -26,7 +29,8 @@ func main() {
 		panic("project-root is required")
 	}
 
-	resp, err := http.Get(libbpfMapURL)
+	url := strings.Replace(libbpfMapURL, "{ref}", *libbpfRef, 1)
+	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to download libbpf.map: %v\n", err)
 		os.Exit(1)
