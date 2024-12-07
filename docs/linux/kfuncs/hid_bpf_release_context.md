@@ -14,7 +14,6 @@ Release the previously allocated context @ctx
 
 `ctx`: the HID-BPF context to release
 
-<!-- [KFUNC_DEF] -->
 `#!c void hid_bpf_release_context(struct hid_bpf_ctx *ctx)`
 
 !!! note
@@ -22,8 +21,8 @@ Release the previously allocated context @ctx
 	All copies of the pointer being released are invalidated as a result of invoking this kfunc.
 
 !!! note
-    This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
-<!-- [/KFUNC_DEF] -->
+	This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
+	This is only true when not used from [`BPF_PROG_SYSCALL`](../program-type/BPF_PROG_SYSCALL.md) programs.
 
 ## Usage
 
@@ -34,10 +33,10 @@ Release the previously allocated context @ctx
 
 The following program types can make use of this kfunc:
 
-<!-- [KFUNC_PROG_REF] -->
-- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
-- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
-<!-- [/KFUNC_PROG_REF] -->
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md) Since [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
 
 ### Example
 

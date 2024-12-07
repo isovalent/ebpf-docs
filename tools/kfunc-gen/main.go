@@ -39,8 +39,10 @@ const (
 	progKfuncRefEnd   = `<!-- [/PROG_KFUNC_REF] -->`
 )
 
-// List of kfuncs which only exists for the selftests, and are not actually supposed to be used
-var testKfuncs = []string{
+// List of kfuncs which we purposefully ignore in the data file
+var ignoreKfuncs = []string{
+	// These are technically usable kfuncs, but they do not do anything useful.
+	// They are just here for testing purposes. So we will not document them.
 	"bpf_fentry_test1",
 	"bpf_modify_return_test",
 	"bpf_modify_return_test2",
@@ -87,8 +89,7 @@ func main() {
 		switch t := (iter.Type).(type) {
 		case *btf.Func:
 			if slices.Contains(t.Tags, "bpf_kfunc") {
-				// Ignore test functions
-				if slices.Contains(testKfuncs, t.Name) {
+				if slices.Contains(ignoreKfuncs, t.Name) {
 					continue
 				}
 
@@ -147,6 +148,10 @@ func main() {
 
 			startIdx := strings.Index(fileStr, kfuncDefStart)
 			endIdx := strings.Index(fileStr, kfuncDefEnd)
+
+			if startIdx == -1 || endIdx == -1 {
+				continue
+			}
 
 			var newFile strings.Builder
 			// Write everything before the marker
@@ -212,17 +217,6 @@ func main() {
 				panic(err)
 			}
 
-			fileStr := string(fileContents)
-
-			startIdx := strings.Index(fileStr, kfuncProgRefStart)
-			endIdx := strings.Index(fileStr, kfuncProgRefEnd)
-
-			var newFile strings.Builder
-			// Write everything before the marker
-			newFile.WriteString(fileStr[:startIdx])
-			newFile.WriteString(kfuncProgRefStart)
-
-			newFile.WriteString("\n")
 			var progTypes []string
 			for _, progType := range set.ProgramTypes {
 				if progType == "BPF_PROG_TYPE_UNSPEC" {
@@ -238,6 +232,22 @@ func main() {
 			for _, progType := range progTypes {
 				progToKfunc[progType] = append(progToKfunc[progType], kfunc.Name)
 			}
+
+			fileStr := string(fileContents)
+
+			startIdx := strings.Index(fileStr, kfuncProgRefStart)
+			endIdx := strings.Index(fileStr, kfuncProgRefEnd)
+
+			if startIdx == -1 || endIdx == -1 {
+				continue
+			}
+
+			var newFile strings.Builder
+			// Write everything before the marker
+			newFile.WriteString(fileStr[:startIdx])
+			newFile.WriteString(kfuncProgRefStart)
+
+			newFile.WriteString("\n")
 
 			for _, progType := range progTypes {
 				newFile.WriteString(fmt.Sprintf("- [`%s`](../program-type/%s.md)\n", progType, progType))
