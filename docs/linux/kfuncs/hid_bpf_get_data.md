@@ -24,13 +24,11 @@ Get the kernel memory pointer associated with the context @ctx
 
 `NULL` on error, an `__u8` memory pointer on success
 
-<!-- [KFUNC_DEF] -->
 `#!c __u8 *hid_bpf_get_data(struct hid_bpf_ctx *ctx, unsigned int offset, const size_t rdwr_buf_size)`
 
 !!! note
 	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
 	from the kfunc before making use of it (dereferencing or passing to another helper).
-<!-- [/KFUNC_DEF] -->
 
 ## Usage
 
@@ -40,10 +38,9 @@ The goal of HID-BPF is to partially replace drivers, so this situation can be pr
 
 The following program types can make use of this kfunc:
 
-<!-- [KFUNC_PROG_REF] -->
-- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
-- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
-<!-- [/KFUNC_PROG_REF] -->
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md) Since [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
 
 ### Example
 

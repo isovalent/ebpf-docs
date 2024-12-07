@@ -27,12 +27,11 @@ Inject a HID report in the kernel from a HID device
 
 Returns `0` on success, a negative error code otherwise. This function will wait for the device to be available before injecting the event, thus needs to be called in sleepable context.
 
-<!-- [KFUNC_DEF] -->
 `#!c int hid_bpf_input_report(struct hid_bpf_ctx *ctx, hid_report_type type, u8 *buf, const size_t buf__sz)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
-<!-- [/KFUNC_DEF] -->
+    This is only true when not used from [`BPF_PROG_SYSCALL`](../program-type/BPF_PROG_SYSCALL.md) programs.
 
 ## Usage
 
@@ -43,10 +42,10 @@ Returns `0` on success, a negative error code otherwise. This function will wait
 
 The following program types can make use of this kfunc:
 
-<!-- [KFUNC_PROG_REF] -->
-- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
-- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
-<!-- [/KFUNC_PROG_REF] -->
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md) Since [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
 
 ### Example
 

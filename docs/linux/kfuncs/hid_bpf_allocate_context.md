@@ -20,7 +20,6 @@ Allocate a context to the given HID device
 
 A pointer to &struct hid_bpf_ctx on success, `NULL` on error.
 
-<!-- [KFUNC_DEF] -->
 `#!c struct hid_bpf_ctx *hid_bpf_allocate_context(unsigned int hid_id)`
 
 !!! note
@@ -35,7 +34,7 @@ A pointer to &struct hid_bpf_ctx on success, `NULL` on error.
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
-<!-- [/KFUNC_DEF] -->
+	This is only true when not used from [`BPF_PROG_SYSCALL`](../program-type/BPF_PROG_SYSCALL.md) programs.
 
 ## Usage
 
@@ -46,10 +45,10 @@ A pointer to &struct hid_bpf_ctx on success, `NULL` on error.
 
 The following program types can make use of this kfunc:
 
-<!-- [KFUNC_PROG_REF] -->
-- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
-- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
-<!-- [/KFUNC_PROG_REF] -->
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md) Since [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
 
 ### Example
 

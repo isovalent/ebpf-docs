@@ -26,9 +26,7 @@ Inject a HID report in the kernel from a HID device
 
 Returns `0` on success, a negative error code otherwise. This function will immediately fail if the device is not available, thus can be safely used in IRQ context.
 
-<!-- [KFUNC_DEF] -->
 `#!c int hid_bpf_try_input_report(struct hid_bpf_ctx *ctx, hid_report_type type, u8 *buf, const size_t buf__sz)`
-<!-- [/KFUNC_DEF] -->
 
 ## Usage
 
@@ -39,10 +37,9 @@ Returns `0` on success, a negative error code otherwise. This function will imme
 
 The following program types can make use of this kfunc:
 
-<!-- [KFUNC_PROG_REF] -->
-- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
-- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
-<!-- [/KFUNC_PROG_REF] -->
+- [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md) Until [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md) Since [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
 
 ### Example
 

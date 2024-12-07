@@ -358,32 +358,30 @@ sets:
     program_types:
       - BPF_PROG_TYPE_XDP
 
-  hid_bpf_kfunc_ids:
+  # Excluding `hid_bpf_kfunc_ids` and `hid_bpf_syscall_kfunc_ids`, these have overlapping
+  # kfuncs, which makes it difficult to automatically generate correct pages.
+  # Pages for these kfuncs are manually managed.
+  #
+  # These pseudo sets is here so generation can still be used for the program type pages
+  hid_bpf_pseudo_kfunc_ids:
     funcs:
       - name: hid_bpf_get_data
-        flags: [KF_RET_NULL]
       - name: hid_bpf_allocate_context
-        flags: [KF_ACQUIRE, KF_RET_NULL, KF_SLEEPABLE]
       - name: hid_bpf_release_context
-        flags: [KF_RELEASE, KF_SLEEPABLE]
       - name: hid_bpf_hw_request
-        flags: [KF_SLEEPABLE]
       - name: hid_bpf_hw_output_report
-        flags: [KF_SLEEPABLE]
       - name: hid_bpf_input_report
-        flags: [KF_SLEEPABLE]
       - name: hid_bpf_try_input_report
     program_types:
-      - BPF_PROG_TYPE_TRACING
-      - BPF_PROG_TYPE_LSM
+      - BPF_PROG_TYPE_TRACING    # until v6.11 ebc0d8093e8c97de459615438edefad1a4ac352c
+      - BPF_PROG_TYPE_LSM        # until v6.11 ebc0d8093e8c97de459615438edefad1a4ac352c
+      - BPF_PROG_TYPE_STRUCT_OPS # since v6.11 ebc0d8093e8c97de459615438edefad1a4ac352c
 
-  hid_bpf_syscall_kfunc_ids:
+  hid_bpf_pseudo_syscall_kfunc_ids:
     funcs:
       - name: hid_bpf_attach_prog
       - name: hid_bpf_allocate_context
-        flags: [KF_ACQUIRE, KF_RET_NULL]
       - name: hid_bpf_release_context
-        flags: [KF_RELEASE]
       - name: hid_bpf_hw_request
       - name: hid_bpf_hw_output_report
       - name: hid_bpf_input_report
