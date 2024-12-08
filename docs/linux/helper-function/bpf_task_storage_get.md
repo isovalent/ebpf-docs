@@ -13,10 +13,10 @@ description: "This page documents the 'bpf_task_storage_get' eBPF helper functio
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-<!-- [HELPER_FUNC_DEF] -->
-Get a bpf_local_storage from the _task_.
 
-Logically, it could be thought of as getting the value from a _map_ with _task_ as the **key**.  From this perspective,  the usage is not much different from **bpf_map_lookup_elem**(_map_, **&**_task_) except this helper enforces the key must be a task_struct and the map must also be a **BPF_MAP_TYPE_TASK_STORAGE**.
+Get a bpf_local_storage from the _task_. 
+
+Logically, it could be thought of as getting the value from a _map_ with _task_ as the **key**. From this perspective, the usage is not much different from **bpf_map_lookup_elem**(_map_, **&**_task_) except this helper enforces the key must be a valid BTF pointer to **struct task_struct** (see [bpf_get_current_task_btf](../helper-function/bpf_get_current_task_btf.md) for more information), and the map must also be a **BPF_MAP_TYPE_TASK_STORAGE**. 
 
 Underneath, the value is stored locally at _task_ instead of the _map_.  The _map_ is used as the bpf-local-storage "type". The bpf-local-storage "type" (i.e. the _map_) is searched against all bpf_local_storage residing at _task_.
 
@@ -29,7 +29,7 @@ A bpf_local_storage pointer is returned on success.
 **NULL** if not found or there was an error in adding a new bpf_local_storage.
 
 `#!c static void *(* const bpf_task_storage_get)(void *map, struct task_struct *task, void *value, __u64 flags) = (void *) 156;`
-<!-- [/HELPER_FUNC_DEF] -->
+
 
 ## Usage
 
