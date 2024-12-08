@@ -86,7 +86,7 @@ Setting this flag will initialize the hash table with a seed of 0.
 
 The hashing algorithm used by the hash table is seeded with a random number by default. This seeding is meant as a mitigation against Denial of Service attacks which could exploit the predictability of hashing implementations.
 
-This random seed makes hash map operations inherently random in access time. This flag was introduced to make performance evaluation more consistent.
+This random seed makes hash map operations inherently random at access time. This flag was introduced to make performance evaluation more consistent.
 
 !!! warning
     It is not recommended to use this flag in production due to the vulnerability to Denial of Service attacks.
