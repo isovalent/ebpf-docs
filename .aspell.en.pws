@@ -122,10 +122,16 @@ NUMA
 IMM
 GPL
 MPL
+accessor
+accessors
 centric
+enum
+enums
 relocation
 relocations
 signable
+signedness
+typedefs
 accumulatively
 untrusted
 inlined
@@ -145,6 +151,7 @@ deduplication
 dereference
 dereferenced
 dereferencing
+dereferences
 incrementing
 misprediction
 sleepable
