@@ -34,7 +34,7 @@ A pointer to &struct hid_bpf_ctx on success, `NULL` on error.
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
-	This is only true when not used from [`BPF_PROG_SYSCALL`](../program-type/BPF_PROG_SYSCALL.md) programs.
+	This is only true when not used from [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md) programs.
 
 ## Usage
 
