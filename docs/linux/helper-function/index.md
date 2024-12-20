@@ -71,7 +71,7 @@ These helpers are used with [`BPF_MAP_TYPE_QUEUE`](../map-type/BPF_MAP_TYPE_QUEU
 
 ### Ring buffer helper
 
-These helpers are used with `BPF_MAP_TYPE_RINGBUF` maps.
+These helpers are used with [`BPF_MAP_TYPE_RINGBUF`](../map-type/BPF_MAP_TYPE_RINGBUF.md) maps.
 
 * [`bpf_ringbuf_output`](bpf_ringbuf_output.md)
 * [`bpf_ringbuf_reserve`](bpf_ringbuf_reserve.md)
@@ -96,41 +96,41 @@ These helpers are used with [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_S
 
 ### Task storage helpers
 
-These helpers are used with `BPF_MAP_TYPE_TASK_STORAGE` maps.
+These helpers are used with [`BPF_MAP_TYPE_TASK_STORAGE`](../map-type/BPF_MAP_TYPE_TASK_STORAGE.md) maps.
 
 * [`bpf_task_storage_get`](bpf_task_storage_get.md)
 * [`bpf_task_storage_delete`](bpf_task_storage_delete.md)
 
 ### Inode storage helpers
 
-These helpers are used with `BPF_MAP_TYPE_INODE_STORAGE` maps.
+These helpers are used with [`BPF_MAP_TYPE_INODE_STORAGE`](../map-type/BPF_MAP_TYPE_INODE_STORAGE.md) maps.
 
 * [`bpf_inode_storage_get`](bpf_inode_storage_get.md)
 * [`bpf_inode_storage_delete`](bpf_inode_storage_delete.md)
 
 ### Socket storage helpers
 
-These helpers are used with `BPF_MAP_TYPE_SK_STORAGE` maps.
+These helpers are used with [`BPF_MAP_TYPE_SK_STORAGE`](../map-type/BPF_MAP_TYPE_SK_STORAGE.md) maps.
 
 * [`bpf_sk_storage_get`](bpf_sk_storage_get.md)
 * [`bpf_sk_storage_delete`](bpf_sk_storage_delete.md)
 
 ### Local cGroup storage helpers
 
-These helpers are used with `BPF_MAP_TYPE_CGROUP_STORAGE` and `BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE` maps.
+These helpers are used with [`BPF_MAP_TYPE_CGROUP_STORAGE`](../map-type/BPF_MAP_TYPE_CGROUP_STORAGE.md) and [`BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE`](../map-type/BPF_MAP_TYPE_PERCPU_CGROUP_STORAGE.md) maps.
 
 * [`bpf_get_local_storage`](bpf_get_local_storage.md)
 
 ### Global cGroup storage helpers
 
-These helpers are used with `BPF_MAP_TYPE_CGRP_STORAGE` maps.
+These helpers are used with [`BPF_MAP_TYPE_CGRP_STORAGE`](../map-type/BPF_MAP_TYPE_CGRP_STORAGE.md) maps.
 
 * [`bpf_cgrp_storage_get`](bpf_cgrp_storage_get.md)
 * [`bpf_cgrp_storage_delete`](bpf_cgrp_storage_delete.md)
 
 ### User ring buffer
 
-These helpers are related to `BPF_MAP_TYPE_USER_RINGBUF` maps.
+These helpers are related to [`BPF_MAP_TYPE_USER_RINGBUF`](../map-type/BPF_MAP_TYPE_USER_RINGBUF.md) maps.
 
 * [`bpf_user_ringbuf_drain`](bpf_user_ringbuf_drain.md)
 
@@ -169,7 +169,7 @@ These helpers are used to influence processes.
 
 ### Tracing helpers
 
-These helpers return information specific to `BPF_PROG_TYPE_TRACING` programs.
+These helpers return information specific to [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md) programs.
 
 * [`bpf_get_func_ip`](bpf_get_func_ip.md)
 * [`bpf_get_func_arg`](bpf_get_func_arg.md)
@@ -179,7 +179,7 @@ These helpers return information specific to `BPF_PROG_TYPE_TRACING` programs.
 
 ### Perf event helpers
 
-These helpers return information specific to `BPF_PROG_TYPE_PERF_EVENT` programs.
+These helpers return information specific to [`BPF_PROG_TYPE_PERF_EVENT`](../program-type/BPF_PROG_TYPE_PERF_EVENT.md) programs.
 
 * [`bpf_perf_prog_read_value`](bpf_perf_prog_read_value.md)
 
@@ -310,7 +310,7 @@ These helpers redirect the flow of packets in some way.
 
 ### XDP helpers
 
-These helpers are specific to `BPF_PROG_TYPE_XDP` programs.
+These helpers are specific to [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md) programs.
 
 * [`bpf_xdp_adjust_head`](bpf_xdp_adjust_head.md)
 * [`bpf_xdp_adjust_tail`](bpf_xdp_adjust_tail.md)
@@ -321,7 +321,7 @@ These helpers are specific to `BPF_PROG_TYPE_XDP` programs.
 
 ### Socket message helpers
 
-These helpers are specific to `BPF_PROG_TYPE_SK_MSG` programs.
+These helpers are specific to [`BPF_PROG_TYPE_SK_MSG`](../program-type/BPF_PROG_TYPE_SK_MSG.md) programs.
 
 * [`bpf_msg_apply_bytes`](bpf_msg_apply_bytes.md)
 * [`bpf_msg_cork_bytes`](bpf_msg_cork_bytes.md)
@@ -331,7 +331,7 @@ These helpers are specific to `BPF_PROG_TYPE_SK_MSG` programs.
 
 ### LWT helpers
 
-These helpers are specific to `BPF_PROG_TYPE_LWT_*` programs.
+These helpers are specific to [`BPF_PROG_TYPE_LWT_*`](../program-type/index.md#light-weight-tunnel-program-types) programs.
 
 * [`bpf_lwt_push_encap`](bpf_lwt_push_encap.md)
 * [`bpf_lwt_seg6_store_bytes`](bpf_lwt_seg6_store_bytes.md)
@@ -379,7 +379,7 @@ These helpers are related to socket.
 
 ### Socket ops helpers
 
-These helpers are specific to `BPF_PROG_TYPE_SOCK_OPS` programs.
+These helpers are specific to [`BPF_PROG_TYPE_SOCK_OPS`](../program-type/BPF_PROG_TYPE_SOCK_OPS.md) programs.
 
 * [`bpf_load_hdr_opt`](bpf_load_hdr_opt.md)
 * [`bpf_store_hdr_opt`](bpf_store_hdr_opt.md)
@@ -387,7 +387,7 @@ These helpers are specific to `BPF_PROG_TYPE_SOCK_OPS` programs.
 
 ## Infrared related helpers
 
-These helpers are specific to `BPF_PROG_TYPE_LIRC_MODE2` programs.
+These helpers are specific to [`BPF_PROG_TYPE_LIRC_MODE2`](../program-type/BPF_PROG_TYPE_LIRC_MODE2.md) programs.
 
 * [`bpf_rc_repeat`](bpf_rc_repeat.md)
 * [`bpf_rc_keydown`](bpf_rc_keydown.md)
@@ -395,7 +395,7 @@ These helpers are specific to `BPF_PROG_TYPE_LIRC_MODE2` programs.
 
 ## Syscall helpers
 
-These helpers are specific to `BPF_PROG_TYPE_SYSCALL` programs.
+These helpers are specific to [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md) programs.
 
 * [`bpf_sys_bpf`](bpf_sys_bpf.md)
 * [`bpf_btf_find_by_name_kind`](bpf_btf_find_by_name_kind.md)
@@ -404,7 +404,7 @@ These helpers are specific to `BPF_PROG_TYPE_SYSCALL` programs.
 
 ## LSM helpers
 
-These helpers are specific to `BPF_PROG_TYPE_LSM` programs.
+These helpers are specific to [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md) programs.
 
 * [`bpf_bprm_opts_set`](bpf_bprm_opts_set.md)
 * [`bpf_ima_inode_hash`](bpf_ima_inode_hash.md)
@@ -412,7 +412,7 @@ These helpers are specific to `BPF_PROG_TYPE_LSM` programs.
 
 ## Sysctl helpers
 
-These helpers are specific to `BPF_PROG_TYPE_CGROUP_SYSCTL` programs.
+These helpers are specific to [`BPF_PROG_TYPE_CGROUP_SYSCTL`](../program-type/BPF_PROG_TYPE_CGROUP_SYSCTL.md) programs.
 
 * [`bpf_sysctl_get_name`](bpf_sysctl_get_name.md)
 * [`bpf_sysctl_get_current_value`](bpf_sysctl_get_current_value.md)

@@ -10,5 +10,5 @@
 * [Resource Limit](resource-limit.md)
 * [AF_XDP](af_xdp.md)
 * [KFuncs](kfuncs.md)
-* [dynptrs](dynptrs.md)
-* [token](token.md)
+* [Dynptrs](dynptrs.md)
+* [Token](token.md)

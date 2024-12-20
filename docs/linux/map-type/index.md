@@ -86,12 +86,12 @@ This map type replaces a structure containing function pointers in the kernel an
   
 ## Per CPU maps
 
-There are a number of per-CPU map types like `BPF_MAP_TYPE_PERCPU_HASH` and `BPF_MAP_TYPE_PERCPU_ARRAY`. These are per-CPU variants of their base map types. Like the name implies these maps consists of multiple copies, one for each logical CPU on the host. Programs running in the context of CPU#0 for example will see different map contents as a program running on CPU#2. 
+There are a number of per-CPU map types like [`BPF_MAP_TYPE_PERCPU_HASH`](BPF_MAP_TYPE_PERCPU_HASH.md) and [`BPF_MAP_TYPE_PERCPU_ARRAY`](BPF_MAP_TYPE_PERCPU_ARRAY.md). These are per-CPU variants of their base map types. Like the name implies these maps consists of multiple copies, one for each logical CPU on the host. Programs running in the context of CPU#0 for example will see different map contents as a program running on CPU#2. 
 
 Since multiple CPUs will never read or write to memory being accessed by another CPU, it is impossible for race conditions to occur, and thus programs don't need to waste cycles on mechanisms like spin-locks or atomic instructions to synchronize access. It also improves speed due to better cache locality.
 
 Another interesting use of these map types are as scratch buffers. Since eBPF programs always execute on the same logical CPU for their entire execution including tail calls, these maps can be used to transfer information between tail calls, something that is difficult to do otherwise. In the same spirit, these maps can also be used to hold data without counting towards the stack limit of the eBPF program.
 
-When per-CPU maps are accessed via user-space all copies are always accesses at the same time. In fact the values read and written to these maps via the syscalls are like arrays with a size equal to the logical CPU count of the host. For more details, see the `BPF_MAP_LOOKUP_ELEM` and `BPF_MAP_UPDATE_ELEM` pages.
+When per-CPU maps are accessed via user-space all copies are always accesses at the same time. In fact the values read and written to these maps via the syscalls are like arrays with a size equal to the logical CPU count of the host. For more details, see the [`BPF_MAP_LOOKUP_ELEM`](../syscall/BPF_MAP_LOOKUP_ELEM.md) and [`BPF_MAP_UPDATE_ELEM`](../syscall/BPF_MAP_UPDATE_ELEM.md) pages.
 
 The downside is that programs cannot share information across CPU boundaries. So these kinds of maps are typically better suited for use-cases where data flows from the programs to user space like counters or use-cases where related events always happen on the same logical CPU like incoming network packets of the same flow due to RSS

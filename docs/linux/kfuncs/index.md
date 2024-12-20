@@ -11,7 +11,7 @@ hide: toc
 Helper functions enjoy the stability guarantee offered by the user API, as explained in [documentation about stability guarantees of the helper functions](../helper-function/index.md#stability-guarantees).
 But KFuncs do not enjoy those same guarantees.
 
-Although KFuncs are not expected to be very volatile, still defensive programming techniques are advised.
+Although KFuncs are not expected to be very volatile, defensive programming techniques are still advised.
 Otherwise helper functions should be preferred over KFuncs.
 
 ## cGroup resource statistic KFuncs

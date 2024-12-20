@@ -4,7 +4,7 @@ description: "This page explains the concept of AF_XDP in depth, AF_XDP being a 
 ---
 # AF_XDP
 
-The kernel allows process to create sockets under the Address Family Express Data Path (AF_XDP) address family. This is a special socket type which in combination with an XDP program can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP Socket).
+The kernel allows process to create sockets under the Address Family Express Data Path (AF_XDP) address family. This is a special socket type which in combination with an [XDP program](../program-type/BPF_PROG_TYPE_XDP.md) can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP Socket).
 
 Examples of such use cases are:
 
@@ -12,7 +12,7 @@ Examples of such use cases are:
 * DDoS protection - If complex processing across multiple packets is required, eBPF programs can't keep up, thus forwarding traffic to user space for analysis might be needed.
 * Application specific optimization - The Linux network stack by necessity needs to handle a lot of protocols and edge cases which are not applicable to workloads you are running. This means paying performance cost for features you are not using. While not easy, one can implement a custom network stack specific to their needs, to eke out every drop of performance.
 
-All ingress traffic is first processes by an XDP program, it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques such as `PACKET_MMAP` or `PF_RING` which require you to handle all traffic and re-implement every protocol needed for the host to function.
+All ingress traffic is first processes by an [XDP program](../program-type/BPF_PROG_TYPE_XDP.md), it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques such as `PACKET_MMAP` or `PF_RING` which require you to handle all traffic and re-implement every protocol needed for the host to function.
 
 ## Usage
 
@@ -47,7 +47,7 @@ static const int umem_len = chunk_size * chunk_count;
 unsigned char[chunk_count][chunk_size] umem = malloc(umem_len);
 ```
 
-Now that we have a UMEM, link it to the socket via the `setsockopt` syscall:
+Now that we have a UMEM, link it to the socket via the [`setsockopt`](https://man7.org/linux/man-pages/man3/setsockopt.3p.html) syscall:
 
 ```c
 struct xdp_umem_reg {
@@ -69,13 +69,13 @@ if (!setsockopt(fd, SOL_XDP, XDP_UMEM_REG, &umem_reg, sizeof(umem_reg)))
     // handle error
 ```
 
-Next up are our ring buffers. These are allocated by the kernel when we tell the kernel how large we want each ring buffer to be via a `setsockopt` syscall. After allocation, we can map the ring buffer into the memory of our process via the `mmap` syscall.
+Next up are our ring buffers. These are allocated by the kernel when we tell the kernel how large we want each ring buffer to be via a [`setsockopt`](https://man7.org/linux/man-pages/man3/setsockopt.3p.html) syscall. After allocation, we can map the ring buffer into the memory of our process via the [`mmap`](https://man7.org/linux/man-pages/man2/mmap.2.html) syscall.
 
 The following process should be repeated for each ring buffer (with different options, which will be pointed out):
 
 We have to determine the desired ring buffer size, which must be a power of 2 for example `128`, `256`, `512`, `1024` etc. The sizes of the ring buffers can be tweaked and can differ from ring buffer to ring buffer, we will pick `512` for this example.
 
-We inform the kernel of our chosen size via a `setsockopt` syscall:
+We inform the kernel of our chosen size via a [`setsockopt`](https://man7.org/linux/man-pages/man3/setsockopt.3p.html) syscall:
 
 ```c
 static const int ring_size = 512;
@@ -83,7 +83,7 @@ if (!setsockopt(fd, SOL_XDP, {XDP_RX_RING,XDP_TX_RING,XDP_UMEM_FILL_RING,XDP_UME
     // handle error
 ```
 
-After we have set the sizes for all ring buffers we can request the `mmap` offsets with a `getsockopt` syscall:
+After we have set the sizes for all ring buffers we can request the [`mmap`](https://man7.org/linux/man-pages/man2/mmap.2.html) offsets with a [`getsockopt`](https://man7.org/linux/man-pages/man3/getsockopt.3p.html) syscall:
 
 ```c
 struct xdp_ring_offset {
@@ -308,7 +308,7 @@ The process of transferring data between the NIC and UMEM can work in copy or ze
 
 You can request an explicit mode by specifying the `XDP_COPY` or `XDP_ZEROCOPY` flags when performing the bind syscall. If zero-copy mode is requested but not available, the bind syscall will result in an error.
 
-Additionally, a bound socket can be queried with `getsockopt` and the `XDP_OPTIONS` option and `struct xdp_options` value. If the flag `XDP_OPTIONS_ZEROCOPY` is set, then the socket operates in zero-copy mode.
+Additionally, a bound socket can be queried with [`getsockopt`](https://man7.org/linux/man-pages/man3/getsockopt.3p.html) and the `XDP_OPTIONS` option and `struct xdp_options` value. If the flag `XDP_OPTIONS_ZEROCOPY` is set, then the socket operates in zero-copy mode.
 
 #### Headroom
 

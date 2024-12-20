@@ -73,7 +73,7 @@ In [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/06accc8779c
 
 The advantage of this method is that the verifier only has to check two states as opposed to the amount of iterations like with a bounded loop and we don't require a callback function like with the loop helper.
 
-Every iterator type has a `bpf_iter_<type>_new` function to initialize the iterator, a `bpf_iter_<type>_next` function to get the next element, and a `bpf_iter_<type>_destroy` function to clean up the iterator. In the case of the numeric iterator, the `bpf_iter_num_new`, `bpf_iter_num_next` and `bpf_iter_num_destroy` functions are used.
+Every iterator type has a `bpf_iter_<type>_new` function to initialize the iterator, a `bpf_iter_<type>_next` function to get the next element, and a `bpf_iter_<type>_destroy` function to clean up the iterator. In the case of the numeric iterator, the [`bpf_iter_num_new`](../kfuncs/bpf_iter_num_new.md), [`bpf_iter_num_next`](../kfuncs/bpf_iter_num_next.md) and [`bpf_iter_num_destroy`](../kfuncs/bpf_iter_bits_destroy.md) functions are used.
 
 The most basic example of a numeric iterator is:
 
