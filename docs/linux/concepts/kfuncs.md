@@ -45,7 +45,7 @@ char _license[] SEC("license") = "GPL";
 ```
 
 !!! note
-    The definition of `__ksym` is `#define __ksym __attribute__((section(".ksyms")))`
+    The definition of [`__ksym`](../../ebpf-library/libbpf/ebpf/__ksym.md) is `#define __ksym __attribute__((section(".ksyms")))`
 
 ### Kernel modules
 

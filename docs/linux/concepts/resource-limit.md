@@ -8,7 +8,7 @@ The Linux kernel has protection mechanisms that prevent processes from taking up
 
 ## Rlimit
 
-rlimit or "resource limit" is a system to track and limit the amount of certain resources you are allowed to use. One of the things it limits is the amount of "locked memory" https://man7.org/linux/man-pages/man2/getrlimit.2.html
+rlimit or "resource limit" is a system to track and limit the amount of certain resources you are allowed to use. One of the things it limits is the amount of "locked memory" [https://man7.org/linux/man-pages/man2/getrlimit.2.html](https://man7.org/linux/man-pages/man2/getrlimit.2.html)
 
 Until kernel version v5.11 this mechanism was used to track and limit the memory usage of BPF maps which count towards the locked memory limit, so you commonly would have to increase or disable this rlimit which requires an additional capability `CAP_SYS_RESOURCE`.
 

@@ -87,4 +87,4 @@ Additionally, global functions can be replaced by [`freplace`](../program-type/B
 
 The [`bpf_for_each_map_elem`](../helper-function/bpf_for_each_map_elem.md) helper also introduced the concept of callbacks. This allows users to declare a static function that is not directly called by the BPF program but is passed as function pointer to a helper to be called.
 
-In later versions this mechanism is also used for [timers](timers.md), `bpf_find_vma`, and [loops](loops.md).
+In later versions this mechanism is also used for [timers](timers.md), [`bpf_find_vma`](../helper-function/bpf_find_vma.md), and [loops](loops.md).

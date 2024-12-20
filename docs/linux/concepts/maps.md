@@ -47,36 +47,36 @@ struct {
 
 ```
 
-The `__uint` and `__type` macros used in the above example are typically used to make the type definition easier to read.
-They are defined in [`tools/lib/bpf/bpf_helpers.h`](https://elixir.bootlin.com/linux/v6.2.2/source/tools/lib/bpf/bpf_helpers.h).
+The [`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md), [`__type`](../../ebpf-library/libbpf/ebpf/__type.md), [`__array`](../../ebpf-library/libbpf/ebpf/__array.md) and [`__ulong`](../../ebpf-library/libbpf/ebpf/__ulong.md) macros used in the above example are typically used to make the type definition easier to read.
 
 ```c
 #define __uint(name, val) int (*name)[val]
 #define __type(name, val) typeof(val) *name
 #define __array(name, val) typeof(val) *name[]
+#define __ulong(name, val) enum { ___bpf_concat(__unique_value, __COUNTER__) = val } name
 ```
 
 The `name` part of these macros refers to field names of the to be created structure. Not all names are recognized by libbpf and compatible libraries. However, the following are:
 
-* `type` (`__uint`) - enum, see the [map types](../map-type/index.md) index for all valid options.
-* `max_entries` (`__uint`) - int indicating the maximum amount of entries.
-* `map_flags` (`__uint`) - a bitfield of flags, see [flags section](../syscall/BPF_MAP_CREATE.md#flags) in map load syscall command for valid options. 
-* `numa_node` (`__uint`) - the ID of the NUMA node on which to place the map.
-* `key_size` (`__uint`) - the size of the key in bytes. This field is mutually exclusive with the `key` field.
-* `key` (`__type`) - the type of the key. This field is mutually exclusive with the `key_size` field.
-* `value_size` (`__uint`) - the size of the value in bytes. This field is mutually exclusive with the `value` and `values` fields.
-* `value` (`__type`) - the type of the value. This field is mutually exclusive with the `value` and `value_size` fields.
-* `values` (`__array`) - see [static values section](#static-values). This field is mutually exclusive with the `value` and `value_size` field.
-* `pinning` (`__uint`) - `LIBBPF_PIN_BY_NAME` or `LIBBPF_PIN_NONE` see [pinning page](pinning.md) for details.
-* `map_extra` (`__uint`) - Addition settings, currently only used by bloom filters which use the lowest 4 bits to indicate the amount of hashes used in the bloom filter.
+* `type` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - enum, see the [map types](../map-type/index.md) index for all valid options.
+* `max_entries` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - int indicating the maximum amount of entries.
+* `map_flags` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - a bitfield of flags, see [flags section](../syscall/BPF_MAP_CREATE.md#flags) in map load syscall command for valid options. 
+* `numa_node` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - the ID of the NUMA node on which to place the map.
+* `key_size` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - the size of the key in bytes. This field is mutually exclusive with the `key` field.
+* `key` ([`__type`](../../ebpf-library/libbpf/ebpf/__type.md)) - the type of the key. This field is mutually exclusive with the `key_size` field.
+* `value_size` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - the size of the value in bytes. This field is mutually exclusive with the `value` and `values` fields.
+* `value` ([`__type`](../../ebpf-library/libbpf/ebpf/__type.md))) - the type of the value. This field is mutually exclusive with the `value` and `value_size` fields.
+* `values` ([`__array`](../../ebpf-library/libbpf/ebpf/__array.md)) - see [static values section](#static-values). This field is mutually exclusive with the `value` and `value_size` field.
+* `pinning` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - `LIBBPF_PIN_BY_NAME` or `LIBBPF_PIN_NONE` see [pinning page](pinning.md) for details.
+* `map_extra` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - Addition settings, currently only used by bloom filters which use the lowest 4 bits to indicate the amount of hashes used in the bloom filter.
 
 Typically, only the `type`, `key`/`key_size`, `value`/`values`/`value_size`, and `max_entries` fields are required.
 
 #### Static values
 
-The `values` map field has a syntax when used, it is the only field to use the `__array` macro and requires us to initialize our map constant with a value. Its purpose is to populate the contents of the map during loading without having to do so manually via a userspace application. This is especially handy for users who use `ip`, `tc`, or `bpftool` to load their programs.
+The `values` map field has a syntax when used, it is the only field to use the [`__array`](../../ebpf-library/libbpf/ebpf/__array.md) macro and requires us to initialize our map constant with a value. Its purpose is to populate the contents of the map during loading without having to do so manually via a userspace application. This is especially handy for users who use `ip`, `tc`, or `bpftool` to load their programs.
 
-The `val` part of the `__array` parameter should contain a type describing the individual array elements. The values we would like to pre-populate should go into the value part of the struct initialization.
+The `val` part of the [`__array`](../../ebpf-library/libbpf/ebpf/__array.md) parameter should contain a type describing the individual array elements. The values we would like to pre-populate should go into the value part of the struct initialization.
 
 The following examples show how to pre-populate a map-in-map:
 

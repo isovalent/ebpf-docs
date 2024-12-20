@@ -16,7 +16,7 @@ In [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/cc8b0b92a1
 
 ### Function inlining
 
-By default, the compiler will chose inline a function or to keep it a separate function. Compilers can be encouraged to inline or not inline a function with arguments like `__attribute__((always_inline))` or `__attribute__((noinline))`. Inlined functions do not incur the overhead of a function call as they will become part of the calling function. Inlined functions can also be optimized per call site since arguments are known.
+By default, the compiler will chose inline a function or to keep it a separate function. Compilers can be encouraged to inline or not inline a function with arguments like `__attribute__((always_inline))`/[`__always_inline`](../../ebpf-library/libbpf/ebpf/__always_inline.md) or `__attribute__((noinline))`/[`__noinline`](../../ebpf-library/libbpf/ebpf/__noinline.md). Inlined functions do not incur the overhead of a function call as they will become part of the calling function. Inlined functions can also be optimized per call site since arguments are known.
 
 ### Tail calls
 
@@ -42,8 +42,8 @@ In [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/69c087ba62
 
 In [:octicons-tag-24: v6.8](https://github.com/torvalds/linux/commit/94e1c70a34523b5e1529e4ec508316acc6a26a2b) global function argument annotation were added. These are a set of annotations (in practice these are BTF decl tags), which if added to an attribute, tell the verifier to restrict the input values to the function. Possible tags are:
 
-* `__arg_ctx` - The argument is a pointer to a program context.
-* `__arg_nonnull` - The argument can not be NULL.
-* `__arg_nullable` - The argument can be NULL.
-* `__arg_trusted` - The argument must be a [trusted value](kfuncs.md#kf_trusted_args).
-* `__arg_arena` - The argument must be a pointer to a [memory arena](../map-type/BPF_MAP_TYPE_ARENA.md).
+* [`__arg_ctx`](../../ebpf-library/libbpf/ebpf/__arg_ctx.md) - The argument is a pointer to a program context.
+* [`__arg_nonnull`](../../ebpf-library/libbpf/ebpf/__arg_nonnull.md) - The argument can not be NULL.
+* [`__arg_nullable`](../../ebpf-library/libbpf/ebpf/__arg_nullable.md) - The argument can be NULL.
+* [`__arg_trusted`](../../ebpf-library/libbpf/ebpf/__arg_trusted.md) - The argument must be a [trusted value](kfuncs.md#kf_trusted_args).
+* [`__arg_arena`](../../ebpf-library/libbpf/ebpf/__arg_arena.md) - The argument must be a pointer to a [memory arena](../map-type/BPF_MAP_TYPE_ARENA.md).

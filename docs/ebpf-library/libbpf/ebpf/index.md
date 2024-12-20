@@ -6,7 +6,7 @@ Libbpf contains a number of C header files containing mostly pre-processor macro
 
 The `bpf_helper_defs.h` file is automatically generated from the kernel sources. It contains forward declarations for every type that is used by [eBPF helper functions](../../../linux/helper-function/index.md) and somewhat special forward declarations for the helper functions themselves.
 
-For example, the `bpf_map_lookup_elem` function is declared as: 
+For example, the [`bpf_map_lookup_elem`](../../../linux/helper-function/bpf_map_lookup_elem.md) function is declared as: 
 
 `#!c static void *(* const bpf_map_lookup_elem)(void *map, const void *key) = (void *) 1;`
 
@@ -14,7 +14,7 @@ The normal forward declaration of this function would be
 
 `#!c void *bpf_map_lookup_elem(void *map, const void *key);`.
 
-But what the special declaration does is it casts a pointer of value `1` to a const static function pointer. This causes the compiler to emit a `call 1` instruction which the kernel recognizes as a call to the `bpf_map_lookup_elem` function.
+But what the special declaration does is it casts a pointer of value `1` to a const static function pointer. This causes the compiler to emit a `call 1` instruction which the kernel recognizes as a call to the [`bpf_map_lookup_elem`](../../../linux/helper-function/bpf_map_lookup_elem.md) function.
 
 It is entirely possible to copy parts of this file if you are only interested in specific helper functions and their types and even modify their definitions to suit your needs. Though for most people it will be best to include the whole file.
 
