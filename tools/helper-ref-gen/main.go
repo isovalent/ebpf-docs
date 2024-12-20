@@ -85,8 +85,16 @@ func (df *helperFuncDataFile) flatten(group helperFuncGroup) helperFuncGroup {
 		}
 	}
 
-	slices.SortFunc(group, func(i, j helperDef) bool {
-		return i.Name < j.Name
+	slices.SortStableFunc(group, func(i, j helperDef) int {
+		if i.Name == j.Name {
+			return 0
+		}
+
+		if i.Name < j.Name {
+			return -1
+		}
+
+		return 1
 	})
 
 	return group
