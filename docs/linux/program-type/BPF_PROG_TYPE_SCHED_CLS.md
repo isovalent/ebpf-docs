@@ -36,7 +36,7 @@ When attached in direct action mode, the eBPF program will act as both a classif
 * `TC_ACT_REPEAT` (6) - While defined, this action should not be used and holds no particular meaning for eBPF classifiers.
 * `TC_ACT_REDIRECT`	(7) - Signals that the packet should be redirected, the details of how and where to are set as side effects by [helpers functions](../helper-function/index.md).
 
-Classifiers in direct action mode can still set a class id by setting the `tc_classid` field 
+Classifiers in direct action mode can still set a class id by setting the `tc_classid` field
 
 ## Context
 
@@ -100,6 +100,47 @@ $ tc filter add dev eth1 ingress bpf obj program.o sec my_func
 For more details on the `tc` command, see the general [man page](https://man7.org/linux/man-pages/man8/tc.8.html).
 
 For more details on the bpf filter options, see the `tc-bpf` [man page](https://man7.org/linux/man-pages/man8/tc-bpf.8.html).
+
+In addition, the kernel supports the tcx (the new tc BPF fast path with BPF link support) since kernel v6.6, which allows for more advanced features like attaching multiple programs to a single qdisc, or attaching programs to a qdisc on the egress side:
+```
++-------------------------------------------+----------------------------------------+----------------------------------+-----------+
+| Program Type                              | Attach Type                            | ELF Section Name                 | Sleepable |
++===========================================+========================================+==================================+===========+
+| ``BPF_PROG_TYPE_SCHED_CLS``               |                                        | ``classifier`` [#tc_legacy]_     |           |
++                                           +                                        +----------------------------------+-----------+
+|                                           |                                        | ``tc`` [#tc_legacy]_             |           |
++                                           +----------------------------------------+----------------------------------+-----------+
+|                                           | ``BPF_NETKIT_PRIMARY``                 | ``netkit/primary``               |           |
++                                           +----------------------------------------+----------------------------------+-----------+
+|                                           | ``BPF_NETKIT_PEER``                    | ``netkit/peer``                  |           |
++                                           +----------------------------------------+----------------------------------+-----------+
+|                                           | ``BPF_TCX_INGRESS``                    | ``tc/ingress``                   |           |
++                                           +----------------------------------------+----------------------------------+-----------+
+|                                           | ``BPF_TCX_EGRESS``                     | ``tc/egress``                    |           |
++                                           +----------------------------------------+----------------------------------+-----------+
+|                                           | ``BPF_TCX_INGRESS``                    | ``tcx/ingress``                  |           |
++                                           +----------------------------------------+----------------------------------+-----------+
+|                                           | ``BPF_TCX_EGRESS``                     | ``tcx/egress``                   |           |
++-------------------------------------------+----------------------------------------+----------------------------------+-----------+
+```
+
+The definition of return codes for tcx programs  can be found in the kernel sources:
+```c
+/* (Simplified) user return codes for tcx prog type.
+ * A valid tcx program must return one of these defined values. All other
+ * return codes are reserved for future use. Must remain compatible with
+ * their TC_ACT_* counter-parts. For compatibility in behavior, unknown
+ * return codes are mapped to TCX_NEXT.
+ */
+enum tcx_action_base {
+	TCX_NEXT	= -1,
+	TCX_PASS	= 0,
+	TCX_DROP	= 2,
+	TCX_REDIRECT	= 7,
+};
+```
+
+For more details of tcx, see the [LSFMM+BPF Summit Recap and Video: Revamping Global Socket Iterator, Netkit and Next Steps](https://ebpf.foundation/lsfmmbpf-summit-recap-and-video-revamping-global-socket-iterator-netkit-next-steps/).
 
 ## Helper functions
 
