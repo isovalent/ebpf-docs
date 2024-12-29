@@ -49,6 +49,7 @@ jobs:
           echo "    property: G-KVJ1CK539N" >> mkdocs.yml
       - name: Build html
         run: |
+          git config --add safe.directory /docs
           make html PROD=true GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
