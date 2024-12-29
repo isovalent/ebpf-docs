@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Important for the committers plugin
       - name: Cache plugin data
         id: cache-plugins
         uses: actions/cache@v4
