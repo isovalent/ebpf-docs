@@ -8,7 +8,7 @@ description: "This page documents the 'BPF_PROG_TYPE_TRACING' eBPF program type,
 [:octicons-tag-24: v5.5](https://github.com/torvalds/linux/commit/f1b9509c2fb0ef4db8d22dac9aef8e856a5d81f6)
 <!-- [/FEATURE_TAG] -->
 
-Tracing programs are a newer alternative to kprobes and tracepoints. Tracing programs utilize BPF trampolines, a new mechanism which provides practically zero overhead. In addition, tracing programs can be attached to BPF programs to provide troubleshooting and debugging capabilities, something that is not possible with kprobes.
+Tracing programs are a newer alternative to kprobes and tracepoints. Tracing programs utilize [BPF trampolines](../concepts/trampolines.md), a new mechanism which provides practically zero overhead. In addition, tracing programs can be attached to BPF programs to provide troubleshooting and debugging capabilities, something that is not possible with kprobes.
 
 ## Usage
 
@@ -34,7 +34,7 @@ Fentry programs are similar in function to a kprobe attached to a functions firs
 
 Kprobes do not have to be attached at the entry point of a function, kprobes can be installed at any point in the function, whereas fentry programs are always attached at the entry point of a function.
 
-Fentry programs are attached to a BPF trampoline which causes less overhead than kprobes. Fentry programs can also be attached to BPF programs such as XDP, TC or cGroup programs which makes debugging eBPF programs easier. Kprobes lack this capability.
+Fentry programs are attached using a [BPF trampoline](../concepts/trampolines.md) which causes less overhead than kprobes. Fentry programs can also be attached to BPF programs such as XDP, TC or cGroup programs which makes debugging eBPF programs easier. Kprobes lack this capability.
 
 Fentry programs are typically located in an ELF section prefixed with `fentry/`.
 

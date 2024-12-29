@@ -12,18 +12,16 @@ Extension programs can be used to dynamically extend another BPF program.
 
 ## Usage
 
-These programs can be used to replace global functions in already loaded BPF programs. Global functions are verified individually by the verifier based on their types only.
-Hence the global function in the new program which types match older function can
-safely replace that corresponding function.
+These programs can be used to replace global functions in already loaded BPF programs. Global functions are verified individually by the verifier based on their types only. Hence the global function in the new program which types match older function can safely replace that corresponding function.
 
 Programs of this type are typically placed in an ELF section prefixed with `freplace/`
 
 The main use case for extensions is to provide generic mechanism to plug external programs into policy program or function call chaining. The [libxdp](https://github.com/xdp-project/xdp-tools/tree/master/lib/libxdp) project uses this functionality to implement XDP program chaining from a dispatcher program.
 
-This new function/program is called 'an extension' of old program. At load time
-the verifier uses (`attach_prog_fd`, `attach_btf_id`) pair to identify the function
-to be replaced. The BPF program type is derived from the target program into
-extension program. 
+This new function/program is called 'an extension' of old program. At load time the verifier uses (`attach_prog_fd`, `attach_btf_id`) pair to identify the function to be replaced. The BPF program type is derived from the target program into extension program.
+
+!!! note
+    Replacing the original program uses a [trampoline](../concepts/trampolines.md), the same mechanism used by fentry/fexit programs. So attaching such probes to a program and extending it are mutually exclusive.
 
 !!! note
     The verifier allows only one level of replacement. Meaning that the extension program cannot recursively extend an extension.

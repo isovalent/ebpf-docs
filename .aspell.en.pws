@@ -53,6 +53,8 @@ Fexit
 fexit
 Fmodify
 fmodify
+Freplace
+freplace
 datagram
 datagrams
 epoll
@@ -182,6 +184,7 @@ spinlock
 spinlocks
 tracepoint
 tracepoints
+observability
 bytecode
 crypto
 cryptographic

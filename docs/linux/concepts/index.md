@@ -113,4 +113,12 @@ This is an index of Linux specific eBPF concepts and features. For more generic 
 
     [:octicons-arrow-right-24: Token](./token.md)
 
+- __Trampolines__
+
+    ---
+
+    Trampolines are used to attach eBPF programs to kernel functions
+
+    [:octicons-arrow-right-24: Trampolines](./trampolines.md)
+
 </div>
