@@ -12,3 +12,4 @@
 * [KFuncs](kfuncs.md)
 * [Dynptrs](dynptrs.md)
 * [Token](token.md)
+* [Trampolines](trampolines.md)
