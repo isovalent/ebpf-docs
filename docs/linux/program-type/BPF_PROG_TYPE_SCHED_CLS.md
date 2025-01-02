@@ -140,7 +140,7 @@ enum tcx_action_base {
 };
 ```
 
-For more details of tcx, see the [LSFMM+BPF Summit Recap and Video: Revamping Global Socket Iterator, Netkit and Next Steps](https://ebpf.foundation/lsfmmbpf-summit-recap-and-video-revamping-global-socket-iterator-netkit-next-steps/).
+For more details of tcx, see the [<nospell>LSFMM</nospell>+BPF Summit Recap and Video: Revamping Global Socket Iterator, Netkit and Next Steps](https://ebpf.foundation/lsfmmbpf-summit-recap-and-video-revamping-global-socket-iterator-netkit-next-steps/).
 
 ## Helper functions
 
