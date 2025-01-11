@@ -12,7 +12,7 @@ This syscall command create a new BPF link. BPF links are the newest and thus pr
 
 ## Return type
 
-If successful, this syscall command will return a file descriptor to the newly created link. The link is a reference counted object just like other BPF objects. The link is destroyed once no more references to it exist, which might happen if the loader exists without pinning the link or if the pin gets deleted. A loader might also chose to forcefully cause the link to detach from the hook point with the [`BPF_LINK_DETACH`](BPF_LINK_DETACH.md) command.
+If successful, this syscall command will return a file descriptor to the newly created link. The link is a reference counted object just like other BPF objects. The link is destroyed once no more references to it exist, which might happen if the loader exits without pinning the link or if the pin gets deleted. A loader might also chose to forcefully cause the link to detach from the hook point with the [`BPF_LINK_DETACH`](BPF_LINK_DETACH.md) command.
 
 The returned file descriptor can be used with the [`BPF_LINK_UPDATE`](BPF_LINK_UPDATE.md) and [`BPF_LINK_DETACH`](BPF_LINK_DETACH.md) commands.
 
