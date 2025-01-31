@@ -33,6 +33,10 @@ These KFuncs are used to verify <nospell>PKCS#7</nospell> signed data against ke
 ## File related kfuncs
 
 - [`bpf_get_file_xattr`](bpf_get_file_xattr.md)
+- [`bpf_get_task_exe_file`](bpf_get_task_exe_file.md)
+- [`bpf_put_file`](bpf_put_file.md)
+- [`bpf_path_d_path`](bpf_path_d_path.md)
+- [`bpf_get_dentry_xattr`](bpf_get_dentry_xattr.md)
 
 ## CPU mask KFuncs
 
@@ -94,6 +98,7 @@ Kfuncs used to acquire and release task reference.
 
 - [`bpf_task_acquire`](bpf_task_acquire.md)
 - [`bpf_task_release`](bpf_task_release.md)
+- [`bpf_send_signal_task`](bpf_send_signal_task.md)
 
 ## BPF cGroup KFuncs
 
@@ -117,6 +122,11 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_task_under_cgroup`](bpf_task_under_cgroup.md)
 - [`bpf_task_get_cgroup1`](bpf_task_get_cgroup1.md)
 - [`bpf_task_from_pid`](bpf_task_from_pid.md)
+- [`bpf_task_from_vpid`](bpf_task_from_vpid.md)
+
+## Funcs for memory allocator inspection
+
+- [`bpf_get_kmem_cache`](bpf_get_kmem_cache.md)
 
 ## Kfuncs for casting pointers
 
@@ -168,6 +178,18 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_iter_bits_new`](bpf_iter_bits_new.md)
 - [`bpf_iter_bits_next`](bpf_iter_bits_next.md)
 - [`bpf_iter_bits_destroy`](bpf_iter_bits_destroy.md)
+
+## Kfuncs for slab memory allocation iterators
+
+- [`bpf_iter_kmem_cache_new`](bpf_iter_kmem_cache_new.md)
+- [`bpf_iter_kmem_cache_next`](bpf_iter_kmem_cache_next.md)
+- [`bpf_iter_kmem_cache_destroy`](bpf_iter_kmem_cache_destroy.md)
+
+## Kfuncs for sched_ext dispatch queue iterators
+
+- [`bpf_iter_scx_dsq_new`](bpf_iter_scx_dsq_new.md)
+- [`bpf_iter_scx_dsq_next`](bpf_iter_scx_dsq_next.md)
+- [`bpf_iter_scx_dsq_destroy`](bpf_iter_scx_dsq_destroy.md)
 
 ## Kfuncs for dynamic pointers 
 
@@ -223,7 +245,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bbr_init`](bbr_init.md)
 - [`bbr_main`](bbr_main.md)
 - [`bbr_sndbuf_expand`](bbr_sndbuf_expand.md)
-- [`bbr_undo_cwnd`](bbr_undo_cwnd.md)
+- [`bbr_undo_cwnd`](bbr_undo_cwnd.md)scx_bpf_create_dsq
 - [`bbr_cwnd_event`](bbr_cwnd_event.md)
 - [`bbr_ssthresh`](bbr_ssthresh.md)
 - [`bbr_min_tso_segs`](bbr_min_tso_segs.md)
@@ -301,5 +323,75 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`hid_bpf_try_input_report`](hid_bpf_try_input_report.md)
 
 ## KProbe session Kfuncs
+
 - [`bpf_session_cookie`](bpf_session_cookie.md)
 - [`bpf_session_is_return`](bpf_session_is_return.md)
+
+## Memory probe Kfuncs
+
+- [`bpf_copy_from_user_str`](bpf_copy_from_user_str.md)
+
+## IRQ Kfuncs
+
+- [`bpf_local_irq_save`](bpf_local_irq_save.md)
+- [`bpf_local_irq_restore`](bpf_local_irq_restore.md)
+
+## sched_ext Kfuncs
+
+- [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md)
+- [`scx_bpf_select_cpu_dfl`](scx_bpf_select_cpu_dfl.md)
+- [`scx_bpf_cpu_rq`](scx_bpf_cpu_rq.md)
+- [`scx_bpf_now`](scx_bpf_now.md)
+
+### Dispatch Queue Kfuncs
+
+- [`scx_bpf_create_dsq`](scx_bpf_create_dsq.md)
+- [`scx_bpf_destroy_dsq`](scx_bpf_destroy_dsq.md)
+- [`scx_bpf_dsq_nr_queued`](scx_bpf_dsq_nr_queued.md)
+- [`scx_bpf_dsq_insert`](scx_bpf_dsq_insert.md) ([`scx_bpf_dispatch`](scx_bpf_dispatch.md))
+- [`scx_bpf_dsq_insert_vtime`](scx_bpf_dsq_insert_vtime.md) ([`scx_bpf_dispatch_vtime`](scx_bpf_dispatch_vtime.md))
+- [`scx_bpf_dsq_move_to_local`](scx_bpf_dsq_move_to_local.md) ([`scx_bpf_consume`](scx_bpf_consume.md))
+- [`scx_bpf_dsq_move_set_slice`](scx_bpf_dsq_move_set_slice.md) ([`scx_bpf_dispatch_from_dsq_set_slice`](scx_bpf_dispatch_from_dsq_set_slice.md))
+- [`scx_bpf_dsq_move_set_vtime`](scx_bpf_dsq_move_set_vtime.md) ([`scx_bpf_dispatch_from_dsq_set_vtime`](scx_bpf_dispatch_from_dsq_set_vtime.md))
+- [`scx_bpf_dsq_move`](scx_bpf_dsq_move.md) ([`scx_bpf_dispatch_from_dsq`](scx_bpf_dispatch_from_dsq.md))
+- [`scx_bpf_dsq_move_vtime`](scx_bpf_dsq_move_vtime.md) ([`scx_bpf_dispatch_vtime_from_dsq`](scx_bpf_dispatch_vtime_from_dsq.md))
+- [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md)
+
+### Dispatch Kfuncs
+
+- [`scx_bpf_dispatch_nr_slots`](scx_bpf_dispatch_nr_slots.md)
+- [`scx_bpf_dispatch_cancel`](scx_bpf_dispatch_cancel.md)
+
+### Error and debug Kfuncs
+
+- [`scx_bpf_exit_bstr`](scx_bpf_exit_bstr.md)
+- [`scx_bpf_error_bstr`](scx_bpf_error_bstr.md)
+- [`scx_bpf_dump_bstr`](scx_bpf_dump_bstr.md)
+
+### CPU performance Kfuncs
+
+- [`scx_bpf_cpuperf_cap`](scx_bpf_cpuperf_cap.md)
+- [`scx_bpf_cpuperf_cur`](scx_bpf_cpuperf_cur.md)
+- [`scx_bpf_cpuperf_set`](scx_bpf_cpuperf_set.md)
+- [`scx_bpf_nr_cpu_ids`](scx_bpf_nr_cpu_ids.md)
+
+### CPU mask Kfuncs
+
+- [`scx_bpf_get_possible_cpumask`](scx_bpf_get_possible_cpumask.md)
+- [`scx_bpf_get_online_cpumask`](scx_bpf_get_online_cpumask.md)
+- [`scx_bpf_put_cpumask`](scx_bpf_put_cpumask.md)
+
+### Idle CPU mask Kfuncs
+
+- [`scx_bpf_get_idle_cpumask`](scx_bpf_get_idle_cpumask.md)
+- [`scx_bpf_get_idle_smtmask`](scx_bpf_get_idle_smtmask.md)
+- [`scx_bpf_put_idle_cpumask`](scx_bpf_put_idle_cpumask.md)
+- [`scx_bpf_test_and_clear_cpu_idle`](scx_bpf_test_and_clear_cpu_idle.md)
+- [`scx_bpf_pick_idle_cpu`](scx_bpf_pick_idle_cpu.md)
+- [`scx_bpf_pick_any_cpu`](scx_bpf_pick_any_cpu.md)
+
+### Task Kfuncs
+
+- [`scx_bpf_task_running`](scx_bpf_task_running.md)
+- [`scx_bpf_task_cpu`](scx_bpf_task_cpu.md)
+- [`scx_bpf_task_cgroup`](scx_bpf_task_cgroup.md)
