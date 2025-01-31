@@ -5,8 +5,8 @@ sets:
       - name: cgroup_rstat_flush
         flags: [KF_SLEEPABLE]
     program_types:
-      - BPF_PROG_TYPE_TRACING
-      - BPF_PROG_TYPE_LSM
+      - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_LSM
 
   key_sig_kfunc_set:
     funcs:
@@ -19,7 +19,7 @@ sets:
       - name: bpf_verify_pkcs7_signature
         flags: [KF_SLEEPABLE]
     program_types:
-      - BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACING
     attach_type:
       - BPF_TRACE_ITER
 
@@ -28,7 +28,7 @@ sets:
       - name: bpf_get_file_xattr
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_LSM
+      - name: BPF_PROG_TYPE_LSM
 
   cpumask_kfunc_btf_ids:
     funcs:
@@ -83,9 +83,9 @@ sets:
       - name: bpf_cpumask_weight
         flags: [KF_RCU]
     program_types:
-      - BPF_PROG_TYPE_TRACING
-      - BPF_PROG_TYPE_LSM
-      - BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_LSM
+      - name: BPF_PROG_TYPE_STRUCT_OPS
 
   generic_btf_ids:
     funcs:
@@ -130,18 +130,24 @@ sets:
         flags: [KF_ACQUIRE, KF_RCU, KF_RET_NULL]
       - name: bpf_task_from_pid
         flags: [KF_ACQUIRE, KF_RET_NULL]
+      - name: bpf_task_from_vpid
+        flags: [KF_ACQUIRE, KF_RET_NULL]
       - name: bpf_throw
+      - name: bpf_send_signal_task
+        flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_TRACING
-      - BPF_PROG_TYPE_LSM
-      - BPF_PROG_TYPE_SCHED_CLS
-      - BPF_PROG_TYPE_XDP
-      - BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_LSM
+      - name: BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_STRUCT_OPS
 
   common_btf_ids:
     funcs:
       - name: bpf_cast_to_kern_ctx
+        flags: [KF_FASTCALL]
       - name: bpf_rdonly_cast
+        flags: [KF_FASTCALL]
       - name: bpf_rcu_read_lock
       - name: bpf_rcu_read_unlock
       - name: bpf_dynptr_slice
@@ -194,22 +200,33 @@ sets:
         flags: [KF_ITER_NEXT, KF_RET_NULL]
       - name: bpf_iter_bits_destroy
         flags: [KF_ITER_DESTROY]
+      - name: bpf_copy_from_user_str
+        flags: [KF_SLEEPABLE]
+      - name: bpf_get_kmem_cache
+      - name: bpf_iter_kmem_cache_new
+        flags: [KF_ITER_NEW, KF_SLEEPABLE]
+      - name: bpf_iter_kmem_cache_next
+        flags: [KF_ITER_NEXT, KF_RET_NULL, KF_SLEEPABLE]
+      - name: bpf_iter_kmem_cache_destroy
+        flags: [KF_ITER_DESTROY, KF_SLEEPABLE]
+      - name: bpf_local_irq_save
+      - name: bpf_local_irq_restore
     program_types:
-      - BPF_PROG_TYPE_UNSPEC
+      - name: BPF_PROG_TYPE_UNSPEC
 
   bpf_map_iter_kfunc_ids:
     funcs:
       - name: bpf_map_sum_elem_count
         flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_UNSPEC
+      - name: BPF_PROG_TYPE_UNSPEC
 
   fsverity_set_ids:
     funcs:
       - name: bpf_get_fsverity_digest
         flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_LSM
+      - name: BPF_PROG_TYPE_LSM
 
   xdp_metadata_kfunc_ids:
     funcs:
@@ -217,42 +234,84 @@ sets:
       - name: bpf_xdp_metadata_rx_hash
       - name: bpf_xdp_metadata_rx_vlan_tag
     program_types:
-      - BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_XDP
 
   bpf_kfunc_check_set_skb:
     funcs:
       - name: bpf_dynptr_from_skb
+        flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_SCHED_CLS
-      - BPF_PROG_TYPE_SCHED_ACT
-      - BPF_PROG_TYPE_SK_SKB
-      - BPF_PROG_TYPE_SOCKET_FILTER
-      - BPF_PROG_TYPE_CGROUP_SKB
-      - BPF_PROG_TYPE_LWT_OUT
-      - BPF_PROG_TYPE_LWT_IN
-      - BPF_PROG_TYPE_LWT_XMIT
-      - BPF_PROG_TYPE_LWT_SEG6LOCAL
-      - BPF_PROG_TYPE_NETFILTER
+      - name: BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_SCHED_ACT
+      - name: BPF_PROG_TYPE_SK_SKB
+      - name: BPF_PROG_TYPE_SOCKET_FILTER
+      - name: BPF_PROG_TYPE_CGROUP_SKB
+      - name: BPF_PROG_TYPE_CGROUP_SOCK_ADDR
+        since:
+          version: 6.7
+          commit: 53e380d21441909b12b6e0782b77187ae4b971c4
+      - name: BPF_PROG_TYPE_CGROUP_SOCK
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_CGROUP_DEVICE
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_CGROUP_SOCKOPT
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_CGROUP_SYSCTL
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_LWT_OUT
+      - name: BPF_PROG_TYPE_LWT_IN
+      - name: BPF_PROG_TYPE_LWT_XMIT
+      - name: BPF_PROG_TYPE_LWT_SEG6LOCAL
+      - name: BPF_PROG_TYPE_NETFILTER
+      - name: BPF_PROG_TYPE_TRACING
 
   bpf_kfunc_check_set_xdp:
     funcs:
       - name: bpf_dynptr_from_xdp
     program_types:
-      - BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_XDP
 
   bpf_kfunc_check_set_sock_addr:
     funcs:
       - name: bpf_sock_addr_set_sun_path
     program_types:
-      - BPF_PROG_TYPE_CGROUP_SKB
-      - BPF_PROG_TYPE_CGROUP_SOCK_ADDR
+      - name: BPF_PROG_TYPE_CGROUP_SKB
+      - name: BPF_PROG_TYPE_CGROUP_SOCK_ADDR
+        since:
+          version: 6.7
+          commit: 53e380d21441909b12b6e0782b77187ae4b971c4
+      - name: BPF_PROG_TYPE_CGROUP_SOCK_ADDR
+      - name: BPF_PROG_TYPE_CGROUP_SOCK
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_CGROUP_DEVICE
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_CGROUP_SOCKOPT
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_CGROUP_SYSCTL
+        since:
+          version: 6.12
+          commit: 67666479edf1e2b732f4d0ac797885e859a78de4
 
   bpf_sk_iter_kfunc_ids:
     funcs:
       - name: bpf_sock_destroy
         flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACING
     attach_type:
       - BPF_TRACE_ITER
 
@@ -267,14 +326,14 @@ sets:
       - name: bbr_min_tso_segs
       - name: bbr_set_state
     program_types:
-      - BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_STRUCT_OPS
 
   fou_kfunc_set:
     funcs:
       - name: bpf_skb_set_fou_encap
       - name: bpf_skb_get_fou_encap
     program_types:
-      - BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_SCHED_CLS
 
   tcp_cubic_check_kfunc_ids:
     funcs:
@@ -285,7 +344,7 @@ sets:
       - name: cubictcp_cwnd_event
       - name: cubictcp_acked
     program_types:
-      - BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_STRUCT_OPS
 
   tcp_dctcp_check_kfunc_ids:
     funcs:
@@ -296,7 +355,7 @@ sets:
       - name: dctcp_cwnd_undo
       - name: dctcp_state
     program_types:
-      - BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_STRUCT_OPS
 
   bpf_tcp_ca_check_kfunc_ids:
     funcs:
@@ -306,15 +365,15 @@ sets:
       - name: tcp_slow_start
       - name: tcp_cong_avoid_ai
     program_types:
-      - BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_STRUCT_OPS
 
   nf_nat_kfunc_set:
     funcs:
       - name: bpf_ct_set_nat_info
         flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_XDP
-      - BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_SCHED_CLS
 
   nf_ct_kfunc_set:
     funcs:
@@ -339,15 +398,15 @@ sets:
       - name: bpf_ct_change_status
         flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_XDP
-      - BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_SCHED_CLS
 
   xfrm_ifc_kfunc_set:
     funcs:
       - name: bpf_skb_get_xfrm_info
       - name: bpf_skb_set_xfrm_info
     program_types:
-      - BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_SCHED_CLS
 
   xfrm_state_kfunc_set:
     funcs:
@@ -356,7 +415,7 @@ sets:
       - name: bpf_xdp_xfrm_state_release
         flags: [KF_RELEASE]
     program_types:
-      - BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_XDP
 
   # Excluding `hid_bpf_kfunc_ids` and `hid_bpf_syscall_kfunc_ids`, these have overlapping
   # kfuncs, which makes it difficult to automatically generate correct pages.
@@ -373,20 +432,40 @@ sets:
       - name: hid_bpf_input_report
       - name: hid_bpf_try_input_report
     program_types:
-      - BPF_PROG_TYPE_TRACING    # until v6.11 ebc0d8093e8c97de459615438edefad1a4ac352c
-      - BPF_PROG_TYPE_LSM        # until v6.11 ebc0d8093e8c97de459615438edefad1a4ac352c
-      - BPF_PROG_TYPE_STRUCT_OPS # since v6.11 ebc0d8093e8c97de459615438edefad1a4ac352c
+      - name: BPF_PROG_TYPE_TRACING
+        until:
+          version: 6.11
+          commit: ebc0d8093e8c97de459615438edefad1a4ac352c
+      - name: BPF_PROG_TYPE_LSM
+        until:
+          version: 6.11
+          commit: ebc0d8093e8c97de459615438edefad1a4ac352c
+      - name: BPF_PROG_TYPE_STRUCT_OPS
+        since:
+          version: 6.11
+          commit: ebc0d8093e8c97de459615438edefad1a4ac352c
+
+  hid_bpf_pseudo_syscall_kfunc_removed_ids:
+    funcs:
+      - name: hid_bpf_attach_prog
+    program_types:
+      - name: BPF_PROG_TYPE_SYSCALL
+        since:
+          version: 6.3
+          commit: f5c27da4e3c8a2e42fb4f41a0c685debcb9af294
+        until:
+          version: 6.11
+          commit: 4a86220e046da009bef0948e9f51d1d26d68f93c
 
   hid_bpf_pseudo_syscall_kfunc_ids:
     funcs:
-      - name: hid_bpf_attach_prog
       - name: hid_bpf_allocate_context
       - name: hid_bpf_release_context
       - name: hid_bpf_hw_request
       - name: hid_bpf_hw_output_report
       - name: hid_bpf_input_report
     program_types:
-      - BPF_PROG_TYPE_SYSCALL
+      - name: BPF_PROG_TYPE_SYSCALL
 
   crypt_init_kfunc_btf_ids:
     funcs:
@@ -397,7 +476,7 @@ sets:
       - name: bpf_crypto_ctx_acquire
         flags: [KF_ACQUIRE, KF_RCU, KF_RET_NULL]
     program_types:
-      - BPF_PROG_TYPE_SYSCALL
+      - name: BPF_PROG_TYPE_SYSCALL
 
   crypt_kfunc_btf_ids:
     funcs:
@@ -406,16 +485,16 @@ sets:
       - name: bpf_crypto_encrypt
         flags: [KF_RCU]
     program_types:
-      - BPF_PROG_TYPE_SCHED_CLS
-      - BPF_PROG_TYPE_SCHED_ACT
-      - BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_SCHED_ACT
+      - name: BPF_PROG_TYPE_XDP
 
   kprobe_multi_kfunc_set_ids:
     funcs:
       - name: bpf_session_is_return
       - name: bpf_session_cookie
     program_types:
-      - BPF_PROG_TYPE_KPROBE
+      - name: BPF_PROG_TYPE_KPROBE
     attach_type:
       - BPF_TRACE_KPROBE_SESSION
 
@@ -426,18 +505,151 @@ sets:
       - name: bpf_arena_free_pages
         flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE]
     program_types:
-      - BPF_PROG_TYPE_UNSPEC
+      - name: BPF_PROG_TYPE_UNSPEC
 
   bpf_kfunc_check_set_tcp_reqsk:
     funcs:
       - name: bpf_sk_assign_tcp_reqsk
         flags: [KF_TRUSTED_ARGS]
     program_types:
-      - BPF_PROG_TYPE_SCHED_CLS
+      - name: BPF_PROG_TYPE_SCHED_CLS
 
   nf_ft_kfunc_set:
     funcs:
       - name: bpf_xdp_flow_lookup
         flags: [KF_TRUSTED_ARGS, KF_RET_NULL]
     program_types:
-      - BPF_PROG_TYPE_XDP
+      - name: BPF_PROG_TYPE_XDP
+
+  scx_kfunc_set_select_cpu:
+    funcs:
+      - name: scx_bpf_select_cpu_dfl
+        flags: [KF_RCU]
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS
+
+  scx_kfunc_set_enqueue_dispatch:
+    funcs:
+      - name: scx_bpf_dsq_insert
+        flags: [KF_RCU]
+      - name: scx_bpf_dsq_insert_vtime
+        flags: [KF_RCU]
+      - name: scx_bpf_dispatch
+        flags: [KF_RCU]
+      - name: scx_bpf_dispatch_vtime
+        flags: [KF_RCU]
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS
+
+  scx_kfunc_ids_dispatch:
+    funcs:
+      - name: scx_bpf_dispatch_nr_slots
+      - name: scx_bpf_dispatch_cancel
+      - name: scx_bpf_dsq_move_to_local
+      - name: scx_bpf_consume
+      - name: scx_bpf_dsq_move_set_slice
+      - name: scx_bpf_dsq_move_set_vtime
+      - name: scx_bpf_dispatch_from_dsq_set_slice
+      - name: scx_bpf_dispatch_from_dsq_set_vtime
+      - name: scx_bpf_dsq_move
+        flags: [KF_RCU]
+      - name: scx_bpf_dsq_move_vtime
+        flags: [KF_RCU]
+      - name: scx_bpf_dispatch_from_dsq
+        flags: [KF_RCU]
+      - name: scx_bpf_dispatch_vtime_from_dsq
+        flags: [KF_RCU]
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS
+
+  scx_kfunc_ids_cpu_release:
+    funcs:
+      - name: scx_bpf_reenqueue_local
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS
+  
+  scx_kfunc_ids_unlocked:
+    funcs:
+      - name: scx_bpf_dsq_move_set_slice
+      - name: scx_bpf_dsq_move_set_vtime
+      - name: scx_bpf_dispatch_from_dsq_set_slice
+      - name: scx_bpf_dispatch_from_dsq_set_vtime
+      - name: scx_bpf_create_dsq
+        flags: [KF_SLEEPABLE]
+      - name: scx_bpf_dsq_move
+        flags: [KF_RCU]
+      - name: scx_bpf_dsq_move_vtime
+        flags: [KF_RCU]
+      - name: scx_bpf_dispatch_from_dsq
+        flags: [KF_RCU]
+      - name: scx_bpf_dispatch_vtime_from_dsq
+        flags: [KF_RCU]
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_SYSCALL
+
+  scx_kfunc_ids_any:
+    funcs:
+      - name: scx_bpf_kick_cpu
+      - name: scx_bpf_dsq_nr_queued
+      - name: scx_bpf_destroy_dsq
+      - name: bpf_iter_scx_dsq_new
+        flags: [KF_ITER_NEW, KF_RCU_PROTECTED]
+      - name: bpf_iter_scx_dsq_next
+        flags: [KF_ITER_NEXT, KF_RET_NULL]
+      - name: bpf_iter_scx_dsq_destroy
+        flags: [KF_ITER_DESTROY]
+      - name: scx_bpf_exit_bstr
+        flags: [KF_TRUSTED_ARGS]
+      - name: scx_bpf_error_bstr
+        flags: [KF_TRUSTED_ARGS]
+      - name: scx_bpf_dump_bstr
+        flags: [KF_TRUSTED_ARGS]
+      - name: scx_bpf_cpuperf_cap
+      - name: scx_bpf_cpuperf_cur
+      - name: scx_bpf_cpuperf_set
+      - name: scx_bpf_nr_cpu_ids
+      - name: scx_bpf_get_possible_cpumask
+        flags: [KF_ACQUIRE]
+      - name: scx_bpf_get_online_cpumask
+        flags: [KF_ACQUIRE]
+      - name: scx_bpf_put_cpumask
+        flags: [KF_RELEASE]
+      - name: scx_bpf_get_idle_cpumask
+        flags: [KF_ACQUIRE]
+      - name: scx_bpf_get_idle_smtmask
+        flags: [KF_ACQUIRE]
+      - name: scx_bpf_put_idle_cpumask
+        flags: [KF_RELEASE]
+      - name: scx_bpf_test_and_clear_cpu_idle
+      - name: scx_bpf_pick_idle_cpu
+        flags: [KF_RCU]
+      - name: scx_bpf_pick_any_cpu
+        flags: [KF_RCU]
+      - name: scx_bpf_task_running
+        flags: [KF_RCU]
+      - name: scx_bpf_task_cpu
+        flags: [KF_RCU]
+      - name: scx_bpf_cpu_rq
+      - name: scx_bpf_task_cgroup
+        flags: [KF_RCU, KF_ACQUIRE]
+      - name: scx_bpf_now
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS
+      - name: BPF_PROG_TYPE_SYSCALL
+      - name: BPF_PROG_TYPE_TRACING
+
+  bpf_fs_kfunc_set_ids:
+    funcs:
+      - name: bpf_get_task_exe_file
+        flags: [KF_ACQUIRE, KF_TRUSTED_ARGS, KF_RET_NULL]
+      - name: bpf_put_file
+        flags: [KF_RELEASE]
+      - name: bpf_path_d_path
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_get_dentry_xattr
+        flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
+      - name: bpf_get_file_xattr
+        flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
+    program_types:
+      - name: BPF_PROG_TYPE_LSM

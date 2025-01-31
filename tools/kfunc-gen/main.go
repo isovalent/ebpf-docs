@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"slices"
-	"sort"
 	"strings"
 
 	"github.com/cilium/ebpf/btf"
@@ -20,8 +19,19 @@ type kfuncs struct {
 }
 
 type idSet struct {
-	Funcs        []kfunc  `yaml:"funcs"`
-	ProgramTypes []string `yaml:"program_types"`
+	Funcs        []kfunc       `yaml:"funcs"`
+	ProgramTypes []programType `yaml:"program_types"`
+}
+
+type programType struct {
+	Name  string      `yaml:"name"`
+	Since *sinceUntil `yaml:"since"`
+	Until *sinceUntil `yaml:"until"`
+}
+
+type sinceUntil struct {
+	Version string `yaml:"version"`
+	Commit  string `yaml:"commit"`
 }
 
 type kfunc struct {
@@ -30,7 +40,9 @@ type kfunc struct {
 }
 
 const (
-	kfuncDefStart     = `<!-- [KFUNC_DEF] -->`
+	kfuncDefStart = `**Signature**
+
+<!-- [KFUNC_DEF] -->`
 	kfuncDefEnd       = `<!-- [/KFUNC_DEF] -->`
 	kfuncProgRefStart = `<!-- [KFUNC_PROG_REF] -->`
 	kfuncProgRefEnd   = `<!-- [/KFUNC_PROG_REF] -->`
@@ -179,6 +191,7 @@ func main() {
 				case "KF_ITER_DESTROY":
 				case "KF_RCU_PROTECTED":
 					newFile.WriteString(kfRCUProtectedNotice)
+				case "KF_FASTCALL":
 				}
 			}
 
@@ -203,7 +216,12 @@ func main() {
 		}
 	}
 
-	progToKfunc := make(map[string][]string)
+	type kfuncMeta struct {
+		name  string
+		since *sinceUntil
+		until *sinceUntil
+	}
+	progToKfunc := make(map[string][]kfuncMeta)
 
 	for _, set := range kfuncsConfig.Sets {
 		for _, kfunc := range set.Funcs {
@@ -217,20 +235,34 @@ func main() {
 				panic(err)
 			}
 
-			var progTypes []string
+			var progTypes []programType
 			for _, progType := range set.ProgramTypes {
-				if progType == "BPF_PROG_TYPE_UNSPEC" {
+				if progType.Name == "BPF_PROG_TYPE_UNSPEC" {
 					progTypes = append(progTypes, kfuncProgramTypes...)
 				} else {
 					progTypes = append(progTypes, progType)
 				}
 			}
 
-			sort.Strings(progTypes)
-			progTypes = slices.Compact(progTypes)
+			slices.SortStableFunc(progTypes, func(a, b programType) int {
+				if a.Name == b.Name {
+					return 0
+				}
+				if a.Name < b.Name {
+					return -1
+				}
+				return 1
+			})
+			progTypes = slices.CompactFunc(progTypes, func(a, b programType) bool {
+				return a.Name == b.Name
+			})
 
 			for _, progType := range progTypes {
-				progToKfunc[progType] = append(progToKfunc[progType], kfunc.Name)
+				progToKfunc[progType.Name] = append(progToKfunc[progType.Name], kfuncMeta{
+					name:  kfunc.Name,
+					since: progType.Since,
+					until: progType.Until,
+				})
 			}
 
 			fileStr := string(fileContents)
@@ -250,7 +282,17 @@ func main() {
 			newFile.WriteString("\n")
 
 			for _, progType := range progTypes {
-				newFile.WriteString(fmt.Sprintf("- [`%s`](../program-type/%s.md)\n", progType, progType))
+				newFile.WriteString(fmt.Sprintf("- [`%s`](../program-type/%s.md)", progType.Name, progType.Name))
+				if progType.Since != nil {
+					fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", progType.Since.Version, progType.Since.Commit)
+				}
+				if progType.Since != nil || progType.Until != nil {
+					fmt.Fprint(&newFile, " - ")
+				}
+				if progType.Until != nil {
+					fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", progType.Until.Version, progType.Until.Commit)
+				}
+				fmt.Fprint(&newFile, "\n")
 			}
 
 			newFile.WriteString(kfuncProgRefEnd)
@@ -317,10 +359,28 @@ func main() {
 		if ok {
 			newFile.WriteString("??? abstract \"Supported kfuncs\"\n")
 
-			sort.Strings(kfuncs)
+			slices.SortStableFunc(kfuncs, func(a, b kfuncMeta) int {
+				if a.name == b.name {
+					return 0
+				}
+				if a.name < b.name {
+					return -1
+				}
+				return 1
+			})
 
 			for _, kfunc := range kfuncs {
-				newFile.WriteString(fmt.Sprintf("    - [`%s`](../kfuncs/%s.md)\n", kfunc, kfunc))
+				fmt.Fprintf(&newFile, "    - [`%s`](../kfuncs/%s.md)", kfunc.name, kfunc.name)
+				if kfunc.since != nil {
+					fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", kfunc.since.Version, kfunc.since.Commit)
+				}
+				if kfunc.since != nil || kfunc.until != nil {
+					fmt.Fprint(&newFile, " - ")
+				}
+				if kfunc.until != nil {
+					fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", kfunc.until.Version, kfunc.until.Commit)
+				}
+				fmt.Fprint(&newFile, "\n")
 			}
 		} else {
 			newFile.WriteString("There are currently no kfuncs supported for this program type\n")
@@ -348,23 +408,27 @@ func main() {
 	}
 }
 
-var kfuncProgramTypes = []string{
-	"BPF_PROG_TYPE_XDP",
-	"BPF_PROG_TYPE_SCHED_CLS",
-	"BPF_PROG_TYPE_STRUCT_OPS",
-	"BPF_PROG_TYPE_TRACING",
-	"BPF_PROG_TYPE_LSM",
-	"BPF_PROG_TYPE_SYSCALL",
-	"BPF_PROG_TYPE_CGROUP_SKB",
-	"BPF_PROG_TYPE_CGROUP_SOCK_ADDR",
-	"BPF_PROG_TYPE_SCHED_ACT",
-	"BPF_PROG_TYPE_SK_SKB",
-	"BPF_PROG_TYPE_SOCKET_FILTER",
-	"BPF_PROG_TYPE_LWT_OUT",
-	"BPF_PROG_TYPE_LWT_IN",
-	"BPF_PROG_TYPE_LWT_XMIT",
-	"BPF_PROG_TYPE_LWT_SEG6LOCAL",
-	"BPF_PROG_TYPE_NETFILTER",
+var kfuncProgramTypes = []programType{
+	{Name: "BPF_PROG_TYPE_XDP"},
+	{Name: "BPF_PROG_TYPE_SCHED_CLS"},
+	{Name: "BPF_PROG_TYPE_STRUCT_OPS"},
+	{Name: "BPF_PROG_TYPE_TRACING"},
+	{Name: "BPF_PROG_TYPE_LSM"},
+	{Name: "BPF_PROG_TYPE_SYSCALL"},
+	{Name: "BPF_PROG_TYPE_CGROUP_SKB"},
+	{Name: "BPF_PROG_TYPE_CGROUP_SOCK_ADDR", Since: &sinceUntil{Version: "6.7", Commit: "53e380d21441909b12b6e0782b77187ae4b971c4"}},
+	{Name: "BPF_PROG_TYPE_CGROUP_SOCK", Since: &sinceUntil{Version: "6.12", Commit: "67666479edf1e2b732f4d0ac797885e859a78de4"}},
+	{Name: "BPF_PROG_TYPE_CGROUP_DEVICE", Since: &sinceUntil{Version: "6.12", Commit: "67666479edf1e2b732f4d0ac797885e859a78de4"}},
+	{Name: "BPF_PROG_TYPE_CGROUP_SOCKOPT", Since: &sinceUntil{Version: "6.12", Commit: "67666479edf1e2b732f4d0ac797885e859a78de4"}},
+	{Name: "BPF_PROG_TYPE_CGROUP_SYSCTL", Since: &sinceUntil{Version: "6.12", Commit: "67666479edf1e2b732f4d0ac797885e859a78de4"}},
+	{Name: "BPF_PROG_TYPE_SCHED_ACT"},
+	{Name: "BPF_PROG_TYPE_SK_SKB"},
+	{Name: "BPF_PROG_TYPE_SOCKET_FILTER"},
+	{Name: "BPF_PROG_TYPE_LWT_OUT"},
+	{Name: "BPF_PROG_TYPE_LWT_IN"},
+	{Name: "BPF_PROG_TYPE_LWT_XMIT"},
+	{Name: "BPF_PROG_TYPE_LWT_SEG6LOCAL"},
+	{Name: "BPF_PROG_TYPE_NETFILTER"},
 }
 
 func cFuncSignature(fn *btf.Func) string {
