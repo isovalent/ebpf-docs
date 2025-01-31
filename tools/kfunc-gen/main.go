@@ -132,88 +132,100 @@ func main() {
 		os.Exit(1)
 	}
 
+	type mergedKfunc struct {
+		kfunc
+		progTypes []programType
+	}
+	merged := make(map[string]mergedKfunc)
 	for _, set := range kfuncsConfig.Sets {
 		for _, kfunc := range set.Funcs {
 			if slices.Contains(removeKfuncs, kfunc.Name) {
 				continue
 			}
 
-			file, err := os.OpenFile(*projectroot+"/docs/linux/kfuncs/"+kfunc.Name+".md", os.O_RDWR, 0644)
-			if err != nil {
-				panic(err)
+			merged[kfunc.Name] = mergedKfunc{
+				kfunc:     kfunc,
+				progTypes: append(merged[kfunc.Name].progTypes, set.ProgramTypes...),
 			}
-
-			fileContents, err := io.ReadAll(file)
-			if err != nil {
-				panic(err)
-			}
-			fileStr := string(fileContents)
-
-			var fn *btf.Func
-			err = spec.TypeByName(kfunc.Name, &fn)
-			if err != nil {
-				fmt.Printf("%s: not found\n", kfunc.Name)
-				continue
-			}
-
-			sig := cFuncSignature(fn)
-
-			startIdx := strings.Index(fileStr, kfuncDefStart)
-			endIdx := strings.Index(fileStr, kfuncDefEnd)
-
-			if startIdx == -1 || endIdx == -1 {
-				continue
-			}
-
-			var newFile strings.Builder
-			// Write everything before the marker
-			newFile.WriteString(fileStr[:startIdx])
-			newFile.WriteString(kfuncDefStart)
-
-			newFile.WriteString(fmt.Sprintf("\n`#!c %s`\n", sig))
-
-			for _, flag := range kfunc.Flags {
-				switch flag {
-				case "KF_ACQUIRE":
-					newFile.WriteString(kfAcquireNotice)
-				case "KF_RELEASE":
-					newFile.WriteString(kfReleaseNotice)
-				case "KF_RET_NULL":
-					newFile.WriteString(kfRetNullNotice)
-				case "KF_TRUSTED_ARGS":
-				case "KF_SLEEPABLE":
-					newFile.WriteString(kfSleepableNotice)
-				case "KF_DESTRUCTIVE":
-					newFile.WriteString(kfDestructiveNotice)
-				case "KF_RCU":
-				case "KF_ITER_NEW":
-				case "KF_ITER_NEXT":
-				case "KF_ITER_DESTROY":
-				case "KF_RCU_PROTECTED":
-					newFile.WriteString(kfRCUProtectedNotice)
-				case "KF_FASTCALL":
-				}
-			}
-
-			newFile.WriteString(kfuncDefEnd)
-			newFile.WriteString(fileStr[endIdx+len(kfuncDefEnd):])
-
-			_, err = file.Seek(0, 0)
-			if err != nil {
-				panic(err)
-			}
-
-			err = file.Truncate(0)
-			if err != nil {
-				panic(err)
-			}
-
-			_, err = io.Copy(file, strings.NewReader(newFile.String()))
-			if err != nil {
-				panic(err)
-			}
-			file.Close()
 		}
+	}
+
+	for _, kfunc := range merged {
+		file, err := os.OpenFile(*projectroot+"/docs/linux/kfuncs/"+kfunc.Name+".md", os.O_RDWR, 0644)
+		if err != nil {
+			panic(err)
+		}
+
+		fileContents, err := io.ReadAll(file)
+		if err != nil {
+			panic(err)
+		}
+		fileStr := string(fileContents)
+
+		var fn *btf.Func
+		err = spec.TypeByName(kfunc.Name, &fn)
+		if err != nil {
+			fmt.Printf("%s: not found\n", kfunc.Name)
+			continue
+		}
+
+		sig := cFuncSignature(fn)
+
+		startIdx := strings.Index(fileStr, kfuncDefStart)
+		endIdx := strings.Index(fileStr, kfuncDefEnd)
+
+		if startIdx == -1 || endIdx == -1 {
+			continue
+		}
+
+		var newFile strings.Builder
+		// Write everything before the marker
+		newFile.WriteString(fileStr[:startIdx])
+		newFile.WriteString(kfuncDefStart)
+
+		newFile.WriteString(fmt.Sprintf("\n`#!c %s`\n", sig))
+
+		for _, flag := range kfunc.Flags {
+			switch flag {
+			case "KF_ACQUIRE":
+				newFile.WriteString(kfAcquireNotice)
+			case "KF_RELEASE":
+				newFile.WriteString(kfReleaseNotice)
+			case "KF_RET_NULL":
+				newFile.WriteString(kfRetNullNotice)
+			case "KF_TRUSTED_ARGS":
+			case "KF_SLEEPABLE":
+				newFile.WriteString(kfSleepableNotice)
+			case "KF_DESTRUCTIVE":
+				newFile.WriteString(kfDestructiveNotice)
+			case "KF_RCU":
+			case "KF_ITER_NEW":
+			case "KF_ITER_NEXT":
+			case "KF_ITER_DESTROY":
+			case "KF_RCU_PROTECTED":
+				newFile.WriteString(kfRCUProtectedNotice)
+			case "KF_FASTCALL":
+			}
+		}
+
+		newFile.WriteString(kfuncDefEnd)
+		newFile.WriteString(fileStr[endIdx+len(kfuncDefEnd):])
+
+		_, err = file.Seek(0, 0)
+		if err != nil {
+			panic(err)
+		}
+
+		err = file.Truncate(0)
+		if err != nil {
+			panic(err)
+		}
+
+		_, err = io.Copy(file, strings.NewReader(newFile.String()))
+		if err != nil {
+			panic(err)
+		}
+		file.Close()
 	}
 
 	type kfuncMeta struct {
@@ -223,98 +235,96 @@ func main() {
 	}
 	progToKfunc := make(map[string][]kfuncMeta)
 
-	for _, set := range kfuncsConfig.Sets {
-		for _, kfunc := range set.Funcs {
-			file, err := os.OpenFile(*projectroot+"/docs/linux/kfuncs/"+kfunc.Name+".md", os.O_RDWR, 0644)
-			if err != nil {
-				panic(err)
-			}
-
-			fileContents, err := io.ReadAll(file)
-			if err != nil {
-				panic(err)
-			}
-
-			var progTypes []programType
-			for _, progType := range set.ProgramTypes {
-				if progType.Name == "BPF_PROG_TYPE_UNSPEC" {
-					progTypes = append(progTypes, kfuncProgramTypes...)
-				} else {
-					progTypes = append(progTypes, progType)
-				}
-			}
-
-			slices.SortStableFunc(progTypes, func(a, b programType) int {
-				if a.Name == b.Name {
-					return 0
-				}
-				if a.Name < b.Name {
-					return -1
-				}
-				return 1
-			})
-			progTypes = slices.CompactFunc(progTypes, func(a, b programType) bool {
-				return a.Name == b.Name
-			})
-
-			for _, progType := range progTypes {
-				progToKfunc[progType.Name] = append(progToKfunc[progType.Name], kfuncMeta{
-					name:  kfunc.Name,
-					since: progType.Since,
-					until: progType.Until,
-				})
-			}
-
-			fileStr := string(fileContents)
-
-			startIdx := strings.Index(fileStr, kfuncProgRefStart)
-			endIdx := strings.Index(fileStr, kfuncProgRefEnd)
-
-			if startIdx == -1 || endIdx == -1 {
-				continue
-			}
-
-			var newFile strings.Builder
-			// Write everything before the marker
-			newFile.WriteString(fileStr[:startIdx])
-			newFile.WriteString(kfuncProgRefStart)
-
-			newFile.WriteString("\n")
-
-			for _, progType := range progTypes {
-				newFile.WriteString(fmt.Sprintf("- [`%s`](../program-type/%s.md)", progType.Name, progType.Name))
-				if progType.Since != nil {
-					fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", progType.Since.Version, progType.Since.Commit)
-				}
-				if progType.Since != nil || progType.Until != nil {
-					fmt.Fprint(&newFile, " - ")
-				}
-				if progType.Until != nil {
-					fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", progType.Until.Version, progType.Until.Commit)
-				}
-				fmt.Fprint(&newFile, "\n")
-			}
-
-			newFile.WriteString(kfuncProgRefEnd)
-			newFile.WriteString(fileStr[endIdx+len(kfuncProgRefEnd):])
-
-			_, err = file.Seek(0, 0)
-			if err != nil {
-				panic(err)
-			}
-
-			err = file.Truncate(0)
-			if err != nil {
-				panic(err)
-			}
-
-			_, err = io.Copy(file, strings.NewReader(newFile.String()))
-			if err != nil {
-				panic(err)
-			}
-
-			file.Close()
+	for _, kfunc := range merged {
+		file, err := os.OpenFile(*projectroot+"/docs/linux/kfuncs/"+kfunc.Name+".md", os.O_RDWR, 0644)
+		if err != nil {
+			panic(err)
 		}
+
+		fileContents, err := io.ReadAll(file)
+		if err != nil {
+			panic(err)
+		}
+
+		var progTypes []programType
+		for _, progType := range kfunc.progTypes {
+			if progType.Name == "BPF_PROG_TYPE_UNSPEC" {
+				progTypes = append(progTypes, kfuncProgramTypes...)
+			} else {
+				progTypes = append(progTypes, progType)
+			}
+		}
+
+		slices.SortStableFunc(progTypes, func(a, b programType) int {
+			if a.Name == b.Name {
+				return 0
+			}
+			if a.Name < b.Name {
+				return -1
+			}
+			return 1
+		})
+		progTypes = slices.CompactFunc(progTypes, func(a, b programType) bool {
+			return a.Name == b.Name
+		})
+
+		for _, progType := range progTypes {
+			progToKfunc[progType.Name] = append(progToKfunc[progType.Name], kfuncMeta{
+				name:  kfunc.Name,
+				since: progType.Since,
+				until: progType.Until,
+			})
+		}
+
+		fileStr := string(fileContents)
+
+		startIdx := strings.Index(fileStr, kfuncProgRefStart)
+		endIdx := strings.Index(fileStr, kfuncProgRefEnd)
+
+		if startIdx == -1 || endIdx == -1 {
+			continue
+		}
+
+		var newFile strings.Builder
+		// Write everything before the marker
+		newFile.WriteString(fileStr[:startIdx])
+		newFile.WriteString(kfuncProgRefStart)
+
+		newFile.WriteString("\n")
+
+		for _, progType := range progTypes {
+			newFile.WriteString(fmt.Sprintf("- [`%s`](../program-type/%s.md)", progType.Name, progType.Name))
+			if progType.Since != nil {
+				fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", progType.Since.Version, progType.Since.Commit)
+			}
+			if progType.Since != nil || progType.Until != nil {
+				fmt.Fprint(&newFile, " - ")
+			}
+			if progType.Until != nil {
+				fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", progType.Until.Version, progType.Until.Commit)
+			}
+			fmt.Fprint(&newFile, "\n")
+		}
+
+		newFile.WriteString(kfuncProgRefEnd)
+		newFile.WriteString(fileStr[endIdx+len(kfuncProgRefEnd):])
+
+		_, err = file.Seek(0, 0)
+		if err != nil {
+			panic(err)
+		}
+
+		err = file.Truncate(0)
+		if err != nil {
+			panic(err)
+		}
+
+		_, err = io.Copy(file, strings.NewReader(newFile.String()))
+		if err != nil {
+			panic(err)
+		}
+
+		file.Close()
 	}
 
 	progDirEntries, err := os.ReadDir(*projectroot + "/docs/linux/program-type")

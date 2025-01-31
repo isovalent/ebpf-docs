@@ -193,7 +193,6 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_dynptr_slice_rdwr`](../kfuncs/bpf_dynptr_slice_rdwr.md)
     - [`bpf_get_dentry_xattr`](../kfuncs/bpf_get_dentry_xattr.md)
     - [`bpf_get_file_xattr`](../kfuncs/bpf_get_file_xattr.md)
-    - [`bpf_get_file_xattr`](../kfuncs/bpf_get_file_xattr.md)
     - [`bpf_get_fsverity_digest`](../kfuncs/bpf_get_fsverity_digest.md)
     - [`bpf_get_kmem_cache`](../kfuncs/bpf_get_kmem_cache.md)
     - [`bpf_get_task_exe_file`](../kfuncs/bpf_get_task_exe_file.md)

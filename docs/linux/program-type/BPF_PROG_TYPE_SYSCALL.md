@@ -206,7 +206,6 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_wq_set_callback_impl`](../kfuncs/bpf_wq_set_callback_impl.md)
     - [`bpf_wq_start`](../kfuncs/bpf_wq_start.md)
     - [`hid_bpf_allocate_context`](../kfuncs/hid_bpf_allocate_context.md)
-    - [`hid_bpf_attach_prog`](../kfuncs/hid_bpf_attach_prog.md) [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/f5c27da4e3c8a2e42fb4f41a0c685debcb9af294) -  [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/4a86220e046da009bef0948e9f51d1d26d68f93c)
     - [`hid_bpf_hw_output_report`](../kfuncs/hid_bpf_hw_output_report.md)
     - [`hid_bpf_hw_request`](../kfuncs/hid_bpf_hw_request.md)
     - [`hid_bpf_input_report`](../kfuncs/hid_bpf_input_report.md)
