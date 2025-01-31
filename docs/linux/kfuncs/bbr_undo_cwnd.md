@@ -14,6 +14,8 @@ Return new value of congestion window after loss.
 
 In theory BBR does not need to undo the `cwnd` since it does not always reduce `cwnd` on losses (see `bbr_main()`).
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bbr_undo_cwnd(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

@@ -18,6 +18,8 @@ This must be invoked for referenced `PTR_TO_BTF_ID`, and the verifier rejects th
 
 `x`: Pointer to referenced `xfrm_state` object, obtained using `bpf_xdp_get_xfrm_state`
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_xdp_xfrm_state_release(struct xfrm_state *x)`
 

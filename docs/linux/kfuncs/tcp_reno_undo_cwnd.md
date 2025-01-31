@@ -12,6 +12,8 @@ Return new value of congestion window after loss.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 tcp_reno_undo_cwnd(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

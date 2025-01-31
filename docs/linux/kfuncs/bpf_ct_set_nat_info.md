@@ -24,6 +24,8 @@ Set source or destination address network translation address of the newly alloc
 
 `manip`: `NF_NAT_MANIP_SRC` or `NF_NAT_MANIP_DST`
  
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_ct_set_nat_info(struct nf_conn___init *nfct, union nf_inet_addr *addr, int port, nf_nat_manip_type manip)`
 <!-- [/KFUNC_DEF] -->

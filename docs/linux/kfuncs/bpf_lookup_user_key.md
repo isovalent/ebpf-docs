@@ -22,9 +22,11 @@ Set `flags` with `KEY_LOOKUP_CREATE`, to attempt creating a requested special ke
 
 Set `flags` with `KEY_LOOKUP_PARTIAL`, to lookup a key without waiting for the key construction, and to retrieve uninstantiated keys (keys without data attached to them).
 
-**Return**
+**Returns**
 
 a bpf_key pointer with a valid key pointer if the key is found, a NULL pointer otherwise.
+
+**Signature**
 
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_key *bpf_lookup_user_key(u32 serial, u64 flags)`

@@ -46,6 +46,8 @@ A `struct xfrm_state *`, if found, must be released with a corresponding bpf_xdp
 
 `opts__sz` - Length of the bpf_xfrm_state_opts structure. Must be `BPF_XFRM_STATE_OPTS_SZ`
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct xfrm_state *bpf_xdp_get_xfrm_state(struct xdp_md *ctx, struct bpf_xfrm_state_opts *opts, u32 opts__sz)`
 

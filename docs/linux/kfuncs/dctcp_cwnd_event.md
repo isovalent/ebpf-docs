@@ -12,6 +12,8 @@ Call when congestion window event occurs.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void dctcp_cwnd_event(struct sock *sk, tcp_ca_event ev)`
 <!-- [/KFUNC_DEF] -->

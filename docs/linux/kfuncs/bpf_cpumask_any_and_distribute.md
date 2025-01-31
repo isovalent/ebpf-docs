@@ -22,6 +22,8 @@ Return:
 
 `struct bpf_cpumask` pointers may be safely passed to `src1` and `src2`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bpf_cpumask_any_and_distribute(const struct cpumask *src1, const struct cpumask *src2)`
 <!-- [/KFUNC_DEF] -->

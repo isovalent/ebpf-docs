@@ -21,6 +21,8 @@ This helper must be invoked for refcounted pointer to `nf_conn___init`.
 
 `timeout`: Timeout in msecs.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_ct_set_timeout(struct nf_conn___init *nfct, u32 timeout)`
 <!-- [/KFUNC_DEF] -->

@@ -16,6 +16,8 @@ Releases a previously acquired reference to a BPF CPU-mask. When the final
 reference of the BPF CPU-mask has been released, it is subsequently freed in
 an RCU callback in the BPF memory allocator.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cpumask_release(struct bpf_cpumask *cpumask)`
 

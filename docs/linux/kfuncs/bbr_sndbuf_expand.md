@@ -14,6 +14,8 @@ Returns the multiplier used in `tcp_sndbuf_expand`
 
 Provision 3 * `cwnd` since BBR may slow-start even during recovery.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bbr_sndbuf_expand(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

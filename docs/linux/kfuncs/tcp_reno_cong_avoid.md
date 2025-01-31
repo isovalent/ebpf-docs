@@ -14,6 +14,8 @@ Do new congestion window calculation
 
 This is Jacobson's slow start and congestion avoidance. <nospell>SIGCOMM '88, p. 328</nospell>.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void tcp_reno_cong_avoid(struct sock *sk, u32 ack, u32 acked)`
 <!-- [/KFUNC_DEF] -->

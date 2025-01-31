@@ -24,6 +24,8 @@ Allocates a crypto context that can be used, acquired, and released by a BPF pro
 
 Returns an allocated crypto context on success, may return NULL if no memory is available.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_crypto_ctx *bpf_crypto_ctx_create(const struct bpf_crypto_params *params, u32 params__sz, int *err)`
 

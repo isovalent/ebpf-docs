@@ -14,6 +14,8 @@ Assign custom parameters used to validate SYN cookies.
 
 `bpf_sk_assign_tcp_reqsk()` takes `skb`, a listener `sk`, and `struct bpf_tcp_req_attrs` and allocates `reqsk` and configures it. Then, bpf_sk_assign_tcp_reqsk() links `reqsk` with `skb` and the listener.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_sk_assign_tcp_reqsk(struct __sk_buff *s, struct sock *sk, struct bpf_tcp_req_attrs *attrs, int attrs__sz)`
 <!-- [/KFUNC_DEF] -->

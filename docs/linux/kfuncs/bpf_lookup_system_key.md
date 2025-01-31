@@ -28,9 +28,11 @@ in those keyrings)
 keyring (primarily used by the integrity subsystem to verify a kexec'ed
 kerned image and, possibly, the initramfs signature).
 
-**Return**
+**Returns**
 
 a bpf_key pointer with an invalid key pointer set from the pre-determined ID on success, a NULL pointer otherwise
+
+**Signature**
 
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_key *bpf_lookup_system_key(u64 id)`

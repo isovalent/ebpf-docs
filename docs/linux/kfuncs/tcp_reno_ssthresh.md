@@ -14,6 +14,8 @@ Returns slow start threshold
 
 Slow start threshold is half the congestion window (min 2)
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 tcp_reno_ssthresh(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

@@ -19,6 +19,8 @@ in a map as a kptr, or freed with [`bpf_cpumask_release()`](bpf_cpumask_release.
 `bpf_cpumask_create()` allocates memory using the BPF memory allocator, and
 will not block. It may return NULL if no memory is available.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_cpumask *bpf_cpumask_create()`
 

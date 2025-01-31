@@ -12,6 +12,8 @@ Call before changing ca_state
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void cubictcp_state(struct sock *sk, u8 new_state)`
 <!-- [/KFUNC_DEF] -->

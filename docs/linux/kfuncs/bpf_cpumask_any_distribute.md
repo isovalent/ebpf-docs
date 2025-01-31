@@ -20,6 +20,8 @@ Return:
 
 A `struct bpf_cpumask` pointer may be safely passed to `src`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bpf_cpumask_any_distribute(const struct cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->

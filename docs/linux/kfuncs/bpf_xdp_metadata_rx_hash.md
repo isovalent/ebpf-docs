@@ -14,6 +14,8 @@ Read XDP frame RX hash.
 
 If `bpf_xdp_metadata_rx_hash` is not supported by the target device, the default implementation is called instead. The verifier, at load time, replaces a call to the generic kfunc with a call to the per-device one.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_xdp_metadata_rx_hash(const struct xdp_md *ctx, u32 *hash, xdp_rss_hash_type *rss_type)`
 <!-- [/KFUNC_DEF] -->

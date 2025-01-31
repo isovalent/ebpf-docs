@@ -12,6 +12,8 @@ Call when ack arrives
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void dctcp_update_alpha(struct sock *sk, u32 flags)`
 <!-- [/KFUNC_DEF] -->

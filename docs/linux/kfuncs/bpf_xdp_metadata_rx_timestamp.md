@@ -14,6 +14,8 @@ Read XDP frame RX timestamp.
 
 If `bpf_xdp_metadata_rx_timestamp` is not supported by the target device, the default implementation is called instead. The verifier, at load time, replaces a call to the generic kfunc with a call to the per-device one.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_xdp_metadata_rx_timestamp(const struct xdp_md *ctx, u64 *timestamp)`
 <!-- [/KFUNC_DEF] -->

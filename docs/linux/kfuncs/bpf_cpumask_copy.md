@@ -17,6 +17,8 @@ Copy the contents of a CPU-mask into a BPF CPU-mask.
 
 A `struct bpf_cpumask` pointer may be safely passed to `src`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cpumask_copy(struct bpf_cpumask *dst, const struct cpumask *src)`
 <!-- [/KFUNC_DEF] -->

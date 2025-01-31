@@ -22,6 +22,8 @@ This function may block.
 
 `cgrp`: target cgroup
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void cgroup_rstat_flush(struct cgroup *cgrp)`
 

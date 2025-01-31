@@ -12,6 +12,8 @@ description: "This page documents the 'tcp_cong_avoid_ai' eBPF kfunc, including 
 
 In theory this is `tp->snd_cwnd += 1 / tp->snd_cwnd` (or alternative w), for every packet that was ACK-ed.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void tcp_cong_avoid_ai(struct tcp_sock *tp, u32 w, u32 acked)`
 <!-- [/KFUNC_DEF] -->

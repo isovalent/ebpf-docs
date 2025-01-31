@@ -12,6 +12,8 @@ Initialise TCP Cubic congestion control algorithm on a socket.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void cubictcp_init(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

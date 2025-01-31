@@ -12,6 +12,8 @@ Do new `cwnd` calculation
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void cubictcp_cong_avoid(struct sock *sk, u32 ack, u32 acked)`
 <!-- [/KFUNC_DEF] -->

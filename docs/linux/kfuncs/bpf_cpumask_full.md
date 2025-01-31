@@ -20,6 +20,8 @@ Return:
 
 A `struct bpf_cpumask` pointer may be safely passed to `cpumask`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c bool bpf_cpumask_full(const struct cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->

@@ -19,6 +19,8 @@ The `meta` and `off` parameters are rewritten by the verifier, no need for BPF p
  * `0` if the node was successfully added
  * `-EINVAL` if the node wasn't added because it's already in a list
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_list_push_back_impl(struct bpf_list_head *head, struct bpf_list_node *node, void *meta__ign, u64 off)`
 <!-- [/KFUNC_DEF] -->

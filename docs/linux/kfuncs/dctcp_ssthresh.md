@@ -12,6 +12,8 @@ Returns slow start threshold
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 dctcp_ssthresh(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

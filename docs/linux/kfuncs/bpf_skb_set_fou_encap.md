@@ -31,6 +31,8 @@ It is meant to be used in BPF traffic control hooks and after a call to the [`bp
 
 `0` on success, a negative error code on failure
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_skb_set_fou_encap(struct __sk_buff *skb_ctx, struct bpf_fou_encap *encap, int type)`
 <!-- [/KFUNC_DEF] -->

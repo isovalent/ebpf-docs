@@ -16,6 +16,8 @@ Remove `node` from red-black-tree with root `root`
 
 Pointer to the removed node, or `NULL` if `root` didn't contain `node`
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_rb_node *bpf_rbtree_remove(struct bpf_rb_root *root, struct bpf_rb_node *node)`
 

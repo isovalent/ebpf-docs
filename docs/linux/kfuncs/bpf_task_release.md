@@ -14,6 +14,8 @@ Release the reference acquired on a task.
 
 `p`: The task on which a reference is being released.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_task_release(struct task_struct *p)`
 

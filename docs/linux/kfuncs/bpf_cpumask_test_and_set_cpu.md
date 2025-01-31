@@ -19,6 +19,8 @@ Return:
 * `true`  - `cpu` is set in the CPU-mask
 * `false` - `cpu` was not set in the CPU-mask, or `cpu` is invalid.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c bool bpf_cpumask_test_and_set_cpu(u32 cpu, struct bpf_cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->

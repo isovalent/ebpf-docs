@@ -14,6 +14,8 @@ Acquire a reference to a cGroup.
 
 A cGroup acquired by this kfunc which is not stored in a map as a kptr, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct cgroup *bpf_cgroup_acquire(struct cgroup *cgrp)`
 

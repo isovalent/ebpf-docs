@@ -18,6 +18,8 @@ XOR two CPU-masks and store the result.
 
 `struct bpf_cpumask` pointers may be safely passed to `src1` and `src2`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cpumask_xor(struct bpf_cpumask *dst, const struct cpumask *src1, const struct cpumask *src2)`
 <!-- [/KFUNC_DEF] -->

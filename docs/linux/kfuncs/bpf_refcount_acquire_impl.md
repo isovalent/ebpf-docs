@@ -18,6 +18,8 @@ The `meta` parameter is rewritten by the verifier, no need for BPF program to se
 
 An owning reference to the object pointed to by `kptr`
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void *bpf_refcount_acquire_impl(void *p__refcounted_kptr, void *meta__ign)`
 

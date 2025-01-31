@@ -14,6 +14,8 @@ Verify a <nospell>PKCS#7</nospell> signature
 
 Verify the <nospell>PKCS#7</nospell> signature `sig_ptr` against the supplied `data_ptr` with keys in a keyring referenced by `trusted_keyring`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_verify_pkcs7_signature(struct bpf_dynptr *data_p, struct bpf_dynptr *sig_p, struct bpf_key *trusted_keyring)`
 

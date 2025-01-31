@@ -46,6 +46,8 @@ Allocate a new CT (connection tracking) entry
 
 `opts__sz`: Length of the bpf_ct_opts structure. Must be `NF_BPF_CT_OPTS_SZ` (12)
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct nf_conn___init *bpf_xdp_ct_alloc(struct xdp_md *xdp_ctx, struct bpf_sock_tuple *bpf_tuple, u32 tuple__sz, struct bpf_ct_opts *opts, u32 opts__sz)`
 

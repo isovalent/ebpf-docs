@@ -14,6 +14,8 @@ Clear all of the bits in a BPF CPU-mask.
 
 `cpumask`: The BPF CPU-mask being cleared.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cpumask_clear(struct bpf_cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->

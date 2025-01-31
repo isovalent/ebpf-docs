@@ -14,6 +14,8 @@ Find a cGroup from its ID.
 
 cGroup returned by this kfunc which is not subsequently stored in a map, must be released by calling [`bpf_cgroup_release()`](bpf_cgroup_release.md).
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct cgroup *bpf_cgroup_from_id(u64 cgid)`
 

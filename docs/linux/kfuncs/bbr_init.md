@@ -12,6 +12,8 @@ Initialise BBR congestion control algorithm on a socket.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bbr_init(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

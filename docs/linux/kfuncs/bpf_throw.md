@@ -22,13 +22,15 @@ Thus, in case of default exception callback, `cookie` is subjected to constraint
 !!! note
     callbacks **cannot** call this helper.
 
-**Return**
+**Returns**
 
 Never.
 
 **Throws**
 
 An exception with the specified `cookie` value.
+
+**Signature**
 
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_throw(u64 cookie)`

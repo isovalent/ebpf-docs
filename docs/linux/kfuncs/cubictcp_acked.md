@@ -12,6 +12,8 @@ Hook for packet ack accounting
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void cubictcp_acked(struct sock *sk, const struct ack_sample *sample)`
 <!-- [/KFUNC_DEF] -->

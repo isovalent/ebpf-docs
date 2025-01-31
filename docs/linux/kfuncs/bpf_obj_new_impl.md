@@ -24,6 +24,8 @@ program to set it.
 
 A pointer to an object of the type corresponding to the passed in `local_type_id`, or NULL on failure.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void *bpf_obj_new_impl(u64 local_type_id__k, void *meta__ign)`
 

@@ -16,6 +16,8 @@ Return the number of bits in CPU-mask.
 
 Count the number of set bits in the given CPU-mask.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bpf_cpumask_weight(const struct cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->
