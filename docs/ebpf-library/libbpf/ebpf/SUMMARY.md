@@ -92,3 +92,5 @@
   - [`BPF_PROBE_READ_STR_INTO`](BPF_PROBE_READ_STR_INTO.md)
   - [`BPF_PROBE_READ_USER_STR_INTO`](BPF_PROBE_READ_USER_STR_INTO.md)
   - [`BPF_PROBE_READ_USER`](BPF_PROBE_READ_USER.md)
+- Utility macros
+  - [`___bpf_fill`](___bpf_fill.md)
