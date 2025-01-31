@@ -20,6 +20,8 @@ Acquires a reference to a BPF crypto context. The context returned by this funct
 
 Returns `ctx` on success, or `NULL` if a reference could not be acquired.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_crypto_ctx *bpf_crypto_ctx_acquire(struct bpf_crypto_ctx *ctx)`
 

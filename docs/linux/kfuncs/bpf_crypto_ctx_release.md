@@ -16,6 +16,8 @@ Releases a previously acquired reference to a BPF crypto context. When the final
 
 `ctx`: The crypto context being released.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_crypto_ctx_release(struct bpf_crypto_ctx *ctx)`
 

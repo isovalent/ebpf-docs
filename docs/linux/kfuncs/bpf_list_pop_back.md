@@ -15,6 +15,8 @@ Remove the entry at the end of the BPF linked list.
 **Returns**
 Pointer to bpf_list_node of deleted entry, or NULL if list is empty.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_list_node *bpf_list_pop_back(struct bpf_list_head *head)`
 

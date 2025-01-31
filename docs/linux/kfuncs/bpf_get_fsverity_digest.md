@@ -12,6 +12,8 @@ Get the `fs-verity` digest of a file.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_get_fsverity_digest(struct file *file, struct bpf_dynptr *digest_p)`
 <!-- [/KFUNC_DEF] -->

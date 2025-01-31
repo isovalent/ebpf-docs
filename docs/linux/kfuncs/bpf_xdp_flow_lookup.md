@@ -12,6 +12,8 @@ Perform the lookup of a given flow-table entry based on a fib tuple of incoming 
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct flow_offload_tuple_rhash *bpf_xdp_flow_lookup(struct xdp_md *ctx, struct bpf_fib_lookup *fib_tuple, struct bpf_flowtable_opts *opts, u32 opts_len)`
 

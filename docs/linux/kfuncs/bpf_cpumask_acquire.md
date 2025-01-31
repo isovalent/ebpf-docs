@@ -16,6 +16,8 @@ Acquires a reference to a BPF CPU-mask. The CPU-mask returned by this function
 must either be embedded in a map as a kptr, or freed with
 [`bpf_cpumask_release()`](bpf_cpumask_release.md).
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_cpumask *bpf_cpumask_acquire(struct bpf_cpumask *cpumask)`
 

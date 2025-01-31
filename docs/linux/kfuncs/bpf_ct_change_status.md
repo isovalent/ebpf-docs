@@ -21,6 +21,8 @@ This must be invoked for referenced `PTR_TO_BTF_ID` to `nf_conn`.
 
 `status`: New status value.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_ct_change_status(struct nf_conn *nfct, u32 status)`
 <!-- [/KFUNC_DEF] -->

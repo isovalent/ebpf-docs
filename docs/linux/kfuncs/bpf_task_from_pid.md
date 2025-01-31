@@ -14,6 +14,8 @@ Find a `struct task_struct` from its pid by looking it up in the root pid namesp
 
 If a task is returned, it must either be stored in a map, or released with [`bpf_task_release()`](bpf_task_release.md).
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct task_struct *bpf_task_from_pid(s32 pid)`
 

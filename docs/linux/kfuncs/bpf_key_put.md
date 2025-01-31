@@ -14,6 +14,8 @@ Decrement key reference count if key is valid and free bpf_key
 
 Decrement the reference count of the key inside `bkey`, if the pointer is valid, and free `bkey`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_key_put(struct bpf_key *bkey)`
 

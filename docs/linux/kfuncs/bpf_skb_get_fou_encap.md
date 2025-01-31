@@ -25,6 +25,8 @@ This function allows for reading encapsulation metadata from a packet received o
 
 `0` on success, a negative error code on failure
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_skb_get_fou_encap(struct __sk_buff *skb_ctx, struct bpf_fou_encap *encap)`
 <!-- [/KFUNC_DEF] -->

@@ -16,6 +16,8 @@ Check if the bpf program is executed from the exit probe of the kprobe multi lin
 
 Returns `true` if the bpf program is executed from the exit probe of the kprobe multi link attached in wrapper mode. It returns `false` otherwise.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c bool bpf_session_is_return()`
 <!-- [/KFUNC_DEF] -->

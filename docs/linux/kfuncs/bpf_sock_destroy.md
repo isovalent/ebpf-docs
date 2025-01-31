@@ -19,8 +19,10 @@ The helper can only be called from BPF contexts that have acquired the socket lo
 **Parameters**
 `sock`: Pointer to socket to be destroyed
 
-**Return**
+**Returns**
 On error, may return `EPROTONOSUPPORT`, `EINVAL`. `EPROTONOSUPPORT` if protocol specific destroy handler is not supported. `0` otherwise
+
+**Signature**
 
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_sock_destroy(struct sock_common *sock)`

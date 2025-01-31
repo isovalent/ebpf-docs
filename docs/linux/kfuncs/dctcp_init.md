@@ -12,6 +12,8 @@ Initialise DC TCP congestion control algorithm on a socket.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void dctcp_init(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

@@ -15,6 +15,8 @@ Get the index of the first nonzero bit in the CPU-mask.
 Find the index of the first nonzero bit of the CPU-mask. A `struct bpf_cpumask`
 pointer may be safely passed to this function.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bpf_cpumask_first(const struct cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->

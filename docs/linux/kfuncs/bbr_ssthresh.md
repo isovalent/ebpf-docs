@@ -14,6 +14,8 @@ Returns slow start threshold
 
 Entering loss recovery, so save `cwnd` for when we exit or undo recovery.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bbr_ssthresh(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

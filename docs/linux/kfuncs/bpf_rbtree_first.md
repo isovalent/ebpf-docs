@@ -16,6 +16,8 @@ Return the first (leftmost) node in input tree
 
 Pointer to the node, which is _not_ removed from the tree. If the tree contains no nodes, returns `NULL`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct bpf_rb_node *bpf_rbtree_first(struct bpf_rb_root *root)`
 

@@ -18,6 +18,8 @@ This must be invoked for referenced `PTR_TO_BTF_ID`, and the verifier rejects th
 
 `nf_conn`: Pointer to referenced `nf_conn` object, obtained using [`bpf_xdp_ct_lookup`](bpf_xdp_ct_lookup.md) or [`bpf_skb_ct_lookup`](bpf_skb_ct_alloc.md).
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_ct_release(struct nf_conn *nfct)`
 

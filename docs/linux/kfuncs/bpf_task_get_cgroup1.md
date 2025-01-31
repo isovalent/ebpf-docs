@@ -18,6 +18,8 @@ The cGroup1 hierarchy is identified by its hierarchy ID.
 
 On success, the cGroup is returned. On failure, NULL is returned.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct cgroup *bpf_task_get_cgroup1(struct task_struct *task, int hierarchy_id)`
 

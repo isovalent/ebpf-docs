@@ -16,6 +16,8 @@ Get a pointer to a 64-bit session cookie.
 
 Returns pointer to the cookie value. The bpf program can use the pointer to store (on entry) and load (on return) the value.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c __u64 *bpf_session_cookie()`
 <!-- [/KFUNC_DEF] -->

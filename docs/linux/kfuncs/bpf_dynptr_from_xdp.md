@@ -14,6 +14,8 @@ Get dynptrs whose underlying pointer points to a xdp_buff.
 
 For reads and writes on the dynptr, this includes reading/writing from/to and across fragments. Data slices through the [`bpf_dynptr_data`](../helper-function/bpf_dynptr_data.md) API are not supported; instead [`bpf_dynptr_slice()`](bpf_dynptr_slice.md) and [`bpf_dynptr_slice_rdwr()`](bpf_dynptr_slice_rdwr.md) should be used.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_dynptr_from_xdp(struct xdp_md *x, u64 flags, struct bpf_dynptr *ptr__uninit)`
 <!-- [/KFUNC_DEF] -->

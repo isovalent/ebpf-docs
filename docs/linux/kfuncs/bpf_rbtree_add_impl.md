@@ -19,6 +19,8 @@ The `meta` and `off` parameters are rewritten by the verifier, no need for BPF p
  * `0` if the node was successfully added
  * `-EINVAL` if the node wasn't added because it's already in a tree
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_rbtree_add_impl(struct bpf_rb_root *root, struct bpf_rb_node *node, bool (less)(struct bpf_rb_node * , const struct bpf_rb_node * ), void *meta__ign, u64 off)`
 <!-- [/KFUNC_DEF] -->

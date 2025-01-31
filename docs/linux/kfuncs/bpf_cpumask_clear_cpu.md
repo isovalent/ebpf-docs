@@ -16,6 +16,8 @@ Clear a bit for a CPU in a BPF CPU-mask.
 
 `cpumask`: The BPF CPU-mask in which a bit is being cleared.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cpumask_clear_cpu(u32 cpu, struct bpf_cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->

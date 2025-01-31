@@ -32,10 +32,12 @@ For detailed meaning of DEI and PCP, please refer to other sources.
 `vlan_proto`: Destination pointer for VLAN Tag protocol identifier (TPID).
 `vlan_tci`: Destination pointer for VLAN TCI (VID + DEI + PCP)
 
-**Return**
+**Returns**
  * Returns 0 on success or ``-errno`` on error.
  * ``-EOPNOTSUPP`` : device driver doesn't implement kfunc
  * ``-ENODATA``    : VLAN tag was not stripped or is not available
+
+**Signature**
 
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_xdp_metadata_rx_vlan_tag(const struct xdp_md *ctx, __be16 *vlan_proto, u16 *vlan_tci)`

@@ -30,6 +30,8 @@ Get XFRM metadata
 - Transmit: used as the underlying device in VRF routing
 - Receive: the device on which the packet had been received
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_skb_get_xfrm_info(struct __sk_buff *skb_ctx, struct bpf_xfrm_info *to)`
 <!-- [/KFUNC_DEF] -->

@@ -21,6 +21,8 @@ Keep track of updated `rstat_cpu`
 
 `cpu`: cpu on which rstat_cpu was updated
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void cgroup_rstat_updated(struct cgroup *cgrp, int cpu)`
 <!-- [/KFUNC_DEF] -->

@@ -14,6 +14,8 @@ Release the reference acquired on a cGroup.
 
 If this kfunc is invoked in an RCU read region, the cGroup is guaranteed to not be freed until the current grace period has ended, even if its refcount drops to `0`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cgroup_release(struct cgroup *cgrp)`
 

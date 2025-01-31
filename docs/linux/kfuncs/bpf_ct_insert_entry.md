@@ -18,6 +18,8 @@ This must be invoked for referenced `PTR_TO_BTF_ID`.
 
 `nfct__ref`: Pointer to referenced `nf_conn___init` object, obtained using `bpf_xdp_ct_alloc` or `bpf_skb_ct_alloc`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct nf_conn *bpf_ct_insert_entry(struct nf_conn___init *nfct_i)`
 

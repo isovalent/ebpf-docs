@@ -16,9 +16,11 @@ Get extended attributed `name__str` of `file` and store the output in `value_ptr
 
 For security reasons, only `name__str` with prefix "user." is allowed.
 
-**Return**
+**Returns**
 
 0 on success, a negative value on error.
+
+**Signature**
 
 <!-- [KFUNC_DEF] -->
 `#!c int bpf_get_file_xattr(struct file *file, const char *name__str, struct bpf_dynptr *value_p)`

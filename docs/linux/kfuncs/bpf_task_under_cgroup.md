@@ -14,6 +14,8 @@ Wrap `task_under_cgroup_hierarchy()` as a kfunc, test task's membership of cGrou
 
 Tests whether `task`'s default cgroup hierarchy is a descendant of `ancestor`. It follows all the same rules as cgroup_is_descendant, and only applies to the default hierarchy.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c long int bpf_task_under_cgroup(struct task_struct *task, struct cgroup *ancestor)`
 <!-- [/KFUNC_DEF] -->

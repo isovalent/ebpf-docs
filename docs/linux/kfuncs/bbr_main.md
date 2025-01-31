@@ -12,6 +12,8 @@ Notify BBR congestion control algorithm of newly delivered packets.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bbr_main(struct sock *sk, u32 ack, int flag, const struct rate_sample *rs)`
 <!-- [/KFUNC_DEF] -->

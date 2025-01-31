@@ -17,6 +17,8 @@ All fields of the object that require destruction will be destructed before the 
 The `meta` parameter is rewritten by the verifier, no need for BPF
 program to set it.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_obj_drop_impl(void *p__alloc, void *meta__ign)`
 

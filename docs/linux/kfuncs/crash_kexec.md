@@ -12,6 +12,8 @@ Crash the kernel at a specific point in the code.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void crash_kexec(struct pt_regs *regs)`
 

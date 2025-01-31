@@ -12,6 +12,8 @@ Override `sysctl_tcp_min_tso_segs`
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bbr_min_tso_segs(struct sock *sk)`
 <!-- [/KFUNC_DEF] -->

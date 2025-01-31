@@ -15,6 +15,8 @@ Return the index of the first nonzero bit from the AND of two CPU-masks.
 Find the index of the first nonzero bit of the AND of two CPU-masks.
 `struct bpf_cpumask` pointers may be safely passed to `src1` and `src2`.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c u32 bpf_cpumask_first_and(const struct cpumask *src1, const struct cpumask *src2)`
 <!-- [/KFUNC_DEF] -->

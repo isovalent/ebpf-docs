@@ -14,6 +14,8 @@ Set all of the bits in a BPF CPU-mask.
 
 `cpumask`: The BPF CPU-mask having all of its bits set.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void bpf_cpumask_setall(struct bpf_cpumask *cpumask)`
 <!-- [/KFUNC_DEF] -->

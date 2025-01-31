@@ -12,6 +12,8 @@ Call when congestion window event occurs.
 
 ## Definition
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c void cubictcp_cwnd_event(struct sock *sk, tcp_ca_event event)`
 <!-- [/KFUNC_DEF] -->

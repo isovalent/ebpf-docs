@@ -16,6 +16,8 @@ A task acquired by this kfunc which is not stored in a map as a kptr, must be re
 
 `p`: The task on which a reference is being acquired.
 
+**Signature**
+
 <!-- [KFUNC_DEF] -->
 `#!c struct task_struct *bpf_task_acquire(struct task_struct *p)`
 
