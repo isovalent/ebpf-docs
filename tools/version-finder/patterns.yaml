@@ -7,8 +7,10 @@ files:
   - kernel/bpf/*
   - kernel/trace/*
   - kernel/events/*
+  - kernel/sched/*
   - net/*
   - security/*
+  - fs/*
 
 # Patterns of tags to check
 tags:
@@ -736,3 +738,66 @@ patterns:
     - name: hid_bpf_hw_output_report
     - name: hid_bpf_input_report
     - name: hid_bpf_try_input_report
+    - name: bpf_task_from_vpid
+    - name: bpf_send_signal_task
+    - name: bpf_copy_from_user_str
+    - name: bpf_get_kmem_cache
+    - name: bpf_iter_kmem_cache_new
+    - name: bpf_iter_kmem_cache_next
+    - name: bpf_iter_kmem_cache_destroy
+    - name: bpf_local_irq_save
+    - name: bpf_local_irq_restore
+    - name: scx_bpf_select_cpu_dfl
+    - name: scx_bpf_dsq_insert
+    - name: scx_bpf_dsq_insert_vtime
+    - name: scx_bpf_dispatch
+    - name: scx_bpf_dispatch_vtime
+    - name: scx_bpf_dispatch_nr_slots
+    - name: scx_bpf_dispatch_cancel
+    - name: scx_bpf_dsq_move_to_local
+    - name: scx_bpf_consume
+    - name: scx_bpf_dsq_move_set_slice
+    - name: scx_bpf_dsq_move_set_vtime
+    - name: scx_bpf_dispatch_from_dsq_set_slice
+    - name: scx_bpf_dispatch_from_dsq_set_vtime
+    - name: scx_bpf_dsq_move
+    - name: scx_bpf_dsq_move_vtime
+    - name: scx_bpf_dispatch_from_dsq
+    - name: scx_bpf_dispatch_vtime_from_dsq
+    - name: scx_bpf_reenqueue_local
+    - name: scx_bpf_create_dsq
+    - name: scx_bpf_dsq_move
+    - name: scx_bpf_dsq_move_vtime
+    - name: scx_bpf_dispatch_from_dsq
+    - name: scx_bpf_dispatch_vtime_from_dsq
+    - name: scx_bpf_kick_cpu
+    - name: scx_bpf_dsq_nr_queued
+    - name: scx_bpf_destroy_dsq
+    - name: bpf_iter_scx_dsq_new
+    - name: bpf_iter_scx_dsq_next
+    - name: bpf_iter_scx_dsq_destroy
+    - name: scx_bpf_exit_bstr
+    - name: scx_bpf_error_bstr
+    - name: scx_bpf_dump_bstr
+    - name: scx_bpf_cpuperf_cap
+    - name: scx_bpf_cpuperf_cur
+    - name: scx_bpf_cpuperf_set
+    - name: scx_bpf_nr_cpu_ids
+    - name: scx_bpf_get_possible_cpumask
+    - name: scx_bpf_get_online_cpumask
+    - name: scx_bpf_put_cpumask
+    - name: scx_bpf_get_idle_cpumask
+    - name: scx_bpf_get_idle_smtmask
+    - name: scx_bpf_put_idle_cpumask
+    - name: scx_bpf_test_and_clear_cpu_idle
+    - name: scx_bpf_pick_idle_cpu
+    - name: scx_bpf_pick_any_cpu
+    - name: scx_bpf_task_running
+    - name: scx_bpf_task_cpu
+    - name: scx_bpf_cpu_rq
+    - name: scx_bpf_task_cgroup
+    - name: scx_bpf_now
+    - name: bpf_get_task_exe_file
+    - name: bpf_put_file
+    - name: bpf_path_d_path
+    - name: bpf_get_dentry_xattr

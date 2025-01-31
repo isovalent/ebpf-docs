@@ -2086,3 +2086,204 @@
     - name: bpf_sk_assign_tcp_reqsk
       version: v6.11
       commit: e472f88891abbc535a5e16a68a104073985f6061
+    - name: bpf_task_from_vpid
+      version: v6.13
+      commit: 675c3596ff32c040d1dd2e28dd57e83e634b9f60
+    - name: bpf_send_signal_task
+      version: v6.13
+      commit: 6280cf718db0c557b5fe44e2d2e8ad8e832696a7
+    - name: bpf_copy_from_user_str
+      version: v6.12
+      commit: 65ab5ac4df012388481d0414fcac1d5ac1721fb3
+    - name: bpf_get_kmem_cache
+      version: v6.13
+      commit: a992d7a3979120fbd7c13435d27b3da8d9ed095a
+    - name: bpf_iter_kmem_cache_new
+      version: v6.13
+      commit: 2e9a548009c2d804e55cdd5b0e9903756cf7d9b3
+    - name: bpf_iter_kmem_cache_next
+      version: v6.13
+      commit: 2e9a548009c2d804e55cdd5b0e9903756cf7d9b3
+    - name: bpf_iter_kmem_cache_destroy
+      version: v6.13
+      commit: 2e9a548009c2d804e55cdd5b0e9903756cf7d9b3
+    - name: bpf_local_irq_save
+      version: v6.14
+      commit: c8e2ee1f3df05dc4caa746c062c6b5791c745c79
+    - name: bpf_local_irq_restore
+      version: v6.14
+      commit: c8e2ee1f3df05dc4caa746c062c6b5791c745c79
+    - name: scx_bpf_select_cpu_dfl
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dsq_insert
+      version: v6.13
+      commit: cc26abb1a19adbb91b79d25a2e74976633ece429
+    - name: scx_bpf_dsq_insert_vtime
+      version: v6.13
+      commit: cc26abb1a19adbb91b79d25a2e74976633ece429
+    - name: scx_bpf_dispatch
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dispatch_vtime
+      version: v6.12
+      commit: 06e51be3d5e7a07aea5c9012773df8d5de01db6c
+    - name: scx_bpf_dispatch_nr_slots
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dispatch_cancel
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dsq_move_to_local
+      version: v6.13
+      commit: 5209c03c8ed215357a4827496a71fd32167d83ef
+    - name: scx_bpf_consume
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dsq_move_set_slice
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dsq_move_set_vtime
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dispatch_from_dsq_set_slice
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_dispatch_from_dsq_set_vtime
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_dsq_move
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dsq_move_vtime
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dispatch_from_dsq
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_dispatch_vtime_from_dsq
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_reenqueue_local
+      version: v6.12
+      commit: 245254f7081dbe1c8da54675d0e4ddbe74cee61b
+    - name: scx_bpf_dsq_move_set_slice
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dsq_move_set_vtime
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dispatch_from_dsq_set_slice
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_dispatch_from_dsq_set_vtime
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_create_dsq
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dsq_move
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dsq_move_vtime
+      version: v6.13
+      commit: 5cbb302880f50f3edf35f8c6a1d38b6948bf4d11
+    - name: scx_bpf_dispatch_from_dsq
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_dispatch_vtime_from_dsq
+      version: v6.12
+      commit: 4c30f5ce4f7af4f639af99e0bdeada8b268b7361
+    - name: scx_bpf_kick_cpu
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dsq_nr_queued
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_destroy_dsq
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: bpf_iter_scx_dsq_new
+      version: v6.12
+      commit: 650ba21b131ed1f8ee57826b2c6295a3be221132
+    - name: bpf_iter_scx_dsq_next
+      version: v6.12
+      commit: 650ba21b131ed1f8ee57826b2c6295a3be221132
+    - name: bpf_iter_scx_dsq_destroy
+      version: v6.12
+      commit: 650ba21b131ed1f8ee57826b2c6295a3be221132
+    - name: scx_bpf_exit_bstr
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_error_bstr
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_dump_bstr
+      version: v6.12
+      commit: 07814a9439a3b03d79a1001614b5bc1cab69bcec
+    - name: scx_bpf_cpuperf_cap
+      version: v6.12
+      commit: d86adb4fc0655a0867da811d000df75d2a325ef6
+    - name: scx_bpf_cpuperf_cur
+      version: v6.12
+      commit: d86adb4fc0655a0867da811d000df75d2a325ef6
+    - name: scx_bpf_cpuperf_set
+      version: v6.12
+      commit: d86adb4fc0655a0867da811d000df75d2a325ef6
+    - name: scx_bpf_nr_cpu_ids
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_get_possible_cpumask
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_get_online_cpumask
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_put_cpumask
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_get_idle_cpumask
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_get_idle_smtmask
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_put_idle_cpumask
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_test_and_clear_cpu_idle
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_pick_idle_cpu
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_pick_any_cpu
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_task_running
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_task_cpu
+      version: v6.12
+      commit: f0e1a0643a59bf1f922fa209cec86a170b784f3f
+    - name: scx_bpf_cpu_rq
+      version: v6.12
+      commit: 6203ef73fa5c0358f7960b038628259be1448724
+    - name: scx_bpf_task_cgroup
+      version: v6.12
+      commit: 8195136669661fdfe54e9a8923c33b31c92fc1da
+    - name: scx_bpf_now
+      version: v6.14
+      commit: 3a9910b5904d29c566e3ff9290990b519827ba75
+    - name: bpf_get_task_exe_file
+      version: v6.12
+      commit: d08e2045ebf0f5f2a97ad22cc7dae398b35354ba
+    - name: bpf_put_file
+      version: v6.12
+      commit: d08e2045ebf0f5f2a97ad22cc7dae398b35354ba
+    - name: bpf_path_d_path
+      version: v6.12
+      commit: d08e2045ebf0f5f2a97ad22cc7dae398b35354ba
+    - name: bpf_get_dentry_xattr
+      version: v6.12
+      commit: ac13a4261afe81ca423eddd8e6571078fe2a7cea
