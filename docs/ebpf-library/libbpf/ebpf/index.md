@@ -65,6 +65,8 @@ The file contains definitions for the following:
     * [`bpf_for_each`](bpf_for_each.md)
     * [`bpf_for`](bpf_for.md)
     * [`bpf_repeat`](bpf_repeat.md)
+* Utility macros
+    * [`___bpf_fill`](___bpf_fill.md)
 
 ## [`bpf_endian.h`](https://github.com/libbpf/libbpf/blob/master/src/bpf_endian.h)
 
