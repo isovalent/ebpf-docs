@@ -8,11 +8,11 @@ description: "This page documents the 'scx_bpf_pick_any_cpu' eBPF kfunc, includi
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 <!-- [/FEATURE_TAG] -->
 
-Pick and claim an idle cpu if available or pick any CPU
+Pick and claim an idle CPU if available or pick any CPU
 
 ## Definition
 
-Pick and claim an idle cpu in `cpus_allowed`. If none is available, pick any CPU in `cpus_allowed`. Guaranteed to succeed.
+Pick and claim an idle CPU in `cpus_allowed`. If none is available, pick any CPU in `cpus_allowed`. Guaranteed to succeed.
 
 If `ops.update_idle()` is implemented and `SCX_OPS_KEEP_BUILTIN_IDLE` is not set, this function can't tell which CPUs are idle and will always pick any CPU.
 
@@ -28,7 +28,7 @@ If `ops.update_idle()` is implemented and `SCX_OPS_KEEP_BUILTIN_IDLE` is not set
 
 **Returns**
 
-The picked idle cpu number if `cpus_allowed` is not empty. `-EBUSY` is returned if `cpus_allowed` is empty.
+The picked idle CPU number if `cpus_allowed` is not empty. `-EBUSY` is returned if `cpus_allowed` is empty.
 
 **Signature**
 

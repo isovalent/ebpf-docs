@@ -14,7 +14,7 @@ This function returns slab cache information from a virtual address of a slab ob
 
 This function returns slab cache information from a virtual address of a slab object.
 
-It doesn't grab a reference count of the kmem_cache so the caller is responsible to manage the access. The returned point is marked as `PTR_UNTRUSTED`.
+It doesn't grab a reference count of the `kmem_cache` so the caller is responsible to manage the access. The returned point is marked as `PTR_UNTRUSTED`.
 
 **Parameters**
 

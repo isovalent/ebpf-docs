@@ -12,7 +12,7 @@ Find a struct task_struct from its `vpid`.
 
 ## Definition
 
-Find a struct task_struct from its vpid by looking it up in the pid namespace of the current task.
+Find a struct `task_struct` from its `vpid` by looking it up in the `pid` namespace of the current task.
 
 **Parameters**
 

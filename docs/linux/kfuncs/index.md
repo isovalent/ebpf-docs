@@ -124,7 +124,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_task_from_pid`](bpf_task_from_pid.md)
 - [`bpf_task_from_vpid`](bpf_task_from_vpid.md)
 
-## Funcs for memory allocator inspection
+## KFuncs for memory allocator inspection
 
 - [`bpf_get_kmem_cache`](bpf_get_kmem_cache.md)
 
@@ -245,7 +245,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bbr_init`](bbr_init.md)
 - [`bbr_main`](bbr_main.md)
 - [`bbr_sndbuf_expand`](bbr_sndbuf_expand.md)
-- [`bbr_undo_cwnd`](bbr_undo_cwnd.md)scx_bpf_create_dsq
+- [`bbr_undo_cwnd`](bbr_undo_cwnd.md)
 - [`bbr_cwnd_event`](bbr_cwnd_event.md)
 - [`bbr_ssthresh`](bbr_ssthresh.md)
 - [`bbr_min_tso_segs`](bbr_min_tso_segs.md)

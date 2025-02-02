@@ -73,7 +73,7 @@
   - [`bpf_task_get_cgroup1`](bpf_task_get_cgroup1.md)
   - [`bpf_task_from_pid`](bpf_task_from_pid.md)
   - [`bpf_task_from_vpid`](bpf_task_from_vpid.md)
-- Funcs for memory allocator inspection
+- KFuncs for memory allocator inspection
   - [`bpf_get_kmem_cache`](bpf_get_kmem_cache.md)
 - Kfuncs for casting pointers
   - [`bpf_cast_to_kern_ctx`](bpf_cast_to_kern_ctx.md)

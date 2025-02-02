@@ -8,7 +8,7 @@ description: "This page documents the 'scx_bpf_put_idle_cpumask' eBPF kfunc, inc
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 <!-- [/FEATURE_TAG] -->
 
-This function releases a previously acquired referenced kptr to either the percpu, or SMT idle-tracking cpumask.
+This function releases a previously acquired referenced kptr to either the per-CPU, or <nospell>SMT</nospell> idle-tracking cpumask.
 
 ## Definition
 

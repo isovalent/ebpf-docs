@@ -14,7 +14,7 @@ This function moves a task from a DSQ to the current CPU's local DSQ.
 
 Move a task from the non-local DSQ identified by `dsq_id` to the current CPU's local DSQ for execution. Can only be called from `ops.dispatch()`.
 
-This function flushes the in-flight dispatches from [`scx_bpf_dsq_insert`](scx_bpf_dsq_insert.md) before trying to move from the specified DSQ. It may also grab rq locks and thus can't be called under any BPF locks.
+This function flushes the in-flight dispatches from [`scx_bpf_dsq_insert`](scx_bpf_dsq_insert.md) before trying to move from the specified DSQ. It may also grab <nospell>rq</nospell> locks and thus can't be called under any BPF locks.
 
 **Parameters**
 

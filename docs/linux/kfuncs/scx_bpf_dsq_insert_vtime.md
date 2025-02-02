@@ -8,11 +8,11 @@ description: "This page documents the 'scx_bpf_dsq_insert_vtime' eBPF kfunc, inc
 [:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/cc26abb1a19adbb91b79d25a2e74976633ece429)
 <!-- [/FEATURE_TAG] -->
 
-This function inserts a task into the vtime priority queue of a DSQ.
+This function inserts a task into the `vtime` priority queue of a DSQ.
 
 ## Definition
 
-Insert `p` into the vtime priority queue of the DSQ identified by `dsq_id`. Tasks queued into the priority queue are ordered by `vtime`. All other aspects are identical to [`scx_bpf_dsq_insert`](scx_bpf_dsq_insert.md).
+Insert `p` into the `vtime` priority queue of the DSQ identified by `dsq_id`. Tasks queued into the priority queue are ordered by `vtime`. All other aspects are identical to [`scx_bpf_dsq_insert`](scx_bpf_dsq_insert.md).
 
 `vtime` ordering is according to [`time_before64()`](https://elixir.bootlin.com/linux/v6.13/source/include/linux/jiffies.h#L212) which considers wrapping. A numerically larger vtime may indicate an earlier position in the ordering and vice-versa.
 

@@ -8,11 +8,11 @@ description: "This page documents the 'scx_bpf_pick_idle_cpu' eBPF kfunc, includ
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 <!-- [/FEATURE_TAG] -->
 
-This function picks and claims an idle cpu.
+This function picks and claims an idle CPU.
 
 ## Definition
 
-Pick and claim an idle cpu in `cpus_allowed`. 
+Pick and claim an idle CPU in `cpus_allowed`. 
 
 Idle CPU tracking may race against CPU scheduling state transitions. For example, this function may return `-EBUSY` as CPUs are transitioning into the idle state. If the caller then assumes that there will be dispatch events on the CPUs as they were all busy, the scheduler may end up stalling with CPUs idling while there are pending tasks. Use [`scx_bpf_pick_any_cpu`](scx_bpf_pick_any_cpu.md) and [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md) to guarantee that there will be at least one dispatch event in the near future.
 
@@ -30,7 +30,7 @@ Unavailable if `ops.update_idle()` is implemented and `SCX_OPS_KEEP_BUILTIN_IDLE
 
 **Returns**
 
-The picked idle cpu number on success. `-EBUSY` if no matching cpu was found.
+The picked idle CPU number on success. `-EBUSY` if no matching cpu was found.
 
 **Signature**
 
