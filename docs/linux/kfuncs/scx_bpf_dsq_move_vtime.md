@@ -8,7 +8,7 @@ description: "This page documents the 'scx_bpf_dsq_move_vtime' eBPF kfunc, inclu
 [:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/5cbb302880f50f3edf35f8c6a1d38b6948bf4d11)
 <!-- [/FEATURE_TAG] -->
 
-This function moves a task from DSQ iteration to a PRIQ DSQ.
+This function moves a task from DSQ iteration to a <nospell>PRIQ</nospell> DSQ.
 
 ## Definition
 

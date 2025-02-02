@@ -231,3 +231,16 @@ tc
 tcx
 Netkit
 netkit
+sched
+scx
+IRQ
+IRQs
+DSQ
+DSQs
+natively
+enqueue
+enqueued
+enqueues
+variadic
+cpumask
+scalable

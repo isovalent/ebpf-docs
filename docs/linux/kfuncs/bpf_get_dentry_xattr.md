@@ -8,11 +8,11 @@ description: "This page documents the 'bpf_get_dentry_xattr' eBPF kfunc, includi
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/ac13a4261afe81ca423eddd8e6571078fe2a7cea)
 <!-- [/FEATURE_TAG] -->
 
-This function gets xattr of a dentry.
+This function gets extended attribute(<nospell>xattr</nospell>) of a directory entry(<nospell>dentry</nospell>).
 
 ## Definition
 
-Get xattr `name__str` of `dentry` and store the output in `value_ptr`.
+Get <nospell>xattr</nospell> `name__str` of `dentry` and store the output in `value_ptr`.
 
 For security reasons, only `name__str` with prefix "user." is allowed.
 

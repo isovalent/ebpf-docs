@@ -8,7 +8,7 @@ description: "This page documents the 'scx_bpf_task_cgroup' eBPF kfunc, includin
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/8195136669661fdfe54e9a8923c33b31c92fc1da)
 <!-- [/FEATURE_TAG] -->
 
-This function returns the sched cgroup of a task.
+This function returns the sched cGroup of a task.
 
 ## Definition
 
@@ -20,7 +20,7 @@ This function returns the sched cgroup of a task.
 
 **Returns**
 
-The sched cgroup of a task
+The sched cGroup of a task
 
 **Signature**
 

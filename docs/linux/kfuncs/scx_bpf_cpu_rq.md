@@ -8,13 +8,13 @@ description: "This page documents the 'scx_bpf_cpu_rq' eBPF kfunc, including its
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/6203ef73fa5c0358f7960b038628259be1448724)
 <!-- [/FEATURE_TAG] -->
 
-This function fetches the rq (runqueue) of a CPU.
+This function fetches the <nospell>rq</nospell> (run queue) of a CPU.
 
 ## Definition
 
 **Parameters**
 
-`cpu`: CPU of the rq
+`cpu`: CPU of the <nospell>rq</nospell>
 
 **Signature**
 
