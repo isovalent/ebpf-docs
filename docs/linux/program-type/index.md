@@ -68,7 +68,7 @@ These program types have unique purposes and do not fit neatly in any of the lar
 
 The concept of a program type only exists at the kernel/syscall level. There is no standardized way of marking which program type a particular program within an [ELF](../../concepts/elf.md) is. The industry standard that most [loaders](../../concepts/loader.md) follow the example set out by Libbpf which is to patterns in the [ELF](../../concepts/elf.md) section names to convey the program type.
 
-Section names supported by libppf consist of one or more parts, separated by '/'. The first part identifies the program type of the program contained in the section. Subsequent parts (called `extras` in libppf documentation) may specify the [attach type](../syscall/BPF_LINK_CREATE.md#attach-types) if applicable, or the specific event to attach to. Extras, if present, provide details of how to auto-attach the program.
+Section names supported by libbpf consist of one or more parts, separated by '/'. The first part identifies the program type of the program contained in the section. Subsequent parts (called `extras` in libppf documentation) may specify the [attach type](../syscall/BPF_LINK_CREATE.md#attach-types) if applicable, or the specific event to attach to. Extras, if present, provide details of how to auto-attach the program.
 
 ## Index of section names
 
@@ -169,15 +169,17 @@ Section names supported by libppf consist of one or more parts, separated by '/'
 | `BPF_PROG_TYPE_XDP` | `BPF_XDP` | `xdp.frags` |
 | `BPF_PROG_TYPE_XDP` | `BPF_XDP` | `xdp` |
 
+The table above was sourced from the [Program Types and ELF Sections](https://docs.kernel.org/bpf/libbpf/program_types.html) page (`Copyright (c) 2022 Donald Hunter . All rights reserved.`) in the [Linux Kernel documentation](https://docs.kernel.org/index.html).
+
 [^1]: `<function>` is the symbol name of a function. This may be architecture-specific, such as `__x64_sys_getpid` for the `getpid` syscall on the x86_64 architecture. Valid characters for `<function>` are `a-zA-Z0-9_`.
 [^2]: `<offset>` is an address offset from the symbol name. It must be a valid non-negative integer.
 [^3]: `<syscall>` is the name of a system call, such as `getpid`. It is not architecture-specific.
 [^4]:  `<path>` is a path to an executable or library.
-[^5]:  `<path>` is a path to an executable or library that provides the USDT probe, <provider> is the USDT provider, and <name> is the USDT probe name.
+[^5]:  `<path>` is a path to an executable or library that provides the USDT probe, `<provider>` is the USDT provider, and `<name>` is the USDT probe name.
 [^6]:  `<pattern>` is used to match kernel function names, which may be architecture-specific. `<pattern>` supports `*` and `?` wildcards. Valid characters for `<pattern>` are `a-zA-Z0-9_.*?`.
 [^7]:  `<hook>` is the name of an LSM (Linux Security Module) hook. See [Program type BPF_PROG_TYPE_LSM](./BPF_PROG_TYPE_LSM.md) for details.
 [^8]:  `<tracepoint>` is the name of a trace event. See [Program type BPF_PROG_TYPE_TRACEPOINT](./BPF_PROG_TYPE_TRACEPOINT.md) and [Program Type BPF_PROG_TYPE_RAW_TRACEPOINT](./BPF_PROG_TYPE_RAW_TRACEPOINT.md) for details.
 [^9]: The `tc`, `classifier` and `action` attach types are deprecated, use `tcx/*` instead.
-[^10]: `<name>` is the value of the .name member of a struct defined in the `.struct_ops` section. See [Program type BPF_PROG_TYPE_STRUCT_OPS](./BPF_PROG_TYPE_STRUCT_OPS.md) for details.
+[^10]: `<name>` is the value of the `.name` member of a struct defined in the `.struct_ops` section. See [Program type BPF_PROG_TYPE_STRUCT_OPS](./BPF_PROG_TYPE_STRUCT_OPS.md) for details.
 [^11]: `<category>` is the name of a subsystem, and `<name>` is the name of an event as per [event tracing](https://docs.kernel.org/trace/events.html) convention.
 [^12]: `<struct_name>` is the name of a _tracing program iterator_. See [Iterator in Program type BPF_PROG_TYPE_TRACING](./BPF_PROG_TYPE_TRACING.md#iterator) for details.
