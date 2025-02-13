@@ -124,7 +124,7 @@ This field is not supported for the following program types:
 
 This field indicates the size of the `ctx_in` buffer.
 
-This field is not supported for programs of type [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md).
+This field is required if `ctx_in` is not empty.
 
 ### `ctx_size_out`
 
