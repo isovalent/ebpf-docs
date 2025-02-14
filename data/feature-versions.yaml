@@ -332,6 +332,18 @@
     - name: BPF_LSM_CGROUP
       version: v6.0
       commit: 69fd337a975c7e690dfe49d9cb4fe5ba1e6db44e
+    - name: BPF_TCX_INGRESS
+      version: v6.6
+      commit: e420bed025071a623d2720a92bc2245c84757ecb
+    - name: BPF_TCX_EGRESS
+      version: v6.6
+      commit: e420bed025071a623d2720a92bc2245c84757ecb
+    - name: BPF_NETKIT_PRIMARY
+      version: v6.7
+      commit: 35dfaad7188cdc043fde31709c796f5a692ba2bd
+    - name: BPF_NETKIT_PEER
+      version: v6.7
+      commit: 35dfaad7188cdc043fde31709c796f5a692ba2bd
 - name: syscall_commands
   features:
     - name: BPF_MAP_CREATE

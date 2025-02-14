@@ -102,27 +102,17 @@ For more details on the `tc` command, see the general [man page](https://man7.or
 For more details on the bpf filter options, see the `tc-bpf` [man page](https://man7.org/linux/man-pages/man8/tc-bpf.8.html).
 
 In addition, the kernel supports the tcx (the new tc BPF fast path with BPF link support) since kernel v6.6, which allows for more advanced features like attaching multiple programs to a single qdisc, or attaching programs to a qdisc on the egress side:
-```
-+-------------------------------------------+----------------------------------------+----------------------------------+-----------+
-| Program Type                              | Attach Type                            | ELF Section Name                 | Sleepable |
-+===========================================+========================================+==================================+===========+
-| ``BPF_PROG_TYPE_SCHED_CLS``               |                                        | ``classifier`` [#tc_legacy]_     |           |
-+                                           +                                        +----------------------------------+-----------+
-|                                           |                                        | ``tc`` [#tc_legacy]_             |           |
-+                                           +----------------------------------------+----------------------------------+-----------+
-|                                           | ``BPF_NETKIT_PRIMARY``                 | ``netkit/primary``               |           |
-+                                           +----------------------------------------+----------------------------------+-----------+
-|                                           | ``BPF_NETKIT_PEER``                    | ``netkit/peer``                  |           |
-+                                           +----------------------------------------+----------------------------------+-----------+
-|                                           | ``BPF_TCX_INGRESS``                    | ``tc/ingress``                   |           |
-+                                           +----------------------------------------+----------------------------------+-----------+
-|                                           | ``BPF_TCX_EGRESS``                     | ``tc/egress``                    |           |
-+                                           +----------------------------------------+----------------------------------+-----------+
-|                                           | ``BPF_TCX_INGRESS``                    | ``tcx/ingress``                  |           |
-+                                           +----------------------------------------+----------------------------------+-----------+
-|                                           | ``BPF_TCX_EGRESS``                     | ``tcx/egress``                   |           |
-+-------------------------------------------+----------------------------------------+----------------------------------+-----------+
-```
+
+
+| Attach Type          | ELF Section Name     |
+|----------------------|----------------------|
+`BPF_NETKIT_PRIMARY` | `netkit/primary`     |
+`BPF_NETKIT_PEER`    | `netkit/peer`        |
+`BPF_TCX_INGRESS`    | `tc/ingress`         |
+`BPF_TCX_EGRESS`     | `tc/egress`          |
+`BPF_TCX_INGRESS`    | `tcx/ingress`        |
+`BPF_TCX_EGRESS`     | `tcx/egress`         |
+
 
 The definition of return codes for tcx programs  can be found in the kernel sources:
 ```c
