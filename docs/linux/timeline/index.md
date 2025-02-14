@@ -787,10 +787,14 @@ hide: toc
 
 ## :octicons-tag-24: v6.6
 
+* `BPF_TCX_INGRESS` [e420bed](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb) (attach_types)
+* `BPF_TCX_EGRESS` [e420bed](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb) (attach_types)
 * `bpf_map_sum_elem_count` [803370d](https://github.com/torvalds/linux/commit/803370d3d37579e080e8c59f2360a072d0e45aff) (kfuncs)
 
 ## :octicons-tag-24: v6.7
 
+* `BPF_NETKIT_PRIMARY` [35dfaad](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd) (attach_types)
+* `BPF_NETKIT_PEER` [35dfaad](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd) (attach_types)
 * `bpf_percpu_obj_new_impl` [36d8bdf](https://github.com/torvalds/linux/commit/36d8bdf75a93190e5669b9d1d95994e13e15ba1d) (kfuncs)
 * `bpf_percpu_obj_drop_impl` [36d8bdf](https://github.com/torvalds/linux/commit/36d8bdf75a93190e5669b9d1d95994e13e15ba1d) (kfuncs)
 * `bpf_throw` [fd5d27b](https://github.com/torvalds/linux/commit/fd5d27b70188379bb441d404c29a0afb111e1753) (kfuncs)
