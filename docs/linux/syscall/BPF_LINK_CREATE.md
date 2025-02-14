@@ -522,6 +522,34 @@ The attach type is often used to communicate a specialization for a program type
 [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/69fd337a975c7e690dfe49d9cb4fe5ba1e6db44e)
 <!-- [/FEATURE_TAG] -->
 
+### `BPF_TCX_INGRESS`
+
+<!-- [FEATURE_TAG](BPF_TCX_INGRESS) -->
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb)
+<!-- [/FEATURE_TAG] -->
+
+
+### `BPF_TCX_EGRESS`
+
+<!-- [FEATURE_TAG](BPF_TCX_EGRESS) -->
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb)
+<!-- [/FEATURE_TAG] -->
+
+
+### `BPF_NETKIT_PRIMARY`
+
+<!-- [FEATURE_TAG](BPF_NETKIT_PRIMARY) -->
+[:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd)
+<!-- [/FEATURE_TAG] -->
+
+
+### `BPF_NETKIT_PEER`
+
+<!-- [FEATURE_TAG](BPF_NETKIT_PEER) -->
+[:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd)
+<!-- [/FEATURE_TAG] -->
+
+
 
 ## Flags
 
