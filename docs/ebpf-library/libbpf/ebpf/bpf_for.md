@@ -45,7 +45,7 @@ int iter_next_rcu(const void *ctx)
 {
 	int v;
 
-    // Will print 2, 3, 4, 5
+    // Will print 2, 3, 4
     bpf_for(v, 2, 5) {
         bpf_printk("X = %d", v);
     }
