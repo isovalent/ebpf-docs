@@ -44,3 +44,10 @@ img.image-bg-white {
 div.mono code {
     font-family: monospace;
 }
+
+/* This CSS adds a dotted underline under links in highlighted code blocks */
+.highlight a span {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--md-typeset-a-color);
+}

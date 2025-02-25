@@ -27,12 +27,16 @@ theme:
 
   custom_dir: overwrites
 
+hooks:
+  - hooks/links_in_code.py
+
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - footnotes
   - attr_list
+  - pymdownx.highlight
   - pymdownx.inlinehilite
   - abbr
   - pymdownx.snippets
@@ -43,6 +47,9 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true
+
+hooks:
+  - hooks/links_in_code.py
 
 plugins:
   - search:
