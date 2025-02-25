@@ -24,7 +24,7 @@ Current _ktime_.
 <!-- [/HELPER_FUNC_DEF] -->
 ## Usage
 
-Returns a 64-bit value representing the current kernel time in nanoseconds since the system boot, excluding any time the system was suspended. This can be useful for measuring time intervals or generating timestamps in eBPF programs.
+Returns a 64-bit value representing the current kernel time in nanoseconds since the system boot, including any time the system was suspended. This can be useful for measuring time intervals or generating timestamps in eBPF programs.
 
 ### Program types
 
