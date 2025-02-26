@@ -50,6 +50,7 @@ markdown_extensions:
 
 hooks:
   - hooks/links_in_code.py
+  - hooks/mdx_outline.py
 
 plugins:
   - search:

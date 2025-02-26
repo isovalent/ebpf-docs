@@ -51,3 +51,28 @@ div.mono code {
     text-decoration-style: dotted;
     text-decoration-color: var(--md-typeset-a-color);
 }
+
+/* Find the section that is currently targeted (by the fragment of the URL),
+ * mark it with a yellow stripe (border) on the left side. And highlight it
+ * which fades out to catch the eye of the user.
+ */
+
+@keyframes highlight-target {
+    0% {
+        background: #174A5EFF;
+    }
+
+    100% {
+        background: #174A5E00;
+    }
+}
+
+section:has(> h2:target),
+section:has(> h3:target),
+section:has(> h4:target),
+section:has(> h5:target),
+section:has(> h6:target) {
+    border-left: 3px solid var(--md-typeset-a-color);
+    padding-left: 6px;
+    animation: highlight-target 2s;
+}
