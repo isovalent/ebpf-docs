@@ -12,9 +12,10 @@ theme:
     - navigation.top
     - content.action.view
     - content.action.edit
+    - content.code.annotate
   font:
     text: Inter
-    code: Inter
+    code: Roboto Mono
   palette:
     scheme: slate
     primary: yellow
