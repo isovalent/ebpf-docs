@@ -12,7 +12,7 @@ This function tests and clears `cpu`'s idle state.
 
 ## Definition
 
-Unavailable if `ops.update_idle()` is implemented and `SCX_OPS_KEEP_BUILTIN_IDLE` is not set.
+Unavailable if [`sched_ext_ops.update_idle`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#update_idle) is implemented and [`SCX_OPS_KEEP_BUILTIN_IDLE`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#scx_ops_keep_builtin_idle) is not set.
 
 **Parameters**
 

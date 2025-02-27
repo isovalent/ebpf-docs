@@ -12,7 +12,7 @@ This function returns the number of remaining dispatch slots.
 
 ## Definition
 
-Can only be called from `ops.dispatch()`.
+Can only be called from [`sched_ext_ops.dispatch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch).
 
 **Returns**
 

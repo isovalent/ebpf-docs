@@ -14,11 +14,17 @@ This program types allows for the implementation of certain kernel features in B
 
 The kernel uses the "struct ops" pattern in C to implement interfaces. The kernel defines a struct with function pointers as field types. An implementation can create an instance of this struct and provide pointers to its own functions that implement the signatures.
 
-This program type allows for the creation of these struct implementations with BPF so locations in the kernel that allow it can BPF to implement the functionality. For example the TCP congestion control algorithm.
+This program type allows for the creation of these struct implementations with BPF so locations in the kernel that allow it can use BPF to implement the functionality.
+
+Struct ops can be used with the following:
+
+- [`struct tcp_congestion_ops`](BPF_PROG_TYPE_STRUCT_OPS/tcp_congestion_ops.md) [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/0baf26b0fcd74bbfcef53c5d5e8bad2b99c8d0d2)
+- [`struct hid_bpf_ops`](BPF_PROG_TYPE_STRUCT_OPS/hid_bpf_ops.md) [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
+- [`struct sched_ext_ops`](BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 
 ## Context
 
-The context provided to each function is an array of 64 bit integers, representing the argument list of the function in the struct it is implementing. The `BPF_PROG` macro from libbpf can be used to write your program in a recognizable way, the macro will take care of unpacking the array into named variables of the provided type.
+The context provided to each function is an array of 64 bit integers, representing the argument list of the function in the struct it is implementing. The [`BPF_PROG`](../../ebpf-library/libbpf/ebpf/BPF_PROG.md) macro from libbpf can be used to write your program in a recognizable way, the macro will take care of unpacking the array into named variables of the provided type.
 
 ## Attachment
 

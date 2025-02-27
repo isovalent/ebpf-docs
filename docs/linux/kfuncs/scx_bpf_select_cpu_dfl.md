@@ -8,11 +8,11 @@ description: "This page documents the 'scx_bpf_select_cpu_dfl' eBPF kfunc, inclu
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 <!-- [/FEATURE_TAG] -->
 
-This function is the default implementation of `ops.select_cpu()`
+This function is the default implementation of [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu)
 
 ## Definition
 
-Can only be called from `ops.select_cpu()` if the built-in CPU selection is enabled, `ops.update_idle()` is missing, or `SCX_OPS_KEEP_BUILTIN_IDLE` is set. `p`, `prev_cpu` and `wake_flags` match `ops.select_cpu()`.
+Can only be called from [`select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu) if the built-in CPU selection is enabled, [`sched_ext_ops.update_idle`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#update_idle) is missing, or [`SCX_OPS_KEEP_BUILTIN_IDLE`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#scx_ops_keep_builtin_idle) is set. `p`, `prev_cpu` and `wake_flags` match [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu).
 
 **Parameters**
 
@@ -20,7 +20,11 @@ Can only be called from `ops.select_cpu()` if the built-in CPU selection is enab
 
 `prev_cpu`: CPU `p` was on previously
 
-`wake_flags`: `SCX_WAKE_*` flags
+`wake_flags`: `SCX_WAKE_*`, possible values are:
+
+* `SCX_WAKE_FORK` (`0x02`) - Wakeup after exec
+* `SCX_WAKE_TTWU` (`0x04`) - Wakeup after fork
+* `SCX_WAKE_SYNC` (`0x08`) - Wakeup
 
 `is_idle`: out parameter indicating whether the returned CPU is idle
 

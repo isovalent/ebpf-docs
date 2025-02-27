@@ -14,7 +14,7 @@ This function gracefully exits the BPF scheduler.
 
 Indicate that the BPF scheduler wants to exit gracefully, and initiate ops disabling. Intended to be called through the [`scx_bpf_exit`](https://github.com/torvalds/linux/blob/2a52ca7c98960aafb0eca9ef96b2d0c932171357/tools/sched_ext/include/scx/common.bpf.h#L80) helper macro.
 
-`exit_code`: Exit value to pass to user space via struct `scx_exit_info`.
+`exit_code`: Exit value to pass to user space via struct [`scx_exit_info`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#struct-scx_exit_info).
 
 `fmt`: error message format string
 

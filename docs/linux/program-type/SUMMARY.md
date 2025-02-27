@@ -34,4 +34,7 @@
 * [`BPF_PROG_TYPE_LSM`](BPF_PROG_TYPE_LSM.md)
 * [`BPF_PROG_TYPE_EXT`](BPF_PROG_TYPE_EXT.md)
 * [`BPF_PROG_TYPE_STRUCT_OPS`](BPF_PROG_TYPE_STRUCT_OPS.md)
+  * [`struct tcp_congestion_ops`](BPF_PROG_TYPE_STRUCT_OPS/tcp_congestion_ops.md)
+  * [`struct hid_bpf_ops`](BPF_PROG_TYPE_STRUCT_OPS/hid_bpf_ops.md)
+  * [`struct sched_ext_ops`](BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md)
 * [`BPF_PROG_TYPE_SYSCALL`](BPF_PROG_TYPE_SYSCALL.md)

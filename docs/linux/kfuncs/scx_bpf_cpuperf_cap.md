@@ -18,7 +18,7 @@ This function queries the maximum relative capacity of a CPU.
 
 **Returns** 
 
-The maximum relative capacity of `cpu` in relation to the most performant CPU in the system. The return value is in the range [`1`, `SCX_CPUPERF_ONE`]. See [`scx_bpf_cpuperf_cur`](scx_bpf_cpuperf_cur.md).
+The maximum relative capacity of `cpu` in relation to the most performant CPU in the system. The return value is in the range [`1`, [`SCX_CPUPERF_ONE`](https://elixir.bootlin.com/linux/v6.13.4/source/kernel/sched/ext.c#L20)]. See [`scx_bpf_cpuperf_cur`](scx_bpf_cpuperf_cur.md).
 
 **Signature**
 

@@ -18,7 +18,7 @@ For the transfer to be successful, `p` must still be on the DSQ and have been qu
 
 `p`'s slice is kept by default. Use [`scx_bpf_dsq_move_set_slice`](scx_bpf_dsq_move_set_slice.md) to update.
 
-Can be called from `ops.dispatch()` or any BPF context which doesn't hold a rq lock (e.g. [BPF timers](../concepts/timers.md) or [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md) programs).
+Can be called from [`sched_ext_ops.dispatch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch) or any BPF context which doesn't hold a <nospell>rq</nospell> lock (e.g. [BPF timers](../concepts/timers.md) or [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md) programs).
 
 **Parameters**
 
@@ -28,21 +28,7 @@ Can be called from `ops.dispatch()` or any BPF context which doesn't hold a rq l
 
 `dsq_id`: DSQ to move `p` to
 
-`enq_flags`: `SCX_ENQ_*`
-
-**Flags**
-
-`SCX_ENQ_WAKEUP`: Task just became runnable
-
-`SCX_ENQ_HEAD`: Place at front of queue (tail if not specified)
-
-`SCX_ENQ_CPU_SELECTED`: `->select_task_rq()` was called
-
-`SCX_ENQ_PREEMPT`: Set the following to trigger preemption when calling `scx_bpf_dsq_insert` with a local dsq as the target. The slice of the current task is cleared to zero and the CPU is kicked into the scheduling path. Implies `SCX_ENQ_HEAD`.
-
-`SCX_ENQ_REENQ`: The task being enqueued was previously enqueued on the current CPU's `SCX_DSQ_LOCAL`, but was removed from it in a call to the [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md) kfunc. If [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md) was invoked in a `->cpu_release()` callback, and the task is again dispatched back to `SCX_LOCAL_DSQ` by this current `->enqueue()`, the task will not be scheduled on the CPU until at least the next invocation of the `->cpu_acquire()` callback.
-
-`SCX_ENQ_LAST`: The task being enqueued is the only task available for the cpu. By default, ext core keeps executing such tasks but when `SCX_OPS_ENQ_LAST` is specified, they are `ops.enqueue()`'d with the `SCX_ENQ_LAST` flag set. The BPF scheduler is responsible for triggering a follow-up scheduling event. Otherwise, Execution may stall.
+`enq_flags`: Bitfield of flags, see [`enum scx_enq_flags`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#enum-scx_enq_flags) for valid values.
 
 **Return**
 

@@ -14,7 +14,7 @@ Pick and claim an idle CPU if available or pick any CPU
 
 Pick and claim an idle CPU in `cpus_allowed`. If none is available, pick any CPU in `cpus_allowed`. Guaranteed to succeed.
 
-If `ops.update_idle()` is implemented and `SCX_OPS_KEEP_BUILTIN_IDLE` is not set, this function can't tell which CPUs are idle and will always pick any CPU.
+If [`sched_ext_ops.update_idle`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#update_idle) is implemented and [`SCX_OPS_KEEP_BUILTIN_IDLE`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#scx_ops_keep_builtin_idle) is not set, this function can't tell which CPUs are idle and will always pick any CPU.
 
 **Parameters**
 
