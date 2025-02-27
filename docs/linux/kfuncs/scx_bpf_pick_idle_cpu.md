@@ -16,7 +16,7 @@ Pick and claim an idle CPU in `cpus_allowed`.
 
 Idle CPU tracking may race against CPU scheduling state transitions. For example, this function may return `-EBUSY` as CPUs are transitioning into the idle state. If the caller then assumes that there will be dispatch events on the CPUs as they were all busy, the scheduler may end up stalling with CPUs idling while there are pending tasks. Use [`scx_bpf_pick_any_cpu`](scx_bpf_pick_any_cpu.md) and [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md) to guarantee that there will be at least one dispatch event in the near future.
 
-Unavailable if `ops.update_idle()` is implemented and `SCX_OPS_KEEP_BUILTIN_IDLE` is not set.
+Unavailable if [`sched_ext_ops.update_idle`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#update_idle) is implemented and [`SCX_OPS_KEEP_BUILTIN_IDLE`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#scx_ops_keep_builtin_idle) is not set.
 
 **Parameters**
 

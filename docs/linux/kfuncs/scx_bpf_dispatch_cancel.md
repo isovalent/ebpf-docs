@@ -12,7 +12,7 @@ This function cancels the latest dispatch.
 
 ## Definition
 
-Cancel the latest dispatch. Can be called multiple times to cancel further dispatches. Can only be called from `ops.dispatch()`.
+Cancel the latest dispatch. Can be called multiple times to cancel further dispatches. Can only be called from [`sched_ext_ops.dispatch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch).
 
 **Signature**
 

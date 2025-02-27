@@ -12,7 +12,7 @@ This function destroys a custom DSQ.
 
 ## Definition
 
-Destroy the custom DSQ identified by `dsq_id`. Only DSQs created with [`scx_bpf_create_dsq`](scx_bpf_create_dsq.md) can be destroyed. The caller must ensure that the DSQ is empty and no further tasks are dispatched to it. Ignored if called on a DSQ which doesn't exist. Can be called from any online `scx_ops` operations.
+Destroy the custom DSQ identified by `dsq_id`. Only DSQs created with [`scx_bpf_create_dsq`](scx_bpf_create_dsq.md) can be destroyed. The caller must ensure that the DSQ is empty and no further tasks are dispatched to it. Ignored if called on a DSQ which doesn't exist. Can be called from any online [`sched_ext_ops`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md) operations.
 
 **Parameters**
 

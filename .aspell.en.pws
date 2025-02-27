@@ -33,6 +33,7 @@ Rlimit
 rlimit
 cGroup
 cGroups
+cGroup's
 tailcall
 tailcalls
 Dynptr
@@ -149,6 +150,8 @@ netlink
 prepend
 etcetera
 polymorphism
+Backtrace
+backtrace
 deduplication
 dereference
 dereferenced
@@ -163,6 +166,10 @@ callee
 verifier
 verifier's
 runtime
+retransmission
+retransmitting
+retransmitted
+userland
 userspace
 Userspace
 refcount
@@ -244,3 +251,9 @@ enqueues
 variadic
 cpumask
 scalable
+vtime
+runnable
+runqueue
+dequeue
+Dequeue
+unregistration

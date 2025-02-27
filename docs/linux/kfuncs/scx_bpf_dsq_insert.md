@@ -12,17 +12,17 @@ This function inserts a task into the First In First Out(FIFO) queue of a Dispat
 
 ## Definition
 
-Insert `p` into the FIFO queue of the DSQ identified by `dsq_id`. It is safe to call this function spuriously. Can be called from `ops.enqueue()`, `ops.select_cpu()`, and `ops.dispatch()`.
+Insert `p` into the FIFO queue of the DSQ identified by `dsq_id`. It is safe to call this function spuriously. Can be called from [`sched_ext_ops.enqueue`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#enqueue), [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu), and [`sched_ext_ops.dispatch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch).
 
-When called from `ops.select_cpu()` or `ops.enqueue()`, it's for direct dispatch and `p` must match the task being enqueued.
+When called from [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu) or [`sched_ext_ops.enqueue`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#enqueue), it's for direct dispatch and `p` must match the task being enqueued.
 
-When called from `ops.select_cpu()`, `enq_flags` and `dsp_id` are stored, and `p` will be directly inserted into the corresponding dispatch queue after `ops.select_cpu()` returns. If `p` is inserted into `SCX_DSQ_LOCAL`, it will be inserted into the local DSQ of the CPU returned by `ops.select_cpu()`. `enq_flags` are OR'd with the enqueue flags on the enqueue path before the task is inserted.
+When called from [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu), `enq_flags` and `dsp_id` are stored, and `p` will be directly inserted into the corresponding dispatch queue after [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu) returns. If `p` is inserted into `SCX_DSQ_LOCAL`, it will be inserted into the local DSQ of the CPU returned by [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu). `enq_flags` are OR'd with the enqueue flags on the enqueue path before the task is inserted.
 
-When called from `ops.dispatch()`, there are no restrictions on `p` or `dsq_id` and this function can be called up to `ops.dispatch_max_batch` times to insert multiple tasks. [`scx_bpf_dispatch_nr_slots`](scx_bpf_dispatch_nr_slots.md) returns the number of the remaining slots. [`scx_bpf_consume`](scx_bpf_consume.md) flushes the batch and resets the counter.
+When called from [`sched_ext_ops.dispatch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch), there are no restrictions on `p` or `dsq_id` and this function can be called up to [`sched_ext_ops.dispatch_max_batch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch_max_batch) times to insert multiple tasks. [`scx_bpf_dispatch_nr_slots`](scx_bpf_dispatch_nr_slots.md) returns the number of the remaining slots. [`scx_bpf_consume`](scx_bpf_consume.md) flushes the batch and resets the counter.
 
 This function doesn't have any locking restrictions and may be called under BPF locks (in the future when BPF introduces more flexible locking).
 
-`p` is allowed to run for `slice`. The scheduling path is triggered on slice exhaustion. If zero, the current residual slice is maintained. If `SCX_SLICE_INF`, `p` never expires and the BPF scheduler must kick the CPU with [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md) to trigger scheduling.
+`p` is allowed to run for `slice`. The scheduling path is triggered on slice exhaustion. If zero, the current residual slice is maintained. If [`SCX_SLICE_INF`](https://elixir.bootlin.com/linux/v6.13.4/source/include/linux/sched/ext.h#L21), `p` never expires and the BPF scheduler must kick the CPU with [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md) to trigger scheduling.
 
 **Parameters**
 
@@ -32,21 +32,7 @@ This function doesn't have any locking restrictions and may be called under BPF 
 
 `slice`: duration `p` can run for in nanoseconds, 0 to keep the current value
 
-`enq_flags`: `SCX_ENQ_*`
-
-**Flags**
-
-`SCX_ENQ_WAKEUP`: Task just became runnable
-
-`SCX_ENQ_HEAD`: Place at front of queue (tail if not specified)
-
-`SCX_ENQ_CPU_SELECTED`: `->select_task_rq()` was called
-
-`SCX_ENQ_PREEMPT`: Set the following to trigger preemption when calling `scx_bpf_dsq_insert` with a local dsq as the target. The slice of the current task is cleared to zero and the CPU is kicked into the scheduling path. Implies `SCX_ENQ_HEAD`.
-
-`SCX_ENQ_REENQ`: The task being enqueued was previously enqueued on the current CPU's `SCX_DSQ_LOCAL`, but was removed from it in a call to the [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md) kfunc. If [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md) was invoked in a `->cpu_release()` callback, and the task is again dispatched back to `SCX_LOCAL_DSQ` by this current `->enqueue()`, the task will not be scheduled on the CPU until at least the next invocation of the `->cpu_acquire()` callback.
-
-`SCX_ENQ_LAST`: The task being enqueued is the only task available for the cpu. By default, ext core keeps executing such tasks but when `SCX_OPS_ENQ_LAST` is specified, they are `ops.enqueue()`'d with the `SCX_ENQ_LAST` flag set. The BPF scheduler is responsible for triggering a follow-up scheduling event. Otherwise, Execution may stall.
+`enq_flags`: Bitfield of flags, see [`enum scx_enq_flags`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#enum-scx_enq_flags) for valid values.
 
 **Signature**
 

@@ -12,7 +12,7 @@ This function triggers reschedule on a CPU.
 
 ## Definition
 
-Kick `cpu` into rescheduling. This can be used to wake up an idle CPU or trigger rescheduling on a busy CPU. This can be called from any online `scx_ops` operation and the actual kicking is performed asynchronously through an irq work.
+Kick `cpu` into rescheduling. This can be used to wake up an idle CPU or trigger rescheduling on a busy CPU. This can be called from any online [`sched_ext_ops`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md) operation and the actual kicking is performed asynchronously through an irq work.
 
 `cpu`: cpu to kick
 
@@ -22,7 +22,7 @@ Kick `cpu` into rescheduling. This can be used to wake up an idle CPU or trigger
 
 `SCX_KICK_IDLE`: Kick the target CPU if idle. Guarantees that the target CPU goes through at least one full scheduling cycle before going idle. If the target CPU can be determined to be currently not idle and going to go through a scheduling cycle before going idle, noop.
 
-`SCX_KICK_PREEMPT`: Preempt the current task and execute the dispatch path. If the current task of the target CPU is an SCX task, its `->scx.slice` is cleared to zero before the scheduling path is invoked so that the task expires and the dispatch path is invoked.
+<code id="scx_kick_preempt">SCX_KICK_PREEMPT</code>: Preempt the current task and execute the dispatch path. If the current task of the target CPU is an SCX task, its [`->scx.slice`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#struct-sched_ext_entity-slice) is cleared to zero before the scheduling path is invoked so that the task expires and the dispatch path is invoked.
 
 `SCX_KICK_WAIT`: Wait for the CPU to be rescheduled. The `scx_bpf_kick_cpu` call will return after the target CPU finishes picking the next task.
 

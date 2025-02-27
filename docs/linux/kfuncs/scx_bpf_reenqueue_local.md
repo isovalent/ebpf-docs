@@ -16,7 +16,7 @@ Iterate over all of the tasks currently enqueued on the local DSQ of the caller'
 
 **Returns**
 
-The number of processed tasks. Can only be called from `ops.cpu_release()`.
+The number of processed tasks. Can only be called from [`sched_ext_ops.cpu_release`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#cpu_release).
 
 **Signature**
 

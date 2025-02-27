@@ -14,15 +14,15 @@ This function queries the current relative performance of a CPU.
 
 The current performance level of a CPU in relation to the maximum performance available in the system can be calculated as follows:
 
-[`scx_bpf_cpuperf_cap()`](scx_bpf_cpuperf_cap.md) * [`scx_bpf_cpuperf_cur()`](scx_bpf_cpuperf_cur.md) / `SCX_CPUPERF_ONE`
+[`scx_bpf_cpuperf_cap()`](scx_bpf_cpuperf_cap.md) * [`scx_bpf_cpuperf_cur()`](scx_bpf_cpuperf_cur.md) / [`SCX_CPUPERF_ONE`](https://elixir.bootlin.com/linux/v6.13.4/source/kernel/sched/ext.c#L20)
 
-The result is in the range [1, `SCX_CPUPERF_ONE`].
+The result is in the range [1, [`SCX_CPUPERF_ONE`](https://elixir.bootlin.com/linux/v6.13.4/source/kernel/sched/ext.c#L20)].
 
 `cpu`: CPU of interest
 
 **Returns**
 
-The current relative performance of `cpu` in relation to its maximum. The return value is in the range [`1`, `SCX_CPUPERF_ONE`].
+The current relative performance of `cpu` in relation to its maximum. The return value is in the range [`1`, [`SCX_CPUPERF_ONE`](https://elixir.bootlin.com/linux/v6.13.4/source/kernel/sched/ext.c#L20)].
 
 **Signature**
 

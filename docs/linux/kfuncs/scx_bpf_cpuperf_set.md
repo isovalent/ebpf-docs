@@ -12,14 +12,14 @@ This function set the relative performance target of a CPU.
 
 ## Definition
 
-Set the target performance level of `cpu` to `perf`. `perf` is in linear relative scale between `0` and `SCX_CPUPERF_ONE`. This determines how the schedutil <nospell>cpufreq</nospell> governor chooses the target frequency.
+Set the target performance level of `cpu` to `perf`. `perf` is in linear relative scale between `0` and [`SCX_CPUPERF_ONE`](https://elixir.bootlin.com/linux/v6.13.4/source/kernel/sched/ext.c#L20). This determines how the schedutil <nospell>cpufreq</nospell> governor chooses the target frequency.
 
 The actual performance level chosen, CPU grouping, and the overhead and latency of the operations are dependent on the hardware and <nospell>cpufreq</nospell> driver in use. Consult hardware and <nospell>cpufreq</nospell> documentation for more information. The current performance level can be monitored using [`scx_bpf_cpuperf_cur`](scx_bpf_cpuperf_cur.md).
 
 **Returns**
 
 `cpu`: CPU of interest
-`perf`: target performance level [`0`, `SCX_CPUPERF_ONE`]
+`perf`: target performance level [`0`, [`SCX_CPUPERF_ONE`](https://elixir.bootlin.com/linux/v6.13.4/source/kernel/sched/ext.c#L20)]
 
 **Signature**
 
