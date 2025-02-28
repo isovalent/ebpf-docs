@@ -1,6 +1,6 @@
 ---
-title: "Program Type 'tcp_congestion_ops'"
-description: "This page documents the 'tcp_congestion_ops' struct ops, its semantics, capabilities, and limitations."
+title: "Struct ops 'sched_ext_ops'"
+description: "This page documents the 'sched_ext_ops' struct ops, its semantics, capabilities, and limitations."
 ---
 # Struct ops `sched_ext_ops`
 
