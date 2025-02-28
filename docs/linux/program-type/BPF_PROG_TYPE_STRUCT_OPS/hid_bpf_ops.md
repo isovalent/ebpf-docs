@@ -1,5 +1,5 @@
 ---
-title: "Program Type 'hid_bpf_ops'"
+title: "Struct ops 'hid_bpf_ops'"
 description: "This page documents the 'hid_bpf_ops' struct ops, its semantics, capabilities, and limitations."
 ---
 # Struct ops `hid_bpf_ops`

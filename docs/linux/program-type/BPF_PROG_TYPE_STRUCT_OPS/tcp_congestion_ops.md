@@ -1,5 +1,5 @@
 ---
-title: "Program Type 'tcp_congestion_ops'"
+title: "Struct ops 'tcp_congestion_ops'"
 description: "This page documents the 'tcp_congestion_ops' struct ops, its semantics, capabilities, and limitations."
 ---
 # Struct ops `tcp_congestion_ops`
