@@ -66,99 +66,165 @@ class LinksInCodeTreeprocessor(Treeprocessor):
                 except etree.ParseError as e:
                     continue
 
-                # Inside the <code> element, is a flat list of spans with classes to color
-                # the different parts of the text.
-                codes = codeRoot.iter('code')
-                for spans in codes:
-                    # Use a `while` loop to iterate over the spans, as we may remove
-                    # spans from the list. And iterate backwards to avoid messing up the
-                    # index.
-                    i = len(spans)
-                    while i > 0:
-                        i -= 1
-            
-                        # Now look for the markdown link syntax: [text](url)
-                        # It will be chunked into separate tokens
-                        # '[' {text} '](' {url} ')'
-                        # 
-                        # Find the '[' to start a possible match
-                        if spans[i].text is None:
-                            continue
-
-                        ii = spans[i].text.find('[')
-                        if ii == -1:
-                            continue
-                        
-                        # Use `found` to let the inner look break out of this outer one
-                        found = False
-                        # Loop over the rest of the spans until we find a match, or not.
-                        for j in range(i+1, len(spans)):
-                            if found:
-                                break
-                            
-                            # Find the span that starts with '](', if we do, link text will be
-                            # between `i` and `j`
-                            if spans[j].text is None:
-                                continue
-                            
-                            ji = spans[j].text.find('](')
-                            if ji == -1:
-                                continue    
-
-                            # We found the '](', now we have to find the ')'
-
-                            # The rest of the text is the link
-                            link = spans[j].text[ji+2:]
-                            # Remove the '](' and the text after it from the span
-                            spans[j].text = spans[j].text[:ji]
-                            
-                            # Loop from `j+1` to the end of the spans
-                            for k in range(j+1, len(spans)):
-                                # If we find a span that starts with ')', we have a match for a full
-                                # link pattern. At this point `link` should contain the full href.
-                                ki = spans[k].text.find(')')
-                                if ki != -1:
-                                    # We have a match, break out of the outer loop after breaking the
-                                    # inner one.
-                                    found = True
-
-                                    # Remove any text after the `[`
-                                    spans[i].text = spans[i].text[:ii]
- 
-                                    # Add the text up to ')' to the link.
-                                    link += spans[k].text[:ki]           
-                                    #  Remove the text up to and including the ')' from the text of the span at `k`
-                                    spans[k].text = spans[k].text[ki+1:]
-
-                                    # Call `path_to_url` to convert the path to a markdown file into
-                                    # a proper URL following the MkDocs config. Normally this is done
-                                    # by a markdown extension built into MkDocs, but it runs at prio 5.
-                                    # While code highlighting runs at prio 30. Since we have to run
-                                    # after the code highlighting, we have to do this manually.
-                                    # We simply copied the relevant logic from the MkDocs source code.
-                                    aElem = etree.Element('a', attrib={'href': self.path_to_url(link)})
-
-                                    # Now, copy the link text (tokens between `i` and `j`) to the
-                                    # new `<a>` element.
-                                    for l in range(j-i-1):
-                                        aElem.insert(l, spans[i+l+1])
-
-                                    # Remove these from the spans list, by repeatedly removing the
-                                    # i+1'th element.
-                                    for l in range(k-i-1):
-                                        spans.remove(spans[i+1])
-                                    
-                                    # Insert the new `<a>` element right after the `i`'th element.
-                                    spans.insert(i+1, aElem)
-
-                                    break
-
-                                # If we have not yet found the ')', add the text of the current span
-                                # to the link.
-                                link += spans[k].text
+                self.convert_links_in_code(codeRoot)
 
                 # Serialize the modified tree back to HTML string and store it in the `htmlStash`
                 self.md.htmlStash.rawHtmlBlocks[idx] = etree.tostring(codeRoot, encoding='unicode', method='html')
+
+    def convert_links_in_code(self, codeRoot):
+        # Inside the <code> element, is a flat list of spans with classes to color
+        # the different parts of the text.
+        codes = codeRoot.iter('code')
+        for spans in codes:
+            self.convert_links_in_spans(spans)
+    
+    def convert_links_in_spans(self, spans):
+        # Use a `while` loop to iterate over the spans, as we may remove
+        # spans from the list. And iterate backwards to avoid messing up the
+        # index.
+        i = len(spans)
+        while i > 0:
+            i -= 1
+
+            if spans[i].tag != 'span':
+                continue
+
+            # If a span contains more spans, recursively call this method.
+            # This happens when lines are highlighted for example, with the `hl_lines` option.
+            if len(spans[i]) > 0:
+                self.convert_links_in_spans(spans[i])
+
+            # Now look for the markdown link syntax: [text](url)
+            # It will be chunked into separate tokens
+            # '[' {text} '](' {url} ')'
+            #
+            # Find the '[' to start a possible match
+            if spans[i].text is None:
+                continue
+
+            ii = spans[i].text.find('[')
+            if ii == -1:
+                continue
+
+            # First check if we can find the full link in this one span.
+            # This happens when its placed in a comment or macro.
+            ji = spans[i].text.find('](', ii)
+            ki = spans[i].text.find(')', ji)
+            if ji != -1 and ki != -1:
+                # Take the text between '[' and '](' as the link text
+                link = spans[i].text[ji+2:ki]
+
+                # Create a new <a> element with the href attribute set to the link
+                aElem = etree.Element('a', attrib={'href': self.path_to_url(link)})
+
+                # Create a new <span> element with the same class as the original span
+                # And add it to the <a> element
+                textElem = etree.Element('span', attrib={'class': spans[i].get('class')})
+                textElem.text = spans[i].text[ii+1:ji]
+                aElem.insert(0, textElem)
+
+                # Make a new span with the same calss as the original span
+                # Add the text after the ')' to it.
+                postElem = etree.Element('span', attrib={'class': spans[i].get('class')})
+                postElem.text = spans[i].text[ki+1:]
+
+                # Move tail from original to post element, to preserve newlines at correct places
+                postElem.tail = spans[i].tail
+                spans[i].tail = None
+
+                # Insert the link, then post element after the original span
+                spans.insert(i+1, aElem)
+                spans.insert(i+2, postElem)
+
+                # Truncate text in original to just before the '['
+                spans[i].text = spans[i].text[:ii]
+                
+                # We found a match in a single span, we might find another one.
+                # Change index so we process postElem next time.
+                i += 3
+                continue
+
+            # Use `found` to let the inner look break out of this outer one
+            found = False
+            # Loop over the rest of the spans until we find a match, or not.
+            for j in range(i+1, len(spans)):
+                if found:
+                    break
+
+                # Find the span that starts with '](', if we do, link text will be
+                # between `i` and `j`
+                if spans[j].text is None:
+                    continue
+
+                ji = spans[j].text.find('](')
+                if ji == -1:
+                    continue
+
+                # If the tail contains a newline, we are at the end of the line
+                # A link can't span multiple lines, so we break out of the loop
+                if spans[j].tail is not None and spans[j].tail.find('\n') != -1:
+                    break
+
+                # We found the '](', now we have to find the ')'
+
+                # The rest of the text is the link
+                link = spans[j].text[ji+2:]
+                # Remove the '](' and the text after it from the span
+                spans[j].text = spans[j].text[:ji]
+
+                # Loop from `j+1` to the end of the spans
+                for k in range(j+1, len(spans)):
+                    # If we find a span that starts with ')', we have a match for a full
+                    # link pattern. At this point `link` should contain the full href.
+                    ki = spans[k].text.find(')')
+                    if ki == -1:
+                        # If we have not yet found the ')', add the text of the current span
+                        # to the link.
+                        link += spans[k].text
+
+                        # If the tail contains a newline, we are at the end of the line
+                        # A link can't span multiple lines, so we break out of the loop
+                        if spans[k].tail is not None and spans[k].tail.find('\n') != -1:
+                            Found = True
+                            break
+
+                        continue
+
+                    # We have a match, break out of the outer loop after breaking the
+                    # inner one.
+                    found = True
+
+                    # Remove any text after the `[`
+                    spans[i].text = spans[i].text[:ii]
+
+                    # Add the text up to ')' to the link.
+                    link += spans[k].text[:ki]           
+                    #  Remove the text up to and including the ')' from the text of the span at `k`
+                    spans[k].text = spans[k].text[ki+1:]
+
+                    # Call `path_to_url` to convert the path to a markdown file into
+                    # a proper URL following the MkDocs config. Normally this is done
+                    # by a markdown extension built into MkDocs, but it runs at prio 5.
+                    # While code highlighting runs at prio 30. Since we have to run
+                    # after the code highlighting, we have to do this manually.
+                    # We simply copied the relevant logic from the MkDocs source code.
+                    aElem = etree.Element('a', attrib={'href': self.path_to_url(link)})
+
+                    # Now, copy the link text (tokens between `i` and `j`) to the
+                    # new `<a>` element.
+                    for l in range(j-i-1):
+                        aElem.insert(l, spans[i+l+1])
+
+                    # Remove these from the spans list, by repeatedly removing the
+                    # i+1'th element.
+                    for l in range(k-i-1):
+                        spans.remove(spans[i+1])
+
+                    # Insert the new `<a>` element right after the `i`'th element.
+                    spans.insert(i+1, aElem)
+
+                    break
+
 
     # Copyright © 2014-present, Tom Christie. All rights reserved.
     def path_to_url(self, url: str) -> str:
