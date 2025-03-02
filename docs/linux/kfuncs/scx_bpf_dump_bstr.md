@@ -12,7 +12,7 @@ This function generates extra debug dump specific to the BPF scheduler.
 
 ## Definition
 
-To be called through [`scx_bpf_dump()`](https://github.com/torvalds/linux/blob/07814a9439a3b03d79a1001614b5bc1cab69bcec/tools/sched_ext/include/scx/common.bpf.h#L105) helper from [`sched_ext_ops.dump`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dump), [`sched_ext_ops.dump_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dump_cpu) and [`sched_ext_ops.dump_task`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dump_task) to generate extra debug dump specific to the BPF scheduler.
+To be called through [`scx_bpf_dump`](../../ebpf-library/scx/scx_bpf_dump.md) helper from [`sched_ext_ops.dump`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dump), [`sched_ext_ops.dump_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dump_cpu) and [`sched_ext_ops.dump_task`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dump_task) to generate extra debug dump specific to the BPF scheduler.
 
 The extra dump may be multiple lines. A single line may be split over multiple calls. The last line is automatically terminated.
 

@@ -491,7 +491,7 @@ Disable BPF scheduling for a task. `p` is exiting, leaving SCX or the BPF schedu
 
 `#!c void (*dump)(struct scx_dump_ctx *ctx);`
 
-Dump BPF scheduler state on error. Use scx_bpf_dump() to generate BPF scheduler specific debug dump.
+Dump BPF scheduler state on error. Use [`scx_bpf_dump`](../../../ebpf-library/scx/scx_bpf_dump.md) to generate BPF scheduler specific debug dump.
 
 **Parameters**
 
@@ -503,7 +503,7 @@ Dump BPF scheduler state on error. Use scx_bpf_dump() to generate BPF scheduler 
 
 `#!c void (*dump_cpu)(struct scx_dump_ctx *ctx, s32 cpu, bool idle);`
 
-Dump BPF scheduler state for a CPU on error. Use scx_bpf_dump() to generate BPF scheduler specific debug dump for `cpu`. If `idle` is `true` and this operation doesn't produce any output, `cpu` is skipped for dump.
+Dump BPF scheduler state for a CPU on error. Use [`scx_bpf_dump`](../../../ebpf-library/scx/scx_bpf_dump.md) to generate BPF scheduler specific debug dump for `cpu`. If `idle` is `true` and this operation doesn't produce any output, `cpu` is skipped for dump.
 
 **Parameters**
 
@@ -521,7 +521,7 @@ Dump BPF scheduler state for a CPU on error. Use scx_bpf_dump() to generate BPF 
 
 Dump BPF scheduler state for a runnable task on error
 
-Use scx_bpf_dump() to generate BPF scheduler specific debug dump for `p`.
+Use [`scx_bpf_dump`](../../../ebpf-library/scx/scx_bpf_dump.md) to generate BPF scheduler specific debug dump for `p`.
 
 **Parameters**
 

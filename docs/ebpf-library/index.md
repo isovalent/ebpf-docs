@@ -20,4 +20,12 @@ eBPF have multiple libraries to help the eBPF development
 
     [:octicons-arrow-right-24: Libxdp](./libxdp/libxdp.md)
 
+-   :material-calendar-clock:{ .lg .middle } __SCX Common__
+
+    ---
+
+    A set of helper macros for [`sched_ext`](../linux/program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md) programs
+
+    [:octicons-arrow-right-24: SCX Common](./scx/index.md)
+
 </div>

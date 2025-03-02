@@ -10,6 +10,7 @@
 * [eBPF libraries](ebpf-library/index.md)
   * [Libbpf](ebpf-library/libbpf/)
   * [Libxdp](ebpf-library/libxdp/)
+  * [SCX Common](ebpf-library/scx/)
 * [Concepts](concepts/index.md)
   * [BPF CO-RE](concepts/core.md)
   * [BTF](concepts/btf.md)
