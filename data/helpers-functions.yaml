@@ -334,6 +334,10 @@ programs:
   - name: bpf_get_smp_processor_id
   - name: bpf_skb_under_cgroup
   - name: bpf_get_socket_cookie
+  - name: bpf_get_netns_cookie
+    since:
+      version: 6.13
+      commit: eb62f49de7eca5917be8cebb3ad8aa3710af7021
   - name: bpf_get_socket_uid
   - name: bpf_fib_lookup
   - name: bpf_check_mtu
@@ -418,6 +422,10 @@ programs:
   - name: bpf_get_smp_processor_id
   - name: bpf_skb_under_cgroup
   - name: bpf_get_socket_cookie
+  - name: bpf_get_netns_cookie
+    since:
+      version: 6.13
+      commit: eb62f49de7eca5917be8cebb3ad8aa3710af7021
   - name: bpf_get_socket_uid
   - name: bpf_fib_lookup
   - name: bpf_check_mtu
