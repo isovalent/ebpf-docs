@@ -158,6 +158,7 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_get_current_task_btf`](../helper-function/bpf_get_current_task_btf.md)
     * [`bpf_get_hash_recalc`](../helper-function/bpf_get_hash_recalc.md)
     * [`bpf_get_listener_sock`](../helper-function/bpf_get_listener_sock.md)
+    * [`bpf_get_netns_cookie`](../helper-function/bpf_get_netns_cookie.md) [:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/eb62f49de7eca5917be8cebb3ad8aa3710af7021)
     * [`bpf_get_ns_current_pid_tgid`](../helper-function/bpf_get_ns_current_pid_tgid.md) [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/eb166e522c77699fc19bfa705652327a1e51a117)
     * [`bpf_get_numa_node_id`](../helper-function/bpf_get_numa_node_id.md)
     * [`bpf_get_prandom_u32`](../helper-function/bpf_get_prandom_u32.md)
