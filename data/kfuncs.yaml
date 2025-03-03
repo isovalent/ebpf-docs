@@ -6,6 +6,14 @@ sets:
         flags: [KF_SLEEPABLE]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
       - name: BPF_PROG_TYPE_LSM
 
   key_sig_kfunc_set:
@@ -20,6 +28,15 @@ sets:
         flags: [KF_SLEEPABLE]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_LSM
     attach_type:
       - BPF_TRACE_ITER
 
@@ -28,6 +45,15 @@ sets:
       - name: bpf_get_file_xattr
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
     program_types:
+      - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
       - name: BPF_PROG_TYPE_LSM
 
   cpumask_kfunc_btf_ids:
@@ -84,6 +110,14 @@ sets:
         flags: [KF_RCU]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
       - name: BPF_PROG_TYPE_LSM
       - name: BPF_PROG_TYPE_STRUCT_OPS
 
@@ -137,6 +171,14 @@ sets:
         flags: [KF_TRUSTED_ARGS]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
       - name: BPF_PROG_TYPE_LSM
       - name: BPF_PROG_TYPE_SCHED_CLS
       - name: BPF_PROG_TYPE_XDP
@@ -226,6 +268,15 @@ sets:
       - name: bpf_get_fsverity_digest
         flags: [KF_TRUSTED_ARGS]
     program_types:
+      - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
       - name: BPF_PROG_TYPE_LSM
 
   xdp_metadata_kfunc_ids:
@@ -272,6 +323,15 @@ sets:
       - name: BPF_PROG_TYPE_LWT_SEG6LOCAL
       - name: BPF_PROG_TYPE_NETFILTER
       - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_LSM
 
   bpf_kfunc_check_set_xdp:
     funcs:
@@ -312,6 +372,15 @@ sets:
         flags: [KF_TRUSTED_ARGS]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_LSM
     attach_type:
       - BPF_TRACE_ITER
 
@@ -638,6 +707,15 @@ sets:
       - name: BPF_PROG_TYPE_STRUCT_OPS
       - name: BPF_PROG_TYPE_SYSCALL
       - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_LSM
 
   bpf_fs_kfunc_set_ids:
     funcs:
@@ -652,4 +730,13 @@ sets:
       - name: bpf_get_file_xattr
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
     program_types:
+      - name: BPF_PROG_TYPE_TRACING
+      - name: BPF_PROG_TYPE_TRACEPOINT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
+      - name: BPF_PROG_TYPE_PERF_EVENT
+        since:
+          version: 6.12
+          commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
       - name: BPF_PROG_TYPE_LSM

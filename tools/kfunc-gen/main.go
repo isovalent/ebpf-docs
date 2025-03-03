@@ -423,6 +423,8 @@ var kfuncProgramTypes = []programType{
 	{Name: "BPF_PROG_TYPE_SCHED_CLS"},
 	{Name: "BPF_PROG_TYPE_STRUCT_OPS"},
 	{Name: "BPF_PROG_TYPE_TRACING"},
+	{Name: "BPF_PROG_TYPE_TRACEPOINT", Since: &sinceUntil{Version: "6.12", Commit: "bc638d8cb5be813d4eeb9f63cce52caaa18f3960"}},
+	{Name: "BPF_PROG_TYPE_PERF_EVENT", Since: &sinceUntil{Version: "6.12", Commit: "bc638d8cb5be813d4eeb9f63cce52caaa18f3960"}},
 	{Name: "BPF_PROG_TYPE_LSM"},
 	{Name: "BPF_PROG_TYPE_SYSCALL"},
 	{Name: "BPF_PROG_TYPE_CGROUP_SKB"},
