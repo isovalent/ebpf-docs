@@ -61,7 +61,7 @@ The parameters/arguments of a KFunc can be annotated with a number of suffixes. 
 
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/d583691c47dc0424ebe926000339a6d6cd590ff7)
 
-A parameter with the `__sz` suffix is used to indeicate the size of the pointer.
+A parameter with the `__sz` suffix is used to indicate the size of the pointer.
 
 Take the following example:
 
