@@ -48,10 +48,7 @@ LSM programs are invoked with an array of `__u64` values equal in length to the 
 
 ## Attachment
 
-LSM programs are exclusively attached via bpf links. To do so the program must be loaded with the [`BPF_LSM_MAC`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_mac) expected attach type and use it as the parameter to [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type). The [`target_btf_id`](../syscall/BPF_LINK_CREATE.md#target_btf_id) parameter must be populated with the BTF ID of the LSM hook point which can be extracted from the SELinux BTF on the system.
-
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+LSM programs are exclusively attached via BPF links. When attaching a program to general LSM hook points, the program must be loaded with the [`BPF_LSM_MAC`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_mac) expected attach type and specified as the parameter to [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type). Additionally, the [`target_btf_id`](../syscall/BPF_LINK_CREATE.md#target_btf_id) parameter must be populated with the BTF ID of the LSM hook point, which can be extracted from the SELinux BTF on the system. In contrast, the expected attach type [`BPF_LSM_CGROUP`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_cgroup) allows you to restrict the execution of the eBPF program to LSM events triggered by processes contained within a specific cGroup. In this case, the program must be loaded with the [`BPF_LSM_CGROUP`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_cgroup) expected attach type and specified as the parameter to [`attach_type`](../syscall/BPF_LINK_CREATE.md#attach_type). It is attached by specifying the file descriptor of the target cGroup through the [`target_fd`](../syscall/BPF_LINK_CREATE.md#target_fd) parameter. cGroups are typically organized as nested directories in a tree structure, with the root usually mounted at `/sys/fs/cgroup/`. Each subdirectory represents a cGroup and contains pseudo-files that control settings and manage the PIDs of processes within that group. To attach the eBPF program, the directory corresponding to the target cGroup can be opened to obtain a file descriptor which can then be passed to the attach function.
 
 ## Helper functions
 
