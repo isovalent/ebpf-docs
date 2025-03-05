@@ -78,7 +78,7 @@ For cGroup programs (`BPF_PROG_TYPE_CGROUP_SKB`, `BPF_PROG_TYPE_CGROUP_SOCK`,
 
 For `BPF_PROG_TYPE_EXT` programs this should be a file descriptor to another BPF program.
 
-For `BPF_PROG_TYPE_TRACING` programs with the attach type `BPF_LSM_CGROUP` it should also be a cGroup directory as described above.
+For `BPF_PROG_TYPE_LSM` programs with the attach type `BPF_LSM_CGROUP` it should also be a cGroup directory as described above.
 
 For `BPF_PROG_TYPE_TRACING` programs with the attach type `BPF_TRACE_FENTRY`, `BPF_TRACE_FEXIT` or `BPF_MODIFY_RETURN` this should be a file descriptor to an existing BPF program.
 
