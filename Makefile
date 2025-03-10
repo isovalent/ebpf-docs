@@ -6,6 +6,8 @@ UIDGID := $(shell stat -c '%u:%g' ${REPODIR})
 IMAGE := ghcr.io/isovalent/ebpf-docs
 VERSION := $(shell cat ${REPODIR}/tools/image-version)
 
+GOLANG := 1.24.1
+
 PROD := false
 GH_TOKEN := ""
 
@@ -48,12 +50,12 @@ serve:
 
 .PHONY: build-spellcheck
 build-spellcheck:
-	docker run --rm -v "${REPODIR}:/docs" -w /docs golang:latest bash -c \
+	docker run --rm -v "${REPODIR}:/docs" -w /docs golang:${GOLANG} bash -c \
 	"CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/spellcheck /docs/tools/spellcheck/."
 
 .PHONY: build-gen-tools
 build-gen-tools:
-	docker run --rm -v "${REPODIR}:/docs" -w /docs golang:latest bash -c \
+	docker run --rm -v "${REPODIR}:/docs" -w /docs golang:${GOLANG} bash -c \
 	"CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/libbpf-tag-gen /docs/tools/libbpf-tag-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/helper-ref-gen /docs/tools/helper-ref-gen/. && \
 	CGO_ENABLED=0 go build -buildvcs=false -o /docs/tools/bin/feature-gen /docs/tools/feature-gen/. && \

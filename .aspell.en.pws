@@ -45,6 +45,8 @@ kretprobe
 kretprobes
 uprobe
 uprobes
+uretprobe
+retprobe
 Fprobes
 fprobe
 ftrace
@@ -125,6 +127,7 @@ NUMA
 IMM
 GPL
 MPL
+USDT
 accessor
 accessors
 centric
@@ -132,11 +135,13 @@ enum
 enums
 relocation
 relocations
+fetchable
 signable
 signedness
 typedefs
 accumulatively
 untrusted
+unlinked
 inlined
 lifecycle
 nginx
@@ -158,6 +163,7 @@ dereferenced
 dereferencing
 dereferences
 incrementing
+decrementing
 misprediction
 sleepable
 endian
@@ -195,6 +201,7 @@ observability
 bytecode
 crypto
 cryptographic
+cryptographically
 benchmarking
 benchmarked
 Decrypt
