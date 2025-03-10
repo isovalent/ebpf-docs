@@ -1,8 +1,8 @@
 module ebpf.io/docs
 
-go 1.22.0
+go 1.24
 
-toolchain go1.23.1
+toolchain go1.24.1
 
 require (
 	github.com/cilium/ebpf v0.17.1

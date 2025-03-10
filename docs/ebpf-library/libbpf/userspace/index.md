@@ -4,96 +4,96 @@ Definitions for the libbpf userspace library are split across a few different he
 
 ## High level APIs
 
-In the `libbpf.h` header file you will find the high level APIs which do a lot of work for you under the hood. These are the most commonly used APIs.
+In the [`libbpf.h`](https://github.com/libbpf/libbpf/blob/master/src/libbpf.h) header file you will find the high level APIs which do a lot of work for you under the hood. These are the most commonly used APIs.
 
 * BPF Object functions
-    * `bpf_object__open`
-    * `bpf_object__open_file`
-    * `bpf_object__open_mem`
-    * `bpf_object__load`
-    * `bpf_object__close`
-    * `bpf_object__pin_maps`
-    * `bpf_object__unpin_maps`
-    * `bpf_object__pin_programs`
-    * `bpf_object__unpin_programs`
-    * `bpf_object__pin`
-    * `bpf_object__unpin`
-    * `bpf_object__name`
-    * `bpf_object__kversion`
-    * `bpf_object__set_kversion`
-    * `bpf_object__token_fd`
-    * `bpf_object__btf`
-    * `bpf_object__btf_fd`
-    * `bpf_object__find_program_by_name`
+    * [`bpf_object__open`](bpf_object__open.md)
+    * [`bpf_object__open_file`](bpf_object__open_file.md)
+    * [`bpf_object__open_mem`](bpf_object__open_mem.md)
+    * [`bpf_object__load`](bpf_object__load.md)
+    * [`bpf_object__close`](bpf_object__close.md)
+    * [`bpf_object__pin_maps`](bpf_object__pin_maps.md)
+    * [`bpf_object__unpin_maps`](bpf_object__unpin_maps.md)
+    * [`bpf_object__pin_programs`](bpf_object__pin_programs.md)
+    * [`bpf_object__unpin_programs`](bpf_object__unpin_programs.md)
+    * [`bpf_object__pin`](bpf_object__pin.md)
+    * [`bpf_object__unpin`](bpf_object__unpin.md)
+    * [`bpf_object__name`](bpf_object__name.md)
+    * [`bpf_object__kversion`](bpf_object__kversion.md)
+    * [`bpf_object__set_kversion`](bpf_object__set_kversion.md)
+    * [`bpf_object__token_fd`](bpf_object__token_fd.md)
+    * [`bpf_object__btf`](bpf_object__btf.md)
+    * [`bpf_object__btf_fd`](bpf_object__btf_fd.md)
+    * [`bpf_object__find_program_by_name`](bpf_object__find_program_by_name.md)
     * BPF Skeleton functions
-        * `bpf_object__open_skeleton`
-        * `bpf_object__load_skeleton`
-        * `bpf_object__attach_skeleton`
-        * `bpf_object__detach_skeleton`
-        * `bpf_object__destroy_skeleton`
-        * `bpf_object__open_subskeleton`
-        * `bpf_object__destroy_subskeleton`
-        * `bpf_object__gen_loader`
-    * `bpf_object__next_program`
-    * `bpf_object__prev_program`
-    * `bpf_object__find_map_by_name`
-    * `bpf_object__find_map_fd_by_name`
-    * `bpf_object__next_map`
-    * `bpf_object__prev_map`
+        * [`bpf_object__open_skeleton`](bpf_object__open_skeleton.md)
+        * [`bpf_object__load_skeleton`](bpf_object__load_skeleton.md)
+        * [`bpf_object__attach_skeleton`](bpf_object__attach_skeleton.md)
+        * [`bpf_object__detach_skeleton`](bpf_object__detach_skeleton.md)
+        * [`bpf_object__destroy_skeleton`](bpf_object__destroy_skeleton.md)
+        * [`bpf_object__open_subskeleton`](bpf_object__open_subskeleton.md)
+        * [`bpf_object__destroy_subskeleton`](bpf_object__destroy_subskeleton.md)
+        * [`bpf_object__gen_loader`](bpf_object__gen_loader.md)
+    * [`bpf_object__next_program`](bpf_object__next_program.md)
+    * [`bpf_object__prev_program`](bpf_object__prev_program.md)
+    * [`bpf_object__find_map_by_name`](bpf_object__find_map_by_name.md)
+    * [`bpf_object__find_map_fd_by_name`](bpf_object__find_map_fd_by_name.md)
+    * [`bpf_object__next_map`](bpf_object__next_map.md)
+    * [`bpf_object__prev_map`](bpf_object__prev_map.md)
 * BPF Program functions
-    * `bpf_program__set_ifindex`
-    * `bpf_program__name`
-    * `bpf_program__section_name`
-    * `bpf_program__autoload`
-    * `bpf_program__set_autoload`
-    * `bpf_program__autoattach`
-    * `bpf_program__set_autoattach`
-    * `bpf_program__insns`
-    * `bpf_program__set_insns`
-    * `bpf_program__insn_cnt`
-    * `bpf_program__fd`
-    * `bpf_program__pin`
-    * `bpf_program__unpin`
-    * `bpf_program__unload`
+    * [`bpf_program__set_ifindex`](bpf_program__set_ifindex.md)
+    * [`bpf_program__name`](bpf_program__name.md)
+    * [`bpf_program__section_name`](bpf_program__section_name.md)
+    * [`bpf_program__autoload`](bpf_program__autoload.md)
+    * [`bpf_program__set_autoload`](bpf_program__set_autoload.md)
+    * [`bpf_program__autoattach`](bpf_program__autoattach.md)
+    * [`bpf_program__set_autoattach`](bpf_program__set_autoattach.md)
+    * [`bpf_program__insns`](bpf_program__insns.md)
+    * [`bpf_program__set_insns`](bpf_program__set_insns.md)
+    * [`bpf_program__insn_cnt`](bpf_program__insn_cnt.md)
+    * [`bpf_program__fd`](bpf_program__fd.md)
+    * [`bpf_program__pin`](bpf_program__pin.md)
+    * [`bpf_program__unpin`](bpf_program__unpin.md)
+    * [`bpf_program__unload`](bpf_program__unload.md)
     * Program attach functions
-        * `bpf_program__attach`
-        * `bpf_program__attach_perf_event`
-        * `bpf_program__attach_perf_event_opts`
-        * `bpf_program__attach_kprobe`
-        * `bpf_program__attach_kprobe_opts`
-        * `bpf_program__attach_kprobe_multi_opts`
-        * `bpf_program__attach_uprobe_multi`
-        * `bpf_program__attach_ksyscall`
-        * `bpf_program__attach_uprobe`
-        * `bpf_program__attach_uprobe_opts`
-        * `bpf_program__attach_usdt`
-        * `bpf_program__attach_tracepoint`
-        * `bpf_program__attach_tracepoint_opts`
-        * `bpf_program__attach_raw_tracepoint`
-        * `bpf_program__attach_raw_tracepoint_opts`
-        * `bpf_program__attach_trace`
-        * `bpf_program__attach_trace_opts`
-        * `bpf_program__attach_lsm`
-        * `bpf_program__attach_cgroup`
-        * `bpf_program__attach_netns`
-        * `bpf_program__attach_sockmap`
-        * `bpf_program__attach_xdp`
-        * `bpf_program__attach_freplace`
-        * `bpf_program__attach_netfilter`
-        * `bpf_program__attach_tcx`
-        * `bpf_program__attach_netkit`
-    * `bpf_program__attach_iter`
-    * `bpf_program__type`
-    * `bpf_program__set_type`
-    * `bpf_program__set_expected_attach_type`
-    * `bpf_program__flags`
-    * `bpf_program__set_flags`
-    * `bpf_program__log_level`
-    * `bpf_program__set_log_level`
-    * `bpf_program__log_buf`
-    * `bpf_program__set_log_buf`
-    * `bpf_program__set_attach_target`
-    * `bpf_program__expected_attach_type`
+        * [`bpf_program__attach`](bpf_program__attach.md)
+        * [`bpf_program__attach_perf_event`](bpf_program__attach_perf_event.md)
+        * [`bpf_program__attach_perf_event_opts`](bpf_program__attach_perf_event_opts.md)
+        * [`bpf_program__attach_kprobe`](bpf_program__attach_kprobe.md)
+        * [`bpf_program__attach_kprobe_opts`](bpf_program__attach_kprobe_opts.md)
+        * [`bpf_program__attach_kprobe_multi_opts`](bpf_program__attach_kprobe_multi_opts.md)
+        * [`bpf_program__attach_uprobe_multi`](bpf_program__attach_uprobe_multi.md)
+        * [`bpf_program__attach_ksyscall`](bpf_program__attach_ksyscall.md)
+        * [`bpf_program__attach_uprobe`](bpf_program__attach_uprobe.md)
+        * [`bpf_program__attach_uprobe_opts`](bpf_program__attach_uprobe_opts.md)
+        * [`bpf_program__attach_usdt`](bpf_program__attach_usdt.md)
+        * [`bpf_program__attach_tracepoint`](bpf_program__attach_tracepoint.md)
+        * [`bpf_program__attach_tracepoint_opts`](bpf_program__attach_tracepoint_opts.md)
+        * [`bpf_program__attach_raw_tracepoint`](bpf_program__attach_raw_tracepoint.md)
+        * [`bpf_program__attach_raw_tracepoint_opts`](bpf_program__attach_raw_tracepoint_opts.md)
+        * [`bpf_program__attach_trace`](bpf_program__attach_trace.md)
+        * [`bpf_program__attach_trace_opts`](bpf_program__attach_trace_opts.md)
+        * [`bpf_program__attach_lsm`](bpf_program__attach_lsm.md)
+        * [`bpf_program__attach_cgroup`](bpf_program__attach_cgroup.md)
+        * [`bpf_program__attach_netns`](bpf_program__attach_netns.md)
+        * [`bpf_program__attach_sockmap`](bpf_program__attach_sockmap.md)
+        * [`bpf_program__attach_xdp`](bpf_program__attach_xdp.md)
+        * [`bpf_program__attach_freplace`](bpf_program__attach_freplace.md)
+        * [`bpf_program__attach_netfilter`](bpf_program__attach_netfilter.md)
+        * [`bpf_program__attach_tcx`](bpf_program__attach_tcx.md)
+        * [`bpf_program__attach_netkit`](bpf_program__attach_netkit.md)
+        * [`bpf_program__attach_iter`](bpf_program__attach_iter.md)
+    * [`bpf_program__type`](bpf_program__type.md)
+    * [`bpf_program__set_type`](bpf_program__set_type.md)
+    * [`bpf_program__set_expected_attach_type`](bpf_program__set_expected_attach_type.md)
+    * [`bpf_program__flags`](bpf_program__flags.md)
+    * [`bpf_program__set_flags`](bpf_program__set_flags.md)
+    * [`bpf_program__log_level`](bpf_program__log_level.md)
+    * [`bpf_program__set_log_level`](bpf_program__set_log_level.md)
+    * [`bpf_program__log_buf`](bpf_program__log_buf.md)
+    * [`bpf_program__set_log_buf`](bpf_program__set_log_buf.md)
+    * [`bpf_program__set_attach_target`](bpf_program__set_attach_target.md)
+    * [`bpf_program__expected_attach_type`](bpf_program__expected_attach_type.md)
 * Link functions
     * `bpf_link__open`
     * `bpf_link__fd`
@@ -366,13 +366,13 @@ In the `bpf.h` header file you will find the low level APIs which are used to in
 
 ## Deprecated APIs
 
-In the `libbpf_deprecated.h` header file you will find the deprecated APIs. These are APIs that are no longer recommended to use and might be removed in the future.
+In the [`libbpf_legacy.h`](https://github.com/libbpf/libbpf/blob/master/src/libbpf_legacy.h) header file you will find the deprecated APIs. These are APIs that are no longer recommended to use and might be removed in the future.
 
 * `libbpf_set_strict_mode`
 * `libbpf_get_error`
 * `libbpf_find_kernel_btf`
-* `bpf_program__get_type`
-* `bpf_program__get_expected_attach_type`
+* [`bpf_program__get_type`](bpf_program__get_type.md)
+* [`bpf_program__get_expected_attach_type`](bpf_program__get_expected_attach_type.md)
 * `bpf_map__get_pin_path`
 * `btf__get_raw_data`
 * `btf_ext__get_raw_data`
