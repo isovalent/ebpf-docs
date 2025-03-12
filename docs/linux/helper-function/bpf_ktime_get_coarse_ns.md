@@ -26,8 +26,7 @@ Current _ktime_.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This function returns a coarse-grained 64-bit timestamp in nanoseconds since system boot, excluding suspended time. It is similar to `bpf_ktime_get_ns()`, but offers lower precision in exchange for better performance. It is suitable for low-overhead time measurements.
 
 ### Program types
 
@@ -48,5 +47,9 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```
+__u64 start_time = bpf_ktime_get_coarse_ns();
+/* some tasks */
+__u64 end_time = bpf_ktime_get_coarse_ns();
+__u64 duration = end_time - start_time;
+```
