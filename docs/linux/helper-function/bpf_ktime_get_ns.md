@@ -25,8 +25,7 @@ Current _ktime_.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+Returns a 64-bit value representing the current kernel time in nanoseconds since the system boot, excluding any time the system was suspended. This can be useful for measuring time intervals or generating timestamps in eBPF programs.
 
 ### Program types
 
@@ -70,5 +69,9 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+__u64 start_time = bpf_ktime_get_ns();
+/* some tasks */
+__u64 end_time = bpf_ktime_get_ns();
+__u64 duration = end_time - start_time;
+```
