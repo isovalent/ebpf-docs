@@ -13,7 +13,6 @@ description: "This page documents the 'bpf_jiffies64' eBPF helper function, incl
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
 
-<!-- [HELPER_FUNC_DEF] -->
 Retrieve the current jiffies count as a 64-bit value.
 
 ### Returns
@@ -21,7 +20,6 @@ Retrieve the current jiffies count as a 64-bit value.
 A 64-bit value representing the number of jiffies since last system boot.
 
 `#!c static __u64 (* const bpf_jiffies64)(void) = (void *) 118;`
-<!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
 
@@ -68,7 +66,7 @@ This helper call can be used in the following program types:
 
 ### Example
 
-```
+```c
  __u64 start = bpf_jiffies64();
 /* some tasks */
 __u64 end = bpf_jiffies64();

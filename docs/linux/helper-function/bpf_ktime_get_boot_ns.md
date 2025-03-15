@@ -68,7 +68,7 @@ This helper call can be used in the following program types:
 
 ### Example
 
-```
+```c
 __u64 start_time = bpf_ktime_get_boot_ns();
 /* some tasks */
 __u64 end_time = bpf_ktime_get_boot_ns();
