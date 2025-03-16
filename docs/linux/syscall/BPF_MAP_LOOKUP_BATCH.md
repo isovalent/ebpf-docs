@@ -24,7 +24,7 @@ This attribute specifies the file descriptor of the map in which you wish to loo
 
 ### `in_batch`
 
-This attribute is set by userspace. At the start of iteration it should be set to `0`/`NULL`. After the first call, the result of `out_batch` can me moved to this attribute to get the next batch of keys and values. The value is opaque, the kernel as internally assigned meaning, but userspace should just copy the values without modification.
+This attribute is set by userspace. At the start of iteration it should be set to `0`/`NULL`. After the first call, the result of `out_batch` can be moved to this attribute to get the next batch of keys and values. The value is opaque, the kernel has internally assigned meaning, but userspace should just copy the values without modification.
 
 ### `out_batch`
 
