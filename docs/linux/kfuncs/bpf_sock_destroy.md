@@ -45,6 +45,9 @@ The following program types can make use of this kfunc:
 - [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
 <!-- [/KFUNC_PROG_REF] -->
 
+!!! note
+    Calling this kfunc is protected by [a filter on the attach type](https://github.com/torvalds/linux/commit/4ddbcb886268af8d12a23e6640b39d1d9c652b1b#diff-e9eab378df2ce8424048bd6b421ed888c6a1c1ff48f4dd22ae9b8c95ac26fd82R11770-R11776) that must be `BPF_TRACE_ITER` which is only available for the `BPF_PROG_TYPE_TRACING` program type.
+
 ### Example
 
 ```c
