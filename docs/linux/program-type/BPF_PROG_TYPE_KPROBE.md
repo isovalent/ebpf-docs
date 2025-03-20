@@ -133,17 +133,16 @@ syscall(SYS_bpf,
     sizeof(attr)
 );
 ```   
-For multiple probes, [link create command](../syscall/BPF_LINK_CREATE.md) can be used to combine the creation and linking of the probes. [Fprobes](https://lore.kernel.org/bpf/20220316122419.933957-4-jolsa@kernel.org/) are used under the hood for multiple kprobes.
+For multiple probes, [link create command](../syscall/BPF_LINK_CREATE.md) with the [`BPF_TRACE_KPROBE_MULTI`](../syscall/BPF_LINK_CREATE.md#bpf_trace_kprobe_multi) expected attach type, can be used to combine the creation and linking of the probes. [Fprobes](https://lore.kernel.org/bpf/20220316122419.933957-4-jolsa@kernel.org/) are used under the hood for multiple kprobes.
 
 ```c
-
 union bpf_attr attr = {
-    attr.link_create.prog_fd = prog_fd;
-    attr.link_create.attach_type = BPF_TRACE_KPROBE_MULTI;
-    attr.link_create.kprobe_multi.cnt = sym_count; 
-    attr.link_create.kprobe_multi.cookies = 0;
-    attr.link_create.kprobe_multi.flags = BPF_F_KPROBE_MULTI_RETURN;
-    attr.link_create.kprobe_multi.syms = ((uint64_t)sym_name); /* char array of symbol names */
+    .link_create.prog_fd = prog_fd;
+    .link_create.attach_type = BPF_TRACE_KPROBE_MULTI;
+    .link_create.kprobe_multi.cnt = sym_count; 
+    .link_create.kprobe_multi.cookies = 0;
+    .link_create.kprobe_multi.flags = BPF_F_KPROBE_MULTI_RETURN;
+    .link_create.kprobe_multi.syms = ((uint64_t)sym_name); /* char array of symbol names */
 );
 
 syscall(SYS_bpf,
@@ -151,7 +150,22 @@ syscall(SYS_bpf,
     &attr,
     sizeof(attr)
 );
-```   
+```
+
+Attaching to a session is possible through the attachment type [`BPF_TRACE_KPROBE_SESSION`](../syscall/BPF_LINK_CREATE.md#bpf_trace_kprobe_session). In this approach, a single link attaches the BPF program to both the function entry and return probes. Combining both entry and exit probes into one session attachment simplifies the overall code structure and maintainability. Traditionally for many tools, such as Tetragon and bpftrace, an extra entry probe is created solely for setting up the return probe, but with session links, this extra execution is omitted.
+
+```c
+union bpf_attr attr = {
+    .link_create.prog_fd = prog_fd;
+    .link_create.attach_type = BPF_TRACE_KPROBE_SESSION;
+};
+
+syscall(SYS_bpf,
+    BPF_LINK_CREATE,
+    &attr,
+    sizeof(attr)
+);
+```
 
 <!-- TODO upbrobe variation -->
 

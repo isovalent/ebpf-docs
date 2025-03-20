@@ -834,6 +834,7 @@ hide: toc
 
 ## :octicons-tag-24: v6.10
 
+* `BPF_TRACE_KPROBE_SESSION` [535a369](https://github.com/torvalds/linux/commit/535a3692ba7245792e6f23654507865d4293c850) (attach_types)
 * `bpf_wq_init` [eb48f6c](https://github.com/torvalds/linux/commit/eb48f6cd41a0f7803770a76bbffb6bd5b1b2ae2f) (kfuncs)
 * `bpf_wq_set_callback_impl` [81f1d7a](https://github.com/torvalds/linux/commit/81f1d7a583fa1fa14f0c4e6140d34b5e3d08d227) (kfuncs)
 * `bpf_wq_start` [8e83da9](https://github.com/torvalds/linux/commit/8e83da9732d91c60fdc651b2486c8e5935eb0ca2) (kfuncs)

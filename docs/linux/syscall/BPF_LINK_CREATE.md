@@ -550,6 +550,12 @@ The attach type is often used to communicate a specialization for a program type
 <!-- [/FEATURE_TAG] -->
 
 
+### `BPF_TRACE_KPROBE_SESSION`
+
+<!-- [FEATURE_TAG](BPF_TRACE_KPROBE_SESSION) -->
+[:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/535a3692ba7245792e6f23654507865d4293c850)
+<!-- [/FEATURE_TAG] -->
+
 
 ## Flags
 

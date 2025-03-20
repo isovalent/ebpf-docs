@@ -344,6 +344,9 @@
     - name: BPF_NETKIT_PEER
       version: v6.7
       commit: 35dfaad7188cdc043fde31709c796f5a692ba2bd
+    - name: BPF_TRACE_KPROBE_SESSION
+      version: v6.10
+      commit: 535a3692ba7245792e6f23654507865d4293c850
 - name: syscall_commands
   features:
     - name: BPF_MAP_CREATE
