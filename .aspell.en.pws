@@ -5,6 +5,7 @@ eBPF
 cBPF
 bpftool
 bpffs
+bpftrace
 xdp
 XDP
 XSK
@@ -89,6 +90,7 @@ APIs
 BGP
 DNS
 LRU
+Tetragon
 TTL
 TTLs
 LWT
