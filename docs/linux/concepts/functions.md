@@ -18,10 +18,6 @@ In [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/cc8b0b92a1
 
 By default, the compiler will chose inline a function or to keep it a separate function. Compilers can be encouraged to inline or not inline a function with arguments like `__attribute__((always_inline))`/[`__always_inline`](../../ebpf-library/libbpf/ebpf/__always_inline.md) or `__attribute__((noinline))`/[`__noinline`](../../ebpf-library/libbpf/ebpf/__noinline.md). Inlined functions do not incur the overhead of a function call as they will become part of the calling function. Inlined functions can also be optimized per call site since arguments are known.
 
-### Tail calls
-
-When function calls are combined with [tail calls](tail-calls.md) the available stack size per program will shrink from `512` bytes to `256` bytes. The reasoning being that when a tail call is made, the current stack frame is reused, but if that tail call is made from a function, the stack of the caller can not be reused. By default, kernel threads are limited to 8k stack sizes. By decreasing the max stack size, it is harder to run out of stack space, though it is still possible.
-
 ### Function by function verification
 
 Until [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) the verifier would re-verify that a function was safe for every call site. Meaning that if you have a function which is called 10 times, then the verifier would check for every call that with the given inputs the function was save. This defeats the purpose of functions somewhat since you still incur verifier complexity for every call. 
@@ -33,6 +29,23 @@ Since [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1
 Also added in [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/be8704ff07d2374bcc5c675526f95e70c6459683) is the ability to replace global functions. The primary use case for this is libxdp which used this to implement XDP program chaining from a dispatcher program.
 
 See [Program Type `BPF_PROG_TYPE_EXT`](../program-type/BPF_PROG_TYPE_EXT.md) for more information.
+
+### Mixing tail calls and functions
+
+Since [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/e411901c0b775a3ae7f3e2505f8d2d90ac696178) it is possible to mix tail calls and functions. Before then you had to pick one or the other.
+
+Mixing tail calls and functions causes the available stack size per function to shrink from `512` bytes to `256` bytes. The reasoning being that when a tail call is made, the current stack frame is reused, but if that tail call is made from a function, the stack of the caller can not be reused. By default, kernel threads are limited to 8k stack sizes. By decreasing the max stack size, it is harder to run out of stack space, though it is still possible.
+
+Mixing tail calls and functions requires support from the JIT for a given architecture. This is because the tail call counter (which prevents doing more than `32` tail calls) has to be propagated to functions so they can pass it to the next tail call program. The practical result of this is that support for mixing tail calls and functions got added in stages. Here is a table of when support was added for each architecture:
+
+| Architecture | Support added |
+|--------------|---------------|
+| x86          | [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/e411901c0b775a3ae7f3e2505f8d2d90ac696178) |
+| ARM64        | [:octicons-tag-24: v6.0](https://github.com/torvalds/linux/commit/d4609a5d8c70d21b4a3f801cf896a3c16c613fe1) |
+| s390         | [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/dd691e847d28ac5f8b8e3005be44fd0e46722809) |
+| LoongArch    | [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/bb035ef0cc91e115faa80187ac8886a7f1914d06) |
+
+Architectures that are not listed do not support mixing tail calls and functions as of :octicons-tag-24: v6.15.
 
 ### Callbacks
 

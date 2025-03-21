@@ -20,7 +20,7 @@ If a program array is associated with a program, any program added to the map sh
 
 While the same stack frame is shared, the verifier will block you from using any existing stack state without re-initializing it, the same goes for the registers. Thus, there is no straightforward way to shared state. Common workarounds for this issue are to use opaque fields in metadata such as [`__sk_buff->cb`](../program-context/__sk_buff.md#cb) or [`xdp_md->data_meta`](../program-type/BPF_PROG_TYPE_XDP.md#data_meta) memory. Alternatively, a per-CPU map with a single entry can be used to share data, which works since eBPF programs never migrate to a different CPU even between tail calls. However on RT (real time) kernels eBPF programs might be interrupted and re-started at a later time, so these maps should only be shared between tail calls on the same task, not globally.
 
-When tail calls are combined with BPF-to-BPF function calls, the available stack size per program will shrink from `512` bytes to `256` bytes. This is to limit the stack allocation required by the kernel, as explained by the following comment from the kernel:
+When [tail calls are combined with BPF-to-BPF function calls](functions.md#mixing-tail-calls-and-functions), the available stack size per program will shrink from `512` bytes to `256` bytes. This is to limit the stack allocation required by the kernel, as explained by the following comment from the kernel:
 
 > protect against potential stack overflow that might happen when
 > bpf2bpf calls get combined with tailcalls. Limit the caller's stack
