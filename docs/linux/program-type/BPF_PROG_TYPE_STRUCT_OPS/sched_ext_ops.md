@@ -209,7 +209,7 @@ Called when a CPU's local DSQ is empty. The operation should dispatch one or mor
 
 The maximum number of times [`scx_bpf_dsq_insert`](../../kfuncs/scx_bpf_dsq_insert.md) can be called without an intervening [`scx_bpf_dsq_move_to_local`](../../kfuncs/scx_bpf_dsq_move_to_local.md) is specified by ops.dispatch_max_batch. See the comments on top of the two functions for more details.
 
-When not `NULL`, `prev` is an SCX task with its slice depleted. If `prev` is still runnable as indicated by set [`SCX_TASK_QUEUED`](#scx_task_queued) in [`prev->scx.flags`](#flags-struct-sched_ext_entity-flags), it is not enqueued yet and will be enqueued after [`dispatch`](#dispatch) returns. To keep executing `prev`, return without dispatching or moving any tasks. Also see [`SCX_OPS_ENQ_LAST`](#scx_ops_enq_last).
+When not `NULL`, `prev` is an SCX task with its slice depleted. If `prev` is still runnable as indicated by set [`SCX_TASK_QUEUED`](#scx_task_queued) in [`prev->scx.flags`](#struct-sched_ext_entity-flags), it is not enqueued yet and will be enqueued after [`dispatch`](#dispatch) returns. To keep executing `prev`, return without dispatching or moving any tasks. Also see [`SCX_OPS_ENQ_LAST`](#scx_ops_enq_last).
 
 **Parameters**
 
@@ -224,7 +224,7 @@ When not `NULL`, `prev` is an SCX task with its slice depleted. If `prev` is sti
 
 `#!c void (*tick)(struct task_struct *p);`
 
-Periodic tick. This operation is called every 1/HZ seconds on CPUs which are executing an SCX task. Setting [`p->scx.slice`](#slice-struct-sched_ext_entity-slice) to `0` will trigger an immediate dispatch cycle on the CPU.
+Periodic tick. This operation is called every 1/HZ seconds on CPUs which are executing an SCX task. Setting [`p->scx.slice`](#struct-sched_ext_entity-slice) to `0` will trigger an immediate dispatch cycle on the CPU.
 
 **Parameters**
 
@@ -293,7 +293,7 @@ A task is becoming not runnable on its associated CPU. See [`runnable`](#runnabl
 
 * sleeping ([`SCX_DEQ_SLEEP`](#scx_deq_sleep))
 * being moved to another CPU
-* being temporarily taken off the queue for an attribute change ([`SCX_DEQ_SAVE`](#scx_deq_save)).
+* being temporarily taken off the queue for an attribute change (`SCX_DEQ_SAVE`).
 
 * This and [`dequeue`](#dequeue) are related but not coupled. This operation
 * notifies `p`'s state transition and may not be preceded by [`dequeue`](#dequeue)
@@ -931,7 +931,7 @@ On ext runqueue
 
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 
-[`runnable_at`](#runnable_at) should be reset
+[`runnable_at`](#struct-sched_ext_entity-runnable_at) should be reset
 
 #### `SCX_TASK_DEQD_FOR_SLEEP`
 

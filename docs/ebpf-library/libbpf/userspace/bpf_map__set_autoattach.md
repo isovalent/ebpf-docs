@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_map__set_autoattach' libbpf userspace
 [:octicons-tag-24: 1.5.0](https://github.com/libbpf/libbpf/releases/tag/v1.5.0)
 <!-- [/LIBBPF_TAG] -->
 
-sets whether libbpf has to auto-attach map during BPF skeleton attach phase.
+Sets whether libbpf has to auto-attach map during BPF skeleton attach phase.
 
 ## Definition
 

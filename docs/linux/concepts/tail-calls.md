@@ -16,7 +16,7 @@ Another use case is for replacing or extending logic. By replacing the contents 
 
 To prevent infinite loops or very long running programs, the kernel limits the amount of tail calls per initial invocation to `32` so `33` programs can execute in total before the tail call helper will refuse to jump anymore.
 
-If a program array is associated with a program, any program added to the map should "match" the program. So they have to have the same [`prog_type`](../syscall/BPF_PROG_LOAD.md#prog_type), [`expected_attach_type`](../syscall/BPF_PROG_LOAD.md#expected_attach_type), [`attached_btf_id`](../syscall/BPF_PROG_LOAD.md#attached_btf_id), etc.
+If a program array is associated with a program, any program added to the map should "match" the program. So they have to have the same [`prog_type`](../syscall/BPF_PROG_LOAD.md#prog_type), [`expected_attach_type`](../syscall/BPF_PROG_LOAD.md#expected_attach_type), [`attach_btf_id`](../syscall/BPF_PROG_LOAD.md#attach_btf_id), etc.
 
 While the same stack frame is shared, the verifier will block you from using any existing stack state without re-initializing it, the same goes for the registers. Thus, there is no straightforward way to shared state. Common workarounds for this issue are to use opaque fields in metadata such as [`__sk_buff->cb`](../program-context/__sk_buff.md#cb) or [`xdp_md->data_meta`](../program-type/BPF_PROG_TYPE_XDP.md#data_meta) memory. Alternatively, a per-CPU map with a single entry can be used to share data, which works since eBPF programs never migrate to a different CPU even between tail calls. However on RT (real time) kernels eBPF programs might be interrupted and re-started at a later time, so these maps should only be shared between tail calls on the same task, not globally.
 

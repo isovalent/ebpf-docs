@@ -46,3 +46,5 @@
   * [`BPF_LINK_DETACH`](BPF_LINK_DETACH.md)
 * Statistics commands
   * [`BPF_ENABLE_STATS`](BPF_ENABLE_STATS.md)
+* Security commands
+  * [`BPF_TOKEN_CREATE`](BPF_TOKEN_CREATE.md)

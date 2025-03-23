@@ -1,0 +1,33 @@
+---
+title: "Libbpf userspace function 'libbpf_probe_bpf_prog_type'"
+description: "This page documents the 'libbpf_probe_bpf_prog_type' libbpf userspace function, including its definition, usage, and examples."
+---
+# Libbpf userspace function `libbpf_probe_bpf_prog_type`
+
+<!-- [LIBBPF_TAG] -->
+[:octicons-tag-24: 0.7.0](https://github.com/libbpf/libbpf/releases/tag/v0.7.0)
+<!-- [/LIBBPF_TAG] -->
+
+Detects if host kernel supports BPF programs of a given type.
+
+## Definition
+
+`#!c int libbpf_probe_bpf_prog_type(enum bpf_prog_type prog_type, const void *opts);`
+
+**Parameters**
+
+- `prog_type`: BPF program type to detect kernel support for
+- `opts`: reserved for future extensibility, should be `NULL`
+
+**Return**
+
+`1`, if given program type is supported; `0`, if given program type is not supported; negative error code if feature detection failed or can't be performed
+
+## Usage
+
+Make sure the process has required set of `CAP_*` permissions (or runs as root) when performing feature checking.
+
+### Example
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome

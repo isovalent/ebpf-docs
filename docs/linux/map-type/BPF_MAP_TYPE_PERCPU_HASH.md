@@ -85,7 +85,7 @@ While settings this flag is allowed, only a value of `-1` is allowed in the [`nu
 
 Setting this flag will make it so the map can only be read via the [syscall](../syscall/index.md) interface, but not written to.
 
-For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#BPF_F_RDONLY).
+For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#bpf_f_rdonly).
 
 ### `BPF_F_WRONLY`
 
@@ -93,7 +93,7 @@ For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#
 
 Setting this flag will make it so the map can only be written to via the [syscall](../syscall/index.md) interface, but not read from.
 
-For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#BPF_F_WRONLY).
+For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#bpf_f_wronly).
 
 ### `BPF_F_ZERO_SEED`
 
@@ -117,7 +117,7 @@ This random seed makes hash map operations inherently random at access time. Thi
 
 Setting this flag will make it so the map can only be read via [helper functions](../helper-function/index.md), but not written to.
 
-For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#BPF_F_RDONLY_PROG).
+For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#bpf_f_rdonly_prog).
 
 ### `BPF_F_WRONLY_PROG`
 
@@ -125,7 +125,7 @@ For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#
 
 Setting this flag will make it so the map can only be written to via [helper functions](../helper-function/index.md), but not read from.
 
-For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#BPF_F_RDONLY_PROG).
+For details please check the [generic description](../syscall/BPF_MAP_CREATE.md#bpf_f_rdonly_prog).
 
 <!-- ## Internals -->
 <!-- TODO locking / implementations -->

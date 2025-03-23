@@ -148,231 +148,235 @@ In the [`libbpf.h`](https://github.com/libbpf/libbpf/blob/master/src/libbpf.h) h
     * [`bpf_map__lookup_and_delete_elem`](bpf_map__lookup_and_delete_elem.md)
     * [`bpf_map__get_next_key`](bpf_map__get_next_key.md)
 * XDP functions
-    * `bpf_xdp_attach`
-    * `bpf_xdp_detach`
-    * `bpf_xdp_query`
-    * `bpf_xdp_query_id`
+    * [`bpf_xdp_attach`](bpf_xdp_attach.md)
+    * [`bpf_xdp_detach`](bpf_xdp_detach.md)
+    * [`bpf_xdp_query`](bpf_xdp_query.md)
+    * [`bpf_xdp_query_id`](bpf_xdp_query_id.md)
 * TC functions
-    * `bpf_tc_hook_create`
-    * `bpf_tc_hook_destroy`
-    * `bpf_tc_attach`
-    * `bpf_tc_detach`
-    * `bpf_tc_query`
+    * [`bpf_tc_hook_create`](bpf_tc_hook_create.md)
+    * [`bpf_tc_hook_destroy`](bpf_tc_hook_destroy.md)
+    * [`bpf_tc_attach`](bpf_tc_attach.md)
+    * [`bpf_tc_detach`](bpf_tc_detach.md)
+    * [`bpf_tc_query`](bpf_tc_query.md)
 * Ring buffer functions
-    * `ring_buffer__new`
-    * `ring_buffer__free`
-    * `ring_buffer__add`
-    * `ring_buffer__poll`
-    * `ring_buffer__consume`
-    * `ring_buffer__consume_n`
-    * `ring_buffer__epoll_fd`
-    * `ring_buffer__ring`
+    * [`ring_buffer__new`](ring_buffer__new.md)
+    * [`ring_buffer__free`](ring_buffer__free.md)
+    * [`ring_buffer__add`](ring_buffer__add.md)
+    * [`ring_buffer__poll`](ring_buffer__poll.md)
+    * [`ring_buffer__consume`](ring_buffer__consume.md)
+    * [`ring_buffer__consume_n`](ring_buffer__consume_n.md)
+    * [`ring_buffer__epoll_fd`](ring_buffer__epoll_fd.md)
+    * [`ring_buffer__ring`](ring_buffer__ring.md)
     * Ring functions
-        * `ring__consumer_pos`
-        * `ring__producer_pos`
-        * `ring__avail_data_size`
-        * `ring__size`
-        * `ring__map_fd`
-        * `ring__consume`
-        * `ring__consume_n`
+        * [`ring__consumer_pos`](ring__consumer_pos.md)
+        * [`ring__producer_pos`](ring__producer_pos.md)
+        * [`ring__avail_data_size`](ring__avail_data_size.md)
+        * [`ring__size`](ring__size.md)
+        * [`ring__map_fd`](ring__map_fd.md)
+        * [`ring__consume`](ring__consume.md)
+        * [`ring__consume_n`](ring__consume_n.md)
 * User ring buffer
-    * `user_ring_buffer__new`
-    * `user_ring_buffer__reserve`
-    * `user_ring_buffer__reserve_blocking`
-    * `user_ring_buffer__submit`
-    * `user_ring_buffer__discard`
-    * `user_ring_buffer__free`
+    * [`user_ring_buffer__new`](user_ring_buffer__new.md)
+    * [`user_ring_buffer__reserve`](user_ring_buffer__reserve.md)
+    * [`user_ring_buffer__reserve_blocking`](user_ring_buffer__reserve_blocking.md)
+    * [`user_ring_buffer__submit`](user_ring_buffer__submit.md)
+    * [`user_ring_buffer__discard`](user_ring_buffer__discard.md)
+    * [`user_ring_buffer__free`](user_ring_buffer__free.md)
 * Perf buffer functions
-    * `perf_buffer__new`
-    * `perf_buffer__new_raw`
-    * `perf_buffer__free`
-    * `perf_buffer__epoll_fd`
-    * `perf_buffer__poll`
-    * `perf_buffer__consume`
-    * `perf_buffer__consume_buffer`
-    * `perf_buffer__buffer_cnt`
-    * `perf_buffer__buffer_fd`
-    * `perf_buffer__buffer`
+    * [`perf_buffer__new`](perf_buffer__new.md)
+    * [`perf_buffer__new_raw`](perf_buffer__new_raw.md)
+    * [`perf_buffer__free`](perf_buffer__free.md)
+    * [`perf_buffer__epoll_fd`](perf_buffer__epoll_fd.md)
+    * [`perf_buffer__poll`](perf_buffer__poll.md)
+    * [`perf_buffer__consume`](perf_buffer__consume.md)
+    * [`perf_buffer__consume_buffer`](perf_buffer__consume_buffer.md)
+    * [`perf_buffer__buffer_cnt`](perf_buffer__buffer_cnt.md)
+    * [`perf_buffer__buffer_fd`](perf_buffer__buffer_fd.md)
+    * [`perf_buffer__buffer`](perf_buffer__buffer.md)
 * Program line info functions
-    * `bpf_prog_linfo__free`
-    * `bpf_prog_linfo__new`
-    * `bpf_prog_linfo__lfind_addr_func`
-    * `bpf_prog_linfo__lfind`
+    * [`bpf_prog_linfo__free`](bpf_prog_linfo__free.md)
+    * [`bpf_prog_linfo__new`](bpf_prog_linfo__new.md)
+    * [`bpf_prog_linfo__lfind_addr_func`](bpf_prog_linfo__lfind_addr_func.md)
+    * [`bpf_prog_linfo__lfind`](bpf_prog_linfo__lfind.md)
 * Linker functions
-    * `bpf_linker__new`
-    * `bpf_linker__add_file`
-    * `bpf_linker__finalize`
-    * `bpf_linker__free`
+    * [`bpf_linker__new`](bpf_linker__new.md)
+    * [`bpf_linker__new_fd`](bpf_linker__new_fd.md)
+    * [`bpf_linker__add_file`](bpf_linker__add_file.md)
+    * [`bpf_linker__add_fd`](bpf_linker__add_fd.md)
+    * [`bpf_linker__add_buf`](bpf_linker__add_buf.md)
+    * [`bpf_linker__finalize`](bpf_linker__finalize.md)
+    * [`bpf_linker__free`](bpf_linker__free.md)
 * Misc libbpf functions
     * [`libbpf_major_version`](libbpf_major_version.md)
     * [`libbpf_minor_version`](libbpf_minor_version.md)
-    * `libbpf_version_string`
+    * [`libbpf_version_string`](libbpf_version_string.md)
     * [`libbpf_strerror`](libbpf_strerror.md)
-    * `libbpf_bpf_attach_type_str`
-    * `libbpf_bpf_link_type_str`
-    * `libbpf_bpf_map_type_str`
-    * `libbpf_bpf_prog_type_str`
-    * `libbpf_set_print`
-    * `libbpf_prog_type_by_name`
-    * `libbpf_attach_type_by_name`
-    * `libbpf_find_vmlinux_btf_id`
-    * `libbpf_probe_bpf_prog_type`
-    * `libbpf_probe_bpf_map_type`
-    * `libbpf_probe_bpf_helper`
-    * `libbpf_num_possible_cpus`
-    * `libbpf_register_prog_handler`
-    * `libbpf_unregister_prog_handler`
+    * [`libbpf_bpf_attach_type_str`](libbpf_bpf_attach_type_str.md)
+    * [`libbpf_bpf_link_type_str`](libbpf_bpf_link_type_str.md)
+    * [`libbpf_bpf_map_type_str`](libbpf_bpf_map_type_str.md)
+    * [`libbpf_bpf_prog_type_str`](libbpf_bpf_prog_type_str.md)
+    * [`libbpf_set_print`](libbpf_set_print.md)
+    * [`libbpf_prog_type_by_name`](libbpf_prog_type_by_name.md)
+    * [`libbpf_attach_type_by_name`](libbpf_attach_type_by_name.md)
+    * [`libbpf_find_vmlinux_btf_id`](libbpf_find_vmlinux_btf_id.md)
+    * [`libbpf_probe_bpf_prog_type`](libbpf_probe_bpf_prog_type.md)
+    * [`libbpf_probe_bpf_map_type`](libbpf_probe_bpf_map_type.md)
+    * [`libbpf_probe_bpf_helper`](libbpf_probe_bpf_helper.md)
+    * [`libbpf_num_possible_cpus`](libbpf_num_possible_cpus.md)
+    * [`libbpf_register_prog_handler`](libbpf_register_prog_handler.md)
+    * [`libbpf_unregister_prog_handler`](libbpf_unregister_prog_handler.md)
 
 ## BTF APIs
 
-In the `btf.h` header file you will find the BTF APIs, to do more advanced BTF operations other than just loading BTF
+In the [`btf.h`](https://github.com/libbpf/libbpf/blob/master/src/btf.h) header file you will find the BTF APIs, to do more advanced BTF operations other than just loading BTF
 from an object file.
 
-* `btf__free`
-* `btf__new`
-* `btf__new_split`
-* `btf__new_empty`
-* `btf__new_empty_split`
-* `btf__distill_base`
-* `btf__parse`
-* `btf__parse_split`
-* `btf__parse_elf`
-* `btf__parse_elf_split`
-* `btf__parse_raw`
-* `btf__parse_raw_split`
-* `btf__load_vmlinux_btf`
-* `btf__load_module_btf`
-* `btf__load_from_kernel_by_id`
-* `btf__load_from_kernel_by_id_split`
-* `btf__load_into_kernel`
-* `btf__find_by_name`
-* `btf__find_by_name_kind`
-* `btf__type_cnt`
-* `btf__base_btf`
-* `btf__type_by_id`
-* `btf__pointer_size`
-* `btf__set_pointer_size`
-* `btf__endianness`
-* `btf__set_endianness`
-* `btf__resolve_size`
-* `btf__resolve_type`
-* `btf__align_of`
-* `btf__fd`
-* `btf__set_fd`
-* `btf__raw_data`
-* `btf__name_by_offset`
-* `btf__str_by_offset`
-* `btf_ext__new`
-* `btf_ext__free`
-* `btf_ext__raw_data`
-* `btf_ext__endianness`
-* `btf_ext__set_endianness`
-* `btf__find_str`
-* `btf__add_str`
-* `btf__add_type`
-* `btf__add_btf`
-* `btf__add_int`
-* `btf__add_float`
-* `btf__add_ptr`
-* `btf__add_array`
-* `btf__add_struct`
-* `btf__add_union`
-* `btf__add_field`
-* `btf__add_enum`
-* `btf__add_enum_value`
-* `btf__add_enum64`
-* `btf__add_enum64_value`
-* `btf__add_fwd`
-* `btf__add_typedef`
-* `btf__add_volatile`
-* `btf__add_const`
-* `btf__add_restrict`
-* `btf__add_type_tag`
-* `btf__add_func`
-* `btf__add_func_proto`
-* `btf__add_func_param`
-* `btf__add_var`
-* `btf__add_datasec`
-* `btf__add_datasec_var_info`
-* `btf__add_decl_tag`
-* `btf__dedup`
-* `btf__relocate`
-* `btf_dump__new`
-* `btf_dump__free`
-* `btf_dump__dump_type`
-* `btf_dump__emit_type_decl`
-* `btf_dump__dump_type_data`
+* [`btf__free`](btf__free.md)
+* [`btf__new`](btf__new.md)
+* [`btf__new_split`](btf__new_split.md)
+* [`btf__new_empty`](btf__new_empty.md)
+* [`btf__new_empty_split`](btf__new_empty_split.md)
+* [`btf__distill_base`](btf__distill_base.md)
+* [`btf__parse`](btf__parse.md)
+* [`btf__parse_split`](btf__parse_split.md)
+* [`btf__parse_elf`](btf__parse_elf.md)
+* [`btf__parse_elf_split`](btf__parse_elf_split.md)
+* [`btf__parse_raw`](btf__parse_raw.md)
+* [`btf__parse_raw_split`](btf__parse_raw_split.md)
+* [`btf__load_vmlinux_btf`](btf__load_vmlinux_btf.md)
+* [`btf__load_module_btf`](btf__load_module_btf.md)
+* [`btf__load_from_kernel_by_id`](btf__load_from_kernel_by_id.md)
+* [`btf__load_from_kernel_by_id_split`](btf__load_from_kernel_by_id_split.md)
+* [`btf__load_into_kernel`](btf__load_into_kernel.md)
+* [`btf__find_by_name`](btf__find_by_name.md)
+* [`btf__find_by_name_kind`](btf__find_by_name_kind.md)
+* [`btf__type_cnt`](btf__type_cnt.md)
+* [`btf__base_btf`](btf__base_btf.md)
+* [`btf__type_by_id`](btf__type_by_id.md)
+* [`btf__pointer_size`](btf__pointer_size.md)
+* [`btf__set_pointer_size`](btf__set_pointer_size.md)
+* [`btf__endianness`](btf__endianness.md)
+* [`btf__set_endianness`](btf__set_endianness.md)
+* [`btf__resolve_size`](btf__resolve_size.md)
+* [`btf__resolve_type`](btf__resolve_type.md)
+* [`btf__align_of`](btf__align_of.md)
+* [`btf__fd`](btf__fd.md)
+* [`btf__set_fd`](btf__set_fd.md)
+* [`btf__raw_data`](btf__raw_data.md)
+* [`btf__name_by_offset`](btf__name_by_offset.md)
+* [`btf__str_by_offset`](btf__str_by_offset.md)
+* [`btf_ext__new`](btf_ext__new.md)
+* [`btf_ext__free`](btf_ext__free.md)
+* [`btf_ext__raw_data`](btf_ext__raw_data.md)
+* [`btf_ext__endianness`](btf_ext__endianness.md)
+* [`btf_ext__set_endianness`](btf_ext__set_endianness.md)
+* [`btf__find_str`](btf__find_str.md)
+* [`btf__add_str`](btf__add_str.md)
+* [`btf__add_type`](btf__add_type.md)
+* [`btf__add_btf`](btf__add_btf.md)
+* [`btf__add_int`](btf__add_int.md)
+* [`btf__add_float`](btf__add_float.md)
+* [`btf__add_ptr`](btf__add_ptr.md)
+* [`btf__add_array`](btf__add_array.md)
+* [`btf__add_struct`](btf__add_struct.md)
+* [`btf__add_union`](btf__add_union.md)
+* [`btf__add_field`](btf__add_field.md)
+* [`btf__add_enum`](btf__add_enum.md)
+* [`btf__add_enum_value`](btf__add_enum_value.md)
+* [`btf__add_enum64`](btf__add_enum64.md)
+* [`btf__add_enum64_value`](btf__add_enum64_value.md)
+* [`btf__add_fwd`](btf__add_fwd.md)
+* [`btf__add_typedef`](btf__add_typedef.md)
+* [`btf__add_volatile`](btf__add_volatile.md)
+* [`btf__add_const`](btf__add_const.md)
+* [`btf__add_restrict`](btf__add_restrict.md)
+* [`btf__add_type_tag`](btf__add_type_tag.md)
+* [`btf__add_func`](btf__add_func.md)
+* [`btf__add_func_proto`](btf__add_func_proto.md)
+* [`btf__add_func_param`](btf__add_func_param.md)
+* [`btf__add_var`](btf__add_var.md)
+* [`btf__add_datasec`](btf__add_datasec.md)
+* [`btf__add_datasec_var_info`](btf__add_datasec_var_info.md)
+* [`btf__add_decl_tag`](btf__add_decl_tag.md)
+* [`btf__add_decl_attr`](btf__add_decl_attr.md)
+* [`btf__dedup`](btf__dedup.md)
+* [`btf__relocate`](btf__relocate.md)
+* [`btf_dump__new`](btf_dump__new.md)
+* [`btf_dump__free`](btf_dump__free.md)
+* [`btf_dump__dump_type`](btf_dump__dump_type.md)
+* [`btf_dump__emit_type_decl`](btf_dump__emit_type_decl.md)
+* [`btf_dump__dump_type_data`](btf_dump__dump_type_data.md)
 
 ## Low level APIs
 
-In the `bpf.h` header file you will find the low level APIs which are used to interact with the kernel. These are basically just wrappers around the `bpf()` syscall. You should only use these if you know what you are doing and can't do something with the high level APIs.
+In the [`bpf.h`](https://github.com/libbpf/libbpf/blob/master/src/bpf.h) header file you will find the low level APIs which are used to interact with the kernel. These are basically just wrappers around the `bpf()` syscall. You should only use these if you know what you are doing and can't do something with the high level APIs.
 
-* `libbpf_set_memlock_rlim`
-* `bpf_map_create`
-* `bpf_prog_load`
-* `bpf_btf_load`
-* `bpf_map_update_elem`
-* `bpf_map_lookup_elem`
-* `bpf_map_lookup_elem_flags`
-* `bpf_map_lookup_and_delete_elem`
-* `bpf_map_lookup_and_delete_elem_flags`
-* `bpf_map_delete_elem`
-* `bpf_map_delete_elem_flags`
-* `bpf_map_get_next_key`
-* `bpf_map_freeze`
-* `bpf_map_delete_batch`
-* `bpf_map_lookup_batch`
-* `bpf_map_lookup_and_delete_batch`
-* `bpf_map_update_batch`
-* `bpf_obj_pin`
-* `bpf_obj_pin_opts`
-* `bpf_obj_get`
-* `bpf_obj_get_opts`
-* `bpf_prog_attach`
-* `bpf_prog_detach`
-* `bpf_prog_detach2`
-* `bpf_prog_attach_opts`
-* `bpf_prog_detach_opts`
-* `bpf_link_create`
-* `bpf_link_detach`
-* `bpf_link_update`
-* `bpf_iter_create`
-* `bpf_prog_get_next_id`
-* `bpf_map_get_next_id`
-* `bpf_btf_get_next_id`
-* `bpf_link_get_next_id`
-* `bpf_prog_get_fd_by_id`
-* `bpf_prog_get_fd_by_id_opts`
-* `bpf_map_get_fd_by_id`
-* `bpf_map_get_fd_by_id_opts`
-* `bpf_btf_get_fd_by_id`
-* `bpf_btf_get_fd_by_id_opts`
-* `bpf_link_get_fd_by_id`
-* `bpf_link_get_fd_by_id_opts`
-* `bpf_obj_get_info_by_fd`
-* `bpf_prog_get_info_by_fd`
-* `bpf_map_get_info_by_fd`
-* `bpf_btf_get_info_by_fd`
-* `bpf_link_get_info_by_fd`
-* `bpf_prog_query_opts`
-* `bpf_prog_query`
-* `bpf_raw_tracepoint_open_opts`
-* `bpf_raw_tracepoint_open`
-* `bpf_task_fd_query`
-* `bpf_enable_stats`
-* `bpf_prog_bind_map`
-* `bpf_prog_test_run_opts`
-* `bpf_token_create`
+* [`libbpf_set_memlock_rlim`](libbpf_set_memlock_rlim.md)
+* [`bpf_map_create`](bpf_map_create.md)
+* [`bpf_prog_load`](bpf_prog_load.md)
+* [`bpf_btf_load`](bpf_btf_load.md)
+* [`bpf_map_update_elem`](bpf_map_update_elem.md)
+* [`bpf_map_lookup_elem`](bpf_map_lookup_elem.md)
+* [`bpf_map_lookup_elem_flags`](bpf_map_lookup_elem_flags.md)
+* [`bpf_map_lookup_and_delete_elem`](bpf_map_lookup_and_delete_elem.md)
+* [`bpf_map_lookup_and_delete_elem_flags`](bpf_map_lookup_and_delete_elem_flags.md)
+* [`bpf_map_delete_elem`](bpf_map_delete_elem.md)
+* [`bpf_map_delete_elem_flags`](bpf_map_delete_elem_flags.md)
+* [`bpf_map_get_next_key`](bpf_map_get_next_key.md)
+* [`bpf_map_freeze`](bpf_map_freeze.md)
+* [`bpf_map_delete_batch`](bpf_map_delete_batch.md)
+* [`bpf_map_lookup_batch`](bpf_map_lookup_batch.md)
+* [`bpf_map_lookup_and_delete_batch`](bpf_map_lookup_and_delete_batch.md)
+* [`bpf_map_update_batch`](bpf_map_update_batch.md)
+* [`bpf_obj_pin`](bpf_obj_pin.md)
+* [`bpf_obj_pin_opts`](bpf_obj_pin_opts.md)
+* [`bpf_obj_get`](bpf_obj_get.md)
+* [`bpf_obj_get_opts`](bpf_obj_get_opts.md)
+* [`bpf_prog_attach`](bpf_prog_attach.md)
+* [`bpf_prog_detach`](bpf_prog_detach.md)
+* [`bpf_prog_detach2`](bpf_prog_detach2.md)
+* [`bpf_prog_attach_opts`](bpf_prog_attach_opts.md)
+* [`bpf_prog_detach_opts`](bpf_prog_detach_opts.md)
+* [`bpf_link_create`](bpf_link_create.md)
+* [`bpf_link_detach`](bpf_link_detach.md)
+* [`bpf_link_update`](bpf_link_update.md)
+* [`bpf_iter_create`](bpf_iter_create.md)
+* [`bpf_prog_get_next_id`](bpf_prog_get_next_id.md)
+* [`bpf_map_get_next_id`](bpf_map_get_next_id.md)
+* [`bpf_btf_get_next_id`](bpf_btf_get_next_id.md)
+* [`bpf_link_get_next_id`](bpf_link_get_next_id.md)
+* [`bpf_prog_get_fd_by_id`](bpf_prog_get_fd_by_id.md)
+* [`bpf_prog_get_fd_by_id_opts`](bpf_prog_get_fd_by_id_opts.md)
+* [`bpf_map_get_fd_by_id`](bpf_map_get_fd_by_id.md)
+* [`bpf_map_get_fd_by_id_opts`](bpf_map_get_fd_by_id_opts.md)
+* [`bpf_btf_get_fd_by_id`](bpf_btf_get_fd_by_id.md)
+* [`bpf_btf_get_fd_by_id_opts`](bpf_btf_get_fd_by_id_opts.md)
+* [`bpf_link_get_fd_by_id`](bpf_link_get_fd_by_id.md)
+* [`bpf_link_get_fd_by_id_opts`](bpf_link_get_fd_by_id_opts.md)
+* [`bpf_obj_get_info_by_fd`](bpf_obj_get_info_by_fd.md)
+* [`bpf_prog_get_info_by_fd`](bpf_prog_get_info_by_fd.md)
+* [`bpf_map_get_info_by_fd`](bpf_map_get_info_by_fd.md)
+* [`bpf_btf_get_info_by_fd`](bpf_btf_get_info_by_fd.md)
+* [`bpf_link_get_info_by_fd`](bpf_link_get_info_by_fd.md)
+* [`bpf_prog_query_opts`](bpf_prog_query_opts.md)
+* [`bpf_prog_query`](bpf_prog_query.md)
+* [`bpf_raw_tracepoint_open_opts`](bpf_raw_tracepoint_open_opts.md)
+* [`bpf_raw_tracepoint_open`](bpf_raw_tracepoint_open.md)
+* [`bpf_task_fd_query`](bpf_task_fd_query.md)
+* [`bpf_enable_stats`](bpf_enable_stats.md)
+* [`bpf_prog_bind_map`](bpf_prog_bind_map.md)
+* [`bpf_prog_test_run_opts`](bpf_prog_test_run_opts.md)
+* [`bpf_token_create`](bpf_token_create.md)
 
 ## Deprecated APIs
 
 In the [`libbpf_legacy.h`](https://github.com/libbpf/libbpf/blob/master/src/libbpf_legacy.h) header file you will find the deprecated APIs. These are APIs that are no longer recommended to use and might be removed in the future.
 
-* `libbpf_set_strict_mode`
-* `libbpf_get_error`
-* `libbpf_find_kernel_btf`
+* [`libbpf_set_strict_mode`](libbpf_set_strict_mode.md)
+* [`libbpf_get_error`](libbpf_get_error.md)
+* [`libbpf_find_kernel_btf`](libbpf_find_kernel_btf.md)
 * [`bpf_program__get_type`](bpf_program__get_type.md)
 * [`bpf_program__get_expected_attach_type`](bpf_program__get_expected_attach_type.md)
-* `bpf_map__get_pin_path`
-* `btf__get_raw_data`
-* `btf_ext__get_raw_data`
+* [`bpf_map__get_pin_path`](bpf_map__get_pin_path.md)
+* [`btf__get_raw_data`](btf__get_raw_data.md)
+* [`btf_ext__get_raw_data`](btf_ext__get_raw_data.md)

@@ -20,7 +20,7 @@ Detach a BPF link from the kernel.
 
 ## Usage
 
-This detaches the BPF link from the kernel but does delete the pin or free resources associated.
+This detaches the BPF link from the kernel but does not delete the pin or free resources associated.
 
 ### Example
 
