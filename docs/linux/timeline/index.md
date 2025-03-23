@@ -825,6 +825,7 @@ hide: toc
 ## :octicons-tag-24: v6.9
 
 * `BPF_MAP_TYPE_ARENA` [3174603](https://github.com/torvalds/linux/commit/317460317a02a1af512697e6e964298dedd8a163) (map_types)
+* `BPF_TOKEN_CREATE` [35f96de](https://github.com/torvalds/linux/commit/35f96de04127d332a5c5e8a155d31f452f88c76d) (syscall_commands)
 * `BPF_F_VTYPE_BTF_OBJ_FD` [fcc2c1f](https://github.com/torvalds/linux/commit/fcc2c1fb0651477c8ed78a3a293c175ccd70697a) (flags)
 * `BPF_F_TOKEN_FD` [a177fc2](https://github.com/torvalds/linux/commit/a177fc2bf6fd83704854feaf7aae926b1df4f0b9) (flags)
 * `BPF_F_SEGV_ON_FAULT` [3174603](https://github.com/torvalds/linux/commit/317460317a02a1af512697e6e964298dedd8a163) (flags)

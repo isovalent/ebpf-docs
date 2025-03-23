@@ -25,7 +25,7 @@ Set the file descriptor of an inner map for a map.
 
 ## Usage
 
-When loading map-in-map maps, such as [`BPF_MAP_TYPE_ARRAY_OF_MAPS`](../../../linux/map-type/BPF_MAP_TYPE_ARRAY_OF_MAPS.md) or [`BPF_MAP_TYPE_HASH_OF_MAPS`](../../../linux/map-type/BPF_MAP_TYPE_HASH_OF_MAPS.md.md), the verifier needs what sort of maps you will be putting into it. To communicate that, a map with the same attributes as will be used as values must be loaded first, and then its file descriptor passed to the outer map before loading.
+When loading map-in-map maps, such as [`BPF_MAP_TYPE_ARRAY_OF_MAPS`](../../../linux/map-type/BPF_MAP_TYPE_ARRAY_OF_MAPS.md) or [`BPF_MAP_TYPE_HASH_OF_MAPS`](../../../linux/map-type/BPF_MAP_TYPE_HASH_OF_MAPS.md), the verifier needs what sort of maps you will be putting into it. To communicate that, a map with the same attributes as will be used as values must be loaded first, and then its file descriptor passed to the outer map before loading.
 
 ### Example
 
