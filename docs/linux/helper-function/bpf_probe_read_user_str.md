@@ -41,8 +41,7 @@ On success, the strictly positive length of the output string, including the tra
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+When using `bpf_probe_read_user_str`, it is important to ensure that the buffer size (`size`) includes space for the NULL terminator to prevent reading unintended memory. If the user-space string is larger than the buffer, the function truncates it to `size - 1` bytes and forces a NULL terminator. Always check the return value, as a negative value indicates failure, while a positive value represents the number of bytes copied, including the NULL terminator. This function should not be used if the string resides in kernel memory; in such cases, `bpf_probe_read_kernel_str` is the correct alternative.  
 
 ### Program types
 
@@ -83,6 +82,19 @@ This helper call can be used in the following program types:
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Example
+```c
+SEC("tracepoint/syscalls/sys_enter_openat")
+int trace_openat(struct trace_event_raw_sys_enter *ctx) {
+    char filename[256];
+    const char *user_filename = (const char *)ctx->args[1];
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+    int ret = bpf_probe_read_user_str(filename, sizeof(filename), user_filename);
+    if (ret > 0) {
+        bpf_printk("Process opened file: %s\n", filename);
+    } else {
+        bpf_printk("Failed to read filename, error: %d\n", ret);
+    }
+
+    return 0;
+}
+```
