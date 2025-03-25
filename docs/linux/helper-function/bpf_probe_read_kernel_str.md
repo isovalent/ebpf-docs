@@ -25,8 +25,9 @@ On success, the strictly positive length of the string, including the trailing N
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The `dst` argument must be a pointer to a buffer where the null-terminated string will be copied. The `size` argument specifies the maximum number of bytes to copy, including the null terminator. The `unsafe_ptr` argument must be a pointer located in kernel memory.
+
+The return value is the number of bytes copied, including the null terminator, or a negative error code if the memory is inaccessible. This function ensures the copied string is null-terminated. If the string is **shorter than** `size`, the buffer is **not padded** with extra null bytes. If the string is **longer than** `size - 1`, only `size - 1` bytes are copied, and the last byte is set to null.
 
 ### Program types
 
@@ -68,5 +69,25 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+
+SEC("tracepoint/syscalls/sys_exit_openat")
+int trace_open(struct trace_event_raw_sys_exit *ctx) {
+    char comm[256];
+    struct task_struct *task = (struct task_struct *)bpf_get_current_task();
+    
+    // Try to read the process name and check for errors
+    int ret = bpf_probe_read_kernel_str(comm, sizeof(comm), task->comm);
+    
+    if (ret < 0) {
+        bpf_printk("Failed to read process name, error: %d\n", ret);
+        return 0;
+    }
+
+    bpf_printk("Process name: %s\n", comm);
+    
+    return 0;
+}
+
+
+```
