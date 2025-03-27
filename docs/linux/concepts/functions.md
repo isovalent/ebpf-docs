@@ -8,7 +8,7 @@ When we talk about a function, we are referring to a function you would write in
 
 ## Calling convention
 
-The eBPF instruction set defines the calling convention for functions, these include programs, sub-programs, helper functions and kfuncs. Every function no matter who defines it uses the same calling convention. The R0 register is uses as the return value, a function should set it before returning unless it is a void function. Registers R1-R5 are used for arguments, R1 for the first argument, R2 for the second, and so on. Unlike calling conventions on native architectures, arguments are never passed via the stack. So 5 arguments is a hard limit, structures must be used to work around this. Registers R1-5 are clobbered after a function call, the verifier will not allow you to read from them until they are set with a known value. R6-9 are callee saved registers, they are preserved across function calls.
+The eBPF instruction set defines the calling convention for functions, these include programs, sub-programs, helper functions and kfuncs. Every function no matter who defines it uses the same calling convention. The R0 register is uses as the return value, a function should set it before returning unless it is a void function. Registers R1-R5 are used for arguments, R1 for the first argument, R2 for the second, and so on. Unlike calling conventions on native architectures, arguments are never passed via the stack. So 5 arguments is a hard limit, structures must be used to work around this. Registers R1-5 are clobbered after a function call, the verifier will not allow you to read from them until they are set with a known value. R6-9 are called saved registers, they are preserved across function calls.
 
 ## BPF to BPF functions (sub-programs)
 
