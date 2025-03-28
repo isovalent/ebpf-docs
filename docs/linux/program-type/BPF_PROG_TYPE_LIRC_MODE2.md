@@ -24,7 +24,7 @@ The context for this program type is a pointer to an unsigned int that follows t
 ## Attachment
 
 Attachment is through the [`BPF_PROG_ATTACH`](../syscall/BPF_PROG_ATTACH.md) syscall.
-The target is a fd for a LIRC device.
+The `target_fd` should be the LIRC device you want to attach the program to.
 A maximum of 64 programs can be attached to a single LIRC device at a time.
 
 ## Example 
