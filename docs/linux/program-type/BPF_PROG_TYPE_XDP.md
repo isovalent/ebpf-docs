@@ -327,6 +327,20 @@ The following table has been calculated from mathematical formulas based on the 
 [^3]: MTU limit is loaded from firmware.
 [^4]: MTU limit is determined by slave devices.
 
+### VLAN Offload
+
+When VLAN hardware offload is enabled on the NIC, the NIC driver performs outermost VLAN header stripping and insertion.
+VLAN stripping at the driver level means that some XDP program that intercepts a VLAN-tagged packet at ingress will see the packet's Ethernet header without any VLAN.
+
+Why does it happen like this, and why can we still see VLAN headers in the `tcpdump` on the "allowed" traffic?
+Roughly speaking, when packet data is pre-processed at the low hardware level, the driver code at first cuts out the VLAN from the Ethernet part and stores it in a separate `vlan` field in its `receive descriptor` structure.
+Then, a few steps later, some XDP program is run on the packet. When it is finished and it's clear that the packet will not be dropped, the driver writes the VLAN from the corresponding `receive descriptor` to the dedicated fields (`vlan_proto` and `vlan_tci`) in the allocated socket buffer.
+Thus, VLAN is preserved separately from the packet data in the socket buffer structure while it travels further in the stack. We can observe it in the `tcpdump` but not at XDP level.
+
+VLAN offloads can be checked with the command `ethtool -k <dev_name> | grep vlan-offload`.
+To see VLAN header in the XDP program, we either need to disable VLAN offloads via `ethtool -K <dev_name> rxvlan off txvlan off`, or we could use [`bpf_xdp_metadata_rx_vlan_tag`](../kfuncs/bpf_xdp_metadata_rx_vlan_tag.md) kernel function,
+which is supported by some recent drivers.
+
 ## Helper functions
 
 Not all helper functions are available in all program types. These are the helper calls available for XDP programs:
