@@ -171,7 +171,7 @@ syscall(SYS_bpf,
 
 ## Helper functions
 
-Not all helper functions are available in all program types. These are the helper calls available for socket filter programs:
+Not all helper functions are available in all program types. These are the helper calls available for kprobe programs:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [PROG_HELPER_FUNC_REF] -->
