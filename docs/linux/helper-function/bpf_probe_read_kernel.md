@@ -25,8 +25,7 @@ Safely attempt to read _size_ bytes from kernel space address _unsafe_ptr_ and s
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This helper could be very helpful in cases, when we need to access some global kernel variable or structure. It should be also used in case, when BPF program works in cooperation with some particular kernel module and needs to access to its global variables or structures to obtain some configuration settings, counters values, etc.
 
 ### Program types
 
@@ -68,5 +67,60 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+/* Some loadable kernel module with global variable to share */
+
+#include <linux/init.h>       // Macros for module initialization
+#include <linux/module.h>     // Core header for loading modules
+#include <linux/kernel.h>     // Kernel logging macros
+
+const int test_kmod_var = 666;
+
+static int __init test_kmod_init(void)
+{
+    printk(KERN_INFO "Hello, world, test_var=%d\n", test_kmod_var);
+
+    return 0;
+}
+
+static void __exit test_kmod_exit(void)
+{
+    printk(KERN_INFO "Goodbye, world!\n");
+}
+
+module_init(test_kmod_init);
+module_exit(test_kmod_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Your Name");
+MODULE_DESCRIPTION("A simple module");
+MODULE_VERSION("1.0");
+
+/* BPF program, which uses global variables from kernel
+ * and from some loadable module
+ */
+
+#include "vmlinux.h"
+#include <bpf/bpf_helpers.h>
+#include "bpf_tracing_net.h"
+
+extern const void test_kmod_var __ksym;
+extern const void jiffies __ksym;
+
+SEC("xdp")
+int xdp_test(struct xdp_md *xdp) {
+
+	u64 kernel_jiffies;
+	u32 loadable_kmod_var;
+
+	bpf_probe_read_kernel(&kernel_jiffies, 8, &jiffies);
+
+	bpf_printk(">>> %s: Can access jiffies=%lu\n", __func__, kernel_jiffies);
+
+	bpf_probe_read_kernel(&loadable_kmod_var, 4, &test_kmod_var);
+
+	bpf_printk(">>> %s: Can also access test_kmod_var=%lu\n", __func__, loadable_kmod_var);
+
+	return XDP_PASS;
+}
+```
