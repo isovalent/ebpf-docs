@@ -8,14 +8,50 @@ description: "This page documents the 'BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE' eB
 [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/9df1c28bb75217b244257152ab7d788bb2a386d0)
 <!-- [/FEATURE_TAG] -->
 
+Raw tracepoint writable programs are similar to [raw tracepoint](BPF_PROG_TYPE_RAW_TRACEPOINT.md) programs, but they allow you to write to the given context.
 
 ## Usage
 
+This program type can be attached to tracepoints that were placed at specific locations in the kernel by the kernel developers. Unlike non-writable tracepoints, these ones can write to the whole context or parts of the context. This essentially allows you to modify the kernel's behavior at runtime in a very specific way.
+
+Writable raw tracepoint programs can only be attached to tracepoints which have been created with the [`DEFINE_EVENT_WRITABLE`](https://elixir.bootlin.com/linux/v6.13.7/source/include/trace/bpf_probe.h#L108) or [`DECLARE_TRACE_WRITABLE`](https://elixir.bootlin.com/linux/v6.13.7/source/include/trace/bpf_probe.h#L126) macros.
+
+In practice there are very limited of such tracepoints, on only one as of kernel v6.14 is [`nbd_send_request`](https://elixir.bootlin.com/linux/v6.13.7/source/include/trace/events/nbd.h#L94)
+
 ## Context
+
+The context to this program type is an array of `u64` values. Each element representing an argument of the tracepoint. The program has to cast the elements to their proper type, libbpf provides the [`BPF_PROG`](../../ebpf-library/libbpf/ebpf/BPF_PROG.md) macro to help with this.
+
+The first element of the context is referred to as the "writable buffer", it will be a pointer to a values which is allowed to be modified. The verifier will check that you do not attempt to modify any other parts or modify outside of the bounds of the writable buffer.
 
 ## Attachment
 
+Raw tracepoints can be attached in two ways, first is with a dedicated syscall, the second method is with the more generic [BPF link](../syscall/BPF_LINK_CREATE.md) syscall.
+
+### Syscall
+
+The dedicated syscall `BPF_RAW_TRACEPOINT_OPEN` can be used to attach the raw tracepoint. This requires the `name` field to be set to a string containing the name of the tracepoint to which the user whishes to attach to. The `prog_fd` attribute field should be set to the file descriptor of the BPF program to attach.
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+    <!-- An libbpf example would be nice -->
+
 ## Example
+
+```c
+// SPDX-License-Identifier: GPL-2.0
+/* Copyright (c) 2020 Facebook */
+
+[SEC](../../ebpf-library/libbpf/ebpf/SEC.md)("raw_tp.w/bpf_testmod_test_writable_bare")
+int [BPF_PROG](../../ebpf-library/libbpf/ebpf/BPF_PROG.md)(handle_raw_tp_writable_bare,
+	     struct bpf_testmod_test_writable_ctx *writable)
+{
+	raw_tp_writable_bare_in_val = writable->val;
+	writable->early_ret = raw_tp_writable_bare_early_ret;
+	writable->val = raw_tp_writable_bare_out_val;
+	return 0;
+}
+```
 
 ## Helper functions
 
