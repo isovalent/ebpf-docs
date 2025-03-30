@@ -18,54 +18,64 @@ The returned file descriptor can be used with the [`BPF_LINK_UPDATE`](BPF_LINK_U
 
 ## Attributes
 
-??? abstract "C structure"
-    ```c
-    struct { /* struct used by BPF_LINK_CREATE command */
-		__u32		prog_fd;	/* eBPF program to attach */
+The attributes for this syscall are particularly complex. Ultimately the `attach_type` field will determine which fields are used and how.
+
+```c
+union bpf_attr {
+	struct {
 		union {
-			__u32		target_fd;	/* object to attach to */
-			__u32		target_ifindex; /* target ifindex */
+			__u32	[prog_fd](#prog_fd);
+			__u32	[map_fd](#map_fd);
 		};
-		__u32		attach_type;	/* attach type */
-		__u32		flags;		/* extra flags */
 		union {
-			__u32		target_btf_id;	/* btf_id of target to attach to */
+			__u32	[target_fd](#target_fd);
+			__u32	[target_ifindex](#target_ifindex);
+		};
+		__u32		[attach_type](#attach_type);
+		__u32		[flags](#flags);
+		union {
+			__u32	[target_btf_id](#target_btf_id);
 			struct {
-				__aligned_u64	iter_info;	/* extra bpf_iter_link_info */
-				__u32		iter_info_len;	/* iter_info length */
+				__aligned_u64	[iter_info](#iter_info);
+				__u32			[iter_info_len](#iter_info_len);
 			};
 			struct {
-				/* black box user-provided value passed through
-				 * to BPF program at the execution time and
-				 * accessible through bpf_get_attach_cookie() BPF helper
-				 */
-				__u64		bpf_cookie;
-			} perf_event;
+				[...]
+			} [perf_event](#perf_event);
 			struct {
-				__u32		flags;
-				__u32		cnt;
-				__aligned_u64	syms;
-				__aligned_u64	addrs;
-				__aligned_u64	cookies;
-			} kprobe_multi;
+				[...]
+			} [kprobe_multi](#kprobe_multi);
 			struct {
-				/* this is overlaid with the target_btf_id above. */
-				__u32		target_btf_id;
-				/* black box user-provided value passed through
-				 * to BPF program at the execution time and
-				 * accessible through bpf_get_attach_cookie() BPF helper
-				 */
-				__u64		cookie;
-			} tracing;
+				[...]
+			} [tracing](#tracing);
+			struct {
+				[...]
+			} [netfilter](#netfilter);
+			struct {
+				[...]
+			} [tcx](#tcx);
+			struct {
+				[...]
+			} [uprobe_multi](#uprobe_multi);
+			struct {
+				[...]
+			} [netkit](#netkit);
 		};
-	}
-    ```
+	} link_create;
+};
+```
 
 ### `prog_fd`
 
 [:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/af6eea57437a830293eab56246b6025cc7d46ee7)
 
 This field specifies the file descriptor for the BPF program to be linked.
+
+### `map_fd`
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/68b04864ca425d1894c96b8141d4fba1181f11cb)
+
+This field specifies a BPF map for the BPF program to be linked to.
 
 ### `target_fd`
 
@@ -98,11 +108,11 @@ This field specifies the network interface index of the network device to attach
 
 Attach type specifies the attach type. For more information about possible values and their meaning checkout the [Attach types](#attach-types) section.
 
-### `flags`
+### `flags` {attributes-flags}
 
 [:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/af6eea57437a830293eab56246b6025cc7d46ee7)
 
-<!-- TODO figure out -->
+This field specifies flags to instruct how to interpret other attributes. See [Flags](#flags).
 
 ### `target_btf_id`
 
@@ -148,7 +158,24 @@ This field specifies over what kind of information a iterator program should ite
 
 This field specifies the length of the given `iter_info` structure, for the purposes of compatibility in case new kernels add additional fields.
 
-### `bpf_cookie`
+### `perf_event`
+
+[:octicons-tag-24: v5.15](https://github.com/torvalds/linux/commit/82e6b1eee6a8875ef4eacfd60711cce6965c6b04)
+
+```c
+union bpf_attr {
+	struct {
+		[...]
+		union {
+			struct {
+				__u64		[bpf_cookie](#bpf_cookie);
+			} perf_event;
+		}
+	}
+}
+```
+
+#### `bpf_cookie`
 
 [:octicons-tag-24: v5.15](https://github.com/torvalds/linux/commit/82e6b1eee6a8875ef4eacfd60711cce6965c6b04)
 
@@ -160,13 +187,32 @@ The idea behind this cookie is that if the same program gets attached to multipl
 
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/0dcac272540613d41c05e89679e4ddb978b612f1)
 
+```c
+union bpf_attr {
+	struct {
+		[...]
+		union {
+			struct {
+				__u32			[flags](#kprobe_multi-flags);
+				__u32			[cnt](#cnt);
+				__aligned_u64	[syms](#syms);
+				__aligned_u64	[addrs](#addrs);
+				__aligned_u64	[cookies](#cookies);
+			} kprobe_multi;
+		}
+	}
+}
+```
+
 This sub-struct is a collection of fields which specify one or multiple kprobe attachment points to attach the same program to multiple locations with a single syscall.
 
-#### `flags`
+#### `flags` {#kprobe_multi-flags}
 
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/0dcac272540613d41c05e89679e4ddb978b612f1)
 
-<!-- TODO figure out -->
+Bitfield of flags, possible values are:
+
+* `BPF_F_KPROBE_MULTI_RETURN` - When set, the kprobes are created as return probes.
 
 #### `cnt`
 
@@ -202,13 +248,267 @@ This field specifies a list of cookies([`bpf_cookie`](#bpf_cookie)) values for e
 
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/2fcc82411e74e5e6aba336561cf56fb899bfae4e)
 
-#### `target_btf_id`
+```c
+union bpf_attr {
+	struct {
+		[...]
+		union {
+			struct {
+				/* this is overlaid with the target_btf_id above. */
+				__u32		[target_btf_id](#tracing-target_btf_id);
+				__u64		[cookie](#tracing-cookie);
+			} tracing;
+		}
+	}
+}
+```
+
+#### `target_btf_id` {#tracing-target_btf_id}
 
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/2fcc82411e74e5e6aba336561cf56fb899bfae4e)
 
-#### `cookie`
+The definition in `tracing` is overlaid with [`target_btf_id`](#target_btf_id) in memory, and has the same meaning.
+
+#### `cookie` {#tracing-cookie}
 
 [:octicons-tag-24: v5.19](https://github.com/torvalds/linux/commit/2fcc82411e74e5e6aba336561cf56fb899bfae4e)
+
+Same as [`bpf_cookie`](#bpf_cookie) but for tracing programs.
+
+### `netfilter`
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/84601d6ee68ae820dec97450934797046d62db4b)
+
+```c
+union bpf_attr {
+	struct {
+		[...]
+		union {
+			struct {
+				__u32		[pf](#pf);
+				__u32		[hooknum](#hooknum);
+				__s32		[priority](#priority);
+				__u32		[flags](#netfilter-flags);
+			} netfilter;
+		}
+	}
+}
+```
+
+#### `pf`
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/84601d6ee68ae820dec97450934797046d62db4b)
+
+The protocol family, supported values are `NFPROTO_IPV4` (2) and `NFPROTO_IPV6` (10).
+
+#### `hooknum`
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/84601d6ee68ae820dec97450934797046d62db4b)
+
+The hook number, supported values are `NF_INET_PRE_ROUTING` (0), `NF_INET_LOCAL_IN` (1), `NF_INET_FORWARD` (2), `NF_INET_LOCAL_OUT` (3), and `NF_INET_POST_ROUTING` (4).
+
+#### `priority`
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/84601d6ee68ae820dec97450934797046d62db4b)
+
+The priority of the hook, lower values are called first. `NF_IP_PRI_FIRST` (-2147483648) and `NF_IP_PRI_LAST` (2147483647) are not allowed.
+
+#### `flags` {#netfilter-flags}
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/84601d6ee68ae820dec97450934797046d62db4b)
+
+A bitmask of flags. Supported flags are:
+
+* `BPF_F_NETFILTER_IP_DEFRAG` - Enable defragmentation of IP fragments, this hook will only see defragmented packets. If the `BPF_F_NETFILTER_IP_DEFRAG` [:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/91721c2d02d3a0141df8a4787c7079b89b0d0607) flag is set, the priority must be higher than `NF_IP_PRI_CONNTRACK_DEFRAG` (-400) for ensuring the prog runs after nf_defrag.
+
+### `tcx`
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb)
+
+```c
+union bpf_attr {
+	struct {
+		[...]
+		union {
+			struct {
+				union {
+					__u32	[relative_fd](#tcx-relative_fd);
+					__u32	[relative_id](#tcx-relative_id);
+				};
+				__u64		[expected_revision](#tcx-expected_revision);
+			} tcx;
+		}
+	}
+}
+```
+
+#### `relative_fd` {#tcx-relative_fd}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb)
+
+The file descriptor of the program or link to attach relative to. 
+
+* If `BPF_F_BEFORE` is set, the program is attached before the program/link indicated by this field. 
+* If `BPF_F_AFTER` is set, the program is attached after the program/link indicated by this field.
+* If `BPF_F_REPLACE` is set, the program replaced the program/link indicated by this field.
+
+The above flags are mutually exclusive.
+
+This field is used over [`relative_id`](#tcx-relative_id) when [`BPF_F_ID`](#bpf_f_id) is not set.
+
+#### `relative_id` {#tcx-relative_id}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb)
+
+The ID of the program or link to attach relative to.
+
+* If `BPF_F_BEFORE` is set, the program is attached before the program/link indicated by this field. 
+* If `BPF_F_AFTER` is set, the program is attached after the program/link indicated by this field.
+* If `BPF_F_REPLACE` is set, the program replaced the program/link indicated by this field.
+
+The above flags are mutually exclusive.
+
+This field is used over [`relative_fd`](#tcx-relative_fd) when [`BPF_F_ID`](#bpf_f_id) is set.
+
+#### `expected_revision` {#tcx-expected_revision}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/e420bed025071a623d2720a92bc2245c84757ecb)
+
+The expected <nospell>mprog</nospell> revision, to avoid unexpected behavior in case two links are created at the same time.
+
+### `uprobe_multi`
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/89ae89f53d201143560f1e9ed4bfa62eee34f88e)
+
+```c
+union bpf_attr {
+	struct {
+		[...]
+		union {
+			struct {
+				__aligned_u64	[path](#uprobe_multi-path);
+				__aligned_u64	[offsets](#uprobe_multi-offsets);
+				__aligned_u64	[ref_ctr_offsets](#uprobe_multi-ref_ctr_offsets);
+				__aligned_u64	[cookies](#uprobe_multi-cookies);
+				__u32			[cnt](#uprobe_multi-cnt);
+				__u32			[flags](#uprobe_multi-flags);
+				__u32			[pid](#uprobe_multi-pid);
+			} uprobe_multi;
+		}
+	}
+}
+```
+
+#### `path` {#uprobe_multi-path}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/89ae89f53d201143560f1e9ed4bfa62eee34f88e)
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+
+#### `offsets` {#uprobe_multi-offsets}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/89ae89f53d201143560f1e9ed4bfa62eee34f88e)
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+
+#### `ref_ctr_offsets` {#uprobe_multi-ref_ctr_offsets}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/89ae89f53d201143560f1e9ed4bfa62eee34f88e)
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+
+#### `cookies` {#uprobe_multi-cookies}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/89ae89f53d201143560f1e9ed4bfa62eee34f88e)
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+
+#### `cnt` {#uprobe_multi-cnt}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/89ae89f53d201143560f1e9ed4bfa62eee34f88e)
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+
+#### `flags` {#uprobe_multi-flags}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/89ae89f53d201143560f1e9ed4bfa62eee34f88e)
+
+Bitfield of flags, possible values are:
+
+* `BPF_F_UPROBE_MULTI_RETURN` - When set, the kprobes are created as return probes.
+
+
+#### `pid` {#uprobe_multi-pid}
+
+[:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/b733eeade4204423711793595c3c8d78a2fa8b2e)
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
+### `netkit`
+
+[:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd)
+
+```c
+union bpf_attr {
+	struct {
+		[...]
+		union {
+			struct {
+				union {
+					__u32	[relative_fd](#netkit-relative_fd);
+					__u32	[relative_id](#netkit-relative_id);
+				};
+				__u64		[expected_revision](#netkit-expected_revision);
+			} netkit;
+		}
+	}
+}
+```
+
+#### `relative_fd` {#netkit-relative_fd}
+
+[:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd)
+
+The file descriptor of the program or link to attach relative to.
+
+* If `BPF_F_BEFORE` is set, the program is attached before the program/link indicated by this field. 
+* If `BPF_F_AFTER` is set, the program is attached after the program/link indicated by this field.
+* If `BPF_F_REPLACE` is set, the program replaced the program/link indicated by this field.
+
+The above flags are mutually exclusive.
+
+This field is used over [`relative_id`](#netkit-relative_id) when [`BPF_F_ID`](#bpf_f_id) is not set.
+
+#### `relative_id` {#netkit-relative_id}
+
+[:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd)
+
+The ID of the program or link to attach relative to.
+
+* If `BPF_F_BEFORE` is set, the program is attached before the program/link indicated by this field. 
+* If `BPF_F_AFTER` is set, the program is attached after the program/link indicated by this field.
+* If `BPF_F_REPLACE` is set, the program replaced the program/link indicated by this field.
+
+The above flags are mutually exclusive.
+
+This field is used over [`relative_fd`](#netkit-relative_fd) when [`BPF_F_ID`](#bpf_f_id) is set.
+
+#### `expected_revision` {#netkit-expected_revision}
+
+[:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd)
+
+The expected <nospell>mprog</nospell> revision, to avoid unexpected behavior in case two links are created at the same time.
 
 ## Attach types
 
@@ -556,7 +856,29 @@ The attach type is often used to communicate a specialization for a program type
 [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/535a3692ba7245792e6f23654507865d4293c850)
 <!-- [/FEATURE_TAG] -->
 
+### `BPF_TRACE_UPROBE_SESSION`
+
+[:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/d920179b3d4842a0e27cae54fdddbe5ef3977e73)
 
 ## Flags
 
-<!-- TODO does this command have flags? -->
+### `BPF_F_REPLACE`
+
+[:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/7dd68b3279f1792103d12e69933db3128c6d416e)
+
+### `BPF_F_BEFORE`
+
+[:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/7dd68b3279f1792103d12e69933db3128c6d416e)
+
+### `BPF_F_AFTER`
+
+[:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/7dd68b3279f1792103d12e69933db3128c6d416e)
+
+### `BPF_F_ID`
+
+[:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/7dd68b3279f1792103d12e69933db3128c6d416e)
+
+### `BPF_F_LINK`
+
+[:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/7dd68b3279f1792103d12e69933db3128c6d416e)
+

@@ -16,6 +16,44 @@ This command will return the file descriptor of the program (positive integer) o
 
 ## Attributes
 
+```c
+union bpf_attr {
+    struct {
+		__u32           [prog_type](#prog_type);
+		__u32           [insn_cnt](#insn_cnt);
+		__aligned_u64   [insns](#insns);
+		__aligned_u64   [license](#license);
+		__u32           [log_level](#log_level);
+		__u32           [log_size](#log_size);
+		__aligned_u64   [log_buf](#log_buf);
+		__u32           [kern_version](#kern_version);
+		__u32           [prog_flags](#prog_flags);
+		char            [prog_name](#prog_name)[BPF_OBJ_NAME_LEN];
+		__u32           [prog_ifindex](#prog_ifindex);
+		__u32           [expected_attach_type](#expected_attach_type);
+		__u32           [prog_btf_fd](#prog_btf_fd);
+		__u32           [func_info_rec_size](#func_info_rec_size);
+		__aligned_u64   [func_info](#func_info);
+		__u32           [func_info_cnt](#func_info_cnt);
+		__u32           [line_info_rec_size](#line_info_rec_size);
+		__aligned_u64   [line_info](#line_info);
+		__u32           [line_info_cnt](#line_info_cnt);
+		__u32           [attach_btf_id](#attach_btf_id);
+		union {
+			__u32       [attach_prog_fd](#attach_prog_fd);
+			__u32       [attach_btf_obj_fd](#attach_btf_obj_fd);
+		};
+		__u32           [core_relo_cnt](#core_relo_cnt);
+		__aligned_u64   [fd_array](#fd_array);
+		__aligned_u64   [core_relos](#core_relos);
+		__u32           [core_relo_rec_size](#core_relo_rec_size);
+		__u32           [log_true_size](#log_true_size);
+		__s32           [prog_token_fd](#prog_token_fd);
+		__u32           [fd_array_cnt](#fd_array_cnt);
+	};
+}
+```
+
 ### `prog_type`
 
 [:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/09756af46893c18839062976c3252e93a1beeba7)
@@ -53,13 +91,17 @@ A number of helper functions in the kernel are GPL-licensed and may only be call
 
 [:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/cbd357008604925355ae7b54a09137dabb81b580)
 
-This attribute specifies the level/detail of the log output. Valid values are:
+The lower 2 bits of this value are the log level:
 
 * `0` = no log
 * `1` = basic logging   (`BPF_LOG_LEVEL1`)
 * `2` = verbose logging (`BPF_LOG_LEVEL2`)
 
-Additionally the 3rd bit is a flag, if set the kernel will output statistics to the log (`BPF_LOG_STATS`).
+The remaining bits are flags:
+
+* `1 << 3` (`BPF_LOG_STATS`) If set the kernel will output statistics to the log. Flags can be used since [:octicons-tag-24: v5.2](https://github.com/torvalds/linux/commit/06ee7115b0d1742de745ad143fb5e06d77d27fba)
+
+* `1 << 4` (`BPF_LOG_FIXED`) since [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/1216640938035e63bdbd32438e91c9bcc1fd8ee1), the verifier log rotates instead of truncating. When `log_size` is exceeded. Setting this flag preserves the old behavior of truncating the log to `log_size` bytes.
 
 ### `log_size`
 
@@ -73,7 +115,9 @@ This attributes indicates the size of the memory region in bytes indicated by `l
 
 This attributes can be set to a pointer to a memory region allocated/reserved by the loader process where the verifier log will be written to. The detail of the log is set by `log_level`. The verifier log is often the only indication in addition to the error code of why the syscall command failed to load the program.
 
-The log is also written to on success. If the kernel runs out of space in the buffer while loading, the loading process will fail and the command will return with an error code of `-ENOSPC`. So it is important to correctly size the buffer when enabling logging.
+The log is also written to on success. If the kernel runs out of space in the buffer while loading, on older kernels the loading process will fail and the command will return with an error code of `-ENOSPC`. Callers had to take care to allocate enough buffer room, or load the program repeatedly and increasing the buffer when `-ENOSPC` was returned.
+
+Since [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/1216640938035e63bdbd32438e91c9bcc1fd8ee1) the kernel rotates the verifier log by default. The bottom of the log is always included, which is most of the time the most interesting part. Old behavior can be requested by setting the `BPF_LOG_FIXED` flag in `log_level`.
 
 ### `kern_version`
 
@@ -214,7 +258,11 @@ This attribute specifies the size of the records in `core_relos`, this allows fo
 
 [:octicons-tag-24: v5.14](https://github.com/torvalds/linux/commit/387544bfa291a22383d60b40f887360e2b931ec6)
 
-This attribute specifies an array of file descriptors to maps. This value should be a pointer to an array of 32 bit values containing file descriptors. When using this feature, loaders don't have to rewrite the eBPF program so the blob in the ELF can be signed. The instructions will instead contain index into this array and the actual file descriptors which may be different between program runs are thus not included in any signable blob.
+This attribute specifies an array of file descriptors. This value should be a pointer to an array of 32 bit values containing file descriptors. When using this feature, loaders don't have to rewrite the eBPF program so the blob in the ELF can be signed. The instructions will instead contain index into this array and the actual file descriptors which may be different between program runs are thus not included in any signable blob.
+
+If [`fd_array_cnt`](#fd_array_cnt) is `0`, or in kernel versions without the attribute. The array can be sparse (no every element had to contain a valid file descriptor, just the indices referenced by instructions) and only map file descriptors are allowed.
+
+If [`fd_array_cnt`](#fd_array_cnt) is set, the array must be contiguous of [`fd_array_cnt`](#fd_array_cnt) elements and all file descriptors must be valid. The array may contain file descriptors of maps and BTF objects. The program will take a refcount on all file descriptors in the array, not just the ones referenced by instructions.
 
 ### `core_relos`
 
@@ -229,6 +277,26 @@ Before the addition of this field, CO-RE relocations had to be performed by the 
 [:octicons-tag-24: v5.17](https://github.com/torvalds/linux/commit/fbd94c7afcf99c9f3b1ba1168657ecc428eb2c8d)
 
 This attribute specifies the amount of function records that are present in `core_relos`.
+
+### `log_true_size`
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/47a71c1f9af0a334c9dfa97633c41de4feda4287)
+
+Since :octicons-tag-24: v6.4, the verifier log is not truncated to `log_size` anymore, instead it is rotated such that the bottom of the log is always included, which is most of the time the most interesting part. 
+
+This field is an output, it will be set to the actual size of the log. If a user wants to get the full verifier log, this allows them to allocate a buffer of the correct size before calling `BPF_PROG_LOAD` again with the same inputs (other than the resized buffer).
+
+### `prog_token_fd`
+
+[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/caf8f28e036c4ba1e823355da6c0c01c39e70ab9)
+
+The file descriptor of a [BPF token](../../linux/concepts/token.md) can be passed to this attribute. If the BPF token grants permission to create a program of the type specified in [`prog_type`](#prog_type), the kernel will allow the program to be loaded for a user without `CAP_BPF`.
+
+### `fd_array_cnt`
+
+[:octicons-tag-24: v6.14](https://github.com/torvalds/linux/commit/4d3ae294f900fb7232fb6c890dbd3176b8a5f121)
+
+If set, the [`fd_array`](#fd_array) must be contiguous of `fd_array_cnt` elements and all file descriptors must be valid. The array may contain file descriptors of maps and BTF objects. The program will take a refcount on all file descriptors in the array, not just the ones referenced by instructions.
 
 ## Flags
 
@@ -291,3 +359,23 @@ If `BPF_F_SLEEPABLE` is used in `BPF_PROG_LOAD` command, the verifier will restr
 This flag notifies the kernel that the XDP program supports XDP fragments. If set, the XDP program may be called with a context that doesn't include the full packet in a single linear piece of memory, which breaks assumptions most XDP programs have, hence the flag.
 
 For more details, check out the [XDP program type page](../program-type/BPF_PROG_TYPE_XDP.md#xdp-fragments)
+
+### `BPF_F_XDP_DEV_BOUND_ONLY`
+
+[:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/2b3486bc2d237ec345b3942b7be5deabf8c8fed1)
+
+If `BPF_F_XDP_DEV_BOUND_ONLY` is used in `BPF_PROG_LOAD` command, the loaded program becomes device-bound but can access XDP metadata.
+
+### `BPF_F_TEST_REG_INVARIANTS`
+
+[:octicons-tag-24: v6.8](https://github.com/torvalds/linux/commit/ff8867af01daa7ea770bebf5f91199b7434b74e5)
+
+The verifier internal test flag. Behavior is undefined 
+
+### `BPF_F_TOKEN_FD`
+
+<!-- [FEATURE_TAG](BPF_F_TOKEN_FD) -->
+[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/a177fc2bf6fd83704854feaf7aae926b1df4f0b9)
+<!-- [/FEATURE_TAG] -->
+
+When set, the kernel will use the BPF token in [`prog_token_fd`](#prog_token_fd) to authorize the creation of the map instead of checking the capabilities of the current user.
