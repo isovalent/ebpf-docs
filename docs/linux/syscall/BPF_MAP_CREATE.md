@@ -16,11 +16,38 @@ This command will return a file descriptor to the created map on success (positi
 
 ## Attributes
 
+```c
+union bpf_attr {
+    struct {
+		__u32	[map_type](#map_type);
+		__u32	[key_size](#key_size);
+		__u32	[value_size](#value_size);
+		__u32	[max_entries](#max_entries);
+		__u32	[map_flags](#map_flags);
+		__u32	[inner_map_fd](#inner_map_fd);
+		__u32	[numa_node](#numa_node);
+		char	[map_name](#map_name)[BPF_OBJ_NAME_LEN];
+		__u32	[map_ifindex](#map_ifindex);
+		__u32	[btf_fd](#btf_fd);
+		__u32	[btf_key_type_id](#btf_key_type_id);
+		__u32	[btf_value_type_id](#btf_value_type_id);
+		__u32	[btf_vmlinux_value_type_id](#btf_vmlinux_value_type_id);
+		__u64	[map_extra](#map_extra);
+		__s32   [value_type_btf_obj_fd](#value_type_btf_obj_fd);	
+		__s32	[map_token_fd](#map_token_fd);
+	};
+};
+```
+
 ### `map_type`
+
+[:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/99c55f7d47c0dc6fc64729f37bf435abf43f4c60)
 
 This attribute specifies which type of map should be created, this should be one of the pre-defined [map types](../map-type/index.md).
 
 ### `key_size`
+
+[:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/99c55f7d47c0dc6fc64729f37bf435abf43f4c60)
 
 This attribute specifies the size of the key in bytes. 
 
@@ -29,12 +56,16 @@ This attribute specifies the size of the key in bytes.
 
 ### `value_size`
 
+[:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/99c55f7d47c0dc6fc64729f37bf435abf43f4c60)
+
 This attribute specifies the size of the value in bytes. 
 
 !!! info
     Some map types have restrictions on which values are allowed, check the documentation of the specific map type for more details.
 
 ### `max_entries`
+
+[:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/99c55f7d47c0dc6fc64729f37bf435abf43f4c60)
 
 This attribute specifies the maximum amount of entries the map can hold.
 
@@ -43,9 +74,12 @@ This attribute specifies the maximum amount of entries the map can hold.
 
 ### `map_flags`
 
+[:octicons-tag-24: v4.6](https://github.com/torvalds/linux/commit/6c90598174322b8888029e40dd84a4eb01f56afe)
+
 This attribute is a bitmask of flags, see the [flags](#flags) section below for details.
 
 ### `inner_map_fd`
+
 [:octicons-tag-24: v4.12](https://github.com/torvalds/linux/commit/56f668dfe00dcf086734f1c42ea999398fad6572)
 
 This attribute should be set to the FD of another map when creating [map-in-map](../map-type/index.md#map-in-map) type maps. Doing so doesn't link the specified inner map to this new map we are creating, rather it is used as a mechanism to inform the kernel of the inner-maps attributes like type, key size, value size. When writing map references as values to this map, the kernel will verify that those maps are compatible with the attributes of the map given via this field.
@@ -116,8 +150,7 @@ This attribute is used when creating a [`BPF_MAP_TYPE_STRUCT_OPS`](../map-type/B
 
 ### `map_token_fd`
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The file descriptor of a [BPF token](../../linux/concepts/token.md) can be passed to this attribute. If the BPF token grants permission to create a map of the type specified in [`map_type`](#map_type), the kernel will allow the map to be created for a user without `CAP_BPF`.
 
 ## Flags
 
@@ -131,16 +164,13 @@ Before kernel version v4.6, [`BPF_MAP_TYPE_HASH`](../map-type/BPF_MAP_TYPE_HASH.
 
 Some map types require the loader to set this flag when creating maps to explicitly make clear that memory for such map types is always lazily allocated (also to guarantee stable behavior in case pre-allocation for those maps is ever added).
 
-<!-- TODO list map types with support and link to specific pages -->
-
 ### `BPF_F_NO_COMMON_LRU`
 
 <!-- [FEATURE_TAG](BPF_F_NO_COMMON_LRU) -->
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/29ba732acbeece1e34c68483d1ec1f3720fa1bb3)
 <!-- [/FEATURE_TAG] -->
 
-By default, LRU maps have a single LRU list (even per-CPU LRU maps). When set, the an LRU map will use a per-CPU LRU list
-which can scale and perform better.
+By default, LRU maps have a single LRU (even per-CPU LRU maps). When set, a LRU map will use a per-CPU LRU which has better performance in certain cases, but also has implications. See [`BPF_MAP_TYPE_LRU_HASH`](../map-type/BPF_MAP_TYPE_LRU_HASH.md#lru-internals) for more details.
 
 !!! note
     The LRU nodes (including free nodes) cannot be moved across different LRU lists.
@@ -152,7 +182,6 @@ which can scale and perform better.
 <!-- [/FEATURE_TAG] -->
 
 When set, the [`numa_node`](#numa_node) attribute is respected during map creation.
-
 
 ### `BPF_F_RDONLY`
 
@@ -272,15 +301,6 @@ The `BPF_F_LINK` flag is used to indicate that a link is to be used to attach a 
 !!! note
     This flag has a different meaning when used in the `BPF_LINK_CREATE` command.
 
-### `BPF_F_PATH_FD`
-
-<!-- [FEATURE_TAG](BPF_F_PATH_FD) -->
-[:octicons-tag-24: v6.5](https://github.com/torvalds/linux/commit/cb8edce28073a906401c9e421eca7c99f3396da1)
-<!-- [/FEATURE_TAG] -->
-
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
-
 ### `BPF_F_VTYPE_BTF_OBJ_FD`
 
 <!-- [FEATURE_TAG](BPF_F_VTYPE_BTF_OBJ_FD) -->
@@ -295,8 +315,7 @@ The `BPF_F_VTYPE_BTF_OBJ_FD` flag is used to indicate that the [`btf_vmlinux_val
 [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/a177fc2bf6fd83704854feaf7aae926b1df4f0b9)
 <!-- [/FEATURE_TAG] -->
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+When set, the kernel will use the BPF token in [`map_token_fd`](#map_token_fd) to authorize the creation of the map instead of checking the capabilities of the current user.
 
 ### `BPF_F_SEGV_ON_FAULT`
 
