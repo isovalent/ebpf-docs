@@ -16,3 +16,6 @@ The primary goal of the project is to document eBPF to such an extent that devel
 
 The exception to this rule are tools and libraries which originate in the Linux kernel or are maintained by kernel developers alongside the kernel such as: `libbpf`, `libxdp`, `bpftool` and `iproute2`.
 
+## Include copyrights, and link to original sources when copying
+
+In general we can copy and modify documentation and code from other sources, as long as they have licenses that permit us to do so. When copying large sections such as code examples or whole paragraphs, we should preserve any copyright lines present and link back to the sources.

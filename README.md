@@ -19,11 +19,7 @@ $ mkdocs serve -a 127.0.0.1:8000 --watch ./docs
 
 ## Docs about docs
 
-Use MkDocs to render the markdown in this repository to HTML (and to serve it in development). In addition we use the Material for MkDocs theme and some additional plugins to add features. The following links contains documents for varies components including guides on the markdown syntax and references for our config files:
-
-* https://www.mkdocs.org/
-* https://squidfunk.github.io/mkdocs-material/reference/
-* https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
+Go to https://docs.ebpf.io/meta/ for some documentation about this project itself.
 
 ## Contributing
 

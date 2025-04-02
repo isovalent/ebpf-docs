@@ -15,4 +15,5 @@
   * [BPF CO-RE](concepts/core.md)
   * [BTF](concepts/btf.md)
   * [ELF](concepts/elf.md)
+* [Meta docs](meta.md)
 * [FAQ](faq.md)
