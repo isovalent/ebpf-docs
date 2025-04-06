@@ -139,3 +139,11 @@ The file contains definitions for the following:
     * [`BPF_PROBE_READ_STR_INTO`](BPF_PROBE_READ_STR_INTO.md)
     * [`BPF_PROBE_READ_USER_STR_INTO`](BPF_PROBE_READ_USER_STR_INTO.md)
     * [`BPF_PROBE_READ_USER`](BPF_PROBE_READ_USER.md)
+
+## [`usdt.bpf.h`](https://github.com/libbpf/libbpf/blob/master/src/usdt.bpf.h)
+
+* [`BPF_USDT`](BPF_USDT.md)
+* [`bpf_usdt_arg_cnt`](bpf_usdt_arg_cnt.md)
+* [`bpf_usdt_arg_size`](bpf_usdt_arg_size.md)
+* [`bpf_usdt_arg`](bpf_usdt_arg.md)
+* [`bpf_usdt_cookie`](bpf_usdt_cookie.md)

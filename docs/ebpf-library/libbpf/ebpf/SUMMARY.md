@@ -94,3 +94,9 @@
   - [`BPF_PROBE_READ_USER`](BPF_PROBE_READ_USER.md)
 - Utility macros
   - [`___bpf_fill`](___bpf_fill.md)
+- USDT macros
+  - [`BPF_USDT`](BPF_USDT.md)
+  - [`bpf_usdt_arg_cnt`](bpf_usdt_arg_cnt.md)
+  - [`bpf_usdt_arg_size`](bpf_usdt_arg_size.md)
+  - [`bpf_usdt_arg`](bpf_usdt_arg.md)
+  - [`bpf_usdt_cookie`](bpf_usdt_cookie.md)
