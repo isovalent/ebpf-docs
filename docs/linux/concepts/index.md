@@ -121,4 +121,12 @@ This is an index of Linux specific eBPF concepts and features. For more generic 
 
     [:octicons-arrow-right-24: Trampolines](./trampolines.md)
 
+- __USDT__
+
+    ---
+
+    This page explain USDT (User Statically-Defined Tracing)
+
+    [:octicons-arrow-right-24: USDT](./usdt.md)
+
 </div>

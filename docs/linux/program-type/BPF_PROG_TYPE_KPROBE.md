@@ -12,7 +12,9 @@ description: "This page documents the 'BPF_PROG_TYPE_KPROBE' eBPF program type, 
 
 ## Usage
 
-Probes come in 4 different flavors: `kprobe`, `kretprobe`, `uprobe`, and `uretprobe`. `kprobe` and `kretprobe` are used to probe the kernel, `uprobe` and `uretprobe` are used to probe userspace. The normal probes are invoked when the probed location is executed. The `ret` variants will execute once the function returns, allowing for the capture of the return value.
+Probes come in 5 different flavors: `kprobe`, `kretprobe`, `uprobe`, `uretprobe`, `usdt`. `kprobe` and `kretprobe` are used to probe the kernel, `uprobe` and `uretprobe` are used to probe userspace. The normal probes are invoked when the probed location is executed. The `ret` variants will execute once the function returns, allowing for the capture of the return value.
+
+The `usdt` probe is a `uprobe` in disguise, it expects to attach to tracepoints defined in userspace programs. See the [USDT](../concepts/usdt.md) concept page for details.
 
 <!-- TODO explain ELF section conventions -->
 
