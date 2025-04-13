@@ -8,7 +8,7 @@ description: "This page documents the 'BPF_LINK_CREATE' eBPF syscall command, in
 [:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/af6eea57437a830293eab56246b6025cc7d46ee7)
 <!-- [/FEATURE_TAG] -->
 
-This syscall command create a new BPF link. BPF links are the newest and thus preferred way to attach BPF programs to their hook locations within the kernel. This syscall command is intended to replace both `BPF_PROG_ATTACH` and other legacy attachment methods such as netlink and perf events.
+This syscall command creates a new BPF link. BPF links are the newest and thus preferred way to attach BPF programs to their hook locations within the kernel. This syscall command is intended to replace both `BPF_PROG_ATTACH` and other legacy attachment methods such as netlink and perf events.
 
 ## Return type
 
