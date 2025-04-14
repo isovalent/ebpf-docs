@@ -84,7 +84,7 @@ Array of offsets to USDT reference counter fields. See:
 - [https://github.com/torvalds/linux/commit/1cc33161a83d](https://github.com/torvalds/linux/commit/1cc33161a83d)
 - [https://github.com/torvalds/linux/commit/a6ca88b241d5](https://github.com/torvalds/linux/commit/a6ca88b241d5)
 
-This field is optional, and can be `NULL` if you do not need to pass any cookies.
+This field is optional, and can be `NULL` if you do not need to pass any USDT reference counters.
 
 #### `session`
 
