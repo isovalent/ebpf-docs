@@ -22,7 +22,11 @@ By default, the compiler will chose inline a function or to keep it a separate f
 
 Until [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) the verifier would re-verify that a function was safe for every call site. Meaning that if you have a function which is called 10 times, then the verifier would check for every call that with the given inputs the function was save. This defeats the purpose of functions somewhat since you still incur verifier complexity for every call. 
 
-Since [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) a distinction is made between "static" and "global" functions. Static functions are still verified as usual. But global functions undergo "function by function verification". This means that the verifier will verify every function once, and even out of order. It will assume all possible input values are possible, since it will not check every call site anymore. Therefor, functions might require more input checking to pass the verifier. This change reduces verification times and complexity. Static functions are functions marked with the `static` keyword in the C code, global functions regular non-static functions.
+Since [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) a distinction is made between "static" and "global" functions. Static functions are functions marked with the `static` keyword in the C code, global functions regular non-static functions. Static functions are still verified as usual. But global functions undergo "function by function verification". This means that the verifier will verify every function once, and even out of order. So every function is verified exactly once, and not per-call site anymore. This change reduces verification times and complexity. But the verifier does impose a lot more limitations. 
+
+The verifier will assume no information about arguments, since it will not check every call site anymore. So even tough a function is only ever called with a `u32` of `123`, the verifier will assume the full `0`-`4294967295` are possible values. Therefor, functions might require more input checking to pass the verifier.
+
+The verifier also limits the return type to always be scalar (a number). And the arguments to be pointer to a program context and scalars. This limitation on arguments was widen in later kernel releases, see later sections.
 
 ### Global function replacement
 
@@ -46,6 +50,12 @@ Mixing tail calls and functions requires support from the JIT for a given archit
 | LoongArch    | [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/bb035ef0cc91e115faa80187ac8886a7f1914d06) |
 
 Architectures that are not listed do not support mixing tail calls and functions as of :octicons-tag-24: v6.15.
+
+### Pointers in global functions
+
+In [:octicons-tag-24: v5.12](https://github.com/torvalds/linux/commit/e5069b9c23b3857db986c58801bebe450cff3392) the limitation on argument types passed to global functions was widened to allow pointer arguments.
+
+Callers of global functions can pass pointer to the stack, map values or packet data. The pointer is treated as a `void *` of known size. The value or type info of the memory is not tracked across function boundaries.
 
 ### Callbacks
 
