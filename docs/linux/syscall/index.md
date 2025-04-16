@@ -13,7 +13,7 @@ These commands create new objects in the kernel, returning their file descriptor
 * [`BPF_PROG_LOAD`](BPF_PROG_LOAD.md)
 * [`BPF_BTF_LOAD`](BPF_BTF_LOAD.md)
 * [`BPF_LINK_CREATE`](BPF_LINK_CREATE.md)
-* `BPF_ITER_CREATE`
+* [`BPF_ITER_CREATE`](BPF_ITER_CREATE.md)
 * `BPF_RAW_TRACEPOINT_OPEN`
 
 ## Map commands
