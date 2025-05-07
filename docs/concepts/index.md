@@ -10,7 +10,7 @@ It is compact, efficient format for describing C program type information. It en
 
 [BTF]: btf.md
 
-## [ELF] (Executable and Linkable Format)
-It is a standard and versatile file format for executable files, object code, shared libraries, and core dumps on Unix-alike systems. The ELF format is extensible and cross-platform by design thus supporting different CPUs or ISA with different endiannesses and address sizes.
+## [ELF] (Executable and Link-able Format)
+It is a standard and versatile file format for executable files, object code, shared libraries, and core dumps on Unix-alike systems. The ELF format is extensible and cross-platform by design thus supporting different CPUs or ISA with different endianness and address sizes.
 
 [ELF]: elf.md
