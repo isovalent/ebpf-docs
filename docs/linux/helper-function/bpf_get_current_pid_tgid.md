@@ -25,8 +25,7 @@ A 64-bit integer containing the current tgid and pid, and created as such: _curr
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The `bpf_get_current_pid_tgid` helper function returns a 64-bit value containing the current task's PID in the lower 32 bits and TGID (thread group ID) in the upper 32 bits. This helper allows eBPF programs to identify the process and its thread group, which is useful for tracking individual threads or entire processes, enforcing thread-specific policies.
 
 ### Program types
 
@@ -68,5 +67,16 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+
+SEC("tp/syscalls/sys_enter_open")
+int sys_open_trace(void *ctx) {
+    __u64 pid_tgid = bpf_get_current_pid_tgid();
+    __u32 pid = pid_tgid >> 32;
+	__u32 tgid = pid_tgid & 0xFFFFFFFF;
+    bpf_printk("Hello from PID %u, TGID %u\n", pid, tgid);
+    return 0;
+}
+```

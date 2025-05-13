@@ -25,8 +25,7 @@ Copy the **comm** attribute of the current task into _buf_ of _size_of_buf_. The
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The `bpf_get_current_comm` helper function retrieves the name of the executable associated with the current task. This is useful for identifying the process context in which the eBPF program is executing, enabling per-process tracing. It can help trace specific applications, enforce process-level policies, or monitor system behavior tied to particular commands.
 
 ### Program types
 
