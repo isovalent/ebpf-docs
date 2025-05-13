@@ -25,8 +25,7 @@ A 64-bit integer containing the current GID and UID, and created as such: _curre
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The `bpf_get_current_uid_gid` helper function returns a 64-bit value containing the current task's UID in the lower 32 bits and GID in the upper 32 bits. This allows eBPF programs to identify the user and group context of the running task. It is useful for enforcing security policies, tracking actions by specific users or groups, and implementing per-UID or per-GID tracing.
 
 ### Program types
 
@@ -52,5 +51,17 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+
+SEC("tp/syscalls/sys_enter_open")
+int sys_open_trace(void *ctx) {
+    __u64 uid_gid = bpf_get_current_uid_gid();
+    __u32 uid = uid_gid >> 32;
+    __u32 gid = uid_gid & 0xFFFFFFFF;
+    bpf_printk("Hello from UID %u, GID %u\n", uid, gid);
+    return 0;
+}
+```

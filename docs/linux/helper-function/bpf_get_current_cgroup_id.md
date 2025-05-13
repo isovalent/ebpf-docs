@@ -25,8 +25,7 @@ A 64-bit integer containing the current cgroup id based on the cgroup within whi
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The `bpf_get_current_cgroup_id` helper function retrieves the cGroup ID of the cGroup in which the current task is running. This ID corresponds to the cGroup's file descriptor in the cGroup filesystem (`/sys/fs/cgroup`) and uniquely identifies a cGroup. It may be used to distinguish between containers, as container runtimes rely on cGroups for resource isolation and attribute a unique cGroup to each container. This helper function also enables enforcing cGroup-specific policies.
 
 ### Program types
 
@@ -52,5 +51,16 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+
+SEC("lsm_cgroup/inode_create")
+int BPF_PROG(lsm_pre_bpf_file) {
+    __u64 cgroup_id = bpf_get_current_cgroup_id();
+    if (cgroup_id == 12092) {
+        bpf_printk("Task from the target cgroup has created an inode!\n");
+    }
+    return 0;
+}
+```
