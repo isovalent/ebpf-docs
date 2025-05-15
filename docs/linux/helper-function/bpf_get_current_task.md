@@ -25,8 +25,7 @@ A pointer to the current task struct.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This helper function returns a BPF‐safe pointer to the kernel’s task_struct (thread execution context) for the currently executing process or thread. This helper can be used to compute the on-CPU time for a process, identify kernel threads, get the current CPU's run queue, or retrieve many other pieces of information.
 
 ### Program types
 
@@ -68,5 +67,16 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+#include <bpf/bpf_core_read.h>
+
+SEC("tp/syscalls/sys_enter_open")
+int sys_open_trace(void *ctx) {
+    struct task_struct *task = (void *)bpf_get_current_task();
+    int tgid = BPF_CORE_READ(task, tgid);
+    bpf_printk("Hello from PID %d", tgid);
+    return 0;
+}
+```
