@@ -45,6 +45,7 @@
 - [`bpf_cpu_to_be64`](bpf_cpu_to_be64.md)
 - [`bpf_be64_to_cpu`](bpf_be64_to_cpu.md)
 - [`PT_REGS_PARM`](PT_REGS_PARM.md)
+- [`PT_REGS_PARM_SYSCALL`](PT_REGS_PARM_SYSCALL.md)
 - [`PT_REGS_RET`](PT_REGS_RET.md)
 - [`PT_REGS_FP`](PT_REGS_FP.md)
 - [`PT_REGS_RC`](PT_REGS_RC.md)
