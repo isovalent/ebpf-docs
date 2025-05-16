@@ -88,6 +88,7 @@ The `bpf_tracing.h` file contains macros which are mostly meant for tracing-like
 The file contains definitions for the following:
 
 * [`PT_REGS_PARM`](PT_REGS_PARM.md)
+* [`PT_REGS_PARM_SYSCALL`](PT_REGS_PARM_SYSCALL.md)
 * [`PT_REGS_RET`](PT_REGS_RET.md)
 * [`PT_REGS_FP`](PT_REGS_FP.md)
 * [`PT_REGS_RC`](PT_REGS_RC.md)
