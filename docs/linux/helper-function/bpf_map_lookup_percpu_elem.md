@@ -80,7 +80,7 @@ This helper call can be used with the following map types:
 ```c
 int key, *value, cpuid;
 key=0;
-cpuid=0;
+cpuid=bpf_get_smp_processor_id();
 value = bpf_map_lookup_percpu_elem(&percpu_map, &key, cpuid);
 if (value)
 	bpf_printk("Read value '%d' from the map on CPU '%d'\n", *value, cpuid);
