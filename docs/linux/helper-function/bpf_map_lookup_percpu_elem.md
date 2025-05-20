@@ -24,7 +24,7 @@ Map value associated to _key_ on _cpu_, or **NULL** if no entry was found or _cp
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
-The `map` argument must be a pointer to a map definition, `key` must be a pointer to the key you wish to lookup and cpu should be an integer starting from 0.
+The `map` argument must be a pointer to a map definition, `key` must be a pointer to the key you wish to lookup and `cpu` should be an integer starting from 0.
 
 The return value will be a pointer to the map value in the hash slot for a specific CPU or NULL if no entry was found or cpu is invalid.
 
