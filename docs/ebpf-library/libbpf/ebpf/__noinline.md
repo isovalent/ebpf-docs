@@ -6,7 +6,7 @@ description: "This page documents the '__noinline' libbpf eBPF macro, including 
 
 [:octicons-tag-24: v0.2](https://github.com/libbpf/libbpf/releases/tag/v0.2)
 
-The `__noinline` macros is used to tell the compiler to inline a function.
+The `__noinline` macros is used to tell the compiler to not inline a function.
 
 ## Definition
 
