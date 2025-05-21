@@ -24,9 +24,9 @@ Map value associated to _key_ on _cpu_, or **NULL** if no entry was found or _cp
 <!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
+The `map` argument must be a pointer to a map definition, `key` must be a pointer to the key you wish to lookup and `cpu` should be an integer starting from 0.
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The return value will be a pointer to the map value in the hash slot for a specific CPU or NULL if no entry was found or cpu is invalid.
 
 ### Program types
 
@@ -77,5 +77,13 @@ This helper call can be used with the following map types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+int key, *value, cpuid;
+key=0;
+cpuid=bpf_get_smp_processor_id();
+value = bpf_map_lookup_percpu_elem(&percpu_map, &key, cpuid);
+if (value)
+	bpf_printk("Read value '%d' from the map on CPU '%d'\n", *value, cpuid);
+else
+	bpf_printk("Failed to read value from the map\n");
+```
