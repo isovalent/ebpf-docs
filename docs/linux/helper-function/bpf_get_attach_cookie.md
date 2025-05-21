@@ -49,5 +49,18 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+SEC("lsm/inode_create")
+int BPF_PROG(lsm_inode_create){
+	__u64 attach_cookie = bpf_get_attach_cookie(ctx);
+    	__u64 cgroup_id = bpf_get_current_cgroup_id();
+	if (attach_cookie == cgroup_id)
+	{
+        	// Only traces events from tasks who belong to a specific cgroup
+		struct event event = {};
+		event.pid = bpf_get_current_pid_tgid() >> 32;
+		bpf_perf_event_output(ctx, &events, BPF_F_CURRENT_CPU, &event, sizeof(event));
+	}
+	return 0;
+}
+```
