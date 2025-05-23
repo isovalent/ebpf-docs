@@ -4,8 +4,8 @@ description: "This page documents the 'bpf_probe_read_kernel_str' eBPF helper fu
 ---
 # Helper function `bpf_probe_read_kernel_str`
 
-<!-- [FEATURE_TAG]() -->
-[:octicons-tag-24: v6.2](https://github.com/torvalds/linux/commit/c4bcfb38a95edb1021a53f2d0356a78120ecfbe4)
+<!-- [FEATURE_TAG](bpf_probe_read_kernel_str) -->
+[:octicons-tag-24: v5.5](https://github.com/torvalds/linux/commit/6ae08ae3dea2cfa03dd3665a3c8475c2d429ef47)
 <!-- [/FEATURE_TAG] -->
 
 ## Definition
