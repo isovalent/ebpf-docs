@@ -25,7 +25,7 @@ Valid pointer with _size_ bytes of memory available; NULL, otherwise.
 
 ## Usage
 
-The `rinfbuf` argument must be a pointer to a ring buffer definition. The `size` argument specifies the number of bytes to be reserved in the ring buffer. And the `flags` argument must be set to 0.
+The `ringbuf` argument must be a pointer to a ring buffer definition. The `size` argument specifies the number of bytes to be reserved in the ring buffer. And the `flags` argument must be set to 0.
 
 This function is generally used in combination with a `struct` that defines the structure of the data stored in the ring buffer. Hence, in this case, the `size` argument would be set to the size of the struct. The function returns a pointer to the reserved memory, which can be used to write data to the ring buffer. See the example below for more details. 
 
