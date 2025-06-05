@@ -74,8 +74,8 @@ This helper call can be used in the following program types:
 SEC("tp/syscalls/sys_enter_open")
 int sys_open_trace(void *ctx) {
     __u64 pid_tgid = bpf_get_current_pid_tgid();
-    __u32 pid = pid_tgid >> 32;
-	__u32 tgid = pid_tgid & 0xFFFFFFFF;
+    __u32 pid = pid_tgid & 0xFFFFFFFF;
+    __u32 tgid = pid_tgid >> 32;
     bpf_printk("Hello from PID %u, TGID %u\n", pid, tgid);
     return 0;
 }
