@@ -30,5 +30,14 @@ This function allows you to retrieve information about a BPF object by its file 
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This example demonstrates how to use `bpf_obj_get_info_by_fd` to retrieve an eBPF program’s ID from its file descriptor.
+The `prog_fd` could be obtained, for example, via [`bpf_program__fd`](bpf_program__fd.md) or other methods.
+
+```c
+struct bpf_prog_info info = {0};
+__u32 len = sizeof(info);
+if (bpf_obj_get_info_by_fd(prog_fd, &info, &len) < 0)
+    printf("Failed to get info\n");
+else
+    printf("Program ID: %u\n", info.id);
+```
