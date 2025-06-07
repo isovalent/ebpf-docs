@@ -108,6 +108,8 @@ sets:
         flags: [KF_RCU]
       - name: bpf_cpumask_weight
         flags: [KF_RCU]
+      - name: bpf_cpumask_populate
+        flags: [KF_RCU]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
       - name: BPF_PROG_TYPE_TRACEPOINT
@@ -253,6 +255,9 @@ sets:
         flags: [KF_ITER_DESTROY, KF_SLEEPABLE]
       - name: bpf_local_irq_save
       - name: bpf_local_irq_restore
+      - name: bpf_copy_from_user_task_str
+        flags: [KF_SLEEPABLE]
+      - name: bpf_dynptr_copy
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 
@@ -317,6 +322,10 @@ sets:
         since:
           version: 6.12
           commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_SOCK_OPS
+        since:
+          version: 6.15
+          commit: 59422464266f8baa091edcb3779f0955a21abf00
       - name: BPF_PROG_TYPE_LWT_OUT
       - name: BPF_PROG_TYPE_LWT_IN
       - name: BPF_PROG_TYPE_LWT_XMIT
@@ -365,6 +374,10 @@ sets:
         since:
           version: 6.12
           commit: 67666479edf1e2b732f4d0ac797885e859a78de4
+      - name: BPF_PROG_TYPE_SOCK_OPS
+        since:
+          version: 6.15
+          commit: 59422464266f8baa091edcb3779f0955a21abf00
 
   bpf_sk_iter_kfunc_ids:
     funcs:
@@ -703,6 +716,18 @@ sets:
       - name: scx_bpf_task_cgroup
         flags: [KF_RCU, KF_ACQUIRE]
       - name: scx_bpf_now
+      - name: scx_bpf_events
+        flags: [KF_TRUSTED_ARGS]
+      - name: scx_bpf_cpu_node
+      - name: scx_bpf_get_idle_cpumask_node
+        flags: [KF_ACQUIRE]
+      - name: scx_bpf_get_idle_smtmask_node
+        flags: [KF_ACQUIRE]
+      - name: scx_bpf_pick_idle_cpu_node
+        flags: [KF_RCU]
+      - name: scx_bpf_pick_any_cpu_node
+        flags: [KF_RCU]
+      - name: scx_bpf_nr_node_ids
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
       - name: BPF_PROG_TYPE_SYSCALL
@@ -729,6 +754,10 @@ sets:
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
       - name: bpf_get_file_xattr
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
+      - name: bpf_set_dentry_xattr
+        flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
+      - name: bpf_remove_dentry_xattr
+        flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
       - name: BPF_PROG_TYPE_TRACEPOINT
@@ -740,3 +769,27 @@ sets:
           version: 6.12
           commit: bc638d8cb5be813d4eeb9f63cce52caaa18f3960
       - name: BPF_PROG_TYPE_LSM
+
+  bpf_kfunc_check_set_sock_ops:
+    funcs:
+      - name: bpf_sock_ops_enable_tx_tstamp
+        flags: [KF_TRUSTED_ARGS]
+    program_types:
+      - name: BPF_PROG_TYPE_CGROUP_SKB
+      - name: BPF_PROG_TYPE_CGROUP_SOCK
+      - name: BPF_PROG_TYPE_CGROUP_DEVICE
+      - name: BPF_PROG_TYPE_CGROUP_SOCK_ADDR
+      - name: BPF_PROG_TYPE_CGROUP_SOCKOPT
+      - name: BPF_PROG_TYPE_CGROUP_SYSCTL
+      - name: BPF_PROG_TYPE_SOCK_OPS
+
+  rqspinlock_kfunc_ids:
+    funcs:
+      - name: bpf_res_spin_lock
+        flags: [KF_RET_NULL]
+      - name: bpf_res_spin_unlock
+      - name: bpf_res_spin_lock_irqsave
+        flags: [KF_RET_NULL]
+      - name: bpf_res_spin_unlock_irqrestore
+    program_types:
+      - name: BPF_PROG_TYPE_UNSPEC

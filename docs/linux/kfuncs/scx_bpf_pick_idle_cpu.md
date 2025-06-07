@@ -18,6 +18,8 @@ Idle CPU tracking may race against CPU scheduling state transitions. For example
 
 Unavailable if [`sched_ext_ops.update_idle`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#update_idle) is implemented and [`SCX_OPS_KEEP_BUILTIN_IDLE`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#scx_ops_keep_builtin_idle) is not set.
 
+Always returns an error if [`SCX_OPS_BUILTIN_IDLE_PER_NODE`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#scx_ops_builtin_idle_per_node) is set, use [`scx_bpf_pick_idle_cpu_node`](scx_bpf_pick_idle_cpu_node.md) instead.
+
 **Parameters**
 
 `cpus_allowed`: Allowed cpumask

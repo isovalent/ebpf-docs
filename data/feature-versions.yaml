@@ -1593,6 +1593,21 @@
     - name: BPF_SOCK_OPS_WRITE_HDR_OPT_CB
       version: v5.10
       commit: 0813a841566f0962a5551be7749b43c45f0022a0
+    - name: BPF_SOCK_OPS_TSTAMP_SCHED_CB
+      version: v6.15
+      commit: 6b98ec7e882af1c3088a88757e2226d06c8514f9
+    - name: BPF_SOCK_OPS_TSTAMP_SND_SW_CB
+      version: v6.15
+      commit: ecebb17ad818bc043e558c278a6c56d5bbaebacc
+    - name: BPF_SOCK_OPS_TSTAMP_SND_HW_CB
+      version: v6.15
+      commit: 2deaf7f42b8c551e84da20483ca2d4a65c3623b3
+    - name: BPF_SOCK_OPS_TSTAMP_ACK_CB
+      version: v6.15
+      commit: b3b81e6b009dd8f85cd3b9c65eb492249c2649a8
+    - name: BPF_SOCK_OPS_TSTAMP_SENDMSG_CB
+      version: v6.15
+      commit: c9525d240c8117de35171ae705058ddf9667be27
 - name: sock_opt_types
   features:
     - name: TCP_BPF_IW
@@ -2305,3 +2320,54 @@
     - name: bpf_get_dentry_xattr
       version: v6.12
       commit: ac13a4261afe81ca423eddd8e6571078fe2a7cea
+    - name: scx_bpf_events
+      version: v6.15
+      commit: 17103b8504de68958b0ff412ed2ae2e6484fa65f
+    - name: bpf_set_dentry_xattr
+      version: v6.15
+      commit: 56467292794b800164df20c076c409ac548e56ec
+    - name: bpf_remove_dentry_xattr
+      version: v6.15
+      commit: 56467292794b800164df20c076c409ac548e56ec
+    - name: scx_bpf_cpu_node
+      version: v6.15
+      commit: 01059219b0cfdb9fc0d5bd60458e614a3135e6e7
+    - name: scx_bpf_get_idle_cpumask_node
+      version: v6.15
+      commit: 01059219b0cfdb9fc0d5bd60458e614a3135e6e7
+    - name: scx_bpf_get_idle_smtmask_node
+      version: v6.15
+      commit: 01059219b0cfdb9fc0d5bd60458e614a3135e6e7
+    - name: scx_bpf_pick_idle_cpu_node
+      version: v6.15
+      commit: 01059219b0cfdb9fc0d5bd60458e614a3135e6e7
+    - name: scx_bpf_pick_any_cpu_node
+      version: v6.15
+      commit: 01059219b0cfdb9fc0d5bd60458e614a3135e6e7
+    - name: bpf_copy_from_user_task_str
+      version: v6.15
+      commit: f0f8a5b58f78f42ed665f81375a9e99a24853b03
+    - name: bpf_sock_ops_enable_tx_tstamp
+      version: v6.15
+      commit: 59422464266f8baa091edcb3779f0955a21abf00
+    - name: scx_bpf_nr_node_ids
+      version: v6.15
+      commit: 0e9b4c10e833dbcfcdba63497463f1272c5efe4d
+    - name: bpf_dynptr_copy
+      version: v6.15
+      commit: daec295a70941c556708c59e1f970a24d8194d89
+    - name: bpf_cpumask_populate
+      version: v6.15
+      commit: 950ad93df2fce70445e655ed2e74f5c1a8653ab2
+    - name: bpf_res_spin_lock
+      version: v6.15
+      commit: 97eb35f3ad42de1c932ef1f7e2f0044d4fca35f4
+    - name: bpf_res_spin_unlock
+      version: v6.15
+      commit: 97eb35f3ad42de1c932ef1f7e2f0044d4fca35f4
+    - name: bpf_res_spin_lock_irqsave
+      version: v6.15
+      commit: 97eb35f3ad42de1c932ef1f7e2f0044d4fca35f4
+    - name: bpf_res_spin_unlock_irqrestore
+      version: v6.15
+      commit: 97eb35f3ad42de1c932ef1f7e2f0044d4fca35f4

@@ -13,6 +13,8 @@
   - [`bpf_put_file`](bpf_put_file.md)
   - [`bpf_path_d_path`](bpf_path_d_path.md)
   - [`bpf_get_dentry_xattr`](bpf_get_dentry_xattr.md)
+  - [`bpf_remove_dentry_xattr`](bpf_remove_dentry_xattr.md)
+  - [`bpf_set_dentry_xattr`](bpf_set_dentry_xattr.md)
 - CPU mask KFuncs
   - [`bpf_cpumask_create`](bpf_cpumask_create.md)
   - [`bpf_cpumask_release`](bpf_cpumask_release.md)
@@ -39,6 +41,7 @@
   - [`bpf_cpumask_any_distribute`](bpf_cpumask_any_distribute.md)
   - [`bpf_cpumask_any_and_distribute`](bpf_cpumask_any_and_distribute.md)
   - [`bpf_cpumask_weight`](bpf_cpumask_weight.md)
+  - [`bpf_cpumask_populate`](bpf_cpumask_populate.md)
 - Generic KFuncs
   - [`crash_kexec`](crash_kexec.md)
   - [`bpf_throw`](bpf_throw.md)
@@ -122,6 +125,7 @@
   - [`bpf_dynptr_is_rdonly`](bpf_dynptr_is_rdonly.md)
   - [`bpf_dynptr_size`](bpf_dynptr_size.md)
   - [`bpf_dynptr_clone`](bpf_dynptr_clone.md)
+  - [`bpf_dynptr_copy`](bpf_dynptr_copy.md)
 - Misc KFuncs
   - [`bpf_map_sum_elem_count`](bpf_map_sum_elem_count.md)
   - [`bpf_get_fsverity_digest`](bpf_get_fsverity_digest.md)
@@ -215,6 +219,7 @@
   - [`bpf_session_is_return`](bpf_session_is_return.md)
 - Memory probe Kfuncs
   - [`bpf_copy_from_user_str`](bpf_copy_from_user_str.md)
+  - [`bpf_copy_from_user_task_str`](bpf_copy_from_user_task_str.md)
 - IRQ Kfuncs
   - [`bpf_local_irq_save`](bpf_local_irq_save.md)
   - [`bpf_local_irq_restore`](bpf_local_irq_restore.md)
@@ -269,3 +274,15 @@
     - [`scx_bpf_task_running`](scx_bpf_task_running.md)
     - [`scx_bpf_task_cpu`](scx_bpf_task_cpu.md)
     - [`scx_bpf_task_cgroup`](scx_bpf_task_cgroup.md)
+  - NUMA Kfuncs
+    - [`scx_bpf_cpu_node`](scx_bpf_cpu_node.md)
+    - [`scx_bpf_nr_node_ids`](scx_bpf_nr_node_ids.md)
+    - [`scx_bpf_pick_any_cpu_node`](scx_bpf_pick_any_cpu_node.md)
+    - [`scx_bpf_pick_idle_cpu_node`](scx_bpf_pick_idle_cpu_node.md)
+  - Resilient Queued spinlock Kfuncs
+    - [`bpf_res_spin_lock`](bpf_res_spin_lock.md)
+    - [`bpf_res_spin_lock_irqsave`](bpf_res_spin_lock_irqsave.md)
+    - [`bpf_res_spin_unlock`](bpf_res_spin_unlock.md)
+    - [`bpf_res_spin_unlock_irqrestore`](bpf_res_spin_unlock_irqrestore.md)
+  - Sock ops Kfuncs
+    - [`bpf_sock_ops_enable_tx_tstamp`](bpf_sock_ops_enable_tx_tstamp.md)

@@ -564,6 +564,11 @@ patterns:
     - name: BPF_SOCK_OPS_PARSE_HDR_OPT_CB
     - name: BPF_SOCK_OPS_HDR_OPT_LEN_CB
     - name: BPF_SOCK_OPS_WRITE_HDR_OPT_CB
+    - name: BPF_SOCK_OPS_TSTAMP_SCHED_CB
+    - name: BPF_SOCK_OPS_TSTAMP_SND_SW_CB
+    - name: BPF_SOCK_OPS_TSTAMP_SND_HW_CB
+    - name: BPF_SOCK_OPS_TSTAMP_ACK_CB
+    - name: BPF_SOCK_OPS_TSTAMP_SENDMSG_CB
 
   - name: sock_opt_types
     patterns:
@@ -801,3 +806,20 @@ patterns:
     - name: bpf_put_file
     - name: bpf_path_d_path
     - name: bpf_get_dentry_xattr
+    - name: scx_bpf_events
+    - name: bpf_set_dentry_xattr
+    - name: bpf_remove_dentry_xattr
+    - name: scx_bpf_cpu_node
+    - name: scx_bpf_get_idle_cpumask_node
+    - name: scx_bpf_get_idle_smtmask_node
+    - name: scx_bpf_pick_idle_cpu_node
+    - name: scx_bpf_pick_any_cpu_node
+    - name: bpf_copy_from_user_task_str
+    - name: bpf_sock_ops_enable_tx_tstamp
+    - name: scx_bpf_nr_node_ids
+    - name: bpf_dynptr_copy
+    - name: bpf_cpumask_populate
+    - name: bpf_res_spin_lock
+    - name: bpf_res_spin_unlock
+    - name: bpf_res_spin_lock_irqsave
+    - name: bpf_res_spin_unlock_irqrestore
