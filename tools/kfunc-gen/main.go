@@ -433,6 +433,7 @@ var kfuncProgramTypes = []programType{
 	{Name: "BPF_PROG_TYPE_CGROUP_DEVICE", Since: &sinceUntil{Version: "6.12", Commit: "67666479edf1e2b732f4d0ac797885e859a78de4"}},
 	{Name: "BPF_PROG_TYPE_CGROUP_SOCKOPT", Since: &sinceUntil{Version: "6.12", Commit: "67666479edf1e2b732f4d0ac797885e859a78de4"}},
 	{Name: "BPF_PROG_TYPE_CGROUP_SYSCTL", Since: &sinceUntil{Version: "6.12", Commit: "67666479edf1e2b732f4d0ac797885e859a78de4"}},
+	{Name: "BPF_PROG_TYPE_SOCK_OPS", Since: &sinceUntil{Version: "6.15", Commit: "59422464266f8baa091edcb3779f0955a21abf00"}},
 	{Name: "BPF_PROG_TYPE_SCHED_ACT"},
 	{Name: "BPF_PROG_TYPE_SK_SKB"},
 	{Name: "BPF_PROG_TYPE_SOCKET_FILTER"},
