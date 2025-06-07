@@ -274,6 +274,11 @@ A task is starting to run on its associated CPU. See [`runnable`](#runnable) for
 
 A task is stopping execution. See [`runnable`](#runnable) for explanation on the task state notifiers. If !`runnable`, [`quiescent`](#quiescent) will be invoked after this operation returns.
 
+!!! note
+    This callback may be called from a CPU other than the one the task was running on. This can happen when a task property is changed (i.e., affinity), since `dequeue_task_scx`, which triggers this callback, may run on a CPU different from the task's assigned CPU.
+
+    Therefore, always use [`scx_bpf_task_cpu(@p)`](../../kfuncs/scx_bpf_task_cpu.md) to retrieve the CPU the task was running on.
+
 **Parameters**
 
 `p`: task stopping to run
@@ -716,11 +721,14 @@ This enum defines all of the flags that can be set as bitfield in [`flags`](#fla
 
 ```c
 enum scx_ops_flags {
-    [SCX_OPS_KEEP_BUILTIN_IDLE](#scx_ops_keep_builtin_idle)   = 1LLU << 0,
-    [SCX_OPS_ENQ_LAST](#scx_ops_enq_last)            = 1LLU << 1,
-    [SCX_OPS_ENQ_EXITING](#scx_ops_enq_exiting)         = 1LLU << 2,
-    [SCX_OPS_SWITCH_PARTIAL](#scx_ops_switch_partial)      = 1LLU << 3,
-    [SCX_OPS_HAS_CGROUP_WEIGHT](#scx_ops_has_cgroup_weight)   = 1LLU << 16,
+    [SCX_OPS_KEEP_BUILTIN_IDLE](#scx_ops_keep_builtin_idle)      = 1LLU << 0,
+    [SCX_OPS_ENQ_LAST](#scx_ops_enq_last)               = 1LLU << 1,
+    [SCX_OPS_ENQ_EXITING](#scx_ops_enq_exiting)            = 1LLU << 2,
+    [SCX_OPS_SWITCH_PARTIAL](#scx_ops_switch_partial)         = 1LLU << 3,
+    [SCX_OPS_ENQ_MIGRATION_DISABLED](#scx_ops_enq_migration_disabled) = 1LLU << 4,
+    [SCX_OPS_ALLOW_QUEUED_WAKEUP](#scx_ops_allow_queued_wakeup)    = 1LLU << 5,
+    [SCX_OPS_BUILTIN_IDLE_PER_NODE](#scx_ops_builtin_idle_per_node)  = 1LLU << 6,
+    [SCX_OPS_HAS_CGROUP_WEIGHT](#scx_ops_has_cgroup_weight)      = 1LLU << 16,
 };
 ```
 
@@ -749,6 +757,28 @@ To mask this problem, by default, <nospell>unhashed</nospell> tasks are automati
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 
 If set, only tasks with policy set to [`SCHED_EXT`](https://elixir.bootlin.com/linux/v6.13.4/source/include/uapi/linux/sched.h#L121) are attached to sched_ext. If clear, SCHED_NORMAL tasks are also included.
+
+#### `SCX_OPS_ENQ_MIGRATION_DISABLED`
+
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/3539c6411a7c9d6c5895f78750f93160705cd250)
+
+A migration disabled task can only execute on its current CPU. By default, such tasks are automatically put on the CPU's local DSQ with the default slice on enqueue. If this ops flag is set, they also go through [`ops.enqueue`](#enqueue).
+
+A migration disabled task never invokes [`ops.select_cpu`](#select_cpu) as it can only select the current CPU. Also, `p->cpus_ptr` will only contain its current CPU while `p->nr_cpus_allowed` keeps tracking `p->user_cpus_ptr` and thus may disagree with `cpumask_weight(p->cpus_ptr)`.
+
+#### `SCX_OPS_ALLOW_QUEUED_WAKEUP`
+
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/3539c6411a7c9d6c5895f78750f93160705cd250)
+
+Queued wake-up (`ttwu_queue`) is a wake-up optimization that invokes [`ops.enqueue`](#enqueue) on the ops.[`select_cpu`](#select_cpu) selected or the wakee's previous CPU via IPI (inter-processor interrupt) to reduce cacheline transfers. When this optimization is enabled, [`ops.select_cpu`](#select_cpu) is skipped in some cases (when racing against the <nospell>wakee</nospell> switching out). As the BPF scheduler may depend on ops.[`select_cpu`](#select_cpu) being invoked during wakeups, queued wakeup is disabled by default.
+
+If this ops flag is set, queued wake-up optimization is enabled and the BPF scheduler must be able to handle [`ops.enqueue`](#enqueue) invoked on the <nospell>wakee's</nospell> CPU without preceding [`select_cpu`](#select_cpu) even for tasks which may be executed on multiple CPUs.
+
+#### `SCX_OPS_BUILTIN_IDLE_PER_NODE`
+
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/0aaaf89df86da28fa4928faa55a529beac1d6cab)
+
+If set, enable per-node idle cpu-masks. If clear, use a single global flat idle cpumask.
 
 #### `SCX_OPS_HAS_CGROUP_WEIGHT`
 

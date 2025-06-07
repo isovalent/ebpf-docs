@@ -203,9 +203,65 @@ The [`bpf_store_hdr_opt`](../helper-function/bpf_store_hdr_opt.md) should be use
 
 The [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md) can also be used to search for a particular option that has already been written by the kernel or the earlier BPF programs.
 
-## Context
+### `BPF_SOCK_OPS_TSTAMP_SCHED_CB`
 
-`struct bpf_sock_ops`
+<!-- [FEATURE_TAG](BPF_SOCK_OPS_TSTAMP_SCHED_CB) -->
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/6b98ec7e882af1c3088a88757e2226d06c8514f9)
+<!-- [/FEATURE_TAG] -->
+
+Called when skb is passing through device layer when `SK_BPF_CB_TX_TIMESTAMPING` feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
+
+!!! warning
+    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+
+### `BPF_SOCK_OPS_TSTAMP_SND_SW_CB`
+
+<!-- [FEATURE_TAG](BPF_SOCK_OPS_TSTAMP_SND_SW_CB) -->
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/ecebb17ad818bc043e558c278a6c56d5bbaebacc)
+<!-- [/FEATURE_TAG] -->
+
+Called when skb is about to send to the NIC when `SK_BPF_CB_TX_TIMESTAMPING` feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
+
+!!! warning
+    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+
+
+### `BPF_SOCK_OPS_TSTAMP_SND_HW_CB`
+
+<!-- [FEATURE_TAG](BPF_SOCK_OPS_TSTAMP_SND_HW_CB) -->
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/2deaf7f42b8c551e84da20483ca2d4a65c3623b3)
+<!-- [/FEATURE_TAG] -->
+
+Called in hardware phase when `SK_BPF_CB_TX_TIMESTAMPING` feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
+
+!!! warning
+    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+
+
+### `BPF_SOCK_OPS_TSTAMP_ACK_CB`
+
+<!-- [FEATURE_TAG](BPF_SOCK_OPS_TSTAMP_ACK_CB) -->
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/b3b81e6b009dd8f85cd3b9c65eb492249c2649a8)
+<!-- [/FEATURE_TAG] -->
+
+Called when all the <nospell>SKBs</nospell> in the same `sendmsg` call are acked when [`SK_BPF_CB_TX_TIMESTAMPING`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
+
+!!! warning
+    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+
+
+### `BPF_SOCK_OPS_TSTAMP_SENDMSG_CB`
+
+<!-- [FEATURE_TAG](BPF_SOCK_OPS_TSTAMP_SENDMSG_CB) -->
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/c9525d240c8117de35171ae705058ddf9667be27)
+<!-- [/FEATURE_TAG] -->
+
+Called when every `sendmsg` syscall is triggered. It's used to correlate `sendmsg` timestamp with corresponding `tskey`.
+
+!!! warning
+    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+
+## Context
 
 ??? abstract "C structure"
     ```c
@@ -216,49 +272,49 @@ The [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md) can also be use
     * New fields can only be added at the end of this structure
     */
     struct bpf_sock_ops {
-        __u32 op;
+        __u32 [op](#op);
         union {
-            __u32 args[4];		/* Optionally passed to bpf program */
-            __u32 reply;		/* Returned by bpf program	    */
-            __u32 replylong[4];	/* Optionally returned by bpf prog  */
+            __u32 [args](#args)[4];		/* Optionally passed to bpf program */
+            __u32 [reply](#reply);		/* Returned by bpf program	    */
+            __u32 [replylong](#replylong)[4];	/* Optionally returned by bpf prog  */
         };
-        __u32 family;
-        __u32 remote_ip4;	/* Stored in network byte order */
-        __u32 local_ip4;	/* Stored in network byte order */
-        __u32 remote_ip6[4];	/* Stored in network byte order */
-        __u32 local_ip6[4];	/* Stored in network byte order */
-        __u32 remote_port;	/* Stored in network byte order */
-        __u32 local_port;	/* stored in host byte order */
-        __u32 is_fullsock;	/* Some TCP fields are only valid if
+        __u32 [family](#family);
+        __u32 [remote_ip4](#remote_ip4);	/* Stored in network byte order */
+        __u32 [local_ip4](#local_ip4);	/* Stored in network byte order */
+        __u32 [remote_ip6](#remote_ip6)[4];	/* Stored in network byte order */
+        __u32 [local_ip6](#local_ip6)[4];	/* Stored in network byte order */
+        __u32 [remote_port](#remote_port);	/* Stored in network byte order */
+        __u32 [local_port](#local_port);	/* stored in host byte order */
+        __u32 [is_fullsock](#is_fullsock);	/* Some TCP fields are only valid if
                     * there is a full socket. If not, the
                     * fields read as zero.
                     */
-        __u32 snd_cwnd;
-        __u32 srtt_us;		/* Averaged RTT << 3 in usecs */
-        __u32 bpf_sock_ops_cb_flags; /* flags defined in uapi/linux/tcp.h */
-        __u32 state;
-        __u32 rtt_min;
-        __u32 snd_ssthresh;
-        __u32 rcv_nxt;
-        __u32 snd_nxt;
-        __u32 snd_una;
-        __u32 mss_cache;
-        __u32 ecn_flags;
-        __u32 rate_delivered;
-        __u32 rate_interval_us;
-        __u32 packets_out;
-        __u32 retrans_out;
-        __u32 total_retrans;
-        __u32 segs_in;
-        __u32 data_segs_in;
-        __u32 segs_out;
-        __u32 data_segs_out;
-        __u32 lost_out;
-        __u32 sacked_out;
-        __u32 sk_txhash;
-        __u64 bytes_received;
-        __u64 bytes_acked;
-        __bpf_md_ptr(struct bpf_sock *, sk);
+        __u32 [snd_cwnd](#snd_cwnd);
+        __u32 [srtt_us](#srtt_us);		/* Averaged RTT << 3 in usecs */
+        __u32 [bpf_sock_ops_cb_flags](#bpf_sock_ops_cb_flags); /* flags defined in uapi/linux/tcp.h */
+        __u32 [state](#state);
+        __u32 [rtt_min](#rtt_min);
+        __u32 [snd_ssthresh](#snd_ssthresh);
+        __u32 [rcv_nxt](#rcv_nxt);
+        __u32 [snd_nxt](#snd_nxt);
+        __u32 [snd_una](#snd_una);
+        __u32 [mss_cache](#mss_cache);
+        __u32 [ecn_flags](#ecn_flags);
+        __u32 [rate_delivered](#rate_delivered);
+        __u32 [rate_interval_us](#rate_interval_us);
+        __u32 [packets_out](#packets_out);
+        __u32 [retrans_out](#retrans_out);
+        __u32 [total_retrans](#total_retrans);
+        __u32 [segs_in](#segs_in);
+        __u32 [data_segs_in](#data_segs_in);
+        __u32 [segs_out](#segs_out);
+        __u32 [data_segs_out](#data_segs_out);
+        __u32 [lost_out](#lost_out);
+        __u32 [sacked_out](#sacked_out);
+        __u32 [sk_txhash](#sk_txhash);
+        __u64 [bytes_received](#bytes_received);
+        __u64 [bytes_acked](#bytes_acked);
+        __bpf_md_ptr(struct bpf_sock *, [sk](#sk));
         /* [skb_data, skb_data_end) covers the whole TCP header.
         *
         * BPF_SOCK_OPS_PARSE_HDR_OPT_CB: The packet received
@@ -273,13 +329,13 @@ The [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md) can also be use
         *
         * bpf_load_hdr_opt() can also be used to read a particular option.
         */
-        __bpf_md_ptr(void *, skb_data);
-        __bpf_md_ptr(void *, skb_data_end);
-        __u32 skb_len;		/* The total length of a packet.
+        __bpf_md_ptr(void *, [skb_data](#skb_data));
+        __bpf_md_ptr(void *, [skb_data_end](#skb_data_end));
+        __u32 [skb_len](#skb_len);		/* The total length of a packet.
                     * It includes the header, options,
                     * and payload.
                     */
-        __u32 skb_tcp_flags;	/* tcp_flags of the header.  It provides
+        __u32 [skb_tcp_flags](#skb_tcp_flags);	/* tcp_flags of the header.  It provides
                     * an easy way to check for tcp_flags
                     * without parsing skb_data.
                     *
@@ -289,7 +345,7 @@ The [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md) can also be use
                     * the outgoing header has not
                     * been written yet.
                     */
-        __u64 skb_hwtstamp;
+        __u64 [skb_hwtstamp](#skb_hwtstamp);
     };
     ```
 
@@ -874,5 +930,58 @@ Socket ops programs are attached to cGroups via the [`BPF_PROG_ATTACH`](../sysca
 ## KFuncs
 
 <!-- [PROG_KFUNC_REF] -->
-There are currently no kfuncs supported for this program type
+??? abstract "Supported kfuncs"
+    - [`bpf_arena_alloc_pages`](../kfuncs/bpf_arena_alloc_pages.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_arena_free_pages`](../kfuncs/bpf_arena_free_pages.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_cast_to_kern_ctx`](../kfuncs/bpf_cast_to_kern_ctx.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_copy_from_user_str`](../kfuncs/bpf_copy_from_user_str.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_copy_from_user_task_str`](../kfuncs/bpf_copy_from_user_task_str.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_adjust`](../kfuncs/bpf_dynptr_adjust.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_clone`](../kfuncs/bpf_dynptr_clone.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_copy`](../kfuncs/bpf_dynptr_copy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_from_skb`](../kfuncs/bpf_dynptr_from_skb.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_is_null`](../kfuncs/bpf_dynptr_is_null.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_is_rdonly`](../kfuncs/bpf_dynptr_is_rdonly.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_size`](../kfuncs/bpf_dynptr_size.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_slice`](../kfuncs/bpf_dynptr_slice.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_dynptr_slice_rdwr`](../kfuncs/bpf_dynptr_slice_rdwr.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_get_kmem_cache`](../kfuncs/bpf_get_kmem_cache.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_bits_destroy`](../kfuncs/bpf_iter_bits_destroy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_bits_new`](../kfuncs/bpf_iter_bits_new.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_bits_next`](../kfuncs/bpf_iter_bits_next.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_css_destroy`](../kfuncs/bpf_iter_css_destroy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_css_new`](../kfuncs/bpf_iter_css_new.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_css_next`](../kfuncs/bpf_iter_css_next.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_css_task_destroy`](../kfuncs/bpf_iter_css_task_destroy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_css_task_new`](../kfuncs/bpf_iter_css_task_new.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_css_task_next`](../kfuncs/bpf_iter_css_task_next.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_kmem_cache_destroy`](../kfuncs/bpf_iter_kmem_cache_destroy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_kmem_cache_new`](../kfuncs/bpf_iter_kmem_cache_new.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_kmem_cache_next`](../kfuncs/bpf_iter_kmem_cache_next.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_num_destroy`](../kfuncs/bpf_iter_num_destroy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_num_new`](../kfuncs/bpf_iter_num_new.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_num_next`](../kfuncs/bpf_iter_num_next.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_task_destroy`](../kfuncs/bpf_iter_task_destroy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_task_new`](../kfuncs/bpf_iter_task_new.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_task_next`](../kfuncs/bpf_iter_task_next.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_task_vma_destroy`](../kfuncs/bpf_iter_task_vma_destroy.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_task_vma_new`](../kfuncs/bpf_iter_task_vma_new.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_iter_task_vma_next`](../kfuncs/bpf_iter_task_vma_next.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_local_irq_restore`](../kfuncs/bpf_local_irq_restore.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_local_irq_save`](../kfuncs/bpf_local_irq_save.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_map_sum_elem_count`](../kfuncs/bpf_map_sum_elem_count.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_preempt_disable`](../kfuncs/bpf_preempt_disable.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_preempt_enable`](../kfuncs/bpf_preempt_enable.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_rcu_read_lock`](../kfuncs/bpf_rcu_read_lock.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_rcu_read_unlock`](../kfuncs/bpf_rcu_read_unlock.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_rdonly_cast`](../kfuncs/bpf_rdonly_cast.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_res_spin_lock`](../kfuncs/bpf_res_spin_lock.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_res_spin_lock_irqsave`](../kfuncs/bpf_res_spin_lock_irqsave.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_res_spin_unlock`](../kfuncs/bpf_res_spin_unlock.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_res_spin_unlock_irqrestore`](../kfuncs/bpf_res_spin_unlock_irqrestore.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_sock_addr_set_sun_path`](../kfuncs/bpf_sock_addr_set_sun_path.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md)
+    - [`bpf_wq_init`](../kfuncs/bpf_wq_init.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_wq_set_callback_impl`](../kfuncs/bpf_wq_set_callback_impl.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
+    - [`bpf_wq_start`](../kfuncs/bpf_wq_start.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/59422464266f8baa091edcb3779f0955a21abf00) - 
 <!-- [/PROG_KFUNC_REF] -->

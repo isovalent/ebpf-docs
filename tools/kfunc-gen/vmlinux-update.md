@@ -1,6 +1,6 @@
 # VMLinux blob update process
 
-The current VMLinux blob is created from the v6.10-RC2 tag of the Linux kernel. The following steps are used to update the VMLinux blob:
+The current VMLinux blob is created from the v6.15 tag of the Linux kernel. The following steps are used to update the VMLinux blob:
 
 1. Clone cilium/ci-kernels
 2. Patch `config` with the following values (To compile in all Kfuncs defined in the kernel (so far)):
