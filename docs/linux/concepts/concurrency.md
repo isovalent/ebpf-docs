@@ -26,7 +26,7 @@ There is a class of CPU instructions that can perform specific tasks in a single
 * `__sync_fetch_and_sub(*a, b)` - Read value at `a`, subtract a number and write it back, return the original value of `a`
 * `__sync_fetch_and_or(*a, b)` - Read value at `a`, binary OR a number and write it back, return the original value of `a` :octicons-tag-24: [v5.12](https://lwn.net/ml/linux-kernel/20210114181751.768687-1-jackmanb@google.com/)
 * `__sync_fetch_and_xor(*a, b)` - Read value at `a`, binary XOR a number and write it back, return the original value of `a` :octicons-tag-24: [v5.12](https://lwn.net/ml/linux-kernel/20210114181751.768687-1-jackmanb@google.com/)
-* `__sync_val_compare_and_swap(*a, b, c)` - Read value at `a`, check if it is equal to `b`, if true write `c` to `a` and return the original value of `a`. On fail leave `a` be and return `c`. :octicons-tag-24: [v5.12](https://lwn.net/ml/linux-kernel/20210114181751.768687-1-jackmanb@google.com/)
+* `__sync_val_compare_and_swap(*a, b, c)` - Read value at `a`, check if it is equal to `b`, if true write `c` to `a` and return the original value of `a`. Always returns the original value at `a`. :octicons-tag-24: [v5.12](https://lwn.net/ml/linux-kernel/20210114181751.768687-1-jackmanb@google.com/)
 * `__sync_lock_test_and_set(*a, b)` - Read value at `a`, write `b` to `a`, return original value of `a` :octicons-tag-24: [v5.12](https://lwn.net/ml/linux-kernel/20210114181751.768687-1-jackmanb@google.com/)
 
 If you want to perform one of the above sequences on a variable you can do so with the atomic builtin functions. A common example is to increment a shared counter with `__sync_fetch_and_add`.
