@@ -18,11 +18,11 @@ Low level wrapper around the [`BPF_OBJ_GET_INFO_BY_FD`](../../../linux/syscall/B
 
 - `bpf_fd`: file descriptor of the BPF object
 - `info`: buffer to store the information about the BPF object
-- `info_len`: size of the `info` buffer
+- `info_len`: indicates the size of the buffer which `info` points to and will be changed by the syscall command to the actual amount of data written to the `info` buffer
 
 **Return**
 
-`>0`, amount of information written to the `info` buffer; negative error code, otherwise
+`0`, on success; negative error code, otherwise
 
 ## Usage
 
