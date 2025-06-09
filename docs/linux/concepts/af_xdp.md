@@ -350,9 +350,9 @@ In the XSK creation section we mention that the size of UMEM chunks needs to be 
 
 This flag enables you to bind multiple sockets to the same UMEM. It works on the same queue id, between queue ids and between network devices. In this mode, each socket has their own RX and TX rings as usual, but you are going to have one or more FILL and COMPLETION ring pairs. You have to create one of these pairs per unique netdev and queue id tuple that you bind to.
 
-Starting with the case where we would like to share a UMEM between sockets bound to the same netdev and queue id. The UMEM (tied to the first socket created) will only have a single FILL ring and a single COMPLETION ring as there is only on unique netdev,queue_id tuple that we have bound to. To use this mode, create the first socket and bind it in the normal way. Create a second socket and create an RX and a TX ring, or at least one of them, but no FILL or COMPLETION rings as the ones from the first socket will be used. In the bind call, set the `XDP_SHARED_UMEM` option and provide the initial socket’s file descriptor in the `sxdp_shared_umem_fd` field. You can attach an arbitrary number of extra sockets this way.
+Starting with the case where we would like to share a UMEM between sockets bound to the same netdev and queue id. The UMEM (tied to the first socket created) will only have a single FILL ring and a single COMPLETION ring as there is only one unique netdev,queue_id tuple that we have bound to. To use this mode, create the first socket and bind it in the normal way. Create a second socket and create an RX and a TX ring, or at least one of them, but no FILL or COMPLETION rings as the ones from the first socket will be used. In the bind call, set the `XDP_SHARED_UMEM` option and provide the initial socket’s file descriptor in the `sxdp_shared_umem_fd` field. You can attach an arbitrary number of extra sockets this way.
 
-In the non-shared situation, the packet must be redirected to a socket bound to the same queue id. However, when all queues share the same UMEM, the XDP program has the freedom to pick which socket to use. This capability allows for custom RPS. A simple round-robin example of distributing packets is shown below:
+The XDP program has control over which socket to send a packet up. However, the chosen socket must always be bound to the same netdev,queue_id as where the packet arrived on. If you have multiple sockets bound to the same netdev,queue_id you can distribute between them. A simple round-robin example of distributing packets is shown below:
 
 ```c
 #include <linux/bpf.h>
@@ -378,10 +378,11 @@ SEC("xdp_sock") int xdp_sock_prog(struct xdp_md *ctx)
 ```
 
 !!! note
+	In [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/2863d665ea41282379f108e4da6c8a2366ba66db) it was possible to redirect the packet to any socket associated with the same UMEM, not just to sockets for the same netdev,queue_id tuple. However, the implementation of that feature caused kernel panics and was subsequently removed in [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/7fcf26b315bbb728036da0862de6b335da83dff2).
+	It may come back with a fixed implementation, but so far no patches have been submitted.
+
+!!! note
     since there is only a single set of FILL and COMPLETION rings, and they are single producer, single consumer rings, you need to make sure that multiple processes or threads do not use these rings concurrently. The process needs to implement its own synchronization mechanism to manage this.
 
 The second case is when you share a UMEM between sockets that are bound to different queue ids and/or netdevs. In this case you have to create one FILL ring and one COMPLETION ring for each unique netdev,queue_id pair. Let us say you want to create two sockets bound to two different queue ids on the same netdev. Create the first socket and bind it in the normal way. Create a second socket and create an RX and a TX ring, or at least one of them, and then one FILL and COMPLETION ring for this socket. Then in the bind call, set the `XDP_SHARED_UMEM` option and provide the initial socket’s file descriptor in the `sxdp_shared_umem_fd` field as you registered the UMEM on that socket. These two sockets will now share one and the same UMEM.
-
-!!! note
-    A UMEM can be shared between sockets on the same queue id and device, as well as between queues on the same device and between devices at the same time. However, packets can only be steered between queues on the same netdev. A packet can't be redirected to a XSK bound to a different netdev even if they share a UMEM.
 
