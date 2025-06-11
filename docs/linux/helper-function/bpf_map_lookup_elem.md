@@ -117,9 +117,9 @@ int bpf_prog1(void* ctx)
     const char fmt_str[] = "Hello, world! number of openat calls total %d\n";
     u32 key = 0, init_val=0;
     u32 *cnt = bpf_map_lookup_elem(&cnt_map, &key);
-    if(cnt)
+    if(cnt) {
         __sync_fetch_and_add(cnt, 1);
-    else{
+    } else {
         bpf_map_update_elem(&cnt_map, &key, &init_val, BPF_ANY);
         return 0;
     }
