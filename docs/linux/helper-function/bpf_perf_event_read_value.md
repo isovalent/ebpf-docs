@@ -60,5 +60,46 @@ This helper call can be used with the following map types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <linux/ptrace.h>
+#include <uapi/linux/bpf.h>
+#include <bpf/bpf_helpers.h>
+#include <bpf/bpf_tracing.h>
+#include <bpf/bpf_core_read.h>
+
+struct {
+	__uint(type, BPF_MAP_TYPE_PERF_EVENT_ARRAY);
+	__uint(key_size, sizeof(int));
+	__uint(value_size, sizeof(u32));
+	__uint(max_entries, 64);
+} counters SEC(".maps");
+
+struct {
+	__uint(type, BPF_MAP_TYPE_HASH);
+	__type(key, int);
+	__type(value, struct bpf_perf_event_value);
+	__uint(max_entries, 64);
+} values SEC(".maps");
+
+SEC("kprobe/bpf_map_copy_value")
+int BPF_KPROBE(bpf_prog, struct bpf_map *map)
+{
+	u32 key = bpf_get_smp_processor_id();
+	struct bpf_perf_event_value *val, buf;
+	int error;
+
+	error = bpf_perf_event_read_value(&counters, key, &buf, sizeof(buf));
+	if (error)
+		return 0;
+
+	val = bpf_map_lookup_elem(&values, &key);
+	if (val)
+		*val = buf;
+	else
+		bpf_map_update_elem(&values, &key, &buf, BPF_NOEXIST);
+
+	return 0;
+}
+
+char _license[] SEC("license") = "GPL";
+```
