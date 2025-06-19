@@ -12,8 +12,15 @@ description: "This page documents the 'BPF_PROG_TYPE_LSM' eBPF program type, inc
 
 ## Usage
 
-The primary use case is to implement security software. For example, the `socket_create` hook is called when a process calls the `socket` syscall, if the eBPF program returns `0`
-the socket is allowed to be created, but the eBPF program can also return an error value to block the socket creation.
+The primary use case is to implement security software. For example, the `socket_create` hook is called when a process calls the `socket` syscall, if the eBPF program returns `0` the socket is allowed to be created, but the eBPF program can also return an error value to block the socket creation.
+
+!!! warning
+    When a LSM [`BPF_PROG_TYPE_LSM`](BPF_PROG_TYPE_LSM.md) program is attached to a specific cGroup using the [`BPF_LSM_CGROUP`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_cgroup) attachment type, the return value semantics are inverted:
+
+    - returning `0` denies the operation
+    - returning `1` allows the operation
+
+    This is the opposite of the behavior when using the [`BPF_LSM_MAC`](../syscall/BPF_LINK_CREATE.md#bpf_lsm_mac) attachment type, where `0` means allow and any error code denies. This inversion is intentional. It reflects the logic of cgroup-based LSM enforcement, where each eBPF program acts as an access grantor. The kernel allows the operation if at least one cGroup-attached program grants permission.
 
 The list of all LSM hooks can be found in [`lsm_hook_defs.h`](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hook_defs.h), additional documentation for these hooks lives in [`lsm_hooks.h`](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hooks.h) 
 
