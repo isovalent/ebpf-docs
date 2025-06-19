@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_program__attach_cgroup' libbpf usersp
 [:octicons-tag-24: 0.0.8](https://github.com/libbpf/libbpf/releases/tag/v0.0.8)
 <!-- [/LIBBPF_TAG] -->
 
-Attach a [`BPF_PROG_TYPE_CGROUP_*`](../../../linux/program-type/index.md#cgroup-program-types) program.
+Attach a [`BPF_PROG_TYPE_CGROUP_*`](../../../linux/program-type/index.md#cgroup-program-types) program type or an [`BPF_PROG_TYPE_LSM`](../../../linux/program-type/BPF_PROG_TYPE_LSM.md) program type using the [`BPF_LSM_CGROUP`](../../../linux/syscall/BPF_LINK_CREATE.md#bpf_lsm_cgroup) attachment type.
 
 ## Definition
 
@@ -25,10 +25,39 @@ Reference to the newly created BPF link; or `NULL` is returned on error, error c
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+[`bpf_program__attach_cgroup`](bpf_program__attach_cgroup.md) attaches a BPF program to a given cGroup to enforce fine-grained, per-cGroup policies.
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+
+```c
+int main(int argc, char **argv)
+{
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <cgroup_path> (e.g '/sys/fs/cgroup/system.slice/'\n", argv[0]);
+		return 1;
+	}
+
+	// Obtain cgroup fd
+	const char *cgroup_path = argv[1];
+	int cgroup_fd = open(cgroup_path, O_RDONLY);
+	if (cgroup_fd < 0) {
+		perror("open");
+		return 1;
+	}
+
+	LIBBPF_OPTS(bpf_object_open_opts, opts);
+
+	struct perf_buffer *pb = NULL;
+	struct file_lsm_bpf *obj;
+	int err;
+
+	obj = file_lsm_bpf__open_opts(&opts);
+	err = bpf_object__load(obj->obj);
+	struct bpf_link *link = bpf_program__attach_cgroup(obj->progs.lsm_file, cgroup_fd);
+	if (!link) {
+		fprintf(stderr, "failed to attach BPF program to cgroup\n");
+		goto cleanup;
+	}
+}
+```
