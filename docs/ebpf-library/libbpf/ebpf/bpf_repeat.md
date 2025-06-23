@@ -6,7 +6,7 @@ description: "This page documents the 'bpf_repeat' libbpf eBPF macro, including 
 
 [:octicons-tag-24: v1.2.0](https://github.com/libbpf/libbpf/releases/tag/v1.2.0)
 
-The `bpf_repeat` macro is used it easier to write a loop that repeats X times using open coded iterators.
+The `bpf_repeat` macro makes it easier to write a loop that repeats X times using open coded iterators.
 
 ## Definition
 
