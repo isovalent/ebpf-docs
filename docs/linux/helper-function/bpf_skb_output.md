@@ -51,5 +51,35 @@ This helper call can be used with the following map types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include "vmlinux.h"
+#include <linux/version.h>
+#include <bpf/bpf_helpers.h>
+#include <bpf/bpf_core_read.h>
+
+struct {
+    __uint(type, BPF_MAP_TYPE_PERF_EVENT_ARRAY);
+    __uint(key_size, sizeof(int));
+    __uint(value_size, sizeof(u32));
+    __uint(max_entries, 2);
+} my_map SEC(".maps");
+
+SEC("raw_tp/sched_wakeup")
+int BPF_PROG(handle_sched_wakeup, struct task_struct *p)
+{
+    struct S {
+        u64 pid;
+        u64 cookie;
+    } data;
+
+    data.pid = BPF_CORE_READ(p, pid);
+    data.cookie = 0x12345678;
+
+    bpf_skb_output(ctx, &my_map, 0, &data, sizeof(data));
+
+    return 0;
+}
+
+char _license[] SEC("license") = "GPL";
+u32 _version SEC("version") = LINUX_VERSION_CODE;
+```
