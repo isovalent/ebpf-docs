@@ -8,7 +8,7 @@ description: "This page documents the 'BPF_MAP_TYPE_LPM_TRIE' eBPF map type, inc
 [:octicons-tag-24: v4.11](https://github.com/torvalds/linux/commit/b95a5c4db09bc7c253636cb84dc9b12c577fd5a0)
 <!-- [/FEATURE_TAG] -->
 
-The LPM (Largest Prefix Match) map is a generic map type which does prefix matching on the key upon lookup.
+The LPM (Longest Prefix Match) map is a generic map type which does prefix matching on the key upon lookup.
 
 ## Usage
 
