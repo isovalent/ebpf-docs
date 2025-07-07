@@ -39,7 +39,7 @@ struct ring_buffer_opts {
 
 ## Usage
 
-A ring buffer in this context is a circular buffer where eBPF programs are producers and userspace is the consumer. Even tough the returned value is `struct ring_buffer *`, it actually is a "manager" for multiple ring buffers (`struct ring`).
+A ring buffer in this context is a circular buffer where eBPF programs are producers and userspace is the consumer. Even though the returned value is `struct ring_buffer *`, it actually is a "manager" for multiple ring buffers (`struct ring`).
 
 All ring buffers that are part of this ring buffer manager can be [`epoll`](https://man7.org/linux/man-pages/man7/epoll.7.html)-ed together, to get notified of pending data on any of the rings.
 
