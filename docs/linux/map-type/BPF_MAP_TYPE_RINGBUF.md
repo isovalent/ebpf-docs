@@ -10,7 +10,7 @@ description: "This page documents the 'BPF_MAP_TYPE_RINGBUF' eBPF map type, incl
 
 The ring-buffer map can be used to efficiently send large amounts of data from eBPF programs to userspace. Data is sent in a queue / first-in-first-out (FIFO) manner.
 
-This map consists of a singular ring as opposed to the per-CPU design of the `BPF_MAP_TYPE_PERF_ARRAY` map type. This means that the order of events is preserved across all CPUs.
+This map consists of a singular ring as opposed to the per-CPU design of the `BPF_MAP_TYPE_PERF_EVENT_ARRAY` map type. This means that the order of events is preserved across all CPUs.
 
 ## Attributes
 
