@@ -80,5 +80,52 @@ This helper call can be used with the following map types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <vmlinux.h>
+#include <bpf/bpf_helpers.h>
+
+#define TC_ACT_OK 0
+
+struct {
+   __uint(type, BPF_MAP_TYPE_QUEUE);
+   __uint(max_entries, 8);
+   __uint(value_size, sizeof(__u32));
+} ingress SEC(".maps");
+
+SEC("tc")
+int tc_ingress(struct __sk_buff *skb)
+{
+    void* data_end = (void *)(long)skb->data_end;
+    void* data = (void *)(long)skb->data;
+    u32 value;
+    int err;
+    
+    struct ethhdr* eth = (struct ethhdr *)data;
+    if ((void *)(eth + 1) > data_end)
+        return TC_ACT_OK;
+    
+    struct iphdr* iph = (struct iphdr *)(eth + 1);
+    if ((void *)(iph + 1) > data_end)
+   	    return TC_ACT_OK;  // Check IP header
+
+    err = bpf_map_push_elem(&ingress, &iph->saddr, 0);
+    bpf_printk("Pushed something to queue");
+    if (err)
+        return TC_ACT_OK;
+    
+    err = bpf_map_peek_elem(&ingress, &value); 
+    bpf_printk("Peeked at something in queue");
+    if (err)
+        return TC_ACT_OK;
+
+    if(value == iph->saddr)
+    {
+        err = bpf_map_pop_elem(&ingress, &value);
+        bpf_printk("Popped something from queue");
+   	    if (err)
+       	    return TC_ACT_OK;
+   }
+   return TC_ACT_OK;
+}
+char _license[] SEC("license") = "GPL";
+```
