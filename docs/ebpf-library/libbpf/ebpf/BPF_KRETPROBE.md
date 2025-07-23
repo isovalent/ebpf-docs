@@ -29,10 +29,13 @@ static __always_inline typeof(name(0)) ____##name(struct pt_regs *ctx, ##args)
 
 This macro is useful when writing kprobe programs that attach at the start of a function. Traditionally a program author would have to use the [`PT_REGS_RC`](PT_REGS_RC.md) macro to extract the return value and then manually cast them to the actual type.
 
-The `BPF_KRETPROBE` macro allows you to write your program with an argument list, the macro will do the casting for you. Unlike the [`BPF_KPROBE`](BPF_KPROBE.md) this macro only provides the optional return value. (and the original `struct pt_regs *` context).
+Unlike the [`BPF_KPROBE`](BPF_KPROBE.md) this macro only provides the optional return value,
+the rest of the parameters are unavailable (see [patch](https://lore.kernel.org/bpf/20200229231112.1240137-1-andriin@fb.com/T/#m2b65981cee0813f82ce589c9a6850532f8d5d7b2) for more info)
+
 
 !!! note
-    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefor, the variable name `ctx` should not be reused in arguments or function body.
+    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefore, the variable name `ctx` should not be reused in arguments or function body.
+    Be aware the `ctx` might be clobbered and does not contain useful data.
 
 ### Example
 
