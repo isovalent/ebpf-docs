@@ -112,13 +112,13 @@ This field contains the source port of the socket. `BPF_CGROUP_INET4_POST_BIND` 
 
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-This field contains the destination port of the socket. `BPF_CGROUP_INET4_POST_BIND` attached program can read this field. Other attach types are not allowed to read or write this field.
+This field contains the destination port of the socket. `BPF_CGROUP_INET4_POST_BIND` and `BPF_CGROUP_INET6_POST_BIND` attached programs can read this field. Other attach types are not allowed to read or write this field.
 
 ### `dst_ip4`
 
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-This field contains the destination IPv4 address of the socket. `BPF_CGROUP_INET4_POST_BIND` and `BPF_CGROUP_INET6_POST_BIND` attached programs can read this field. Other attach types are not allowed to read or write this field.
+This field contains the destination IPv4 address of the socket. `BPF_CGROUP_INET4_POST_BIND` attached program can read this field. Other attach types are not allowed to read or write this field.
 
 ### `dst_ip6`
 
