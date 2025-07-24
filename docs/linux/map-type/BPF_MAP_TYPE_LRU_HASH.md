@@ -12,7 +12,7 @@ This map is the LRU (Least Recently Used) variant of the [`BPF_MAP_TYPE_HASH`](.
 
 ## LRU internals
 
-The idea behind the LRU eviction scheme is that its better to evict elements that have not been updated or looked at in a while. Users should not rely on any accuracy on the part of the eviction algorithm, the algorithm is is more approximate than exact for the sake of performance.
+The idea behind the LRU eviction scheme is that its better to evict elements that have not been updated or looked at in a while. Users should not rely on any accuracy on the part of the eviction algorithm, the algorithm is more approximate than exact for the sake of performance.
 
 In the default mode (no `BPF_F_NO_COMMON_LRU` flag set) the map uses a global LRU accounting for all elements in the map. This accounting is comprised of three maps, the "active", "inactive", and "free" list. At map creation all elements preallocated and put in the "free" list. When new space is needed, one is taken from the "free" list and added to the "active" list.
 
