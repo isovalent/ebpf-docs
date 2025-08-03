@@ -12,28 +12,25 @@ description: "This page documents the 'bpf_user_ringbuf_drain' eBPF helper funct
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
 
-
-<!-- [HELPER_FUNC_DEF] -->
 Drain samples from the specified user ring buffer, and invoke the provided callback for each such sample:
 
-long (\_callback_fn)(const struct bpf_dynptr \_dynptr, void \_ctx);
+`long (_callback_fn)(const struct bpf_dynptr _dynptr, void _ctx);`
 
-If **callback_fn** returns 0, the helper will continue to try and drain the next sample, up to a maximum of BPF_MAX_USER_RINGBUF_SAMPLES samples. If the return value is 1, the helper will skip the rest of the samples and return. Other return values are not used now, and will be rejected by the verifier.
+If `callback_fn` returns `0`, the helper will continue to try and drain the next sample, up to a maximum of `BPF_MAX_USER_RINGBUF_SAMPLES` samples. If the return value is `1`, the helper will skip the rest of the samples and return. Other return values are not used now, and will be rejected by the verifier.
 
 ### Returns
 
-The number of drained samples if no error was encountered while draining samples, or 0 if no samples were present in the ring buffer. If a user-space producer was epoll-waiting on this map, and at least one sample was drained, they will receive an event notification notifying them of available space in the ring buffer. If the BPF_RB_NO_WAKEUP flag is passed to this function, no wakeup notification will be sent. If the BPF_RB_FORCE_WAKEUP flag is passed, a wakeup notification will be sent even if no sample was drained.
+The number of drained samples if no error was encountered while draining samples, or `0` if no samples were present in the ring buffer. If a user-space producer was epoll-waiting on this map, and at least one sample was drained, they will receive an event notification notifying them of available space in the ring buffer. If the `BPF_RB_NO_WAKEUP` flag is passed to this function, no wakeup notification will be sent. If the `BPF_RB_FORCE_WAKEUP` flag is passed, a wakeup notification will be sent even if no sample was drained.
 
 On failure, the returned value is one of the following:
 
-**-EBUSY** if the ring buffer is contended, and another calling context was concurrently draining the ring buffer.
+`-EBUSY` if the ring buffer is contended, and another calling context was concurrently draining the ring buffer.
 
-**-EINVAL** if user-space is not properly tracking the ring buffer due to the producer position not being aligned to 8 bytes, a sample not being aligned to 8 bytes, or the producer position not matching the advertised length of a sample.
+`-EINVAL` if user-space is not properly tracking the ring buffer due to the producer position not being aligned to 8 bytes, a sample not being aligned to 8 bytes, or the producer position not matching the advertised length of a sample.
 
-**-E2BIG** if user-space has tried to publish a sample which is larger than the size of the ring buffer, or which cannot fit within a struct bpf_dynptr.
+`-E2BIG` if user-space has tried to publish a sample which is larger than the size of the ring buffer, or which cannot fit within a struct `bpf_dynptr`.
 
 `#!c static long (* const bpf_user_ringbuf_drain)(void *map, void *callback_fn, void *ctx, __u64 flags) = (void *) 209;`
-<!-- [/HELPER_FUNC_DEF] -->
 
 ## Usage
 
