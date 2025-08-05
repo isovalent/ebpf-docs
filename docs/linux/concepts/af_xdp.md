@@ -100,7 +100,7 @@ struct xdp_mmap_offsets {
 	struct xdp_ring_offset cr; /* Completion */
 };
 
-struct xdp_mmap_offsets = {0};
+struct xdp_mmap_offsets offsets = {0};
 
 if (!getsockopt(fd, SOL_XDP, XDP_MMAP_OFFSETS, &offsets, sizeof(offsets)))
     // handle error
