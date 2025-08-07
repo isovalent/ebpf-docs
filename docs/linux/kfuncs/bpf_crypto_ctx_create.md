@@ -16,7 +16,7 @@ Allocates a crypto context that can be used, acquired, and released by a BPF pro
 
 `params`: pointer to struct bpf_crypto_params which contains all the details needed to initialise crypto context.
 
-`params__sz`: size of steuct bpf_crypto_params usef by bpf program
+`params__sz`: size of struct bpf_crypto_params usef by bpf program
 
 `err`: integer to store error code when NULL is returned.
 
