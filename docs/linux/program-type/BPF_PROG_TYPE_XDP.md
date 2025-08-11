@@ -121,7 +121,7 @@ If set, the kernel will only attach the XDP program if the network interface doe
 
 If set, the kernel will attach the program in SKB (Socket buffer) mode. This mode is also known as "Generic mode". This always works regardless of driver support. It works by calling the XDP program after a socket buffer has already been allocated further up the stack that an XDP program would normally be called. This negates the speed advantage of XDP programs. This mode also lacks full feature support since some actions cannot be taken this high up the network stack anymore. 
 
-It is recommended to use `BPF_PROG_TYPE_SCHED_CLS` prog types instead if driver support isn't available since it offers more capabilities with roughtly the same performance.
+It is recommended to use `BPF_PROG_TYPE_SCHED_CLS` prog types instead if driver support isn't available since it offers more capabilities with roughly the same performance.
 
 This flag is mutually exclusive with `XDP_FLAGS_DRV_MODE` and `XDP_FLAGS_HW_MODE`
 
