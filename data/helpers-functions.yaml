@@ -245,6 +245,10 @@ groups:
   - name: bpf_skb_load_bytes
   - name: bpf_skb_load_bytes_relative
   - name: bpf_get_socket_cookie
+  - name: bpf_get_netns_cookie
+    since:
+      version: 6.15
+      commit: c221d3744ad38a9655aba8235e1d783c6d4aed5a
   - name: bpf_get_socket_uid
   - name: bpf_perf_event_output
   - group: base
