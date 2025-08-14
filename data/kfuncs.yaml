@@ -273,6 +273,7 @@ sets:
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
       - name: bpf_copy_from_user_task_str_dynptr
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
+      - name: __bpf_trap
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 

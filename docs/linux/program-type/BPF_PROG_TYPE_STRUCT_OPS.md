@@ -355,6 +355,7 @@ Not all helper functions are available in all program types. These are the helpe
 
 <!-- [PROG_KFUNC_REF] -->
 ??? abstract "Supported kfuncs"
+    - [`__bpf_trap`](../kfuncs/__bpf_trap.md)
     - [`bbr_cwnd_event`](../kfuncs/bbr_cwnd_event.md)
     - [`bbr_init`](../kfuncs/bbr_init.md)
     - [`bbr_main`](../kfuncs/bbr_main.md)

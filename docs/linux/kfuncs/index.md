@@ -220,6 +220,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 
 - [`bpf_map_sum_elem_count`](bpf_map_sum_elem_count.md)
 - [`bpf_get_fsverity_digest`](bpf_get_fsverity_digest.md)
+- [`__bpf_trap`](__bpf_trap.md)
 
 ## XDP metadata kfuncs
 

@@ -243,6 +243,7 @@ Not all helper functions are available in all program types. These are the helpe
 
 <!-- [PROG_KFUNC_REF] -->
 ??? abstract "Supported kfuncs"
+    - [`__bpf_trap`](../kfuncs/__bpf_trap.md)
     - [`bpf_arena_alloc_pages`](../kfuncs/bpf_arena_alloc_pages.md)
     - [`bpf_arena_free_pages`](../kfuncs/bpf_arena_free_pages.md)
     - [`bpf_cast_to_kern_ctx`](../kfuncs/bpf_cast_to_kern_ctx.md)
