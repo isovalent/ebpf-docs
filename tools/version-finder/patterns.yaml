@@ -839,6 +839,8 @@ patterns:
     - name: bpf_strnstr
     - name: bpf_strstr
     - name: bpf_cgroup_read_xattr
+    - name: css_rstat_updated
+    - name: css_rstat_flush
     - name: __bpf_trap
     - name: bpf_iter_dmabuf_new
     - name: bpf_iter_dmabuf_next

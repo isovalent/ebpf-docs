@@ -1,32 +1,31 @@
 ---
-title: "KFunc 'cgroup_rstat_flush'"
-description: "This page documents the 'cgroup_rstat_flush' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'css_rstat_flush'"
+description: "This page documents the 'css_rstat_flush' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `cgroup_rstat_flush`
+# KFunc `css_rstat_flush`
 
-[:octicons-tag-24: v6.1](https://github.com/torvalds/linux/commit/a319185be9f5ad13c2a296d448ac52ffe45d194c) - [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/a97915559f5c5ff1972d678b94fd460c72a3b5f2)
+<!-- [FEATURE_TAG](css_rstat_flush) -->
+[:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/a319185be9f5ad13c2a296d448ac52ffe45d194c)
+<!-- [/FEATURE_TAG] -->
 
-!!! warn
-    In [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/a97915559f5c5ff1972d678b94fd460c72a3b5f2) this kfunc was renamed and its signature changed to [`css_rstat_flush`](css_rstat_flush.md)
-
-Flush stats in `cgrp`'s subtree
+Flush stats in `css`'s subtree
 
 ## Definition
 
-Collect all per-CPU stats in `cgrp`'s sub-tree into the global countersand propagate them upwards. After this function returns, all cGroups in the sub-tree have up-to-date `->stat`.
+Collect all per-CPU stats in `css->cgroup`'s sub-tree into the global countersand propagate them upwards. After this function returns, all cGroups in the sub-tree have up-to-date `->stat`.
 
-This also gets all cGroups in the sub-tree including `cgrp` off the `->updated_children` lists.
+This also gets all cGroups in the sub-tree including `css->cgroup` off the `->updated_children` lists.
 
 This function may block.
 
 **Parameters**
 
-`cgrp`: target cgroup
+`css`: target cgroup subsystem state
 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void cgroup_rstat_flush(struct cgroup *cgrp)`
+`#!c void css_rstat_flush(struct cgroup_subsys_state *css)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).

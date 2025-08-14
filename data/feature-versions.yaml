@@ -2419,6 +2419,12 @@
     - name: bpf_cgroup_read_xattr
       version: v6.17
       commit: b95ee9049c93b05da66599d6e0d1fcfea291360b
+    - name: css_rstat_updated
+      version: v6.16
+      commit: a319185be9f5ad13c2a296d448ac52ffe45d194c
+    - name: css_rstat_flush
+      version: v6.16
+      commit: a319185be9f5ad13c2a296d448ac52ffe45d194c
     - name: __bpf_trap
       version: v6.16
       commit: f95695f2c46592b4260032736a9bfc6e2a01c77c
