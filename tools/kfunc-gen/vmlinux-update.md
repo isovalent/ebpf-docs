@@ -1,6 +1,6 @@
 # VMLinux blob update process
 
-The current VMLinux blob is created from the v6.15 tag of the Linux kernel. The following steps are used to update the VMLinux blob:
+The current VMLinux blob is created from the v6.17-rc1 tag of the Linux kernel. The following steps are used to update the VMLinux blob:
 
 1. Clone cilium/ci-kernels
 2. Patch `config` with the following values (To compile in all Kfuncs defined in the kernel (so far)):
@@ -22,6 +22,8 @@ The current VMLinux blob is created from the v6.15 tag of the Linux kernel. The 
    CONFIG_64BIT=y
    CONFIG_CGROUP_SCHED=y
    CONFIG_SCHED_CLASS_EXT=y
+   CONFIG_DMA_SHARED_BUFFER=y
+   CONFIG_NET_SCH_BPF=y
    ```
 3. Run `./buildx.sh {latest tag} amd64 vmlinux --tag foo:vmlinux`
 4. Run `echo "FROM foo:vmlinux" | "$docker" buildx build --quiet --output="$tmp" - &> /dev/null`

@@ -823,3 +823,45 @@ patterns:
     - name: bpf_res_spin_unlock
     - name: bpf_res_spin_lock_irqsave
     - name: bpf_res_spin_unlock_irqrestore
+    - name: bpf_arena_reserve_pages
+    - name: bpf_stream_vprintk
+    - name: bpf_dynptr_memset
+    - name: bpf_cgroup_read_xattr
+    - name: bpf_strcmp
+    - name: bpf_strnchr
+    - name: bpf_strchr
+    - name: bpf_strchrnul
+    - name: bpf_strrchr
+    - name: bpf_strlen
+    - name: bpf_strlen
+    - name: bpf_strspn
+    - name: bpf_strcspn
+    - name: bpf_strnstr
+    - name: bpf_strstr
+    - name: bpf_cgroup_read_xattr
+    - name: __bpf_trap
+    - name: bpf_iter_dmabuf_new
+    - name: bpf_iter_dmabuf_next
+    - name: bpf_iter_dmabuf_destroy
+    - name: bpf_probe_read_user_dynptr
+    - name: bpf_probe_read_kernel_dynptr
+    - name: bpf_probe_read_user_str_dynptr
+    - name: bpf_probe_read_kernel_str_dynptr
+    - name: bpf_copy_from_user_dynptr
+    - name: bpf_copy_from_user_str_dynptr
+    - name: bpf_copy_from_user_task_dynptr
+    - name: bpf_copy_from_user_task_str_dynptr
+    - name: bpf_list_front
+    - name: bpf_list_back
+    - name: bpf_rbtree_root
+    - name: bpf_rbtree_left
+    - name: bpf_rbtree_right
+    - name: bpf_qdisc_bstats_update
+    - name: bpf_qdisc_watchdog_schedule
+    - name: bpf_qdisc_init_prologue
+    - name: bpf_qdisc_reset_destroy_epilogue
+    - name: bpf_skb_get_hash
+    - name: bpf_kfree_skb
+    - name: bpf_qdisc_skb_drop
+    - name: bpf_dynptr_from_skb
+    - name: scx_bpf_select_cpu_and

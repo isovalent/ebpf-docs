@@ -27,7 +27,7 @@ Return 0 on success, or a negative error code on failure.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_wq_set_callback_impl(struct bpf_wq *wq, int (callback_fn)(void * , int * , void * ), unsigned int flags, void *aux__ign)`
+`#!c int bpf_wq_set_callback_impl(struct bpf_wq *wq, int (callback_fn)(void * , int * , void * ), unsigned int flags, void *aux__prog)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

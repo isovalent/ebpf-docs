@@ -29,7 +29,7 @@ a bpf_key pointer with a valid key pointer if the key is found, a NULL pointer o
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c struct bpf_key *bpf_lookup_user_key(u32 serial, u64 flags)`
+`#!c struct bpf_key *bpf_lookup_user_key(s32 serial, u64 flags)`
 
 !!! note
 	This kfunc returns a pointer to a refcounted object. The verifier will then ensure that the pointer to the object 
