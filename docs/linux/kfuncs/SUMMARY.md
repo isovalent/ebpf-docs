@@ -131,6 +131,7 @@
 - Misc KFuncs
   - [`bpf_map_sum_elem_count`](bpf_map_sum_elem_count.md)
   - [`bpf_get_fsverity_digest`](bpf_get_fsverity_digest.md)
+  - [`__bpf_trap`](__bpf_trap.md)
 - Preemption kfuncs
   - [`bpf_preempt_disable`](bpf_preempt_disable.md)
   - [`bpf_preempt_enable`](bpf_preempt_enable.md)
