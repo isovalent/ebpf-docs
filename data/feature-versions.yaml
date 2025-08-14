@@ -2371,3 +2371,126 @@
     - name: bpf_res_spin_unlock_irqrestore
       version: v6.15
       commit: 97eb35f3ad42de1c932ef1f7e2f0044d4fca35f4
+    - name: bpf_arena_reserve_pages
+      version: v6.17
+      commit: 8fc3d2d8b5016adf63a3a6d21c189677fa653a4a
+    - name: bpf_stream_vprintk
+      version: v6.17
+      commit: 5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6
+    - name: bpf_dynptr_memset
+      version: v6.17
+      commit: 5fc5d8fded57e5de0c0b56b00c4cfc522aa8c572
+    - name: bpf_cgroup_read_xattr
+      version: v6.17
+      commit: b95ee9049c93b05da66599d6e0d1fcfea291360b
+    - name: bpf_strcmp
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strnchr
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strchr
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strchrnul
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strrchr
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strlen
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strlen
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strspn
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strcspn
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strnstr
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_strstr
+      version: v6.17
+      commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
+    - name: bpf_cgroup_read_xattr
+      version: v6.17
+      commit: b95ee9049c93b05da66599d6e0d1fcfea291360b
+    - name: __bpf_trap
+      version: v6.16
+      commit: f95695f2c46592b4260032736a9bfc6e2a01c77c
+    - name: bpf_iter_dmabuf_new
+      version: v6.16
+      commit: 6eab7ac7c5eea7628b92cd5f9427bbd963a954ec
+    - name: bpf_iter_dmabuf_next
+      version: v6.16
+      commit: 6eab7ac7c5eea7628b92cd5f9427bbd963a954ec
+    - name: bpf_iter_dmabuf_destroy
+      version: v6.16
+      commit: 6eab7ac7c5eea7628b92cd5f9427bbd963a954ec
+    - name: bpf_probe_read_user_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_probe_read_kernel_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_probe_read_user_str_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_probe_read_kernel_str_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_copy_from_user_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_copy_from_user_str_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_copy_from_user_task_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_copy_from_user_task_str_dynptr
+      version: v6.16
+      commit: a498ee7576de24b4b0916ce56cf2686e261a29f7
+    - name: bpf_list_front
+      version: v6.16
+      commit: fb5b480205bad3936b054b86f7c9d2bd7835caac
+    - name: bpf_list_back
+      version: v6.16
+      commit: fb5b480205bad3936b054b86f7c9d2bd7835caac
+    - name: bpf_rbtree_root
+      version: v6.16
+      commit: 9e3e66c553f705de51707c7ddc7f35ce159a8ef1
+    - name: bpf_rbtree_left
+      version: v6.16
+      commit: 9e3e66c553f705de51707c7ddc7f35ce159a8ef1
+    - name: bpf_rbtree_right
+      version: v6.16
+      commit: 9e3e66c553f705de51707c7ddc7f35ce159a8ef1
+    - name: bpf_qdisc_bstats_update
+      version: v6.16
+      commit: 544e0a1f1e56de5a28251c188aa8f78fe50b31c9
+    - name: bpf_qdisc_watchdog_schedule
+      version: v6.16
+      commit: 7a2dafda950b78611dc441c83d105dfdc7082681
+    - name: bpf_qdisc_init_prologue
+      version: v6.16
+      commit: 7a2dafda950b78611dc441c83d105dfdc7082681
+    - name: bpf_qdisc_reset_destroy_epilogue
+      version: v6.16
+      commit: 7a2dafda950b78611dc441c83d105dfdc7082681
+    - name: bpf_skb_get_hash
+      version: v6.16
+      commit: 870c28588afa20d786e2c26e8fcc14e2b9a55616
+    - name: bpf_kfree_skb
+      version: v6.16
+      commit: 870c28588afa20d786e2c26e8fcc14e2b9a55616
+    - name: bpf_qdisc_skb_drop
+      version: v6.16
+      commit: 870c28588afa20d786e2c26e8fcc14e2b9a55616
+    - name: scx_bpf_select_cpu_and
+      version: v6.16
+      commit: 683d2d0faba12a0e7d4c3b85a62ac8298977e17b
