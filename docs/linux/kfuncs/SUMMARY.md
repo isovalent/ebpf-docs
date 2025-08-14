@@ -288,3 +288,12 @@
     - [`bpf_res_spin_unlock_irqrestore`](bpf_res_spin_unlock_irqrestore.md)
   - Sock ops Kfuncs
     - [`bpf_sock_ops_enable_tx_tstamp`](bpf_sock_ops_enable_tx_tstamp.md)
+  - Memory probe to dynptr Kfuncs
+    - [bpf_probe_read_user_dynptr](bpf_probe_read_user_dynptr.md)
+    - [bpf_probe_read_kernel_dynptr](bpf_probe_read_kernel_dynptr.md)
+    - [bpf_probe_read_user_str_dynptr](bpf_probe_read_user_str_dynptr.md)
+    - [bpf_probe_read_kernel_str_dynptr](bpf_probe_read_kernel_str_dynptr.md)
+    - [bpf_copy_from_user_dynptr](bpf_copy_from_user_dynptr.md)
+    - [bpf_copy_from_user_str_dynptr](bpf_copy_from_user_str_dynptr.md)
+    - [bpf_copy_from_user_task_dynptr](bpf_copy_from_user_task_dynptr.md)
+    - [bpf_copy_from_user_task_str_dynptr](bpf_copy_from_user_task_str_dynptr.md)

@@ -261,6 +261,18 @@ sets:
       - name: bpf_copy_from_user_task_str
         flags: [KF_SLEEPABLE]
       - name: bpf_dynptr_copy
+      - name: bpf_probe_read_user_dynptr
+      - name: bpf_probe_read_kernel_dynptr
+      - name: bpf_probe_read_user_str_dynptr
+      - name: bpf_probe_read_kernel_str_dynptr
+      - name: bpf_copy_from_user_dynptr
+        flags: [KF_SLEEPABLE]
+      - name: bpf_copy_from_user_str_dynptr
+        flags: [KF_SLEEPABLE]
+      - name: bpf_copy_from_user_task_dynptr
+        flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
+      - name: bpf_copy_from_user_task_str_dynptr
+        flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 

@@ -24,6 +24,14 @@ The following functions create or manipulate dynptrs:
 * [`bpf_dynptr_slice`](../kfuncs/bpf_dynptr_slice.md) - Similar to `bpf_dynptr_data`, but works with XDP and SKB derived dynptrs where `bpf_dynptr_data` isn't supported. It returns a read-only dynptr to a slice of the original dynptr.
 * [`bpf_dynptr_slice_rdwr`](../kfuncs/bpf_dynptr_slice_rdwr.md) - Similar to `bpf_dynptr_slice`, but returns a read-write dynptr.
 * [`bpf_dynptr_clone`](../kfuncs/bpf_dynptr_clone.md) - Clones a dynptr. The new dynptr points to the same underlying data and has the same metadata as the original dynptr.
+* [bpf_probe_read_user_dynptr](../kfuncs/bpf_probe_read_user_dynptr.md) - Probes user-space data into a dynptr
+* [bpf_probe_read_kernel_dynptr](../kfuncs/bpf_probe_read_kernel_dynptr.md) - Probes kernel-space data into a dynptr
+* [bpf_probe_read_user_str_dynptr](../kfuncs/bpf_probe_read_user_str_dynptr.md) - Probes user-space string into a dynptr
+* [bpf_probe_read_kernel_str_dynptr](../kfuncs/bpf_probe_read_kernel_str_dynptr.md) - probes kernel-space string into a dynptr
+* [bpf_copy_from_user_dynptr](../kfuncs/bpf_copy_from_user_dynptr.md) - Sleepable, copies user-space data into a dynptr for the current task
+* [bpf_copy_from_user_str_dynptr](../kfuncs/bpf_copy_from_user_str_dynptr.md) - Sleepable, copies user-space string into a dynptr for the current task
+* [bpf_copy_from_user_task_dynptr](../kfuncs/bpf_copy_from_user_task_dynptr.md) - Sleepable, copies user-space data of the task into a dynptr
+* [bpf_copy_from_user_task_str_dynptr](../kfuncs/bpf_copy_from_user_task_str_dynptr.md) - Sleepable, copies user-space string of the task into a dynptr
 
 The following functions are not dynptr centric, but do require dynptrs in their arguments:
 
