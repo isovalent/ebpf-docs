@@ -262,6 +262,7 @@ char _license[] SEC("license") = "GPL";
     * [`bpf_get_current_task_btf`](../helper-function/bpf_get_current_task_btf.md)
     * [`bpf_get_listener_sock`](../helper-function/bpf_get_listener_sock.md)
     * [`bpf_get_local_storage`](../helper-function/bpf_get_local_storage.md)
+    * [`bpf_get_netns_cookie`](../helper-function/bpf_get_netns_cookie.md) [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/c221d3744ad38a9655aba8235e1d783c6d4aed5a)
     * [`bpf_get_ns_current_pid_tgid`](../helper-function/bpf_get_ns_current_pid_tgid.md) [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/eb166e522c77699fc19bfa705652327a1e51a117)
     * [`bpf_get_numa_node_id`](../helper-function/bpf_get_numa_node_id.md)
     * [`bpf_get_prandom_u32`](../helper-function/bpf_get_prandom_u32.md)
