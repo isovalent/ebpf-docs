@@ -1,31 +1,29 @@
 ---
-title: "KFunc 'cgroup_rstat_updated'"
-description: "This page documents the 'cgroup_rstat_updated' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'css_rstat_updated'"
+description: "This page documents the 'css_rstat_updated' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `cgroup_rstat_updated`
+# KFunc `css_rstat_updated`
 
-[:octicons-tag-24: v6.1](https://github.com/torvalds/linux/commit/a319185be9f5ad13c2a296d448ac52ffe45d194c) - [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/a97915559f5c5ff1972d678b94fd460c72a3b5f2)
-
-!!! warn
-    In [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/a97915559f5c5ff1972d678b94fd460c72a3b5f2) this kfunc was renamed and its signature changed to [`css_rstat_updated`](css_rstat_updated.md)
+<!-- [FEATURE_TAG](css_rstat_updated) -->
+[:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/a319185be9f5ad13c2a296d448ac52ffe45d194c)
+<!-- [/FEATURE_TAG] -->
 
 Keep track of updated `rstat_cpu`
 
 ## Definition
 
-`cgrp`'s rstat_cpu on `cpu` was updated. Put it on the parent's matching `rstat_cpu->updated_children` list. See the comment on top of `cgroup_rstat_cpu` definition for details.
-
+`css->cgroup`'s rstat_cpu on `cpu` was updated. Put it on the parent's matching `rstat_cpu->updated_children` list. See the comment on top of `cgroup_rstat_cpu` definition for details.
 
 **Parameters**
 
-`cgrp`: target cgroup
+`css`: target cgroup subsystem state
 
 `cpu`: cpu on which rstat_cpu was updated
 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void cgroup_rstat_updated(struct cgroup *cgrp, int cpu)`
+`#!c void css_rstat_updated(struct cgroup_subsys_state *css, int cpu)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

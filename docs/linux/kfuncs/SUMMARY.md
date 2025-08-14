@@ -2,6 +2,8 @@
 - cGroup resource stats KFuncs
   - [`cgroup_rstat_updated`](cgroup_rstat_updated.md)
   - [`cgroup_rstat_flush`](cgroup_rstat_flush.md)
+  - [`css_rstat_updated`](css_rstat_updated.md)
+  - [`css_rstat_flush`](css_rstat_flush.md)
 - Key signature verification KFuncs
   - [`bpf_lookup_user_key`](bpf_lookup_user_key.md)
   - [`bpf_lookup_system_key`](bpf_lookup_system_key.md)

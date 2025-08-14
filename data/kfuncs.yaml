@@ -4,6 +4,9 @@ sets:
       - name: cgroup_rstat_updated
       - name: cgroup_rstat_flush
         flags: [KF_SLEEPABLE]
+      - name: css_rstat_updated
+      - name: css_rstat_flush
+        flags: [KF_SLEEPABLE]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
       - name: BPF_PROG_TYPE_TRACEPOINT

@@ -66,6 +66,8 @@ var ignoreKfuncs = []string{
 // List of kfuncs which are known to have been removed
 var removeKfuncs = []string{
 	"hid_bpf_attach_prog",
+	"cgroup_rstat_updated",
+	"cgroup_rstat_flush",
 }
 
 func main() {

@@ -20,6 +20,8 @@ These KFuncs are used to update or flush cGroup resource statistics efficiently.
 
 - [`cgroup_rstat_updated`](cgroup_rstat_updated.md)
 - [`cgroup_rstat_flush`](cgroup_rstat_flush.md)
+- [`css_rstat_updated`](css_rstat_updated.md)
+- [`css_rstat_flush`](css_rstat_flush.md)
 
 ## Key signature verification KFuncs
 
