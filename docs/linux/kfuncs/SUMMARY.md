@@ -128,6 +128,7 @@
   - [`bpf_dynptr_size`](bpf_dynptr_size.md)
   - [`bpf_dynptr_clone`](bpf_dynptr_clone.md)
   - [`bpf_dynptr_copy`](bpf_dynptr_copy.md)
+  - [`bpf_dynptr_memset`](bpf_dynptr_memset.md)
 - Misc KFuncs
   - [`bpf_map_sum_elem_count`](bpf_map_sum_elem_count.md)
   - [`bpf_get_fsverity_digest`](bpf_get_fsverity_digest.md)

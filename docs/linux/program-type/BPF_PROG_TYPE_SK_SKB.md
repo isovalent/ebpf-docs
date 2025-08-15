@@ -277,6 +277,7 @@ out:
     - [`bpf_dynptr_from_skb`](../kfuncs/bpf_dynptr_from_skb.md)
     - [`bpf_dynptr_is_null`](../kfuncs/bpf_dynptr_is_null.md)
     - [`bpf_dynptr_is_rdonly`](../kfuncs/bpf_dynptr_is_rdonly.md)
+    - [`bpf_dynptr_memset`](../kfuncs/bpf_dynptr_memset.md)
     - [`bpf_dynptr_size`](../kfuncs/bpf_dynptr_size.md)
     - [`bpf_dynptr_slice`](../kfuncs/bpf_dynptr_slice.md)
     - [`bpf_dynptr_slice_rdwr`](../kfuncs/bpf_dynptr_slice_rdwr.md)

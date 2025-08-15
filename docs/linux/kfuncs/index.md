@@ -204,6 +204,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_dynptr_size`](bpf_dynptr_size.md)
 - [`bpf_dynptr_clone`](bpf_dynptr_clone.md)
 - [`bpf_dynptr_copy`](bpf_dynptr_copy.md)
+- [`bpf_dynptr_memset`](bpf_dynptr_memset.md)
 
 ## Preemption KFuncs
 
