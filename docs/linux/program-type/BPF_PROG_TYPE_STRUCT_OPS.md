@@ -21,6 +21,7 @@ Struct ops can be used with the following:
 - [`struct tcp_congestion_ops`](BPF_PROG_TYPE_STRUCT_OPS/tcp_congestion_ops.md) [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/0baf26b0fcd74bbfcef53c5d5e8bad2b99c8d0d2)
 - [`struct hid_bpf_ops`](BPF_PROG_TYPE_STRUCT_OPS/hid_bpf_ops.md) [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
 - [`struct sched_ext_ops`](BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
+- [`struct Qdisc_ops`](BPF_PROG_TYPE_STRUCT_OPS/Qdisc_ops.md) [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/c8240344956e3f0b4e8f1d40ec3435e47040cacb)
 
 ## Context
 
@@ -406,6 +407,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_dynptr_adjust`](../kfuncs/bpf_dynptr_adjust.md)
     - [`bpf_dynptr_clone`](../kfuncs/bpf_dynptr_clone.md)
     - [`bpf_dynptr_copy`](../kfuncs/bpf_dynptr_copy.md)
+    - [`bpf_dynptr_from_skb`](../kfuncs/bpf_dynptr_from_skb.md)
     - [`bpf_dynptr_is_null`](../kfuncs/bpf_dynptr_is_null.md)
     - [`bpf_dynptr_is_rdonly`](../kfuncs/bpf_dynptr_is_rdonly.md)
     - [`bpf_dynptr_memset`](../kfuncs/bpf_dynptr_memset.md)
@@ -437,6 +439,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_iter_task_vma_destroy`](../kfuncs/bpf_iter_task_vma_destroy.md)
     - [`bpf_iter_task_vma_new`](../kfuncs/bpf_iter_task_vma_new.md)
     - [`bpf_iter_task_vma_next`](../kfuncs/bpf_iter_task_vma_next.md)
+    - [`bpf_kfree_skb`](../kfuncs/bpf_kfree_skb.md)
     - [`bpf_list_pop_back`](../kfuncs/bpf_list_pop_back.md)
     - [`bpf_list_pop_front`](../kfuncs/bpf_list_pop_front.md)
     - [`bpf_list_push_back_impl`](../kfuncs/bpf_list_push_back_impl.md)
@@ -454,6 +457,11 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_probe_read_kernel_str_dynptr`](../kfuncs/bpf_probe_read_kernel_str_dynptr.md)
     - [`bpf_probe_read_user_dynptr`](../kfuncs/bpf_probe_read_user_dynptr.md)
     - [`bpf_probe_read_user_str_dynptr`](../kfuncs/bpf_probe_read_user_str_dynptr.md)
+    - [`bpf_qdisc_bstats_update`](../kfuncs/bpf_qdisc_bstats_update.md)
+    - [`bpf_qdisc_init_prologue`](../kfuncs/bpf_qdisc_init_prologue.md)
+    - [`bpf_qdisc_reset_destroy_epilogue`](../kfuncs/bpf_qdisc_reset_destroy_epilogue.md)
+    - [`bpf_qdisc_skb_drop`](../kfuncs/bpf_qdisc_skb_drop.md)
+    - [`bpf_qdisc_watchdog_schedule`](../kfuncs/bpf_qdisc_watchdog_schedule.md)
     - [`bpf_rbtree_add_impl`](../kfuncs/bpf_rbtree_add_impl.md)
     - [`bpf_rbtree_first`](../kfuncs/bpf_rbtree_first.md)
     - [`bpf_rbtree_remove`](../kfuncs/bpf_rbtree_remove.md)
@@ -466,6 +474,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_res_spin_unlock`](../kfuncs/bpf_res_spin_unlock.md)
     - [`bpf_res_spin_unlock_irqrestore`](../kfuncs/bpf_res_spin_unlock_irqrestore.md)
     - [`bpf_send_signal_task`](../kfuncs/bpf_send_signal_task.md)
+    - [`bpf_skb_get_hash`](../kfuncs/bpf_skb_get_hash.md)
     - [`bpf_task_acquire`](../kfuncs/bpf_task_acquire.md)
     - [`bpf_task_from_pid`](../kfuncs/bpf_task_from_pid.md)
     - [`bpf_task_from_vpid`](../kfuncs/bpf_task_from_vpid.md)
