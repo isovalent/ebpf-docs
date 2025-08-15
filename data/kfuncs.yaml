@@ -810,3 +810,23 @@ sets:
       - name: bpf_res_spin_unlock_irqrestore
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
+
+  qdisc_kfunc_ids:
+    funcs:
+      - name: bpf_skb_get_hash
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_kfree_skb
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_qdisc_skb_drop
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_dynptr_from_skb
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_qdisc_watchdog_schedule
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_qdisc_init_prologue
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_qdisc_reset_destroy_epilogue
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_qdisc_bstats_update
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS

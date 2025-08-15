@@ -433,3 +433,13 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [bpf_copy_from_user_str_dynptr](bpf_copy_from_user_str_dynptr.md)
 - [bpf_copy_from_user_task_dynptr](bpf_copy_from_user_task_dynptr.md)
 - [bpf_copy_from_user_task_str_dynptr](bpf_copy_from_user_task_str_dynptr.md)
+
+### BPF Qdisc kfuncs
+
+- [`bpf_kfree_skb`](bpf_kfree_skb.md)
+- [`bpf_qdisc_bstats_update`](bpf_qdisc_bstats_update.md)
+- [`bpf_qdisc_init_prologue`](bpf_qdisc_init_prologue.md)
+- [`bpf_qdisc_reset_destroy_epilogue`](bpf_qdisc_reset_destroy_epilogue.md)
+- [`bpf_qdisc_skb_drop`](bpf_qdisc_skb_drop.md)
+- [`bpf_qdisc_watchdog_schedule`](bpf_qdisc_watchdog_schedule.md)
+- [`bpf_skb_get_hash`](bpf_skb_get_hash.md)

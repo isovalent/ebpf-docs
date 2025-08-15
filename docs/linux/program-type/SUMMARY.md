@@ -37,4 +37,5 @@
   * [`struct tcp_congestion_ops`](BPF_PROG_TYPE_STRUCT_OPS/tcp_congestion_ops.md)
   * [`struct hid_bpf_ops`](BPF_PROG_TYPE_STRUCT_OPS/hid_bpf_ops.md)
   * [`struct sched_ext_ops`](BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md)
+  * [`struct Qdisc_ops`](BPF_PROG_TYPE_STRUCT_OPS/Qdisc_ops.md)
 * [`BPF_PROG_TYPE_SYSCALL`](BPF_PROG_TYPE_SYSCALL.md)
