@@ -274,6 +274,7 @@ sets:
       - name: bpf_copy_from_user_task_str_dynptr
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
       - name: __bpf_trap
+      - name: bpf_dynptr_memset
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 
