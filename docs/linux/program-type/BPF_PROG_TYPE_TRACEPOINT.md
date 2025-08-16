@@ -203,6 +203,7 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     - [`bpf_cgroup_acquire`](../kfuncs/bpf_cgroup_acquire.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_cgroup_ancestor`](../kfuncs/bpf_cgroup_ancestor.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_cgroup_from_id`](../kfuncs/bpf_cgroup_from_id.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
+    - [`bpf_cgroup_read_xattr`](../kfuncs/bpf_cgroup_read_xattr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_cgroup_release`](../kfuncs/bpf_cgroup_release.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_copy_from_user_dynptr`](../kfuncs/bpf_copy_from_user_dynptr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_copy_from_user_str`](../kfuncs/bpf_copy_from_user_str.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 

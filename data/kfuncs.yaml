@@ -298,6 +298,8 @@ sets:
       - name: bpf_iter_dmabuf_next
         flags: [KF_ITER_NEXT, KF_RET_NULL, KF_SLEEPABLE]
       - name: bpf_stream_vprintk
+      - name: bpf_cgroup_read_xattr
+        flags: [KF_RCU]
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 
