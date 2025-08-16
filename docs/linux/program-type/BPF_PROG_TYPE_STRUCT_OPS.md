@@ -371,6 +371,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_cgroup_acquire`](../kfuncs/bpf_cgroup_acquire.md)
     - [`bpf_cgroup_ancestor`](../kfuncs/bpf_cgroup_ancestor.md)
     - [`bpf_cgroup_from_id`](../kfuncs/bpf_cgroup_from_id.md)
+    - [`bpf_cgroup_read_xattr`](../kfuncs/bpf_cgroup_read_xattr.md)
     - [`bpf_cgroup_release`](../kfuncs/bpf_cgroup_release.md)
     - [`bpf_copy_from_user_dynptr`](../kfuncs/bpf_copy_from_user_dynptr.md)
     - [`bpf_copy_from_user_str`](../kfuncs/bpf_copy_from_user_str.md)

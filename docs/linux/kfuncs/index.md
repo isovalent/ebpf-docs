@@ -475,3 +475,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 ## Debug stream Kfuncs
 
 - [`bpf_stream_vprintk`](bpf_stream_vprintk.md)
+
+## CGroup xattr Kfuncs
+
+- [`bpf_cgroup_read_xattr`](bpf_cgroup_read_xattr.md)

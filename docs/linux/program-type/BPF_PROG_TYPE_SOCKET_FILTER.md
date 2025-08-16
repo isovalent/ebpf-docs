@@ -145,6 +145,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_arena_alloc_pages`](../kfuncs/bpf_arena_alloc_pages.md)
     - [`bpf_arena_free_pages`](../kfuncs/bpf_arena_free_pages.md)
     - [`bpf_cast_to_kern_ctx`](../kfuncs/bpf_cast_to_kern_ctx.md)
+    - [`bpf_cgroup_read_xattr`](../kfuncs/bpf_cgroup_read_xattr.md)
     - [`bpf_copy_from_user_dynptr`](../kfuncs/bpf_copy_from_user_dynptr.md)
     - [`bpf_copy_from_user_str`](../kfuncs/bpf_copy_from_user_str.md)
     - [`bpf_copy_from_user_str_dynptr`](../kfuncs/bpf_copy_from_user_str_dynptr.md)
