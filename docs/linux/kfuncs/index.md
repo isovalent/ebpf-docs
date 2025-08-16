@@ -89,6 +89,8 @@ A set of KFuncs to allocate and deallocate custom objects for the purposes of bu
 - [`bpf_list_push_back_impl`](bpf_list_push_back_impl.md)
 - [`bpf_list_pop_front`](bpf_list_pop_front.md)
 - [`bpf_list_pop_back`](bpf_list_pop_back.md)
+- [`bpf_list_back`](bpf_list_back.md)
+- [`bpf_list_front`](bpf_list_front.md)
 
 ## BPF Arena KFuncs
 
@@ -105,13 +107,16 @@ Kfuncs used to acquire and release task reference.
 - [`bpf_task_release`](bpf_task_release.md)
 - [`bpf_send_signal_task`](bpf_send_signal_task.md)
 
-## BPF cGroup KFuncs
+## BPF RBtree KFuncs
 
 Kfuncs used to create and modify red-black trees.
 
 - [`bpf_rbtree_add_impl`](bpf_rbtree_add_impl.md)
 - [`bpf_rbtree_first`](bpf_rbtree_first.md)
 - [`bpf_rbtree_remove`](bpf_rbtree_remove.md)
+- [`bpf_rbtree_left`](bpf_rbtree_left.md)
+- [`bpf_rbtree_right`](bpf_rbtree_right.md)
+- [`bpf_rbtree_root`](bpf_rbtree_root.md)
 
 ## Kfuncs for acquiring and releasing cGroup references
 
