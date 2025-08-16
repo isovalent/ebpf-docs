@@ -398,6 +398,7 @@ char _license[] SEC("license") = "GPL";
     - [`bpf_strchrnul`](../kfuncs/bpf_strchrnul.md)
     - [`bpf_strcmp`](../kfuncs/bpf_strcmp.md)
     - [`bpf_strcspn`](../kfuncs/bpf_strcspn.md)
+    - [`bpf_stream_vprintk`](../kfuncs/bpf_stream_vprintk.md)
     - [`bpf_strlen`](../kfuncs/bpf_strlen.md)
     - [`bpf_strnchr`](../kfuncs/bpf_strnchr.md)
     - [`bpf_strnlen`](../kfuncs/bpf_strnlen.md)
