@@ -291,6 +291,12 @@ sets:
       - name: bpf_strrchr
       - name: bpf_strspn
       - name: bpf_strstr
+      - name: bpf_iter_dmabuf_destroy
+        flags: [KF_ITER_DESTROY, KF_SLEEPABLE]
+      - name: bpf_iter_dmabuf_new
+        flags: [KF_ITER_NEW, KF_SLEEPABLE]
+      - name: bpf_iter_dmabuf_next
+        flags: [KF_ITER_NEXT, KF_RET_NULL, KF_SLEEPABLE]
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 

@@ -94,46 +94,51 @@
 - Kfuncs for dynamic pointer slices
   - [`bpf_dynptr_slice`](bpf_dynptr_slice.md)
   - [`bpf_dynptr_slice_rdwr`](bpf_dynptr_slice_rdwr.md)
-- Kfuncs for open coded numeric iterators
-  - [`bpf_iter_num_new`](bpf_iter_num_new.md)
-  - [`bpf_iter_num_next`](bpf_iter_num_next.md)
-  - [`bpf_iter_num_destroy`](bpf_iter_num_destroy.md)
-- Kfuncs for open coded virtual memory area iterators
-  - [`bpf_iter_task_vma_new`](bpf_iter_task_vma_new.md)
-  - [`bpf_iter_task_vma_next`](bpf_iter_task_vma_next.md)
-  - [`bpf_iter_task_vma_destroy`](bpf_iter_task_vma_destroy.md)
-- Kfuncs for bits
-  - [`bpf_iter_bits_new`](bpf_iter_bits_new.md)
-  - [`bpf_iter_bits_next`](bpf_iter_bits_next.md)
-  - [`bpf_iter_bits_destroy`](bpf_iter_bits_destroy.md)
-- Kfuncs for open coded task cGroup iterators
-  - [`bpf_iter_css_task_new`](bpf_iter_css_task_new.md)
-  - [`bpf_iter_css_task_next`](bpf_iter_css_task_next.md)
-  - [`bpf_iter_css_task_destroy`](bpf_iter_css_task_destroy.md)
-- Kfuncs for open coded cGroup iterators
-  - [`bpf_iter_css_new`](bpf_iter_css_new.md)
-  - [`bpf_iter_css_next`](bpf_iter_css_next.md)
-  - [`bpf_iter_css_destroy`](bpf_iter_css_destroy.md)
-- Kfuncs for open coded task iterators
-  - [`bpf_iter_task_new`](bpf_iter_task_new.md)
-  - [`bpf_iter_task_next`](bpf_iter_task_next.md)
-  - [`bpf_iter_task_destroy`](bpf_iter_task_destroy.md)
-- Kfuncs for slab memory allocation iterators
-  - [`bpf_iter_kmem_cache_new`](bpf_iter_kmem_cache_new.md)
-  - [`bpf_iter_kmem_cache_next`](bpf_iter_kmem_cache_next.md)
-  - [`bpf_iter_kmem_cache_destroy`](bpf_iter_kmem_cache_destroy.md)
-- Kfuncs for sched_ext dispatch queue iterators
-  - [`bpf_iter_scx_dsq_new`](bpf_iter_scx_dsq_new.md)
-  - [`bpf_iter_scx_dsq_next`](bpf_iter_scx_dsq_next.md)
-  - [`bpf_iter_scx_dsq_destroy`](bpf_iter_scx_dsq_destroy.md)
-- Kfuncs for dynamic pointers 
-  - [`bpf_dynptr_adjust`](bpf_dynptr_adjust.md)
-  - [`bpf_dynptr_is_null`](bpf_dynptr_is_null.md)
-  - [`bpf_dynptr_is_rdonly`](bpf_dynptr_is_rdonly.md)
-  - [`bpf_dynptr_size`](bpf_dynptr_size.md)
-  - [`bpf_dynptr_clone`](bpf_dynptr_clone.md)
-  - [`bpf_dynptr_copy`](bpf_dynptr_copy.md)
-  - [`bpf_dynptr_memset`](bpf_dynptr_memset.md)
+- Open coded iterator
+  - Kfuncs for open coded numeric iterators
+    - [`bpf_iter_num_new`](bpf_iter_num_new.md)
+    - [`bpf_iter_num_next`](bpf_iter_num_next.md)
+    - [`bpf_iter_num_destroy`](bpf_iter_num_destroy.md)
+  - Kfuncs for open coded virtual memory area iterators
+    - [`bpf_iter_task_vma_new`](bpf_iter_task_vma_new.md)
+    - [`bpf_iter_task_vma_next`](bpf_iter_task_vma_next.md)
+    - [`bpf_iter_task_vma_destroy`](bpf_iter_task_vma_destroy.md)
+  - Kfuncs for bits
+    - [`bpf_iter_bits_new`](bpf_iter_bits_new.md)
+    - [`bpf_iter_bits_next`](bpf_iter_bits_next.md)
+    - [`bpf_iter_bits_destroy`](bpf_iter_bits_destroy.md)
+  - Kfuncs for open coded task cGroup iterators
+    - [`bpf_iter_css_task_new`](bpf_iter_css_task_new.md)
+    - [`bpf_iter_css_task_next`](bpf_iter_css_task_next.md)
+    - [`bpf_iter_css_task_destroy`](bpf_iter_css_task_destroy.md)
+  - Kfuncs for open coded cGroup iterators
+    - [`bpf_iter_css_new`](bpf_iter_css_new.md)
+    - [`bpf_iter_css_next`](bpf_iter_css_next.md)
+    - [`bpf_iter_css_destroy`](bpf_iter_css_destroy.md)
+  - Kfuncs for open coded task iterators
+    - [`bpf_iter_task_new`](bpf_iter_task_new.md)
+    - [`bpf_iter_task_next`](bpf_iter_task_next.md)
+    - [`bpf_iter_task_destroy`](bpf_iter_task_destroy.md)
+  - Kfuncs for slab memory allocation iterators
+    - [`bpf_iter_kmem_cache_new`](bpf_iter_kmem_cache_new.md)
+    - [`bpf_iter_kmem_cache_next`](bpf_iter_kmem_cache_next.md)
+    - [`bpf_iter_kmem_cache_destroy`](bpf_iter_kmem_cache_destroy.md)
+  - Kfuncs for sched_ext dispatch queue iterators
+    - [`bpf_iter_scx_dsq_new`](bpf_iter_scx_dsq_new.md)
+    - [`bpf_iter_scx_dsq_next`](bpf_iter_scx_dsq_next.md)
+    - [`bpf_iter_scx_dsq_destroy`](bpf_iter_scx_dsq_destroy.md)
+  - Kfuncs for dynamic pointers 
+    - [`bpf_dynptr_adjust`](bpf_dynptr_adjust.md)
+    - [`bpf_dynptr_is_null`](bpf_dynptr_is_null.md)
+    - [`bpf_dynptr_is_rdonly`](bpf_dynptr_is_rdonly.md)
+    - [`bpf_dynptr_size`](bpf_dynptr_size.md)
+    - [`bpf_dynptr_clone`](bpf_dynptr_clone.md)
+    - [`bpf_dynptr_copy`](bpf_dynptr_copy.md)
+    - [`bpf_dynptr_memset`](bpf_dynptr_memset.md)
+  - Kfuncs for DMA buffer iterators
+    - [`bpf_iter_dmabuf_new`](bpf_iter_dmabuf_new.md)
+    - [`bpf_iter_dmabuf_next`](bpf_iter_dmabuf_next.md)
+    - [`bpf_iter_dmabuf_destroy`](bpf_iter_dmabuf_destroy.md)
 - Misc KFuncs
   - [`bpf_map_sum_elem_count`](bpf_map_sum_elem_count.md)
   - [`bpf_get_fsverity_digest`](bpf_get_fsverity_digest.md)
