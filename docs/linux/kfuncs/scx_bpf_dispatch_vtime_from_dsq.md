@@ -8,7 +8,10 @@ description: "This page documents the 'scx_bpf_dispatch_vtime_from_dsq' eBPF kfu
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/4c30f5ce4f7af4f639af99e0bdeada8b268b7361)
 <!-- [/FEATURE_TAG] -->
 
-This function was renamed to [`scx_bpf_dsq_move_vtime`](scx_bpf_dsq_move_vtime.md) in [:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/5cbb302880f50f3edf35f8c6a1d38b6948bf4d11). But will be aliased until v6.15.
+This function was renamed to [`scx_bpf_dsq_move_vtime`](scx_bpf_dsq_move_vtime.md) in [:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/5cbb302880f50f3edf35f8c6a1d38b6948bf4d11). But will be aliased until v6.17.
+
+!!! warning
+    The alias was removed in [v6.17](https://github.com/torvalds/linux/commit/4ecf83741401c70d4420588ee1f3b1ca04ef58d5), and is no longer available.
 
 ## Definition
 
