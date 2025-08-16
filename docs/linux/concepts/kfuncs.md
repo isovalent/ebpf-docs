@@ -190,6 +190,12 @@ For example the [`bpf_arena_alloc_pages`](../kfuncs/bpf_arena_alloc_pages.md) kf
 void *bpf_arena_alloc_pages(void *p__map, void *addr__ign, u32 page_cnt, int node_id, u64 flags)
 ```
 
+### `__prog` annotation
+
+[:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/bc049387b41f41bee61e8cc338a5e99ca9798a09)
+
+This annotation is used to indicate that the argument needs to be fixed up to the `bpf_prog_aux` of the caller BPF program. Any value passed into this argument is ignored, and rewritten by the verifier.
+
 ## KFunc flags
 
 KFuncs can have flags associated with them. These aren't visible in the function signature, but are used to indicate certain properties of the function. Whenever a flag has significant impact on the behavior of the function, it will be documented in the KFunc page.

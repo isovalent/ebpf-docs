@@ -470,3 +470,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_strrchr`](bpf_strrchr.md)
 - [`bpf_strspn`](bpf_strspn.md)
 - [`bpf_strstr`](bpf_strstr.md)
+
+## Debug stream Kfuncs
+
+- [`bpf_stream_vprintk`](bpf_stream_vprintk.md)
