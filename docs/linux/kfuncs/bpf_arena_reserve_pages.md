@@ -1,47 +1,38 @@
 ---
-title: "KFunc 'bpf_arena_alloc_pages'"
-description: "This page documents the 'bpf_arena_alloc_pages' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_arena_reserve_pages'"
+description: "This page documents the 'bpf_arena_reserve_pages' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_arena_alloc_pages`
+# KFunc `bpf_arena_reserve_pages`
 
-<!-- [FEATURE_TAG](bpf_arena_alloc_pages) -->
-[:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/317460317a02a1af512697e6e964298dedd8a163)
+<!-- [FEATURE_TAG](bpf_arena_reserve_pages) -->
+[:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/8fc3d2d8b5016adf63a3a6d21c189677fa653a4a)
 <!-- [/FEATURE_TAG] -->
 
-Allocate pages of memory for a arena.
+Reserve pages of memory for a arena.
 
 ## Definition
 
 `p__map`: Pointer to the `BPF_MAP_TYPE_ARENA` map.
 
-`addr__ign`: Address of the start of the page(s) to be allocated, must be a page aligned address.
+`ptr__ign`: Address of the start of the page(s) to be reserved, must be a page aligned address.
 
-`page_cnt`: Number of pages to allocate.
-
-`node_id`: NUMA node to allocate memory from.
-
-`flags`: Flags for future use, currently no valid flags exist.
+`page_cnt`: Number of pages to reserve.
 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_arena_alloc_pages(void *p__map, void *addr__ign, u32 page_cnt, int node_id, u64 flags)`
+`#!c int bpf_arena_reserve_pages(void *p__map, void *ptr__ign, u32 page_cnt)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
-
-!!! note
-	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
-	from the kfunc before making use of it (dereferencing or passing to another helper).
 <!-- [/KFUNC_DEF] -->
 
 ## Usage
 
-A BPF arena is a region of memory that can be shared between BPF programs and userspace programs. This allows for the creation of custom data structures that can be shared between BPF programs and userspace programs.
+Reserves a region of the mapping to prevent it from being mapped. This prevents the range from
+being populated using [`bpf_arena_alloc_pages`](bpf_arena_alloc_pages.md). These regions serve as guards against out-of-bounds accesses and are useful for debugging arena-related code.
 
-An arena is created as a map, upon its creation a maximum memory size is specified, but this memory isn't allocated at creation, rather, an arena allows on demand allocation of memory pages.
-
-The kfunc is used to allocate these pages.
+Reserved pages can be unreserved using [`bpf_arena_free_pages`](bpf_arena_free_pages.md). They can also be allocated from userspace through minor faults. It is up to the user to prevent erroneous frees and/or use the `BPF_F_SEGV_ON_FAULT` flag to catch stray userspace accesses.
 
 ### Program types
 

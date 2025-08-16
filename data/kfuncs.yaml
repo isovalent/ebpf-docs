@@ -625,9 +625,11 @@ sets:
   arena_kfuncs:
     funcs:
       - name: bpf_arena_alloc_pages
-        flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE]
+        flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE, KF_ARENA_RET, KF_RET_NULL, KF_ARENA_ARG2]
       - name: bpf_arena_free_pages
-        flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE]
+        flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE, KF_ARENA_ARG2]
+      - name: bpf_arena_reserve_pages
+        flags: [KF_TRUSTED_ARGS, KF_SLEEPABLE, KF_ARENA_ARG2]
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 
