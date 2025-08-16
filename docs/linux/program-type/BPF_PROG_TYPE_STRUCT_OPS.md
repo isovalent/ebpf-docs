@@ -563,6 +563,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`scx_bpf_put_cpumask`](../kfuncs/scx_bpf_put_cpumask.md)
     - [`scx_bpf_put_idle_cpumask`](../kfuncs/scx_bpf_put_idle_cpumask.md)
     - [`scx_bpf_reenqueue_local`](../kfuncs/scx_bpf_reenqueue_local.md)
+    - [`scx_bpf_select_cpu_and`](../kfuncs/scx_bpf_select_cpu_and.md)
     - [`scx_bpf_select_cpu_dfl`](../kfuncs/scx_bpf_select_cpu_dfl.md)
     - [`scx_bpf_task_cgroup`](../kfuncs/scx_bpf_task_cgroup.md)
     - [`scx_bpf_task_cpu`](../kfuncs/scx_bpf_task_cpu.md)
