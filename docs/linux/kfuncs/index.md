@@ -98,6 +98,7 @@ KFuncs used to allocate and free pages from an arena.
 
 - [`bpf_arena_alloc_pages`](bpf_arena_alloc_pages.md)
 - [`bpf_arena_free_pages`](bpf_arena_free_pages.md)
+- [`bpf_arena_reserve_pages`](bpf_arena_reserve_pages.md)
 
 ## BPF task KFuncs
 

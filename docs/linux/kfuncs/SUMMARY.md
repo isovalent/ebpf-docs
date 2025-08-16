@@ -62,6 +62,7 @@
 - BPF Arena KFuncs
   - [`bpf_arena_alloc_pages`](bpf_arena_alloc_pages.md)
   - [`bpf_arena_free_pages`](bpf_arena_free_pages.md)
+  - [`bpf_arena_reserve_pages`](bpf_arena_reserve_pages.md)
 - BPF task KFuncs
   - [`bpf_task_acquire`](bpf_task_acquire.md)
   - [`bpf_task_release`](bpf_task_release.md)
