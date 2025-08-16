@@ -214,6 +214,7 @@ Encrypt
 encrypt
 checksum
 checksums
+classful
 ctx
 enum
 umem
@@ -278,3 +279,4 @@ const
 acyclic
 LIRC
 ISA
+xattr

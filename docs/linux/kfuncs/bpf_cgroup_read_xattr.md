@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_cgroup_read_xattr' eBPF kfunc, includ
 [:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/b95ee9049c93b05da66599d6e0d1fcfea291360b)
 <!-- [/FEATURE_TAG] -->
 
-Read xattr of a cgroup's node in cgroupfs.
+Read xattr of a cGroup's node in cGroup file system.
 
 ## Definition
 

@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_strcspn' eBPF kfunc, including its de
 [:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad)
 <!-- [/FEATURE_TAG] -->
 
-Calculate the length of the initial substring of `s__ign` which does not contain letters in `reject__ign`
+Calculate the length of the initial sub-string of `s__ign` which does not contain letters in `reject__ign`
 
 ## Definition
 

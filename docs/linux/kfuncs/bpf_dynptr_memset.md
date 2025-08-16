@@ -36,7 +36,7 @@ Returns `0` on success; negative error, otherwise.
 
 ## Usage
 
-This kfunc allows the filling of a dynptr with a value. This was technically possible with [`bpf_dynptr_write`](bpf_dynptr_write.md) but that requires creating a variable on the stack and/or repeated calls. This kfunc does not have that drawback.
+This kfunc allows the filling of a dynptr with a value. This was technically possible with [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md) but that requires creating a variable on the stack and/or repeated calls. This kfunc does not have that drawback.
 
 ### Program types
 
