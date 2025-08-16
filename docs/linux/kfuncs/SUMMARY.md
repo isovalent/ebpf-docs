@@ -240,6 +240,7 @@
 - sched_ext Kfuncs
   - [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md)
   - [`scx_bpf_select_cpu_dfl`](scx_bpf_select_cpu_dfl.md)
+  - [`scx_bpf_select_cpu_and`](scx_bpf_select_cpu_and.md)
   - [`scx_bpf_cpu_rq`](scx_bpf_cpu_rq.md)
   - [`scx_bpf_now`](scx_bpf_now.md)
   - Dispatch Queue Kfuncs

@@ -768,6 +768,8 @@ sets:
       - name: scx_bpf_pick_any_cpu_node
         flags: [KF_RCU]
       - name: scx_bpf_nr_node_ids
+      - name: scx_bpf_select_cpu_and
+        flags: [KF_RCU]
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
       - name: BPF_PROG_TYPE_SYSCALL
