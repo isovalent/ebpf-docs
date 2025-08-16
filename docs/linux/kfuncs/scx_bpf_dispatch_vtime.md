@@ -8,7 +8,10 @@ description: "This page documents the 'scx_bpf_dispatch_vtime' eBPF kfunc, inclu
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/06e51be3d5e7a07aea5c9012773df8d5de01db6c)
 <!-- [/FEATURE_TAG] -->
 
-This function was renamed to [`scx_bpf_dsq_insert_vtime`](scx_bpf_dsq_insert_vtime.md) in [:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/cc26abb1a19adbb91b79d25a2e74976633ece429). But will be aliased until v6.15.
+This function was renamed to [`scx_bpf_dsq_insert_vtime`](scx_bpf_dsq_insert_vtime.md) in [:octicons-tag-24: v6.13](https://github.com/torvalds/linux/commit/cc26abb1a19adbb91b79d25a2e74976633ece429). But will be aliased until v6.17.
+
+!!! warning
+    The alias was removed in [v6.17](https://github.com/torvalds/linux/commit/4ecf83741401c70d4420588ee1f3b1ca04ef58d5), and is no longer available.
 
 ## Definition
 

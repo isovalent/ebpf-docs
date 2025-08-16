@@ -68,6 +68,14 @@ var removeKfuncs = []string{
 	"hid_bpf_attach_prog",
 	"cgroup_rstat_updated",
 	"cgroup_rstat_flush",
+
+	"scx_bpf_dispatch",
+	"scx_bpf_dispatch_vtime",
+	"scx_bpf_consume",
+	"scx_bpf_dispatch_from_dsq_set_slice",
+	"scx_bpf_dispatch_from_dsq_set_vtime",
+	"scx_bpf_dispatch_from_dsq",
+	"scx_bpf_dispatch_vtime_from_dsq",
 }
 
 func main() {
