@@ -280,6 +280,17 @@ sets:
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
       - name: __bpf_trap
       - name: bpf_dynptr_memset
+      - name: bpf_strchr
+      - name: bpf_strchrnul
+      - name: bpf_strcmp
+      - name: bpf_strcspn
+      - name: bpf_strlen
+      - name: bpf_strnchr
+      - name: bpf_strnlen
+      - name: bpf_strnstr
+      - name: bpf_strrchr
+      - name: bpf_strspn
+      - name: bpf_strstr
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 

@@ -417,18 +417,18 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_pick_any_cpu_node`](scx_bpf_pick_any_cpu_node.md)
 - [`scx_bpf_pick_idle_cpu_node`](scx_bpf_pick_idle_cpu_node.md)
 
-### Resilient Queued spinlock Kfuncs
+## Resilient Queued spinlock Kfuncs
 
 - [`bpf_res_spin_lock.md`](bpf_res_spin_lock.md)
 - [`bpf_res_spin_lock_irqsave.md`](bpf_res_spin_lock_irqsave.md)
 - [`bpf_res_spin_unlock.md`](bpf_res_spin_unlock.md)
 - [`bpf_res_spin_unlock_irqrestore.md`](bpf_res_spin_unlock_irqrestore.md)
 
-### Sock ops Kfuncs
+## Sock ops Kfuncs
 
 - [`bpf_sock_ops_enable_tx_tstamp`](bpf_sock_ops_enable_tx_tstamp.md)
 
-### Memory probe to dynptr Kfuncs
+## Memory probe to dynptr Kfuncs
 
 - [bpf_probe_read_user_dynptr](bpf_probe_read_user_dynptr.md)
 - [bpf_probe_read_kernel_dynptr](bpf_probe_read_kernel_dynptr.md)
@@ -439,7 +439,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [bpf_copy_from_user_task_dynptr](bpf_copy_from_user_task_dynptr.md)
 - [bpf_copy_from_user_task_str_dynptr](bpf_copy_from_user_task_str_dynptr.md)
 
-### BPF Qdisc kfuncs
+## BPF Qdisc kfuncs
 
 - [`bpf_kfree_skb`](bpf_kfree_skb.md)
 - [`bpf_qdisc_bstats_update`](bpf_qdisc_bstats_update.md)
@@ -448,3 +448,17 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_qdisc_skb_drop`](bpf_qdisc_skb_drop.md)
 - [`bpf_qdisc_watchdog_schedule`](bpf_qdisc_watchdog_schedule.md)
 - [`bpf_skb_get_hash`](bpf_skb_get_hash.md)
+
+## String Kfuncs
+
+- [`bpf_strchr`](bpf_strchr.md)
+- [`bpf_strchrnul`](bpf_strchrnul.md)
+- [`bpf_strcmp`](bpf_strcmp.md)
+- [`bpf_strcspn`](bpf_strcspn.md)
+- [`bpf_strlen`](bpf_strlen.md)
+- [`bpf_strnchr`](bpf_strnchr.md)
+- [`bpf_strnlen`](bpf_strnlen.md)
+- [`bpf_strnstr`](bpf_strnstr.md)
+- [`bpf_strrchr`](bpf_strrchr.md)
+- [`bpf_strspn`](bpf_strspn.md)
+- [`bpf_strstr`](bpf_strstr.md)
