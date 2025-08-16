@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_strnstr' eBPF kfunc, including its de
 [:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad)
 <!-- [/FEATURE_TAG] -->
 
-Find the first substring in a length-limited string
+Find the first sub-string in a length-limited string
 
 ## Definition
 

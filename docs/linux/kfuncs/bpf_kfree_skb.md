@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_kfree_skb' eBPF kfunc, including its 
 [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/870c28588afa20d786e2c26e8fcc14e2b9a55616)
 <!-- [/FEATURE_TAG] -->
 
-Release an skb's reference and drop it immediately.
+Release an socket buffer reference and drop it immediately.
 
 ## Definition
 

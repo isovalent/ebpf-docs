@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_stream_vprintk' eBPF kfunc, including
 [:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6)
 <!-- [/FEATURE_TAG] -->
 
-Write a message to a stdout/stderr like, per-program stream.
+Write a message to a <nospell>stdout/stderr</nospell> like, per-program stream.
 
 ## Definition
 
@@ -34,7 +34,7 @@ Write a message to a stdout/stderr like, per-program stream.
 
 ## Usage
 
-This kfunc allows programs to write formatted strings to streams, the API is made to resemble stdout/stderr streams normal userspace programs have access to. 
+This kfunc allows programs to write formatted strings to streams, the API is made to resemble <nospell>stdout/stderr</nospell> streams normal userspace programs have access to. 
 
 These streams are intended for debugging, an alternative to [`bpf_trace_printk`](../helper-function/bpf_trace_printk.md) and [`bpf_trace_vprintk`](../helper-function/bpf_trace_vprintk.md) which write to a system wide trace log. These streams are per-program, thus making it easier to consume logs from a specific program instead of having to figure out which log message in the system wide log is produces my the program you are interested in.
 

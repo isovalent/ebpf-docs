@@ -283,7 +283,7 @@ All fields are read-only accept for `limit`, `q->qlen`, and `qstats`.
 
 ### `struct sk_buff`
 
-See [skbuff.h](https://elixir.bootlin.com/linux/v6.16/source/include/linux/skbuff.h#L769) for full structure.
+See [`skbuff.h`](https://elixir.bootlin.com/linux/v6.16/source/include/linux/skbuff.h#L769) for full structure.
 
 All fields are read-only, except for `tstamp` and `cb`.
 

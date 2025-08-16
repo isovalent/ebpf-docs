@@ -108,7 +108,7 @@ Kfuncs used to acquire and release task reference.
 - [`bpf_task_release`](bpf_task_release.md)
 - [`bpf_send_signal_task`](bpf_send_signal_task.md)
 
-## BPF RBtree KFuncs
+## BPF Red-Black-tree KFuncs
 
 Kfuncs used to create and modify red-black trees.
 
@@ -440,14 +440,14 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 
 ## Memory probe to dynptr Kfuncs
 
-- [bpf_probe_read_user_dynptr](bpf_probe_read_user_dynptr.md)
-- [bpf_probe_read_kernel_dynptr](bpf_probe_read_kernel_dynptr.md)
-- [bpf_probe_read_user_str_dynptr](bpf_probe_read_user_str_dynptr.md)
-- [bpf_probe_read_kernel_str_dynptr](bpf_probe_read_kernel_str_dynptr.md)
-- [bpf_copy_from_user_dynptr](bpf_copy_from_user_dynptr.md)
-- [bpf_copy_from_user_str_dynptr](bpf_copy_from_user_str_dynptr.md)
-- [bpf_copy_from_user_task_dynptr](bpf_copy_from_user_task_dynptr.md)
-- [bpf_copy_from_user_task_str_dynptr](bpf_copy_from_user_task_str_dynptr.md)
+- [`bpf_probe_read_user_dynptr`](bpf_probe_read_user_dynptr.md)
+- [`bpf_probe_read_kernel_dynptr`](bpf_probe_read_kernel_dynptr.md)
+- [`bpf_probe_read_user_str_dynptr`](bpf_probe_read_user_str_dynptr.md)
+- [`bpf_probe_read_kernel_str_dynptr`](bpf_probe_read_kernel_str_dynptr.md)
+- [`bpf_copy_from_user_dynptr`](bpf_copy_from_user_dynptr.md)
+- [`bpf_copy_from_user_str_dynptr`](bpf_copy_from_user_str_dynptr.md)
+- [`bpf_copy_from_user_task_dynptr`](bpf_copy_from_user_task_dynptr.md)
+- [`bpf_copy_from_user_task_str_dynptr`](bpf_copy_from_user_task_str_dynptr.md)
 
 ## BPF Qdisc kfuncs
 

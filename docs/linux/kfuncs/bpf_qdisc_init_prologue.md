@@ -8,7 +8,7 @@ description: "This page documents the 'bpf_qdisc_init_prologue' eBPF kfunc, incl
 [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/7a2dafda950b78611dc441c83d105dfdc7082681)
 <!-- [/FEATURE_TAG] -->
 
-A hidden / internal kfunc called by the function prolog of `init` qdisc struct ops programs.
+A hidden / internal kfunc called by the function prologue of `init` qdisc struct ops programs.
 
 ## Definition
 
