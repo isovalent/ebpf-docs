@@ -38,17 +38,36 @@ This helper call can be used in the following program types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_PROG_REF] -->
+ * [`BPF_PROG_TYPE_CGROUP_DEVICE`](../program-type/BPF_PROG_TYPE_CGROUP_DEVICE.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_CGROUP_SKB`](../program-type/BPF_PROG_TYPE_CGROUP_SKB.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
  * [`BPF_PROG_TYPE_CGROUP_SOCK`](../program-type/BPF_PROG_TYPE_CGROUP_SOCK.md)
+ * [`BPF_PROG_TYPE_CGROUP_SOCKOPT`](../program-type/BPF_PROG_TYPE_CGROUP_SOCKOPT.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
  * [`BPF_PROG_TYPE_CGROUP_SOCK_ADDR`](../program-type/BPF_PROG_TYPE_CGROUP_SOCK_ADDR.md)
+ * [`BPF_PROG_TYPE_CGROUP_SYSCTL`](../program-type/BPF_PROG_TYPE_CGROUP_SYSCTL.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_FLOW_DISSECTOR`](../program-type/BPF_PROG_TYPE_FLOW_DISSECTOR.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
  * [`BPF_PROG_TYPE_KPROBE`](../program-type/BPF_PROG_TYPE_KPROBE.md)
  * [`BPF_PROG_TYPE_LSM`](../program-type/BPF_PROG_TYPE_LSM.md)
+ * [`BPF_PROG_TYPE_LWT_IN`](../program-type/BPF_PROG_TYPE_LWT_IN.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_LWT_OUT`](../program-type/BPF_PROG_TYPE_LWT_OUT.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_LWT_SEG6LOCAL`](../program-type/BPF_PROG_TYPE_LWT_SEG6LOCAL.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_LWT_XMIT`](../program-type/BPF_PROG_TYPE_LWT_XMIT.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_NETFILTER`](../program-type/BPF_PROG_TYPE_NETFILTER.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
  * [`BPF_PROG_TYPE_PERF_EVENT`](../program-type/BPF_PROG_TYPE_PERF_EVENT.md)
  * [`BPF_PROG_TYPE_RAW_TRACEPOINT`](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT.md)
  * [`BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE`](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE.md)
+ * [`BPF_PROG_TYPE_SCHED_ACT`](../program-type/BPF_PROG_TYPE_SCHED_ACT.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_SCHED_CLS`](../program-type/BPF_PROG_TYPE_SCHED_CLS.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_SK_LOOKUP`](../program-type/BPF_PROG_TYPE_SK_LOOKUP.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
  * [`BPF_PROG_TYPE_SK_MSG`](../program-type/BPF_PROG_TYPE_SK_MSG.md)
+ * [`BPF_PROG_TYPE_SK_REUSEPORT`](../program-type/BPF_PROG_TYPE_SK_REUSEPORT.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_SK_SKB`](../program-type/BPF_PROG_TYPE_SK_SKB.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_SOCKET_FILTER`](../program-type/BPF_PROG_TYPE_SOCKET_FILTER.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_SOCK_OPS`](../program-type/BPF_PROG_TYPE_SOCK_OPS.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
+ * [`BPF_PROG_TYPE_STRUCT_OPS`](../program-type/BPF_PROG_TYPE_STRUCT_OPS.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
  * [`BPF_PROG_TYPE_SYSCALL`](../program-type/BPF_PROG_TYPE_SYSCALL.md)
  * [`BPF_PROG_TYPE_TRACEPOINT`](../program-type/BPF_PROG_TYPE_TRACEPOINT.md)
  * [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+ * [`BPF_PROG_TYPE_XDP`](../program-type/BPF_PROG_TYPE_XDP.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
 <!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Example
