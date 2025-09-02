@@ -185,6 +185,7 @@ out:
     * [`bpf_dynptr_read`](../helper-function/bpf_dynptr_read.md)
     * [`bpf_dynptr_write`](../helper-function/bpf_dynptr_write.md)
     * [`bpf_for_each_map_elem`](../helper-function/bpf_for_each_map_elem.md)
+    * [`bpf_get_current_ancestor_cgroup_id`](../helper-function/bpf_get_current_ancestor_cgroup_id.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
     * [`bpf_get_current_cgroup_id`](../helper-function/bpf_get_current_cgroup_id.md) [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/c501bf55c88b834adefda870c7c092ec9052a437)
     * [`bpf_get_current_pid_tgid`](../helper-function/bpf_get_current_pid_tgid.md) [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/eb166e522c77699fc19bfa705652327a1e51a117)
     * [`bpf_get_current_task`](../helper-function/bpf_get_current_task.md)

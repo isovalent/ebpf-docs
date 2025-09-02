@@ -79,6 +79,11 @@ groups:
     since:
       version: 6.4
       commit: c501bf55c88b834adefda870c7c092ec9052a437
+  - name: bpf_get_current_ancestor_cgroup_id
+    kconfig: [CONFIG_CGROUPS]
+    since:
+      version: 6.4
+      commit: c501bf55c88b834adefda870c7c092ec9052a437
   - name: bpf_dynptr_data
   - name: bpf_dynptr_from_mem
   - name: bpf_dynptr_read
