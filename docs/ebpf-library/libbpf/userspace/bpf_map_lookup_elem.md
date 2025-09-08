@@ -10,6 +10,9 @@ description: "This page documents the 'bpf_map_lookup_elem' libbpf userspace fun
 
 Low level wrapper around the [`BPF_MAP_LOOKUP_ELEM`](../../../linux/syscall/BPF_MAP_LOOKUP_ELEM.md) syscall command.
 
+!!! note
+    This function is part of the libbpf userspace library, but has the same name as the [`bpf_map_lookup_elem`](../../../linux/helper-function/bpf_map_lookup_elem.md) helper function, which can only be used from an eBPF program.
+
 ## Definition
 
 `#!c int bpf_map_lookup_elem(int fd, const void *key, void *value);`
