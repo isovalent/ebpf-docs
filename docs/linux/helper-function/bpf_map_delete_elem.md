@@ -10,6 +10,9 @@ description: "This page documents the 'bpf_map_delete_elem' eBPF helper function
 
 The delete map element helper call is used to delete values from [maps](../index.md#maps).
 
+!!! note
+    This helper function is only callable from eBPF, but has the same name as the [`bpf_map_delete_elem`](../../ebpf-library/libbpf/userspace/bpf_map_delete_elem.md) userspace library function, which can only be used from userspace programs.
+
 ## Definition
 
 > Copyright (c) 2015 The Libbpf Authors. All rights reserved.
