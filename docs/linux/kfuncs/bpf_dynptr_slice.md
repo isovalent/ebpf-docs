@@ -12,7 +12,10 @@ Get a pointer to dynptr data up to `len` bytes for read only access.
 
 ## Definition
 
-If the dynptr doesn't have continuous data up to `len` bytes, return NULL.
+This function can handle both contiguous and non-contiguous data of len.
+If the dynptr doesn't have data up to `len` bytes for BPF_PROG_TYPE_SK_SKB, return NULL. buffer__opt stores all the data after copying.
+If the dynptr doesn't have data up to `len` bytes for BPF_PROG_TYPE_XDP, return buffer__opt not NULL. 
+
 
 **Signature**
 
