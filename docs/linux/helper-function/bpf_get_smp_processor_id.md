@@ -25,7 +25,7 @@ The SMP id of the processor running the program.
 
 ## Usage
 
-The bpf_get_smp_processor_id helper function returns a 32-bit value, containing the id of the current SMP (symmetric multiprocessing) processor executing the program. This helper function allows eBPF programs to identify the processor id, which can be useful for performance monitoring or debugging. 
+The `bpf_get_smp_processor_id` helper function returns a 32-bit value, containing the id of the current SMP (symmetric multiprocessing) processor executing the program. This helper function allows eBPF programs to identify the processor id, which can be useful for performance monitoring or debugging. 
 
 ### Program types
 
