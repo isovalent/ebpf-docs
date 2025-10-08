@@ -33,7 +33,7 @@ This helper is a <nospell>"printk()-like"</nospell> facility for debugging. It p
     bpf_trace_printk(fmt, 9);
     ``` 
     
-    The compiler will place such a literal string in a ELF section meant for the heap, which does not exist in eBPF programs. Rater the `fmt` should be defined as static const 
+    The compiler will place such a literal string in a ELF section meant for the heap, which does not exist in eBPF programs. Rather the `fmt` should be defined as static const 
     
     ```c 
     static const char fmt[] = "some log"; 
