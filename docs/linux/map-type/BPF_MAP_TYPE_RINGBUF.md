@@ -124,8 +124,9 @@ The second is to use [`bpf_ringbuf_reserve`](../helper-function/bpf_ringbuf_rese
 You can then write to this memory location from the eBPF program.
 
 This has two advantages:
-    * No additional memory copy is needed, the data is written directly to the ring-buffer, thus faster.
-    * The reserved memory does not count towards the program stack, so you can write large samples without worrying about stack space.
+
+* No additional memory copy is needed, the data is written directly to the ring-buffer, thus faster.
+* The reserved memory does not count towards the program stack, so you can write large samples without worrying about stack space.
 
 The verifier has to assert that you do no overrun the reserved memory. If you do, the program will be rejected. Side effect of this is that the `size` provided to `bpf_ringbuf_reserve` must be known at compile time. (see the last method for a way around this).
 
