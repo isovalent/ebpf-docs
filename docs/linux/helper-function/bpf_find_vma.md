@@ -18,7 +18,7 @@ Find vma of _task_ that contains _addr_, call _callback_fn_ function with _task_
 
 The expected callback signature is
 
-long (\_callback_fn)(struct task_struct \_task, struct vm_area_struct \_vma, void \_callback_ctx);
+long (\*callback_fn)(struct task_struct \*task, struct vm_area_struct \*vma, void \*callback_ctx);
 
 
 

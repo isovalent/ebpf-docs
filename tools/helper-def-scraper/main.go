@@ -316,6 +316,14 @@ func manpageToMarkdown(manpage string) string {
 					continue
 				}
 
+				// Keep escaped asterisks (e.g., for pointer types)
+				if line[i] == '\\' && i+1 < len(line) && line[i+1] == '*' {
+					lb.WriteByte('\\')
+					lb.WriteByte('*')
+					i++
+					continue
+				}
+
 				nextIsAsterisk := i+1 < len(line) && line[i+1] == '*'
 				prevIsAsterisk := i > 0 && line[i-1] == '*'
 
