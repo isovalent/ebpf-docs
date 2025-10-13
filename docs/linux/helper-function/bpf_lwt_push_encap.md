@@ -28,7 +28,7 @@ Encapsulate the packet associated to _skb_ within a Layer 3 protocol header. Thi
 
 &nbsp;&nbsp;&nbsp;&nbsp;IP encapsulation (GRE/GUE/IPIP/etc). The outer header must be IPv4 or IPv6, followed by zero or more additional headers, up to **LWT_BPF_MAX_HEADROOM** total bytes in all prepended headers. Please note that if **skb_is_gso**(_skb_) is true, no more than two headers can be prepended, and the inner header, if present, should be either GRE or UDP/GUE.
 
-**BPF_LWT_ENCAP_SEG6**\_ types can be called by BPF programs of type **BPF_PROG_TYPE_LWT_IN**; **BPF_LWT_ENCAP_IP** type can be called by bpf programs of types **BPF_PROG_TYPE_LWT_IN** and **BPF_PROG_TYPE_LWT_XMIT**.
+**BPF_LWT_ENCAP_SEG6**\* types can be called by BPF programs of type **BPF_PROG_TYPE_LWT_IN**; **BPF_LWT_ENCAP_IP** type can be called by bpf programs of types **BPF_PROG_TYPE_LWT_IN** and **BPF_PROG_TYPE_LWT_XMIT**.
 
 A call to this helper is susceptible to change the underlying packet buffer. Therefore, at load time, all checks on pointers previously done by the verifier are invalidated and must be performed again, if the helper is used in combination with direct packet access.
 

@@ -16,7 +16,7 @@ description: "This page documents the 'bpf_loop' eBPF helper function, including
 <!-- [HELPER_FUNC_DEF] -->
 For **nr_loops**, call **callback_fn** function with **callback_ctx** as the context parameter. The **callback_fn** should be a static function and the **callback_ctx** should be a pointer to the stack. The **flags** is used to control certain aspects of the helper. Currently, the **flags** must be 0. Currently, nr_loops is limited to 1 << 23 (~8 million) loops.
 
-long (\_callback_fn)(u64 index, void \*\_ctx);
+long (\*callback_fn)(u64 index, void \*ctx);
 
 where **index** is the current index in the loop. The index is zero-indexed.
 
