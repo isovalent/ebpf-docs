@@ -49,7 +49,7 @@ For more details on how to use maps, see the [maps concept page](./concepts/maps
 
 ## Objects
 
-eBPF programs and maps are BPF objects along with some others we didn't mention yet. All of these objects managed in roughly the same way. Such BPF objects are created by a loader which gets a file descriptor to that object. The file descriptor is used to interact with the object further, but it also is a reference that keeps the object "alive". Objects are free-ed as soon as there exist no more references to that object.
+eBPF programs and maps are BPF objects along with some others we didn't mention yet. All of these objects are managed in roughly the same way. Such BPF objects are created by a loader which gets a file descriptor to that object. The file descriptor is used to interact with the object further, but it also is a reference that keeps the object "alive". Objects are free-ed as soon as there exist no more references to that object.
 
 Applications can transfer copies of these file descriptors to other processes via inter-process communication techniques like UNIX sockets which is quite universal. A more eBPF special technique is called pinning, which allows the loader to reference a BPF object with a special file called a pin. These pins can only be made in the special BPF File System which needs to be mounted somewhere (typically at `/sys/bpf` but this can change between Linux distributions). As long as a pin exists it will keep the object it refers to alive. These pins can be read by any program that has permissions to access the pin file and get a reference of the object that way. Thus, multiple program can share the same objects at the same time.
 
