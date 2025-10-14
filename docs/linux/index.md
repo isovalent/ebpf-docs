@@ -22,7 +22,7 @@ When the loader loads a program the kernel will verify that the program is "safe
 
 ## Helper functions
 
-Programs on their own are quite limited, they can read from and write to a local stack, perform maths on registers, call internal functions and do conditional jumps. All of this is within its own little bubble. The final thing programs can do is call so called "helper functions". These are actually regular C functions defined by the kernel. These functions form a sort of internal API/ABI between the eBPF programs and the kernel. These helpers can allow eBPF programs to perform tasks they otherwise couldn't be cause it wouldn't get past the verifier.
+Programs on their own are quite limited, they can read from and write to a local stack, perform maths on registers, call internal functions and do conditional jumps. All of this is within its own little bubble. The final thing programs can do is call so called "helper functions". These are actually regular C functions defined by the kernel. These functions form a sort of internal API/ABI between the eBPF programs and the kernel. These helpers can allow eBPF programs to perform tasks they otherwise couldn't because it wouldn't get past the verifier.
 
 These helper functions, take up to 5 arguments and return a single return value. Not every program type can execute every helper call to enforce the same restrictions the verifier does.
 
