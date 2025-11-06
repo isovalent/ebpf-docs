@@ -116,11 +116,12 @@ struct xdp_desc {
 };
 
 void *{rx,tx,fill,completion}_ring_mmap = mmap(
-    fd, 
-    {XDP_PGOFF_RX_RING,XDP_PGOFF_TX_RING,XDP_UMEM_PGOFF_FILL_RING,XDP_UMEM_PGOFF_COMPLETION_RING},
+    NULL,
     offsets.{rx,tx,fr,cr}.desc + ring_size * sizeof(struct xdp_desc),
     PROT_READ|PROT_WRITE,
-    MAP_SHARED|MAP_POPULATE);
+    MAP_SHARED|MAP_POPULATE,
+    fd, 
+    {XDP_PGOFF_RX_RING,XDP_PGOFF_TX_RING,XDP_UMEM_PGOFF_FILL_RING,XDP_UMEM_PGOFF_COMPLETION_RING});
 if (!{rx,tx,fill,completion}_ring_mmap)
     // handle error
 
