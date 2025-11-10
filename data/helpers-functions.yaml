@@ -240,7 +240,7 @@ groups:
 
   # TODO bpf iter
 
-  # 
+  #
   cgroup_base:
   - name: bpf_get_current_uid_gid
   - name: bpf_get_local_storage
@@ -897,7 +897,7 @@ programs:
   # `bpf_nf_func_proto` in `net/netfilter/nf_bpf_link.c`
   BPF_PROG_TYPE_NETFILTER:
   - group: base
-  
+
 
 # Track which helper functions can be used with a given map type
 # 'check_map_func_compatibility' in 'kernel/bpf/verifier.c'
@@ -910,7 +910,6 @@ maps:
   BPF_MAP_TYPE_ARRAY:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
-  - name: bpf_map_delete_elem
   - name: bpf_for_each_map_elem
   BPF_MAP_TYPE_PROG_ARRAY:
   - name: bpf_tail_call
@@ -929,7 +928,6 @@ maps:
   BPF_MAP_TYPE_PERCPU_ARRAY:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
-  - name: bpf_map_delete_elem
   - name: bpf_for_each_map_elem
   - name: bpf_map_lookup_percpu_elem
   BPF_MAP_TYPE_STACK_TRACE:
