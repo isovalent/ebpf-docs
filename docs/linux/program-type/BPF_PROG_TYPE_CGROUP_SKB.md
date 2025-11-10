@@ -51,8 +51,8 @@ This program type isn't allowed to read from and write to all fields of the cont
     | [`napi_id`](../program-context/__sk_buff.md#napi_id)                 | :material-check: | :material-close: |
     | [`family`](../program-context/__sk_buff.md#family)                   | :material-check: | :material-close: |
     | [`remote_ip4`](../program-context/__sk_buff.md#remote_ip4)           | :material-check: | :material-close: |
-    | [`remote_ip6`](../program-context/__sk_buff.md#remote_ip6)           | :material-check: | :material-close: |
     | [`local_ip4`](../program-context/__sk_buff.md#local_ip4)             | :material-check: | :material-close: |
+    | [`remote_ip6`](../program-context/__sk_buff.md#remote_ip6)           | :material-check: | :material-close: |
     | [`local_ip6`](../program-context/__sk_buff.md#local_ip6)             | :material-check: | :material-close: |
     | [`remote_port`](../program-context/__sk_buff.md#remote_port)         | :material-check: | :material-close: |
     | [`local_port`](../program-context/__sk_buff.md#local_port)           | :material-check: | :material-close: |

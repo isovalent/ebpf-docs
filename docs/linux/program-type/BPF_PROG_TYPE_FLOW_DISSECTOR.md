@@ -47,7 +47,6 @@ However, only the limited set of fields is allowed: `data`, `data_end` and `flow
     | [`family`](../program-context/__sk_buff.md#family)                   | :material-close: | :material-close: |
     | [`remote_ip4`](../program-context/__sk_buff.md#remote_ip4)           | :material-close: | :material-close: |
     | [`local_ip4`](../program-context/__sk_buff.md#local_ip4)             | :material-close: | :material-close: |
-    | [`remote_ip4`](../program-context/__sk_buff.md#remote_ip4)           | :material-close: | :material-close: |
     | [`remote_ip6`](../program-context/__sk_buff.md#remote_ip6)           | :material-close: | :material-close: |
     | [`local_ip6`](../program-context/__sk_buff.md#local_ip6)             | :material-close: | :material-close: |
     | [`remote_port`](../program-context/__sk_buff.md#remote_port)         | :material-close: | :material-close: |
