@@ -80,12 +80,10 @@ This helper call can be used with the following map types:
 
 <!-- DO NOT EDIT MANUALLY -->
 <!-- [HELPER_FUNC_MAP_REF] -->
- * [`BPF_MAP_TYPE_ARRAY`](../map-type/BPF_MAP_TYPE_ARRAY.md)
  * [`BPF_MAP_TYPE_HASH`](../map-type/BPF_MAP_TYPE_HASH.md)
  * [`BPF_MAP_TYPE_LPM_TRIE`](../map-type/BPF_MAP_TYPE_LPM_TRIE.md)
  * [`BPF_MAP_TYPE_LRU_HASH`](../map-type/BPF_MAP_TYPE_LRU_HASH.md)
  * [`BPF_MAP_TYPE_LRU_PERCPU_HASH`](../map-type/BPF_MAP_TYPE_LRU_PERCPU_HASH.md)
- * [`BPF_MAP_TYPE_PERCPU_ARRAY`](../map-type/BPF_MAP_TYPE_PERCPU_ARRAY.md)
  * [`BPF_MAP_TYPE_PERCPU_HASH`](../map-type/BPF_MAP_TYPE_PERCPU_HASH.md)
  * [`BPF_MAP_TYPE_SOCKHASH`](../map-type/BPF_MAP_TYPE_SOCKHASH.md)
  * [`BPF_MAP_TYPE_SOCKMAP`](../map-type/BPF_MAP_TYPE_SOCKMAP.md)
