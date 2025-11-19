@@ -66,7 +66,7 @@ The `name` part of these macros refers to field names of the to be created struc
 * `key` ([`__type`](../../ebpf-library/libbpf/ebpf/__type.md)) - the type of the key. This field is mutually exclusive with the `key_size` field.
 * `value_size` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - the size of the value in bytes. This field is mutually exclusive with the `value` fields.
 * `value` ([`__type`](../../ebpf-library/libbpf/ebpf/__type.md)) - the type of the value. This field is mutually exclusive with the `value_size` fields.
-* `values` ([`__array`](../../ebpf-library/libbpf/ebpf/__array.md)) - see [static values section](#static-values).
+* `values` ([`__array`](../../ebpf-library/libbpf/ebpf/__array.md)) - populate the content of a map during loading, see [static values section](#static-values) for details.
 * `pinning` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - `LIBBPF_PIN_BY_NAME` or `LIBBPF_PIN_NONE` see [pinning page](pinning.md) for details.
 * `map_extra` ([`__uint`](../../ebpf-library/libbpf/ebpf/__uint.md)) - Addition settings, currently only used by bloom filters which use the lowest 4 bits to indicate the amount of hashes used in the bloom filter.
 
