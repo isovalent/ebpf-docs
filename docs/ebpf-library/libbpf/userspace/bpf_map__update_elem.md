@@ -33,5 +33,40 @@ Allows to insert or update value in BPF map that corresponds to provided key.
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <stdio.h>
+#include "log_syscalls.skel.h"
+
+#define STRING_LEN 128
+
+// struct {
+//     __uint(type, BPF_MAP_TYPE_HASH);
+//     __type(key, char[STRING_LEN]);
+//     __type(value, int);
+//     __uint(max_entries, 32);
+// } syscall_count_map SEC(".maps");
+
+const int zero = 0;
+int main(){
+
+    char program_to_log[STRING_LEN] = "cat";
+
+    struct log_syscalls *skel = log_syscalls__open_and_load();
+
+    int err = bpf_map__update_elem(
+    skel->maps.syscall_count_map,
+        program_to_log,
+        STRING_LEN,
+        &zero,
+        sizeof(int),
+        BPF_NOEXIST
+    );
+    if(err){
+        printf("err inserting value: %s\n", strerror(errno));
+        return 1;
+    }
+
+    log_syscalls__attach(skel);
+    while(1){};
+}
+```
