@@ -30,6 +30,10 @@ The helper returns **TC_ACT_REDIRECT** on success or **TC_ACT_SHOT** on error.
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
 
+!!! note
+    [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commits/c4327229948879814229b46aa26a750718888503)
+    With this patch, bpf_redirect_peer now calls skb_scrub_packet. pkt_type is set to PACKET_HOST by default.
+
 ### Program types
 
 This helper call can be used in the following program types:
@@ -50,6 +54,8 @@ SEC("tc/ingress") // redirect_peer works only on ingress direction
 int bpf_redirect_peer_example(struct __sk_buff *skb) {
     __u32 if_index = 2; // interface index to redirect to
 
+    // kernel version < 6.15,
+    // you must explicitly call bpf_skb_change_type to update the pkt_type.
     return bpf_redirect_peer(if_index, 0);
 }
 
