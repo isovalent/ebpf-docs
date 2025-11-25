@@ -42,5 +42,16 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <linux/bpf.h>
+#include <bpf/bpf_helpers.h>
+
+SEC("tc/ingress") // redirect_peer works only on ingress direction
+int bpf_redirect_peer_example(struct __sk_buff *skb) {
+    __u32 if_index = 2; // interface index to redirect to
+
+    return bpf_redirect_peer(if_index, 0);
+}
+
+char LICENSE[] SEC("license") = "Dual BSD/GPL";
+```
