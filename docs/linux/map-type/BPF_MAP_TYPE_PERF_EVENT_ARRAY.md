@@ -50,7 +50,7 @@ syscall(SYS_perf_event_open,
 
 Note that `{watermark}` and `{cpu}` are not pre-set. In this example we set `.watermark` to true, this has the effect that the ringbuffer will buffer until `{watermark}` amount of bytes are ready before it signals userspace that there is data. This is not required, but does improve efficiently, if using the feature `{watermark}` should be tuned for balance between latency, performance and memory usage. The `{cpu}` value should be the index of the logical CPU for which you want to make the perf event. It should match the key of the map in which you intend to put the event.
 
-After creating the perf event, it is recommended to make it non-blocking, if using used with a signaling mechanism such as `epoll`. This can be done by calling [`fcntl`](https://man7.org/linux/man-pages/man2/fcntl.2.html) with the `O_NONBLOCK` option on the file descriptor.
+After creating the perf event, it is recommended to make it non-blocking, if used with a signaling mechanism such as `epoll`. This can be done by calling [`fcntl`](https://man7.org/linux/man-pages/man2/fcntl.2.html) with the `O_NONBLOCK` option on the file descriptor.
 
 Next, we need to setup the actual ring-buffer which we will use to read data from the perf event. To do so we first have to request a shared memory region from the kernel using [`mmap`](https://man7.org/linux/man-pages/man2/mmap.2.html) `#!c mmap(nil, length, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0)`. `length` can be picked and tuned depending on the use case but should always be `1+2^n` memory pages and `n` should not be `0`. So Assuming a 4k page size, valid values would be `12288`, `20480`, `28672` and so on. The `fd` should be the file descriptor of the perf event.
 
@@ -250,15 +250,15 @@ The `mmap` call, if all is well, should return a pointer to a memory address. Th
     };
     ```
 
-This structure contains a lot of additional data, but for consuming the data, we interested in the `perf_event_mmap_page->head`, `perf_event_mmap_page->tail`, `perf_event_mmap_page->data_offset` and `perf_event_mmap_page->data_size` fields.
+This structure contains a lot of additional data, but for consuming the data, we are interested in the `perf_event_mmap_page->head`, `perf_event_mmap_page->tail`, `perf_event_mmap_page->data_offset` and `perf_event_mmap_page->data_size` fields.
 
 The `data_offset` and `data_size` indicate the offset from the `addr` pointer where the ring-buffer data starts, and `data_size` where it ends. The region between these two locations will be written to by the kernel. To avoid race conditions, we should avoid reading and writing the same location at the same time. The `head` and `tail` are used to coordinate access. The `head` will be written to by the kernel and should be read by userspace, it moves if new data is available. The `tail` will be written to by userspace to indicate data has been consumed. So if `head` and `tail` are equal, no data is pending. If `head` == `tail-1` then the buffer is full.
 
 To recap, we create a perf event for every logical CPU, and every perf event gets its own ring-buffer.
 
-Once setup, userspace can busy-poll the ring-buffers, but this might cause significant overhead or data loss during spikes. It is recommended to use [`epoll`](https://man7.org/linux/man-pages/man7/epoll.7.html) to setup signalling in combination with the watermark settings for optimal result. Allowing a reader thread to wake-up when there is data, read from all buffers indicated to have pending data by `epoll` and then go back to blocking mode/sleep. This avoids CPU usage when nothing happens and wakes up the thread more frequently when more data is sent. 
+Once setup, userspace can busy-poll the ring-buffers, but this might cause significant overhead or data loss during spikes. It is recommended to use [`epoll`](https://man7.org/linux/man-pages/man7/epoll.7.html) to setup signalling in combination with the watermark settings for optimal result. This allows a reader thread to wake-up when there is data, read from all buffers indicated to have pending data by `epoll` and then go back to blocking mode/sleep. This avoids CPU usage when nothing happens and wakes up the thread more frequently when more data is sent. 
 
-Depending on the use case, a author might want to dedicate more threads to reading concurrently, not use watermarks, or still do busy polling, it all depends on optimizing throughput, latency (between eBPF sending and userspace consuming), memory usage, and CPU usage.
+Depending on the use case, an author might want to dedicate more threads to reading concurrently, not use watermarks, or still do busy polling, it all depends on optimizing throughput, latency (between eBPF sending and userspace consuming), memory usage, and CPU usage.
 
 Every entry on the ring-buffer will start with the same header:
 
@@ -292,7 +292,7 @@ struct {
 };
 ```
 
-The `lost` field indicates how many samples have been lost. This might happen when the ringbuffer is full or nearly full. The kernel will keep track of the amount of samples it can't write and will populate the ring buffer with record lost messages after there is room on the ringbuffer again.
+The `lost` field indicates how many samples have been lost. This might happen when the ringbuffer is full or nearly full. The kernel will keep track of the amount of samples it can't write and will populate the ring buffer with record lost messages after there is room on the ring buffer again.
 
 For further reading, checkout [`tools/perf/design.txt`](https://github.com/torvalds/linux/blob/v6.2/tools/perf/design.txt) which goes into the design and logic behind the above instructions.
 
@@ -308,7 +308,7 @@ On the eBPF side, your programs should be able to use [bpf_perf_event_read](../h
 
 Both the [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) and [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must be exactly `4`. 
 
-While the [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) is essentially unrestricted, the  must always be `4` indicating the key is a 32-bit unsigned integer.
+While the [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) is essentially unrestricted, it must always be `4` indicating the key is a 32-bit unsigned integer.
 
 The [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries) should at least as large as the number of logical CPUs. This number can be discovered in a number of ways, including [`nproc`](https://man7.org/linux/man-pages/man1/nproc.1.html), [`lscpu`](https://linux.die.net/man/1/lscpu), [`/proc/cpuinfo`](https://www.kernel.org/doc/Documentation/admin-guide/cputopology.rst)
 
