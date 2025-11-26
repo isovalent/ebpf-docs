@@ -250,7 +250,7 @@ The `mmap` call, if all is well, should return a pointer to a memory address. Th
     };
     ```
 
-This structure contains a lot of additional data, but for consuming the data, we are interested in the `perf_event_mmap_page->head`, `perf_event_mmap_page->tail`, `perf_event_mmap_page->data_offset` and `perf_event_mmap_page->data_size` fields.
+This structure contains a lot of additional data, but for consuming the data, we are interested in the `perf_event_mmap_page->data_head`, `perf_event_mmap_page->data_tail`, `perf_event_mmap_page->data_offset` and `perf_event_mmap_page->data_size` fields.
 
 The `data_offset` and `data_size` indicate the offset from the `addr` pointer where the ring-buffer data starts, and `data_size` where it ends. The region between these two locations will be written to by the kernel. To avoid race conditions, we should avoid reading and writing the same location at the same time. The `head` and `tail` are used to coordinate access. The `head` will be written to by the kernel and should be read by userspace, it moves if new data is available. The `tail` will be written to by userspace to indicate data has been consumed. So if `head` and `tail` are equal, no data is pending. If `head` == `tail-1` then the buffer is full.
 
