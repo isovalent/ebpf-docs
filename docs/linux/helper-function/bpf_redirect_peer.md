@@ -32,7 +32,7 @@ The helper returns **TC_ACT_REDIRECT** on success or **TC_ACT_SHOT** on error.
 
 !!! note
     [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commits/c4327229948879814229b46aa26a750718888503)
-    With this patch, bpf_redirect_peer now calls skb_scrub_packet. pkt_type is set to PACKET_HOST by default.
+    With this patch, `bpf_redirect_peer` now calls `skb_scrub_packet`. `pkt_type` is set to `PACKET_HOST` by default.
 
 ### Program types
 
