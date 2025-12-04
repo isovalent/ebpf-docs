@@ -29,5 +29,50 @@ When loading map-in-map maps, such as [`BPF_MAP_TYPE_ARRAY_OF_MAPS`](../../../li
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+// outer map
+// struct {
+//         __uint(type, BPF_MAP_TYPE_HASH_OF_MAPS);
+//         __uint(max_entries, 8);
+//         __type(key, u32);
+//         __type(value, u32);
+// } outer_map SEC(".maps");
+
+// we will create this map in user space
+// struct inner_map {
+//         __uint(type, BPF_MAP_TYPE_HASH);
+//         __uint(max_entries, 10);
+//         __type(key, __u32);
+//         __type(value, __u32);
+// };
+
+int create_template_map(){
+    int fd = bpf_map_create(
+        BPF_MAP_TYPE_HASH,
+        NULL,
+        sizeof(__u32),
+        sizeof(__u32),
+        10,
+        NULL
+    );
+    return fd;
+}
+int main(){
+    struct tracer_bpf *skel = tracer_bpf__open();
+
+    int fd = create_template_map();
+
+    bpf_map__set_inner_map_fd(skel->maps.outer_map, fd);
+
+    tracer_bpf__load(skel);
+    close(fd); //we don't need template map fd anymore
+
+    tracer_bpf__attach(skel);
+
+    puts("looping forever");
+    while(1){}
+
+    return 0;
+}
+
+```
