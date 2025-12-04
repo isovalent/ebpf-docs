@@ -26,7 +26,7 @@ Users should be aware of the read/write asymmetry of this map type:
 
 * The [`BPF_MAP_UPDATE_ELEM`](../syscall/BPF_MAP_UPDATE_ELEM.md) syscall command takes *file descriptor* of the BPF map you wish to insert into the map.
 * The [`BPF_MAP_LOOKUP_ELEM`](../syscall/BPF_MAP_LOOKUP_ELEM.md) syscall command returns the *ID* of the BPF map, which can be turned into a file descriptor with the [`BPF_MAP_GET_FD_BY_ID`](../syscall/BPF_MAP_GET_FD_BY_ID.md) syscall command.
-* The [bpf_map_lookup_elem](../helper-function/bpf_map_lookup_elem.md) returns a pointer to the inner map or `NULL`. This pointer can be used like any other in helpers that that map pointers.
+* The [bpf_map_lookup_elem](../helper-function/bpf_map_lookup_elem.md) returns a pointer to the inner map or `NULL`. This pointer can be used for any other helper that takes map pointers.
 
 ## Attributes
 
