@@ -100,5 +100,24 @@ This function should only be used if you need precise control over the map creat
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+// struct example_map{
+//         __uint(type, BPF_MAP_TYPE_HASH);
+//         __uint(max_entries, 10);
+//         __type(key, __u32);
+//         __type(value, __u32);
+// };
+
+int main(){
+    int fd = bpf_map_create(
+        BPF_MAP_TYPE_HASH,
+        NULL,
+        sizeof(__u32),
+        sizeof(__u32),
+        INNER_MAP_MAX_ENTRY,
+        NULL
+    );
+    if(fd < 0)
+        puts("error creating map");
+}
+```
