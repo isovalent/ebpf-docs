@@ -248,6 +248,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 
 - [`bpf_dynptr_from_skb`](bpf_dynptr_from_skb.md)
 - [`bpf_dynptr_from_xdp`](bpf_dynptr_from_xdp.md)
+- [`bpf_dynptr_from_skb_meta`](bpf_dynptr_from_skb_meta.md)
 
 ## Socket related kfuncs
 
@@ -325,6 +326,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 ## XDP KFuncs
 
 - [`bpf_xdp_flow_lookup`](bpf_xdp_flow_lookup.md)
+- [`bpf_xdp_pull_data`](bpf_xdp_pull_data.md)
 
 ## XFRM KFuncs
 
@@ -366,6 +368,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_select_cpu_and`](scx_bpf_select_cpu_and.md)
 - [`scx_bpf_cpu_rq`](scx_bpf_cpu_rq.md)
 - [`scx_bpf_now`](scx_bpf_now.md)
+- [`scx_bpf_cpu_curr`](scx_bpf_cpu_curr.md)
+- [`scx_bpf_locked_rq`](scx_bpf_locked_rq.md)
 
 ### Dispatch Queue Kfuncs
 
@@ -472,11 +476,17 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_strrchr`](bpf_strrchr.md)
 - [`bpf_strspn`](bpf_strspn.md)
 - [`bpf_strstr`](bpf_strstr.md)
+- [`bpf_strcasecmp`](bpf_strcasecmp.md)
 
 ## Debug stream Kfuncs
 
-- [`bpf_stream_vprintk`](bpf_stream_vprintk.md)
+- [`bpf_stream_vprintk_impl`](bpf_stream_vprintk_impl.md)
 
 ## CGroup xattr Kfuncs
 
 - [`bpf_cgroup_read_xattr`](bpf_cgroup_read_xattr.md)
+
+## Task work schedule Kfuncs
+
+- [`bpf_task_work_schedule_resume_impl`](bpf_task_work_schedule_resume_impl.md)
+- [`bpf_task_work_schedule_signal_impl`](bpf_task_work_schedule_signal_impl.md)

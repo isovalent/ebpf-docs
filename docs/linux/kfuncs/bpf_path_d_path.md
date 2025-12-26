@@ -32,7 +32,7 @@ A positive integer corresponding to the length of the resolved path name in `buf
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_path_d_path(struct path *path, char *buf, size_t buf__sz)`
+`#!c int bpf_path_d_path(const struct path *path, char *buf, size_t buf__sz)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

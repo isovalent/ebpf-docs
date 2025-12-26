@@ -275,9 +275,11 @@ compilable
 Deduplicate
 deduplicating
 deduplicated
+decapsulate
 const
 acyclic
 LIRC
 ISA
 xattr
 SMP
+NMI

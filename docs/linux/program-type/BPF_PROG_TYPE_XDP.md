@@ -205,11 +205,13 @@ Program authors can indicate to loaders like libbpf that a given program should 
 | <nospell>Engleder tsnep</nospell>         | [:octicons-tag-24: v6.3](https://github.com/torvalds/linux/commit/f0f6460f91305fc907b6a4ba9846e1586be0a0a2)  | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/3fc2333933fdf1148b694d15db824e10449ecbc1)  |
 | <nospell>Google gve</nospell>             | [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/75eaae158b1b7d8d5bde2bafc0bcf778423071d3)  | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/fd8e40321a12391e6f554cc637d0c4b6109682a9)  |
 | <nospell>VMware vmxnet3</nospell>         | [:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/54f00cce11786742bd11e5e68c3bf85e6dc048c9)  | :material-close:     | :material-close:                                                                                                                                                                                                              | :material-close:                                                                                             |
-| <nospell>Pensando Ionic</nospell>         | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/180e35cdf035d1c2e9ebdc06a9944a9eb81cc3d8)  | :material-close:     | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/180e35cdf035d1c2e9ebdc06a9944a9eb81cc3d8)                                                                                                                   | :material-close:                                                                                             |
+| <nospell>Pensando Ionic</nospell>         | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/180e35cdf035d1c2e9ebdc06a9944a9eb81cc3d8)  | :material-close:     | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/5377805dc1c02ad3721a9256f0eef9b4813952e7)                                                                                                                   | :material-close:                                                                                             |
 | <nospell>TI CPSW</nospell>                | [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/8acacc40f7337527ff84cd901ed2ef0a2b95b2b6) | :material-close:     | :material-close:                                                                                                                                                                                                              | :material-close:                                                                                             |
+| <nospell>Intel idpf</nospell>             | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/705457e7211f22c49b410eb25e83cef8a61bd560) | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/3d57b2c00f09afb321bfc203c86a3eb674c0ff2c) |
+| <nospell>Meta fbnic</nospell>             | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/1b0a3950dbd4fa278dc33401a4faba2a23307a16) | :material-close:     | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/1b0a3950dbd4fa278dc33401a4faba2a23307a16)                                                                                                                   | :material-close:                                                                                             |
 
 !!! note
-    This table has last been updated for Linux :octicons-tag-24: v6.10 and is subject to change in the future.
+    This table has last been updated for Linux :octicons-tag-24: v6.18 and is subject to change in the future.
 
 [^1]: Only the legacy <nospell>RQ</nospell> mode supports XDP frags, which is not the default and will require setting via `ethtool`.
 
@@ -222,51 +224,53 @@ The following table has been calculated from mathematical formulas based on the 
 <!-- [MTU_TABLE] -->
 === "Plain XDP"
 
-    | Vendor           | Driver                | x86   | arm   | arm64 | armv7 | riscv |
-    | ---------------- | --------------------- | ----- | ----- | ----- | ----- | ----- |
-    | Kernel           | Veth                  | 3520  | 3518  | 3520  | 3454  | 3518  |
-    | Kernel           | VirtIO                | 3506  | 3506  | 3506  | 3442  | 3506  |
-    | Kernel           | Tun                   | 1500  | 1500  | 1500  | 1500  | 1500  |
-    | Kernel           | Bond                  | [^4]  | [^4]  | [^4]  | [^4]  | [^4]  |
-    | Xen              | Netfront              | 3840  | 3840  | 3840  | 3840  | 3840  |
-    | Amazon           | ENA                   | 3498  | 3498  | 3498  | 3434  | 3498  |
-    | Aquantia/Marvell | AQtion                | 2048  | 2048  | 2048  | 2048  | 2048  |
-    | Broadcom         | BNXT                  | 3502  | 3500  | 3502  | 3436  | 3500  |
-    | Cavium           | Thunder (nicvf)       | 1508  | 1508  | 1508  | 1508  | 1508  |
-    | Engelder         | TSN Endpoint          | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
-    | Freescale        | FEC                   | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
-    | Freescale        | DPAA                  | 3706  | 3706  | 3706  | 3642  | 3706  |
-    | Freescale        | DPAA2                 | ?[^3] | ?[^3] | ?[^3] | ?[^3] | ?[^3] |
-    | Freescale        | ENETC                 | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
-    | Fungible         | Funeth                | 3566  | 3566  | 3566  | 3502  | 3566  |
-    | Google           | GVE                   | 2032  | 2032  | 2032  | 2032  | 2032  |
-    | Intel            | I40e                  | 3046  | 3046  | 3046  | 3046  | 3046  |
-    | Intel            | ICE                   | 3046  | 3046  | 3046  | 3046  | 3046  |
-    | Intel            | IGB                   | 3046  | 3046  | 3046  | 3046  | 3046  |
-    | Intel            | IGC                   | 1500  | 1500  | 1500  | 1500  | 1500  |
-    | Intel            | IXGBE                 | 3050  | 3050  | 3050  | 3050  | 3050  |
-    | Intel            | IXGBEVF               | 3050  | 3050  | 3050  | 3050  | 3050  |
-    | Marvell          | NETA                  | 3520  | 3520  | 3520  | 3456  | 3520  |
-    | Marvell          | PPv2                  | 3552  | 3552  | 3552  | 3488  | 3552  |
-    | Marvell          | Octeon TX2            | 1508  | 1508  | 1508  | 1508  | 1508  |
-    | MediaTek         | MTK                   | 3520  | 3520  | 3520  | 3456  | 3520  |
-    | Mellanox         | MLX4                  | 3498  | 3498  | 3498  | 3434  | 3498  |
-    | Mellanox         | MLX5                  | 3498  | 3498  | 3498  | 3434  | 3498  |
-    | Microchip        | LAN966x               | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
-    | Microsoft        | Mana                  | 3506  | 3506  | 3506  | 3442  | 3506  |
-    | Microsoft        | Hyper-V               | 3506  | 3506  | 3506  | 3442  | 3506  |
-    | Netronome        | NFP                   | 4096  | 4096  | 4096  | 4096  | 4096  |
-    | Pensando         | Ionic                 | 3502  | 3502  | 3502  | 3438  | 3502  |
-    | Qlogic           | QEDE                  | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
-    | Solarflare       | SFP (SFC9xxx PF/VF)   | 3530  | 3546  | 3530  | 3386  | 3514  |
-    | Solarflare       | SFP (Riverhead)       | 3522  | 3530  | 3522  | 3370  | 3498  |
-    | Solarflare       | SFP (SFC4000A)        | 3508  | 3538  | 3508  | 3378  | 3506  |
-    | Solarflare       | SFP (SFC4000B)        | 3528  | 3542  | 3528  | 3382  | 3510  |
-    | Solarflare       | SFP (SFC9020/SFL9021) | 3528  | 3542  | 3528  | 3382  | 3510  |
-    | Socionext        | NetSec                | 1500  | 1500  | 1500  | 1500  | 1500  |
-    | STMicro          | ST MAC                | 1500  | 1500  | 1500  | 1500  | 1500  |
-    | TI               | CPSW                  | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] | ∞[^2] |
-    | VMWare           | VMXNET 3              | 3494  | 3492  | 3494  | 3428  | 3492  |
+    | Vendor           | Driver                | x86                            | arm                            | arm64                          | armv7                          | riscv                          |
+    | ---------------- | --------------------- | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+    | Kernel           | Veth                  | 3520                           | 3518                           | 3520                           | 3454                           | 3518                           |
+    | Kernel           | VirtIO                | 3506                           | 3506                           | 3506                           | 3442                           | 3506                           |
+    | Kernel           | Tun                   | 1500                           | 1500                           | 1500                           | 1500                           | 1500                           |
+    | Kernel           | Bond                  | [^4]                           | [^4]                           | [^4]                           | [^4]                           | [^4]                           |
+    | Xen              | Netfront              | 3840                           | 3840                           | 3840                           | 3840                           | 3840                           |
+    | Amazon           | ENA                   | 3498                           | 3498                           | 3498                           | 3434                           | 3498                           |
+    | Aquantia/Marvell | AQtion                | 2048                           | 2048                           | 2048                           | 2048                           | 2048                           |
+    | Broadcom         | BNXT                  | 3502                           | 3500                           | 3502                           | 3436                           | 3500                           |
+    | Cavium           | Thunder (nicvf)       | 1508                           | 1508                           | 1508                           | 1508                           | 1508                           |
+    | Engelder         | TSN Endpoint          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          |
+    | Freescale        | FEC                   | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          |
+    | Freescale        | DPAA                  | 3706                           | 3706                           | 3706                           | 3642                           | 3706                           |
+    | Freescale        | DPAA2                 | ?[^3]                          | ?[^3]                          | ?[^3]                          | ?[^3]                          | ?[^3]                          |
+    | Freescale        | ENETC                 | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          |
+    | Fungible         | Funeth                | 3566                           | 3566                           | 3566                           | 3502                           | 3566                           |
+    | Google           | GVE                   | 2032                           | 2032                           | 2032                           | 2032                           | 2032                           |
+    | Intel            | I40e                  | 3046                           | 3046                           | 3046                           | 3046                           | 3046                           |
+    | Intel            | ICE                   | 3046                           | 3046                           | 3046                           | 3046                           | 3046                           |
+    | Intel            | IGB                   | 3046                           | 3046                           | 3046                           | 3046                           | 3046                           |
+    | Intel            | IGC                   | 1500                           | 1500                           | 1500                           | 1500                           | 1500                           |
+    | Intel            | IXGBE                 | 3050                           | 3050                           | 3050                           | 3050                           | 3050                           |
+    | Intel            | IXGBEVF               | 3050                           | 3050                           | 3050                           | 3050                           | 3050                           |
+    | Intel            | IDPF                  | :material-close:               | :material-close:               | :material-close:               | :material-close:               | :material-close:               |
+    | Marvell          | NETA                  | 3520                           | 3520                           | 3520                           | 3456                           | 3520                           |
+    | Marvell          | PPv2                  | 3552                           | 3552                           | 3552                           | 3488                           | 3552                           |
+    | Marvell          | Octeon TX2            | 1508                           | 1508                           | 1508                           | 1508                           | 1508                           |
+    | MediaTek         | MTK                   | 3520                           | 3520                           | 3520                           | 3456                           | 3520                           |
+    | Mellanox         | MLX4                  | 3498                           | 3498                           | 3498                           | 3434                           | 3498                           |
+    | Mellanox         | MLX5                  | 3498                           | 3498                           | 3498                           | 3434                           | 3498                           |
+    | Microchip        | LAN966x               | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          |
+    | Microsoft        | Mana                  | 3506                           | 3506                           | 3506                           | 3442                           | 3506                           |
+    | Microsoft        | Hyper-V               | 3506                           | 3506                           | 3506                           | 3442                           | 3506                           |
+    | Netronome        | NFP                   | 4096                           | 4096                           | 4096                           | 4096                           | 4096                           |
+    | Pensando         | Ionic                 | 3502                           | 3502                           | 3502                           | 3438                           | 3502                           |
+    | Qlogic           | QEDE                  | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          |
+    | Solarflare       | SFP (SFC9xxx PF/VF)   | 3530                           | 3546                           | 3530                           | 3386                           | 3514                           |
+    | Solarflare       | SFP (Riverhead)       | 3522                           | 3530                           | 3522                           | 3370                           | 3498                           |
+    | Solarflare       | SFP (SFC4000A)        | 3508                           | 3538                           | 3508                           | 3378                           | 3506                           |
+    | Solarflare       | SFP (SFC4000B)        | 3528                           | 3542                           | 3528                           | 3382                           | 3510                           |
+    | Solarflare       | SFP (SFC9020/SFL9021) | 3528                           | 3542                           | 3528                           | 3382                           | 3510                           |
+    | Socionext        | NetSec                | 1500                           | 1500                           | 1500                           | 1500                           | 1500                           |
+    | STMicro          | ST MAC                | 1500                           | 1500                           | 1500                           | 1500                           | 1500                           |
+    | TI               | CPSW                  | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          |
+    | VMWare           | VMXNET 3              | 3494                           | 3492                           | 3494                           | 3428                           | 3492                           |
+    | Meta             | FBNIC                 | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] |
 
 
 === "XDP with Fragments"
@@ -295,6 +299,7 @@ The following table has been calculated from mathematical formulas based on the 
     | Intel            | IGC                   | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | Intel            | IXGBE                 | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | Intel            | IXGBEVF               | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Intel            | IDPF                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | Marvell          | NETA                  | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
     | Marvell          | PPv2                  | 3552             | 3552             | 3552             | 3488             | 3552             |
     | Marvell          | Octeon TX2            | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
@@ -316,6 +321,7 @@ The following table has been calculated from mathematical formulas based on the 
     | STMicro          | ST MAC                | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | TI               | CPSW                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | VMWare           | VMXNET 3              | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | Meta             | FBNIC                 | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
 
 <!-- [/MTU_TABLE] -->
 
@@ -326,6 +332,7 @@ The following table has been calculated from mathematical formulas based on the 
 [^2]: Driver does not have logic to limit the max MTU and XDP usage, but implicit limits such as in firmware or hardware may still apply.
 [^3]: MTU limit is loaded from firmware.
 [^4]: MTU limit is determined by slave devices.
+[^5]: MTU limit depends on Header Data Split (<nospell>HDS</nospell>) threshold
 
 ### VLAN Offload
 
@@ -529,11 +536,12 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_send_signal_task`](../kfuncs/bpf_send_signal_task.md)
     - [`bpf_skb_ct_alloc`](../kfuncs/bpf_skb_ct_alloc.md)
     - [`bpf_skb_ct_lookup`](../kfuncs/bpf_skb_ct_lookup.md)
+    - [`bpf_strcasecmp`](../kfuncs/bpf_strcasecmp.md)
     - [`bpf_strchr`](../kfuncs/bpf_strchr.md)
     - [`bpf_strchrnul`](../kfuncs/bpf_strchrnul.md)
     - [`bpf_strcmp`](../kfuncs/bpf_strcmp.md)
     - [`bpf_strcspn`](../kfuncs/bpf_strcspn.md)
-    - [`bpf_stream_vprintk`](../kfuncs/bpf_stream_vprintk.md)
+    - [`bpf_stream_vprintk_impl`](../kfuncs/bpf_stream_vprintk_impl.md)
     - [`bpf_strlen`](../kfuncs/bpf_strlen.md)
     - [`bpf_strnchr`](../kfuncs/bpf_strnchr.md)
     - [`bpf_strnlen`](../kfuncs/bpf_strnlen.md)
@@ -547,6 +555,8 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_task_get_cgroup1`](../kfuncs/bpf_task_get_cgroup1.md)
     - [`bpf_task_release`](../kfuncs/bpf_task_release.md)
     - [`bpf_task_under_cgroup`](../kfuncs/bpf_task_under_cgroup.md)
+    - [`bpf_task_work_schedule_resume_impl`](../kfuncs/bpf_task_work_schedule_resume_impl.md)
+    - [`bpf_task_work_schedule_signal_impl`](../kfuncs/bpf_task_work_schedule_signal_impl.md)
     - [`bpf_throw`](../kfuncs/bpf_throw.md)
     - [`bpf_wq_init`](../kfuncs/bpf_wq_init.md)
     - [`bpf_wq_set_callback_impl`](../kfuncs/bpf_wq_set_callback_impl.md)
@@ -558,6 +568,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_xdp_metadata_rx_hash`](../kfuncs/bpf_xdp_metadata_rx_hash.md)
     - [`bpf_xdp_metadata_rx_timestamp`](../kfuncs/bpf_xdp_metadata_rx_timestamp.md)
     - [`bpf_xdp_metadata_rx_vlan_tag`](../kfuncs/bpf_xdp_metadata_rx_vlan_tag.md)
+    - [`bpf_xdp_pull_data`](../kfuncs/bpf_xdp_pull_data.md)
     - [`bpf_xdp_xfrm_state_release`](../kfuncs/bpf_xdp_xfrm_state_release.md)
     - [`crash_kexec`](../kfuncs/crash_kexec.md)
 <!-- [/PROG_KFUNC_REF] -->

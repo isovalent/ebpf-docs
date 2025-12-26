@@ -867,3 +867,10 @@ patterns:
     - name: bpf_qdisc_skb_drop
     - name: bpf_dynptr_from_skb
     - name: scx_bpf_select_cpu_and
+    - name: bpf_dynptr_from_skb_meta
+    - name: bpf_xdp_pull_data
+    - name: scx_bpf_cpu_curr
+    - name: scx_bpf_locked_rq
+    - name: bpf_strcasecmp
+    - name: bpf_task_work_schedule_resume_impl
+    - name: bpf_task_work_schedule_signal_impl

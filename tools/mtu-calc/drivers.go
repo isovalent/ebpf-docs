@@ -24,6 +24,7 @@ var drivers = map[string]func(vars) int{
 	"Intel igc":          calcIGCMTU,
 	"Intel ixgbe":        calcIXGBE,
 	"Intel ixgbevf":      calcIXGBEVF,
+	"Intel idpf":         calcIDPFMTU,
 	"Marvell mvneta":     calcMVNetaMTU,
 	"Marvell mvpp2":      calcMVPP2MTU,
 	"Marvell OcteonTX2":  calcOTX2MTU,
@@ -41,6 +42,7 @@ var drivers = map[string]func(vars) int{
 	"TI CPSW":            calcCPSWMTU,
 	"Hyper-V Netvsc":     calcNetvscMTU,
 	"VMware vmxnet3":     calcVmxnet3MTU,
+	"Meta FBNIC":         calcFBNICMTUDefault,
 }
 
 func calcVethMTU(v vars) int {
@@ -315,6 +317,10 @@ func calcIXGBEVF(v vars) int {
 	return rxBufSize - (ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN)
 }
 
+func calcIDPFMTU(v vars) int {
+	return math.MaxInt
+}
+
 func calcMVNetaMTU(v vars) int {
 	if v.Frags {
 		return math.MaxInt
@@ -449,4 +455,21 @@ func calcVmxnet3MTU(v vars) int {
 	VMXNET3_XDP_RX_TAILROOM := macroSKBDataAlign(v.SizeOfSKBSharedInfo(), v)
 	VMXNET3_XDP_MAX_FRSIZE := v.PageSize - VMXNET3_XDP_HEADROOM - VMXNET3_XDP_RX_TAILROOM
 	return VMXNET3_XDP_MAX_FRSIZE - ETH_HLEN - 2*VLAN_HLEN - ETH_FCS_LEN
+}
+
+func calcFBNICMTUDefault(v vars) int {
+	FBNIC_RX_PAD := 0
+	FBNIC_HDS_THRESH_DEFAULT := (1536 - FBNIC_RX_PAD)
+	mtu := FBNIC_HDS_THRESH_DEFAULT - ETH_HLEN
+	return mtu
+}
+
+func calcFBNICMTUMax(v vars) int {
+	FBNIC_RX_PAD := 0
+	FBNIC_RX_HROOM_PAD := 128
+	FBNIC_RX_TROOM := macroSKBDataAlign(v.SizeOfSKBSharedInfo(), v)
+	FBNIC_RX_HROOM := macroAlign(FBNIC_RX_TROOM+FBNIC_RX_HROOM_PAD, 128) - FBNIC_RX_TROOM
+	FBNIC_HDS_THRESH_MAX := (4096 - FBNIC_RX_HROOM - FBNIC_RX_TROOM - FBNIC_RX_PAD)
+	mtu := FBNIC_HDS_THRESH_MAX - ETH_HLEN
+	return mtu
 }

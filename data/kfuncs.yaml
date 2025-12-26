@@ -291,15 +291,21 @@ sets:
       - name: bpf_strrchr
       - name: bpf_strspn
       - name: bpf_strstr
+      - name: bpf_strcasecmp
       - name: bpf_iter_dmabuf_destroy
         flags: [KF_ITER_DESTROY, KF_SLEEPABLE]
       - name: bpf_iter_dmabuf_new
         flags: [KF_ITER_NEW, KF_SLEEPABLE]
       - name: bpf_iter_dmabuf_next
         flags: [KF_ITER_NEXT, KF_RET_NULL, KF_SLEEPABLE]
-      - name: bpf_stream_vprintk
+      - name: bpf_stream_vprintk_impl
+        flags: [KF_TRUSTED_ARGS]
       - name: bpf_cgroup_read_xattr
         flags: [KF_RCU]
+      - name: bpf_task_work_schedule_signal_impl
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_task_work_schedule_resume_impl
+        flags: [KF_TRUSTED_ARGS]
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 
@@ -387,6 +393,7 @@ sets:
   bpf_kfunc_check_set_xdp:
     funcs:
       - name: bpf_dynptr_from_xdp
+      - name: bpf_xdp_pull_data
     program_types:
       - name: BPF_PROG_TYPE_XDP
 
@@ -774,6 +781,10 @@ sets:
       - name: scx_bpf_nr_node_ids
       - name: scx_bpf_select_cpu_and
         flags: [KF_RCU]
+      - name: scx_bpf_cpu_curr
+        flags: [KF_RET_NULL, KF_RCU_PROTECTED]
+      - name: scx_bpf_locked_rq
+        flags: [KF_RET_NULL]
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
       - name: BPF_PROG_TYPE_SYSCALL
@@ -859,3 +870,11 @@ sets:
       - name: bpf_qdisc_bstats_update
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
+
+  bpf_kfunc_set_skb_meta:
+    funcs:
+      - name: bpf_dynptr_from_skb_meta
+        flags: [KF_TRUSTED_ARGS]
+    program_types:
+      - name: BPF_PROG_TYPE_SCHED_ACT
+      - name: BPF_PROG_TYPE_SCHED_CLS
