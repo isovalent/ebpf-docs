@@ -2374,7 +2374,7 @@
     - name: bpf_arena_reserve_pages
       version: v6.17
       commit: 8fc3d2d8b5016adf63a3a6d21c189677fa653a4a
-    - name: bpf_stream_vprintk
+    - name: bpf_stream_vprintk_impl
       version: v6.17
       commit: 5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6
     - name: bpf_dynptr_memset
@@ -2500,3 +2500,24 @@
     - name: scx_bpf_select_cpu_and
       version: v6.16
       commit: 683d2d0faba12a0e7d4c3b85a62ac8298977e17b
+    - name: bpf_dynptr_from_skb_meta
+      version: v6.18
+      commit: 89d912e494f786e79f69ed9d567a8842c71dbb03
+    - name: bpf_xdp_pull_data
+      version: v6.18
+      commit: 4dce1a0d7cf39575a5880414ea882890edd8d26f
+    - name: scx_bpf_cpu_curr
+      version: v6.18
+      commit: 20b158094a1adc9bbfdcc41780059b5cd8866ad8
+    - name: scx_bpf_locked_rq
+      version: v6.18
+      commit: e0ca169638be12a0a861e3439e6117c58972cd08
+    - name: bpf_strcasecmp
+      version: v6.18
+      commit: 19559e8441843bb36ecc78bb8d5cf82d500352fd
+    - name: bpf_task_work_schedule_resume_impl
+      version: v6.18
+      commit: 38aa7003e369802f81a078f6673d10d97013f04f
+    - name: bpf_task_work_schedule_signal_impl
+      version: v6.18
+      commit: 38aa7003e369802f81a078f6673d10d97013f04f

@@ -5,6 +5,7 @@ import (
 	"io"
 	"math"
 	"slices"
+	"strconv"
 	"strings"
 )
 
@@ -96,11 +97,13 @@ var (
 	infinityFootnote    = footnote("Driver has no MTU limit")
 	nicSpecificFootnote = footnote("MTU limit specified by firmware")
 	tunFootnote         = footnote("Depends on slave device(s)")
+	hdsFootnote         = footnote("MTU limit depends on HDS threshold")
 	tableFootnotes      = []footnote{
 		footnote("reserved"),
 		infinityFootnote,
 		nicSpecificFootnote,
 		tunFootnote,
+		hdsFootnote,
 	}
 )
 
@@ -286,6 +289,11 @@ var varTable = []tableRow{
 				VersionXDP: KernelVersion{4, 17, 0},
 				DriverFunc: calcIXGBEVF,
 			},
+			{
+				Driver:     "IDPF",
+				VersionXDP: KernelVersion{6, 18, 0},
+				DriverFunc: calcIDPFMTU,
+			},
 		},
 	},
 	{
@@ -458,6 +466,22 @@ var varTable = []tableRow{
 				Driver:     "VMXNET 3",
 				VersionXDP: KernelVersion{6, 6, 0},
 				DriverFunc: calcVmxnet3MTU,
+			},
+		},
+	},
+	{
+		Vendor: "Meta",
+		Subrow: []tableSubrow{
+			{
+				Driver:     "FBNIC",
+				VersionXDP: KernelVersion{6, 18, 0},
+				Render: func(subrow tableSubrow, vars vars) string {
+					if vars.Frags {
+						return "∞" + infinityFootnote.Ref()
+					}
+
+					return "128 ≤ " + strconv.Itoa(calcFBNICMTUDefault(vars)) + "(default) ≤ " + strconv.Itoa(calcFBNICMTUMax(vars)) + hdsFootnote.Ref()
+				},
 			},
 		},
 	},

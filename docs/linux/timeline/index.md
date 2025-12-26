@@ -994,7 +994,7 @@ hide: toc
 ## :octicons-tag-24: v6.17
 
 * `bpf_arena_reserve_pages` [8fc3d2d](https://github.com/torvalds/linux/commit/8fc3d2d8b5016adf63a3a6d21c189677fa653a4a) (kfuncs)
-* `bpf_stream_vprintk` [5ab154f](https://github.com/torvalds/linux/commit/5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6) (kfuncs)
+* `bpf_stream_vprintk_impl` [5ab154f](https://github.com/torvalds/linux/commit/5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6) (kfuncs)
 * `bpf_dynptr_memset` [5fc5d8f](https://github.com/torvalds/linux/commit/5fc5d8fded57e5de0c0b56b00c4cfc522aa8c572) (kfuncs)
 * `bpf_cgroup_read_xattr` [b95ee90](https://github.com/torvalds/linux/commit/b95ee9049c93b05da66599d6e0d1fcfea291360b) (kfuncs)
 * `bpf_strcmp` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
@@ -1009,3 +1009,13 @@ hide: toc
 * `bpf_strnstr` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
 * `bpf_strstr` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
 * `bpf_cgroup_read_xattr` [b95ee90](https://github.com/torvalds/linux/commit/b95ee9049c93b05da66599d6e0d1fcfea291360b) (kfuncs)
+
+## :octicons-tag-24: v6.18
+
+* `bpf_dynptr_from_skb_meta` [89d912e](https://github.com/torvalds/linux/commit/89d912e494f786e79f69ed9d567a8842c71dbb03) (kfuncs)
+* `bpf_xdp_pull_data` [4dce1a0](https://github.com/torvalds/linux/commit/4dce1a0d7cf39575a5880414ea882890edd8d26f) (kfuncs)
+* `scx_bpf_cpu_curr` [20b1580](https://github.com/torvalds/linux/commit/20b158094a1adc9bbfdcc41780059b5cd8866ad8) (kfuncs)
+* `scx_bpf_locked_rq` [e0ca169](https://github.com/torvalds/linux/commit/e0ca169638be12a0a861e3439e6117c58972cd08) (kfuncs)
+* `bpf_strcasecmp` [19559e8](https://github.com/torvalds/linux/commit/19559e8441843bb36ecc78bb8d5cf82d500352fd) (kfuncs)
+* `bpf_task_work_schedule_resume_impl` [38aa700](https://github.com/torvalds/linux/commit/38aa7003e369802f81a078f6673d10d97013f04f) (kfuncs)
+* `bpf_task_work_schedule_signal_impl` [38aa700](https://github.com/torvalds/linux/commit/38aa7003e369802f81a078f6673d10d97013f04f) (kfuncs)

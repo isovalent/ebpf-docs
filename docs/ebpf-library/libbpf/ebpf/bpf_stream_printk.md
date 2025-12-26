@@ -21,13 +21,13 @@ The `bpf_stream_printk` macro is used to make writing to streams easier.
 	___bpf_fill(___param, args);						\
 	_Pragma("GCC diagnostic pop")						\
 										\
-	bpf_stream_vprintk(stream_id, ___fmt, ___param, sizeof(___param), NULL);\
+	bpf_stream_vprintk_impl(stream_id, ___fmt, ___param, sizeof(___param), NULL);\
 })
 ```
 
 ## Usage
 
-This macro is a wrapper around the [`bpf_stream_vprintk`](../../../linux/kfuncs/bpf_stream_vprintk.md) helper. It places the literal format string in a global variable, this is necessary to get the compiler to emit code that will be accepted by the verifier.
+This macro is a wrapper around the [`bpf_stream_vprintk_impl`](../../../linux/kfuncs/bpf_stream_vprintk_impl.md) helper. It places the literal format string in a global variable, this is necessary to get the compiler to emit code that will be accepted by the verifier.
 
 ### Example
 
