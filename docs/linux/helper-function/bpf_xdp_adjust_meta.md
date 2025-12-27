@@ -43,5 +43,79 @@ This helper call can be used in the following program types:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+```c
+#include <linux/bpf.h>
+#include <linux/if_ether.h>
+#include <linux/ip.h>
+#include <linux/pkt_cls.h>
+#include <bpf/bpf_helpers.h>
+
+
+/*
+ * Metadata written by XDP and later consumed by TC.
+ * Size and alignment must satisfy kernel metadata constraints
+ * (typically 4-byte aligned).
+ */
+struct test_meta {
+	__u32 mark;
+} __attribute__((aligned(4)));
+
+const __u32 marker = 0x1234;
+
+SEC("xdp")
+int xdp_store_meta(struct xdp_md *ctx) {
+	int ret = 0;
+
+	/*
+     * 1) Reserve metadata space by moving data_meta backwards.
+     *    Negative delta expands the metadata area.
+     */
+	ret = bpf_xdp_adjust_meta(ctx, -(int)sizeof(struct test_meta));
+	if (ret < 0)
+		return XDP_ABORTED;
+
+	/*
+     * 2) Reload pointers after calling helper.
+     *    The helper may update ctx fields, so old pointers are invalid.
+     */
+	void *data		= (void *)(long)ctx->data;
+	void *data_meta	= (void *)(long)ctx->data_meta;
+
+	
+    // 3) Bounds check. Metadata region must stay below data.
+	if (data_meta + sizeof(struct test_meta) > data)
+		return XDP_ABORTED;
+
+    // 4) Write metadata.
+	struct test_meta *m = data_meta;
+	m->mark = marker;
+
+	return XDP_PASS;
+}
+
+SEC("tc")
+int tc_load_meta(struct __sk_buff *skb) {
+	void *data		= (void *)(long)skb->data;
+	void *data_meta	= (void *)(long)skb->data_meta;
+
+	if (data_meta >= data) {
+		return TC_ACT_SHOT;
+	}
+	
+
+	// Bounds check: metadata must not overlap packet data.
+	if (data_meta + sizeof(struct test_meta) > data)
+		return TC_ACT_SHOT;
+
+	struct test_meta *m = data_meta;
+	if (m->mark != marker) {
+		return TC_ACT_SHOT;
+	}
+
+	skb->mark = m->mark;
+
+	return TC_ACT_OK;
+}
+
+char _license[] SEC("license") = "GPL";
+```
