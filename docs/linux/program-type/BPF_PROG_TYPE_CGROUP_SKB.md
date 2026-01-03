@@ -24,7 +24,7 @@ After [:octicons-tag-24: v5.3](https://github.com/torvalds/linux/commit/5cf1e914
 
 cGroup socket buffer programs are called by the kernel with a [`__sk_buff`](../program-context/__sk_buff.md) context.
 
-This program type isn't allowed to read from and write to all fields of the context since doing so might break assumptions in the kernel or because data isn't available at the point where the program is hooked into the kernel.
+This program type has restricted access to the context: it may read and write only certain fields. Other fields are disallowed because doing so might break kernel assumptions or because the data is unavailable at the hook point.
 
 <!-- Information based on `cg_skb_is_valid_access` and `bpf_skb_is_valid_access` functions in the kernel sources -->
 
