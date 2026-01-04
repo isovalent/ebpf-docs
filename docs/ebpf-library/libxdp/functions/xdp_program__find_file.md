@@ -13,6 +13,9 @@ The filename is **without** the PATH, it will automaticcaly look at `LIBXDP_OBJE
     By default, `LIBXDP_OBJECT_PATH` is set to `/usr/lib/bpf`
 
 !!! note
+    If `LIBXDP_OBJECT_PATH` is not set, `/usr/local/lib/bpf` is the default search directory
+
+!!! note
     If you want to use a specific path, you can use [`xdp_program__open_file`](./xdp_program__open_file.md)
 
 ### Returns
