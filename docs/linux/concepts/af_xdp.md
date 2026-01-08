@@ -4,7 +4,7 @@ description: "This page explains the concept of AF_XDP in depth, AF_XDP being a 
 ---
 # AF_XDP
 
-The kernel allows process to create sockets under the Address Family Express Data Path (AF_XDP) address family. This is a special socket type which in combination with an [XDP program](../program-type/BPF_PROG_TYPE_XDP.md) can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP Socket).
+The kernel allows processes to create sockets under the Address Family Express Data Path (AF_XDP) address family. This is a special socket type which in combination with an [XDP program](../program-type/BPF_PROG_TYPE_XDP.md) can perform full or partial kernel bypass. Bypassing the kernel network stack can increase performance in certain use cases. A socket created under the AF_XDP address family is also referred to as a XSK (XDP Socket).
 
 Examples of such use cases are:
 
@@ -12,11 +12,11 @@ Examples of such use cases are:
 * DDoS protection - If complex processing across multiple packets is required, eBPF programs can't keep up, thus forwarding traffic to user space for analysis might be needed.
 * Application specific optimization - The Linux network stack by necessity needs to handle a lot of protocols and edge cases which are not applicable to workloads you are running. This means paying performance cost for features you are not using. While not easy, one can implement a custom network stack specific to their needs, to eke out every drop of performance.
 
-All ingress traffic is first processes by an [XDP program](../program-type/BPF_PROG_TYPE_XDP.md), it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques such as `PACKET_MMAP` or `PF_RING` which require you to handle all traffic and re-implement every protocol needed for the host to function.
+All ingress traffic is first processed by an [XDP program](../program-type/BPF_PROG_TYPE_XDP.md), it can make a decision on which traffic to pass to the stack and which to bypass. This is powerful since it allows a user to bypass traffic for very specific applications, ports and/or protocols without disrupting the normal packet processing. Unlike other kernel bypass techniques such as `PACKET_MMAP` or `PF_RING` which require you to handle all traffic and re-implement every protocol needed for the host to function.
 
 ## Usage
 
-The rest of this page goes into details on how this feature works at the kernel level. Most user will want to use a library such as [libxdp](https://github.com/xdp-project/xdp-tools/tree/master/lib/libxdp#using-af_xdp-sockets) which implements most of the difficult details. An example program can be found [here](https://github.com/xdp-project/bpf-examples/tree/master/AF_XDP-example).
+The rest of this page goes into details on how this feature works at the kernel level. Most users will want to use a library such as [libxdp](https://github.com/xdp-project/xdp-tools/tree/master/lib/libxdp#using-af_xdp-sockets) which implements most of the difficult details. An example program can be found [here](https://github.com/xdp-project/bpf-examples/tree/master/AF_XDP-example).
 
 !!! warning
 	AF_XDP requires additional driver support on top of plain XDP support. Please check the [driver support](../program-type/BPF_PROG_TYPE_XDP.md#driver-support) table for driver compatibility.
@@ -27,7 +27,7 @@ A XSK consists of a few "parts" which all work together and have to be setup and
 
 ![XSK parts](../../assets/image/diagrams/af_xdp/0_initial.svg){class=image-bg-white}
 
-The socket (not displayed) ties everything together and gives the process a file descriptor which is used in syscalls. Next is the "UMEM" which is a piece of memory allocated by the process which is used for the actual packet data. It contains multiple chunks so it acts very much like an array. Lastly are 4 ring buffers: RX, TX, FILL, and COMPLETION. These ring buffers used to communicate ownership and intent for the different UMEM chunks. More details on this in the [Receiving and sending packets](#receiving-and-sending-packets) section.
+The socket (not displayed) ties everything together and gives the process a file descriptor which is used in syscalls. Next is the "UMEM" which is a piece of memory allocated by the process which is used for the actual packet data. It contains multiple chunks so it acts very much like an array. Lastly are 4 ring buffers: RX, TX, FILL, and COMPLETION. These ring buffers are used to communicate ownership and intent for the different UMEM chunks. More details on this in the [Receiving and sending packets](#receiving-and-sending-packets) section.
 
 ### Setting up a XSK
 
