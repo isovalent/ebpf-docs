@@ -14,7 +14,7 @@ description: "This page documents the 'bpf_skb_change_proto' eBPF helper functio
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Change the protocol of the _skb_ to _proto_. Currently supported are transition from IPv4 to IPv6, and from IPv6 to IPv4. The helper takes care of the groundwork for the transition, including resizing the socket buffer. The eBPF program is expected to fill the new headers, if any, via **skb_store_bytes**() and to recompute the checksums with **bpf_l3_csum_replace**() and **bpf_l4_csum_replace**\ (). The main case for this helper is to perform NAT64 operations out of an eBPF program.
+Change the protocol of the _skb_ to _proto_. Currently supported are transition from IPv4 to IPv6, and from IPv6 to IPv4. The helper takes care of the groundwork for the transition, including resizing the socket buffer. The eBPF program is expected to fill the new headers, if any, via **skb_store_bytes**() and to recompute the checksums with **bpf_l3_csum_replace**() and **bpf_l4_csum_replace**(). The main case for this helper is to perform NAT64 operations out of an eBPF program.
 
 Internally, the GSO type is marked as dodgy so that headers are checked and segments are recalculated by the GSO/GRO engine. The size for GSO target is adapted as well.
 

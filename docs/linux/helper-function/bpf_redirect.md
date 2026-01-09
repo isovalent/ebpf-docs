@@ -14,7 +14,7 @@ description: "This page documents the 'bpf_redirect' eBPF helper function, inclu
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Redirect the packet to another net device of index _ifindex_. This helper is somewhat similar to **bpf_clone_redirect**\ (), except that the packet is not cloned, which provides increased performance.
+Redirect the packet to another net device of index _ifindex_. This helper is somewhat similar to **bpf_clone_redirect**(), except that the packet is not cloned, which provides increased performance.
 
 Except for XDP, both ingress and egress interfaces can be used for redirection. The **BPF_F_INGRESS** value in _flags_ is used to make the distinction (ingress path is selected if the flag is present, egress path otherwise). Currently, XDP only supports redirection to the egress interface, and accepts no flag at all.
 

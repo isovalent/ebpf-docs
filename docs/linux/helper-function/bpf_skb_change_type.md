@@ -14,7 +14,7 @@ description: "This page documents the 'bpf_skb_change_type' eBPF helper function
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Change the packet type for the packet associated to _skb_. This comes down to setting _skb_**->pkt_type** to _type_, except the eBPF program does not have a write access to _skb_\ **->pkt_type** beside this helper. Using a helper here allows for graceful handling of errors.
+Change the packet type for the packet associated to _skb_. This comes down to setting _skb_**->pkt_type** to _type_, except the eBPF program does not have a write access to _skb_**->pkt_type** beside this helper. Using a helper here allows for graceful handling of errors.
 
 The major use case is to change incoming _skb_s to **PACKET_HOST** in a programmatic way instead of having to recirculate via **redirect**(..., **BPF_F_INGRESS**), for example.
 

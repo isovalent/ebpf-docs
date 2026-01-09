@@ -291,6 +291,7 @@ func manpageToMarkdown(manpage string) string {
 		for ii, line := range block.content {
 			var lb strings.Builder
 			isListItem := false
+			writeSpace := true
 			for i := 0; i < len(line); i++ {
 				// "* " at the beginning of the line, is a list
 				if i == 0 && line[i] == '*' && i+1 < len(line) && line[i+1] == ' ' {
@@ -311,8 +312,14 @@ func manpageToMarkdown(manpage string) string {
 				}
 
 				// Cut escaped spaces
-				if line[i] == '\\' && i+1 < len(line) && line[i+1] == ' ' {
+				if line[i] == '\\' && ((i+1 < len(line) && line[i+1] == ' ') || (i+1 >= len(line))) {
 					i++
+					// Backslash is at end of line, on next line cut first
+					// character if it is a space.
+					if i >= len(line) {
+						writeSpace = false
+						break
+					}
 					continue
 				}
 
@@ -344,7 +351,7 @@ func manpageToMarkdown(manpage string) string {
 					sb.WriteString(strings.Repeat("&nbsp;", block.indent-1))
 				}
 			} else {
-				if ii+1 < len(block.content) {
+				if ii+1 < len(block.content) && writeSpace {
 					sb.WriteString(" ")
 				}
 			}

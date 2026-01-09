@@ -14,7 +14,7 @@ description: "This page documents the 'bpf_skb_store_bytes' eBPF helper function
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Store _len_ bytes from address _from_ into the packet associated to _skb_, at _offset_. _flags_ are a combination of **BPF_F_RECOMPUTE_CSUM** (automatically recompute the checksum for the packet after storing the bytes) and **BPF_F_INVALIDATE_HASH** (set _skb_**->hash**, _skb_\ **->swhash** and _skb_**->l4hash** to 0).
+Store _len_ bytes from address _from_ into the packet associated to _skb_, at _offset_. _flags_ are a combination of **BPF_F_RECOMPUTE_CSUM** (automatically recompute the checksum for the packet after storing the bytes) and **BPF_F_INVALIDATE_HASH** (set _skb_**->hash**, _skb_**->swhash** and _skb_**->l4hash** to 0).
 
 A call to this helper is susceptible to change the underlying packet buffer. Therefore, at load time, all checks on pointers previously done by the verifier are invalidated and must be performed again, if the helper is used in combination with direct packet access.
 
