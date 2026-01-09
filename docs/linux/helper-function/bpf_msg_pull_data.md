@@ -14,7 +14,7 @@ description: "This page documents the 'bpf_msg_pull_data' eBPF helper function, 
 
 
 <!-- [HELPER_FUNC_DEF] -->
-For socket policies, pull in non-linear data from user space for _msg_ and set pointers _msg_**->data** and _msg_\ **->data_end** to _start_ and _end_ bytes offsets into _msg_, respectively.
+For socket policies, pull in non-linear data from user space for _msg_ and set pointers _msg_**->data** and _msg_**->data_end** to _start_ and _end_ bytes offsets into _msg_, respectively.
 
 If a program of type **BPF_PROG_TYPE_SK_MSG** is run on a _msg_ it can only parse data that the (**data**, **data_end**) pointers have already consumed. For **sendmsg**() hooks this is likely the first scatterlist element. But for calls relying on the **sendpage** handler (e.g. **sendfile**()) this will be the range (**0**, **0**) because the data is shared with user space and by default the objective is to avoid allowing user space to modify data while (or after) eBPF verdict is being decided. This helper can be used to pull in data and to set the start and end pointer to given values. Data will be copied if necessary (i.e. if data was not linear and if start and end pointers do not point to the same chunk).
 
