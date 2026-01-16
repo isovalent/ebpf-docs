@@ -73,7 +73,7 @@ some_kernel_func:
   RET
 ```
 
-This does not just add some additional logic like when tracing, it effectively redirects the execution of the original function to the generated BPF trampoline. The trampoline can now chose to never call the original (the `freplace` use case), call a BPF program before the original (the `fentry` use case), after the original (the `fexit` use case) or modify the return value of the original (the `fmodify_return` use case). It is also this generated trampoline that allows multiple programs to co-exist on the same function.
+This does not just add some additional logic like when tracing, it effectively redirects the execution of the original function to the generated BPF trampoline. The trampoline can now choose to never call the original (the `freplace` use case), call a BPF program before the original (the `fentry` use case), after the original (the `fexit` use case) or modify the return value of the original (the `fmodify_return` use case). It is also this generated trampoline that allows multiple programs to co-exist on the same function.
 
 The generated BPF trampoline is architecture specific dynamically generated machine code that boils down to:
 
