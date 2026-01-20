@@ -86,7 +86,7 @@ This helper call can be used with the following map types:
 
 ### Example
 
-```
+```c
 #include "vmlinux.h"
 #include <linux/version.h>
 #include <bpf/bpf_helpers.h>
@@ -116,4 +116,81 @@ int bpf_prog1(struct pt_regs *ctx)
 
 char _license[] SEC("license") = "GPL";
 u32 _version SEC("version") = LINUX_VERSION_CODE;
+```
+
+
+In TC/XDP, the lower 32 bits of `flags` still select the perf event index (or `BPF_F_CURRENT_CPU`).
+The upper 32 bits (i.e. `BPF_F_CTXLEN_MASK`) are used to request that a number of bytes from the packet be appended to the perf sample.
+This makes it possible to emit only metadata, only payload, or both in one call.
+
+#### TC/XDP examples by `flags` value
+
+```c
+#include <linux/bpf.h>
+#include <linux/pkt_cls.h>
+#include <bpf/bpf_helpers.h>
+
+struct {
+	__uint(type, BPF_MAP_TYPE_PERF_EVENT_ARRAY);
+	__uint(key_size, sizeof(__u32));
+	__uint(value_size, sizeof(__u32));
+	__uint(max_entries, 64);
+} events SEC(".maps");
+
+struct meta {
+	__u64 ts;
+	__u32 ifindex;
+	__u16 pkt_len;
+	__u16 reason;
+};
+
+static __always_inline __u64 perf_flags_with_ctxlen(__u32 ctx_len)
+{
+	return BPF_F_CURRENT_CPU | ((__u64)ctx_len << 32);
+}
+
+SEC("xdp")
+int xdp_emit(struct xdp_md *ctx)
+{
+	void *data = (void *)(long)ctx->data;
+	void *data_end = (void *)(long)ctx->data_end;
+	__u32 pkt_len = (__u32)(data_end - data);
+	struct meta m = {
+		.ts = bpf_ktime_get_ns(),
+		.ifindex = ctx->ingress_ifindex,
+		.pkt_len = (__u16)pkt_len,
+		.reason = 1,
+	};
+
+	/* 1) Only custom struct (no packet payload). */
+	bpf_perf_event_output(ctx, &events, BPF_F_CURRENT_CPU, &m, sizeof(m));
+
+	/* 2) Only packet payload (no custom struct). */
+	bpf_perf_event_output(ctx, &events, perf_flags_with_ctxlen(pkt_len), &m, 0);
+
+	/* 3) Custom struct + packet payload (struct first, payload appended). */
+	bpf_perf_event_output(ctx, &events, perf_flags_with_ctxlen(pkt_len), &m, sizeof(m));
+
+	return XDP_PASS;
+}
+
+SEC("tc/ingress")
+int tc_emit(struct __sk_buff *skb)
+{
+	struct meta m = {
+		.ts = bpf_ktime_get_ns(),
+		.ifindex = skb->ifindex,
+		.pkt_len = skb->len,
+		.reason = 2,
+	};
+
+	/* Same flags patterns apply for TC. */
+	bpf_perf_event_output(skb, &events, BPF_F_CURRENT_CPU, &m, sizeof(m));
+	bpf_perf_event_output(skb, &events, perf_flags_with_ctxlen(skb->len), &m, 0);
+	bpf_perf_event_output(skb, &events, perf_flags_with_ctxlen(skb->len), &m, sizeof(m));
+
+	return TC_ACT_OK;
+}
+
+char _license[] SEC("license") = "GPL";
 ```
