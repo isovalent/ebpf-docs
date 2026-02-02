@@ -175,8 +175,6 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     * [`bpf_send_signal_thread`](../helper-function/bpf_send_signal_thread.md)
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_snprintf_btf`](../helper-function/bpf_snprintf_btf.md)
-    * [`bpf_spin_lock`](../helper-function/bpf_spin_lock.md)
-    * [`bpf_spin_unlock`](../helper-function/bpf_spin_unlock.md)
     * [`bpf_strncmp`](../helper-function/bpf_strncmp.md)
     * [`bpf_tail_call`](../helper-function/bpf_tail_call.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
@@ -315,10 +313,6 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     - [`bpf_rdonly_cast`](../kfuncs/bpf_rdonly_cast.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_refcount_acquire_impl`](../kfuncs/bpf_refcount_acquire_impl.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_remove_dentry_xattr`](../kfuncs/bpf_remove_dentry_xattr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
-    - [`bpf_res_spin_lock`](../kfuncs/bpf_res_spin_lock.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
-    - [`bpf_res_spin_lock_irqsave`](../kfuncs/bpf_res_spin_lock_irqsave.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
-    - [`bpf_res_spin_unlock`](../kfuncs/bpf_res_spin_unlock.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
-    - [`bpf_res_spin_unlock_irqrestore`](../kfuncs/bpf_res_spin_unlock_irqrestore.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_send_signal_task`](../kfuncs/bpf_send_signal_task.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_set_dentry_xattr`](../kfuncs/bpf_set_dentry_xattr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_sock_destroy`](../kfuncs/bpf_sock_destroy.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 

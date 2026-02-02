@@ -123,8 +123,6 @@ Not all helper functions are available in all program types. These are the helpe
     * [`bpf_send_signal_thread`](../helper-function/bpf_send_signal_thread.md)
     * [`bpf_snprintf`](../helper-function/bpf_snprintf.md)
     * [`bpf_snprintf_btf`](../helper-function/bpf_snprintf_btf.md)
-    * [`bpf_spin_lock`](../helper-function/bpf_spin_lock.md)
-    * [`bpf_spin_unlock`](../helper-function/bpf_spin_unlock.md)
     * [`bpf_strncmp`](../helper-function/bpf_strncmp.md)
     * [`bpf_tail_call`](../helper-function/bpf_tail_call.md)
     * [`bpf_task_pt_regs`](../helper-function/bpf_task_pt_regs.md)
