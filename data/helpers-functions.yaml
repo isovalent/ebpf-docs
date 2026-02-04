@@ -312,6 +312,10 @@ programs:
   - group: tracing
   - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
   - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_timer_init # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_cancel # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_set_callback # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_start # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
 
   # `tc_cls_act_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_SCHED_CLS:
@@ -490,6 +494,10 @@ programs:
   - group: tracing
   - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
   - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_timer_init # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_cancel # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_set_callback # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_start # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
 
   # `xdp_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_XDP:
@@ -539,6 +547,10 @@ programs:
   - group: tracing
   - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
   - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_timer_init # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_cancel # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_set_callback # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_start # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
 
   # `cg_skb_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_CGROUP_SKB:
@@ -697,6 +709,10 @@ programs:
   - group: raw_tp
   - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
   - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_timer_init # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_cancel # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_set_callback # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_start # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
 
   # `sock_addr_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_CGROUP_SOCK_ADDR:
@@ -816,6 +832,10 @@ programs:
   - group: raw_tp
   - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
   - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_timer_init # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_cancel # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_set_callback # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
+  - exclude: bpf_timer_start # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20431
 
   # `cg_sockopt_func_proto` in `kernel/bpf/cgroup.c`
   BPF_PROG_TYPE_CGROUP_SOCKOPT:
