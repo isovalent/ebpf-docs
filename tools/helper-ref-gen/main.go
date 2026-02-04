@@ -11,10 +11,10 @@ import (
 	"io"
 	"os"
 	"path"
+	"slices"
 	"sort"
 	"strings"
 
-	"golang.org/x/exp/slices"
 	yaml "gopkg.in/yaml.v3"
 )
 
@@ -43,6 +43,7 @@ type helperFuncGroup []helperDef
 type helperDef struct {
 	Name               string   `yaml:"name"`
 	GroupName          string   `yaml:"group"`
+	Exclude            string   `yaml:"exclude"`
 	KConfig            []string `yaml:"kconfig"`
 	Capabilities       []string `yaml:"cap"`
 	AttachType         []string `yaml:"attach_type"`
@@ -62,28 +63,40 @@ type helperFuncDataFile struct {
 	Maps     map[string]helperFuncGroup `yaml:"maps"`
 }
 
-func (df *helperFuncDataFile) flatten(group helperFuncGroup) helperFuncGroup {
+func (df *helperFuncDataFile) resolve(group helperFuncGroup) helperFuncGroup {
 	for _, member := range group {
-		if member.GroupName != "" {
-			subGroup := df.Groups[member.GroupName]
-			subGroup = df.flatten(subGroup)
-			for _, subMember := range subGroup {
-				if slices.ContainsFunc(group, func(i helperDef) bool {
-					return i.Name == subMember.Name
-				}) {
-					continue
-				}
+		if member.GroupName == "" {
+			continue
+		}
 
-				group = append(group, subMember)
+		// Recursively resolve group members
+		subGroup := df.Groups[member.GroupName]
+		subGroup = df.resolve(subGroup)
+		for _, subMember := range subGroup {
+			// Add sub group members only if not already present.
+			// So more specific definitions in the parent group override the ones from the sub group.
+			if slices.ContainsFunc(group, func(i helperDef) bool {
+				return i.Name == subMember.Name
+			}) {
+				continue
 			}
+
+			group = append(group, subMember)
 		}
 	}
 
-	for i := len(group) - 1; i >= 0; i-- {
-		if group[i].GroupName != "" {
-			group = slices.Delete(group, i, i+1)
+	var excludes []string
+	for _, member := range group {
+		if member.Exclude != "" {
+			excludes = append(excludes, member.Exclude)
 		}
 	}
+
+	group = slices.DeleteFunc(group, func(def helperDef) bool {
+		return def.GroupName != "" || // Remove group definitions
+			slices.Contains(excludes, def.Name) || // Remove excluded members
+			def.Exclude != "" // Remove exclude definitions
+	})
 
 	slices.SortStableFunc(group, func(i, j helperDef) int {
 		if i.Name == j.Name {
@@ -280,7 +293,7 @@ type perFunc struct {
 func renderHelperFuncPages(dataFile *helperFuncDataFile) error {
 	progTypesPerFunc := make(map[string][]perFunc)
 	for progType := range dataFile.Programs {
-		group := dataFile.flatten(dataFile.Programs[progType])
+		group := dataFile.resolve(dataFile.Programs[progType])
 		for _, helperDef := range group {
 			progTypesPerFunc[helperDef.Name] = append(progTypesPerFunc[helperDef.Name], perFunc{
 				name:  progType,
@@ -364,7 +377,7 @@ func renderHelperFuncPages(dataFile *helperFuncDataFile) error {
 
 	mapTypesPerFunc := make(map[string][]perFunc)
 	for mapType := range dataFile.Maps {
-		group := dataFile.flatten(dataFile.Maps[mapType])
+		group := dataFile.resolve(dataFile.Maps[mapType])
 		for _, helperDef := range group {
 			mapTypesPerFunc[helperDef.Name] = append(mapTypesPerFunc[helperDef.Name], perFunc{
 				name:  mapType,
@@ -463,7 +476,7 @@ func parseDataFile() (*helperFuncDataFile, error) {
 
 // The reference of helper functions placed on the program type page
 func renderProgramHelperFuncReference(file *helperFuncDataFile, progType string) string {
-	group := file.flatten(file.Programs[progType])
+	group := file.resolve(file.Programs[progType])
 
 	var sb strings.Builder
 
@@ -481,7 +494,7 @@ func renderProgramHelperFuncReference(file *helperFuncDataFile, progType string)
 
 // The reference of helper functions placed on the program type page
 func renderMapHelperFuncReference(file *helperFuncDataFile, progType string) string {
-	group := file.flatten(file.Maps[progType])
+	group := file.resolve(file.Maps[progType])
 
 	var sb strings.Builder
 
