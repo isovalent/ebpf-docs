@@ -35,8 +35,13 @@ type sinceUntil struct {
 }
 
 type kfunc struct {
-	Name  string   `yaml:"name"`
-	Flags []string `yaml:"flags"`
+	Name   string         `yaml:"name"`
+	Flags  []string       `yaml:"flags"`
+	Except kfuncException `yaml:"except,omitempty"`
+}
+
+type kfuncException struct {
+	ProgramTypes []programType `yaml:"program_types"`
 }
 
 const (
@@ -148,14 +153,50 @@ func main() {
 	}
 	merged := make(map[string]mergedKfunc)
 	for _, set := range kfuncsConfig.Sets {
+		var setProgTypes []programType
+		// Expand UNSPEC to all kfunc program types
+		for _, progType := range set.ProgramTypes {
+			if progType.Name == "BPF_PROG_TYPE_UNSPEC" {
+				setProgTypes = append(setProgTypes, kfuncProgramTypes...)
+			} else {
+				setProgTypes = append(setProgTypes, progType)
+			}
+		}
+
 		for _, kfunc := range set.Funcs {
 			if slices.Contains(removeKfuncs, kfunc.Name) {
 				continue
 			}
 
+			// Remove any excepted program types
+			kfuncProgTypes := slices.DeleteFunc(slices.Clone(setProgTypes), func(pt programType) bool {
+				for _, exProgType := range kfunc.Except.ProgramTypes {
+					if pt.Name == exProgType.Name {
+						return true
+					}
+				}
+				return false
+			})
+
+			kfuncProgTypes = append(merged[kfunc.Name].progTypes, kfuncProgTypes...)
+
+			// Sort and deduplicate program types
+			slices.SortStableFunc(kfuncProgTypes, func(a, b programType) int {
+				if a.Name == b.Name {
+					return 0
+				}
+				if a.Name < b.Name {
+					return -1
+				}
+				return 1
+			})
+			kfuncProgTypes = slices.CompactFunc(kfuncProgTypes, func(a, b programType) bool {
+				return a.Name == b.Name
+			})
+
 			merged[kfunc.Name] = mergedKfunc{
 				kfunc:     kfunc,
-				progTypes: append(merged[kfunc.Name].progTypes, set.ProgramTypes...),
+				progTypes: kfuncProgTypes,
 			}
 		}
 	}
@@ -256,29 +297,7 @@ func main() {
 			panic(err)
 		}
 
-		var progTypes []programType
 		for _, progType := range kfunc.progTypes {
-			if progType.Name == "BPF_PROG_TYPE_UNSPEC" {
-				progTypes = append(progTypes, kfuncProgramTypes...)
-			} else {
-				progTypes = append(progTypes, progType)
-			}
-		}
-
-		slices.SortStableFunc(progTypes, func(a, b programType) int {
-			if a.Name == b.Name {
-				return 0
-			}
-			if a.Name < b.Name {
-				return -1
-			}
-			return 1
-		})
-		progTypes = slices.CompactFunc(progTypes, func(a, b programType) bool {
-			return a.Name == b.Name
-		})
-
-		for _, progType := range progTypes {
 			progToKfunc[progType.Name] = append(progToKfunc[progType.Name], kfuncMeta{
 				name:  kfunc.Name,
 				since: progType.Since,
@@ -302,7 +321,7 @@ func main() {
 
 		newFile.WriteString("\n")
 
-		for _, progType := range progTypes {
+		for _, progType := range kfunc.progTypes {
 			newFile.WriteString(fmt.Sprintf("- [`%s`](../program-type/%s.md)", progType.Name, progType.Name))
 			if progType.Since != nil {
 				fmt.Fprintf(&newFile, " [:octicons-tag-24: v%s](https://github.com/torvalds/linux/commit/%s)", progType.Since.Version, progType.Since.Commit)
