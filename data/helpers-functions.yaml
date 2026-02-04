@@ -161,7 +161,6 @@ groups:
     attach_type: [BPF_TRACE_ITER]
 
   # 'bpf_tracing_func_proto' in `kernel/tracing/bpf_trace.c`
-  # TODO tracing program are not allowed to use `bpf_spin_lock`, limited in the verifier
   tracing:
   - name: bpf_map_lookup_elem
   - name: bpf_map_update_elem
@@ -298,6 +297,8 @@ programs:
   # `sk_filter_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_SOCKET_FILTER:
   - group: sk_filter
+  - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20418
+  - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20418
 
   # `kprobe_prog_func_proto` in `kernel/tracing/bpf_trace.c`
   BPF_PROG_TYPE_KPROBE:
@@ -309,6 +310,8 @@ programs:
   - name: bpf_get_func_ip
   - name: bpf_get_attach_cookie
   - group: tracing
+  - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
 
   # `tc_cls_act_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_SCHED_CLS:
@@ -485,6 +488,8 @@ programs:
   - name: bpf_get_stack
   - name: bpf_get_attach_cookie
   - group: tracing
+  - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
 
   # `xdp_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_XDP:
@@ -532,6 +537,8 @@ programs:
   - name: bpf_read_branch_records
   - name: bpf_get_attach_cookie
   - group: tracing
+  - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
 
   # `cg_skb_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_CGROUP_SKB:
@@ -688,6 +695,8 @@ programs:
   BPF_PROG_TYPE_RAW_TRACEPOINT:
   - name: bpf_get_attach_cookie
   - group: raw_tp
+  - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
 
   # `sock_addr_func_proto` in `net/core/filter.c`
   BPF_PROG_TYPE_CGROUP_SOCK_ADDR:
@@ -805,6 +814,8 @@ programs:
   # `raw_tp_prog_func_proto` in `kernel/tracing/bpf_trace.c`
   BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE:
   - group: raw_tp
+  - exclude: bpf_spin_lock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
+  - exclude: bpf_spin_unlock # Excluded by logic in https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20423
 
   # `cg_sockopt_func_proto` in `kernel/bpf/cgroup.c`
   BPF_PROG_TYPE_CGROUP_SOCKOPT:
