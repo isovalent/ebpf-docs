@@ -141,11 +141,39 @@ sets:
       - name: bpf_refcount_acquire_impl
         flags: [KF_ACQUIRE, KF_RET_NULL, KF_RCU]
       - name: bpf_list_push_front_impl
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_list_push_back_impl
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_list_pop_front
         flags: [KF_ACQUIRE, KF_RET_NULL]
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_list_pop_back
         flags: [KF_ACQUIRE, KF_RET_NULL]
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_task_acquire
         flags: [KF_ACQUIRE, KF_RCU, KF_RET_NULL]
       - name: bpf_task_release
@@ -153,8 +181,22 @@ sets:
       - name: bpf_rbtree_remove
         flags: [KF_ACQUIRE, KF_RET_NULL]
       - name: bpf_rbtree_add_impl
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_rbtree_first
         flags: [KF_RET_NULL]
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_cgroup_acquire
         flags: [KF_ACQUIRE, KF_RCU, KF_RET_NULL]
       - name: bpf_cgroup_release
@@ -175,10 +217,45 @@ sets:
       - name: bpf_send_signal_task
         flags: [KF_TRUSTED_ARGS]
       - name: bpf_list_back
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_list_front
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_rbtree_left
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_rbtree_right
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_rbtree_root
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
     program_types:
       - name: BPF_PROG_TYPE_TRACING
       - name: BPF_PROG_TYPE_TRACEPOINT
@@ -242,8 +319,29 @@ sets:
       - name: bpf_dynptr_size
       - name: bpf_dynptr_clone
       - name: bpf_wq_init
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20438
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_wq_set_callback_impl
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20438
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_wq_start
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20438
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_preempt_disable
       - name: bpf_preempt_enable
       - name: bpf_iter_bits_new
@@ -844,10 +942,50 @@ sets:
     funcs:
       - name: bpf_res_spin_lock
         flags: [KF_RET_NULL]
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20417
+          program_types:
+            # For socket filter programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20419
+            - name: BPF_PROG_TYPE_SOCKET_FILTER
+            # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_res_spin_unlock
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20417
+          program_types:
+            # For socket filter programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20419
+            - name: BPF_PROG_TYPE_SOCKET_FILTER
+            # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_res_spin_lock_irqsave
         flags: [KF_RET_NULL]
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20417
+          program_types:
+            # For socket filter programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20419
+            - name: BPF_PROG_TYPE_SOCKET_FILTER
+            # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_res_spin_unlock_irqrestore
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20417
+          program_types:
+            # For socket filter programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20419
+            - name: BPF_PROG_TYPE_SOCKET_FILTER
+            # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 
