@@ -37,7 +37,7 @@ In other to attach an eBPF program to a USDT tracepoint we have to know where to
 
 This location is then used to attach a [uprobe](../program-type/BPF_PROG_TYPE_KPROBE.md#usage). The <nospell>NOP</nospell> instruction is replaced with a INT3 instruction on x86 (other CPU interrupt instructions on other architectures). When the userspace program executes this instruction, the BPF program is called.
 
-The slightly tricky bit is handling arguments passed to a tracepoint. When the USDT note is create, it records where that argument is located. But unlike with function calls, there is no ABI here, no rule for which arguments go where. The note passes the location of the argument as [GAS(GNU assembler) operand](https://en.wikibooks.org/wiki/X86_Assembly/GNU_assembly_syntax). It is up the the loader and eBPF program to figure out how to turn this into logic to actually extract these arguments from the process and use them.
+The slightly tricky bit is handling arguments passed to a tracepoint. When the USDT note is created, it records where that argument is located. But unlike with function calls, there is no ABI here, no rule for which arguments go where. The note passes the location of the argument as [GAS(GNU assembler) operand](https://en.wikibooks.org/wiki/X86_Assembly/GNU_assembly_syntax). It is up the the loader and eBPF program to figure out how to turn this into logic to actually extract these arguments from the process and use them.
 
 Fortunately, the heavy lifting is often taken care of by libraries such as libbpf, which provides the loader logic via [`bpf_program__attach_usdt`](../../ebpf-library/libbpf/userspace/bpf_program__attach_usdt.md) (implementation in [`usdt.c`](https://github.com/libbpf/libbpf/blob/master/src/usdt.c)).
 
@@ -65,7 +65,7 @@ The ELF section specified in [`SEC`](../../ebpf-library/libbpf/ebpf/SEC.md) can 
 
 ## Semaphores
 
-Semaphores are an optional USDT feature. A semaphore is a number which is incremented when a probe is attached and decremented when detached. This allows a program to see if it being traced. An example use could could be that you would like to expose internal state to a tracepoint, but accessing that state is costly. You can first see if any probes are attached, and only collect the arguments if at least one is.
+Semaphores are an optional USDT feature. A semaphore is a number which is incremented when a probe is attached and decremented when detached. This allows a program to see if it being traced. An example use could be that you would like to expose internal state to a tracepoint, but accessing that state is costly. You can first see if any probes are attached, and only collect the arguments if at least one is.
 
 The location of the semaphore is included in the <nospell>SDT</nospell> note.
 
