@@ -14,7 +14,7 @@ The array map type is a generic map type with no restrictions on the structure o
 
 While the [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) is essentially unrestricted, the [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must always be `4` indicating the key is a 32-bit unsigned integer.
 
-The value of [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) shouldn't exceed `KMALLOC_MAX_SIZE`. `KMALLOC_MAX_SIZE` is the maximum size which can be allocated by the kernel memory allocator, its exact value being dependant on a number of factors. If this edge case is hit a `-E2BIG` [error number](https://man7.org/linux/man-pages/man3/errno.3.html) is returned to the [map create syscall](../syscall/BPF_MAP_CREATE.md).
+The value of [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) shouldn't exceed `KMALLOC_MAX_SIZE`. `KMALLOC_MAX_SIZE` is the maximum size which can be allocated by the kernel memory allocator, its exact value being dependent on a number of factors. If this edge case is hit a `-E2BIG` [error number](https://man7.org/linux/man-pages/man3/errno.3.html) is returned to the [map create syscall](../syscall/BPF_MAP_CREATE.md).
 
 <!-- TODO link to generic page for attributes which are the same for every map type -->
 

@@ -61,7 +61,7 @@ If `0`, the current struct_ops will be registered at the end of the list of stru
 
 `#!c int (*hid_device_event)(struct hid_bpf_ctx *ctx, enum hid_report_type report_type, u64 source)`
 
-This function/program is called whenever an event is coming in from the device. The callback is executed in the context of an interrupt and may therefor not be [sleepable](../../syscall/BPF_PROG_LOAD.md#bpf_f_sleepable).
+This function/program is called whenever an event is coming in from the device. The callback is executed in the context of an interrupt and may therefore not be [sleepable](../../syscall/BPF_PROG_LOAD.md#bpf_f_sleepable).
 
 **Parameters**
 

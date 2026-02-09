@@ -10,7 +10,7 @@ This function allow to access a specific transmit descriptor in the **TX** ring.
 
 ### Returns
 
-`struct xdp_desc`, informations about the packet to be transmitted.
+`struct xdp_desc`, information about the packet to be transmitted.
 
 ## Usage
 

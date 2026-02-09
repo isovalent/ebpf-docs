@@ -26,7 +26,7 @@ enum libbpf_tristate {
 
 This enum type is also provided by the `bpf_helpers.h` file. 
 
-This capability ties into CO-RE (Compile Once - Run Everywhere). Since the value is provided at load time it allows the user to write multiple variations / code paths that are enabled or disabled based on the value of, for example, in this case a kernel configuration option. Therefor allowing the same pre-compiled eBPF program to be loaded on different systems with different kernel configurations.
+This capability ties into CO-RE (Compile Once - Run Everywhere). Since the value is provided at load time it allows the user to write multiple variations / code paths that are enabled or disabled based on the value of, for example, in this case a kernel configuration option. Therefore allowing the same pre-compiled eBPF program to be loaded on different systems with different kernel configurations.
 
 If a value for a kernel configuration option is not found, the loader (library) will error out, unless the [`__weak`](__weak.md) attribute is also used.
 

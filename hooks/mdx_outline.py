@@ -123,7 +123,7 @@ Further credits
 This is a rewrite of the 
 [mdx_addsection extension](http://git.constantvzw.org/?p=aa.core.git;a=blob;f=aacore/mdx_addsections.py;h=969e520a42b0018a2c4b74889fecc83a7dd7704a;hb=HEAD) 
 we've written for [active archives](http://activearchives.org). The first
-version had a bug with non hierachical heading structures. This is no longer a
+version had a bug with non hierarchical heading structures. This is no longer a
 problem: a couple of weeks ago, Jesse Dhillon pushed to github a similar plugin
 which fixes the problem. Thanks to him, mdx_outline no longer has the problem.
 

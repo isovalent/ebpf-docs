@@ -24,7 +24,7 @@ Until [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1
 
 Since [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) a distinction is made between "static" and "global" functions. Static functions are functions marked with the `static` keyword in the C code, global functions regular non-static functions. Static functions are still verified as usual. But global functions undergo "function by function verification". This means that the verifier will verify every function once, and even out of order. So every function is verified exactly once, and not per-call site anymore. This change reduces verification times and complexity. But the verifier does impose a lot more limitations. 
 
-The verifier will assume no information about arguments, since it will not check every call site anymore. So even tough a function is only ever called with a `u32` of `123`, the verifier will assume the full `0`-`4294967295` are possible values. Therefor, functions might require more input checking to pass the verifier.
+The verifier will assume no information about arguments, since it will not check every call site anymore. So even tough a function is only ever called with a `u32` of `123`, the verifier will assume the full `0`-`4294967295` are possible values. Therefore, functions might require more input checking to pass the verifier.
 
 The verifier also limits the return type to always be scalar (a number). And the arguments to be pointer to a program context and scalars. This limitation on arguments was widen in later kernel releases, see later sections.
 

@@ -35,7 +35,7 @@ Conventionally with these program contexts, the arguments to the program are put
 The `BPF_PROG` macro allows you to write your program with a normal function signature, the macro will then do the casting for you.
 
 !!! note
-    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefor, the variable name `ctx` should not be reused in arguments or function body.
+    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefore, the variable name `ctx` should not be reused in arguments or function body.
 
 !!! warning
     This macro assumes a 1 to 1 conversion between a `u64` and argument. However, the Sys V calling convention allows types such as structs of up to 16 bytes to be passed over 2 registers and thus two `u64`s in the context. That breaks the assumption and may lead to hard to resolve bugs. The [`BPF_PROG2`](BPF_PROG2.md) macro is the improved version of this one which does account for this. Its recommend to use the second version when you might be dealing with arguments larger than 8 bytes.

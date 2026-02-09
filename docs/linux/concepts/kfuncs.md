@@ -275,7 +275,7 @@ The verifier will guarantee that an iterator is destroyed by a function with the
 
 The `KF_ITER_NEXT` flag is used to indicate that the KFunc is used to advance an iterator. This means that the KFunc will take a pointer to an iterator and advance it to the next object.
 
-The verifier will enforce that a `KF_ITER_NEXT` KFunc is only called with an interator created a `KF_ITER_NEW` KFunc. Typically a `KF_ITER_NEW` KFunc will have a corresponding `KF_ITER_NEXT` KFunc, such pairs are easy to spot.
+The verifier will enforce that a `KF_ITER_NEXT` KFunc is only called with an iterator created a `KF_ITER_NEW` KFunc. Typically a `KF_ITER_NEW` KFunc will have a corresponding `KF_ITER_NEXT` KFunc, such pairs are easy to spot.
 
 ### `KF_ITER_DESTROY`
 

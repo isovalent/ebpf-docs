@@ -42,7 +42,7 @@ This flag has a value of `0`, so setting it together with another flag has no im
 If this flag is set, the command will make sure that the given key doesn't exist yet. If the same key already exists when this command is executed the `-EEXIST` error number will be returned.
 
 !!! note
-    Array map types are always pre-allocated and have all keys from `0` to `max_entries`-`1` set to zero, so commands with this flag set will alway fail.
+    Array map types are always pre-allocated and have all keys from `0` to `max_entries`-`1` set to zero, so commands with this flag set will always fail.
 
 #### `BPF_EXISTS`
 

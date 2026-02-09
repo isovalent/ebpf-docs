@@ -16,7 +16,7 @@ This command will return `0` on success or a error number (negative integer) if 
 
 ## Usage
 
-This syscall command returns information about the BPF object indicated by `bpf_fd`. The structure of the returned information is dependant on the object type. More on this in the [info structures](#info-structures) section.
+This syscall command returns information about the BPF object indicated by `bpf_fd`. The structure of the returned information is dependent on the object type. More on this in the [info structures](#info-structures) section.
 
 This syscall is typically used by inspection tools to get information about loaded objects that you would normally "know" if you were the author or loader of a given object. 
 
@@ -43,7 +43,7 @@ This field indicates the size of the buffer which `info` points to and will be c
 
 ### `info`
 
-This field indicates a memory region to which the kernel will write the requested information, the structure of which is dependant on the object type to which `bpf_fd` refers (see [info structures](#info-structures)). This field should be a pointer.
+This field indicates a memory region to which the kernel will write the requested information, the structure of which is dependent on the object type to which `bpf_fd` refers (see [info structures](#info-structures)). This field should be a pointer.
 
 ## Info structures
 

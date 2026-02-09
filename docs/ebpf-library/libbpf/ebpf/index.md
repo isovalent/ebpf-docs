@@ -70,7 +70,7 @@ The file contains definitions for the following:
 
 ## [`bpf_endian.h`](https://github.com/libbpf/libbpf/blob/master/src/bpf_endian.h)
 
-The `bpf_endian.h` file contains macros for endianess conversion. It is useful when you need to convert data between host and network byte order.
+The `bpf_endian.h` file contains macros for endianness conversion. It is useful when you need to convert data between host and network byte order.
 
 The file contains definitions for the following:
 

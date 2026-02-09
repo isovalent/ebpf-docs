@@ -41,7 +41,7 @@ struct some_value dst;
 bpf_core_read(&dst, sizeof(dst), a.c.d);
 ```
 
-Since `src` contains the field accesses, these fill be stored in the relocation entry so the actual offset can be adjusted. It is therefor important to not do the field access outside of the `bpf_core_read`:
+Since `src` contains the field accesses, these fill be stored in the relocation entry so the actual offset can be adjusted. It is therefore important to not do the field access outside of the `bpf_core_read`:
 
 ```c
 /* Incorrect */

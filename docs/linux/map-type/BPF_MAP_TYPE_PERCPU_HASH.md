@@ -24,9 +24,9 @@ Since preemption is disabled during program execution, no other programs will be
 
 ## Attributes
 
-While the size of the key and value are essentially unrestricted both [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) and [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must be at least zero and their combined size no larger than `KMALLOC_MAX_SIZE`. `KMALLOC_MAX_SIZE` is the maximum size which can be allocated by the kernel memory allocator, its exact value being dependant on a number of factors. If this edge case is hit a `-E2BIG` [error number](https://man7.org/linux/man-pages/man3/errno.3.html) is returned to the [map create syscall](../syscall/BPF_MAP_CREATE.md).
+While the size of the key and value are essentially unrestricted both [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) and [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must be at least zero and their combined size no larger than `KMALLOC_MAX_SIZE`. `KMALLOC_MAX_SIZE` is the maximum size which can be allocated by the kernel memory allocator, its exact value being dependent on a number of factors. If this edge case is hit a `-E2BIG` [error number](https://man7.org/linux/man-pages/man3/errno.3.html) is returned to the [map create syscall](../syscall/BPF_MAP_CREATE.md).
 
-The [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries) attribute indicates the max entries per-CPU so the actual memory size consumed is also dependant on the logical CPU count of the host.
+The [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries) attribute indicates the max entries per-CPU so the actual memory size consumed is also dependent on the logical CPU count of the host.
 
 <!-- TODO link to generic page for attributes which are the same for every map type -->
 

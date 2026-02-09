@@ -33,7 +33,7 @@ Map value associated to _key_, or **NULL** if no entry was found.
 The `map` argument must be a pointer to a map definition and `key` must be a pointer to the key you
 wish to lookup.
 
-The return value will be a pointer to the map value or `NULL`. The value is a direct reference to the kernel memory where this map value is stored, not a copy. Therefor any modifications made to the value are automatically persisted without the need to call any additional helpers.
+The return value will be a pointer to the map value or `NULL`. The value is a direct reference to the kernel memory where this map value is stored, not a copy. Therefore any modifications made to the value are automatically persisted without the need to call any additional helpers.
 
 !!! warning
     modifying map values of non per-CPU maps is subject to race conditions, atomic instructions or spinlocks must be utilized to prevent race conditions if they are detrimental to your use case.

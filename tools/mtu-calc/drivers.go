@@ -163,7 +163,7 @@ func calcDPAAMTU(v vars) int {
 }
 
 func calcDPAA2MTU(v vars) int {
-	// TODO: figure out typical priv->tx_data_offset which is recieved from the NIC
+	// TODO: figure out typical priv->tx_data_offset which is received from the NIC
 	// without it we can't calculate the MTU
 	return 0
 }

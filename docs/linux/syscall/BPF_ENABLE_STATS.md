@@ -20,7 +20,7 @@ When enabled, the kernel will start to update the `run_time_ns` and `run_cnt` fi
 
 The `run_time_ns` value holds the accumulated amount of nano seconds the BPF program has ran and the `run_cnt` the amount of times it ran. Users might be interested in these values for the sake of monitoring the amount of CPU time BPF programs take up or to benchmark programs under real world conditions.
 
-These statistics are not enabled by default since BPF programs might be called quite frequently and recording this information increases the overhead of each BPF program run. It is therefor recommended to not permanently enable this feature in production environments or to do so when CPU usage can be spared.
+These statistics are not enabled by default since BPF programs might be called quite frequently and recording this information increases the overhead of each BPF program run. It is therefore recommended to not permanently enable this feature in production environments or to do so when CPU usage can be spared.
 
 The typical usage pattern would be:
 

@@ -15,7 +15,7 @@ The `BPF_MAP_GET_NEXT_KEY` command is used to iterate over the keys of a map.
 
 If the given `key` isn't found within the map, `0` is returned and the value pointed to by `next_key` will be set to the first key in the map. 
 
-If the given `key` is found withing the map, `0` is returned and the value pointed to by `next_key` will be set to the key after the current key.
+If the given `key` is found within the map, `0` is returned and the value pointed to by `next_key` will be set to the key after the current key.
 
 If the given `key` is found within the map and it is the last key, an error number of `-ENOENT` will be returned.
 
