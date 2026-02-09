@@ -45,7 +45,7 @@ Traditionally a program author would have to use the [`PT_REGS_SYSCALL_REGS`](PT
 The `BPF_KSYSCALL` macro allows you to write your program with an argument list, the macro will do the casting for you and accounts for the syscall wrapping.
 
 !!! note
-    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefor, the variable name `ctx` should not be reused in arguments or function body.
+    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefore, the variable name `ctx` should not be reused in arguments or function body.
 
 !!! warning
     At the moment `BPF_KSYSCALL` does not transparently handle all the calling convention quirks for the following syscalls:

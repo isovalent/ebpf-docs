@@ -50,7 +50,7 @@ This field contains a pointer to the end of the packet data. The verifier will e
 
 [:octicons-tag-24: v4.15](https://github.com/torvalds/linux/commit/de8f3a83b0a0fddb2cf56e7a718127e9619ea3da)
 
-This field contains a pointer to the start of a metadata region in the packet memory. By default, no metadata room is available, so the value of `data_meta` and `data` will be the same. The XDP program can request metadata with the [`bpf_xdp_adjust_meta`](../helper-function/bpf_xdp_adjust_meta.md) helper, on success `data_meta` is updated so it is not less then `data`. The room between `data_meta` and `data` is freely useable by the XDP program.
+This field contains a pointer to the start of a metadata region in the packet memory. By default, no metadata room is available, so the value of `data_meta` and `data` will be the same. The XDP program can request metadata with the [`bpf_xdp_adjust_meta`](../helper-function/bpf_xdp_adjust_meta.md) helper, on success `data_meta` is updated so it is not less then `data`. The room between `data_meta` and `data` is freely usable by the XDP program.
 
 If the packet with metadata is passed to the kernel, that metadata will be available in the [`__sk_buff`](../program-context/__sk_buff.md) via its [`data_meta`](../program-context/__sk_buff.md#data_meta) and `data` fields.
 
@@ -81,7 +81,7 @@ This field is read-only and contains the network interface index the packet has 
 
 [:octicons-tag-24: v5.18](https://github.com/torvalds/linux/commit/c2f2cdbeffda7b153c19e0f3d73149c41026c0db)
 
-An increasingly common performance optimization technique is to use larger packets and to bulk process them (Jumbo packets, GRO, BIG-TCP). It might therefor happen that packets get larger than a single memory page or that we want to glue multiple already allocated packets together. This breaks the existing assumption XDP programs have of all the packet data living in a linear area between `data` and `data_end`. 
+An increasingly common performance optimization technique is to use larger packets and to bulk process them (Jumbo packets, GRO, BIG-TCP). It might therefore happen that packets get larger than a single memory page or that we want to glue multiple already allocated packets together. This breaks the existing assumption XDP programs have of all the packet data living in a linear area between `data` and `data_end`. 
 
 In order to offer support and not break existing programs, the concept of "XDP fragment aware" programs was introduced. XDP program authors writing such programs can compare the length between the `data` and `data_end` pointer and the output of [`bpf_xdp_get_buff_len`](../helper-function/bpf_xdp_get_buff_len.md). If the XDP program needs to work with data beyond the linear portion it should use the [`bpf_xdp_load_bytes`](../helper-function/bpf_xdp_load_bytes.md) and [`bpf_xdp_store_bytes`](../helper-function/bpf_xdp_store_bytes.md) helpers.
 

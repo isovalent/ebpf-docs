@@ -16,7 +16,7 @@ This map consists of a singular ring as opposed to the per-CPU design of the `BP
 
 Since this map type does not have key-value pairs, and the communicated samples can be of any size, the [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) and [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) attributes have to both be set to `0`.
 
-The [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries) attribute is used to specify the size of the ring-buffer in bytes. It must be a power of 2 and a multiple of the page size (typically `4096`), so `4096`, `8192`, `16384`, `32768`, ect.
+The [`max_entries`](../syscall/BPF_MAP_CREATE.md#max_entries) attribute is used to specify the size of the ring-buffer in bytes. It must be a power of 2 and a multiple of the page size (typically `4096`), so `4096`, `8192`, `16384`, `32768`, etc.
 
 ## Userspace map reading
 

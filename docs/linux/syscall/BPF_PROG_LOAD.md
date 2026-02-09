@@ -155,7 +155,7 @@ This attribute specifies the network interface index the user intends to attach 
 
 [:octicons-tag-24: v4.17](https://github.com/torvalds/linux/commit/5e43f899b03a3492ce5fc44e8900becb04dae9c0)
 
-This attribute specifies the attach type the user expects to use when attaching the program. For certain program types, the attach type may changes aspects like the context type that will be given, the meaning of return values, and which helper function are or are not available. Therefor the verifier must know the attach type during loading time to enforce correct behavior of the program to be loaded.
+This attribute specifies the attach type the user expects to use when attaching the program. For certain program types, the attach type may changes aspects like the context type that will be given, the meaning of return values, and which helper function are or are not available. Therefore the verifier must know the attach type during loading time to enforce correct behavior of the program to be loaded.
 
 The expected attach type is known to be important in the following cases:
 
@@ -163,7 +163,7 @@ The expected attach type is known to be important in the following cases:
 * For `BPF_PROG_TYPE_TRACING` programs the attach type determine access to helper calls
 * For `BPF_PROG_TYPE_CGROUP_SOCK_ADDR` programs the verifier restricts valid return values depending on attach type
 * For `BPF_PROG_TYPE_CGROUP_SKB` programs the verifier restricts valid return values depending on attach type
-* For `BPF_PROG_TYPE_CGROUP_SOCKOPT` programs the attach type determines accessability for certain context fields and helper functions.
+* For `BPF_PROG_TYPE_CGROUP_SOCKOPT` programs the attach type determines accessibility for certain context fields and helper functions.
 * Only `BPF_PROG_TYPE_XDP` programs with `BPF_XDP_CPUMAP` attach type can be added to the values of `BPF_MAP_TYPE_CPUMAP` maps
 * Only `BPF_PROG_TYPE_XDP` programs with `BPF_XDP_DEVMAP` attach type can be added to the values of `BPF_MAP_TYPE_DEVMAP` maps
 

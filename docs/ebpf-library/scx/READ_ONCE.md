@@ -43,7 +43,7 @@ static __always_inline void __read_once_size(const volatile void *p, void *res, 
 
 Compilers will try to optimize code in any way possible within the constraints they are aware of. They may for example:
 
-* Keep the result of a memory read in a register and re-use it instead of re-reading the memory location. (caching)
+* Keep the result of a memory read in a register and reuse it instead of re-reading the memory location. (caching)
 * Reorder reads to improve cache locality (reordering)
 * Re-read from memory instead of keeping the value in a register (redoing)
 

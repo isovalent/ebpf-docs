@@ -9,7 +9,7 @@ description: "This page documents the 'BPF_KPROBE' libbpf eBPF macro, including 
 The `BPF_KPROBE` macro makes it easier to write [kprobe](../../../linux/program-type/BPF_PROG_TYPE_KPROBE.md) programs.
 
 !!! note
-    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefor, the variable name `ctx` should not be reused in arguments or function body.
+    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefore, the variable name `ctx` should not be reused in arguments or function body.
 
 ## Definition
 

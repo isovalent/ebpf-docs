@@ -514,7 +514,7 @@ The expected <nospell>mprog</nospell> revision, to avoid unexpected behavior in 
 
 This section describes the possible values and meanings for the `attach_type` attribute. These values are the same as used in the [`BPF_PROG_ATTACH`](BPF_PROG_ATTACH.md) command and the [`expected_attach_type`](BPF_PROG_LOAD.md#expected_attach_type) field of the [`BPF_PROG_LOAD`](BPF_PROG_LOAD.md) command.
 
-The attach type is often used to communicate a specialization for a program type, for example if the program should attach to the ingress or egress. Since the hook locations will differ, the capabilities of the program may as well. Please check the pages of the program types for details about these attach type dependant limitations.
+The attach type is often used to communicate a specialization for a program type, for example if the program should attach to the ingress or egress. Since the hook locations will differ, the capabilities of the program may as well. Please check the pages of the program types for details about these attach type dependent limitations.
 
 ### `BPF_CGROUP_INET_INGRESS`
 

@@ -218,7 +218,7 @@ The `mmap` call, if all is well, should return a pointer to a memory address. Th
         * after reading this value.
         *
         * When the mapping is PROT_WRITE the @data_tail value should be
-        * written by userspace to reflect the last read data, after issueing
+        * written by userspace to reflect the last read data, after issuing
         * an smp_mb() to separate the data read from the ->data_tail store.
         * In this case the kernel will not over-write unread data.
         *

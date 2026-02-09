@@ -44,7 +44,7 @@ When invoked with this `op`, the program can overwrite the default RTO (retransm
 [:octicons-tag-24: v4.13](https://github.com/torvalds/linux/commit/13d3b1ebe28762c79e981931a41914fae5d04386)
 <!-- [/FEATURE_TAG] -->
 
-When invoked with this `op`, the program can overwrite the default initial advertized window (in packets) or -1 if default value should be used.
+When invoked with this `op`, the program can overwrite the default initial advertised window (in packets) or -1 if default value should be used.
 
 ### `BPF_SOCK_OPS_TCP_CONNECT_CB`
 <!-- [FEATURE_TAG](BPF_SOCK_OPS_TCP_CONNECT_CB) -->
@@ -189,7 +189,7 @@ This is just a notification, return value is discarded.
 [:octicons-tag-24: v5.10](https://github.com/torvalds/linux/commit/0813a841566f0962a5551be7749b43c45f0022a0)
 <!-- [/FEATURE_TAG] -->
 
-When the `BPF_SOCK_OPS_WRITE_HDR_OPT_CB_FLAG` flag is set with [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), the program is invoked with this `op` to write TCP options to the packet, the room for these options has been reserved in a previous invokation of the program with the `BPF_SOCK_OPS_HDR_OPT_LEN_CB` op.
+When the `BPF_SOCK_OPS_WRITE_HDR_OPT_CB_FLAG` flag is set with [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), the program is invoked with this `op` to write TCP options to the packet, the room for these options has been reserved in a previous invocation of the program with the `BPF_SOCK_OPS_HDR_OPT_LEN_CB` op.
 
 The arguments in the context will have the following meanings:
 
@@ -212,7 +212,7 @@ The [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md) can also be use
 Called when skb is passing through device layer when `SK_BPF_CB_TX_TIMESTAMPING` feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
 
 !!! warning
-    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+    This sock op is called without taking a socket lock and will therefore not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
 
 ### `BPF_SOCK_OPS_TSTAMP_SND_SW_CB`
 
@@ -223,7 +223,7 @@ Called when skb is passing through device layer when `SK_BPF_CB_TX_TIMESTAMPING`
 Called when skb is about to send to the NIC when `SK_BPF_CB_TX_TIMESTAMPING` feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
 
 !!! warning
-    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+    This sock op is called without taking a socket lock and will therefore not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
 
 
 ### `BPF_SOCK_OPS_TSTAMP_SND_HW_CB`
@@ -235,7 +235,7 @@ Called when skb is about to send to the NIC when `SK_BPF_CB_TX_TIMESTAMPING` fea
 Called in hardware phase when `SK_BPF_CB_TX_TIMESTAMPING` feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
 
 !!! warning
-    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+    This sock op is called without taking a socket lock and will therefore not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
 
 
 ### `BPF_SOCK_OPS_TSTAMP_ACK_CB`
@@ -247,7 +247,7 @@ Called in hardware phase when `SK_BPF_CB_TX_TIMESTAMPING` feature is on. Which i
 Called when all the <nospell>SKBs</nospell> in the same `sendmsg` call are acked when [`SK_BPF_CB_TX_TIMESTAMPING`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) feature is on. Which is done by setting a socket option `bpf_setsockopt(SK_BPF_CB_FLAGS, SK_BPF_CB_TX_TIMESTAMPING)` or calling [`bpf_sock_ops_enable_tx_tstamp`](../kfuncs/bpf_sock_ops_enable_tx_tstamp.md) on the socket.
 
 !!! warning
-    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+    This sock op is called without taking a socket lock and will therefore not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
 
 
 ### `BPF_SOCK_OPS_TSTAMP_SENDMSG_CB`
@@ -259,7 +259,7 @@ Called when all the <nospell>SKBs</nospell> in the same `sendmsg` call are acked
 Called when every `sendmsg` syscall is triggered. It's used to correlate `sendmsg` timestamp with corresponding `tskey`.
 
 !!! warning
-    This sock op is called without taking a socket lock and will therefor not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
+    This sock op is called without taking a socket lock and will therefore not be able to use the following helper functions: [`bpf_setsockopt`](../helper-function/bpf_setsockopt.md), [`bpf_getsockopt`](../helper-function/bpf_getsockopt.md), [`bpf_sock_ops_cb_flags_set`](../helper-function/bpf_sock_ops_cb_flags_set.md), [`bpf_load_hdr_opt`](../helper-function/bpf_load_hdr_opt.md). They will always return `-EOPNOTSUPP` instead of failing verification.
 
 ## Context
 
@@ -359,7 +359,7 @@ This field will indicate the current operation, see the [ops section](#ops) for 
 
 [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/de525be2ca2734865d29c4b67ddd29913b214906)
 
-This field is an array of 4 `__u32` values, used by some operations to provide additional information. The meaning of the arguments is dependant on the `op`.
+This field is an array of 4 `__u32` values, used by some operations to provide additional information. The meaning of the arguments is dependent on the `op`.
 
 ### `reply`
 

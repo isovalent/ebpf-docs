@@ -163,7 +163,7 @@ func checkFile(path string) error {
 				"nav",
 				// Ignore code/quotes in code tags
 				"code",
-				// Ignore anyting inside the custom <nospell> tag
+				// Ignore anything inside the custom <nospell> tag
 				"nospell":
 				return skipSubtree
 			case "head":
@@ -224,7 +224,7 @@ func checkFile(path string) error {
 						break
 					}
 
-					// We should't get these in terse mode, but just in case
+					// We shouldn't get these in terse mode, but just in case
 					if strings.HasPrefix(line, "*") {
 						continue
 					}

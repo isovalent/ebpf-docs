@@ -62,7 +62,7 @@ The kernel has now allocated memory for one instance of the struct_ops struct an
     // SPDX-License-Identifier: GPL-2.0
     /* Copyright (c) 2019 Facebook */
 
-    /* WARNING: This implemenation is not necessarily the same
+    /* WARNING: This implementation is not necessarily the same
     * as the tcp_dctcp.c.  The purpose is mainly for testing
     * the kernel BPF logic.
     */

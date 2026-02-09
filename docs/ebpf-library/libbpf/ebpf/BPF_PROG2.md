@@ -34,7 +34,7 @@ The `BPF_PROG2` macro allows you to write your program with a normal function si
 This macro also accounts for an edge case in the <nospell>Sys V</nospell> calling convention. When a function call is made, every argument will be put in specific registers. When a variable is to large to put in a register (8 bytes) it is often put on the stack and a pointer to it is passed instead (pointers being 8 bytes). However, the <nospell>Sys V</nospell> calling convention specifies that if a variable is between 8 and 16 bytes, it may be transferred using 2 registers instead, for a `struct{u64, u64}` for example. Since the context is a translation of the arguments passed, it to can use one or two slots depending on the type. The `BPF_PROG2` handles this in the background, which is what improved over the [`BPF_PROG`](BPF_PROG.md) version of this macro.
 
 !!! note
-    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefor, the variable name `ctx` should not be reused in arguments or function body.
+    The original context will stay available as `ctx`, if you ever wish to access it manually or need to pass it to a helper or kfunc. Therefore, the variable name `ctx` should not be reused in arguments or function body.
 
 ### Example
 

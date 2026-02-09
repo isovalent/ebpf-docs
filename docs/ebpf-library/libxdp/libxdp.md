@@ -3,7 +3,7 @@
 libxdp is a light eBPF library who add 2 features for [XDP programs](../../linux/program-type/BPF_PROG_TYPE_XDP.md).
 
 - Load multiple programs on single network device using a "dispatcher program" thanks to [`freplace`](../../linux/program-type/BPF_PROG_TYPE_EXT.md)
-- Configuring [`AF_XDP`](../../linux/concepts/af_xdp.md) and functions to read and write on theses sockets
+- Configuring [`AF_XDP`](../../linux/concepts/af_xdp.md) and functions to read and write on these sockets
 
 You can check more information on the [libxdp readme](https://github.com/xdp-project/xdp-tools/blob/master/lib/libxdp/README.org).
 

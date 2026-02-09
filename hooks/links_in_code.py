@@ -123,7 +123,7 @@ class LinksInCodeTreeprocessor(Treeprocessor):
                 textElem.text = spans[i].text[ii+1:ji]
                 aElem.insert(0, textElem)
 
-                # Make a new span with the same calss as the original span
+                # Make a new span with the same class as the original span
                 # Add the text after the ')' to it.
                 postElem = etree.Element('span', attrib={'class': spans[i].get('class')})
                 postElem.text = spans[i].text[ki+1:]
