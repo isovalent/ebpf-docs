@@ -15,8 +15,11 @@ probes kernel-space string into a [dynptr](../concepts/dynptrs.md)
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_probe_read_kernel_str_dynptr(struct bpf_dynptr *dptr, u32 off, u32 size, const void *unsafe_ptr__ign)`
+`#!c int bpf_probe_read_kernel_str_dynptr(struct bpf_dynptr *dptr, u64 off, u64 size, const void *unsafe_ptr__ign)`
 <!-- [/KFUNC_DEF] -->
+
+!!! note
+    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `off` and `size`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 

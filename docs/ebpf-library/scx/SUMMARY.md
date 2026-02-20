@@ -32,3 +32,5 @@
 - [`__COMPAT_scx_bpf_dsq_move`](__COMPAT_scx_bpf_dsq_move.md)
 - [`__COMPAT_scx_bpf_dsq_move_vtime`](__COMPAT_scx_bpf_dsq_move_vtime.md)
 - [`SCX_OPS_DEFINE`](SCX_OPS_DEFINE.md)
+- [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md)
+- [`scx_bpf_select_cpu_and`](scx_bpf_select_cpu_and.md)

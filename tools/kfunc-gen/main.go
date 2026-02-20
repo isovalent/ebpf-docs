@@ -525,6 +525,15 @@ func typeToC(t btf.Type) string {
 		return "void"
 	case *btf.Typedef:
 		return t.Name
+	case *btf.TypeTag:
+		var sb strings.Builder
+		switch t.Value {
+		case "address_space(1)":
+			sb.WriteString("__arena ")
+		default:
+			sb.WriteString(fmt.Sprintf("/* unknown type tag: %s */ ", t.Value))
+		}
+		return sb.String() + typeToC(t.Type)
 	default:
 		return fmt.Sprintf("unknown (%T)", t)
 	}

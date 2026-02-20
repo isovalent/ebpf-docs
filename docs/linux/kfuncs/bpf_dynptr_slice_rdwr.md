@@ -17,12 +17,15 @@ If the dynptr doesn't have continuous data up to `len` bytes, or the dynptr is r
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_dynptr_slice_rdwr(const struct bpf_dynptr *p, u32 offset, void *buffer__opt, u32 buffer__szk)`
+`#!c void *bpf_dynptr_slice_rdwr(const struct bpf_dynptr *p, u64 offset, void *buffer__opt, u64 buffer__szk)`
 
 !!! note
 	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
 	from the kfunc before making use of it (dereferencing or passing to another helper).
 <!-- [/KFUNC_DEF] -->
+
+!!! note
+    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `offset`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 

@@ -83,7 +83,13 @@ This map type allows eBPF programs to read the stack trace.
 This map type replaces a structure containing function pointers in the kernel and allows authors to replace existing function pointers with pointers to BPF programs.
 
   * [`BPF_MAP_TYPE_STRUCT_OPS`](BPF_MAP_TYPE_STRUCT_OPS.md)
-  
+
+## Instruction array
+
+This map type tracks the change in instruction offsets as a program is loaded and transformed into machine code.
+
+  * [`BPF_MAP_TYPE_INSN_ARRAY`](BPF_MAP_TYPE_INSN_ARRAY.md)
+
 ## Per CPU maps
 
 There are a number of per-CPU map types like [`BPF_MAP_TYPE_PERCPU_HASH`](BPF_MAP_TYPE_PERCPU_HASH.md) and [`BPF_MAP_TYPE_PERCPU_ARRAY`](BPF_MAP_TYPE_PERCPU_ARRAY.md). These are per-CPU variants of their base map types. Like the name implies these maps consists of multiple copies, one for each logical CPU on the host. Programs running in the context of CPU#0 for example will see different map contents as a program running on CPU#2. 

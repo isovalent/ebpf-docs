@@ -12,7 +12,11 @@ This function re-enqueues tasks on a local DSQ.
 
 ## Definition
 
-Iterate over all of the tasks currently enqueued on the local DSQ of the caller's CPU, and re-enqueue them in the BPF scheduler.
+Iterate over all of the tasks currently enqueued on the local DSQ of the caller's CPU, and re-enqueue them in the BPF scheduler. Can be called from anywhere.
+
+!!! warn
+    This kfunc is deprecated in favor of [`scx_bpf_reenqueue_local___v2`](scx_bpf_reenqueue_local___v2.md). Until kernel v7.3 (4 releases after v6.19) at which time this old implementation is deleted and `scx_bpf_reenqueue_local___v2` is renamed to `scx_bpf_reenqueue_local`, a breaking change in the function signature.
+    Its recommended to use the [`scx_bpf_reenqueue_local`](../../ebpf-library/scx/scx_bpf_reenqueue_local.md) function from the SCX common library instead of defining the kfunc manually to facilitate smooth transition across kernel versions.
 
 **Returns**
 

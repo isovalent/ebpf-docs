@@ -197,6 +197,9 @@
     - name: BPF_MAP_TYPE_ARENA
       version: v6.9
       commit: 317460317a02a1af512697e6e964298dedd8a163
+    - name: BPF_MAP_TYPE_INSN_ARRAY
+      version: v6.19
+      commit: b4ce5923e780d6896d4aaf19de5a27652b8bf1ea
 
 - name: attach_types
   features:
@@ -2521,3 +2524,36 @@
     - name: bpf_task_work_schedule_signal_impl
       version: v6.18
       commit: 38aa7003e369802f81a078f6673d10d97013f04f
+    - name: scx_bpf_reenqueue_local___v2
+      version: v6.19
+      commit: a3f5d48222532484c1e85ef27cc6893803e4cd17
+    - name: __scx_bpf_dsq_insert_vtime
+      version: v6.19
+      commit: c0d630ba347c7671210e1bab3c79defea19844e9
+    - name: __scx_bpf_select_cpu_and
+      version: v6.19
+      commit: c0d630ba347c7671210e1bab3c79defea19844e9
+    - name: bpf_dynptr_file_discard
+      version: v6.19
+      commit: 8d8771dc03e48300e80b43744dd3c320ccaf746a
+    - name: bpf_dynptr_from_file
+      version: v6.19
+      commit: 8d8771dc03e48300e80b43744dd3c320ccaf746a
+    - name: bpf_strcasestr
+      version: v6.19
+      commit: b5b693f73589283e75436e64fab46bf6298abd89
+    - name: bpf_strncasestr
+      version: v6.19
+      commit: b5b693f73589283e75436e64fab46bf6298abd89
+    - name: scx_bpf_dsq_insert___v2
+      version: v6.19
+      commit: 2dbbdeda77a61b39dc4a34dfce873907cfea2c4b
+    - name: scx_bpf_dsq_peek
+      version: v6.19
+      commit: 44f5c8ec5b9ad8ed4ade08d727f803b2bb07f1c3
+    - name: scx_bpf_task_set_slice
+      version: v6.19
+      commit: 3035addfaf285f32d1f513d181ebcb85924ae3c3
+    - name: scx_bpf_task_set_dsq_vtime
+      version: v6.19
+      commit: 3035addfaf285f32d1f513d181ebcb85924ae3c3

@@ -390,6 +390,8 @@ sets:
       - name: bpf_strspn
       - name: bpf_strstr
       - name: bpf_strcasecmp
+      - name: bpf_strcasestr
+      - name: bpf_strncasestr
       - name: bpf_iter_dmabuf_destroy
         flags: [KF_ITER_DESTROY, KF_SLEEPABLE]
       - name: bpf_iter_dmabuf_new
@@ -404,6 +406,9 @@ sets:
         flags: [KF_TRUSTED_ARGS]
       - name: bpf_task_work_schedule_resume_impl
         flags: [KF_TRUSTED_ARGS]
+      - name: bpf_dynptr_from_file
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_dynptr_file_discard
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 
@@ -769,6 +774,10 @@ sets:
         flags: [KF_RCU]
       - name: scx_bpf_dispatch_vtime
         flags: [KF_RCU]
+      - name: __scx_bpf_dsq_insert_vtime
+        flags: [KF_RCU]
+      - name: scx_bpf_dsq_insert___v2
+        flags: [KF_RCU]
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
 
@@ -821,9 +830,15 @@ sets:
 
   scx_kfunc_ids_any:
     funcs:
+      - name: scx_bpf_task_set_slice 
+        flags: [KF_RCU]
+      - name: scx_bpf_task_set_dsq_vtime
+        flags: [KF_RCU]
       - name: scx_bpf_kick_cpu
       - name: scx_bpf_dsq_nr_queued
       - name: scx_bpf_destroy_dsq
+      - name: scx_bpf_dsq_peek
+        flags: [KF_RCU_PROTECTED, KF_RET_NULL]
       - name: bpf_iter_scx_dsq_new
         flags: [KF_ITER_NEW, KF_RCU_PROTECTED]
       - name: bpf_iter_scx_dsq_next
@@ -883,6 +898,9 @@ sets:
         flags: [KF_RET_NULL, KF_RCU_PROTECTED]
       - name: scx_bpf_locked_rq
         flags: [KF_RET_NULL]
+      - name: scx_bpf_reenqueue_local___v2
+      - name: __scx_bpf_select_cpu_and
+        flags: [KF_RCU]
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
       - name: BPF_PROG_TYPE_SYSCALL

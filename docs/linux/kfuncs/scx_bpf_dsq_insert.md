@@ -10,6 +10,9 @@ description: "This page documents the 'scx_bpf_dsq_insert' eBPF kfunc, including
 
 This function inserts a task into the First In First Out(FIFO) queue of a Dispatch Queue(DSQ)
 
+!!! note
+    This kfunc is deprecated in favor of [`scx_bpf_dsq_insert___v2`](scx_bpf_dsq_insert___v2.md). Its recommended to use the SCX compatibility library [`compat.bpf.h`](../../ebpf-library/scx/index.md#compatbpfh) which provides the [`scx_bpf_dsq_insert`](../../ebpf-library/scx/scx_bpf_dsq_insert.md) function which abstracts this away.
+
 ## Definition
 
 Insert `p` into the FIFO queue of the DSQ identified by `dsq_id`. It is safe to call this function spuriously. Can be called from [`sched_ext_ops.enqueue`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#enqueue), [`sched_ext_ops.select_cpu`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#select_cpu), and [`sched_ext_ops.dispatch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch).

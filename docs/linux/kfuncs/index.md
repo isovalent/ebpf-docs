@@ -366,6 +366,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md)
 - [`scx_bpf_select_cpu_dfl`](scx_bpf_select_cpu_dfl.md)
 - [`scx_bpf_select_cpu_and`](scx_bpf_select_cpu_and.md)
+- [`__scx_bpf_select_cpu_and`](__scx_bpf_select_cpu_and.md)
 - [`scx_bpf_cpu_rq`](scx_bpf_cpu_rq.md)
 - [`scx_bpf_now`](scx_bpf_now.md)
 - [`scx_bpf_cpu_curr`](scx_bpf_cpu_curr.md)
@@ -377,6 +378,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_destroy_dsq`](scx_bpf_destroy_dsq.md)
 - [`scx_bpf_dsq_nr_queued`](scx_bpf_dsq_nr_queued.md)
 - [`scx_bpf_dsq_insert`](scx_bpf_dsq_insert.md) ([`scx_bpf_dispatch`](scx_bpf_dispatch.md))
+- [`scx_bpf_dsq_insert___v2`](scx_bpf_dsq_insert___v2.md)
 - [`scx_bpf_dsq_insert_vtime`](scx_bpf_dsq_insert_vtime.md) ([`scx_bpf_dispatch_vtime`](scx_bpf_dispatch_vtime.md))
 - [`scx_bpf_dsq_move_to_local`](scx_bpf_dsq_move_to_local.md) ([`scx_bpf_consume`](scx_bpf_consume.md))
 - [`scx_bpf_dsq_move_set_slice`](scx_bpf_dsq_move_set_slice.md) ([`scx_bpf_dispatch_from_dsq_set_slice`](scx_bpf_dispatch_from_dsq_set_slice.md))
@@ -384,6 +386,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_dsq_move`](scx_bpf_dsq_move.md) ([`scx_bpf_dispatch_from_dsq`](scx_bpf_dispatch_from_dsq.md))
 - [`scx_bpf_dsq_move_vtime`](scx_bpf_dsq_move_vtime.md) ([`scx_bpf_dispatch_vtime_from_dsq`](scx_bpf_dispatch_vtime_from_dsq.md))
 - [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md)
+- [`scx_bpf_reenqueue_local___v2`](scx_bpf_reenqueue_local___v2.md)
+- [`scx_bpf_dsq_peek`](scx_bpf_dsq_peek.md)
 
 ### Dispatch Kfuncs
 
@@ -423,6 +427,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_task_running`](scx_bpf_task_running.md)
 - [`scx_bpf_task_cpu`](scx_bpf_task_cpu.md)
 - [`scx_bpf_task_cgroup`](scx_bpf_task_cgroup.md)
+- [`scx_bpf_task_set_slice`](scx_bpf_task_set_slice.md)
+- [`scx_bpf_task_set_dsq_vtime`](scx_bpf_task_set_dsq_vtime.md)
 
 ## NUMA Kfuncs
 
@@ -453,6 +459,11 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_copy_from_user_task_dynptr`](bpf_copy_from_user_task_dynptr.md)
 - [`bpf_copy_from_user_task_str_dynptr`](bpf_copy_from_user_task_str_dynptr.md)
 
+## File dynptr Kfuncs
+
+- [`bpf_dynptr_from_file`](bpf_dynptr_from_file.md)
+- [`bpf_dynptr_file_discard`](bpf_dynptr_file_discard.md)
+
 ## BPF Qdisc kfuncs
 
 - [`bpf_kfree_skb`](bpf_kfree_skb.md)
@@ -477,6 +488,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_strspn`](bpf_strspn.md)
 - [`bpf_strstr`](bpf_strstr.md)
 - [`bpf_strcasecmp`](bpf_strcasecmp.md)
+- [`bpf_strcasestr`](bpf_strcasestr.md)
+- [`bpf_strncasestr`](bpf_strncasestr.md)
 
 ## Debug stream Kfuncs
 

@@ -457,6 +457,11 @@ var varTable = []tableRow{
 				VersionXDP: KernelVersion{5, 3, 0},
 				DriverFunc: calcCPSWMTU,
 			},
+			{
+				Driver:     "ICSSG",
+				VersionXDP: KernelVersion{6, 15, 0},
+				DriverFunc: calcICSSGMTU,
+			},
 		},
 	},
 	{
