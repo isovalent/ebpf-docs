@@ -21,7 +21,7 @@ Free pages of memory for a arena.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void bpf_arena_free_pages(void *p__map, void *ptr__ign, u32 page_cnt)`
+`#!c void bpf_arena_free_pages(void *p__map, __arena void *ptr__ign, u32 page_cnt)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).

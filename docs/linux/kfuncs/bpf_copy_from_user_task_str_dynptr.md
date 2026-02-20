@@ -15,11 +15,14 @@ Sleepable, copies user-space string of the task into a [dynptr](../concepts/dynp
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_copy_from_user_task_str_dynptr(struct bpf_dynptr *dptr, u32 off, u32 size, const void *unsafe_ptr__ign, struct task_struct *tsk)`
+`#!c int bpf_copy_from_user_task_str_dynptr(struct bpf_dynptr *dptr, u64 off, u64 size, const void *unsafe_ptr__ign, struct task_struct *tsk)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).
 <!-- [/KFUNC_DEF] -->
+
+!!! note
+    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `off` and `size`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 

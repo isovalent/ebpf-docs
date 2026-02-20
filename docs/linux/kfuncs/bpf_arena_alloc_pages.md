@@ -25,7 +25,7 @@ Allocate pages of memory for a arena.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_arena_alloc_pages(void *p__map, void *addr__ign, u32 page_cnt, int node_id, u64 flags)`
+`#!c __arena void *bpf_arena_alloc_pages(void *p__map, __arena void *addr__ign, u32 page_cnt, int node_id, u64 flags)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).

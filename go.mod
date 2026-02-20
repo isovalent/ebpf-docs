@@ -6,7 +6,6 @@ toolchain go1.24.1
 
 require (
 	github.com/cilium/ebpf v0.18.0
-	golang.org/x/exp v0.0.0-20250506013437-ce4c2cf36ca6
 	golang.org/x/net v0.40.0
 	gopkg.in/yaml.v3 v3.0.1
 )

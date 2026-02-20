@@ -17,8 +17,11 @@ It advances the offset of the dynptr by `start` bytes, and if end is less than t
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_adjust(const struct bpf_dynptr *p, u32 start, u32 end)`
+`#!c int bpf_dynptr_adjust(const struct bpf_dynptr *p, u64 start, u64 end)`
 <!-- [/KFUNC_DEF] -->
+
+!!! note
+    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `start` and `end`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 

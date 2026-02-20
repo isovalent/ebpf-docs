@@ -1019,3 +1019,18 @@ hide: toc
 * `bpf_strcasecmp` [19559e8](https://github.com/torvalds/linux/commit/19559e8441843bb36ecc78bb8d5cf82d500352fd) (kfuncs)
 * `bpf_task_work_schedule_resume_impl` [38aa700](https://github.com/torvalds/linux/commit/38aa7003e369802f81a078f6673d10d97013f04f) (kfuncs)
 * `bpf_task_work_schedule_signal_impl` [38aa700](https://github.com/torvalds/linux/commit/38aa7003e369802f81a078f6673d10d97013f04f) (kfuncs)
+
+## :octicons-tag-24: v6.19
+
+* `BPF_MAP_TYPE_INSN_ARRAY` [b4ce592](https://github.com/torvalds/linux/commit/b4ce5923e780d6896d4aaf19de5a27652b8bf1ea) (map_types)
+* `scx_bpf_reenqueue_local___v2` [a3f5d48](https://github.com/torvalds/linux/commit/a3f5d48222532484c1e85ef27cc6893803e4cd17) (kfuncs)
+* `__scx_bpf_dsq_insert_vtime` [c0d630b](https://github.com/torvalds/linux/commit/c0d630ba347c7671210e1bab3c79defea19844e9) (kfuncs)
+* `__scx_bpf_select_cpu_and` [c0d630b](https://github.com/torvalds/linux/commit/c0d630ba347c7671210e1bab3c79defea19844e9) (kfuncs)
+* `bpf_dynptr_file_discard` [8d8771d](https://github.com/torvalds/linux/commit/8d8771dc03e48300e80b43744dd3c320ccaf746a) (kfuncs)
+* `bpf_dynptr_from_file` [8d8771d](https://github.com/torvalds/linux/commit/8d8771dc03e48300e80b43744dd3c320ccaf746a) (kfuncs)
+* `bpf_strcasestr` [b5b693f](https://github.com/torvalds/linux/commit/b5b693f73589283e75436e64fab46bf6298abd89) (kfuncs)
+* `bpf_strncasestr` [b5b693f](https://github.com/torvalds/linux/commit/b5b693f73589283e75436e64fab46bf6298abd89) (kfuncs)
+* `scx_bpf_dsq_insert___v2` [2dbbded](https://github.com/torvalds/linux/commit/2dbbdeda77a61b39dc4a34dfce873907cfea2c4b) (kfuncs)
+* `scx_bpf_dsq_peek` [44f5c8e](https://github.com/torvalds/linux/commit/44f5c8ec5b9ad8ed4ade08d727f803b2bb07f1c3) (kfuncs)
+* `scx_bpf_task_set_slice` [3035add](https://github.com/torvalds/linux/commit/3035addfaf285f32d1f513d181ebcb85924ae3c3) (kfuncs)
+* `scx_bpf_task_set_dsq_vtime` [3035add](https://github.com/torvalds/linux/commit/3035addfaf285f32d1f513d181ebcb85924ae3c3) (kfuncs)

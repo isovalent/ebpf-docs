@@ -31,8 +31,11 @@ Returns `0` on success; negative error, otherwise.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_memset(struct bpf_dynptr *p, u32 offset, u32 size, u8 val)`
+`#!c int bpf_dynptr_memset(struct bpf_dynptr *p, u64 offset, u64 size, u8 val)`
 <!-- [/KFUNC_DEF] -->
+
+!!! note
+    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `offset` and `size`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 

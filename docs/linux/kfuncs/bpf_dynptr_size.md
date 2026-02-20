@@ -15,8 +15,11 @@ Returns the number of usable bytes in a dynptr.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c __u32 bpf_dynptr_size(const struct bpf_dynptr *p)`
+`#!c u64 bpf_dynptr_size(const struct bpf_dynptr *p)`
 <!-- [/KFUNC_DEF] -->
+
+!!! note
+    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types the return value. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 

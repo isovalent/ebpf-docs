@@ -207,11 +207,12 @@ Program authors can indicate to loaders like libbpf that a given program should 
 | <nospell>VMware vmxnet3</nospell>         | [:octicons-tag-24: v6.6](https://github.com/torvalds/linux/commit/54f00cce11786742bd11e5e68c3bf85e6dc048c9)  | :material-close:     | :material-close:                                                                                                                                                                                                              | :material-close:                                                                                             |
 | <nospell>Pensando Ionic</nospell>         | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/180e35cdf035d1c2e9ebdc06a9944a9eb81cc3d8)  | :material-close:     | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/5377805dc1c02ad3721a9256f0eef9b4813952e7)                                                                                                                   | :material-close:                                                                                             |
 | <nospell>TI CPSW</nospell>                | [:octicons-tag-24: v6.10](https://github.com/torvalds/linux/commit/8acacc40f7337527ff84cd901ed2ef0a2b95b2b6) | :material-close:     | :material-close:                                                                                                                                                                                                              | :material-close:                                                                                             |
+| <nospell>TI ICSSG</nospell>               | [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/62aa3246f46234c44a73aa2d37712dd2cb3cbb47) | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/4dce1a0d7cf39575a5880414ea882890edd8d26f) |
 | <nospell>Intel idpf</nospell>             | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/705457e7211f22c49b410eb25e83cef8a61bd560) | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/3d57b2c00f09afb321bfc203c86a3eb674c0ff2c) |
 | <nospell>Meta fbnic</nospell>             | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/1b0a3950dbd4fa278dc33401a4faba2a23307a16) | :material-close:     | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/1b0a3950dbd4fa278dc33401a4faba2a23307a16)                                                                                                                   | :material-close:                                                                                             |
 
 !!! note
-    This table has last been updated for Linux :octicons-tag-24: v6.18 and is subject to change in the future.
+    This table has last been updated for Linux :octicons-tag-24: v6.19 and is subject to change in the future.
 
 [^1]: Only the legacy <nospell>RQ</nospell> mode supports XDP frags, which is not the default and will require setting via `ethtool`.
 
@@ -269,6 +270,7 @@ The following table has been calculated from mathematical formulas based on the 
     | Socionext        | NetSec                | 1500                           | 1500                           | 1500                           | 1500                           | 1500                           |
     | STMicro          | ST MAC                | 1500                           | 1500                           | 1500                           | 1500                           | 1500                           |
     | TI               | CPSW                  | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          | ∞[^2]                          |
+    | TI               | ICSSG                 | :material-close:               | :material-close:               | :material-close:               | :material-close:               | :material-close:               |
     | VMWare           | VMXNET 3              | 3494                           | 3492                           | 3494                           | 3428                           | 3492                           |
     | Meta             | FBNIC                 | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] | 128 ≤ 1522(default) ≤ 3570[^5] |
 
@@ -320,6 +322,7 @@ The following table has been calculated from mathematical formulas based on the 
     | Socionext        | NetSec                | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | STMicro          | ST MAC                | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | TI               | CPSW                  | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
+    | TI               | ICSSG                 | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | VMWare           | VMXNET 3              | :material-close: | :material-close: | :material-close: | :material-close: | :material-close: |
     | Meta             | FBNIC                 | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            | ∞[^2]            |
 
@@ -468,6 +471,8 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_dynptr_adjust`](../kfuncs/bpf_dynptr_adjust.md)
     - [`bpf_dynptr_clone`](../kfuncs/bpf_dynptr_clone.md)
     - [`bpf_dynptr_copy`](../kfuncs/bpf_dynptr_copy.md)
+    - [`bpf_dynptr_file_discard`](../kfuncs/bpf_dynptr_file_discard.md)
+    - [`bpf_dynptr_from_file`](../kfuncs/bpf_dynptr_from_file.md)
     - [`bpf_dynptr_from_xdp`](../kfuncs/bpf_dynptr_from_xdp.md)
     - [`bpf_dynptr_is_null`](../kfuncs/bpf_dynptr_is_null.md)
     - [`bpf_dynptr_is_rdonly`](../kfuncs/bpf_dynptr_is_rdonly.md)
@@ -537,12 +542,14 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_skb_ct_alloc`](../kfuncs/bpf_skb_ct_alloc.md)
     - [`bpf_skb_ct_lookup`](../kfuncs/bpf_skb_ct_lookup.md)
     - [`bpf_strcasecmp`](../kfuncs/bpf_strcasecmp.md)
+    - [`bpf_strcasestr`](../kfuncs/bpf_strcasestr.md)
     - [`bpf_strchr`](../kfuncs/bpf_strchr.md)
     - [`bpf_strchrnul`](../kfuncs/bpf_strchrnul.md)
     - [`bpf_strcmp`](../kfuncs/bpf_strcmp.md)
     - [`bpf_strcspn`](../kfuncs/bpf_strcspn.md)
     - [`bpf_stream_vprintk_impl`](../kfuncs/bpf_stream_vprintk_impl.md)
     - [`bpf_strlen`](../kfuncs/bpf_strlen.md)
+    - [`bpf_strncasestr`](../kfuncs/bpf_strncasestr.md)
     - [`bpf_strnchr`](../kfuncs/bpf_strnchr.md)
     - [`bpf_strnlen`](../kfuncs/bpf_strnlen.md)
     - [`bpf_strnstr`](../kfuncs/bpf_strnstr.md)

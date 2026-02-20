@@ -283,3 +283,4 @@ ISA
 xattr
 SMP
 NMI
+profiler

@@ -445,6 +445,10 @@ func calcCPSWMTU(v vars) int {
 	return math.MaxInt
 }
 
+func calcICSSGMTU(v vars) int {
+	return math.MaxInt
+}
+
 func calcNetvscMTU(v vars) int {
 	const NETVSC_XDP_HDRM = 256
 	return v.PageSize - (ETH_HLEN + NETVSC_XDP_HDRM + macroSKBDataAlign(v.SizeOfSKBSharedInfo(), v))
