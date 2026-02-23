@@ -30,7 +30,7 @@ Commands related to BPF maps.
 * `BPF_MAP_UPDATE_BATCH`
 * `BPF_MAP_DELETE_BATCH`
 * `BPF_MAP_LOOKUP_AND_DELETE_ELEM`
-* `BPF_MAP_FREEZE`
+* [`BPF_MAP_FREEZE`](BPF_MAP_FREEZE.md)
 
 ## Pin commands
 
@@ -44,11 +44,11 @@ Commands related to the pinning of BPF objects.
 Commands related to BPF programs.
 
 * [`BPF_PROG_LOAD`](BPF_PROG_LOAD.md)
-* `BPF_PROG_ATTACH`
-* `BPF_PROG_DETACH`
+* [`BPF_PROG_ATTACH`](BPF_PROG_ATTACH.md)
+* [`BPF_PROG_DETACH`](BPF_PROG_DETACH.md)
 * [`BPF_PROG_TEST_RUN`](BPF_PROG_TEST_RUN.md)
 * [`BPF_PROG_RUN`](BPF_PROG_TEST_RUN.md)
-* `BPF_PROG_BIND_MAP`
+* [`BPF_PROG_BIND_MAP`](BPF_PROG_BIND_MAP.md)
 
 ## Object discovery commands
 
@@ -80,4 +80,4 @@ Commands related to links.
 
 ## Security commands
 
-* `BPF_TOKEN_CREATE`
+* [`BPF_TOKEN_CREATE`](BPF_TOKEN_CREATE.md)
