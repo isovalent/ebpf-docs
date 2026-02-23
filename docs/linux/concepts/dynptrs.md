@@ -33,6 +33,8 @@ The following functions create or manipulate dynptrs:
 * [`bpf_copy_from_user_str_dynptr`](../kfuncs/bpf_copy_from_user_str_dynptr.md) - Sleepable, copies user-space string into a dynptr for the current task
 * [`bpf_copy_from_user_task_dynptr`](../kfuncs/bpf_copy_from_user_task_dynptr.md) - Sleepable, copies user-space data of the task into a dynptr
 * [`bpf_copy_from_user_task_str_dynptr`](../kfuncs/bpf_copy_from_user_task_str_dynptr.md) - Sleepable, copies user-space string of the task into a dynptr
+* [`bpf_dynptr_from_file`](../kfuncs/bpf_dynptr_from_file.md) - Creates a dynptr for a file.
+* [`bpf_dynptr_file_discard`](../kfuncs/bpf_dynptr_file_discard.md) - Releases a file dynptr.
 
 The following functions are not dynptr centric, but do require dynptrs in their arguments:
 
