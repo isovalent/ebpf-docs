@@ -14,21 +14,6 @@ The `BPF_MAP_UPDATE_BATCH` command is used to insert or update a group of values
 
 This command will return `0` on success or a error number (negative integer) if something went wrong.
 
----
-title: "Syscall command 'BPF_MAP_UPDATE_ELEM'"
-description: "This page documents the 'BPF_MAP_UPDATE_ELEM' eBPF syscall command, including its definition, usage, program types that can use it, and examples."
----
-# BPF Syscall `BPF_MAP_UPDATE_ELEM` command
-
-<!-- [FEATURE_TAG](BPF_MAP_UPDATE_ELEM) -->
-[:octicons-tag-24: v3.18](https://github.com/torvalds/linux/commit/db20fd2b01087bdfbe30bce314a198eefedcc42e)
-<!-- [/FEATURE_TAG] -->
-
-The `BPF_MAP_UPDATE_ELEM` command is used to insert or update a single value in a map.
-
-## Return value
-
-This command will return `0` on success or a error number (negative integer) if something went wrong.
 
 ## Attributes
 ### `map_fd`
