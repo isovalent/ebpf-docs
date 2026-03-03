@@ -22,7 +22,7 @@ XDP programs are typically put into an [ELF](../../concepts/elf.md) section pref
 * `XDP_TX` - Send the packet back out the same network port it arrived on. The packet can be manipulated before hand.
 * `XDP_REDIRECT` - Redirect the packet to one of a number of locations. The packet can be manipulated before hand.
 
-`XDP_REDIRECT` should not be returned by itself, always in combination with a helper function call. A number of helper functions can be used to redirect the current packet. These annotate hidden values in the context to inform the kernel what actual redirection action to take after the program exists.
+`XDP_REDIRECT` should not be returned by itself, always in combination with a helper function call. A number of helper functions can be used to redirect the current packet. These annotate hidden values in the context to inform the kernel what actual redirection action to take after the program exits.
 
 Packets can be redirected in the following ways:
 
@@ -99,7 +99,7 @@ There are two ways of attaching XDP programs to network devices, the legacy way 
 
 The modern and recommended way is to use BPF links. Doing so is as easy as calling [`BPF_LINK_CREATE`](../syscall/BPF_LINK_CREATE.md) with the `target_ifindex` set to the network interface target, `attach_type` set to `BPF_LINK_TYPE_XDP` and the same `flags` as would be used for the netlink approach.
 
-There are some subtle differences. The netlink method will give the network interface a reference to the program, which means that after attaching, the program will stay attached until it is detached by a program, even if the original loader exists. This is in contrast to kprobes for example which will stop as soon as the loader exists (assuming we are not pinning the program). With links however, this referencing doesn't occur, the creation of the link returns a file descriptor which is used to manage the lifecycle, if the link file descriptor is closed or the loader exists without pinning it, the program will be detached from the network interface.
+There are some subtle differences. The netlink method will give the network interface a reference to the program, which means that after attaching, the program will stay attached until it is detached by a program, even if the original loader exits. This is in contrast to kprobes for example which will stop as soon as the loader exits (assuming we are not pinning the program). With links however, this referencing doesn't occur, the creation of the link returns a file descriptor which is used to manage the lifecycle, if the link file descriptor is closed or the loader exits without pinning it, the program will be detached from the network interface.
 
 !!! warning
     Hardware offloaded GRO and LSO are incompatible with XDP and have to be disabled in order to use XDP. Not doing so will result in a `-EINVAL` error upon attaching.
