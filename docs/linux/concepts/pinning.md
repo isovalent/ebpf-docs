@@ -8,7 +8,7 @@ description: "This page explains the concept of pinning in eBPF. It explains wha
 
 Pinning is a technique whereby we can make a pseudo-file in the BPF file system hold a reference to a BPF object. BPF objects are reference counted, meaning that if all references to a BPF object are gone, the kernel will unload/kill/free that BPF object.
 
-A pin can be created by any process that has a file descriptor to a BPF object, but passing it into the [`BPF_OBJ_PIN`](../syscall/BPF_OBJ_PIN.md) syscall command alongside a valid path inside the BPF file system which is typically mounted at `/sys/fs/bpf`.
+A pin can be created by any process that has a file descriptor to a BPF object, by passing it into the [`BPF_OBJ_PIN`](../syscall/BPF_OBJ_PIN.md) syscall command alongside a valid path inside the BPF file system which is typically mounted at `/sys/fs/bpf`.
 
 If your Linux distribution does not automatically mount the BPF file system you can do so manually by executing `#!bash mount -t bpf bpffs /sys/fs/bpf` as root or making it part of a setup/initialization script.
 
