@@ -27,6 +27,10 @@ Reference to the newly created BPF link; or `NULL` is returned on error, error c
 
 [`bpf_program__attach_cgroup`](bpf_program__attach_cgroup.md) attaches a BPF program to a given cGroup to enforce fine-grained, per-cGroup policies.
 
+
+!!! warning
+    When using the [`BPF_LSM_CGROUP`](../../../linux/syscall/BPF_LINK_CREATE.md#bpf_lsm_cgroup) attachment type, at most 10 [`BPF_PROG_TYPE_LSM`](../../../linux/program-type/BPF_PROG_TYPE_LSM.md) programs can be attached concurrently to a single cGroup, as defined by the `CGROUP_LSM_NUM` variable in `include/linux/bpf-cgroup-defs.h`. Exceeding this limit will result in an error. This restriction does not apply to other [`BPF_PROG_TYPE_CGROUP_*`](../../../linux/program-type/index.md#cgroup-program-types) program types.
+
 ### Example
 
 
