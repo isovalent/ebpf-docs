@@ -27,6 +27,7 @@ struct bpf_kprobe_opts {
 	/* size of this struct, for forward/backward compatibility */
 	size_t sz;
 	__u64 bpf_cookie;
+	/* function offset, or raw address if func_name == NULL */
 	size_t offset;
 	bool retprobe;
 	/* kprobe attach mode */
@@ -46,6 +47,10 @@ Custom user-provided value fetchable through [`bpf_get_attach_cookie`](../../../
 [:octicons-tag-24: 0.5.0](https://github.com/libbpf/libbpf/releases/tag/v0.5.0)
 
 Function's offset to install kprobe to. By default, the probe is installed at the function's entry. By you can install it at any CPU instruction in the function by specifying the offset.
+
+If `func_name` is `NULL`, `offset` is treated as a raw kernel address for `PROBE_ATTACH_MODE_PERF` and `PROBE_ATTACH_MODE_LINK`.
+
+This is not supported with `PROBE_ATTACH_MODE_LEGACY`. With `PROBE_ATTACH_MODE_DEFAULT`, it can still fail with `-EOPNOTSUPP` if libbpf falls back to legacy attach.
 
 #### `retprobe`
 
