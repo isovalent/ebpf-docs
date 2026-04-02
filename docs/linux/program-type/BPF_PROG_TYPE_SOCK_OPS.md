@@ -413,7 +413,7 @@ The remote data link / layer 4 port in network byte order.
 
 [:octicons-tag-24: v4.13](https://github.com/torvalds/linux/commit/40304b2a1567fecc321f640ee4239556dd0f3ee0)
 
-The local data link / layer 4 port in network byte order.
+The local data link / layer 4 port in host byte order.
 
 ### `is_fullsock`
 	
