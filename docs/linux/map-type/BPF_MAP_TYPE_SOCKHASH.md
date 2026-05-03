@@ -21,7 +21,13 @@ This map can also be manipulated from kernel space, the main use-case for doing 
 
 ## Attributes
 
-The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must always be `4` and the [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must always be `8`. 
+[:octicons-tag-24: v4.18](https://github.com/torvalds/linux/commit/81110384441a59cff47430f20f049e69b98c17f4)
+
+The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must always be `4`.
+
+[:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/c1cdf65da060a8e047a9f4433306fd6dac1f51a6)
+
+The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must be either `4` or `8` to support storing socket cookies. Lookups are unsupported for value size `4` maps.
 
 <!-- TODO link to generic page for attributes which are the same for every map type -->
 
