@@ -36,7 +36,15 @@ A sock object may be in multiple maps, but can only inherit a single parse or ve
 
 ## Attributes
 
-The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must always be `4` and the [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must always be `8`. 
+The [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must always be `4`.
+
+[:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/174a79ff9515f400b9a6115643dafd62a635b7e6)
+
+The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must always be `4`.
+
+[:octicons-tag-24: v5.7](https://github.com/torvalds/linux/commit/c1cdf65da060a8e047a9f4433306fd6dac1f51a6)
+
+The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) must be either `4` or `8` to support storing socket cookies. Lookups are unsupported for value size `4` maps.
 
 <!-- TODO link to generic page for attributes which are the same for every map type -->
 
