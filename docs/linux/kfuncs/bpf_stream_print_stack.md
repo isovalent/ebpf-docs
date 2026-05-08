@@ -66,7 +66,7 @@ The following program types can make use of this kfunc:
 
 ### Example
 
-The kernel selftests use this kfunc in
+The kernel self-tests use this kfunc in
 `tools/testing/selftests/bpf/progs/stream.c` with a syscall program that emits
 the stack to `BPF_STDERR`:
 
