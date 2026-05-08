@@ -22,6 +22,7 @@ Struct ops can be used with the following:
 - [`struct hid_bpf_ops`](BPF_PROG_TYPE_STRUCT_OPS/hid_bpf_ops.md) [:octicons-tag-24: v6.11](https://github.com/torvalds/linux/commit/ebc0d8093e8c97de459615438edefad1a4ac352c)
 - [`struct sched_ext_ops`](BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 - [`struct Qdisc_ops`](BPF_PROG_TYPE_STRUCT_OPS/Qdisc_ops.md) [:octicons-tag-24: v6.16](https://github.com/torvalds/linux/commit/c8240344956e3f0b4e8f1d40ec3435e47040cacb)
+- [`struct smc_hs_ctrl`](BPF_PROG_TYPE_STRUCT_OPS/smc_hs_ctrl.md) [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/15f295f55656658e65bdbc9b901d6b2e49d68d72)
 
 ## Context
 
