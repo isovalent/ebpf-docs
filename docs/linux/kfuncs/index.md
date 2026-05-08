@@ -228,6 +228,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 ## Work-queue KFuncs
 
 - [`bpf_wq_init`](bpf_wq_init.md)
+- [`bpf_wq_set_callback`](bpf_wq_set_callback.md)
 - [`bpf_wq_set_callback_impl`](bpf_wq_set_callback_impl.md)
 - [`bpf_wq_start`](bpf_wq_start.md)
 
@@ -236,6 +237,10 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_map_sum_elem_count`](bpf_map_sum_elem_count.md)
 - [`bpf_get_fsverity_digest`](bpf_get_fsverity_digest.md)
 - [`__bpf_trap`](__bpf_trap.md)
+
+## Timer KFuncs
+
+- [`bpf_timer_cancel_async`](bpf_timer_cancel_async.md)
 
 ## XDP metadata kfuncs
 
@@ -482,6 +487,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_strcspn`](bpf_strcspn.md)
 - [`bpf_strlen`](bpf_strlen.md)
 - [`bpf_strnchr`](bpf_strnchr.md)
+- [`bpf_strncasecmp`](bpf_strncasecmp.md)
 - [`bpf_strnlen`](bpf_strnlen.md)
 - [`bpf_strnstr`](bpf_strnstr.md)
 - [`bpf_strrchr`](bpf_strrchr.md)
@@ -493,6 +499,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 
 ## Debug stream Kfuncs
 
+- [`bpf_stream_print_stack`](bpf_stream_print_stack.md)
+- [`bpf_stream_vprintk`](bpf_stream_vprintk.md)
 - [`bpf_stream_vprintk_impl`](bpf_stream_vprintk_impl.md)
 
 ## CGroup xattr Kfuncs
@@ -501,5 +509,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 
 ## Task work schedule Kfuncs
 
+- [`bpf_task_work_schedule_resume`](bpf_task_work_schedule_resume.md)
+- [`bpf_task_work_schedule_signal`](bpf_task_work_schedule_signal.md)
 - [`bpf_task_work_schedule_resume_impl`](bpf_task_work_schedule_resume_impl.md)
 - [`bpf_task_work_schedule_signal_impl`](bpf_task_work_schedule_signal_impl.md)

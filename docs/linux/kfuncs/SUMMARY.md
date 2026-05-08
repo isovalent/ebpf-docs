@@ -144,11 +144,14 @@
   - [`bpf_map_sum_elem_count`](bpf_map_sum_elem_count.md)
   - [`bpf_get_fsverity_digest`](bpf_get_fsverity_digest.md)
   - [`__bpf_trap`](__bpf_trap.md)
+- Timer KFuncs
+  - [`bpf_timer_cancel_async`](bpf_timer_cancel_async.md)
 - Preemption kfuncs
   - [`bpf_preempt_disable`](bpf_preempt_disable.md)
   - [`bpf_preempt_enable`](bpf_preempt_enable.md)
 - Work-queue KFuncs
   - [`bpf_wq_init`](bpf_wq_init.md)
+  - [`bpf_wq_set_callback`](bpf_wq_set_callback.md)
   - [`bpf_wq_set_callback_impl`](bpf_wq_set_callback_impl.md)
   - [`bpf_wq_start`](bpf_wq_start.md)
 - XDP metadata kfuncs
@@ -339,6 +342,7 @@
   - [`bpf_strcspn`](bpf_strcspn.md)
   - [`bpf_strlen`](bpf_strlen.md)
   - [`bpf_strnchr`](bpf_strnchr.md)
+  - [`bpf_strncasecmp`](bpf_strncasecmp.md)
   - [`bpf_strnlen`](bpf_strnlen.md)
   - [`bpf_strnstr`](bpf_strnstr.md)
   - [`bpf_strrchr`](bpf_strrchr.md)
@@ -348,9 +352,13 @@
   - [`bpf_strcasestr`](bpf_strcasestr.md)
   - [`bpf_strncasestr`](bpf_strncasestr.md)
 - Debug stream Kfuncs
+  - [`bpf_stream_print_stack`](bpf_stream_print_stack.md)
+  - [`bpf_stream_vprintk`](bpf_stream_vprintk.md)
   - [`bpf_stream_vprintk_impl`](bpf_stream_vprintk_impl.md)
 - CGroup xattr Kfuncs
   - [`bpf_cgroup_read_xattr`](bpf_cgroup_read_xattr.md)
 - Task work schedule Kfuncs
+  - [`bpf_task_work_schedule_resume`](bpf_task_work_schedule_resume.md)
+  - [`bpf_task_work_schedule_signal`](bpf_task_work_schedule_signal.md)
   - [`bpf_task_work_schedule_resume_impl`](bpf_task_work_schedule_resume_impl.md)
   - [`bpf_task_work_schedule_signal_impl`](bpf_task_work_schedule_signal_impl.md)

@@ -33,7 +33,7 @@ The timers are attached to the life cycle of the map, if the map is freed/delete
 
 Pending timers will keep a reference to the program containing the callback, so even if no other references exist, programs will stay loaded until all timers have fired or are canceled.
 
-A timer has to be initialized with the [`bpf_timer_init`](../helper-function/bpf_timer_init.md) helper function. After initialization a callback can be assigned to the timer with the [`bpf_timer_set_callback`](../helper-function/bpf_timer_set_callback.md) helper function. Lastly the timer is started with the [`bpf_timer_start`](../helper-function/bpf_timer_start.md) helper function. A pending timer can also be canceled with the [`bpf_timer_cancel`](../helper-function/bpf_timer_cancel.md) helper function.
+A timer has to be initialized with the [`bpf_timer_init`](../helper-function/bpf_timer_init.md) helper function. After initialization a callback can be assigned to the timer with the [`bpf_timer_set_callback`](../helper-function/bpf_timer_set_callback.md) helper function. Lastly the timer is started with the [`bpf_timer_start`](../helper-function/bpf_timer_start.md) helper function. A pending timer can also be canceled with the [`bpf_timer_cancel`](../helper-function/bpf_timer_cancel.md) helper function, which blocks until any currently-running callback completes. In contexts where blocking is undesirable, the [`bpf_timer_cancel_async`](../kfuncs/bpf_timer_cancel_async.md)kfunc can be used instead. `bpf_timer_cancel_async` returns `-ECANCELED` when the cancellation must be deferred asynchronously rather than waiting for the callback to finish.
 
 These three helper calls do not necessarily have to happen in the same program at the same time. The following use case is valid:
 

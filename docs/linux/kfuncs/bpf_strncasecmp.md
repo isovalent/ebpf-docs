@@ -1,36 +1,43 @@
 ---
-title: "KFunc 'bpf_dynptr_slice_rdwr'"
-description: "This page documents the 'bpf_dynptr_slice_rdwr' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_strncasecmp'"
+description: "This page documents the 'bpf_strncasecmp' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_dynptr_slice_rdwr`
+# KFunc `bpf_strncasecmp`
 
-<!-- [FEATURE_TAG](bpf_dynptr_slice_rdwr) -->
-[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/b5964b968ac64c2ec2debee7518499113b27c34e)
+<!-- [FEATURE_TAG](bpf_strncasecmp) -->
+[:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/1dc669646762726d59be15e2de354b06e3e0cbcf)
 <!-- [/FEATURE_TAG] -->
 
-Get a pointer to dynptr data up to `len` bytes for read write access. 
+Compare two length-limited strings, ignoring the case of the characters.
 
 ## Definition
 
-If the dynptr doesn't have continuous data up to `len` bytes, or the dynptr is read only, return `NULL`.
+**Parameters**
+
+`s1__ign`: One string
+
+`s2__ign`: Another string
+
+`len`: The maximum number of characters to compare
+
+**Returns**
+
+ * `0`       - Strings are equal
+ * `-1`      - `s1__ign` is smaller
+ * `1`       - `s2__ign` is smaller
+ * `-EFAULT` - Cannot read one of the strings
+ * `-E2BIG`  - One of strings is too large
+ * `-ERANGE` - One of strings is outside of kernel address space
 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_dynptr_slice_rdwr(const struct bpf_dynptr *p, u64 offset, void *buffer__nullable, u64 buffer__szk)`
-
-!!! note
-	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
-	from the kfunc before making use of it (dereferencing or passing to another helper).
+`#!c int bpf_strncasecmp(const char *s1__ign, const char *s2__ign, size_t len)`
 <!-- [/KFUNC_DEF] -->
-
-!!! note
-    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `offset`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This kfunc is equivalent to [`bpf_strcasecmp`](bpf_strcasecmp.md), but bounds the comparison by `len` characters.
 
 ### Program types
 
@@ -66,4 +73,3 @@ The following program types can make use of this kfunc:
 
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
-

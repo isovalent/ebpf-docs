@@ -1,36 +1,44 @@
 ---
-title: "KFunc 'bpf_dynptr_slice_rdwr'"
-description: "This page documents the 'bpf_dynptr_slice_rdwr' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_task_work_schedule_resume'"
+description: "This page documents the 'bpf_task_work_schedule_resume' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_dynptr_slice_rdwr`
+# KFunc `bpf_task_work_schedule_resume`
 
-<!-- [FEATURE_TAG](bpf_dynptr_slice_rdwr) -->
-[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/b5964b968ac64c2ec2debee7518499113b27c34e)
+<!-- [FEATURE_TAG](bpf_task_work_schedule_resume) -->
+[:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/6e663ffdf7600168338fdfa2fd1eed83395d58a3)
 <!-- [/FEATURE_TAG] -->
 
-Get a pointer to dynptr data up to `len` bytes for read write access. 
+Schedule BPF callback using `task_work_add` with `TWA_RESUME` mode.
+
+!!! note
+    This kfunc supersedes `bpf_task_work_schedule_resume_impl`, migrated to use implicit arguments in [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/6e663ffdf7600168338fdfa2fd1eed83395d58a3).
 
 ## Definition
 
-If the dynptr doesn't have continuous data up to `len` bytes, or the dynptr is read only, return `NULL`.
+**Parameters**
+
+`task`: Task struct for which callback should be scheduled
+
+`tw`: Pointer to `struct bpf_task_work` in BPF map value for internal bookkeeping
+
+`map__map`: map that embeds `struct bpf_task_work` in the values
+
+`callback`: pointer to BPF subprogram to call
+
 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_dynptr_slice_rdwr(const struct bpf_dynptr *p, u64 offset, void *buffer__nullable, u64 buffer__szk)`
-
-!!! note
-	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
-	from the kfunc before making use of it (dereferencing or passing to another helper).
+`#!c int bpf_task_work_schedule_resume(struct task_struct *task, struct bpf_task_work *tw, void *map__map, bpf_task_work_callback_t callback)`
 <!-- [/KFUNC_DEF] -->
 
-!!! note
-    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `offset`. This may require CO-RE logic to select the correct kfunc.
+`#!c typedef int (*bpf_task_work_callback_t)(struct bpf_map *map, void *key, void *value);`
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This kfunc allows a BPF program that is being executed in a restricted context such as a Non Mask-able Interrupt (NMI) to schedule a callback on a task. This callback will be executed in a more permissible context (sleepable context) before that task resumes.
+
+This is mostly useful for tools such as profilers. When a program is triggered in an NMI, the program and any helper/kfunc it executes is unable to sleep/wait or page fault. This means that some actions like reading userspace memory or even updating map values may fail. So by scheduling a callback you can do more things in the permissive context, while still passing info from the original execution context via a map value.
 
 ### Program types
 
@@ -66,4 +74,3 @@ The following program types can make use of this kfunc:
 
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
-

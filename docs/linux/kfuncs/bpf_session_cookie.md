@@ -19,8 +19,11 @@ Returns pointer to the cookie value. The bpf program can use the pointer to stor
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c __u64 *bpf_session_cookie()`
+`#!c __u64 *bpf_session_cookie(void *ctx)`
 <!-- [/KFUNC_DEF] -->
+
+!!! note
+    In [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/8fe4dc4f6456b3d2c9e6f8aeb1f978b7bff0f6c8) the signature of this kfunc has been changed. It used to be `#!c __u64 *bpf_session_cookie()`. [Weak symbols](../../ebpf-library/libbpf/ebpf/__weak.md) and [`bpf_ksym_exists`](../../ebpf-library/libbpf/ebpf/bpf_ksym_exists.md) can be used to write fallback logic for older kernels.
 
 ## Usage
 

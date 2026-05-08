@@ -115,15 +115,22 @@ A parameter with the `__alloc` suffix is used to indicate that the parameter is 
 
 This is typically used on KFuncs such as [`bpf_obj_drop_impl`](../kfuncs/bpf_obj_drop_impl.md) which frees the memory allocated by [`bpf_obj_new_impl`](../kfuncs/bpf_obj_new_impl.md). Here we want to prevent a pointer to stack or map value to be passed in.
 
-### `__opt` annotation
+### `__nullable` annotation
 
 [:octicons-tag-24: v6.5](https://github.com/torvalds/linux/commit/3bda08b63670c39be390fcb00e7718775508e673)
 
-A parameter with the `__opt` suffix is used to indicate that the parameter associated with an `__sz` or `__szk` it is optional. This means that the parameter can be `NULL`.
+!!! note
+    In [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/a069190b590e108223cd841a1c2d0bfb92230ecc) this annotation was renamed from `__opt` to `__nullable`. Before then the `__opt` annotation could only be used in combination with `__sz` or `__szk`.
+
+A parameter with the `__nullable` suffix is used to indicate that the parameter may be `NULL` and that the kfunc is responsible for checking before dereferencing the pointer.
+
+The `__nullable` annotation can be combined with other annotations. For example, when used with `__sz` or `__szk` annotations for memory and size pairs, the verifier will skip size validation when a `NULL` pointer is passed, but will still process the size argument to extract constant size information when needed.
 
 ```c
-void *bpf_dynptr_slice(..., void *buffer__opt, u32 buffer__szk)
+void *bpf_dynptr_slice(..., void *buffer__nullable, u32 buffer__szk)
 ```
+
+Here, the buffer may be `NULL`. If the buffer is not `NULL`, it must be at least `buffer__szk` bytes in size. The kfunc is responsible for checking if the buffer is `NULL` before using it.
 
 ### `__refcounted_kptr` annotation
 

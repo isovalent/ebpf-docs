@@ -326,6 +326,14 @@ sets:
             - name: BPF_PROG_TYPE_PERF_EVENT
             - name: BPF_PROG_TYPE_RAW_TRACEPOINT
             - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
+      - name: bpf_wq_set_callback
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20438
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_wq_set_callback_impl
         except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20438
           program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
@@ -384,6 +392,7 @@ sets:
       - name: bpf_strcspn
       - name: bpf_strlen
       - name: bpf_strnchr
+      - name: bpf_strncasecmp
       - name: bpf_strnlen
       - name: bpf_strnstr
       - name: bpf_strrchr
@@ -398,17 +407,26 @@ sets:
         flags: [KF_ITER_NEW, KF_SLEEPABLE]
       - name: bpf_iter_dmabuf_next
         flags: [KF_ITER_NEXT, KF_RET_NULL, KF_SLEEPABLE]
+      - name: bpf_stream_print_stack
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_stream_vprintk
+        flags: [KF_TRUSTED_ARGS]
       - name: bpf_stream_vprintk_impl
         flags: [KF_TRUSTED_ARGS]
       - name: bpf_cgroup_read_xattr
         flags: [KF_RCU]
+      - name: bpf_task_work_schedule_signal
+        flags: [KF_TRUSTED_ARGS]
       - name: bpf_task_work_schedule_signal_impl
+        flags: [KF_TRUSTED_ARGS]
+      - name: bpf_task_work_schedule_resume
         flags: [KF_TRUSTED_ARGS]
       - name: bpf_task_work_schedule_resume_impl
         flags: [KF_TRUSTED_ARGS]
       - name: bpf_dynptr_from_file
         flags: [KF_TRUSTED_ARGS]
       - name: bpf_dynptr_file_discard
+      - name: bpf_timer_cancel_async
     program_types:
       - name: BPF_PROG_TYPE_UNSPEC
 

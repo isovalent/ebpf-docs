@@ -10,6 +10,9 @@ description: "This page documents the 'bpf_wq_set_callback_impl' eBPF kfunc, inc
 
 Set a callback function for a work-queue.
 
+!!! note
+    This legacy `_impl` variant was replaced by [`bpf_wq_set_callback`](bpf_wq_set_callback.md) in [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/b97931a25a4bc74076ffb5c3d1a534c71ade4d55).
+
 ## Definition
 
 This kfunc associates a callback function with a work-queue. The work-queue must be initialized with the [`bpf_wq_init`](bpf_wq_init.md) kfunc before calling this function. After the callback function is set, work can be scheduled using the [`bpf_wq_start`](bpf_wq_start.md) kfunc.
