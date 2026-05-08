@@ -874,3 +874,10 @@ patterns:
     - name: bpf_strcasecmp
     - name: bpf_task_work_schedule_resume_impl
     - name: bpf_task_work_schedule_signal_impl
+    - name: bpf_stream_print_stack
+    - name: bpf_stream_vprintk
+    - name: bpf_strncasecmp
+    - name: bpf_task_work_schedule_resume
+    - name: bpf_task_work_schedule_signal
+    - name: bpf_timer_cancel_async
+    - name: bpf_wq_set_callback

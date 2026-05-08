@@ -1,36 +1,38 @@
 ---
-title: "KFunc 'bpf_dynptr_slice_rdwr'"
-description: "This page documents the 'bpf_dynptr_slice_rdwr' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_stream_print_stack'"
+description: "This page documents the 'bpf_stream_print_stack' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_dynptr_slice_rdwr`
+# KFunc `bpf_stream_print_stack`
 
-<!-- [FEATURE_TAG](bpf_dynptr_slice_rdwr) -->
-[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/b5964b968ac64c2ec2debee7518499113b27c34e)
+<!-- [FEATURE_TAG](bpf_stream_print_stack) -->
+[:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/63328bb23f2693fe36e8bcdb972c6040e84d16e4)
 <!-- [/FEATURE_TAG] -->
 
-Get a pointer to dynptr data up to `len` bytes for read write access. 
+Dump the current BPF program stack trace to a stream.
 
 ## Definition
 
-If the dynptr doesn't have continuous data up to `len` bytes, or the dynptr is read only, return `NULL`.
+**Parameters**
+
+`stream_id`: The ID of the stream to write to (`BPF_STDOUT`(1), or `BPF_STDERR`(2)).
+
+**Returns**
+
+`0` on success, or `-ENOENT` if `stream_id` is invalid.
 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_dynptr_slice_rdwr(const struct bpf_dynptr *p, u64 offset, void *buffer__nullable, u64 buffer__szk)`
-
-!!! note
-	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
-	from the kfunc before making use of it (dereferencing or passing to another helper).
+`#!c int bpf_stream_print_stack(int stream_id)`
 <!-- [/KFUNC_DEF] -->
-
-!!! note
-    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `offset`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This kfunc triggers an immediate stack dump of the current BPF execution context and writes it into the per-program stream.
+
+It is intended for debugging and diagnostics, especially for error paths where capturing stack traces is useful.
+
+The stream output can be read with: `bpftool prog tracelog { stdout | stderr } *PROG*`.
 
 ### Program types
 
@@ -64,6 +66,22 @@ The following program types can make use of this kfunc:
 
 ### Example
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+The kernel selftests use this kfunc in
+`tools/testing/selftests/bpf/progs/stream.c` with a syscall program that emits
+the stack to `BPF_STDERR`:
 
+```c
+SEC("syscall")
+int stream_print_stack_kfunc(void *ctx)
+{
+    return bpf_stream_print_stack(BPF_STDERR);
+}
+```
+
+Once the program is loaded and triggered, read the stream with:
+
+```shell
+bpftool prog tracelog stderr <PROG>
+```
+
+The output includes a header (CPU, PID, Comm) and a `Call trace:` section.

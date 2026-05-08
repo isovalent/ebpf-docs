@@ -1,36 +1,40 @@
 ---
-title: "KFunc 'bpf_dynptr_slice_rdwr'"
-description: "This page documents the 'bpf_dynptr_slice_rdwr' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_timer_cancel_async'"
+description: "This page documents the 'bpf_timer_cancel_async' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_dynptr_slice_rdwr`
+# KFunc `bpf_timer_cancel_async`
 
-<!-- [FEATURE_TAG](bpf_dynptr_slice_rdwr) -->
-[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/b5964b968ac64c2ec2debee7518499113b27c34e)
+<!-- [FEATURE_TAG](bpf_timer_cancel_async) -->
+[:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/a7e172aa4ca276d12fe87ffddff9cbd2d95ea51c)
 <!-- [/FEATURE_TAG] -->
 
-Get a pointer to dynptr data up to `len` bytes for read write access. 
+Try to deactivate a timer without waiting for completion in all contexts.
 
 ## Definition
 
-If the dynptr doesn't have continuous data up to `len` bytes, or the dynptr is read only, return `NULL`.
+**Parameters**
+
+`timer`: `bpf_timer` to stop
+
+**Returns**
+
+ * `0`          - the timer was not active
+ * `1`          - the timer was active
+ * `-1`         - the timer callback is currently running and cannot be stopped
+ * `-ECANCELED` - the timer will be cancelled asynchronously
+ * `-ENOMEM`    - out of memory while queueing async cancel
+ * `-EINVAL`    - the timer was not initialized
+ * `-ENOENT`    - racing with timer deletion
 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void *bpf_dynptr_slice_rdwr(const struct bpf_dynptr *p, u64 offset, void *buffer__nullable, u64 buffer__szk)`
-
-!!! note
-	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 
-	from the kfunc before making use of it (dereferencing or passing to another helper).
+`#!c int bpf_timer_cancel_async(struct bpf_timer *timer)`
 <!-- [/KFUNC_DEF] -->
-
-!!! note
-    In [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/531b87d865eb9e625c2e46ec8f06a65a6157ee45) the signature of this kfunc changed from `u32` to `u64` types for `offset`. This may require CO-RE logic to select the correct kfunc.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+Unlike `bpf_timer_cancel`, this helper can return `-ECANCELED` when cancellation is deferred asynchronously, which makes it suitable for contexts where waiting is undesirable.
 
 ### Program types
 
@@ -66,4 +70,3 @@ The following program types can make use of this kfunc:
 
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
-

@@ -10,6 +10,9 @@ description: "This page documents the 'bpf_task_work_schedule_resume_impl' eBPF 
 
 Schedule BPF callback using `task_work_add` with `TWA_RESUME` mode
 
+!!! note
+	This legacy `_impl` variant was replaced by [`bpf_task_work_schedule_resume`](bpf_task_work_schedule_resume.md) in [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/6e663ffdf7600168338fdfa2fd1eed83395d58a3).
+
 ## Definition
 
 **Parameters**

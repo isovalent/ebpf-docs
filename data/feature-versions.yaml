@@ -2557,3 +2557,24 @@
     - name: scx_bpf_task_set_dsq_vtime
       version: v6.19
       commit: 3035addfaf285f32d1f513d181ebcb85924ae3c3
+    - name: bpf_stream_print_stack
+      version: v7.0
+      commit: 63328bb23f2693fe36e8bcdb972c6040e84d16e4
+    - name: bpf_stream_vprintk
+      version: v7.0
+      commit: d806f3101276a1ed18d963944580e1ee1c7a3d26
+    - name: bpf_strncasecmp
+      version: v7.0
+      commit: 1dc669646762726d59be15e2de354b06e3e0cbcf
+    - name: bpf_task_work_schedule_resume
+      version: v7.0
+      commit: 6e663ffdf7600168338fdfa2fd1eed83395d58a3
+    - name: bpf_task_work_schedule_signal
+      version: v7.0
+      commit: 6e663ffdf7600168338fdfa2fd1eed83395d58a3
+    - name: bpf_timer_cancel_async
+      version: v7.0
+      commit: a7e172aa4ca276d12fe87ffddff9cbd2d95ea51c
+    - name: bpf_wq_set_callback
+      version: v7.0
+      commit: b97931a25a4bc74076ffb5c3d1a534c71ade4d55

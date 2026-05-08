@@ -13,6 +13,9 @@ Write a message to a <nospell>stdout/stderr</nospell> like, per-program stream.
 !!! note
     In [:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6) this kfunc was introduced as `bpf_stream_vprintk` and was renamed to `bpf_stream_vprintk_impl` in [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/137cc92ffe2e71705fce112656a460d924934ebe) 
 
+!!! note
+    This legacy `_impl` variant was replaced by [`bpf_stream_vprintk`](bpf_stream_vprintk.md) in [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/d806f3101276a1ed18d963944580e1ee1c7a3d26).
+
 ## Definition
 
 **Parameters**

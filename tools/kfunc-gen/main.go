@@ -81,6 +81,11 @@ var removeKfuncs = []string{
 	"scx_bpf_dispatch_from_dsq_set_vtime",
 	"scx_bpf_dispatch_from_dsq",
 	"scx_bpf_dispatch_vtime_from_dsq",
+
+	"bpf_wq_set_callback_impl",
+	"bpf_stream_vprintk_impl",
+	"bpf_task_work_schedule_signal_impl",
+	"bpf_task_work_schedule_resume_impl",
 }
 
 func main() {

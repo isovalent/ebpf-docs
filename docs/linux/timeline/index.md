@@ -1034,3 +1034,13 @@ hide: toc
 * `scx_bpf_dsq_peek` [44f5c8e](https://github.com/torvalds/linux/commit/44f5c8ec5b9ad8ed4ade08d727f803b2bb07f1c3) (kfuncs)
 * `scx_bpf_task_set_slice` [3035add](https://github.com/torvalds/linux/commit/3035addfaf285f32d1f513d181ebcb85924ae3c3) (kfuncs)
 * `scx_bpf_task_set_dsq_vtime` [3035add](https://github.com/torvalds/linux/commit/3035addfaf285f32d1f513d181ebcb85924ae3c3) (kfuncs)
+
+## :octicons-tag-24: v7.0
+
+* `bpf_stream_print_stack` [63328bb](https://github.com/torvalds/linux/commit/63328bb23f2693fe36e8bcdb972c6040e84d16e4) (kfuncs)
+* `bpf_stream_vprintk` [d806f31](https://github.com/torvalds/linux/commit/d806f3101276a1ed18d963944580e1ee1c7a3d26) (kfuncs)
+* `bpf_strncasecmp` [1dc6696](https://github.com/torvalds/linux/commit/1dc669646762726d59be15e2de354b06e3e0cbcf) (kfuncs)
+* `bpf_task_work_schedule_resume` [6e663ff](https://github.com/torvalds/linux/commit/6e663ffdf7600168338fdfa2fd1eed83395d58a3) (kfuncs)
+* `bpf_task_work_schedule_signal` [6e663ff](https://github.com/torvalds/linux/commit/6e663ffdf7600168338fdfa2fd1eed83395d58a3) (kfuncs)
+* `bpf_timer_cancel_async` [a7e172a](https://github.com/torvalds/linux/commit/a7e172aa4ca276d12fe87ffddff9cbd2d95ea51c) (kfuncs)
+* `bpf_wq_set_callback` [b97931a](https://github.com/torvalds/linux/commit/b97931a25a4bc74076ffb5c3d1a534c71ade4d55) (kfuncs)

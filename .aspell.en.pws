@@ -284,3 +284,5 @@ xattr
 SMP
 NMI
 profiler
+profilers
+workqueue
