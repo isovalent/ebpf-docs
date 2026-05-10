@@ -35,7 +35,7 @@ The `fd`/`id` refers to an XDP program optionally set by userspace. If set, the 
 
 ## Attributes
 
-The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) can be `4` or `8` depending on kernel version and optional secondary program support. The [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) can be freely chosen.
+The [`value_size`](../syscall/BPF_MAP_CREATE.md#value_size) can be `4` or `8` depending on kernel version and optional secondary program support. The [`key_size`](../syscall/BPF_MAP_CREATE.md#key_size) must always be `4`.
 
 <!-- TODO link to generic page for attributes which are the same for every map type -->
 
