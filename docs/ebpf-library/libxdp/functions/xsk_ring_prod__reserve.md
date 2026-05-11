@@ -12,9 +12,6 @@ Reserve one or more slots in a **producer** ring.
 
 `__u32` number of slots that were successfully reserved (`idx`) on success, or a 0 in case of failure.
 
-!!! note
-    It can be less than or equal to the number of packets requested to reserve.
-
 ## Usage
 
 ```c
