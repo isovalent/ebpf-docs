@@ -30,15 +30,18 @@ The `flags` are used to indicate the index in `map` for which the value must be 
 The value to write, of `size`, is passed through eBPF stack and
 pointed by `data`.
 
-`ctx` is a pointer to in-kernel `struct sk_buff`.
+The `ctx` argument must be a pointer to in-kernel `struct sk_buff`.
 
-This helper is similar to [`bpf_perf_event_output`](bpf_perf_event_output.md) but restricted to raw_tracepoint bpf programs.
+This helper is similar to [`bpf_perf_event_output`](bpf_perf_event_output.md), but for tracing programs with a BTF-tracked `struct sk_buff` context.
 
 ### Program types
 
 This helper call can be used in the following program types:
 
- * [`BPF_PROG_TYPE_RAW_TRACEPOINT`](../program-type/BPF_PROG_TYPE_RAW_TRACEPOINT.md)
+<!-- DO NOT EDIT MANUALLY -->
+<!-- [HELPER_FUNC_PROG_REF] -->
+ * [`BPF_PROG_TYPE_TRACING`](../program-type/BPF_PROG_TYPE_TRACING.md)
+<!-- [/HELPER_FUNC_PROG_REF] -->
 
 ### Map types
 
@@ -64,18 +67,18 @@ struct {
     __uint(max_entries, 2);
 } my_map SEC(".maps");
 
-SEC("raw_tp/sched_wakeup")
-int BPF_PROG(handle_sched_wakeup, struct task_struct *p)
+SEC("tp_btf/netif_receive_skb")
+int BPF_PROG(handle_netif_receive_skb, struct sk_buff *skb)
 {
     struct S {
-        u64 pid;
+        u32 len;
         u64 cookie;
-    } data;
+    } data = {};
 
-    data.pid = BPF_CORE_READ(p, pid);
+    data.len = BPF_CORE_READ(skb, len);
     data.cookie = 0x12345678;
 
-    bpf_skb_output(ctx, &my_map, 0, &data, sizeof(data));
+    bpf_skb_output(skb, &my_map, 0, &data, sizeof(data));
 
     return 0;
 }
