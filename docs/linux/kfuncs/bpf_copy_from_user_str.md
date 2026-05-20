@@ -30,7 +30,7 @@ If `BPF_F_PAD_ZEROS` flag is set, `memset` the tail of `dst` to `0` on success a
 
 **Returns**
 
-0 on success, or a negative error code on failure.
+On success, the length of the `dst` string, including the trailing NULL character. On error, a negative value. If `dst__sz` is 0, then the return value will be 0.
 
 **Signature**
 
