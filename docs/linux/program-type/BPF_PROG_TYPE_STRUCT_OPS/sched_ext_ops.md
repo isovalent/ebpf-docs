@@ -300,9 +300,7 @@ A task is becoming not runnable on its associated CPU. See [`runnable`](#runnabl
 * being moved to another CPU
 * being temporarily taken off the queue for an attribute change (`SCX_DEQ_SAVE`).
 
-* This and [`dequeue`](#dequeue) are related but not coupled. This operation
-* notifies `p`'s state transition and may not be preceded by [`dequeue`](#dequeue)
-* e.g. when `p` is being dispatched to a remote CPU.
+This and [`dequeue`](#dequeue) are related but not coupled. This operation notifies `p`'s state transition and may not be preceded by [`dequeue`](#dequeue) e.g. when `p` is being dispatched to a remote CPU.
 
 **Parameters**
 
