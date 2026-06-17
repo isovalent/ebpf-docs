@@ -38,5 +38,5 @@
   * [`struct hid_bpf_ops`](BPF_PROG_TYPE_STRUCT_OPS/hid_bpf_ops.md)
   * [`struct sched_ext_ops`](BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md)
   * [`struct Qdisc_ops`](BPF_PROG_TYPE_STRUCT_OPS/Qdisc_ops.md)
-  * [`struct sched_ext_ops`](BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md)
+  * [`struct smc_hs_ctrl`](BPF_PROG_TYPE_STRUCT_OPS/smc_hs_ctrl.md)
 * [`BPF_PROG_TYPE_SYSCALL`](BPF_PROG_TYPE_SYSCALL.md)
