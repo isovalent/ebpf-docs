@@ -10,7 +10,16 @@ description: "This page documents the 'bpf_rbtree_add_impl' eBPF kfunc, includin
 
 Add `node` to red-black-tree with root `root` using comparator `less`
 
+!!! note
+    This kfunc is deprecated as of [:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021), replaced by [`bpf_rbtree_add`](bpf_rbtree_add.md). This kfunc will be removed at some point in the future.
+
 ## Definition
+
+**Parameters**
+
+`root`: Root node of the red-back-tree.
+`node`: Node to add to the tree.
+`less`: Callback function used as comparator.
 
 The `meta` and `off` parameters are rewritten by the verifier, no need for BPF programs to set them
 

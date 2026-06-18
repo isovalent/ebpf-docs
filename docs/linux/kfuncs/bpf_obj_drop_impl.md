@@ -10,12 +10,18 @@ description: "This page documents the 'bpf_obj_drop_impl' eBPF kfunc, including 
 
 Free an allocated object.
 
+!!! note
+    This kfunc is deprecated as of [:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021), replaced by [`bpf_obj_drop`](bpf_obj_drop.md). This kfunc will be removed at some point in the future.
+
 ## Definition
 
 All fields of the object that require destruction will be destructed before the storage is freed.
 
-The `meta` parameter is rewritten by the verifier, no need for BPF
-program to set it.
+**Parameters**
+
+`p__alloc`: The object to be freed.
+
+The `meta_ign` parameter is rewritten by the verifier, no need for BPF program to set it.
 
 **Signature**
 

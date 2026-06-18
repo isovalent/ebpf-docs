@@ -86,6 +86,9 @@ var removeKfuncs = []string{
 	"bpf_stream_vprintk_impl",
 	"bpf_task_work_schedule_signal_impl",
 	"bpf_task_work_schedule_resume_impl",
+
+	"bbr_cwnd_event",
+	"cubictcp_cwnd_event",
 }
 
 func main() {

@@ -21,7 +21,7 @@ The NUMA node the given `cpu` belongs to, or trigger an error if `cpu` is invali
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int scx_bpf_cpu_node(s32 cpu)`
+`#!c s32 scx_bpf_cpu_node(s32 cpu)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

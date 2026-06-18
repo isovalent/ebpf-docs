@@ -8,7 +8,7 @@ description: "This page documents the 'dctcp_cwnd_event' eBPF kfunc, including i
 [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/e78aea8b2170be1b88c96a4d138422986a737336)
 <!-- [/FEATURE_TAG] -->
 
-Call when congestion window event occurs.
+Default <nospell>DataCenter</nospell> TCP implementation of [`tcp_congestion_ops->cwnd_event`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/tcp_congestion_ops.md#cwnd_event).
 
 ## Definition
 

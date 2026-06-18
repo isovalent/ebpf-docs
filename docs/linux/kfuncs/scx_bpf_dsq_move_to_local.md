@@ -10,6 +10,9 @@ description: "This page documents the 'scx_bpf_dsq_move_to_local' eBPF kfunc, in
 
 This function moves a task from a DSQ to the current CPU's local DSQ.
 
+!!! note
+    A newer version of this kfunc ([`scx_bpf_dsq_move_to_local___v2`](scx_bpf_dsq_move_to_local___v2.md)) as been added in [:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/860683763ebf4662cb72a312279334e02718308f). At some point in the future the new kfunc will be renamed to become this kfunc, effectively modifying its function signature. Use a [compatibility layer](../../ebpf-library/scx/scx_bpf_dsq_move_to_local.md) when using across multiple kernel versions. 
+
 ## Definition
 
 Move a task from the non-local DSQ identified by `dsq_id` to the current CPU's local DSQ for execution. Can only be called from [`sched_ext_ops.dispatch`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sched_ext_ops.md#dispatch).

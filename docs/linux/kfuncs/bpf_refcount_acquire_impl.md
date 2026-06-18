@@ -10,6 +10,9 @@ description: "This page documents the 'bpf_refcount_acquire_impl' eBPF kfunc, in
 
 Increment the refcount on a refcounted local kptr, turning the non-owning reference input into an owning reference in the process.
 
+!!! note
+    This kfunc is deprecated as of [:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021), replaced by [`bpf_refcount_acquire`](bpf_refcount_acquire.md). This kfunc will be removed at some point in the future.
+
 ## Definition
 
 The `meta` parameter is rewritten by the verifier, no need for BPF program to set it.

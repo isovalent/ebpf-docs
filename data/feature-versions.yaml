@@ -2578,3 +2578,52 @@
     - name: bpf_wq_set_callback
       version: v7.0
       commit: b97931a25a4bc74076ffb5c3d1a534c71ade4d55
+    - name: bbr_cwnd_event_tx_start
+      version: v7.1
+      commit: d1e59a46973719e458bec78d00dd767d7a7ba71f
+    - name: cubictcp_cwnd_event_tx_start
+      version: v7.1
+      commit: d1e59a46973719e458bec78d00dd767d7a7ba71f
+    - name: dctcp_cwnd_event_tx_start
+      version: v7.1
+      commit: d1e59a46973719e458bec78d00dd767d7a7ba71f
+    - name: bpf_io_uring_submit_sqes
+      version: 7.1
+      commit: 890819248a8616558fe12e6c06c918ee1c3a2bc6
+    - name: bpf_io_uring_get_region
+      version: 7.1
+      commit: 890819248a8616558fe12e6c06c918ee1c3a2bc6
+    - name: bpf_obj_drop
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: bpf_obj_new
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: bpf_percpu_obj_new
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: bpf_percpu_obj_drop
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: bpf_refcount_acquire
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: bpf_list_push_back
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: bpf_list_push_front
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: bpf_rbtree_add
+      version: 7.1
+      commit: d457072576a6a60ba853b1d815f123da57b48021
+    - name: scx_bpf_dsq_reenq
+      version: 7.1
+      commit: 9c34c5074d1bc22072fc7f9c86b0028f7e273b2c
+    - name: scx_bpf_sub_dispatch
+      version: 7.1
+      commit: 4f8b122848dbc353a193de0fa707bc40b5f067ff
+    - name: scx_bpf_dsq_move_to_local___v2
+      version: 7.1
+      commit: 860683763ebf4662cb72a312279334e02718308f
+

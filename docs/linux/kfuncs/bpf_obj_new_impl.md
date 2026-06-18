@@ -10,15 +10,18 @@ description: "This page documents the 'bpf_obj_new_impl' eBPF kfunc, including i
 
 Allocates an object.
 
+!!! note
+    This kfunc is deprecated as of [:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021), replaced by [`bpf_obj_new`](bpf_obj_new.md). This kfunc will be removed at some point in the future.
+
 ## Definition
 
-Allocates an object of the type represented by `local_type_id` in
-program BTF. User may use the bpf_core_type_id_local macro to pass the
-type ID of a struct in program BTF.
+Allocates an object of the type represented by `local_type_id__k` in program BTF. User may use the [`bpf_core_type_id_local`](../../ebpf-library/libbpf/ebpf/bpf_core_type_id_local.md) macro to pass the type ID of a struct in program BTF.
 
-The `local_type_id` parameter must be a known constant.
-The `meta` parameter is rewritten by the verifier, no need for BPF
-program to set it.
+**Parameters**
+
+`local_type_id__k`: The BTF id for the type of the object to be allocated.
+
+The `meta` parameter is rewritten by the verifier, no need for BPF program to set it.
 
 **Returns**
 

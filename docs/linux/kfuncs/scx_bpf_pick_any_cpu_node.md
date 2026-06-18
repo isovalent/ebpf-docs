@@ -46,7 +46,7 @@ enum scx_pick_idle_cpu_flags {
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c s32 scx_bpf_pick_any_cpu_node(const struct cpumask *cpus_allowed, int node, u64 flags)`
+`#!c s32 scx_bpf_pick_any_cpu_node(const struct cpumask *cpus_allowed, s32 node, u64 flags)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

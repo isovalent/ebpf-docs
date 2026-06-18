@@ -10,7 +10,15 @@ description: "This page documents the 'bpf_list_push_front_impl' eBPF kfunc, inc
 
 Add a new entry to the beginning of the BPF linked list.
 
+!!! note
+    This kfunc is deprecated as of [:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021), replaced by [`bpf_list_push_front`](bpf_list_push_front.md). This kfunc will be removed at some point in the future.
+
 ## Definition
+
+**Parameters**
+
+`head`: Head of the linked list.
+`node`: The node to add to the list.
 
 The `meta` and `off` parameters are rewritten by the verifier, no need for BPF programs to set them
 

@@ -23,6 +23,7 @@ struct tcp_congestion_ops {
 	void   (*[cong_avoid](#cong_avoid))(struct sock *sk, u32 ack, u32 acked);
 	void   (*[set_state](#set_state))(struct sock *sk, u8 new_state);
 	void   (*[cwnd_event](#cwnd_event))(struct sock *sk, [enum tcp_ca_event](#enum-tcp_ca_event) ev);
+	void   (*[cwnd_event_tx_start](#cwnd_event_tx_start))(struct sock *sk);
 	void   (*[in_ack_event](#in_ack_event))(struct sock *sk, u32 flags);
 	void   (*[pkts_acked](#pkts_acked))(struct sock *sk, const [struct ack_sample](#struct-ack_sample) *sample);
 	u32    (*[min_tso_segs](#min_tso_segs))(struct sock *sk);
@@ -116,11 +117,26 @@ This function/program is called when the congestion algorithm state of the socke
 
 This function/program is called when a congestion window event occurs.
 
+!!! note
+	After [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f), `CA_EVENT_TX_START` events are sent to [`cwnd_event_tx_start`](#cwnd_event_tx_start) instead and will not be seen by this callback.
+
 **Parameters**
 
 `sk`: The socket for which the congestion window event should be triggered.
 
 `ev`: The event that triggered the congestion window event. See [`enum tcp_ca_event`](#enum-tcp_ca_event) for possible values.
+
+### `cwnd_event_tx_start`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f)
+
+`#!c void (*cwnd_event_tx_start)(struct sock *sk)`
+
+This function/program is called when a `CA_EVENT_TX_START` congestion window event occurs.
+
+**Parameters**
+
+`sk`: The socket for which the congestion window event should be triggered.
 
 ### `in_ack_event`
 
