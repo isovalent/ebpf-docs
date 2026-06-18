@@ -268,6 +268,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`scx_bpf_dsq_move_vtime`](../kfuncs/scx_bpf_dsq_move_vtime.md)
     - [`scx_bpf_dsq_nr_queued`](../kfuncs/scx_bpf_dsq_nr_queued.md)
     - [`scx_bpf_dsq_peek`](../kfuncs/scx_bpf_dsq_peek.md)
+    - [`scx_bpf_dsq_reenq`](../kfuncs/scx_bpf_dsq_reenq.md)
     - [`scx_bpf_dump_bstr`](../kfuncs/scx_bpf_dump_bstr.md)
     - [`scx_bpf_error_bstr`](../kfuncs/scx_bpf_error_bstr.md)
     - [`scx_bpf_events`](../kfuncs/scx_bpf_events.md)

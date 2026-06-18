@@ -8,7 +8,11 @@ description: "This page documents the 'cubictcp_cwnd_event' eBPF kfunc, includin
 [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/e78aea8b2170be1b88c96a4d138422986a737336)
 <!-- [/FEATURE_TAG] -->
 
-Call when congestion window event occurs.
+Default cubic TCP implementation of [`tcp_congestion_ops->cwnd_event`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/tcp_congestion_ops.md#cwnd_event).
+
+!!! warning
+    This kfunc got removed and replaced by [`cubictcp_cwnd_event_tx_start`](cubictcp_cwnd_event_tx_start.md) in [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f)
+
 
 ## Definition
 

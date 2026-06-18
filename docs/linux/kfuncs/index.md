@@ -81,12 +81,19 @@ These KFuncs are used to verify <nospell>PKCS#7</nospell> signed data against ke
 A set of KFuncs to allocate and deallocate custom objects for the purposes of building custom data structures.
 
 - [`bpf_obj_new_impl`](bpf_obj_new_impl.md)
+- [`bpf_obj_new`](bpf_obj_new.md)
 - [`bpf_percpu_obj_new_impl`](bpf_percpu_obj_new_impl.md)
+- [`bpf_percpu_obj_new`](bpf_percpu_obj_new.md)
 - [`bpf_obj_drop_impl`](bpf_obj_drop_impl.md)
+- [`bpf_obj_drop`](bpf_obj_drop.md)
 - [`bpf_percpu_obj_drop_impl`](bpf_percpu_obj_drop_impl.md)
+- [`bpf_percpu_obj_drop`](bpf_percpu_obj_drop.md)
 - [`bpf_refcount_acquire_impl`](bpf_refcount_acquire_impl.md)
+- [`bpf_refcount_acquire`](bpf_refcount_acquire.md)
 - [`bpf_list_push_front_impl`](bpf_list_push_front_impl.md)
+- [`bpf_list_push_front`](bpf_list_push_front.md)
 - [`bpf_list_push_back_impl`](bpf_list_push_back_impl.md)
+- [`bpf_list_push_back`](bpf_list_push_back.md)
 - [`bpf_list_pop_front`](bpf_list_pop_front.md)
 - [`bpf_list_pop_back`](bpf_list_pop_back.md)
 - [`bpf_list_back`](bpf_list_back.md)
@@ -113,6 +120,7 @@ Kfuncs used to acquire and release task reference.
 Kfuncs used to create and modify red-black trees.
 
 - [`bpf_rbtree_add_impl`](bpf_rbtree_add_impl.md)
+- [`bpf_rbtree_add`](bpf_rbtree_add.md)
 - [`bpf_rbtree_first`](bpf_rbtree_first.md)
 - [`bpf_rbtree_remove`](bpf_rbtree_remove.md)
 - [`bpf_rbtree_left`](bpf_rbtree_left.md)
@@ -275,6 +283,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bbr_sndbuf_expand`](bbr_sndbuf_expand.md)
 - [`bbr_undo_cwnd`](bbr_undo_cwnd.md)
 - [`bbr_cwnd_event`](bbr_cwnd_event.md)
+- [`bbr_cwnd_event_tx_start`](bbr_cwnd_event_tx_start.md)
 - [`bbr_ssthresh`](bbr_ssthresh.md)
 - [`bbr_min_tso_segs`](bbr_min_tso_segs.md)
 - [`bbr_set_state`](bbr_set_state.md)
@@ -286,6 +295,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`cubictcp_cong_avoid`](cubictcp_cong_avoid.md)
 - [`cubictcp_state`](cubictcp_state.md)
 - [`cubictcp_cwnd_event`](cubictcp_cwnd_event.md)
+- [`cubictcp_cwnd_event_tx_start`](cubictcp_cwnd_event_tx_start.md)
 - [`cubictcp_acked`](cubictcp_acked.md)
 
 ## DC TCP congestion control kfuncs
@@ -293,6 +303,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`dctcp_init`](dctcp_init.md)
 - [`dctcp_update_alpha`](dctcp_update_alpha.md)
 - [`dctcp_cwnd_event`](dctcp_cwnd_event.md)
+- [`dctcp_cwnd_event_tx_start`](dctcp_cwnd_event_tx_start.md)
 - [`dctcp_ssthresh`](dctcp_ssthresh.md)
 - [`dctcp_cwnd_undo`](dctcp_cwnd_undo.md)
 - [`dctcp_state`](dctcp_state.md)
@@ -386,6 +397,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_dsq_insert___v2`](scx_bpf_dsq_insert___v2.md)
 - [`scx_bpf_dsq_insert_vtime`](scx_bpf_dsq_insert_vtime.md) ([`scx_bpf_dispatch_vtime`](scx_bpf_dispatch_vtime.md))
 - [`scx_bpf_dsq_move_to_local`](scx_bpf_dsq_move_to_local.md) ([`scx_bpf_consume`](scx_bpf_consume.md))
+- [`scx_bpf_dsq_move_to_local___v2`](scx_bpf_dsq_move_to_local___v2.md)
 - [`scx_bpf_dsq_move_set_slice`](scx_bpf_dsq_move_set_slice.md) ([`scx_bpf_dispatch_from_dsq_set_slice`](scx_bpf_dispatch_from_dsq_set_slice.md))
 - [`scx_bpf_dsq_move_set_vtime`](scx_bpf_dsq_move_set_vtime.md) ([`scx_bpf_dispatch_from_dsq_set_vtime`](scx_bpf_dispatch_from_dsq_set_vtime.md))
 - [`scx_bpf_dsq_move`](scx_bpf_dsq_move.md) ([`scx_bpf_dispatch_from_dsq`](scx_bpf_dispatch_from_dsq.md))
@@ -393,6 +405,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_reenqueue_local`](scx_bpf_reenqueue_local.md)
 - [`scx_bpf_reenqueue_local___v2`](scx_bpf_reenqueue_local___v2.md)
 - [`scx_bpf_dsq_peek`](scx_bpf_dsq_peek.md)
+- [`scx_bpf_dsq_reenq`](scx_bpf_dsq_reenq.md)
+- [`scx_bpf_sub_dispatch`](scx_bpf_sub_dispatch.md)
 
 ### Dispatch Kfuncs
 
@@ -513,3 +527,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_task_work_schedule_signal`](bpf_task_work_schedule_signal.md)
 - [`bpf_task_work_schedule_resume_impl`](bpf_task_work_schedule_resume_impl.md)
 - [`bpf_task_work_schedule_signal_impl`](bpf_task_work_schedule_signal_impl.md)
+
+## I/O Userspace Ring kfuncs
+
+- [`bpf_io_uring_get_region`](bpf_io_uring_get_region.md)
+- [`bpf_io_uring_submit_sqes`](bpf_io_uring_submit_sqes.md)

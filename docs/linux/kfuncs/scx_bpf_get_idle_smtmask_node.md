@@ -25,7 +25,7 @@ An empty cpumask if idle tracking is not enabled, if `node` is not valid, or run
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c const struct cpumask *scx_bpf_get_idle_smtmask_node(int node)`
+`#!c const struct cpumask *scx_bpf_get_idle_smtmask_node(s32 node)`
 
 !!! note
 	This kfunc returns a pointer to a refcounted object. The verifier will then ensure that the pointer to the object 

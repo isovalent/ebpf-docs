@@ -4,6 +4,22 @@ description: This page lists all eBPF features added in the Linux Kernel ordered
 hide: toc
 ---
 
+## :octicons-tag-24: 7.1
+
+* `bpf_io_uring_submit_sqes` [8908192](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6) (kfuncs)
+* `bpf_io_uring_get_region` [8908192](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6) (kfuncs)
+* `bpf_obj_drop` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_obj_new` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_percpu_obj_new` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_percpu_obj_drop` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_refcount_acquire` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_list_push_back` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_list_push_front` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_rbtree_add` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `scx_bpf_dsq_reenq` [9c34c50](https://github.com/torvalds/linux/commit/9c34c5074d1bc22072fc7f9c86b0028f7e273b2c) (kfuncs)
+* `scx_bpf_sub_dispatch` [4f8b122](https://github.com/torvalds/linux/commit/4f8b122848dbc353a193de0fa707bc40b5f067ff) (kfuncs)
+* `scx_bpf_dsq_move_to_local___v2` [8606837](https://github.com/torvalds/linux/commit/860683763ebf4662cb72a312279334e02718308f) (kfuncs)
+
 ## :octicons-tag-24: v3.18
 
 * `BPF_MAP_CREATE` [99c55f7](https://github.com/torvalds/linux/commit/99c55f7d47c0dc6fc64729f37bf435abf43f4c60) (syscall_commands)
@@ -1044,3 +1060,9 @@ hide: toc
 * `bpf_task_work_schedule_signal` [6e663ff](https://github.com/torvalds/linux/commit/6e663ffdf7600168338fdfa2fd1eed83395d58a3) (kfuncs)
 * `bpf_timer_cancel_async` [a7e172a](https://github.com/torvalds/linux/commit/a7e172aa4ca276d12fe87ffddff9cbd2d95ea51c) (kfuncs)
 * `bpf_wq_set_callback` [b97931a](https://github.com/torvalds/linux/commit/b97931a25a4bc74076ffb5c3d1a534c71ade4d55) (kfuncs)
+
+## :octicons-tag-24: v7.1
+
+* `bbr_cwnd_event_tx_start` [d1e59a4](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f) (kfuncs)
+* `cubictcp_cwnd_event_tx_start` [d1e59a4](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f) (kfuncs)
+* `dctcp_cwnd_event_tx_start` [d1e59a4](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f) (kfuncs)

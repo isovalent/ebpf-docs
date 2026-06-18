@@ -132,14 +132,24 @@ sets:
         flags: [KF_DESTRUCTIVE]
       - name: bpf_obj_new_impl
         flags: [KF_ACQUIRE, KF_RET_NULL]
+      - name: bpf_obj_new
+        flags: [KF_ACQUIRE, KF_RET_NULL, KF_IMPLICIT_ARGS]
       - name: bpf_percpu_obj_new_impl
         flags: [KF_ACQUIRE, KF_RET_NULL]
+      - name: bpf_percpu_obj_new
+        flags: [KF_ACQUIRE, KF_RET_NULL, KF_IMPLICIT_ARGS]
       - name: bpf_obj_drop_impl
         flags: [KF_RELEASE]
+      - name: bpf_obj_drop
+        flags: [KF_RELEASE, KF_IMPLICIT_ARGS]
       - name: bpf_percpu_obj_drop_impl
         flags: [KF_RELEASE]
+      - name: bpf_percpu_obj_drop
+        flags: [KF_RELEASE, KF_IMPLICIT_ARGS]
       - name: bpf_refcount_acquire_impl
         flags: [KF_ACQUIRE, KF_RET_NULL, KF_RCU]
+      - name: bpf_refcount_acquire
+        flags: [KF_ACQUIRE, KF_RET_NULL, KF_RCU, KF_IMPLICIT_ARGS]
       - name: bpf_list_push_front_impl
         except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
           program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
@@ -148,7 +158,34 @@ sets:
             - name: BPF_PROG_TYPE_PERF_EVENT
             - name: BPF_PROG_TYPE_RAW_TRACEPOINT
             - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
+      - name: bpf_list_push_front
+        flags: [KF_IMPLICIT_ARGS]
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
+      - name: bpf_list_push_front
+        flags: [KF_IMPLICIT_ARGS]
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
       - name: bpf_list_push_back_impl
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
+      - name: bpf_list_push_back
+        flags: [KF_IMPLICIT_ARGS]
         except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
           program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
             - name: BPF_PROG_TYPE_KPROBE
@@ -181,6 +218,15 @@ sets:
       - name: bpf_rbtree_remove
         flags: [KF_ACQUIRE, KF_RET_NULL]
       - name: bpf_rbtree_add_impl
+        except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
+          program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
+            - name: BPF_PROG_TYPE_KPROBE
+            - name: BPF_PROG_TYPE_TRACEPOINT
+            - name: BPF_PROG_TYPE_PERF_EVENT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT
+            - name: BPF_PROG_TYPE_RAW_TRACEPOINT_WRITABLE
+      - name: bpf_rbtree_add
+        flags: [KF_IMPLICIT_ARGS]
         except: # kfunc excluded by https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20412
           program_types: # For tracing programs https://elixir.bootlin.com/linux/v6.18.6/source/kernel/bpf/verifier.c#L20376
             - name: BPF_PROG_TYPE_KPROBE
@@ -574,6 +620,7 @@ sets:
       - name: bbr_sndbuf_expand
       - name: bbr_undo_cwnd
       - name: bbr_cwnd_event
+      - name: bbr_cwnd_event_tx_start
       - name: bbr_ssthresh
       - name: bbr_min_tso_segs
       - name: bbr_set_state
@@ -594,6 +641,7 @@ sets:
       - name: cubictcp_cong_avoid
       - name: cubictcp_state
       - name: cubictcp_cwnd_event
+      - name: cubictcp_cwnd_event_tx_start
       - name: cubictcp_acked
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
@@ -603,6 +651,7 @@ sets:
       - name: dctcp_init
       - name: dctcp_update_alpha
       - name: dctcp_cwnd_event
+      - name: dctcp_cwnd_event_tx_start
       - name: dctcp_ssthresh
       - name: dctcp_cwnd_undo
       - name: dctcp_state
@@ -804,6 +853,7 @@ sets:
       - name: scx_bpf_dispatch_nr_slots
       - name: scx_bpf_dispatch_cancel
       - name: scx_bpf_dsq_move_to_local
+      - name: scx_bpf_dsq_move_to_local___v2
       - name: scx_bpf_consume
       - name: scx_bpf_dsq_move_set_slice
       - name: scx_bpf_dsq_move_set_vtime
@@ -817,6 +867,8 @@ sets:
         flags: [KF_RCU]
       - name: scx_bpf_dispatch_vtime_from_dsq
         flags: [KF_RCU]
+      - name: scx_bpf_sub_dispatch
+        flags: [KF_IMPLICIT_ARGS]
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
 
@@ -857,6 +909,8 @@ sets:
       - name: scx_bpf_destroy_dsq
       - name: scx_bpf_dsq_peek
         flags: [KF_RCU_PROTECTED, KF_RET_NULL]
+      - name: scx_bpf_dsq_reenq
+        flags: [KF_IMPLICIT_ARGS]
       - name: bpf_iter_scx_dsq_new
         flags: [KF_ITER_NEW, KF_RCU_PROTECTED]
       - name: bpf_iter_scx_dsq_next
@@ -1052,3 +1106,12 @@ sets:
     program_types:
       - name: BPF_PROG_TYPE_SCHED_ACT
       - name: BPF_PROG_TYPE_SCHED_CLS
+
+  io_uring_kfunc_set:
+    funcs:
+      - name: bpf_io_uring_submit_sqes
+        flags: [KF_SLEEPABLE]
+      - name: bpf_io_uring_get_region
+        flags: [KF_RET_NULL]
+    program_types:
+      - name: BPF_PROG_TYPE_STRUCT_OPS

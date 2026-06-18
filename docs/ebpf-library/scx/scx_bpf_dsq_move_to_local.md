@@ -8,14 +8,17 @@ description: "This page documents the 'scx_bpf_dsq_move_to_local' scx eBPF macro
 
 The `scx_bpf_dsq_move_to_local` macro handles the renaming of [`scx_bpf_consume`](../../linux/kfuncs/scx_bpf_consume.md) to [`scx_bpf_dsq_move_to_local`](../../linux/kfuncs/scx_bpf_dsq_move_to_local.md) gracefully.
 
+It also handles the introduction of [`scx_bpf_dsq_move_to_local___v2`](../../linux/kfuncs/scx_bpf_dsq_move_to_local___v2.md), using it when available, falling back to v1 when not.
+
 ## Definition
 
 ```c
-#define scx_bpf_dsq_move_to_local(dsq_id)			\
-	([bpf_ksym_exists](../libbpf/ebpf/bpf_ksym_exists.md)(scx_bpf_dsq_move_to_local) ?	\
-	 [scx_bpf_dsq_move_to_local](../../linux/kfuncs/scx_bpf_dsq_move_to_local.md)((dsq_id)) :			\
-	 [scx_bpf_consume___compat](../../linux/kfuncs/scx_bpf_consume.md)((dsq_id)))
-
+#define scx_bpf_dsq_move_to_local(dsq_id, enq_flags)				\
+	(bpf_ksym_exists(scx_bpf_dsq_move_to_local___v2) ?			\
+	 scx_bpf_dsq_move_to_local___v2((dsq_id), (enq_flags)) :		\
+	 (bpf_ksym_exists(scx_bpf_dsq_move_to_local___v1) ?			\
+	  scx_bpf_dsq_move_to_local___v1((dsq_id)) :				\
+	  scx_bpf_consume___old((dsq_id))))
 ```
 
 ## Usage

@@ -24,6 +24,8 @@ The current VMLinux blob is created from the v6.17-rc1 tag of the Linux kernel. 
    CONFIG_SCHED_CLASS_EXT=y
    CONFIG_DMA_SHARED_BUFFER=y
    CONFIG_NET_SCH_BPF=y
+   CONFIG_IO_URING_BPF=y
+   CONFIG_IO_URING_BPF_OPS=y
    ```
 3. Run `./buildx.sh {latest tag} amd64 vmlinux --tag foo:vmlinux`
 4. Run `echo "FROM foo:vmlinux" | "$docker" buildx build --quiet --output="$tmp" - &> /dev/null`
