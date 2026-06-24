@@ -4,7 +4,7 @@ description: "This page documents the 'bpf_stream_vprintk' eBPF kfunc, including
 ---
 # KFunc `bpf_stream_vprintk`
 
-[:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6) - :octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/137cc92ffe2e71705fce112656a460d924934ebe)
+[:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/5ab154f1463a111e1dc8fd5d31eaa7a2a71fe2e6) - [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/137cc92ffe2e71705fce112656a460d924934ebe)
 
 <!-- [FEATURE_TAG](bpf_stream_vprintk) -->
 [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/d806f3101276a1ed18d963944580e1ee1c7a3d26)
