@@ -2404,7 +2404,7 @@
     - name: bpf_strlen
       version: v6.17
       commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
-    - name: bpf_strlen
+    - name: bpf_strnlen
       version: v6.17
       commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
     - name: bpf_strspn
