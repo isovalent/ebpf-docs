@@ -16,8 +16,6 @@ description: "This page documents the 'bpf_d_path' eBPF helper function, includi
 <!-- [HELPER_FUNC_DEF] -->
 Return full path for given **struct path** object, which needs to be the kernel BTF _path_ object. The path is returned in the provided buffer _buf_ of size _sz_ and is zero terminated.
 
-
-
 ### Returns
 
 On success, the strictly positive length of the string, including the trailing NUL character. On error, a negative value.

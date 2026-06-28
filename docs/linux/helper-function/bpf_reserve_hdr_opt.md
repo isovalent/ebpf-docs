@@ -20,8 +20,6 @@ If **bpf_reserve_hdr_opt**() is called multiple times, the total number of bytes
 
 This helper can only be called during **BPF_SOCK_OPS_HDR_OPT_LEN_CB**.
 
-
-
 ### Returns
 
 0 on success, or negative error in case of failure:

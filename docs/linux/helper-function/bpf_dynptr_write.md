@@ -18,9 +18,10 @@ Write _len_ bytes from _src_ into _dst_, starting from _offset_ into _dst_.
 
 _flags_ must be 0 except for skb-type dynptrs.
 
-For skb-type dynptrs:     _  All data slices of the dynptr are automatically        invalidated after **bpf_dynptr_write**(). This is        because writing may pull the skb and change the        underlying packet buffer.
+For skb-type dynptrs:
 
-    _  For _flags_, please see the flags accepted by        **bpf_skb_store_bytes**().
+*  All data slices of the dynptr are automatically invalidated after **bpf_dynptr_write**(). This is because writing may pull the skb and change the underlying packet buffer.
+*  For _flags_, please see the flags accepted by **bpf_skb_store_bytes**().
 
 ### Returns
 

@@ -20,8 +20,6 @@ The expected callback signature is
 
 long (\*callback_fn)(struct task_struct \*task, struct vm_area_struct \*vma, void \*callback_ctx);
 
-
-
 ### Returns
 
 0 on success. **-ENOENT** if _task->mm_ is NULL, or no vma contains _addr_. **-EBUSY** if failed to try lock mmap_lock. **-EINVAL** for invalid **flags**.

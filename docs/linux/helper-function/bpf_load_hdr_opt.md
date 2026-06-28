@@ -32,10 +32,7 @@ _len_ must be at least 2 bytes which is the minimal size of a header option.
 
 Supported flags:
 
-* **BPF_LOAD_HDR_OPT_TCP_SYN** to search from the
-  saved_syn packet or the just-received syn packet.
-
-
+* **BPF_LOAD_HDR_OPT_TCP_SYN** to search from the saved_syn packet or the just-received syn packet.
 
 ### Returns
 

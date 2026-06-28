@@ -21,7 +21,6 @@ Query various characteristics of provided ring buffer. What exactly is queries i
 * **BPF_RB_CONS_POS**: Consumer position (can wrap around).
 * **BPF_RB_PROD_POS**: Producer(s) position (can wrap around).
 
-
 Data returned is just a momentary snapshot of actual values and could be inaccurate, so this facility should be used to power heuristics and for reporting, not to make 100% correct calculation.
 
 ### Returns

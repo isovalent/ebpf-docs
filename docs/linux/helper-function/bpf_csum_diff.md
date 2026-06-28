@@ -18,10 +18,9 @@ Compute a checksum difference, from the raw buffer pointed by _from_, of length 
 
 This is flexible enough to be used in several ways:
 
-* With _from_size_ == 0, _to_size_ > 0 and _seed_ set to
-  checksum, it can be used when pushing new data. * With _from_size_ > 0, _to_size_ == 0 and _seed_ set to
-  checksum, it can be used when removing data from a packet. * With _from_size_ > 0, _to_size_ > 0 and _seed_ set to 0, it
-  can be used to compute a diff. Note that _from_size_ and   _to_size_ do not need to be equal.
+* With _from_size_ == 0, _to_size_ > 0 and _seed_ set to checksum, it can be used when pushing new data.
+* With _from_size_ > 0, _to_size_ == 0 and _seed_ set to checksum, it can be used when removing data from a packet.
+* With _from_size_ > 0, _to_size_ > 0 and _seed_ set to 0, it can be used to compute a diff. Note that _from_size_ and _to_size_ do not need to be equal.
 
 This helper can be used in combination with **bpf_l3_csum_replace**() and **bpf_l4_csum_replace**(), to which one can feed in the difference computed with **bpf_csum_diff**().
 

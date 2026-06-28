@@ -16,21 +16,13 @@ description: "This page documents the 'bpf_lwt_seg6_action' eBPF helper function
 <!-- [HELPER_FUNC_DEF] -->
 Apply an IPv6 Segment Routing action of type _action_ to the packet associated to _skb_. Each action takes a parameter contained at address _param_, and of length _param_len_ bytes. _action_ can be one of:
 
-**SEG6_LOCAL_ACTION_END_X**
+* **SEG6_LOCAL_ACTION_END_X**: End.X action: Endpoint with Layer-3 cross-connect. Type of _param_: **struct in6_addr**.
 
-&nbsp;&nbsp;&nbsp;&nbsp;End.X action: Endpoint with Layer-3 cross-connect. Type of _param_: **struct in6_addr**.
+* **SEG6_LOCAL_ACTION_END_T**: End.T action: Endpoint with specific IPv6 table lookup. Type of _param_: **int**.
 
-**SEG6_LOCAL_ACTION_END_T**
+* **SEG6_LOCAL_ACTION_END_B6**: End.B6 action: Endpoint bound to an SRv6 policy. Type of _param_: **struct ipv6_sr_hdr**.
 
-&nbsp;&nbsp;&nbsp;&nbsp;End.T action: Endpoint with specific IPv6 table lookup. Type of _param_: **int**.
-
-**SEG6_LOCAL_ACTION_END_B6**
-
-&nbsp;&nbsp;&nbsp;&nbsp;End.B6 action: Endpoint bound to an SRv6 policy. Type of _param_: **struct ipv6_sr_hdr**.
-
-**SEG6_LOCAL_ACTION_END_B6_ENCAP**
-
-&nbsp;&nbsp;&nbsp;&nbsp;End.B6.Encap action: Endpoint bound to an SRv6 encapsulation policy. Type of _param_: **struct ipv6_sr_hdr**.
+* **SEG6_LOCAL_ACTION_END_B6_ENCAP**: End.B6.Encap action: Endpoint bound to an SRv6 encapsulation policy. Type of _param_: **struct ipv6_sr_hdr**.
 
 A call to this helper is susceptible to change the underlying packet buffer. Therefore, at load time, all checks on pointers previously done by the verifier are invalidated and must be performed again, if the helper is used in combination with direct packet access.
 

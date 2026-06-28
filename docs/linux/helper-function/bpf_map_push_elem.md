@@ -17,9 +17,7 @@ description: "This page documents the 'bpf_map_push_elem' eBPF helper function, 
 <!-- [HELPER_FUNC_DEF] -->
 Push an element _value_ in _map_. _flags_ is one of:
 
-**BPF_EXIST**
-
-&nbsp;&nbsp;&nbsp;&nbsp;If the queue/stack is full, the oldest element is removed to make room for this.
+* **BPF_EXIST**: If the queue/stack is full, the oldest element is removed to make room for this.
 
 ### Returns
 

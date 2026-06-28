@@ -18,15 +18,9 @@ Return a user or a kernel stack in bpf program provided buffer. To achieve this,
 
 The last argument, _flags_, holds the number of stack frames to skip (from 0 to 255), masked with **BPF_F_SKIP_FIELD_MASK**. The next bits can be used to set the following flags:
 
-**BPF_F_USER_STACK**
+* **BPF_F_USER_STACK**: Collect a user space stack instead of a kernel stack.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Collect a user space stack instead of a kernel stack.
-
-**BPF_F_USER_BUILD_ID**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Collect (build_id, file_offset) instead of ips for user stack, only valid if **BPF_F_USER_STACK** is also specified.
-
-&nbsp;&nbsp;&nbsp;&nbsp;_file_offset_ is an offset relative to the beginning of the executable or shared object file backing the vma which the _ip_ falls in. It is _not_ an offset relative to that object's base address. Accordingly, it must be adjusted by adding (sh_addr - sh_offset), where sh_{addr,offset} correspond to the executable section containing _file_offset_ in the object, for comparisons to symbols' st_value to be valid.
+* **BPF_F_USER_BUILD_ID**: Collect (build_id, file_offset) instead of ips for user stack, only valid if **BPF_F_USER_STACK** is also specified. _file_offset_ is an offset relative to the beginning of the executable or shared object file backing the vma which the _ip_ falls in. It is _not_ an offset relative to that object's base address. Accordingly, it must be adjusted by adding (sh_addr - sh_offset), where sh_{addr,offset} correspond to the executable section containing _file_offset_ in the object, for comparisons to symbols' st_value to be valid.
 
 **bpf_get_stack**() can collect up to **PERF_MAX_STACK_DEPTH** both kernel and user frames, subject to sufficient large buffer size. Note that this limit can be controlled with the **sysctl** program, and that it should be manually increased in order to profile long user stacks (such as stacks for Java programs). To do so, use:
 

@@ -18,36 +18,21 @@ Grow or shrink the room for data in the packet associated to _skb_ by _len_diff_
 
 By default, the helper will reset any offloaded checksum indicator of the skb to CHECKSUM_NONE. This can be avoided by the following flag:
 
-* **BPF_F_ADJ_ROOM_NO_CSUM_RESET**: Do not reset offloaded
-  checksum data of the skb to CHECKSUM_NONE.
+* **BPF_F_ADJ_ROOM_NO_CSUM_RESET**: Do not reset offloaded checksum data of the skb to CHECKSUM_NONE.
 
 There are two supported modes at this time:
 
-* **BPF_ADJ_ROOM_MAC**: Adjust room at the mac layer
-  (room space is added or removed between the layer 2 and   layer 3 headers).
-
-* **BPF_ADJ_ROOM_NET**: Adjust room at the network layer
-  (room space is added or removed between the layer 3 and   layer 4 headers).
+* **BPF_ADJ_ROOM_MAC**: Adjust room at the mac layer (room space is added or removed between the layer 2 and layer 3 headers).
+* **BPF_ADJ_ROOM_NET**: Adjust room at the network layer (room space is added or removed between the layer 3 and layer 4 headers).
 
 The following flags are supported at this time:
 
-* **BPF_F_ADJ_ROOM_FIXED_GSO**: Do not adjust gso_size.
-  Adjusting mss in this way is not allowed for datagrams.
-
-* **BPF_F_ADJ_ROOM_ENCAP_L3_IPV4**,
-  **BPF_F_ADJ_ROOM_ENCAP_L3_IPV6**:   Any new space is reserved to hold a tunnel header.   Configure skb offsets and other fields accordingly.
-
-* **BPF_F_ADJ_ROOM_ENCAP_L4_GRE**,
-  **BPF_F_ADJ_ROOM_ENCAP_L4_UDP**:   Use with ENCAP_L3 flags to further specify the tunnel type.
-
-* **BPF_F_ADJ_ROOM_ENCAP_L2**(_len_):
-  Use with ENCAP_L3/L4 flags to further specify the tunnel   type; _len_ is the length of the inner MAC header.
-
-* **BPF_F_ADJ_ROOM_ENCAP_L2_ETH**:
-  Use with BPF_F_ADJ_ROOM_ENCAP_L2 flag to further specify the   L2 type as Ethernet.
-
-* **BPF_F_ADJ_ROOM_DECAP_L3_IPV4**,
-  **BPF_F_ADJ_ROOM_DECAP_L3_IPV6**:   Indicate the new IP header version after decapsulating the outer   IP header. Used when the inner and outer IP versions are different.
+* **BPF_F_ADJ_ROOM_FIXED_GSO**: Do not adjust gso_size. Adjusting mss in this way is not allowed for datagrams.
+* **BPF_F_ADJ_ROOM_ENCAP_L3_IPV4**, **BPF_F_ADJ_ROOM_ENCAP_L3_IPV6**: Any new space is reserved to hold a tunnel header. Configure skb offsets and other fields accordingly.
+* **BPF_F_ADJ_ROOM_ENCAP_L4_GRE**, **BPF_F_ADJ_ROOM_ENCAP_L4_UDP**: Use with ENCAP_L3 flags to further specify the tunnel type.
+* **BPF_F_ADJ_ROOM_ENCAP_L2**(_len_): Use with ENCAP_L3/L4 flags to further specify the tunnel type; _len_ is the length of the inner MAC header.
+* **BPF_F_ADJ_ROOM_ENCAP_L2_ETH**: Use with BPF_F_ADJ_ROOM_ENCAP_L2 flag to further specify the L2 type as Ethernet.
+* **BPF_F_ADJ_ROOM_DECAP_L3_IPV4**, **BPF_F_ADJ_ROOM_DECAP_L3_IPV6**: Indicate the new IP header version after decapsulating the outer IP header. Used when the inner and outer IP versions are different.
 
 A call to this helper is susceptible to change the underlying packet buffer. Therefore, at load time, all checks on pointers previously done by the verifier are invalidated and must be performed again, if the helper is used in combination with direct packet access.
 

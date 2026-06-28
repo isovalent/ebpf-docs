@@ -18,13 +18,13 @@ Change the __sk_buff->tstamp_type to _tstamp_type_ and set _tstamp_ to the __sk_
 
 If there is no need to change the __sk_buff->tstamp_type, the tstamp value can be directly written to __sk_buff->tstamp instead.
 
-BPF_SKB_TSTAMP_DELIVERY_MONO is the only tstamp that will be kept during bpf_redirect__().  A non zero _tstamp_ must be used with the BPF_SKB_TSTAMP_DELIVERY_MONO _tstamp_type_.
+BPF_SKB_TSTAMP_DELIVERY_MONO is the only tstamp that will be kept during bpf_redirect_*().  A non zero _tstamp_ must be used with the BPF_SKB_TSTAMP_DELIVERY_MONO _tstamp_type_.
 
 A BPF_SKB_TSTAMP_UNSPEC _tstamp_type_ can only be used with a zero _tstamp_.
 
 Only IPv4 and IPv6 skb->protocol are supported.
 
-This function is most useful when it needs to set a mono delivery time to __sk_buff->tstamp and then bpf_redirect__() to the egress of an iface.  For example, changing the (rcv) timestamp in __sk_buff->tstamp at ingress to a mono delivery time and then bpf_redirect__() to sch_fq@phy-dev.
+This function is most useful when it needs to set a mono delivery time to __sk_buff->tstamp and then bpf_redirect_*() to the egress of an iface.  For example, changing the (rcv) timestamp in __sk_buff->tstamp at ingress to a mono delivery time and then bpf_redirect_*() to sch_fq@phy-dev.
 
 ### Returns
 

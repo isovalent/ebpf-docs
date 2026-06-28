@@ -14,19 +14,14 @@ description: "This page documents the 'bpf_csum_level' eBPF helper function, inc
 
 
 <!-- [HELPER_FUNC_DEF] -->
-Change the skbs checksum level by one layer up or down, or reset it entirely to none in order to have the stack perform checksum validation. The level is applicable to the following protocols: TCP, UDP, GRE, SCTP, FCOE. For example, a decap of | ETH | IP | UDP | GUE | IP | TCP | into | ETH | IP | TCP | through **bpf_skb_adjust_room**() helper with passing in
-
-&nbsp;&nbsp;&nbsp;&nbsp;**BPF_F_ADJ_ROOM_NO_CSUM_RESET** flag would require onecall
-
-to **bpf_csum_level**() with **BPF_CSUM_LEVEL_DEC** since the UDP header is removed. Similarly, an encap of the latter into the former could be accompanied by a helper call to **bpf_csum_level**() with **BPF_CSUM_LEVEL_INC** if the skb is still intended to be processed in higher layers of the stack instead of just egressing at tc.
+Change the skbs checksum level by one layer up or down, or reset it entirely to none in order to have the stack perform checksum validation. The level is applicable to the following protocols: TCP, UDP, GRE, SCTP, FCOE. For example, a decap of | ETH | IP | UDP | GUE | IP | TCP | into | ETH | IP | TCP | through **bpf_skb_adjust_room**() helper with passing in **BPF_F_ADJ_ROOM_NO_CSUM_RESET** flag would require one	call to **bpf_csum_level**() with **BPF_CSUM_LEVEL_DEC** since the UDP header is removed. Similarly, an encap of the latter into the former could be accompanied by a helper call to **bpf_csum_level**() with **BPF_CSUM_LEVEL_INC** if the skb is still intended to be processed in higher layers of the stack instead of just egressing at tc.
 
 There are three supported level settings at this time:
 
-* **BPF_CSUM_LEVEL_INC**: Increases skb->csum_level for skbs
-  with CHECKSUM_UNNECESSARY. * **BPF_CSUM_LEVEL_DEC**: Decreases skb->csum_level for skbs
-  with CHECKSUM_UNNECESSARY. * **BPF_CSUM_LEVEL_RESET**: Resets skb->csum_level to 0 and
-  sets CHECKSUM_NONE to force checksum validation by the stack. * **BPF_CSUM_LEVEL_QUERY**: No-op, returns the current
-  skb->csum_level.
+* **BPF_CSUM_LEVEL_INC**: Increases skb->csum_level for skbs with CHECKSUM_UNNECESSARY.
+* **BPF_CSUM_LEVEL_DEC**: Decreases skb->csum_level for skbs with CHECKSUM_UNNECESSARY.
+* **BPF_CSUM_LEVEL_RESET**: Resets skb->csum_level to 0 and sets CHECKSUM_NONE to force checksum validation by the stack.
+* **BPF_CSUM_LEVEL_QUERY**: No-op, returns the current skb->csum_level.
 
 ### Returns
 

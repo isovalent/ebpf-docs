@@ -16,13 +16,9 @@ description: "This page documents the 'bpf_skb_load_bytes_relative' eBPF helper 
 <!-- [HELPER_FUNC_DEF] -->
 This helper is similar to **bpf_skb_load_bytes**() in that it provides an easy way to load _len_ bytes from _offset_ from the packet associated to _skb_, into the buffer pointed by _to_. The difference to **bpf_skb_load_bytes**() is that a fifth argument _start_header_ exists in order to select a base offset to start from. _start_header_ can be one of:
 
-**BPF_HDR_START_MAC**
+* **BPF_HDR_START_MAC**: Base offset to load data from is _skb_'s mac header.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Base offset to load data from is _skb_'s mac header.
-
-**BPF_HDR_START_NET**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Base offset to load data from is _skb_'s network header.
+* **BPF_HDR_START_NET**: Base offset to load data from is _skb_'s network header.
 
 In general, "direct packet access" is the preferred method to access packet data, however, this helper is in particular useful in socket filters where _skb_**->data** does not always point to the start of the mac header and where "direct packet access" is not available.
 

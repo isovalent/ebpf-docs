@@ -24,7 +24,6 @@ The return value depends on the result of the test, and can be:
 * 1, if the _skb_ succeeded the cgroup2 descendant test.
 * A negative error code, if an error occurred.
 
-
 `#!c static long (* const bpf_skb_under_cgroup)(struct __sk_buff *skb, void *map, __u32 index) = (void *) 33;`
 <!-- [/HELPER_FUNC_DEF] -->
 

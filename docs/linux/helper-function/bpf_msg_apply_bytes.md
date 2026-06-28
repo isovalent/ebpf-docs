@@ -18,9 +18,8 @@ For socket policies, apply the verdict of the eBPF program to the next _bytes_ (
 
 For example, this helper can be used in the following cases:
 
-* A single **sendmsg**() or **sendfile**() system call
-  contains multiple logical messages that the eBPF program is   supposed to read and for which it should apply a verdict. * An eBPF program only cares to read the first _bytes_ of a
-  _msg_. If the message has a large payload, then setting up   and calling the eBPF program repeatedly for all bytes, even   though the verdict is already known, would create unnecessary   overhead.
+* A single **sendmsg**() or **sendfile**() system call contains multiple logical messages that the eBPF program is supposed to read and for which it should apply a verdict.
+* An eBPF program only cares to read the first _bytes_ of a _msg_. If the message has a large payload, then setting up and calling the eBPF program repeatedly for all bytes, even though the verdict is already known, would create unnecessary overhead.
 
 When called from within an eBPF program, the helper sets a counter internal to the BPF infrastructure, that is used to apply the last verdict to the next _bytes_. If _bytes_ is smaller than the current data being processed from a **sendmsg**() or **sendfile**() system call, the first _bytes_ will be sent and the eBPF program will be re-run with the pointer for start of data pointing to byte number _bytes_ **+ 1**. If _bytes_ is larger than the current data being processed, then the eBPF verdict will be applied to multiple **sendmsg**() or **sendfile**() calls until _bytes_ are consumed.
 

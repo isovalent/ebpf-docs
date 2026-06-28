@@ -20,11 +20,9 @@ This helper is currently supported by cgroup programs and only by the hooks wher
 
 Note that there is the following corner case where the program exports an error via bpf_set_retval but signals success via 'return 1':
 
-&nbsp;&nbsp;&nbsp;&nbsp;bpf_set_retval(-EPERM); return 1;
+bpf_set_retval(-EPERM); return 1;
 
 In this case, the BPF program's return value will use helper's -EPERM. This still holds true for cgroup/bind{4,6} which supports extra 'return 3' success case.
-
-
 
 ### Returns
 
