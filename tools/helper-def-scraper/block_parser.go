@@ -26,11 +26,12 @@ type markdownBlock struct {
 }
 
 type blockParser struct {
-	lines  []string
-	cursor int
-	blocks []markdownBlock
-	debug  bool
-	output io.Writer
+	lines                 []string
+	cursor                int
+	blocks                []markdownBlock
+	debug                 bool
+	output                io.Writer
+	lineExceptionHandlers map[string]exceptionHandler
 }
 
 type blockParserArgs struct {
@@ -42,11 +43,12 @@ type blockParserArgs struct {
 func newBlockParser(args blockParserArgs) *blockParser {
 	const defaultBlockCapacity = 16 // this seems a reasonable default
 	return &blockParser{
-		lines:  args.lines,
-		cursor: 0,
-		blocks: make([]markdownBlock, 0, defaultBlockCapacity),
-		debug:  args.debug,
-		output: args.output,
+		lines:                 args.lines,
+		cursor:                0,
+		blocks:                make([]markdownBlock, 0, defaultBlockCapacity),
+		debug:                 args.debug,
+		output:                args.output,
+		lineExceptionHandlers: getExceptionsMap(),
 	}
 }
 
@@ -256,13 +258,24 @@ func (p *blockParser) isWhitespace() bool {
 	return p.lines[p.cursor] == ""
 }
 
+func (p *blockParser) isExceptionLine() bool {
+	handler, found := p.lineExceptionHandlers[trimIndent(p.lines[p.cursor])]
+	if !found {
+		// no exception handler found
+		return false
+	}
+	handler(p)
+	return true
+}
+
 func (p *blockParser) generateBlocks() []markdownBlock {
 	for p.cursor < len(p.lines) {
 		// The order counts, so we need to check in this order.
 		if p.isWhitespace() {
 			// In case of empty lines between blocks we skip them.
 			p.cursor++
-			// todo!: add exceptions for certain cases...
+		} else if p.isExceptionLine() {
+			// if we match the exception, we don't need to do anything else.
 		} else if p.isCodeBlock() {
 			p.parseCodeBlock()
 		} else if p.isPseudoListItem() {
