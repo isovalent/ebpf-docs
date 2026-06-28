@@ -6,7 +6,7 @@ UIDGID := $(shell stat -c '%u:%g' ${REPODIR})
 IMAGE := ghcr.io/isovalent/ebpf-docs
 VERSION := $(shell cat ${REPODIR}/tools/image-version)
 
-GOLANG := 1.24.1
+GOLANG := 1.25.1
 
 PROD := false
 GH_TOKEN := ""

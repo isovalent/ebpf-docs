@@ -1,7 +1,6 @@
 package main
 
 import (
-	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -111,7 +110,7 @@ func TestBlockParser(t *testing.T) {
 			parser := newBlockParser(blockParserArgs{
 				lines:  tt.input,
 				debug:  true,
-				output: os.Stdout,
+				output: t.Output(),
 			})
 			blocks := parser.generateBlocks()
 			require.Len(t, blocks, len(tt.blocks))
