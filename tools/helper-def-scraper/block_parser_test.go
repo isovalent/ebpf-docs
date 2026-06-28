@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -101,6 +102,16 @@ func TestBlockParser(t *testing.T) {
 			},
 			blocks: []markdownBlock{
 				{text: "```\nint ret;\nstruct bpf_tunnel_key key = {};\n\nret = bpf_skb_get_tunnel_key(skb, &key, sizeof(key), 0);\nif (ret < 0)\n\treturn TC_ACT_SHOT;\t// drop packet\n\nif (key.remote_ipv4 != 0x0a000001)\n\treturn TC_ACT_SHOT;\t// drop packet\n\nreturn TC_ACT_OK;\t\t// accept packet\n```"},
+			},
+		},
+		{
+			name: "bpf_sock_exception",
+			input: []string{
+				fmt.Sprintf("\t%s", bpf_sock_ops_cb_exception_first_line),
+				fmt.Sprintf("\t\t%s", bpf_sock_ops_cb_exception_second_line),
+			},
+			blocks: []markdownBlock{
+				{text: bpf_sock_ops_cb_exception_replacement},
 			},
 		},
 	}
