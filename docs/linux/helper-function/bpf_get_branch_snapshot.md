@@ -18,8 +18,6 @@ Get branch trace from hardware engines like Intel LBR. The hardware engine is st
 
 The data is stored as struct perf_branch_entry into output buffer _entries_. _size_ is the size of _entries_ in bytes. _flags_ is reserved for now and must be zero.
 
-
-
 ### Returns
 
 On success, number of bytes written to _buf_. On error, a negative value.

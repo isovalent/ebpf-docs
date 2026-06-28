@@ -21,18 +21,18 @@ The **struct bpf_tunnel_key** is an object that generalizes the principal parame
 Let's imagine that the following code is part of a program attached to the TC ingress interface, on one end of a GRE tunnel, and is supposed to filter out all messages coming from remote ends with IPv4 address other than 10.0.0.1:
 
 ```
-int ret; struct bpf_tunnel_key key = {};
+int ret;
+struct bpf_tunnel_key key = {};
+
+ret = bpf_skb_get_tunnel_key(skb, &key, sizeof(key), 0);
+if (ret < 0)
+	return TC_ACT_SHOT;	// drop packet
+
+if (key.remote_ipv4 != 0x0a000001)
+	return TC_ACT_SHOT;	// drop packet
+
+return TC_ACT_OK;		// accept packet
 ```
-
-&nbsp;&nbsp;&nbsp;&nbsp;ret = bpf_skb_get_tunnel_key(skb, &key, sizeof(key), 0); if (ret < 0)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return TC_ACT_SHOT;// drop packet
-
-&nbsp;&nbsp;&nbsp;&nbsp;if (key.remote_ipv4 != 0x0a000001)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return TC_ACT_SHOT;// drop packet
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return TC_ACT_OK;// accept packet
 
 This interface can also be used with all encapsulation devices that can operate in "collect metadata" mode: instead of having one network device per specific configuration, the "collect metadata" mode only requires a single device where the configuration can be extracted from this helper.
 

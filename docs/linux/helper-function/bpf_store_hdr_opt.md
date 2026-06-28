@@ -22,8 +22,6 @@ This helper will check for duplicated option by searching the same option in the
 
 This helper can only be called during **BPF_SOCK_OPS_WRITE_HDR_OPT_CB**.
 
-
-
 ### Returns
 
 0 on success, or negative error in case of failure:

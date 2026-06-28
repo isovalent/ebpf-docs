@@ -22,8 +22,6 @@ where **index** is the current index in the loop. The index is zero-indexed.
 
 If **callback_fn** returns 0, the helper will continue to the next loop. If return value is 1, the helper will skip the rest of the loops and return. Other return values are not used now, and will be rejected by the verifier.
 
-
-
 ### Returns
 
 The number of loops performed, **-EINVAL** for invalid **flags**, **-E2BIG** if **nr_loops** exceeds the maximum number of loops.

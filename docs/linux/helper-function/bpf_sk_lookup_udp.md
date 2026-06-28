@@ -20,13 +20,9 @@ The _ctx_ should point to the context of the program, such as the skb or socket 
 
 _tuple_size_ must be one of:
 
-**sizeof**(_tuple_**->ipv4**)
+* **sizeof**(_tuple_**->ipv4**): Look for an IPv4 socket.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Look for an IPv4 socket.
-
-**sizeof**(_tuple_**->ipv6**)
-
-&nbsp;&nbsp;&nbsp;&nbsp;Look for an IPv6 socket.
+* **sizeof**(_tuple_**->ipv6**): Look for an IPv6 socket.
 
 If the _netns_ is a negative signed 32-bit integer, then the socket lookup table in the netns associated with the _ctx_ will be used. For the TC hooks, this is the netns of the device in the skb. For socket hooks, this is the netns of the socket. If _netns_ is any other signed 32-bit value greater than or equal to zero then it specifies the ID of the netns relative to the netns associated with the _ctx_. _netns_ values beyond the range of 32-bit integers are reserved for future use.
 

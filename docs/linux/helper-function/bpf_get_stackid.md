@@ -18,17 +18,11 @@ Walk a user or a kernel stack and return its id. To achieve this, the helper nee
 
 The last argument, _flags_, holds the number of stack frames to skip (from 0 to 255), masked with **BPF_F_SKIP_FIELD_MASK**. The next bits can be used to set a combination of the following flags:
 
-**BPF_F_USER_STACK**
+* **BPF_F_USER_STACK**: Collect a user space stack instead of a kernel stack.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Collect a user space stack instead of a kernel stack.
+* **BPF_F_FAST_STACK_CMP**: Compare stacks by hash only.
 
-**BPF_F_FAST_STACK_CMP**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Compare stacks by hash only.
-
-**BPF_F_REUSE_STACKID**
-
-&nbsp;&nbsp;&nbsp;&nbsp;If two different stacks hash into the same _stackid_, discard the old one.
+* **BPF_F_REUSE_STACKID**: If two different stacks hash into the same _stackid_, discard the old one.
 
 The stack id retrieved is a 32 bit long integer handle which can be further combined with other data (including other stack ids) and used as a key into maps. This can be useful for generating a variety of graphs (such as flame graphs or off-cpu graphs).
 

@@ -16,8 +16,6 @@ description: "This page documents the 'bpf_get_func_arg' eBPF helper function, i
 <!-- [HELPER_FUNC_DEF] -->
 Get **n**-th argument register (zero based) of the traced function (for tracing programs) returned in **value**.
 
-
-
 ### Returns
 
 0 on success. **-EINVAL** if n >= argument register count of traced function.

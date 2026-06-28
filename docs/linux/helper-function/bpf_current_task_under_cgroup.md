@@ -24,7 +24,6 @@ The return value depends on the result of the test, and can be:
 * 0, if current task does not belong to the cgroup2.
 * A negative error code, if an error occurred.
 
-
 `#!c static long (* const bpf_current_task_under_cgroup)(void *map, __u32 index) = (void *) 37;`
 <!-- [/HELPER_FUNC_DEF] -->
 

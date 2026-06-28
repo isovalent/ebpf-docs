@@ -18,13 +18,9 @@ Return a user or a kernel stack in bpf program provided buffer. Note: the user s
 
 The last argument, _flags_, holds the number of stack frames to skip (from 0 to 255), masked with **BPF_F_SKIP_FIELD_MASK**. The next bits can be used to set the following flags:
 
-**BPF_F_USER_STACK**
+* **BPF_F_USER_STACK**: Collect a user space stack instead of a kernel stack. The _task_ must be the current task.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Collect a user space stack instead of a kernel stack. The _task_ must be the current task.
-
-**BPF_F_USER_BUILD_ID**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Collect buildid+offset instead of ips for user stack, only valid if **BPF_F_USER_STACK** is also specified.
+* **BPF_F_USER_BUILD_ID**: Collect buildid+offset instead of ips for user stack, only valid if **BPF_F_USER_STACK** is also specified.
 
 **bpf_get_task_stack**() can collect up to **PERF_MAX_STACK_DEPTH** both kernel and user frames, subject to sufficient large buffer size. Note that this limit can be controlled with the **sysctl** program, and that it should be manually increased in order to profile long user stacks (such as stacks for Java programs). To do so, use:
 

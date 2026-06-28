@@ -18,29 +18,17 @@ Do FIB lookup in kernel tables using parameters in _params_. If lookup is succes
 
 _plen_ argument is the size of the passed in struct. _flags_ argument can be a combination of one or more of the following values:
 
-**BPF_FIB_LOOKUP_DIRECT**
+* **BPF_FIB_LOOKUP_DIRECT**: Do a direct table lookup vs full lookup using FIB rules.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Do a direct table lookup vs full lookup using FIB rules.
+* **BPF_FIB_LOOKUP_TBID**: Used with BPF_FIB_LOOKUP_DIRECT. Use the routing table ID present in _params_->tbid for the fib lookup.
 
-**BPF_FIB_LOOKUP_TBID**
+* **BPF_FIB_LOOKUP_OUTPUT**: Perform lookup from an egress perspective (default is ingress).
 
-&nbsp;&nbsp;&nbsp;&nbsp;Used with BPF_FIB_LOOKUP_DIRECT. Use the routing table ID present in _params_->tbid for the fib lookup.
+* **BPF_FIB_LOOKUP_SKIP_NEIGH**: Skip the neighbour table lookup. _params_->dmac and _params_->smac will not be set as output. A common use case is to call **bpf_redirect_neigh**() after doing **bpf_fib_lookup**().
 
-**BPF_FIB_LOOKUP_OUTPUT**
+* **BPF_FIB_LOOKUP_SRC**: Derive and set source IP addr in _params_->ipv{4,6}_src for the nexthop. If the src addr cannot be derived, **BPF_FIB_LKUP_RET_NO_SRC_ADDR** is returned. In this case, _params_->dmac and _params_->smac are not set either.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Perform lookup from an egress perspective (default is ingress).
-
-**BPF_FIB_LOOKUP_SKIP_NEIGH**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Skip the neighbour table lookup. _params_->dmac and _params_->smac will not be set as output. A common use case is to call **bpf_redirect_neigh**() after doing **bpf_fib_lookup**().
-
-**BPF_FIB_LOOKUP_SRC**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Derive and set source IP addr in _params_->ipv{4,6}_src for the nexthop. If the src addr cannot be derived, **BPF_FIB_LKUP_RET_NO_SRC_ADDR** is returned. In this case, _params_->dmac and _params_->smac are not set either.
-
-**BPF_FIB_LOOKUP_MARK**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Use the mark present in _params_->mark for the fib lookup. This option should not be used with BPF_FIB_LOOKUP_DIRECT, as it only has meaning for full lookups.
+* **BPF_FIB_LOOKUP_MARK**: Use the mark present in _params_->mark for the fib lookup. This option should not be used with BPF_FIB_LOOKUP_DIRECT, as it only has meaning for full lookups.
 
 _ctx_ is either **struct xdp_md** for XDP programs or **struct sk_buff** tc cls_act programs.
 
@@ -48,8 +36,7 @@ _ctx_ is either **struct xdp_md** for XDP programs or **struct sk_buff** tc cls_
 
 * < 0 if any input argument is invalid
 *   0 on success (packet is forwarded, nexthop neighbor exists)
-* > 0 one of **BPF_FIB_LKUP_RET_** codes explaining why the
-  packet is not forwarded or needs assist from full stack
+* > 0 one of **BPF_FIB_LKUP_RET_** codes explaining why the packet is not forwarded or needs assist from full stack
 
 If lookup fails with BPF_FIB_LKUP_RET_FRAG_NEEDED, then the MTU was exceeded and output params->mtu_result contains the MTU.
 

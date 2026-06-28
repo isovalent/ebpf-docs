@@ -25,12 +25,9 @@ _argval_ is a flag array which can combine these flags:
 * **BPF_SOCK_OPS_STATE_CB_FLAG** (TCP state change)
 * **BPF_SOCK_OPS_RTT_CB_FLAG** (every RTT)
 
-
 Therefore, this function can be used to clear a callback flag by setting the appropriate bit to zero. e.g. to disable the RTO callback:
 
-**bpf_sock_ops_cb_flags_set(bpf_sock,**
-
-&nbsp;&nbsp;&nbsp;&nbsp;**bpf_sock->bpf_sock_ops_cb_flags & ~BPF_SOCK_OPS_RTO_CB_FLAG)**
+* **bpf_sock_ops_cb_flags_set(bpf_sock,**: **bpf_sock->bpf_sock_ops_cb_flags & ~BPF_SOCK_OPS_RTO_CB_FLAG)**
 
 Here are some examples of where one could call such eBPF program:
 
@@ -39,7 +36,6 @@ Here are some examples of where one could call such eBPF program:
 * When the connection terminates.
 * When a packet is sent.
 * When a packet is received.
-
 
 ### Returns
 

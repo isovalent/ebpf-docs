@@ -20,15 +20,9 @@ Set timer expiration N nanoseconds from the current time. The configured callbac
 
 _flags_ can be one of:
 
-**BPF_F_TIMER_ABS**
+* **BPF_F_TIMER_ABS**: Start the timer in absolute expire value instead of the default relative one.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Start the timer in absolute expire value instead of the default relative one.
-
-**BPF_F_TIMER_CPU_PIN**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Timer will be pinned to the CPU of the caller.
-
-&nbsp;&nbsp;&nbsp;&nbsp;
+* **BPF_F_TIMER_CPU_PIN**: Timer will be pinned to the CPU of the caller.
 
 ### Returns
 

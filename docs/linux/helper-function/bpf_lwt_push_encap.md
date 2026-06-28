@@ -16,17 +16,11 @@ description: "This page documents the 'bpf_lwt_push_encap' eBPF helper function,
 <!-- [HELPER_FUNC_DEF] -->
 Encapsulate the packet associated to _skb_ within a Layer 3 protocol header. This header is provided in the buffer at address _hdr_, with _len_ its size in bytes. _type_ indicates the protocol of the header and can be one of:
 
-**BPF_LWT_ENCAP_SEG6**
+* **BPF_LWT_ENCAP_SEG6**: IPv6 encapsulation with Segment Routing Header (**struct ipv6_sr_hdr**). _hdr_ only contains the SRH, the IPv6 header is computed by the kernel.
 
-&nbsp;&nbsp;&nbsp;&nbsp;IPv6 encapsulation with Segment Routing Header (**struct ipv6_sr_hdr**). _hdr_ only contains the SRH, the IPv6 header is computed by the kernel.
+* **BPF_LWT_ENCAP_SEG6_INLINE**: Only works if _skb_ contains an IPv6 packet. Insert a Segment Routing Header (**struct ipv6_sr_hdr**) inside the IPv6 header.
 
-**BPF_LWT_ENCAP_SEG6_INLINE**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Only works if _skb_ contains an IPv6 packet. Insert a Segment Routing Header (**struct ipv6_sr_hdr**) inside the IPv6 header.
-
-**BPF_LWT_ENCAP_IP**
-
-&nbsp;&nbsp;&nbsp;&nbsp;IP encapsulation (GRE/GUE/IPIP/etc). The outer header must be IPv4 or IPv6, followed by zero or more additional headers, up to **LWT_BPF_MAX_HEADROOM** total bytes in all prepended headers. Please note that if **skb_is_gso**(_skb_) is true, no more than two headers can be prepended, and the inner header, if present, should be either GRE or UDP/GUE.
+* **BPF_LWT_ENCAP_IP**: IP encapsulation (GRE/GUE/IPIP/etc). The outer header must be IPv4 or IPv6, followed by zero or more additional headers, up to **LWT_BPF_MAX_HEADROOM** total bytes in all prepended headers. Please note that if **skb_is_gso**(_skb_) is true, no more than two headers can be prepended, and the inner header, if present, should be either GRE or UDP/GUE.
 
 **BPF_LWT_ENCAP_SEG6**\* types can be called by BPF programs of type **BPF_PROG_TYPE_LWT_IN**; **BPF_LWT_ENCAP_IP** type can be called by bpf programs of types **BPF_PROG_TYPE_LWT_IN** and **BPF_PROG_TYPE_LWT_XMIT**.
 

@@ -20,21 +20,13 @@ The major use case is to change incoming _skb_s to **PACKET_HOST** in a programm
 
 Note that _type_ only allows certain values. At this time, they are:
 
-**PACKET_HOST**
+* **PACKET_HOST**: Packet is for us.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Packet is for us.
+* **PACKET_BROADCAST**: Send packet to all.
 
-**PACKET_BROADCAST**
+* **PACKET_MULTICAST**: Send packet to group.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Send packet to all.
-
-**PACKET_MULTICAST**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Send packet to group.
-
-**PACKET_OTHERHOST**
-
-&nbsp;&nbsp;&nbsp;&nbsp;Send packet to someone else.
+* **PACKET_OTHERHOST**: Send packet to someone else.
 
 ### Returns
 

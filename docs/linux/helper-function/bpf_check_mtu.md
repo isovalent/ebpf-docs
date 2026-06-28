@@ -28,27 +28,19 @@ _ctx_ is either **struct xdp_md** for XDP programs or **struct sk_buff** for tc 
 
 The _flags_ argument can be a combination of one or more of the following values:
 
-**BPF_MTU_CHK_SEGS**
-
-&nbsp;&nbsp;&nbsp;&nbsp;This flag will only works for _ctx_ **struct sk_buff**. If packet context contains extra packet segment buffers (often knows as GSO skb), then MTU check is harder to check at this point, because in transmit path it is possible for the skb packet to get re-segmented (depending on net device features).  This could still be a MTU violation, so this flag enables performing MTU check against segments, with a different violation return code to tell it apart. Check cannot use len_diff.
+* **BPF_MTU_CHK_SEGS**: This flag will only works for _ctx_ **struct sk_buff**. If packet context contains extra packet segment buffers (often knows as GSO skb), then MTU check is harder to check at this point, because in transmit path it is possible for the skb packet to get re-segmented (depending on net device features).  This could still be a MTU violation, so this flag enables performing MTU check against segments, with a different violation return code to tell it apart. Check cannot use len_diff.
 
 On return _mtu_len_ pointer contains the MTU value of the net device.  Remember the net device configured MTU is the L3 size, which is returned here and XDP and TC length operate at L2. Helper take this into account for you, but remember when using MTU value in your BPF-code.
-
-
 
 ### Returns
 
 * 0 on success, and populate MTU value in _mtu_len_ pointer.
-
-
 * < 0 if any input argument is invalid (_mtu_len_ not updated)
-
 
 MTU violations return positive values, but also populate MTU value in _mtu_len_ pointer, as this can be needed for implementing PMTU handing:
 
 * **BPF_MTU_CHK_RET_FRAG_NEEDED**
 * **BPF_MTU_CHK_RET_SEGS_TOOBIG**
-
 
 `#!c static long (* const bpf_check_mtu)(void *ctx, __u32 ifindex, __u32 *mtu_len, __s32 len_diff, __u64 flags) = (void *) 163;`
 <!-- [/HELPER_FUNC_DEF] -->

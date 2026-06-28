@@ -16,8 +16,6 @@ description: "This page documents the 'bpf_get_func_arg_cnt' eBPF helper functio
 <!-- [HELPER_FUNC_DEF] -->
 Get number of registers of the traced function (for tracing programs) where function arguments are stored in these registers.
 
-
-
 ### Returns
 
 The number of argument registers of the traced function.

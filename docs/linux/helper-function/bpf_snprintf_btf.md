@@ -20,23 +20,13 @@ The string can be subsequently shared with userspace via bpf_perf_event_output()
 
 _flags_ is a combination of
 
-**BTF_F_COMPACT**
+* **BTF_F_COMPACT**: no formatting around type information
 
-&nbsp;&nbsp;&nbsp;&nbsp;no formatting around type information
+* **BTF_F_NONAME**: no struct/union member names/types
 
-**BTF_F_NONAME**
+* **BTF_F_PTR_RAW**: show raw (unobfuscated) pointer values; equivalent to printk specifier %px.
 
-&nbsp;&nbsp;&nbsp;&nbsp;no struct/union member names/types
-
-**BTF_F_PTR_RAW**
-
-&nbsp;&nbsp;&nbsp;&nbsp;show raw (unobfuscated) pointer values; equivalent to printk specifier %px.
-
-**BTF_F_ZERO**
-
-&nbsp;&nbsp;&nbsp;&nbsp;show zero-valued struct/union members; they are not displayed by default
-
-&nbsp;&nbsp;&nbsp;&nbsp;
+* **BTF_F_ZERO**: show zero-valued struct/union members; they are not displayed by default
 
 ### Returns
 
