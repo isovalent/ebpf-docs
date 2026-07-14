@@ -12,9 +12,9 @@ The most central part of eBPF are the programs. eBPF programs can be attached at
 
 Programs get called with a context which is a struct with information the kernel is making easily available to the program. Typical examples are a [socket buffer](./program-context/__sk_buff.md) or CPU registers. What context is passed to a program depends on its type.
 
-Program like functions also have return values, the meaning of which is again determined by the program type. A return value can for example indicate the amount of bytes of a packet to keep or be an enum of actions which could be taken like discarding a packet, accepting it, or redirecting it.
+eBPF programs, like functions, also have return values, the meaning of which is again determined by the program type. A return value can for example indicate the amount of bytes of a packet to keep or be an enum of actions which could be taken like discarding a packet, accepting it, or redirecting it.
 
-eBPF program are typically written in C and compiled with LLVM, but this isn't necessarily the only way to do it. Any program which can generate byte-code (following the eBPF instruction set) can author eBPF programs. eBPF programs are typically serialized into a relocatable ELF file.
+eBPF programs are typically written in C and compiled with LLVM, but this isn't necessarily the only way to do it. Any program which can generate byte-code (following the eBPF instruction set) can author eBPF programs. eBPF programs are typically serialized into a relocatable ELF file.
 
 Ultimately eBPF programs are loaded into the kernel using the [BPF syscall](./syscall/index.md), the userspace program that does this is referred to as a loader. In practice loaders range from applications that just load the eBPF program to complex systems that constantly interacts with multiple programs and maps to provide advanced features. Loaders often use [loader libraries](./../ebpf-library/index.md) to provide higher-level APIs than the syscall to ease development.
 
