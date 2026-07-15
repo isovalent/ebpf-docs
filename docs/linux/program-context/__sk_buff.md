@@ -26,11 +26,11 @@ This field holds the **total** length of the packet. It is important to know tha
 This field indicates the type of the packet which informs "who" the packet is for. Possible values of this field are
 the `PACKET_*` values defined in `include/uapi/linux/if_packet.h`.
 
-* `PACKET_HOST` - indicates the packet is addresses to the MAC address of this host
+* `PACKET_HOST` - indicates the packet is addressed to the MAC address of this host
 * `PACKET_BROADCAST` - indicates the packet is addressed to a broadcast address.
 * `PACKET_MULTICAST` - indicates the packet is addressed to a multicast address.
-* `PACKET_OTHERHOST` - indicates the packet to addressed to some other host that it has been caught by a device driver in promiscuous mode
-* `PACKET_OUTGOING` - indicates the packet originating from the local host that is looped back to a packet socket
+* `PACKET_OTHERHOST` - indicates the packet is addressed to some other host but has been caught by a device driver in promiscuous mode
+* `PACKET_OUTGOING` - indicates that the packet originates from the local host and is looped back to a packet socket
 
 !!! note
     This is not an exhaustive list of possible values.
