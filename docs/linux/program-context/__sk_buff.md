@@ -230,86 +230,91 @@ This section describes the fields of the `struct bpf_sock` type which is a mirro
 ### `bound_dev_if`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/61023658760032e97869b07d54be9681d2529e77)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the device index of the network device the socket is bound to. `BPF_CGROUP_INET_SOCK_CREATE` and `BPF_CGROUP_INET_SOCK_RELEASE` attached programs can modify this field.
 
 ### `family`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the address family of the socket. Its value is one of `AF_*` values defined in `include/linux/socket.h`.
 
 ### `type`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field specifies the type of the socket. Its value is one of the SOCK_* values defined under the sock_type enum in include/linux/net.h
 
 ### `protocol`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field specifies the particular protocol of the socket. Its value is one of IPPROTO_* values defined in include/uapi/linux/in.h.
 
 ### `mark`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/482dca939fb7ee35ba20b944b4c2476133dbf0df)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field is a general-purpose 32-bit tag stored on the socket endpoint. Whenever the socket generates a network packet, this value is automatically copied into the packet's buffer and has global implications across the network sub-subsystem. `BPF_CGROUP_INET_SOCK_CREATE` and `BPF_CGROUP_INET_SOCK_RELEASE` attached programs can modify this field.
 
 ### `priority`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/482dca939fb7ee35ba20b944b4c2476133dbf0df)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field is an integer specifying the priority of all packets to be sent on this socket and is used to set the order of networking queues. `BPF_CGROUP_INET_SOCK_CREATE` and `BPF_CGROUP_INET_SOCK_RELEASE` attached programs can modify this field.
 
 ### `src_ip4`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the source IPv4 address of the socket. `BPF_CGROUP_INET4_POST_BIND` attached program can read this field. Other attach types are not allowed to read or write this field.
 
 ### `src_ip6`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the source IPv6 address of the socket. `BPF_CGROUP_INET4_POST_BIND` and `BPF_CGROUP_INET6_POST_BIND` attached programs can read this field. Other attach types are not allowed to read or write this field.
 
 ### `src_port`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the source port of the socket. `BPF_CGROUP_INET4_POST_BIND` and `BPF_CGROUP_INET6_POST_BIND` attached programs can read this field. Other attach types are not allowed to read or write this field.
 
 ### `dst_port`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the destination port of the socket in network byte order. `BPF_CGROUP_INET4_POST_BIND` and `BPF_CGROUP_INET6_POST_BIND` attached programs can read this field. Other attach types are not allowed to read or write this field.
 
 ### `dst_ip4`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the destination IPv4 address of the socket. `BPF_CGROUP_INET4_POST_BIND` attached program can read this field. Other attach types are not allowed to read or write this field.
 
 ### `dst_ip6`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the destination IPv6 address of the socket. `BPF_CGROUP_INET4_POST_BIND` and `BPF_CGROUP_INET6_POST_BIND` attached programs can read this field. Other attach types are not allowed to read or write this field.
 
 ### `state`
 [:octicons-tag-24: v5.1](https://github.com/torvalds/linux/commit/aa65d6960a98fc15a96ce361b26e9fd55c9bccc5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the connection state of the socket.
+
+The states will be one of:
+```
+enum {
+	BPF_TCP_ESTABLISHED = 1,
+	BPF_TCP_SYN_SENT,
+	BPF_TCP_SYN_RECV,
+	BPF_TCP_FIN_WAIT1,
+	BPF_TCP_FIN_WAIT2,
+	BPF_TCP_TIME_WAIT,
+	BPF_TCP_CLOSE,
+	BPF_TCP_CLOSE_WAIT,
+	BPF_TCP_LAST_ACK,
+	BPF_TCP_LISTEN,
+	BPF_TCP_CLOSING,	/* Now a valid state */
+	BPF_TCP_NEW_SYN_RECV
+};
+```
 
 ### `rx_queue_mapping`
 [:octicons-tag-24: v5.8](https://github.com/torvalds/linux/commit/c3c16f2ea6d20159903cf93afbb1155f3d8348d5)
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+This field contains the receive queue number for the connection. The Rx queue
+is marked in `tcp_finish_connect()` and is otherwise `-1`.
 
 [^1]: [https://www.spinics.net/lists/netdev/msg235744.html](https://www.spinics.net/lists/netdev/msg235744.html)
 [^2]: [https://www.kernel.org/doc/Documentation/networking/multiqueue.txt](https://www.kernel.org/doc/Documentation/networking/multiqueue.txt)
