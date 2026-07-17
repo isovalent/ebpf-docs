@@ -8,7 +8,7 @@ When we talk about a function, we are referring to a function you would write in
 
 ## Calling convention
 
-The eBPF instruction set defines the calling convention for functions, these include programs, sub-programs, helper functions and kfuncs. Every function no matter who defines it uses the same calling convention. The R0 register is uses as the return value, a function should set it before returning unless it is a void function. Registers R1-R5 are used for arguments, R1 for the first argument, R2 for the second, and so on. Unlike calling conventions on native architectures, arguments are never passed via the stack. So 5 arguments is a hard limit, structures must be used to work around this. Registers R1-5 are clobbered after a function call, the verifier will not allow you to read from them until they are set with a known value. R6-9 are callee saved registers, they are preserved across function calls.
+The eBPF instruction set defines the calling convention for functions, these include programs, sub-programs, helper functions and kfuncs. Every function no matter who defines it uses the same calling convention. The R0 register is used as the return value. A function should set it before returning unless it is a void function. Registers R1-R5 are used for arguments, R1 for the first argument, R2 for the second, and so on. Unlike calling conventions on native architectures, arguments are never passed via the stack. So 5 arguments is a hard limit, structures must be used to work around this. Registers R1-5 are clobbered after a function call, the verifier will not allow you to read from them until they are set with a known value. R6-9 are callee saved registers, they are preserved across function calls.
 
 ## BPF to BPF functions (sub-programs)
 
@@ -16,17 +16,17 @@ In [:octicons-tag-24: v4.16](https://github.com/torvalds/linux/commit/cc8b0b92a1
 
 ### Function inlining
 
-By default, the compiler will chose inline a function or to keep it a separate function. Compilers can be encouraged to inline or not inline a function with arguments like `__attribute__((always_inline))`/[`__always_inline`](../../ebpf-library/libbpf/ebpf/__always_inline.md) or `__attribute__((noinline))`/[`__noinline`](../../ebpf-library/libbpf/ebpf/__noinline.md). Inlined functions do not incur the overhead of a function call as they will become part of the calling function. Inlined functions can also be optimized per call site since arguments are known.
+By default, the compiler will chose to either inline a function or keep it separate. Compilers can be encouraged to inline or not inline a function with arguments like `__attribute__((always_inline))`/[`__always_inline`](../../ebpf-library/libbpf/ebpf/__always_inline.md) or `__attribute__((noinline))`/[`__noinline`](../../ebpf-library/libbpf/ebpf/__noinline.md). Inlined functions do not incur the overhead of a function call as they will become part of the calling function. Inlined functions can also be optimized per call site since arguments are known.
 
 ### Function by function verification
 
-Until [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) the verifier would re-verify that a function was safe for every call site. Meaning that if you have a function which is called 10 times, then the verifier would check for every call that with the given inputs the function was save. This defeats the purpose of functions somewhat since you still incur verifier complexity for every call. 
+Until [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) the verifier would re-verify that a function was safe for every call site. Meaning that if you have a function which is called 10 times, then the verifier would check for every call that with the given inputs the function was safe. This defeats the purpose of functions somewhat since you still incur verifier complexity for every call. 
 
 Since [:octicons-tag-24: v5.6](https://github.com/torvalds/linux/commit/51c39bb1d5d105a02e29aa7960f0a395086e6342) a distinction is made between "static" and "global" functions. Static functions are functions marked with the `static` keyword in the C code, global functions regular non-static functions. Static functions are still verified as usual. But global functions undergo "function by function verification". This means that the verifier will verify every function once, and even out of order. So every function is verified exactly once, and not per-call site anymore. This change reduces verification times and complexity. But the verifier does impose a lot more limitations. 
 
-The verifier will assume no information about arguments, since it will not check every call site anymore. So even tough a function is only ever called with a `u32` of `123`, the verifier will assume the full `0`-`4294967295` are possible values. Therefore, functions might require more input checking to pass the verifier.
+The verifier will assume no information about arguments, since it will not check every call site anymore. So even if a function is only ever called with a `u32` of `123`, the verifier will assume the full `0`-`4294967295` are possible values. Therefore, functions might require more input checking to pass the verifier.
 
-The verifier also limits the return type to always be scalar (a number). And the arguments to be pointer to a program context and scalars. This limitation on arguments was widen in later kernel releases, see later sections.
+The verifier also limits the return type to always be scalar (a number) and the arguments to be a pointer to either the program context or scalar values. This limitation on arguments was widened in later kernel releases, see later sections.
 
 ### Global function replacement
 
@@ -55,11 +55,11 @@ Architectures that are not listed do not support mixing tail calls and functions
 
 In [:octicons-tag-24: v5.12](https://github.com/torvalds/linux/commit/e5069b9c23b3857db986c58801bebe450cff3392) the limitation on argument types passed to global functions was widened to allow pointer arguments.
 
-Callers of global functions can pass pointer to the stack, map values or packet data. The pointer is treated as a `void *` of known size. The value or type info of the memory is not tracked across function boundaries.
+Callers of global functions can pass a pointer to the stack, map values or packet data. The pointer is treated as a `void *` of known size. The value or type info of the memory is not tracked across function boundaries.
 
 ### Callbacks
 
-In [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/69c087ba6225b574afb6e505b72cb75242a3d844) the verifier was extended to allow for callbacks. Since then a number of helper function and kfuncs have been added that call back into given functions.
+In [:octicons-tag-24: v5.13](https://github.com/torvalds/linux/commit/69c087ba6225b574afb6e505b72cb75242a3d844) the verifier was extended to allow for callbacks. Since then, a number of helper function and kfuncs have been added that call back into given functions.
 
 ### Argument annotations
 
