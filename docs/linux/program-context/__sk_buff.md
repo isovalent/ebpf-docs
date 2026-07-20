@@ -240,12 +240,12 @@ This field contains the address family of the socket. Its value is one of `AF_*`
 ### `type`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-This field specifies the type of the socket. Its value is one of the SOCK_* values defined under the sock_type enum in include/linux/net.h
+This field specifies the type of the socket. Its value is one of the `SOCK_*` values defined under the sock_type enum in include/linux/net.h
 
 ### `protocol`
 [:octicons-tag-24: v4.10](https://github.com/torvalds/linux/commit/aa4c1037a30f4e88f444e83d42c2befbe0d5caf5)
 
-This field specifies the particular protocol of the socket. Its value is one of IPPROTO_* values defined in include/uapi/linux/in.h.
+This field specifies the particular protocol of the socket. Its value is one of `IPPROTO_*` values defined in include/uapi/linux/in.h.
 
 ### `mark`
 [:octicons-tag-24: v4.14](https://github.com/torvalds/linux/commit/482dca939fb7ee35ba20b944b4c2476133dbf0df)
