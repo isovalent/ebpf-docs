@@ -67,7 +67,6 @@
     * [`bpf_probe_read_kernel_str`](bpf_probe_read_kernel_str.md)
     * [`bpf_copy_from_user`](bpf_copy_from_user.md)
     * [`bpf_copy_from_user_task`](bpf_copy_from_user_task.md)
-    * [`bpf_copy_from_user_task`](bpf_copy_from_user_task.md)
     * [`bpf_find_vma`](bpf_find_vma.md)
   * Process influencing helpers
     * [`bpf_override_return`](bpf_override_return.md)
