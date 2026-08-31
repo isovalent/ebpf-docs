@@ -24,6 +24,8 @@ The primary use case is to implement security software. For example, the `socket
 
 The list of all LSM hooks can be found in [`lsm_hook_defs.h`](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hook_defs.h), additional documentation for these hooks lives in [`lsm_hooks.h`](https://github.com/torvalds/linux/blob/457391b0380335d5e9a5babdec90ac53928b23b4/include/linux/lsm_hooks.h) 
 
+The following example, which denies `mprotect` calls on a process's heap memory, comes from the kernel's [LSM BPF documentation](https://docs.kernel.org/bpf/prog_lsm.html); the original document also walks through the includes, type definitions, and user space code needed to compile and run it:
+
 ```c
 // Copyright (C) 2020 Google LLC.
 SEC("lsm/file_mprotect")
