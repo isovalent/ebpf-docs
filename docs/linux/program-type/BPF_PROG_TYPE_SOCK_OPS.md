@@ -175,6 +175,7 @@ When the `BPF_SOCK_OPS_WRITE_HDR_OPT_CB_FLAG` flag is set with [`bpf_sock_ops_cb
 The arguments in the context will have the following meanings:
 
 * `args[0]`: bool want_cookie. (in writing SYNACK only)
+* `args[0]`: (when not writing SYNACK) If equal to `BPF_WRITE_HDR_TCP_CURRENT_MSS`, the kernel will use the `bpf_reserve_hdr_opt()` call to guess the future packet's size and not actually reserve memory. The skb passed as a parameter is empty dummy and no subsequent `BPF_SOCK_OPS_WRITE_HDR_OPT_CB` event will occur.
 
 `sock_ops->skb_data`: Not available because no header has been written yet.
 
