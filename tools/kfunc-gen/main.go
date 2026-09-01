@@ -119,9 +119,8 @@ func main() {
 	throw := false
 
 	var allBTFKfuncs []*btf.Func
-	iter := spec.Iterate()
-	for iter.Next() {
-		switch t := (iter.Type).(type) {
+	for t := range spec.All() {
+		switch t := (t).(type) {
 		case *btf.Func:
 			if slices.Contains(t.Tags, "bpf_kfunc") {
 				if slices.Contains(ignoreKfuncs, t.Name) {
