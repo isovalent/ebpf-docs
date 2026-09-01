@@ -52,7 +52,7 @@ Note that `{watermark}` and `{cpu}` are not pre-set. In this example we set `.wa
 
 After creating the perf event, it is recommended to make it non-blocking, if used with a signaling mechanism such as `epoll`. This can be done by calling [`fcntl`](https://man7.org/linux/man-pages/man2/fcntl.2.html) with the `O_NONBLOCK` option on the file descriptor.
 
-Next, we need to setup the actual ring-buffer which we will use to read data from the perf event. To do so we first have to request a shared memory region from the kernel using [`mmap`](https://man7.org/linux/man-pages/man2/mmap.2.html) `#!c mmap(nil, length, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0)`. `length` can be picked and tuned depending on the use case but should always be `1+2^n` memory pages and `n` should not be `0`. So Assuming a 4k page size, valid values would be `12288`, `20480`, `28672` and so on. The `fd` should be the file descriptor of the perf event.
+Next, we need to setup the actual ring-buffer which we will use to read data from the perf event. To do so we first have to request a shared memory region from the kernel using [`mmap`](https://man7.org/linux/man-pages/man2/mmap.2.html) `#!c mmap(nil, length, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0)`. `length` can be picked and tuned depending on the use case but should always be `1+2^n` memory pages, with `n` not being `0` — so in bytes: `(1+2^n) * page size`. Assuming a 4k page size, valid values would be `12288` (`n=1`, 3 pages), `20480` (`n=2`, 5 pages), `36864` (`n=3`, 9 pages) and so on. The `fd` should be the file descriptor of the perf event.
 
 The `mmap` call, if all is well, should return a pointer to a memory address. The first page will contain the following data structure populated by the perf subsystem:
 
