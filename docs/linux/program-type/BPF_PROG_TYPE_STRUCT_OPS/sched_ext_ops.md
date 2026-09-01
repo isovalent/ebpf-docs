@@ -24,13 +24,6 @@ A BPF scheduler can implement an arbitrary scheduling policy by implementing and
 
 ```c
 struct sched_ext_ops {
-    char [name](#name)[SCX_OPS_NAME_LEN];
-    u32  [dispatch_max_batch](#dispatch_max_batch);
-    u64  [flags](#flags);
-    u32  [timeout_ms](#timeout_ms);
-    u32  [exit_dump_len](#exit_dump_len);
-    u64  [hotplug_seq](#hotplug_seq);
-
     s32  (*[select_cpu](#select_cpu))([struct task_struct](#struct-task_struct) *p, s32 prev_cpu, u64 wake_flags);
     void (*[enqueue](#enqueue))([struct task_struct](#struct-task_struct) *p, u64 enq_flags);
     void (*[dequeue](#dequeue))([struct task_struct](#struct-task_struct) *p, u64 deq_flags);
@@ -45,15 +38,10 @@ struct sched_ext_ops {
     void (*[set_weight](#set_weight))([struct task_struct](#struct-task_struct) *p, u32 weight);
     void (*[set_cpumask](#set_cpumask))([struct task_struct](#struct-task_struct) *p, const [struct cpumask](#struct-cpumask) *cpumask);
     void (*[update_idle](#update_idle))(s32 cpu, bool idle);
-    void (*[cpu_acquire](#cpu_acquire))(s32 cpu, [struct scx_cpu_acquire_args](#struct-scx_cpu_acquire_args) *args);
-    void (*[cpu_release](#cpu_release))(s32 cpu, [struct scx_cpu_release_args](#struct-scx_cpu_release_args) *args);
-    
     s32  (*[init_task](#init_task))([struct task_struct](#struct-task_struct) *p, [struct scx_init_task_args](#struct-scx_init_task_args) *args);
     void (*[exit_task](#exit_task))([struct task_struct](#struct-task_struct) *p, [struct scx_exit_task_args](#struct-scx_exit_task_args) *args);
-    
     void (*[enable](#enable))([struct task_struct](#struct-task_struct) *p);
     void (*[disable](#disable))([struct task_struct](#struct-task_struct) *p);
-    
     void (*[dump](#dump))([struct scx_dump_ctx](#struct-scx_dump_ctx) *ctx);
     void (*[dump_cpu](#dump_cpu))([struct scx_dump_ctx](#struct-scx_dump_ctx) *ctx, s32 cpu, bool idle);
     void (*[dump_task](#dump_task))([struct scx_dump_ctx](#struct-scx_dump_ctx) *ctx, [struct task_struct](#struct-task_struct) *p);
@@ -65,13 +53,29 @@ struct sched_ext_ops {
     void (*[cgroup_move](#cgroup_move))([struct task_struct](#struct-task_struct) *p, [struct cgroup](#struct-cgroup) *from, [struct cgroup](#struct-cgroup) *to);
     void (*[cgroup_cancel_move](#cgroup_cancel_move))([struct task_struct](#struct-task_struct) *p, [struct cgroup](#struct-cgroup) *from, [struct cgroup](#struct-cgroup) *to);
     void (*[cgroup_set_weight](#cgroup_set_weight))([struct cgroup](#struct-cgroup) *cgrp, u32 weight);
+    void (*[cgroup_set_bandwidth](#cgroup_set_bandwidth))([struct cgroup](#struct-cgroup) *cgrp, u64 period_us, u64 quota_us, u64 burst_us);
+    void (*[cgroup_set_idle](#cgroup_set_idle))([struct cgroup](#struct-cgroup) *cgrp, bool idle);
 #endif /* CONFIG_EXT_GROUP_SCHED */
 
+    s32 (*[sub_attach](#sub_attach))([struct scx_sub_attach_args](#struct-scx_sub_attach_args) *args);
+    void (*[sub_detach](#sub_detach))([struct scx_sub_detach_args](#struct-scx_sub_detach_args) *args);
     void (*[cpu_online](#cpu_online))(s32 cpu);
     void (*[cpu_offline](#cpu_offline))(s32 cpu);
-
     s32  (*[init](#init))(void);
-    void (*[exit](#exit))([struct scx_exit_info](#struct-scx_exit_info) *info);
+    void (*[exit](#exit)([struct scx_exit_info](#struct-scx_exit_info) *info);
+
+    u32  [dispatch_max_batch](#dispatch_max_batch);
+    u64  [flags](#flags);
+    u32  [timeout_ms](#timeout_ms);
+    u32  [exit_dump_len](#exit_dump_len);
+    u64  [hotplug_seq](#hotplug_seq);
+    u64  [sub_cgroup_id](#sub_cgroup_id);
+    char [name](#name)[SCX_OPS_NAME_LEN];
+
+    void __rcu *priv; /* internal use only, must be NULL */
+
+    void (*[cpu_acquire](#cpu_acquire))(s32 cpu, [struct scx_cpu_acquire_args](#struct-scx_cpu_acquire_args) *args);
+    void (*[cpu_release](#cpu_release))(s32 cpu, [struct scx_cpu_release_args](#struct-scx_cpu_release_args) *args);
 };
 ```
 
@@ -126,6 +130,14 @@ Defaults to the maximum allowed timeout value of 30 seconds.
 `#!c u64 hotplug_seq`
 
 A sequence number that may be set by the scheduler to detect when a hot-plug event has occurred during the loading process. If `0`, no detection occurs. Otherwise, the scheduler will fail to load if the sequence number does not match [`scx_hotplug_seq`](https://elixir.bootlin.com/linux/v6.13/source/kernel/sched/ext.c#L899) on the enable path.
+
+### `sub_cgroup_id`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+`#!c u64 sub_cgroup_id`
+
+When >1, attach the scheduler as a sub-scheduler on the specified cgroup.
 
 ### `select_cpu`
 
@@ -655,6 +667,76 @@ A cGroup's weight is being changed. Update `cgrp`'s weight to `weight`.
 
 `weight`: new weight `[1..10000]`
 
+### `cgroup_set_bandwidth`
+
+[:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/0c2b8356e430229efef42b03bd765a2a7ecf73fd)
+
+`#!c void (*cgroup_set_bandwidth)(struct cgroup *cgrp, u64 period_us, u64 quota_us, u64 burst_us);`
+
+A cgroup's bandwidth is being changed.
+
+`#!c void (*cgroup_set_bandwidth)(struct cgroup *cgrp, u64 period_us, u64 quota_us, u64 burst_us)`
+
+Update `cgrp`s bandwidth control parameters. This is from the `cpu.max` cgroup interface.
+
+`quota_us` / `period_us` determines the CPU bandwidth `cgrp` is entitled to. For example, if `period_us` is `1_000_000` and `quota_us` is `2_500_000`. `cgrp` is entitled to 2.5 CPUs. `burst_us` can be interpreted in the same fashion and specifies how much `cgrp` can burst temporarily. The specific control mechanism and thus the interpretation of `period_us` and burstiness is up to the BPF scheduler.
+
+**Parameters**
+
+`cgrp`: cgroup whose bandwidth is being updated
+
+`period_us`: bandwidth control period
+
+`quota_us`: bandwidth control quota
+
+`burst_us`: bandwidth control burst
+
+### `cgroup_set_idle`
+
+[:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/347ed2d566dabb06c7970fff01129c4f59995ed6)
+
+A cgroup's idle state is being changed.
+
+`#!c void (*cgroup_set_idle)(struct cgroup *cgrp, bool idle)`
+
+Update `cgrp`s idle state to @idle. This callback is invoked when a cgroup transitions between idle and non-idle states, allowing the BPF scheduler to adjust its behavior accordingly.
+
+**Parameters**
+
+`cgrp`: cgroup whose idle state is being updated
+
+`idle` whether the cgroup is entering or exiting idle state
+
+### `sub_attach`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+`#!c s32 (*sub_attach)(struct scx_sub_attach_args *args)`
+
+**Parameters**
+
+`args`: argument container, see the struct definition
+
+**Returns**
+
+`0` to accept the sub-scheduler. `-errno` to reject.
+
+### `sub_detach`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+Attach a sub-scheduler.
+
+`#!c void (*sub_detach)(struct scx_sub_detach_args *args)`
+
+**Parameters**
+
+`args`: argument container, see the struct definition
+
+**Returns**
+
+`0` to accept the sub-scheduler. `-errno` to reject.
+
 ### `cpu_online`
 
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
@@ -726,7 +808,9 @@ enum scx_ops_flags {
     [SCX_OPS_ENQ_MIGRATION_DISABLED](#scx_ops_enq_migration_disabled) = 1LLU << 4,
     [SCX_OPS_ALLOW_QUEUED_WAKEUP](#scx_ops_allow_queued_wakeup)    = 1LLU << 5,
     [SCX_OPS_BUILTIN_IDLE_PER_NODE](#scx_ops_builtin_idle_per_node)  = 1LLU << 6,
-    [SCX_OPS_HAS_CGROUP_WEIGHT](#scx_ops_has_cgroup_weight)      = 1LLU << 16,
+    [SCX_OPS_ALWAYS_ENQ_IMMED](#scx_ops_always_enq_immed)       = 1LLU << 7,
+    [SCX_OPS_TID_TO_TASK](#scx_ops_tid_to_task)            = 1LLU << 8,
+    [SCX_OPS_HAS_CGROUP_WEIGHT](#scx_ops_has_cgroup_weight)      = 1LLU << 16, /* removed in v7.1*/
 };
 ```
 
@@ -778,9 +862,26 @@ If this ops flag is set, queued wake-up optimization is enabled and the BPF sche
 
 If set, enable per-node idle cpu-masks. If clear, use a single global flat idle cpumask.
 
+#### `SCX_OPS_ALWAYS_ENQ_IMMED`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/3229ac4a5ef5a838e82a784226432c92d3db90a8)
+
+If set, [`SCX_ENQ_IMMED`](#scx_enq_immed) is assumed to be set on all local DSQ enqueues.
+
+#### `SCX_OPS_TID_TO_TASK`
+
+[:octicons-tag-24: v7.2](https://github.com/torvalds/linux/commit/41e3312861eafba171d9620150aaf2e99165d044)
+
+Maintain a mapping from `p->scx.tid` to [`task_struct`](#struct-task_struct) so the BPF scheduler can recover task pointers from stored tids via scx_bpf_tid_to_task().
+
+Only the root scheduler turns this on. A sub-sched may set the flag to declare a dependency on the lookup; if the root scheduler hasn't enabled it, attaching the sub-sched is rejected.
+
 #### `SCX_OPS_HAS_CGROUP_WEIGHT`
 
-[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/8195136669661fdfe54e9a8923c33b31c92fc1da)
+[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/8195136669661fdfe54e9a8923c33b31c92fc1da) - [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/bec10581e92289bdc3eed17e90200900ddb00594)
+
+!!! warning
+    This flag has been deprecated in [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/bc08b15b54b8aadbc8a8f413271c07a3f4bead87) and removed in [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/bec10581e92289bdc3eed17e90200900ddb00594)
 
 CPU cGroup support flags.
 
@@ -792,6 +893,7 @@ enum scx_enq_flags {
     [SCX_ENQ_HEAD](#scx_enq_head)            = 1LLU << 4,
     [SCX_ENQ_CPU_SELECTED](#scx_enq_cpu_selected)    = 1LLU << 10,
     [SCX_ENQ_PREEMPT](#scx_enq_preempt)         = 1LLU << 32,
+    [SCX_ENQ_IMMED](#scx_enq_immed)          = 1LLU << 33,
     [SCX_ENQ_REENQ](#scx_enq_reenq)           = 1LLU << 40,
     [SCX_ENQ_LAST](#scx_enq_last)            = 1LLU << 41,
     [SCX_ENQ_CLEAR_OPSS](#scx_enq_clear_opss)      = 1LLU << 56,
@@ -825,6 +927,16 @@ This flag is set by the scheduler core internals in [`select_task_rq`](https://e
 
 Set the following to trigger preemption when calling [`scx_bpf_dsq_insert`](../../kfuncs/scx_bpf_dsq_insert.md) with a local DSQ as the target. The slice of the current task is cleared to zero and the CPU is kicked into the scheduling path. Implies [`SCX_ENQ_HEAD`](#scx_enq_head).
 
+#### `SCX_ENQ_IMMED`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/98d709cba3193f0bec54da4cd76ef499ea2f1ef7)
+
+Only allowed on local DSQs. Guarantees that the task either gets on the CPU immediately and stays on it, or gets reenqueued back to the BPF scheduler. It will never linger on a local DSQ or be silently put back after preemption.
+
+The protection persists until the next fresh enqueue - it survives SAVE/RESTORE cycles, slice extensions and preemption. If the task can't stay on the CPU for any reason, it gets reenqueued back to the BPF scheduler.
+
+Exiting and migration-disabled tasks bypass [`enqueue`](#enqueue) and are placed directly on a local DSQ without IMMED protection unless [`SCX_OPS_ENQ_EXITING`](#scx_ops_enq_exiting) and [`SCX_OPS_ENQ_MIGRATION_DISABLED`](#scx_ops_enq_migration_disabled) are set respectively.
+
 #### `SCX_ENQ_REENQ`
 
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
@@ -856,8 +968,9 @@ This flag is set when a task is inserted into a DSQ with the [`scx_bpf_dsq_inser
 
 ```c
 enum scx_deq_flags {
-    SCX_DEQ_SLEEP           = 1LLU << 0,
-    SCX_DEQ_CORE_SCHED_EXEC = 1LLU << 32,
+    [SCX_DEQ_SLEEP](#scx_deq_sleep)           = 1LLU << 0,
+    [SCX_DEQ_CORE_SCHED_EXEC](#scx_deq_core_sched_exec) = 1LLU << 32,
+    [SCX_DEQ_SCHED_CHANGE](#scx_deq_sched_change)    = 1LLU << 32
 };
 ```
 
@@ -872,6 +985,12 @@ Task is no longer runnable.
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 
 The generic core-sched layer decided to execute the task even though it hasn't been dispatched yet. Dequeue from the BPF side.
+
+#### `SCX_DEQ_SCHED_CHANGE`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebf1ccff79c43f860cbd2f9d6cfab9a462d0cb2d)
+
+The task is being dequeued due to a property change (e.g., [`sched_setaffinity()`](https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html), [`sched_setscheduler()`](https://man7.org/linux/man-pages/man2/sched_setscheduler.2.html), [`set_user_nice()`](https://elixir.bootlin.com/linux/v7.2.2/source/kernel/sched/syscalls.c#L65), etc.).
 
 ### `enum scx_dsq_id_flags`
 
@@ -898,13 +1017,14 @@ Bits: [63] [62] [61..32] [31 ..  0]
 
 ```c
 enum scx_dsq_id_flags {
-    SCX_DSQ_FLAG_BUILTIN    = 1LLU << 63,
-    SCX_DSQ_FLAG_LOCAL_ON   = 1LLU << 62,
+    [SCX_DSQ_FLAG_BUILTIN](#scx_dsq_flag_builtin)    = 1LLU << 63,
+    [SCX_DSQ_FLAG_LOCAL_ON](#scx_dsq_flag_local_on)   = 1LLU << 62,
 
     SCX_DSQ_INVALID         = SCX_DSQ_FLAG_BUILTIN | 0,
-    SCX_DSQ_GLOBAL          = SCX_DSQ_FLAG_BUILTIN | 1,
-    SCX_DSQ_LOCAL           = SCX_DSQ_FLAG_BUILTIN | 2,
-    SCX_DSQ_LOCAL_ON        = SCX_DSQ_FLAG_BUILTIN | SCX_DSQ_FLAG_LOCAL_ON,
+    [SCX_DSQ_GLOBAL](#scx_dsq_global)          = [SCX_DSQ_FLAG_BUILTIN](#scx_dsq_flag_builtin) | 1,
+    [SCX_DSQ_LOCAL](#scx_dsq_local)           = [SCX_DSQ_FLAG_BUILTIN](#scx_dsq_flag_builtin) | 2,
+    [SCX_DSQ_BYPASS](#scx_dsq_bypass)          = [SCX_DSQ_FLAG_BUILTIN](#scx_dsq_flag_builtin) | 3,
+    [SCX_DSQ_LOCAL_ON](#scx_dsq_local_on)        = [SCX_DSQ_FLAG_BUILTIN](#scx_dsq_flag_builtin) | SCX_DSQ_FLAG_LOCAL_ON,
 };
 ```
 
@@ -932,6 +1052,12 @@ Combined flags. The DSQ is builtin and global.
 
 Combined flags. The DSQ is builtin and local to the current CPU.
 
+#### `SCX_DSQ_BYPASS`
+
+[:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/61debc251c1c9150c7bdfd5c028bc2d078e17d22)
+
+Combined flags. The DSQ is builtin and bypasses the per-node global DSQ.
+
 #### `SCX_DSQ_LOCAL_ON`
 
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
@@ -940,12 +1066,26 @@ Combined flags. The DSQ is builtin and local to a specific CPU (encoded in the I
 
 ### `enum scx_ent_flags`
 
+Bits 8 to 10 are used to carry task state.
+
 ```c
 enum scx_ent_flags {
-    SCX_TASK_QUEUED             = 1 << 0,
-	SCX_TASK_RESET_RUNNABLE_AT  = 1 << 2,
-	SCX_TASK_DEQD_FOR_SLEEP     = 1 << 3,
-	SCX_TASK_CURSOR             = 1 << 31,
+    [SCX_TASK_QUEUED](#scx_task_queued)             = 1 << 0,
+    [SCX_TASK_IN_CUSTODY](#scx_task_in_custody)         = 1 << 1,
+	[SCX_TASK_RESET_RUNNABLE_AT](#scx_task_reset_runnable_at)  = 1 << 2,
+	[SCX_TASK_DEQD_FOR_SLEEP](#scx_task_deqd_for_sleep)     = 1 << 3,
+    [SCX_TASK_SUB_INIT](#scx_task_sub_init)           = 1 << 4,
+    [SCX_TASK_IMMED](#scx_task_immed)              = 1 << 5,
+	[SCX_TASK_CURSOR](#scx_task_cursor)             = 1 << 31,
+
+    SCX_TASK_STATE_SHIFT = 8,
+
+	[SCX_TASK_NONE](#emum-scx_ent_flags-scx_task_none)       = 0 << SCX_TASK_STATE_SHIFT,
+	[SCX_TASK_INIT_BEGIN](#emum-scx_ent_flags-scx_task_begin) = 1 << SCX_TASK_STATE_SHIFT,
+	[SCX_TASK_INIT](#emum-scx_ent_flags-scx_task_init)       = 2 << SCX_TASK_STATE_SHIFT,
+	[SCX_TASK_READY](#emum-scx_ent_flags-scx_task_ready)      = 3 << SCX_TASK_STATE_SHIFT,
+	[SCX_TASK_ENABLED](#emum-scx_ent_flags-scx_task_enabled)    = 4 << SCX_TASK_STATE_SHIFT,
+	[SCX_TASK_DEAD](#emum-scx_ent_flags-scx_task_dead)       = 5 << SCX_TASK_STATE_SHIFT,
 };
 ```
 
@@ -954,6 +1094,12 @@ enum scx_ent_flags {
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 
 On ext runqueue
+
+#### `SCX_TASK_IN_CUSTODY`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebf1ccff79c43f860cbd2f9d6cfab9a462d0cb2d)
+
+In custody, needs [`ops.dequeue()`](#dequeue) when leaving.
 
 #### `SCX_TASK_RESET_RUNNABLE_AT`
 
@@ -967,13 +1113,64 @@ On ext runqueue
 
 Last dequeue was for SLEEP.
 
+#### `SCX_TASK_SUB_INIT`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/337ec00b1d9c676f637651c2cefddb8612b867ee)
+
+Task being initialized for a sub sched.
+
+#### `SCX_TASK_IMMED`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/98d709cba3193f0bec54da4cd76ef499ea2f1ef7)
+
+Task is on local DSQ with [`SCX_ENQ_IMMED`](#scx_enq_immed).
+
 #### `SCX_TASK_CURSOR`
 
 [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
 
 iteration cursor, not a task
 
+#### `SCX_TASK_NONE` {#emum-scx_ent_flags-scx_task_none}
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7203d77d6e04f83f7b78838eed099d9cac31700b)
+
+[`init_task`](#init_task) not called yet
+
+#### `SCX_TASK_INIT_BEGIN` {#emum-scx_ent_flags-scx_task_init_begin}
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/c941d7391f258d5d06e0f7e962a52f99a547a83e)
+
+[`init_task`](#init_task) in flight; see [`sched_ext_dead()`](https://elixir.bootlin.com/linux/v7.2.2/source/kernel/sched/ext/ext.c#L3922)
+
+#### `SCX_TASK_INIT` {#emum-scx_ent_flags-scx_task_init}
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7203d77d6e04f83f7b78838eed099d9cac31700b)
+
+[`init_task`](#init_task) succeeded, but task can be cancelled
+
+#### `SCX_TASK_READY` {#emum-scx_ent_flags-scx_task_ready}
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7203d77d6e04f83f7b78838eed099d9cac31700b)
+
+fully initialized, but not in sched_ext
+
+#### `SCX_TASK_ENABLED` {#emum-scx_ent_flags-scx_task_enabled}
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7203d77d6e04f83f7b78838eed099d9cac31700b)
+
+fully initialized and in sched_ext
+
+#### `SCX_TASK_DEAD` {#emum-scx_ent_flags-scx_task_dead}
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/c941d7391f258d5d06e0f7e962a52f99a547a83e)
+
+terminal state set by [`sched_ext_dead()`](https://elixir.bootlin.com/linux/v7.2.2/source/kernel/sched/ext/ext.c#L3922)
+
 ### `enum scx_task_state`
+
+!!! warning
+    In [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7203d77d6e04f83f7b78838eed099d9cac31700b) this enum got folded into [`enum scx_ent_flags`](#enum-scx_ent_flags).
 
 ```c
 enum scx_task_state {
@@ -1009,6 +1206,9 @@ fully initialized, but not in sched_ext
 fully initialized and in sched_ext
 
 ### `enum scx_kf_mask`
+
+!!! warn
+    This enum got removed in [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7cd9a5d7d4b75802b97aa89f6f53375a6d84d1d5)
 
 Mask bits for [`sched_ext_entity.kf_mask`](#struct-sched_ext_entity-kf_mask). Not all kfuncs can be called from everywhere and the following bits track which kfunc sets are currently allowed for [`current`](https://elixir.bootlin.com/linux/v6.13/source/include/asm-generic/current.h#L9). This simple per-task tracking works because SCX ops nest in a limited way. BPF will likely implement a way to allow and disallow kfuncs depending on the calling context which will replace this manual mechanism. See [`scx_kf_allow()`](https://elixir.bootlin.com/linux/v6.13/source/kernel/sched/ext.c#L1081).
 
@@ -1161,39 +1361,53 @@ The fields on this structure are read-only unless otherwise noted.
 
 ```c
 struct sched_ext_entity {
-    struct scx_dispatch_q      *dsq;
-    struct scx_dsq_list_node    dsq_list; 
-    struct rb_node              dsq_priq; 
+#ifdef CONFIG_CGROUPS
+	struct scx_sched __rcu	*[sched](#struct-sched_ext_entity-sched);
+#endif
+    struct scx_dispatch_q    *[dsq](#struct-sched_ext_entity-dsq);
+    atomic_long_t            [ops_state](#struct-sched_ext_entity-ops_state);
+    u64                      [ddsp_dsq_id](#struct-sched_ext_entity-ddsp_dsq_id);
+    u64                      [ddsp_enq_flags](#struct-sched_ext_entity-ddsp_enq_flags);
+    struct scx_dsq_list_node [dsq_list](#struct-sched_ext_entity-dsq_list); 
+    struct rb_node           [dsq_priq](#struct-sched_ext_entity-dsq_priq); 
+    u32                      [dsq_seq](#struct-sched_ext_entity-dsq_seq);
+    u32                      [dsq_flags](#struct-sched_ext_entity-dsq_flags);
+    u32                      [flags](#struct-sched_ext_entity-flags); 
+    u32                      [weight](#struct-sched_ext_entity-weight);
+    s32                      [sticky_cpu](#struct-sched_ext_entity-sticky_cpu);
+    s32                      [holding_cpu](#struct-sched_ext_entity-holding_cpu);
+    s32                      [selected_cpu](#struct-sched_ext_entity-selected_cpu);
+    u32                      [kf_mask](#struct-sched_ext_entity-kf_mask); /* removed in v7.1 */
+    [struct task_struct](#struct-task_struct)       *[kf_tasks](#struct-sched_ext_entity-kf_tasks)[2];
 
-    u32 dsq_seq;
-    u32 dsq_flags;
-    u32 flags; 
-    u32 weight;
-    s32 sticky_cpu;
-    s32 holding_cpu;
-    u32 kf_mask; 
-    
-    [struct task_struct](#struct-task_struct)  *kf_tasks[2];
-    atomic_long_t        ops_state;
-    struct list_head     runnable_node;
-    unsigned long        runnable_at;
+    struct list_head [runnable_node](#struct-sched_ext_entity-runnable_node);
+    unsigned long    [runnable_at](#struct-sched_ext_entity-runnable_at);
 
 #ifdef CONFIG_SCHED_CORE
-    u64 core_sched_at;
+    u64 [core_sched_at](#struct-sched_ext_entity-core_sched_at);
 #endif
-    
-    u64  ddsp_dsq_id;
-    u64  ddsp_enq_flags;
-    u64  slice;
-    u64  dsq_vtime;
-    bool disallow;
+
+	u64               [tid](#struct-sched_ext_entity-tid);
+	struct rhash_head [tid_hash_node](#struct-sched_ext_entity-tid_hash_node);
+
+    u64  [slice](#struct-sched_ext_entity-slice);
+    u64  [dsq_vtime](#struct-sched_ext_entity-dsq_vtime);
+    bool [disallow](#struct-sched_ext_entity-disallow);
 
 #ifdef CONFIG_EXT_GROUP_SCHED
-    struct cgroup       *cgrp_moving_from;
+    struct cgroup       *[cgrp_moving_from](#struct-sched_ext_entity-cgrp_moving_from);
 #endif
-    struct list_head    tasks_node;
+    struct list_head    [tasks_node](#struct-sched_ext_entity-tasks_node);
 };
 ```
+
+#### `sched` {#struct-sched_ext_entity-sched}
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/88234b075c3fc23d57406e1867523b6aba783ebf)
+
+`#!c struct scx_sched __rcu	*sched`
+
+Associated scx_sched. Updated either during fork or while holding both `p->pi_lock` and rq lock.
 
 #### `dsq` {#struct-sched_ext_entity-dsq}
 
@@ -1202,6 +1416,44 @@ struct sched_ext_entity {
 `#!c struct scx_dispatch_q *dsq`
 
 The DSQ the task is currently on, or `NULL` if the task is not on any DSQ.
+
+#### `ops_state` {#struct-sched_ext_entity-ops_state}
+
+[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
+
+`#!c atomic_long_t ops_state`
+
+Used to track the task ownership between the SCX core and the BPF scheduler. Valid values described by [`enum scx_ops_state`]
+(#enum-scx_ops_state).
+
+State transitions look as follows:
+
+```
+ NONE -> QUEUEING -> QUEUED -> DISPATCHING
+   ^              |                 |
+   |              v                 v
+   \-------------------------------/
+```
+
+`QUEUEING` and `DISPATCHING` states can be waited upon. See [wait_ops_state()](https://elixir.bootlin.com/linux/v6.13/source/kernel/sched/ext.c#L1495) call sites for explanations on the conditions being waited upon and why they are safe. Transitions out of them into `NONE` or `QUEUED` must store_release and the waiters should load_acquire.
+
+Tracking scx_ops_state enables sched_ext core to reliably determine whether any given task can be dispatched by the BPF scheduler at all times and thus relaxes the requirements on the BPF scheduler. This allows the BPF scheduler to try to dispatch any task anytime regardless of its state as the SCX core can safely reject invalid dispatches.
+
+#### `ddsp_dsq_id` {#struct-sched_ext_entity-ddsp_dsq_id}
+
+[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
+
+`#!c u64 ddsp_dsq_id`
+
+The DSQ ID when on the direct dispatch path.
+
+#### `ddsp_enq_flags` {#struct-sched_ext_entity-ddsp_enq_flags}
+
+[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
+
+`#!c u64 ddsp_enq_flags`
+
+The DSQ enqueue flags when on the direct dispatch path.
 
 #### `dsq_list` {#struct-sched_ext_entity-dsq_list}
 
@@ -1270,9 +1522,21 @@ The weight of the task. A value in the range `1..10000`. The higher the weight, 
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
 
+#### `selected_cpu` {#struct-sched_ext_entity-selected_cpu}
+
+[:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/f7f6142107f0e0dd4a2b041116461a049ca18cb0)
+
+`#!c s32 selected_cpu`
+
+!!! example "Docs could be improved"
+    This part of the docs is incomplete, contributions are very welcome
+
 #### `kf_mask` {#struct-sched_ext_entity-kf_mask}
 
-[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
+[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f) - [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7cd9a5d7d4b75802b97aa89f6f53375a6d84d1d5)
+
+!!! warning
+    This field got removed in [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/7cd9a5d7d4b75802b97aa89f6f53375a6d84d1d5)
 
 `#!c u32 kf_mask`
 
@@ -1285,28 +1549,6 @@ See [`scx_kf_mask`](#enum-scx_kf_mask).
 `#!c struct task_struct *kf_tasks[2]`
 
 [`SCX_CALL_OP_TASK()`](https://elixir.bootlin.com/linux/v6.13/source/kernel/sched/ext.c#L1132)
-
-#### `ops_state` {#struct-sched_ext_entity-ops_state}
-
-[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
-
-`#!c atomic_long_t ops_state`
-
-Used to track the task ownership between the SCX core and the BPF scheduler. Valid values described by [`enum scx_ops_state`]
-(#enum-scx_ops_state).
-
-State transitions look as follows:
-
-```
- NONE -> QUEUEING -> QUEUED -> DISPATCHING
-   ^              |                 |
-   |              v                 v
-   \-------------------------------/
-```
-
-`QUEUEING` and `DISPATCHING` states can be waited upon. See [wait_ops_state()](https://elixir.bootlin.com/linux/v6.13/source/kernel/sched/ext.c#L1495) call sites for explanations on the conditions being waited upon and why they are safe. Transitions out of them into `NONE` or `QUEUED` must store_release and the waiters should load_acquire.
-
-Tracking scx_ops_state enables sched_ext core to reliably determine whether any given task can be dispatched by the BPF scheduler at all times and thus relaxes the requirements on the BPF scheduler. This allows the BPF scheduler to try to dispatch any task anytime regardless of its state as the SCX core can safely reject invalid dispatches.
 
 #### `runnable_node` {#struct-sched_ext_entity-runnable_node}
 
@@ -1335,21 +1577,21 @@ See [`scx_prio_less()`](https://elixir.bootlin.com/linux/v6.13/source/kernel/sch
 !!! note
     This field is only available on kernels compiled with the `CONFIG_SCHED_CORE` Kconfig enabled.
 
-#### `ddsp_dsq_id` {#struct-sched_ext_entity-ddsp_dsq_id}
+#### `tid` {#struct-sched_ext_entity-tid}
 
-[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
+[:octicons-tag-24: v7.2](https://github.com/torvalds/linux/commit/41e3312861eafba171d9620150aaf2e99165d044)
 
-`#!c u64 ddsp_dsq_id`
+`#!c u64 core_sched_at`
 
-The DSQ ID when on the direct dispatch path.
+Unique non-zero task ID assigned at fork. Persists across exec and is never reused. Lets BPF schedulers identify tasks without storing kernel pointers - arena-backed schedulers being one example. See [`scx_bpf_tid_to_task`](../../kfuncs/scx_bpf_tid_to_task.md).
 
-#### `ddsp_enq_flags` {#struct-sched_ext_entity-ddsp_enq_flags}
+#### `tid_hash_node` {#struct-sched_ext_entity-tid_hash_node}
 
-[:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/f0e1a0643a59bf1f922fa209cec86a170b784f3f)
+[:octicons-tag-24: v7.2](https://github.com/torvalds/linux/commit/41e3312861eafba171d9620150aaf2e99165d044)
 
-`#!c u64 ddsp_enq_flags`
+`#!c struct rhash_head tid_hash_node`
 
-The DSQ enqueue flags when on the direct dispatch path.
+See [`SCX_OPS_TID_TO_TASK`](#scx_ops_tid_to_task).
 
 #### `slice` {#struct-sched_ext_entity-slice}
 
@@ -1588,3 +1830,49 @@ Informational message
 `char *dump;`
 
 debug dump
+
+### `struct scx_sub_attach_args`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+```c
+struct scx_sub_attach_args {
+	[struct sched_ext_ops](#fields-and-ops) *ops;
+	char                 *cgroup_path;
+};
+```
+
+#### `ops`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+The ops of the sub-scheduler being attached.
+
+#### `cgroup_path`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+Path for the cgroup to which the sub-scheduler is being attached.
+
+### `struct scx_sub_detach_args`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+```c
+struct scx_sub_detach_args {
+	[struct sched_ext_ops](#fields-and-ops) *ops;
+	char                 *cgroup_path;
+};
+```
+
+#### `ops`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+The ops of the sub-scheduler being detached.
+
+#### `cgroup_path`
+
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
+
+Path for the cgroup to which the sub-scheduler is being detached.
