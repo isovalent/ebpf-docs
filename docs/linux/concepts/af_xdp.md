@@ -117,7 +117,7 @@ struct xdp_desc {
 
 void *{rx,tx,fill,completion}_ring_mmap = mmap(
     NULL,
-    offsets.{rx,tx,fr,cr}.desc + ring_size * sizeof(struct xdp_desc),
+    offsets.{rx,tx,fr,cr}.desc + ring_size * sizeof({struct xdp_desc,struct xdp_desc,__u64,__u64}),
     PROT_READ|PROT_WRITE,
     MAP_SHARED|MAP_POPULATE,
     fd, 
@@ -127,8 +127,11 @@ if (!{rx,tx,fill,completion}_ring_mmap)
 
 __u32 *{rx,tx,fill,completion}_ring_consumer = {rx,tx,fill,completion}_ring_mmap + offsets.{rx,tx,fr,cr}.consumer;
 __u32 *{rx,tx,fill,completion}_ring_producer = {rx,tx,fill,completion}_ring_mmap + offsets.{rx,tx,fr,cr}.producer;
-struct xdp_desc[ring_size] {rx,tx,fill,completion}_ring = {rx,tx,fill,completion}_ring_mmap + offsets.{rx,tx,fr,cr}.desc;
+struct xdp_desc *{rx,tx}_ring = {rx,tx}_ring_mmap + offsets.{rx,tx}.desc;
+__u64 *{fill,completion}_ring = {fill,completion}_ring_mmap + offsets.{fr,cr}.desc;
 ```
+
+Note the element sizes: the RX and TX rings are arrays of `#!c struct xdp_desc`, but the FILL and COMPLETION rings are arrays of plain `#!c __u64` UMEM addresses, so their mappings are sized with `#!c sizeof(__u64)`.
 
 We have setup our XSK and we have access to both UMEM and all 4 ring buffers. The last step is to associate our XSK with a network device and queue.
 
@@ -249,7 +252,7 @@ In the above diagram you can see our UMEM section, the 4 ring buffers, the kerne
 
 The ring buffers are used to communicate between the process and the kernel. If done correctly, it allows for a bi-directional data stream using the same pre-allocated memory blocks without the need for spin-locks or other synchronization techniques.
 
-The ring buffers are single-producer, single-consumer ring buffers. The rings consists of the actual array of descriptors (`#!c struct xdp_desc`), a `producer` and a `consumer`. In our diagram we refer to the `producer` as `head` and `consumer` as `tail` since those are the more typical terms used for queues/ring buffers. The kernel updates the `producer`/`head` of the RX and COMPLETION buffers and the process updated the `producer`/`head` of the TX and FILL buffers. The consumer watches for changes in the `producer`/`head`, if updated, it is safe to read the UMEM chunks between the `tail`/`consumer` and `producer`/`head`. The consumer increments the `tail`/`consumer` to indicate to the producer that the spot on the ring can be reused. The descriptors in the ring contain a `addr` field which is the offset into the UMEM indicating the chunk, a `len` field indicating the length of any data in the chunk and a `flags` field.
+The ring buffers are single-producer, single-consumer ring buffers. The rings consists of the actual array of entries (`#!c struct xdp_desc` descriptors for the RX and TX rings, plain `#!c __u64` UMEM addresses for the FILL and COMPLETION rings), a `producer` and a `consumer`. In our diagram we refer to the `producer` as `head` and `consumer` as `tail` since those are the more typical terms used for queues/ring buffers. The kernel updates the `producer`/`head` of the RX and COMPLETION buffers and the process updated the `producer`/`head` of the TX and FILL buffers. The consumer watches for changes in the `producer`/`head`, if updated, it is safe to read the UMEM chunks between the `tail`/`consumer` and `producer`/`head`. The consumer increments the `tail`/`consumer` to indicate to the producer that the spot on the ring can be reused. The descriptors in the ring contain a `addr` field which is the offset into the UMEM indicating the chunk, a `len` field indicating the length of any data in the chunk and a `flags` field.
 
 When we start all chunks are owned by the process, which means it can safely read and write without fear of race conditions.
 
