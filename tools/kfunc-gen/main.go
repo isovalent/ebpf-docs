@@ -186,6 +186,14 @@ func main() {
 				return false
 			})
 
+			// Sleepable kfuncs can only be called from sleepable programs, so remove any
+			// program type which can never be sleepable.
+			if slices.Contains(kfunc.Flags, "KF_SLEEPABLE") {
+				kfuncProgTypes = slices.DeleteFunc(kfuncProgTypes, func(pt programType) bool {
+					return !slices.Contains(sleepableProgramTypes, pt.Name)
+				})
+			}
+
 			kfuncProgTypes = append(merged[kfunc.Name].progTypes, kfuncProgTypes...)
 
 			// Sort and deduplicate program types
@@ -479,6 +487,21 @@ var kfuncProgramTypes = []programType{
 	{Name: "BPF_PROG_TYPE_LWT_XMIT"},
 	{Name: "BPF_PROG_TYPE_LWT_SEG6LOCAL"},
 	{Name: "BPF_PROG_TYPE_NETFILTER"},
+}
+
+// Program types which can be sleepable. Kfuncs flagged `KF_SLEEPABLE` may only be called from
+// sleepable programs, so they are never available to any other program type.
+//
+// Every type below except `BPF_PROG_TYPE_SYSCALL` has to opt in via the `BPF_F_SLEEPABLE` load
+// flag, `BPF_PROG_TYPE_SYSCALL` programs are always sleepable. Both rules are enforced by
+// `check_attach_btf_id`:
+// https://elixir.bootlin.com/linux/v6.18/source/kernel/bpf/verifier.c#L23903
+var sleepableProgramTypes = []string{
+	"BPF_PROG_TYPE_TRACING", // Only fentry, fexit, fmod_ret and iter
+	"BPF_PROG_TYPE_LSM",
+	"BPF_PROG_TYPE_KPROBE", // Only uprobes
+	"BPF_PROG_TYPE_STRUCT_OPS",
+	"BPF_PROG_TYPE_SYSCALL", // Always sleepable
 }
 
 func cFuncSignature(fn *btf.Func) string {
