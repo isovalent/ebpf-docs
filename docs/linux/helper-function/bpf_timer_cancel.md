@@ -27,8 +27,19 @@ Cancel the timer and wait for callback_fn to finish if it was running.
 
 ## Usage
 
-!!! example "Docs could be improved"
-    This part of the docs is incomplete, contributions are very welcome
+Canceling a timer does more than stopping it: the kernel also detaches the callback and drops the reference to the program that owns it ([`drop_prog_refcnt`](https://elixir.bootlin.com/linux/v6.18/source/kernel/bpf/helpers.c#L1457)). The timer itself stays initialized, only its association with a callback is gone. This has been the behavior since timers were introduced in v5.15.
+
+Because of this, restarting a canceled timer takes one more step than one might expect. Calling [`bpf_timer_start`](bpf_timer_start.md) right after a cancel fails with `-EINVAL`, the same error as for a timer that never had a callback. Assign a callback again first:
+
+```c
+bpf_timer_cancel(&elem->timer);
+
+/* Later, to re-arm the same timer: */
+bpf_timer_set_callback(&elem->timer, timer_callback); /* required again after a cancel */
+bpf_timer_start(&elem->timer, 1000000, 0);
+```
+
+[`bpf_timer_init`](bpf_timer_init.md) must not be called again: the timer is still initialized, and re-initializing an initialized timer fails with `-EBUSY`.
 
 ### Program types
 

@@ -36,6 +36,8 @@ _flags_ can be one of:
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
 
+Note that a timer loses its callback when it is canceled. Calling this helper after a [`bpf_timer_cancel`](bpf_timer_cancel.md) therefore returns `-EINVAL` until a new callback is assigned with [`bpf_timer_set_callback`](bpf_timer_set_callback.md).
+
 ### Program types
 
 This helper call can be used in the following program types:

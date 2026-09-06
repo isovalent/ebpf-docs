@@ -33,6 +33,8 @@ The function passed to `callback_fn` should have the following signature:
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
 
+This helper must be called again after a [`bpf_timer_cancel`](bpf_timer_cancel.md): canceling detaches the callback from the timer, so a new one has to be assigned before the timer can be started again. The timer does not have to be re-initialized for this.
+
 ### Program types
 
 This helper call can be used in the following program types:

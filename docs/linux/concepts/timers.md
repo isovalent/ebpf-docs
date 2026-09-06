@@ -55,4 +55,6 @@ The callback is invoked with a pointer to the map, map key, and map value associ
 
 A callback can chose to re-schedule its own timer by calling [`bpf_timer_start`](../helper-function/bpf_timer_start.md) on `value->timer`. Thus making it possible to not just have a one shot delay from a given eBPF program run, but to have a periodic function running endlessly after just a single trigger event.
 
+Canceling a timer with [`bpf_timer_cancel`](../helper-function/bpf_timer_cancel.md) also detaches its callback. A canceled timer is still initialized, calling [`bpf_timer_init`](../helper-function/bpf_timer_init.md) on it again returns `-EBUSY`, but starting it returns `-EINVAL` until [`bpf_timer_set_callback`](../helper-function/bpf_timer_set_callback.md) has assigned a new callback. So the cycle to reuse a canceled timer is `bpf_timer_set_callback` followed by [`bpf_timer_start`](../helper-function/bpf_timer_start.md), without a new `bpf_timer_init`.
+
 
