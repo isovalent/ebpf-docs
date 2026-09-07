@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_rbtree_add' eBPF kfunc, including its
 # KFunc `bpf_rbtree_add`
 
 <!-- [FEATURE_TAG](bpf_rbtree_add) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
 <!-- [/FEATURE_TAG] -->
 
 Add `node` to red-black-tree with root `root` using comparator `less`

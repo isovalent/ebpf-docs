@@ -15,7 +15,7 @@ Sleepable, copies user-space data into a [dynptr](../concepts/dynptrs.md) for th
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_copy_from_user_dynptr(struct bpf_dynptr *dptr, u64 off, u64 size, const void *unsafe_ptr__ign)`
+`#!c int bpf_copy_from_user_dynptr(const struct bpf_dynptr *dptr, u64 off, u64 size, const void *unsafe_ptr__ign)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).

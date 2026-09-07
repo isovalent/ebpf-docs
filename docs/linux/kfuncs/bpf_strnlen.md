@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_strnlen' eBPF kfunc, including its de
 # KFunc `bpf_strnlen`
 
 <!-- [FEATURE_TAG](bpf_strnlen) -->
-:octicons-tag-24: unknown
+[:octicons-tag-24: v6.17](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad)
 <!-- [/FEATURE_TAG] -->
 
 Calculate the length of a length-limited string

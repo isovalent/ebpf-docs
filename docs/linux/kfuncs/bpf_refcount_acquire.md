@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_refcount_acquire' eBPF kfunc, includi
 # KFunc `bpf_refcount_acquire`
 
 <!-- [FEATURE_TAG](bpf_refcount_acquire) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
 <!-- [/FEATURE_TAG] -->
 
 Increment the refcount on a refcounted local kptr, turning the non-owning reference input into an owning reference in the process.

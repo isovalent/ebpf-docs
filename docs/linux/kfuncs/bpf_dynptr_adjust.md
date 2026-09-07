@@ -17,7 +17,7 @@ It advances the offset of the dynptr by `start` bytes, and if end is less than t
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_adjust(const struct bpf_dynptr *p, u64 start, u64 end)`
+`#!c int bpf_dynptr_adjust(struct bpf_dynptr *p, u64 start, u64 end)`
 <!-- [/KFUNC_DEF] -->
 
 !!! note

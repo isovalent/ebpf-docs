@@ -13,6 +13,7 @@ Traverses the linked list forwards.
 ## Definition
 
 **Returns**
+
 Pointer to bpf_list_node of next entry, or NULL if list given node has no next element.
 
 **Signature**

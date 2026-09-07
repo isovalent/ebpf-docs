@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_obj_new' eBPF kfunc, including its de
 # KFunc `bpf_obj_new`
 
 <!-- [FEATURE_TAG](bpf_obj_new) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
 <!-- [/FEATURE_TAG] -->
 
 Allocates an object.

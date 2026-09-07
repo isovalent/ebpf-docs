@@ -2404,7 +2404,7 @@
     - name: bpf_strlen
       version: v6.17
       commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
-    - name: bpf_strlen
+    - name: bpf_strnlen
       version: v6.17
       commit: e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad
     - name: bpf_strspn
@@ -2578,6 +2578,30 @@
     - name: bpf_wq_set_callback
       version: v7.0
       commit: b97931a25a4bc74076ffb5c3d1a534c71ade4d55
+    - name: bpf_get_mem_cgroup
+      version: v7.0
+      commit: 5904db9891f80f84283648121e2d8c8a506296a8
+    - name: bpf_put_mem_cgroup
+      version: v7.0
+      commit: 5904db9891f80f84283648121e2d8c8a506296a8
+    - name: bpf_mem_cgroup_vm_events
+      version: v7.0
+      commit: 99430ab8b804c26b8a0dec93fcbfe75469f3edc7
+    - name: bpf_mem_cgroup_memory_events
+      version: v7.0
+      commit: 99430ab8b804c26b8a0dec93fcbfe75469f3edc7
+    - name: bpf_mem_cgroup_usage
+      version: v7.0
+      commit: 99430ab8b804c26b8a0dec93fcbfe75469f3edc7
+    - name: bpf_mem_cgroup_page_state
+      version: v7.0
+      commit: 99430ab8b804c26b8a0dec93fcbfe75469f3edc7
+    - name: bpf_mem_cgroup_flush_stats
+      version: v7.0
+      commit: 99430ab8b804c26b8a0dec93fcbfe75469f3edc7
+    - name: bpf_get_root_mem_cgroup
+      version: v7.0
+      commit: 5c7db3239c9fbe3c62cb0d89b64959ea23af2de9
     - name: bbr_cwnd_event_tx_start
       version: v7.1
       commit: d1e59a46973719e458bec78d00dd767d7a7ba71f
@@ -2588,42 +2612,111 @@
       version: v7.1
       commit: d1e59a46973719e458bec78d00dd767d7a7ba71f
     - name: bpf_io_uring_submit_sqes
-      version: 7.1
+      version: v7.1
       commit: 890819248a8616558fe12e6c06c918ee1c3a2bc6
     - name: bpf_io_uring_get_region
-      version: 7.1
+      version: v7.1
       commit: 890819248a8616558fe12e6c06c918ee1c3a2bc6
     - name: bpf_obj_drop
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: bpf_obj_new
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: bpf_percpu_obj_new
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: bpf_percpu_obj_drop
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: bpf_refcount_acquire
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: bpf_list_push_back
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: bpf_list_push_front
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: bpf_rbtree_add
-      version: 7.1
+      version: v7.1
       commit: d457072576a6a60ba853b1d815f123da57b48021
     - name: scx_bpf_dsq_reenq
-      version: 7.1
+      version: v7.1
       commit: 9c34c5074d1bc22072fc7f9c86b0028f7e273b2c
     - name: scx_bpf_sub_dispatch
-      version: 7.1
+      version: v7.1
       commit: 4f8b122848dbc353a193de0fa707bc40b5f067ff
     - name: scx_bpf_dsq_move_to_local___v2
-      version: 7.1
+      version: v7.1
       commit: 860683763ebf4662cb72a312279334e02718308f
+    - name: scx_bpf_tid_to_task
+      version: v7.2
+      commit: 41e3312861eafba171d9620150aaf2e99165d044
+    - name: scx_bpf_cid_to_cpu
+      version: v7.2
+      commit: e9b55af47edf6e60c9a47b5604c3e15c5162ec86
+    - name: scx_bpf_cpu_to_cid
+      version: v7.2
+      commit: e9b55af47edf6e60c9a47b5604c3e15c5162ec86
+    - name: scx_bpf_cid_topo
+      version: v7.2
+      commit: e9b55af47edf6e60c9a47b5604c3e15c5162ec86
+    - name: scx_bpf_cid_override
+      version: v7.2
+      commit: df7b5ae038d6f2707ec0f81c257a55b4062f77c7
+    - name: scx_bpf_cidperf_cap
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_cidperf_cur
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_cidperf_set
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_cid_curr
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_kick_cid
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_task_cid
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_nr_cids
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_nr_online_cids
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: scx_bpf_this_cid
+      version: v7.2
+      commit: 5ba0a42423335f76d3e0513df42416c69dc6b742
+    - name: bpf_wakeup_sources_read_lock
+      version: v7.2
+      commit: 5ff44955447eb04f77161736ff5729c8c0994f7f
+    - name: bpf_wakeup_sources_read_unlock
+      version: v7.2
+      commit: 5ff44955447eb04f77161736ff5729c8c0994f7f
+    - name: bpf_wakeup_sources_get_head
+      version: v7.2
+      commit: 5ff44955447eb04f77161736ff5729c8c0994f7f
+    - name: bpf_list_del
+      version: v7.2
+      commit: 187baa10963ac9f1db5123fa2ab761ab34ea06b9
+    - name: bpf_list_add
+      version: v7.2
+      commit: a3493ca504f16877bf29a123f27835c3f841a05f
+    - name: bpf_list_empty
+      version: v7.2
+      commit: 745515d386eb5e6891d9f91a92ad15dace3a33ef
+    - name: bpf_list_is_first
+      version: v7.2
+      commit: 745515d386eb5e6891d9f91a92ad15dace3a33ef
+    - name: bpf_list_is_last
+      version: v7.2
+      commit: 745515d386eb5e6891d9f91a92ad15dace3a33ef
+    - name: bpf_real_data_inode
+      version: v7.2
+      commit: 3f8c65b06fafc3f779abda5f7b81707411d05d4c
 

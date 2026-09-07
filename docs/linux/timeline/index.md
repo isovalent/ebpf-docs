@@ -4,22 +4,6 @@ description: This page lists all eBPF features added in the Linux Kernel ordered
 hide: toc
 ---
 
-## :octicons-tag-24: 7.1
-
-* `bpf_io_uring_submit_sqes` [8908192](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6) (kfuncs)
-* `bpf_io_uring_get_region` [8908192](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6) (kfuncs)
-* `bpf_obj_drop` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `bpf_obj_new` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `bpf_percpu_obj_new` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `bpf_percpu_obj_drop` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `bpf_refcount_acquire` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `bpf_list_push_back` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `bpf_list_push_front` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `bpf_rbtree_add` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
-* `scx_bpf_dsq_reenq` [9c34c50](https://github.com/torvalds/linux/commit/9c34c5074d1bc22072fc7f9c86b0028f7e273b2c) (kfuncs)
-* `scx_bpf_sub_dispatch` [4f8b122](https://github.com/torvalds/linux/commit/4f8b122848dbc353a193de0fa707bc40b5f067ff) (kfuncs)
-* `scx_bpf_dsq_move_to_local___v2` [8606837](https://github.com/torvalds/linux/commit/860683763ebf4662cb72a312279334e02718308f) (kfuncs)
-
 ## :octicons-tag-24: v3.18
 
 * `BPF_MAP_CREATE` [99c55f7](https://github.com/torvalds/linux/commit/99c55f7d47c0dc6fc64729f37bf435abf43f4c60) (syscall_commands)
@@ -1019,7 +1003,7 @@ hide: toc
 * `bpf_strchrnul` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
 * `bpf_strrchr` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
 * `bpf_strlen` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
-* `bpf_strlen` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
+* `bpf_strnlen` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
 * `bpf_strspn` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
 * `bpf_strcspn` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
 * `bpf_strnstr` [e913705](https://github.com/torvalds/linux/commit/e91370550f1fe6fa3b02e8bf9762e3dc0a02fcad) (kfuncs)
@@ -1060,9 +1044,56 @@ hide: toc
 * `bpf_task_work_schedule_signal` [6e663ff](https://github.com/torvalds/linux/commit/6e663ffdf7600168338fdfa2fd1eed83395d58a3) (kfuncs)
 * `bpf_timer_cancel_async` [a7e172a](https://github.com/torvalds/linux/commit/a7e172aa4ca276d12fe87ffddff9cbd2d95ea51c) (kfuncs)
 * `bpf_wq_set_callback` [b97931a](https://github.com/torvalds/linux/commit/b97931a25a4bc74076ffb5c3d1a534c71ade4d55) (kfuncs)
+* `bpf_get_mem_cgroup` [5904db9](https://github.com/torvalds/linux/commit/5904db9891f80f84283648121e2d8c8a506296a8) (kfuncs)
+* `bpf_put_mem_cgroup` [5904db9](https://github.com/torvalds/linux/commit/5904db9891f80f84283648121e2d8c8a506296a8) (kfuncs)
+* `bpf_mem_cgroup_vm_events` [99430ab](https://github.com/torvalds/linux/commit/99430ab8b804c26b8a0dec93fcbfe75469f3edc7) (kfuncs)
+* `bpf_mem_cgroup_memory_events` [99430ab](https://github.com/torvalds/linux/commit/99430ab8b804c26b8a0dec93fcbfe75469f3edc7) (kfuncs)
+* `bpf_mem_cgroup_usage` [99430ab](https://github.com/torvalds/linux/commit/99430ab8b804c26b8a0dec93fcbfe75469f3edc7) (kfuncs)
+* `bpf_mem_cgroup_page_state` [99430ab](https://github.com/torvalds/linux/commit/99430ab8b804c26b8a0dec93fcbfe75469f3edc7) (kfuncs)
+* `bpf_mem_cgroup_flush_stats` [99430ab](https://github.com/torvalds/linux/commit/99430ab8b804c26b8a0dec93fcbfe75469f3edc7) (kfuncs)
+* `bpf_get_root_mem_cgroup` [5c7db32](https://github.com/torvalds/linux/commit/5c7db3239c9fbe3c62cb0d89b64959ea23af2de9) (kfuncs)
 
 ## :octicons-tag-24: v7.1
 
 * `bbr_cwnd_event_tx_start` [d1e59a4](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f) (kfuncs)
 * `cubictcp_cwnd_event_tx_start` [d1e59a4](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f) (kfuncs)
 * `dctcp_cwnd_event_tx_start` [d1e59a4](https://github.com/torvalds/linux/commit/d1e59a46973719e458bec78d00dd767d7a7ba71f) (kfuncs)
+* `bpf_io_uring_submit_sqes` [8908192](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6) (kfuncs)
+* `bpf_io_uring_get_region` [8908192](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6) (kfuncs)
+* `bpf_obj_drop` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_obj_new` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_percpu_obj_new` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_percpu_obj_drop` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_refcount_acquire` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_list_push_back` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_list_push_front` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `bpf_rbtree_add` [d457072](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021) (kfuncs)
+* `scx_bpf_dsq_reenq` [9c34c50](https://github.com/torvalds/linux/commit/9c34c5074d1bc22072fc7f9c86b0028f7e273b2c) (kfuncs)
+* `scx_bpf_sub_dispatch` [4f8b122](https://github.com/torvalds/linux/commit/4f8b122848dbc353a193de0fa707bc40b5f067ff) (kfuncs)
+* `scx_bpf_dsq_move_to_local___v2` [8606837](https://github.com/torvalds/linux/commit/860683763ebf4662cb72a312279334e02718308f) (kfuncs)
+
+## :octicons-tag-24: v7.2
+
+* `scx_bpf_tid_to_task` [41e3312](https://github.com/torvalds/linux/commit/41e3312861eafba171d9620150aaf2e99165d044) (kfuncs)
+* `scx_bpf_cid_to_cpu` [e9b55af](https://github.com/torvalds/linux/commit/e9b55af47edf6e60c9a47b5604c3e15c5162ec86) (kfuncs)
+* `scx_bpf_cpu_to_cid` [e9b55af](https://github.com/torvalds/linux/commit/e9b55af47edf6e60c9a47b5604c3e15c5162ec86) (kfuncs)
+* `scx_bpf_cid_topo` [e9b55af](https://github.com/torvalds/linux/commit/e9b55af47edf6e60c9a47b5604c3e15c5162ec86) (kfuncs)
+* `scx_bpf_cid_override` [df7b5ae](https://github.com/torvalds/linux/commit/df7b5ae038d6f2707ec0f81c257a55b4062f77c7) (kfuncs)
+* `scx_bpf_cidperf_cap` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_cidperf_cur` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_cidperf_set` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_cid_curr` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_kick_cid` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_task_cid` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_nr_cids` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_nr_online_cids` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `scx_bpf_this_cid` [5ba0a42](https://github.com/torvalds/linux/commit/5ba0a42423335f76d3e0513df42416c69dc6b742) (kfuncs)
+* `bpf_wakeup_sources_read_lock` [5ff4495](https://github.com/torvalds/linux/commit/5ff44955447eb04f77161736ff5729c8c0994f7f) (kfuncs)
+* `bpf_wakeup_sources_read_unlock` [5ff4495](https://github.com/torvalds/linux/commit/5ff44955447eb04f77161736ff5729c8c0994f7f) (kfuncs)
+* `bpf_wakeup_sources_get_head` [5ff4495](https://github.com/torvalds/linux/commit/5ff44955447eb04f77161736ff5729c8c0994f7f) (kfuncs)
+* `bpf_list_del` [187baa1](https://github.com/torvalds/linux/commit/187baa10963ac9f1db5123fa2ab761ab34ea06b9) (kfuncs)
+* `bpf_list_add` [a3493ca](https://github.com/torvalds/linux/commit/a3493ca504f16877bf29a123f27835c3f841a05f) (kfuncs)
+* `bpf_list_empty` [745515d](https://github.com/torvalds/linux/commit/745515d386eb5e6891d9f91a92ad15dace3a33ef) (kfuncs)
+* `bpf_list_is_first` [745515d](https://github.com/torvalds/linux/commit/745515d386eb5e6891d9f91a92ad15dace3a33ef) (kfuncs)
+* `bpf_list_is_last` [745515d](https://github.com/torvalds/linux/commit/745515d386eb5e6891d9f91a92ad15dace3a33ef) (kfuncs)
+* `bpf_real_data_inode` [3f8c65b](https://github.com/torvalds/linux/commit/3f8c65b06fafc3f779abda5f7b81707411d05d4c) (kfuncs)

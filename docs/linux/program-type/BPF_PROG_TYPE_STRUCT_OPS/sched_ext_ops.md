@@ -137,7 +137,7 @@ A sequence number that may be set by the scheduler to detect when a hot-plug eve
 
 `#!c u64 sub_cgroup_id`
 
-When >1, attach the scheduler as a sub-scheduler on the specified cgroup.
+When >1, attach the scheduler as a sub-scheduler on the specified cGroup.
 
 ### `select_cpu`
 
@@ -673,17 +673,17 @@ A cGroup's weight is being changed. Update `cgrp`'s weight to `weight`.
 
 `#!c void (*cgroup_set_bandwidth)(struct cgroup *cgrp, u64 period_us, u64 quota_us, u64 burst_us);`
 
-A cgroup's bandwidth is being changed.
+A cGroup's bandwidth is being changed.
 
 `#!c void (*cgroup_set_bandwidth)(struct cgroup *cgrp, u64 period_us, u64 quota_us, u64 burst_us)`
 
-Update `cgrp`s bandwidth control parameters. This is from the `cpu.max` cgroup interface.
+Update `cgrp`s bandwidth control parameters. This is from the `cpu.max` cgGoup interface.
 
 `quota_us` / `period_us` determines the CPU bandwidth `cgrp` is entitled to. For example, if `period_us` is `1_000_000` and `quota_us` is `2_500_000`. `cgrp` is entitled to 2.5 CPUs. `burst_us` can be interpreted in the same fashion and specifies how much `cgrp` can burst temporarily. The specific control mechanism and thus the interpretation of `period_us` and burstiness is up to the BPF scheduler.
 
 **Parameters**
 
-`cgrp`: cgroup whose bandwidth is being updated
+`cgrp`: cGroup whose bandwidth is being updated
 
 `period_us`: bandwidth control period
 
@@ -695,7 +695,7 @@ Update `cgrp`s bandwidth control parameters. This is from the `cpu.max` cgroup i
 
 [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/347ed2d566dabb06c7970fff01129c4f59995ed6)
 
-A cgroup's idle state is being changed.
+A cGroup's idle state is being changed.
 
 `#!c void (*cgroup_set_idle)(struct cgroup *cgrp, bool idle)`
 
@@ -931,11 +931,11 @@ Set the following to trigger preemption when calling [`scx_bpf_dsq_insert`](../.
 
 [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/98d709cba3193f0bec54da4cd76ef499ea2f1ef7)
 
-Only allowed on local DSQs. Guarantees that the task either gets on the CPU immediately and stays on it, or gets reenqueued back to the BPF scheduler. It will never linger on a local DSQ or be silently put back after preemption.
+Only allowed on local DSQs. Guarantees that the task either gets on the CPU immediately and stays on it, or gets re-enqueued back to the BPF scheduler. It will never linger on a local DSQ or be silently put back after preemption.
 
-The protection persists until the next fresh enqueue - it survives SAVE/RESTORE cycles, slice extensions and preemption. If the task can't stay on the CPU for any reason, it gets reenqueued back to the BPF scheduler.
+The protection persists until the next fresh enqueue - it survives SAVE/RESTORE cycles, slice extensions and preemption. If the task can't stay on the CPU for any reason, it gets re-enqueued back to the BPF scheduler.
 
-Exiting and migration-disabled tasks bypass [`enqueue`](#enqueue) and are placed directly on a local DSQ without IMMED protection unless [`SCX_OPS_ENQ_EXITING`](#scx_ops_enq_exiting) and [`SCX_OPS_ENQ_MIGRATION_DISABLED`](#scx_ops_enq_migration_disabled) are set respectively.
+Exiting and migration-disabled tasks bypass [`enqueue`](#enqueue) and are placed directly on a local DSQ without `IMMED` protection unless [`SCX_OPS_ENQ_EXITING`](#scx_ops_enq_exiting) and [`SCX_OPS_ENQ_MIGRATION_DISABLED`](#scx_ops_enq_migration_disabled) are set respectively.
 
 #### `SCX_ENQ_REENQ`
 
@@ -1852,7 +1852,7 @@ The ops of the sub-scheduler being attached.
 
 [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
 
-Path for the cgroup to which the sub-scheduler is being attached.
+Path for the cGroup to which the sub-scheduler is being attached.
 
 ### `struct scx_sub_detach_args`
 
@@ -1875,4 +1875,4 @@ The ops of the sub-scheduler being detached.
 
 [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/ebeca1f930eac8f11f815d58eb38fa5d07e7c16e)
 
-Path for the cgroup to which the sub-scheduler is being detached.
+Path for the cGroup to which the sub-scheduler is being detached.

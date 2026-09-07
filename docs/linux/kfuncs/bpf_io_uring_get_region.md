@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_io_uring_get_region' eBPF kfunc, incl
 # KFunc `bpf_io_uring_get_region`
 
 <!-- [FEATURE_TAG](bpf_io_uring_get_region) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6)
 <!-- [/FEATURE_TAG] -->
 
 Get a pointer to a memory region (kernel-userspace shared chunk of memory).
@@ -28,7 +28,7 @@ A pointer to the specified region, where `io_uring` regions are kernel-userspace
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c __u8 *bpf_io_uring_get_region(struct io_ring_ctx *ctx, __u32 region_id, const size_t rdwr_buf_size)`
+`#!c __u8 *bpf_io_uring_get_region(struct iou_ctx *loop_ctx, __u32 region_id, const size_t rdwr_buf_size)`
 
 !!! note
 	The pointer returned by the kfunc may be NULL. Hence, it forces the user to do a NULL check on the pointer returned 

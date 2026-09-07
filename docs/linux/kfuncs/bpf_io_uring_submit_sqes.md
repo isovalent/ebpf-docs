@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_io_uring_submit_sqes' eBPF kfunc, inc
 # KFunc `bpf_io_uring_submit_sqes`
 
 <!-- [FEATURE_TAG](bpf_io_uring_submit_sqes) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/890819248a8616558fe12e6c06c918ee1c3a2bc6)
 <!-- [/FEATURE_TAG] -->
 
 Submit a number of `SQE`'s (Submission Queue Entry).
@@ -24,7 +24,7 @@ The number of entries submitted or a negative error code.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_io_uring_submit_sqes(struct io_ring_ctx *ctx, u32 nr)`
+`#!c int bpf_io_uring_submit_sqes(struct iou_ctx *loop_ctx, u32 nr)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).

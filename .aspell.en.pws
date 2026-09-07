@@ -3,6 +3,8 @@ bpf
 BPF
 eBPF
 cBPF
+cid
+cids
 bpftool
 bpffs
 bpftrace
@@ -268,6 +270,7 @@ vtime
 runnable
 runqueue
 dequeue
+dequeued
 Dequeue
 unregistration
 unregister

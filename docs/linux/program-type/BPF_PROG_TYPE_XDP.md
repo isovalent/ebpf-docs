@@ -210,9 +210,10 @@ Program authors can indicate to loaders like libbpf that a given program should 
 | <nospell>TI ICSSG</nospell>               | [:octicons-tag-24: v6.15](https://github.com/torvalds/linux/commit/62aa3246f46234c44a73aa2d37712dd2cb3cbb47) | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v6.19](https://github.com/torvalds/linux/commit/4dce1a0d7cf39575a5880414ea882890edd8d26f) |
 | <nospell>Intel idpf</nospell>             | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/705457e7211f22c49b410eb25e83cef8a61bd560) | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/3d57b2c00f09afb321bfc203c86a3eb674c0ff2c) |
 | <nospell>Meta fbnic</nospell>             | [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/1b0a3950dbd4fa278dc33401a4faba2a23307a16) | :material-close:     | [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/1b0a3950dbd4fa278dc33401a4faba2a23307a16)                                                                                                                   | :material-close:                                                                                             |
+| <nospell>Netkit</nospell>                 | [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/a14fd6474883871f0cb348db7b58688d9953c178)  | :material-close:     | :material-close:                                                                                                                                                                                                              | [:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/a14fd6474883871f0cb348db7b58688d9953c178)  |
 
 !!! note
-    This table has last been updated for Linux :octicons-tag-24: v6.19 and is subject to change in the future.
+    This table has last been updated for Linux :octicons-tag-24: v7.2 and is subject to change in the future.
 
 [^1]: Only the legacy <nospell>RQ</nospell> mode supports XDP frags, which is not the default and will require setting via `ethtool`.
 
@@ -472,6 +473,8 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_dynptr_slice`](../kfuncs/bpf_dynptr_slice.md)
     - [`bpf_dynptr_slice_rdwr`](../kfuncs/bpf_dynptr_slice_rdwr.md)
     - [`bpf_get_kmem_cache`](../kfuncs/bpf_get_kmem_cache.md)
+    - [`bpf_get_mem_cgroup`](../kfuncs/bpf_get_mem_cgroup.md)
+    - [`bpf_get_root_mem_cgroup`](../kfuncs/bpf_get_root_mem_cgroup.md)
     - [`bpf_iter_bits_destroy`](../kfuncs/bpf_iter_bits_destroy.md)
     - [`bpf_iter_bits_new`](../kfuncs/bpf_iter_bits_new.md)
     - [`bpf_iter_bits_next`](../kfuncs/bpf_iter_bits_next.md)
@@ -490,8 +493,13 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_iter_task_vma_destroy`](../kfuncs/bpf_iter_task_vma_destroy.md)
     - [`bpf_iter_task_vma_new`](../kfuncs/bpf_iter_task_vma_new.md)
     - [`bpf_iter_task_vma_next`](../kfuncs/bpf_iter_task_vma_next.md)
+    - [`bpf_list_add`](../kfuncs/bpf_list_add.md)
     - [`bpf_list_back`](../kfuncs/bpf_list_back.md)
+    - [`bpf_list_del`](../kfuncs/bpf_list_del.md)
+    - [`bpf_list_empty`](../kfuncs/bpf_list_empty.md)
     - [`bpf_list_front`](../kfuncs/bpf_list_front.md)
+    - [`bpf_list_is_first`](../kfuncs/bpf_list_is_first.md)
+    - [`bpf_list_is_last`](../kfuncs/bpf_list_is_last.md)
     - [`bpf_list_pop_back`](../kfuncs/bpf_list_pop_back.md)
     - [`bpf_list_pop_front`](../kfuncs/bpf_list_pop_front.md)
     - [`bpf_list_push_back`](../kfuncs/bpf_list_push_back.md)
@@ -501,6 +509,10 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_local_irq_restore`](../kfuncs/bpf_local_irq_restore.md)
     - [`bpf_local_irq_save`](../kfuncs/bpf_local_irq_save.md)
     - [`bpf_map_sum_elem_count`](../kfuncs/bpf_map_sum_elem_count.md)
+    - [`bpf_mem_cgroup_memory_events`](../kfuncs/bpf_mem_cgroup_memory_events.md)
+    - [`bpf_mem_cgroup_page_state`](../kfuncs/bpf_mem_cgroup_page_state.md)
+    - [`bpf_mem_cgroup_usage`](../kfuncs/bpf_mem_cgroup_usage.md)
+    - [`bpf_mem_cgroup_vm_events`](../kfuncs/bpf_mem_cgroup_vm_events.md)
     - [`bpf_obj_drop`](../kfuncs/bpf_obj_drop.md)
     - [`bpf_obj_drop_impl`](../kfuncs/bpf_obj_drop_impl.md)
     - [`bpf_obj_new`](../kfuncs/bpf_obj_new.md)
@@ -515,6 +527,7 @@ Not all helper functions are available in all program types. These are the helpe
     - [`bpf_probe_read_kernel_str_dynptr`](../kfuncs/bpf_probe_read_kernel_str_dynptr.md)
     - [`bpf_probe_read_user_dynptr`](../kfuncs/bpf_probe_read_user_dynptr.md)
     - [`bpf_probe_read_user_str_dynptr`](../kfuncs/bpf_probe_read_user_str_dynptr.md)
+    - [`bpf_put_mem_cgroup`](../kfuncs/bpf_put_mem_cgroup.md)
     - [`bpf_rbtree_add`](../kfuncs/bpf_rbtree_add.md)
     - [`bpf_rbtree_add_impl`](../kfuncs/bpf_rbtree_add_impl.md)
     - [`bpf_rbtree_first`](../kfuncs/bpf_rbtree_first.md)

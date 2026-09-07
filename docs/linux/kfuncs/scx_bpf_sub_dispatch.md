@@ -5,7 +5,7 @@ description: "This page documents the 'scx_bpf_sub_dispatch' eBPF kfunc, includi
 # KFunc `scx_bpf_sub_dispatch`
 
 <!-- [FEATURE_TAG](scx_bpf_sub_dispatch) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/4f8b122848dbc353a193de0fa707bc40b5f067ff)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/4f8b122848dbc353a193de0fa707bc40b5f067ff)
 <!-- [/FEATURE_TAG] -->
 
 Trigger dispatching on a child scheduler.

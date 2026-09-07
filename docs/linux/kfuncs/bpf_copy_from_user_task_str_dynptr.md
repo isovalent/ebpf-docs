@@ -15,7 +15,7 @@ Sleepable, copies user-space string of the task into a [dynptr](../concepts/dynp
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_copy_from_user_task_str_dynptr(struct bpf_dynptr *dptr, u64 off, u64 size, const void *unsafe_ptr__ign, struct task_struct *tsk)`
+`#!c int bpf_copy_from_user_task_str_dynptr(const struct bpf_dynptr *dptr, u64 off, u64 size, const void *unsafe_ptr__ign, struct task_struct *tsk)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).

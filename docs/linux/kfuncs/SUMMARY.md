@@ -1,9 +1,19 @@
 - [`index.md`](index.md)
-- cGroup resource stats KFuncs
-  - [`cgroup_rstat_updated`](cgroup_rstat_updated.md)
-  - [`cgroup_rstat_flush`](cgroup_rstat_flush.md)
-  - [`css_rstat_updated`](css_rstat_updated.md)
-  - [`css_rstat_flush`](css_rstat_flush.md)
+- cGroup statistics KFuncs
+  - cGroup resource stats KFuncs
+    - [`cgroup_rstat_updated`](cgroup_rstat_updated.md)
+    - [`cgroup_rstat_flush`](cgroup_rstat_flush.md)
+    - [`css_rstat_updated`](css_rstat_updated.md)
+    - [`css_rstat_flush`](css_rstat_flush.md)
+  - cGroup memory statistics KFuncs
+    - [`bpf_get_mem_cgroup`](bpf_get_mem_cgroup.md)
+    - [`bpf_get_root_mem_cgroup`](bpf_get_root_mem_cgroup.md)
+    - [`bpf_mem_cgroup_flush_stats`](bpf_mem_cgroup_flush_stats.md)
+    - [`bpf_mem_cgroup_memory_events`](bpf_mem_cgroup_memory_events.md)
+    - [`bpf_mem_cgroup_page_state`](bpf_mem_cgroup_page_state.md)
+    - [`bpf_mem_cgroup_usage`](bpf_mem_cgroup_usage.md)
+    - [`bpf_mem_cgroup_vm_events`](bpf_mem_cgroup_vm_events.md)
+    - [`bpf_put_mem_cgroup`](bpf_put_mem_cgroup.md)
 - Key signature verification KFuncs
   - [`bpf_lookup_user_key`](bpf_lookup_user_key.md)
   - [`bpf_lookup_system_key`](bpf_lookup_system_key.md)
@@ -17,6 +27,7 @@
   - [`bpf_get_dentry_xattr`](bpf_get_dentry_xattr.md)
   - [`bpf_remove_dentry_xattr`](bpf_remove_dentry_xattr.md)
   - [`bpf_set_dentry_xattr`](bpf_set_dentry_xattr.md)
+  - [`bpf_real_data_inode`](bpf_real_data_inode.md)
 - CPU mask KFuncs
   - [`bpf_cpumask_create`](bpf_cpumask_create.md)
   - [`bpf_cpumask_release`](bpf_cpumask_release.md)
@@ -58,14 +69,20 @@
   - [`bpf_percpu_obj_drop`](bpf_percpu_obj_drop.md)
   - [`bpf_refcount_acquire_impl`](bpf_refcount_acquire_impl.md)
   - [`bpf_refcount_acquire`](bpf_refcount_acquire.md)
-  - [`bpf_list_push_front_impl`](bpf_list_push_front_impl.md)
-  - [`bpf_list_push_front`](bpf_list_push_front.md)
-  - [`bpf_list_push_back_impl`](bpf_list_push_back_impl.md)
-  - [`bpf_list_push_back`](bpf_list_push_back.md)
-  - [`bpf_list_pop_front`](bpf_list_pop_front.md)
-  - [`bpf_list_pop_back`](bpf_list_pop_back.md)
-  - [`bpf_list_back`](bpf_list_back.md)
-  - [`bpf_list_front`](bpf_list_front.md)
+  - BPF linked list KFuncs
+    - [`bpf_list_push_front_impl`](bpf_list_push_front_impl.md)
+    - [`bpf_list_push_front`](bpf_list_push_front.md)
+    - [`bpf_list_push_back_impl`](bpf_list_push_back_impl.md)
+    - [`bpf_list_push_back`](bpf_list_push_back.md)
+    - [`bpf_list_pop_front`](bpf_list_pop_front.md)
+    - [`bpf_list_pop_back`](bpf_list_pop_back.md)
+    - [`bpf_list_back`](bpf_list_back.md)
+    - [`bpf_list_front`](bpf_list_front.md)
+    - [`bpf_list_add`](bpf_list_add.md)
+    - [`bpf_list_del`](bpf_list_del.md)
+    - [`bpf_list_empty`](bpf_list_empty.md)
+    - [`bpf_list_is_first`](bpf_list_is_first.md)
+    - [`bpf_list_is_last`](bpf_list_is_last.md)
 - BPF Arena KFuncs
   - [`bpf_arena_alloc_pages`](bpf_arena_alloc_pages.md)
   - [`bpf_arena_free_pages`](bpf_arena_free_pages.md)
@@ -263,6 +280,7 @@
   - [`scx_bpf_now`](scx_bpf_now.md)
   - [`scx_bpf_cpu_curr`](scx_bpf_cpu_curr.md)
   - [`scx_bpf_locked_rq`](scx_bpf_locked_rq.md)
+  - [`scx_bpf_events`](scx_bpf_events.md)
   - Dispatch Queue Kfuncs
     - [`scx_bpf_create_dsq`](scx_bpf_create_dsq.md)
     - [`scx_bpf_destroy_dsq`](scx_bpf_destroy_dsq.md)
@@ -303,6 +321,8 @@
   - CPU mask Kfuncs
     - [`scx_bpf_get_possible_cpumask`](scx_bpf_get_possible_cpumask.md)
     - [`scx_bpf_get_online_cpumask`](scx_bpf_get_online_cpumask.md)
+    - [`scx_bpf_get_idle_cpumask_node`](scx_bpf_get_idle_cpumask_node.md)
+    - [`scx_bpf_get_idle_smtmask_node`](scx_bpf_get_idle_smtmask_node.md)
     - [`scx_bpf_put_cpumask`](scx_bpf_put_cpumask.md)
   - Idle CPU mask Kfuncs
     - [`scx_bpf_get_idle_cpumask`](scx_bpf_get_idle_cpumask.md)
@@ -322,6 +342,21 @@
     - [`scx_bpf_nr_node_ids`](scx_bpf_nr_node_ids.md)
     - [`scx_bpf_pick_any_cpu_node`](scx_bpf_pick_any_cpu_node.md)
     - [`scx_bpf_pick_idle_cpu_node`](scx_bpf_pick_idle_cpu_node.md)
+  - CID flavor Kfuncs
+    - [`scx_bpf_cid_curr`](scx_bpf_cid_curr.md)
+    - [`scx_bpf_cid_override`](scx_bpf_cid_override.md)
+    - [`scx_bpf_cid_to_cpu`](scx_bpf_cid_to_cpu.md)
+    - [`scx_bpf_cid_topo`](scx_bpf_cid_topo.md)
+    - [`scx_bpf_cidperf_cap`](scx_bpf_cidperf_cap.md)
+    - [`scx_bpf_cidperf_cur`](scx_bpf_cidperf_cur.md)
+    - [`scx_bpf_cidperf_set`](scx_bpf_cidperf_set.md)
+    - [`scx_bpf_cpu_to_cid`](scx_bpf_cpu_to_cid.md)
+    - [`scx_bpf_kick_cid`](scx_bpf_kick_cid.md)
+    - [`scx_bpf_nr_cids`](scx_bpf_nr_cids.md)
+    - [`scx_bpf_nr_online_cids`](scx_bpf_nr_online_cids.md)
+    - [`scx_bpf_task_cid`](scx_bpf_task_cid.md)
+    - [`scx_bpf_this_cid`](scx_bpf_this_cid.md)
+    - [`scx_bpf_tid_to_task`](scx_bpf_tid_to_task.md)
 - Resilient Queued spinlock Kfuncs
   - [`bpf_res_spin_lock`](bpf_res_spin_lock.md)
   - [`bpf_res_spin_lock_irqsave`](bpf_res_spin_lock_irqsave.md)
@@ -379,3 +414,7 @@
 - I/O Userspace Ring kfuncs
   - [`bpf_io_uring_get_region`](bpf_io_uring_get_region.md)
   - [`bpf_io_uring_submit_sqes`](bpf_io_uring_submit_sqes.md)
+- Wake up sources Kfuncs
+  - [`bpf_wakeup_sources_get_head`](bpf_wakeup_sources_get_head.md)
+  - [`bpf_wakeup_sources_read_lock`](bpf_wakeup_sources_read_lock.md)
+  - [`bpf_wakeup_sources_read_unlock`](bpf_wakeup_sources_read_unlock.md)

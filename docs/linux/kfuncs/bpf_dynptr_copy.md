@@ -33,7 +33,7 @@ Copies data from source dynptr to destination dynptr.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_copy(struct bpf_dynptr *dst_ptr, u64 dst_off, struct bpf_dynptr *src_ptr, u64 src_off, u64 size)`
+`#!c int bpf_dynptr_copy(const struct bpf_dynptr *dst_ptr, u64 dst_off, const struct bpf_dynptr *src_ptr, u64 src_off, u64 size)`
 <!-- [/KFUNC_DEF] -->
 
 !!! note

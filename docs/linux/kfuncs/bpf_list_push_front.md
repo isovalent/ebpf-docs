@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_list_push_front' eBPF kfunc, includin
 # KFunc `bpf_list_push_front`
 
 <!-- [FEATURE_TAG](bpf_list_push_front) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
 <!-- [/FEATURE_TAG] -->
 
 Add a new entry to the beginning of the BPF linked list.

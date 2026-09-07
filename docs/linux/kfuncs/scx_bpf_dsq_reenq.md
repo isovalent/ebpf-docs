@@ -5,7 +5,7 @@ description: "This page documents the 'scx_bpf_dsq_reenq' eBPF kfunc, including 
 # KFunc `scx_bpf_dsq_reenq`
 
 <!-- [FEATURE_TAG](scx_bpf_dsq_reenq) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/9c34c5074d1bc22072fc7f9c86b0028f7e273b2c)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/9c34c5074d1bc22072fc7f9c86b0028f7e273b2c)
 <!-- [/FEATURE_TAG] -->
 
 Re-enqueue tasks on a DSQ.

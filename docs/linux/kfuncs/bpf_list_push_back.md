@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_list_push_back' eBPF kfunc, including
 # KFunc `bpf_list_push_back`
 
 <!-- [FEATURE_TAG](bpf_list_push_back) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
 <!-- [/FEATURE_TAG] -->
 
 Add a new entry to the end of the BPF linked list.

@@ -14,7 +14,9 @@ But KFuncs do not enjoy those same guarantees.
 Although KFuncs are not expected to be very volatile, defensive programming techniques are still advised.
 Otherwise helper functions should be preferred over KFuncs.
 
-## cGroup resource statistic KFuncs
+## cGroup statistics KFuncs
+
+### cGroup resource statistics KFuncs
 
 These KFuncs are used to update or flush cGroup resource statistics efficiently.
 
@@ -22,6 +24,19 @@ These KFuncs are used to update or flush cGroup resource statistics efficiently.
 - [`cgroup_rstat_flush`](cgroup_rstat_flush.md)
 - [`css_rstat_updated`](css_rstat_updated.md)
 - [`css_rstat_flush`](css_rstat_flush.md)
+
+### cGroup memory statistics KFuncs
+
+These KFuncs are used to read and flush cGroup memory statistics.
+
+- [`bpf_get_mem_cgroup`](bpf_get_mem_cgroup.md)
+- [`bpf_get_root_mem_cgroup`](bpf_get_root_mem_cgroup.md)
+- [`bpf_mem_cgroup_flush_stats`](bpf_mem_cgroup_flush_stats.md)
+- [`bpf_mem_cgroup_memory_events`](bpf_mem_cgroup_memory_events.md)
+- [`bpf_mem_cgroup_page_state`](bpf_mem_cgroup_page_state.md)
+- [`bpf_mem_cgroup_usage`](bpf_mem_cgroup_usage.md)
+- [`bpf_mem_cgroup_vm_events`](bpf_mem_cgroup_vm_events.md)
+- [`bpf_put_mem_cgroup`](bpf_put_mem_cgroup.md)
 
 ## Key signature verification KFuncs
 
@@ -41,6 +56,7 @@ These KFuncs are used to verify <nospell>PKCS#7</nospell> signed data against ke
 - [`bpf_get_dentry_xattr`](bpf_get_dentry_xattr.md)
 - [`bpf_remove_dentry_xattr`](bpf_remove_dentry_xattr.md)
 - [`bpf_set_dentry_xattr`](bpf_set_dentry_xattr.md)
+- [`bpf_real_data_inode`](bpf_real_data_inode.md)
 
 ## CPU mask KFuncs
 
@@ -90,6 +106,9 @@ A set of KFuncs to allocate and deallocate custom objects for the purposes of bu
 - [`bpf_percpu_obj_drop`](bpf_percpu_obj_drop.md)
 - [`bpf_refcount_acquire_impl`](bpf_refcount_acquire_impl.md)
 - [`bpf_refcount_acquire`](bpf_refcount_acquire.md)
+
+### BPF linked list KFuncs
+
 - [`bpf_list_push_front_impl`](bpf_list_push_front_impl.md)
 - [`bpf_list_push_front`](bpf_list_push_front.md)
 - [`bpf_list_push_back_impl`](bpf_list_push_back_impl.md)
@@ -98,6 +117,11 @@ A set of KFuncs to allocate and deallocate custom objects for the purposes of bu
 - [`bpf_list_pop_back`](bpf_list_pop_back.md)
 - [`bpf_list_back`](bpf_list_back.md)
 - [`bpf_list_front`](bpf_list_front.md)
+- [`bpf_list_add`](bpf_list_add.md)
+- [`bpf_list_del`](bpf_list_del.md)
+- [`bpf_list_empty`](bpf_list_empty.md)
+- [`bpf_list_is_first`](bpf_list_is_first.md)
+- [`bpf_list_is_last`](bpf_list_is_last.md)
 
 ## BPF Arena KFuncs
 
@@ -387,6 +411,7 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_now`](scx_bpf_now.md)
 - [`scx_bpf_cpu_curr`](scx_bpf_cpu_curr.md)
 - [`scx_bpf_locked_rq`](scx_bpf_locked_rq.md)
+- [`scx_bpf_events`](scx_bpf_events.md)
 
 ### Dispatch Queue Kfuncs
 
@@ -430,6 +455,8 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 
 - [`scx_bpf_get_possible_cpumask`](scx_bpf_get_possible_cpumask.md)
 - [`scx_bpf_get_online_cpumask`](scx_bpf_get_online_cpumask.md)
+- [`scx_bpf_get_idle_cpumask_node`](scx_bpf_get_idle_cpumask_node.md)
+- [`scx_bpf_get_idle_smtmask_node`](scx_bpf_get_idle_smtmask_node.md)
 - [`scx_bpf_put_cpumask`](scx_bpf_put_cpumask.md)
 
 ### Idle CPU mask Kfuncs
@@ -448,6 +475,23 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`scx_bpf_task_cgroup`](scx_bpf_task_cgroup.md)
 - [`scx_bpf_task_set_slice`](scx_bpf_task_set_slice.md)
 - [`scx_bpf_task_set_dsq_vtime`](scx_bpf_task_set_dsq_vtime.md)
+
+### CID flavor Kfuncs
+
+- [`scx_bpf_cid_curr`](scx_bpf_cid_curr.md)
+- [`scx_bpf_cid_override`](scx_bpf_cid_override.md)
+- [`scx_bpf_cid_to_cpu`](scx_bpf_cid_to_cpu.md)
+- [`scx_bpf_cid_topo`](scx_bpf_cid_topo.md)
+- [`scx_bpf_cidperf_cap`](scx_bpf_cidperf_cap.md)
+- [`scx_bpf_cidperf_cur`](scx_bpf_cidperf_cur.md)
+- [`scx_bpf_cidperf_set`](scx_bpf_cidperf_set.md)
+- [`scx_bpf_cpu_to_cid`](scx_bpf_cpu_to_cid.md)
+- [`scx_bpf_kick_cid`](scx_bpf_kick_cid.md)
+- [`scx_bpf_nr_cids`](scx_bpf_nr_cids.md)
+- [`scx_bpf_nr_online_cids`](scx_bpf_nr_online_cids.md)
+- [`scx_bpf_task_cid`](scx_bpf_task_cid.md)
+- [`scx_bpf_this_cid`](scx_bpf_this_cid.md)
+- [`scx_bpf_tid_to_task`](scx_bpf_tid_to_task.md)
 
 ## NUMA Kfuncs
 
@@ -528,7 +572,15 @@ These kfuncs allow you to take a reference to a cGroup and store them as kptrs i
 - [`bpf_task_work_schedule_resume_impl`](bpf_task_work_schedule_resume_impl.md)
 - [`bpf_task_work_schedule_signal_impl`](bpf_task_work_schedule_signal_impl.md)
 
-## I/O Userspace Ring kfuncs
+## I/O Userspace Ring Kfuncs
 
 - [`bpf_io_uring_get_region`](bpf_io_uring_get_region.md)
 - [`bpf_io_uring_submit_sqes`](bpf_io_uring_submit_sqes.md)
+
+## Wake up sources Kfuncs
+
+These kfuncs allow for the iteration of wake-up sources in BPF, which is faster than iteration in userspace via `sysfs`/`debugfs`.
+
+- [`bpf_wakeup_sources_get_head`](bpf_wakeup_sources_get_head.md)
+- [`bpf_wakeup_sources_read_lock`](bpf_wakeup_sources_read_lock.md)
+- [`bpf_wakeup_sources_read_unlock`](bpf_wakeup_sources_read_unlock.md)

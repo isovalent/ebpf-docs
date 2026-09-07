@@ -5,7 +5,7 @@ description: "This page documents the 'bpf_percpu_obj_drop' eBPF kfunc, includin
 # KFunc `bpf_percpu_obj_drop`
 
 <!-- [FEATURE_TAG](bpf_percpu_obj_drop) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/d457072576a6a60ba853b1d815f123da57b48021)
 <!-- [/FEATURE_TAG] -->
 
 Free an allocated per-CPU object.

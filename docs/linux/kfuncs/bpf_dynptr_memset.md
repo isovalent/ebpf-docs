@@ -31,7 +31,7 @@ Returns `0` on success; negative error, otherwise.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_dynptr_memset(struct bpf_dynptr *p, u64 offset, u64 size, u8 val)`
+`#!c int bpf_dynptr_memset(const struct bpf_dynptr *p, u64 offset, u64 size, u8 val)`
 <!-- [/KFUNC_DEF] -->
 
 !!! note

@@ -5,7 +5,7 @@ description: "This page documents the 'scx_bpf_dsq_move_to_local___v2' eBPF kfun
 # KFunc `scx_bpf_dsq_move_to_local___v2`
 
 <!-- [FEATURE_TAG](scx_bpf_dsq_move_to_local___v2) -->
-[:octicons-tag-24: 7.1](https://github.com/torvalds/linux/commit/860683763ebf4662cb72a312279334e02718308f)
+[:octicons-tag-24: v7.1](https://github.com/torvalds/linux/commit/860683763ebf4662cb72a312279334e02718308f)
 <!-- [/FEATURE_TAG] -->
 
 This function moves a task from a DSQ to the current CPU's local DSQ.
