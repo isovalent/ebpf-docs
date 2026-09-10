@@ -131,6 +131,33 @@ enum tcx_action_base {
 
 For more details of tcx, see the [<nospell>LSFMM</nospell>+BPF Summit Recap and Video: Revamping Global Socket Iterator, Netkit and Next Steps](https://ebpf.foundation/lsfmmbpf-summit-recap-and-video-revamping-global-socket-iterator-netkit-next-steps/).
 
+### netkit
+
+[:octicons-tag-24: v6.7](https://github.com/torvalds/linux/commit/35dfaad7188cdc043fde31709c796f5a692ba2bd)
+
+Since kernel v6.7 TC programs can also be attached to [netkit](https://lwn.net/Articles/949960/) devices, using the `BPF_NETKIT_PRIMARY` and `BPF_NETKIT_PEER` attach types from the table above. A netkit device is a virtual device pair, similar to a `veth` pair, built specifically for container networking: the primary device stays in the host network namespace and the peer device is moved into the container's namespace. The difference with attaching to a `veth` pair is that the programs run directly in the device's transmit path, before the packet is handed to the other end, so no qdisc or classifier infrastructure is involved.
+
+The two attach types select which end of the pair the programs run on. Programs attached with `BPF_NETKIT_PRIMARY` run when the primary device transmits, so they see traffic going from the host towards the container. Programs attached with `BPF_NETKIT_PEER` run when the peer device transmits, so they see the container's outgoing traffic. Both attach types are managed through the primary device: passing the peer's interface index to the attach operation is rejected with `-EACCES`, which means a workload inside the container cannot detach or replace the policy the host attached to its own peer device.
+
+Programs are attached via [`BPF_LINK_CREATE`](../syscall/BPF_LINK_CREATE.md#netkit) or `BPF_PROG_ATTACH`, and like tcx, netkit uses the multi-program management API, so multiple programs can be attached to the same end of the pair.
+
+netkit programs use their own return codes, with the same values as their tcx counterparts:
+
+```c
+enum netkit_action {
+	NETKIT_NEXT	= -1,
+	NETKIT_PASS	= 0,
+	NETKIT_DROP	= 2,
+	NETKIT_REDIRECT	= 7,
+};
+```
+
+`NETKIT_NEXT` continues with the next attached program, `NETKIT_PASS` delivers the packet to the other end of the pair, `NETKIT_DROP` drops it and `NETKIT_REDIRECT` redirects it (the packet has to have been redirected with a helper such as [`bpf_redirect`](../helper-function/bpf_redirect.md) or [`bpf_redirect_peer`](../helper-function/bpf_redirect_peer.md) before returning this value). Unlike tcx, where unknown return codes are mapped to `TCX_NEXT`, a netkit program returning an unknown value drops the packet.
+
+Each end of the pair also has a default policy, which is applied when no program is attached: `NETKIT_PASS` (the default) forwards all packets, while a device created with the `blackhole` policy drops everything until an attached program explicitly returns `NETKIT_PASS` or `NETKIT_REDIRECT`. Combined with the primary-only attachment this allows building default-deny setups where the container gets no connectivity unless the eBPF program on the host allows it.
+
+By default a netkit device operates in `NETKIT_L3` mode, in which packets carry no Ethernet header; the device pair can instead be created in `NETKIT_L2` mode to work on Ethernet frames.
+
 ## Helper functions
 
 Not all helper functions are available in all program types. These are the helper calls available for TC classifier programs:
