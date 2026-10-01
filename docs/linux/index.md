@@ -63,7 +63,7 @@ Starting with Linux 5.8, eBPF capabilities have been made more granular. You can
 
 More details can be found in the [kernel header](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/tree/include/uapi/linux/capability.h#n382)
 
-Exception about program type `BPF_PROG_TYPE_CGROUP_SKB`. They can be loaded by an unpriviligied user **but cannot be attached**.
+Exception about program type `BPF_PROG_TYPE_CGROUP_SKB`. They can be loaded by an unprivileged user **but cannot be attached**.
 
 !!! example "Docs could be improved"
     This part of the docs is incomplete, contributions are very welcome
