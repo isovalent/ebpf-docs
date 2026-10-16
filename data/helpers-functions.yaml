@@ -102,6 +102,80 @@ groups:
     since:
       version: 6.10
       commit: eb166e522c77699fc19bfa705652327a1e51a117
+  - name: bpf_strtol
+    since:
+      version: 6.1
+      commit: 8a67f2de9b1dc3cf8b75b4bf589efb1f08e3e9b8
+  - name: bpf_strtoul
+    since:
+      version: 6.1
+      commit: 8a67f2de9b1dc3cf8b75b4bf589efb1f08e3e9b8
+  - name: bpf_perf_event_read_value
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.15
+      commit: ae0a457f5d33c336f3c4259a258f8b537531a04b
+  - name: bpf_get_current_uid_gid
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_current_task_under_cgroup
+    cap: [CAP_BPF]
+    kconfig: [CONFIG_CGROUPS]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_get_cgroup_classid
+    cap: [CAP_BPF]
+    kconfig: [CONFIG_CGROUP_NET_CLASSID]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_task_storage_get
+    cap: [CAP_BPF]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_task_storage_delete
+    cap: [CAP_BPF]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_get_current_comm
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_perf_event_read
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_send_signal
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_send_signal_thread
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_get_task_stack
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_get_branch_snapshot
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
+  - name: bpf_find_vma
+    cap: [CAP_BPF, CAP_PERFMON]
+    since:
+      version: 6.16
+      commit: ee971630f20fd421fffcdc4543731ebcb54ed6d0
 
   # `tracing_prog_func_proto` in `kernel/tracing/bpf_trace.c`
   tracing_prog:
