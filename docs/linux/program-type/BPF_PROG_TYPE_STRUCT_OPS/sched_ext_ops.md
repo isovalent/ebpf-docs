@@ -1081,7 +1081,7 @@ enum scx_ent_flags {
     SCX_TASK_STATE_SHIFT = 8,
 
 	[SCX_TASK_NONE](#emum-scx_ent_flags-scx_task_none)       = 0 << SCX_TASK_STATE_SHIFT,
-	[SCX_TASK_INIT_BEGIN](#emum-scx_ent_flags-scx_task_begin) = 1 << SCX_TASK_STATE_SHIFT,
+	[SCX_TASK_INIT_BEGIN](#emum-scx_ent_flags-scx_task_init_begin) = 1 << SCX_TASK_STATE_SHIFT,
 	[SCX_TASK_INIT](#emum-scx_ent_flags-scx_task_init)       = 2 << SCX_TASK_STATE_SHIFT,
 	[SCX_TASK_READY](#emum-scx_ent_flags-scx_task_ready)      = 3 << SCX_TASK_STATE_SHIFT,
 	[SCX_TASK_ENABLED](#emum-scx_ent_flags-scx_task_enabled)    = 4 << SCX_TASK_STATE_SHIFT,
