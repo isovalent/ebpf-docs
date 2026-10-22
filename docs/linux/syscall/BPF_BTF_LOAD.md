@@ -71,6 +71,12 @@ The remaining bits are flags:
 
 * `1 << 4` (`BPF_LOG_FIXED`) since [:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/1216640938035e63bdbd32438e91c9bcc1fd8ee1), the verifier log rotates instead of truncating. When `log_size` is exceeded. Setting this flag preserves the old behavior of truncating the log to `log_size` bytes.
 
+### `btf_log_true_size`
+
+[:octicons-tag-24: v6.4](https://github.com/torvalds/linux/commit/47a71c1f9af0a334c9dfa97633c41de4feda4287)
+
+This field is an output, the kernel sets it to the actual size of the log, including the terminating zero. It can be larger than `btf_log_size` if the log was truncated, or smaller if the log buffer was not filled completely. If a user wants to get the full log, this allows them to allocate a buffer of the correct size before calling `BPF_BTF_LOAD` again with the same inputs (other than the resized buffer).
+
 ### `btf_flags`
 
 [:octicons-tag-24: v6.9](https://github.com/torvalds/linux/commit/9ea7c4bf17e39d463eb4782f948f401d9764b1b3)

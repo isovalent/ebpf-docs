@@ -203,4 +203,4 @@ The tool works by essentially modeling the same calculations found in the C code
 
 ### Libbpf tag generator
 
-The [`libbpf-tag-gen`](https://github.com/isovalent/ebpf-docs/tree/master/tools/libbpf-tag-gen/) tool creates version tags for [Libbpf userspace](ebpf-library/libbpf/userspace/) functions. It parses the [`libbpf.map`](https://github.com/libbpf/libbpf/blob/master/src/libbpf.map) file to see when certain functions were added to the library and creates a version number tag and link which is inserted between the `<!-- [LIBBPF_TAG] -->` and `<!-- [/LIBBPF_TAG] -->` markers on the Libbpf userspace function pages.
+The [`libbpf-tag-gen`](https://github.com/isovalent/ebpf-docs/tree/master/tools/libbpf-tag-gen/) tool creates version tags for [Libbpf userspace](ebpf-library/libbpf/userspace/index.md) functions. It parses the [`libbpf.map`](https://github.com/libbpf/libbpf/blob/master/src/libbpf.map) file to see when certain functions were added to the library and creates a version number tag and link which is inserted between the `<!-- [LIBBPF_TAG] -->` and `<!-- [/LIBBPF_TAG] -->` markers on the Libbpf userspace function pages.
