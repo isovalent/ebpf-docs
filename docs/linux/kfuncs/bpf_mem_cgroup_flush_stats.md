@@ -1,10 +1,10 @@
 ---
-title: "KFunc 'bpf_mem_cgroup_page_state'"
-description: "This page documents the 'bpf_mem_cgroup_page_state' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
+title: "KFunc 'bpf_mem_cgroup_flush_stats'"
+description: "This page documents the 'bpf_mem_cgroup_flush_stats' eBPF kfunc, including its definition, usage, program types that can use it, and examples."
 ---
-# KFunc `bpf_mem_cgroup_page_state`
+# KFunc `bpf_mem_cgroup_flush_stats`
 
-<!-- [FEATURE_TAG](bpf_mem_cgroup_page_state) -->
+<!-- [FEATURE_TAG](bpf_mem_cgroup_flush_stats) -->
 [:octicons-tag-24: v7.0](https://github.com/torvalds/linux/commit/99430ab8b804c26b8a0dec93fcbfe75469f3edc7)
 <!-- [/FEATURE_TAG] -->
 
