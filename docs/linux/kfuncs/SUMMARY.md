@@ -190,6 +190,9 @@
 - Socket related kfuncs
   - [`bpf_sock_addr_set_sun_path`](bpf_sock_addr_set_sun_path.md)
   - [`bpf_sock_destroy`](bpf_sock_destroy.md)
+  - [`bpf_sock_read_xattr`](bpf_sock_read_xattr.md)
+- ICMP kfuncs
+  - [`bpf_icmp_send`](bpf_icmp_send.md)
 - Network crypto kfuncs
   - [`bpf_crypto_ctx_create`](bpf_crypto_ctx_create.md)
   - [`bpf_crypto_ctx_acquire`](bpf_crypto_ctx_acquire.md)
@@ -354,9 +357,15 @@
     - [`scx_bpf_kick_cid`](scx_bpf_kick_cid.md)
     - [`scx_bpf_nr_cids`](scx_bpf_nr_cids.md)
     - [`scx_bpf_nr_online_cids`](scx_bpf_nr_online_cids.md)
+    - [`scx_bpf_online_cmask`](scx_bpf_online_cmask.md)
     - [`scx_bpf_task_cid`](scx_bpf_task_cid.md)
     - [`scx_bpf_this_cid`](scx_bpf_this_cid.md)
     - [`scx_bpf_tid_to_task`](scx_bpf_tid_to_task.md)
+  - Sub-scheduler Kfuncs
+    - [`scx_bpf_sub_grant`](scx_bpf_sub_grant.md)
+    - [`scx_bpf_sub_revoke`](scx_bpf_sub_revoke.md)
+    - [`scx_bpf_sub_caps`](scx_bpf_sub_caps.md)
+    - [`scx_bpf_sub_kill_bstr`](scx_bpf_sub_kill_bstr.md)
 - Resilient Queued spinlock Kfuncs
   - [`bpf_res_spin_lock`](bpf_res_spin_lock.md)
   - [`bpf_res_spin_lock_irqsave`](bpf_res_spin_lock_irqsave.md)
@@ -418,3 +427,9 @@
   - [`bpf_wakeup_sources_get_head`](bpf_wakeup_sources_get_head.md)
   - [`bpf_wakeup_sources_read_lock`](bpf_wakeup_sources_read_lock.md)
   - [`bpf_wakeup_sources_read_unlock`](bpf_wakeup_sources_read_unlock.md)
+- Kernel socket Kfuncs
+  - [`bpf_ksock_create`](bpf_ksock_create.md)
+  - [`bpf_ksock_connect`](bpf_ksock_connect.md)
+  - [`bpf_ksock_acquire`](bpf_ksock_acquire.md)
+  - [`bpf_ksock_release`](bpf_ksock_release.md)
+  - [`bpf_ksock_send`](bpf_ksock_send.md)

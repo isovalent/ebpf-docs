@@ -23,7 +23,7 @@ Fill `out__uninit` with the topology info for `cid`. Trigger [`scx_error`](https
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void scx_bpf_cid_topo(s32 cid, struct scx_cid_topo *out__uninit)`
+`#!c void scx_bpf_cid_topo(s32 cid, struct scx_cid_topo *out, size_t out__sz)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

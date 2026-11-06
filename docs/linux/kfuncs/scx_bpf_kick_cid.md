@@ -35,7 +35,7 @@ cid-addressed equivalent of [`scx_bpf_kick_cpu`](scx_bpf_kick_cpu.md).
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c s32 scx_bpf_kick_cid(s32 cid, u64 flags)`
+`#!c void scx_bpf_kick_cid(s32 cid, u64 flags)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

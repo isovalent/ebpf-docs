@@ -25,7 +25,7 @@ The actual performance level chosen, CPU grouping, and the overhead and latency 
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void scx_bpf_cidperf_set(s32 cid, u32 perf)`
+`#!c s32 scx_bpf_cidperf_set(s32 cid, u32 perf)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

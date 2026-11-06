@@ -89,6 +89,8 @@ var removeKfuncs = []string{
 
 	"bbr_cwnd_event",
 	"cubictcp_cwnd_event",
+
+	"scx_bpf_cpu_rq",
 }
 
 func main() {

@@ -1035,6 +1035,16 @@ sets:
         flags: [KF_IMPLICIT_ARGS, KF_RET_NULL, KF_RCU_PROTECTED]
       - name: scx_bpf_task_cid
         flags: [KF_RCU]
+      - name: scx_bpf_online_cmask
+        flags: [KF_IMPLICIT_ARGS, KF_ARENA_RET]
+      - name: scx_bpf_sub_grant
+        flags: [KF_IMPLICIT_ARGS]
+      - name: scx_bpf_sub_revoke
+        flags: [KF_IMPLICIT_ARGS]
+      - name: scx_bpf_sub_caps
+        flags: [KF_IMPLICIT_ARGS]
+      - name: scx_bpf_sub_kill_bstr
+        flags: [KF_IMPLICIT_ARGS]
     program_types:
       - name: BPF_PROG_TYPE_STRUCT_OPS
       - name: BPF_PROG_TYPE_SYSCALL
@@ -1067,6 +1077,8 @@ sets:
         flags: [KF_SLEEPABLE, KF_TRUSTED_ARGS]
       - name: bpf_real_data_inode
         flags: [KF_SLEEPABLE, KF_RET_NULL]
+      - name: bpf_sock_read_xattr
+        flags: [KF_RCU]
     program_types:
       - name: BPF_PROG_TYPE_TRACING
       - name: BPF_PROG_TYPE_TRACEPOINT
@@ -1226,3 +1238,30 @@ sets:
       - name: bpf_wakeup_sources_get_head
     program_types:
       - name: BPF_PROG_TYPE_SYSCALL
+
+  bpf_kfunc_check_set_icmp_send:
+    funcs:
+      - name: bpf_icmp_send
+    program_types:
+      - name: BPF_PROG_TYPE_CGROUP_SKB
+
+  ksock_init_kfunc_btf_ids:
+    funcs:
+      - name: bpf_ksock_create
+        flags: [KF_ACQUIRE, KF_RET_NULL, KF_SLEEPABLE]
+      - name: bpf_ksock_connect
+        flags: [KF_SLEEPABLE]
+    program_types:
+      - name: BPF_PROG_TYPE_SYSCALL
+
+  ksock_kfunc_btf_ids:
+    funcs:
+      - name: bpf_ksock_release
+        flags: [KF_RELEASE]
+      - name: bpf_ksock_acquire
+        flags: [KF_ACQUIRE, KF_RCU, KF_RET_NULL]
+      - name: bpf_ksock_send
+        flags: [KF_SLEEPABLE]
+    program_types:
+      - name: BPF_PROG_TYPE_SYSCALL
+      - name: BPF_PROG_TYPE_LSM

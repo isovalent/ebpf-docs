@@ -411,6 +411,7 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     - [`bpf_refcount_acquire_impl`](../kfuncs/bpf_refcount_acquire_impl.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_send_signal_task`](../kfuncs/bpf_send_signal_task.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_sock_destroy`](../kfuncs/bpf_sock_destroy.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
+    - [`bpf_sock_read_xattr`](../kfuncs/bpf_sock_read_xattr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_strcasecmp`](../kfuncs/bpf_strcasecmp.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_strcasestr`](../kfuncs/bpf_strcasestr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`bpf_strchr`](../kfuncs/bpf_strchr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
@@ -446,7 +447,6 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     - [`scx_bpf_cidperf_set`](../kfuncs/scx_bpf_cidperf_set.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_cpu_curr`](../kfuncs/scx_bpf_cpu_curr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_cpu_node`](../kfuncs/scx_bpf_cpu_node.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
-    - [`scx_bpf_cpu_rq`](../kfuncs/scx_bpf_cpu_rq.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_cpuperf_cap`](../kfuncs/scx_bpf_cpuperf_cap.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_cpuperf_cur`](../kfuncs/scx_bpf_cpuperf_cur.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_cpuperf_set`](../kfuncs/scx_bpf_cpuperf_set.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
@@ -472,6 +472,7 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     - [`scx_bpf_nr_cpu_ids`](../kfuncs/scx_bpf_nr_cpu_ids.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_nr_node_ids`](../kfuncs/scx_bpf_nr_node_ids.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_nr_online_cids`](../kfuncs/scx_bpf_nr_online_cids.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
+    - [`scx_bpf_online_cmask`](../kfuncs/scx_bpf_online_cmask.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_pick_any_cpu`](../kfuncs/scx_bpf_pick_any_cpu.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_pick_any_cpu_node`](../kfuncs/scx_bpf_pick_any_cpu_node.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_pick_idle_cpu`](../kfuncs/scx_bpf_pick_idle_cpu.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
@@ -480,6 +481,10 @@ We call the syscall command with the [`BPF_PERF_EVENT`](../syscall/BPF_LINK_CREA
     - [`scx_bpf_put_idle_cpumask`](../kfuncs/scx_bpf_put_idle_cpumask.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_reenqueue_local___v2`](../kfuncs/scx_bpf_reenqueue_local___v2.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_select_cpu_and`](../kfuncs/scx_bpf_select_cpu_and.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
+    - [`scx_bpf_sub_caps`](../kfuncs/scx_bpf_sub_caps.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
+    - [`scx_bpf_sub_grant`](../kfuncs/scx_bpf_sub_grant.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
+    - [`scx_bpf_sub_kill_bstr`](../kfuncs/scx_bpf_sub_kill_bstr.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
+    - [`scx_bpf_sub_revoke`](../kfuncs/scx_bpf_sub_revoke.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_task_cgroup`](../kfuncs/scx_bpf_task_cgroup.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_task_cid`](../kfuncs/scx_bpf_task_cid.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
     - [`scx_bpf_task_cpu`](../kfuncs/scx_bpf_task_cpu.md) [:octicons-tag-24: v6.12](https://github.com/torvalds/linux/commit/bc638d8cb5be813d4eeb9f63cce52caaa18f3960) - 
