@@ -1097,3 +1097,18 @@ hide: toc
 * `bpf_list_is_first` [745515d](https://github.com/torvalds/linux/commit/745515d386eb5e6891d9f91a92ad15dace3a33ef) (kfuncs)
 * `bpf_list_is_last` [745515d](https://github.com/torvalds/linux/commit/745515d386eb5e6891d9f91a92ad15dace3a33ef) (kfuncs)
 * `bpf_real_data_inode` [3f8c65b](https://github.com/torvalds/linux/commit/3f8c65b06fafc3f779abda5f7b81707411d05d4c) (kfuncs)
+
+## :octicons-tag-24: v7.3
+
+* `bpf_sock_read_xattr` [b4e124d](https://github.com/torvalds/linux/commit/b4e124d16855213409f5dfa6aa18b81cd00fdbba) (kfuncs)
+* `bpf_icmp_send` [f3603df](https://github.com/torvalds/linux/commit/f3603df9aebb2a2fe2f745bd71ca38aeca60e6e7) (kfuncs)
+* `scx_bpf_sub_grant` [86094b9](https://github.com/torvalds/linux/commit/86094b95efcf747c80930a2a675c5b14505a19b1) (kfuncs)
+* `scx_bpf_sub_revoke` [86094b9](https://github.com/torvalds/linux/commit/86094b95efcf747c80930a2a675c5b14505a19b1) (kfuncs)
+* `scx_bpf_sub_caps` [86094b9](https://github.com/torvalds/linux/commit/86094b95efcf747c80930a2a675c5b14505a19b1) (kfuncs)
+* `scx_bpf_sub_kill_bstr` [b0a2ca6](https://github.com/torvalds/linux/commit/b0a2ca6ae0ed03c625cd343d662d83bc94d84217) (kfuncs)
+* `scx_bpf_online_cmask` [a9e3760](https://github.com/torvalds/linux/commit/a9e3760b0838299649c0d57cca44daaf40ba3c33) (kfuncs)
+* `bpf_ksock_create` [7ae4eb1](https://github.com/torvalds/linux/commit/7ae4eb14c5f9d9bf0e0feabeab206151b1280512) (kfuncs)
+* `bpf_ksock_connect` [7ae4eb1](https://github.com/torvalds/linux/commit/7ae4eb14c5f9d9bf0e0feabeab206151b1280512) (kfuncs)
+* `bpf_ksock_acquire` [7ae4eb1](https://github.com/torvalds/linux/commit/7ae4eb14c5f9d9bf0e0feabeab206151b1280512) (kfuncs)
+* `bpf_ksock_release` [7ae4eb1](https://github.com/torvalds/linux/commit/7ae4eb14c5f9d9bf0e0feabeab206151b1280512) (kfuncs)
+* `bpf_ksock_send` [7ae4eb1](https://github.com/torvalds/linux/commit/7ae4eb14c5f9d9bf0e0feabeab206151b1280512) (kfuncs)

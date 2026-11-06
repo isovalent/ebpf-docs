@@ -367,6 +367,7 @@ char _license[] SEC("license") = "GPL";
     - [`bpf_get_kmem_cache`](../kfuncs/bpf_get_kmem_cache.md)
     - [`bpf_get_mem_cgroup`](../kfuncs/bpf_get_mem_cgroup.md)
     - [`bpf_get_root_mem_cgroup`](../kfuncs/bpf_get_root_mem_cgroup.md)
+    - [`bpf_icmp_send`](../kfuncs/bpf_icmp_send.md)
     - [`bpf_iter_bits_destroy`](../kfuncs/bpf_iter_bits_destroy.md)
     - [`bpf_iter_bits_new`](../kfuncs/bpf_iter_bits_new.md)
     - [`bpf_iter_bits_next`](../kfuncs/bpf_iter_bits_next.md)

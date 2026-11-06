@@ -23,7 +23,7 @@ May only be called from [`ops.init`](../program-type/BPF_PROG_TYPE_STRUCT_OPS/sc
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c void scx_bpf_cid_override(const s32 *cpu_to_cid, u32 cpu_to_cid__sz)`
+`#!c void scx_bpf_cid_override(__arena const s32 *cpu_to_cid__arena, u32 cpu_to_cid_cnt, __arena const s32 *shard_start__arena, u32 shard_start_cnt)`
 
 !!! note
     This function may sleep, and therefore can only be used from [sleepable programs](../syscall/BPF_PROG_LOAD.md/#bpf_f_sleepable).

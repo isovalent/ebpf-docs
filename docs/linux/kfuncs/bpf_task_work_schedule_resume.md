@@ -29,7 +29,7 @@ Schedule BPF callback using `task_work_add` with `TWA_RESUME` mode.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_task_work_schedule_resume(struct task_struct *task, struct bpf_task_work *tw, void *map__map, bpf_task_work_callback_t callback)`
+`#!c int bpf_task_work_schedule_resume(struct task_struct *task, struct bpf_task_work *tw, void *map__const_map, bpf_task_work_callback_t callback)`
 <!-- [/KFUNC_DEF] -->
 
 `#!c typedef int (*bpf_task_work_callback_t)(struct bpf_map *map, void *key, void *value);`

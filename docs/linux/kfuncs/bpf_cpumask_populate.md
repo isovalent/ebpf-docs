@@ -29,7 +29,7 @@ Populate the CPU mask from the contents of a BPF memory region.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_cpumask_populate(struct cpumask *cpumask, void *src, size_t src__sz)`
+`#!c int bpf_cpumask_populate(struct bpf_cpumask *cpumask, void *src, size_t src__sz)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

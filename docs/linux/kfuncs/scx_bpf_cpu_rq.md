@@ -10,6 +10,9 @@ description: "This page documents the 'scx_bpf_cpu_rq' eBPF kfunc, including its
 
 This function fetches the <nospell>rq</nospell> (run queue) of a CPU.
 
+!!! warning
+    This kfunc was deprecated in [:octicons-tag-24: v6.18](https://github.com/torvalds/linux/commit/5c48d88fe004988ec508923dbdd00549e65f4055) and removed in [:octicons-tag-24: v7.3](https://github.com/torvalds/linux/commit/37cca059804ee35782a1cc9d7b087e5d3c855eae), it is no longer available. Use [`scx_bpf_locked_rq`](scx_bpf_locked_rq.md) to access the locked run queue, or [`scx_bpf_cpu_curr`](scx_bpf_cpu_curr.md) to look up the current task of a remote CPU instead.
+
 ## Definition
 
 **Parameters**

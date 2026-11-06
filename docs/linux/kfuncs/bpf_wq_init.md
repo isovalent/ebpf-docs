@@ -27,7 +27,7 @@ Return 0 on success, or a negative error code on failure.
 **Signature**
 
 <!-- [KFUNC_DEF] -->
-`#!c int bpf_wq_init(struct bpf_wq *wq, void *p__map, unsigned int flags)`
+`#!c int bpf_wq_init(struct bpf_wq *wq, void *p__const_map, unsigned int flags)`
 <!-- [/KFUNC_DEF] -->
 
 ## Usage

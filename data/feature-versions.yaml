@@ -2719,4 +2719,40 @@
     - name: bpf_real_data_inode
       version: v7.2
       commit: 3f8c65b06fafc3f779abda5f7b81707411d05d4c
+    - name: bpf_sock_read_xattr
+      version: v7.3
+      commit: b4e124d16855213409f5dfa6aa18b81cd00fdbba
+    - name: bpf_icmp_send
+      version: v7.3
+      commit: f3603df9aebb2a2fe2f745bd71ca38aeca60e6e7
+    - name: scx_bpf_sub_grant
+      version: v7.3
+      commit: 86094b95efcf747c80930a2a675c5b14505a19b1
+    - name: scx_bpf_sub_revoke
+      version: v7.3
+      commit: 86094b95efcf747c80930a2a675c5b14505a19b1
+    - name: scx_bpf_sub_caps
+      version: v7.3
+      commit: 86094b95efcf747c80930a2a675c5b14505a19b1
+    - name: scx_bpf_sub_kill_bstr
+      version: v7.3
+      commit: b0a2ca6ae0ed03c625cd343d662d83bc94d84217
+    - name: scx_bpf_online_cmask
+      version: v7.3
+      commit: a9e3760b0838299649c0d57cca44daaf40ba3c33
+    - name: bpf_ksock_create
+      version: v7.3
+      commit: 7ae4eb14c5f9d9bf0e0feabeab206151b1280512
+    - name: bpf_ksock_connect
+      version: v7.3
+      commit: 7ae4eb14c5f9d9bf0e0feabeab206151b1280512
+    - name: bpf_ksock_acquire
+      version: v7.3
+      commit: 7ae4eb14c5f9d9bf0e0feabeab206151b1280512
+    - name: bpf_ksock_release
+      version: v7.3
+      commit: 7ae4eb14c5f9d9bf0e0feabeab206151b1280512
+    - name: bpf_ksock_send
+      version: v7.3
+      commit: 7ae4eb14c5f9d9bf0e0feabeab206151b1280512
 
